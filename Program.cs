@@ -237,7 +237,7 @@ namespace H3VRModInstaller
         {
             //why do I even have this?
             Console.WriteLine("Unzipping " + fileToUnzip);
-            ZipFile.ExtractToDirectory(fileToUnzip, unzipLocation);
+            ZipFile.ExtractToDirectory(fileToUnzip, unzipLocation + fileToUnzip);
             if (deleteArchiveAfterUnzip)
                 Console.WriteLine("Cleaning up");
                 File.Delete(fileToUnzip);
@@ -246,20 +246,20 @@ namespace H3VRModInstaller
         public bool moveFileToPlugins(string fileToMove, string locationToMoveTo = "BepInEx/Plugins")
         {
             //this is even more redundant!
-            File.Move(fileToMove, locationToMoveTo);
+            File.Move(fileToMove, locationToMoveTo + fileToMove);
             return true;
         }
         public bool moveDirToBepInEx(string dirToMove, string locationToMoveTo)
         {
             //more redundancy
-            Directory.Move(dirToMove, locationToMoveTo);
+            Directory.Move(dirToMove, locationToMoveTo + dirToMove);
             return true;
         }
         public bool installDeliMod(string deliMod, string modsDir = "Mods/")
         {
             if(!Directory.Exists(modsDir))
                 Directory.CreateDirectory(modsDir);
-            File.Move(deliMod, modsDir);
+            File.Move(deliMod, modsDir + deliMod);
             return true;
         }
 
