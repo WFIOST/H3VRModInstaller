@@ -170,7 +170,7 @@ namespace H3VRModInstaller
             if(!hasBepInEx)
                 Console.WriteLine("BepInEx not detected! Downloading.");
                 downloader.downloadMod(mods.wurstModPaths[0], mods.wurstModFiles[0]);
-                installer.installBepInEx(true);
+                installer.installBepInEx();
                 
             /*
             var wurstModDeps = new List<Mods>
@@ -191,7 +191,7 @@ namespace H3VRModInstaller
             if(!hasBepInEx)
                 Console.WriteLine("BepInEx not detected! Downloading.");
                 downloader.downloadMod(mods.wurstModPaths[0], mods.wurstModFiles[0]);
-                installer.installBepInEx(true);
+                installer.installBepInEx();
             for (int i = 1; i < 3; i++)
             {
                 downloader.downloadMod(mods.cursedDllsPaths[i], mods.cursedDllsFiles[i]);
@@ -203,7 +203,7 @@ namespace H3VRModInstaller
             if(!hasBepInEx)
                 Console.WriteLine("BepInEx not detected! Downloading.");
                 downloader.downloadMod(mods.wurstModPaths[0], mods.wurstModFiles[0]);
-                installer.installBepInEx(true);
+                installer.installBepInEx();
             for (int i = 1; i < 2; i++)
             {
                 downloader.downloadMod(mods.TNHTweakerPaths[i], mods.TNHTweakerFiles[i]);
@@ -216,7 +216,7 @@ namespace H3VRModInstaller
             if(!hasBepInEx)
                 Console.WriteLine("BepInEx not detected! Downloading.");
                 downloader.downloadMod(mods.wurstModPaths[0], mods.wurstModFiles[0]);
-                installer.installBepInEx(true);
+                installer.installBepInEx();
             for (int i = 1; i < 3; i++)
             {
                 downloader.downloadMod(mods.wurstModPaths[i], mods.wurstModFiles[i]);
@@ -270,9 +270,9 @@ namespace H3VRModInstaller
     {
         private static Installer installer = new Installer();
 
-        public bool installBepInEx(bool deleteFilesAfterInstall)
+        public bool installBepInEx()
         {
-            installer.unzip("BepInEx_x64_5.4.4.0.zip", "", deleteFilesAfterInstall);
+            installer.unzip("BepInEx_x64_5.4.4.0.zip", "", false);
 
             Console.WriteLine("Finishing BepInEx installation");
             if (!RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
