@@ -272,7 +272,7 @@ namespace H3VRModInstaller
 
         public bool installBepInEx()
         {
-            installer.unzip("BepInEx_x64_5.4.4.0.zip", "", false);
+            installer.unzip("BepInEx_x64_5.4.4.0.zip", Directory.GetCurrentDirectory(), false);
 
             Console.WriteLine("Finishing BepInEx installation");
             if (!RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
@@ -292,7 +292,7 @@ namespace H3VRModInstaller
         }
         public bool installWurstMod()
         {
-            installer.unzip("Deli-v0.2.5.zip", "", true);
+            installer.unzip("Deli-v0.2.5.zip", Directory.GetCurrentDirectory(), true);
             Console.WriteLine("Installed Deli!");
 
             installer.installDeliMod("WurstMod.deli");
@@ -303,9 +303,9 @@ namespace H3VRModInstaller
         public bool installCurseddlls()
         {
 
-            installer.unzip("BepInEx.MonoMod.Loader_1.0.0.0.zip", "", true);
+            installer.unzip("BepInEx.MonoMod.Loader_1.0.0.0.zip", Directory.GetCurrentDirectory(), true);
             Console.WriteLine("Installed Monomod!");
-            installer.unzip("CursedDlls.BepInEx_v1.3.zip", "", true);
+            installer.unzip("CursedDlls.BepInEx_v1.3.zip", Directory.GetCurrentDirectory(), true);
             Console.WriteLine("Installed Cursed.Dlls!");
             return true;
         }
