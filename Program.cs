@@ -285,6 +285,16 @@ namespace H3VRModInstaller
             return true;
         }
 
+        public bool installCurseddlls()
+        {
+
+            installer.unzip("BepInEx.MonoMod.Loader_1.0.0.0.zip", "", true);
+            Console.WriteLine("Installed Monomod!");
+            installer.unzip("CursedDlls.BepInEx_v1.3.zip", "", true);
+            Console.WriteLine("Installed Cursed.Dlls!");
+            return true;
+        }
+
 
     }
 }
