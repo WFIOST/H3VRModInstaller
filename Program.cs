@@ -1,9 +1,8 @@
 ﻿using System;
 using System.IO;
-using System.Linq;
+using System.IO.Compression;
 using System.Net;
 using System.Net.NetworkInformation;
-using System.Collections.Generic;
 
 namespace H3VRModInstaller
 {
@@ -33,7 +32,7 @@ namespace H3VRModInstaller
                             if (mods.onlineCheck())
                             {
                                 downloader.downloadWurstMod(Directory.Exists("BepInEx"));
-                               
+                                
                             }
                         }
                         if (input == "CursedDLLs" | input == "Cursed dlls" | input == "curseddlls" | input == "Cursed.dlls" | input == "cursed dll" | input == "curseddll" | input == "2")
@@ -215,6 +214,41 @@ namespace H3VRModInstaller
             {
                 downloader.downloadMod(mods.TNHTweakerPaths[i], mods.TNHTweakerFiles[i]);
             }
+            return true;
+        }
+
+
+    }
+    class Installer
+    {
+        public bool unzip(string fileToUnzip, string unzipLocation, bool deleteArchiveAfterUnzip)
+        {
+            //why do I even have this?
+            Console.WriteLine("Unzipping " + fileToUnzip);
+            ZipFile.ExtractToDirectory(fileToUnzip, unzipLocation);
+            if (deleteArchiveAfterUnzip)
+                Console.WriteLine("Cleaning up");
+                File.Delete(fileToUnzip);
+            return true;
+        }
+        public bool moveFileToPlugins(string fileToMove, string locationToMoveTo = "BepInEx/Plugins")
+        {
+            //this is even more redundant!
+            File.Move(fileToMove, locationToMoveTo);
+            return true;
+        }
+        public bool moveDirToBepInEx(string dirToMove, string locationToMoveTo)
+        {
+            //more redundancy
+            Directory.Move(dirToMove, locationToMoveTo);
+            return true;
+        }
+        public bool installDeliMod(string deliMod, string modsDir = "Mods/")
+        {
+            
+            if(!Directory.Exists(modsDir))
+                Directory.CreateDirectory(modsDir);
+            File.Move(deliMod, modsDir);
             return true;
         }
 
