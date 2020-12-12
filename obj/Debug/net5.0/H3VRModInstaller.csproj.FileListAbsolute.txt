@@ -1,0 +1,15 @@
+/Users/mainuser/Documents/H3VRModInstaller/bin/Debug/net5.0/H3VRModInstaller.deps.json
+/Users/mainuser/Documents/H3VRModInstaller/bin/Debug/net5.0/H3VRModInstaller.runtimeconfig.json
+/Users/mainuser/Documents/H3VRModInstaller/bin/Debug/net5.0/H3VRModInstaller.runtimeconfig.dev.json
+/Users/mainuser/Documents/H3VRModInstaller/bin/Debug/net5.0/H3VRModInstaller.dll
+/Users/mainuser/Documents/H3VRModInstaller/bin/Debug/net5.0/ref/H3VRModInstaller.dll
+/Users/mainuser/Documents/H3VRModInstaller/bin/Debug/net5.0/H3VRModInstaller.pdb
+/Users/mainuser/Documents/H3VRModInstaller/obj/Debug/net5.0/H3VRModInstaller.csprojAssemblyReference.cache
+/Users/mainuser/Documents/H3VRModInstaller/obj/Debug/net5.0/H3VRModInstaller.GeneratedMSBuildEditorConfig.editorconfig
+/Users/mainuser/Documents/H3VRModInstaller/obj/Debug/net5.0/H3VRModInstaller.AssemblyInfoInputs.cache
+/Users/mainuser/Documents/H3VRModInstaller/obj/Debug/net5.0/H3VRModInstaller.AssemblyInfo.cs
+/Users/mainuser/Documents/H3VRModInstaller/obj/Debug/net5.0/H3VRModInstaller.csproj.CoreCompileInputs.cache
+/Users/mainuser/Documents/H3VRModInstaller/obj/Debug/net5.0/H3VRModInstaller.dll
+/Users/mainuser/Documents/H3VRModInstaller/obj/Debug/net5.0/ref/H3VRModInstaller.dll
+/Users/mainuser/Documents/H3VRModInstaller/obj/Debug/net5.0/H3VRModInstaller.pdb
+/Users/mainuser/Documents/H3VRModInstaller/obj/Debug/net5.0/H3VRModInstaller.genruntimeconfig.cache
