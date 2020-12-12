@@ -295,6 +295,14 @@ namespace H3VRModInstaller
             return true;
         }
 
+        public bool installTNHTweaker()
+        {
+            installer.moveFileToPlugins("TNHTweaker.dll");
+            Console.WriteLine("Installed TNH Tweaker!");
+
+            return true;
+        }
+
 
     }
 }
