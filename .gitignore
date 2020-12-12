@@ -15,3 +15,6 @@ obj/Debug/net5.0/H3VRModInstaller.dll
 obj/Debug/net5.0/H3VRModInstaller.pdb
 obj/Debug/net5.0/ref/H3VRModInstaller.dll
 WurstMod.deli
+.vscode
+bin/
+obj/
