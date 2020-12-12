@@ -3,13 +3,13 @@ using System.IO;
 using System.IO.Compression;
 using System.Net;
 using System.Net.NetworkInformation;
+using System.Diagnostics;
 
 namespace H3VRModInstaller
 {
     class Program
     {
         private static ModList mods = new ModList();
-
         private static DownloadMods downloader = new DownloadMods();
         static void Main(string[] args)
         {
@@ -245,10 +245,43 @@ namespace H3VRModInstaller
         }
         public bool installDeliMod(string deliMod, string modsDir = "Mods/")
         {
-            
             if(!Directory.Exists(modsDir))
                 Directory.CreateDirectory(modsDir);
             File.Move(deliMod, modsDir);
+            return true;
+        }
+
+
+    }
+
+    class InstallMods
+    {
+        private static Installer installer = new Installer();
+
+        public bool installBepInEx(bool deleteFilesAfterInstall)
+        {
+            installer.unzip("BepInEx_x64_5.4.4.0.zip", "", deleteFilesAfterInstall);
+
+            Console.WriteLine("Finishing BepInEx installation");
+            Process.Start("H3VR.exe");
+            bool bepinexInstalled = Directory.Exists("BepInEx/Plugins");
+            while (bepinexInstalled)
+            {
+                foreach (var proccess in Process.GetProcessesByName("H3VR"))
+                {
+                    proccess.Kill();
+                }
+            }
+            Console.WriteLine("Installed BepInEx!");
+            return true;
+        }
+        public bool installWurstMod()
+        {
+            installer.unzip("Deli-v0.2.5.zip", "", true);
+            Console.WriteLine("Installed Deli!");
+
+            installer.installDeliMod("WurstMod.deli");
+            Console.WriteLine("Installed WurstMod!");
             return true;
         }
 
