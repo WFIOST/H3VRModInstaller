@@ -1,6 +1,6 @@
 # H3VRModInstaller
 
-This is a program which installs mod for H3VR for you.
+This is a program which installs mods for H3VR for you.
 
 ## Installation
 
