@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/Users/mainuser/Documents/H3VRModInstaller/H3VRModInstaller.csproj": {}
+    "C:\\Users\\jagbh\\Documents\\H3VRModInstaller\\H3VRModInstaller.csproj": {}
   },
   "projects": {
-    "/Users/mainuser/Documents/H3VRModInstaller/H3VRModInstaller.csproj": {
+    "C:\\Users\\jagbh\\Documents\\H3VRModInstaller\\H3VRModInstaller.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/mainuser/Documents/H3VRModInstaller/H3VRModInstaller.csproj",
+        "projectUniqueName": "C:\\Users\\jagbh\\Documents\\H3VRModInstaller\\H3VRModInstaller.csproj",
         "projectName": "H3VRModInstaller",
-        "projectPath": "/Users/mainuser/Documents/H3VRModInstaller/H3VRModInstaller.csproj",
-        "packagesPath": "/Users/mainuser/.nuget/packages/",
-        "outputPath": "/Users/mainuser/Documents/H3VRModInstaller/obj/",
+        "projectPath": "C:\\Users\\jagbh\\Documents\\H3VRModInstaller\\H3VRModInstaller.csproj",
+        "packagesPath": "C:\\Users\\jagbh\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\jagbh\\Documents\\H3VRModInstaller\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/mainuser/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\jagbh\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
@@ -52,7 +52,12 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.101/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.101\\RuntimeIdentifierGraph.json"
+        }
+      },
+      "runtimes": {
+        "win-x64": {
+          "#import": []
         }
       }
     }
