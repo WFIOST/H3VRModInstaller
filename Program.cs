@@ -4,6 +4,7 @@ using System.IO.Compression;
 using System.Net;
 using System.Net.NetworkInformation;
 using System.Diagnostics;
+using System.Runtime.InteropServices;
 
 namespace H3VRModInstaller
 {
@@ -11,6 +12,7 @@ namespace H3VRModInstaller
     {
         private static ModList mods = new ModList();
         private static DownloadMods downloader = new DownloadMods();
+        private static InstallMods installer = new InstallMods();
         static void Main(string[] args)
         {
                 if (File.Exists("H3VR.exe"))
@@ -32,8 +34,10 @@ namespace H3VRModInstaller
                             if (mods.onlineCheck())
                             {
                                 downloader.downloadWurstMod(Directory.Exists("BepInEx"));
+                                installer.installWurstMod();
                                 
                             }
+                            
                         }
                         if (input == "CursedDLLs" | input == "Cursed dlls" | input == "curseddlls" | input == "Cursed.dlls" | input == "cursed dll" | input == "curseddll" | input == "2")
                         {
@@ -41,6 +45,7 @@ namespace H3VRModInstaller
                             if (mods.onlineCheck())
                             {
                                 downloader.downloadCursedDlls(Directory.Exists("BepInEx"));
+                                installer.installCurseddlls();
                             }
                         }
                         if (input == "TNHTweaker" | input == "TNH Tweaker" | input == "tnhtweaker" | input == "tnh tweaker" | input == "3")
@@ -48,8 +53,10 @@ namespace H3VRModInstaller
                             Console.WriteLine("TNHTweaker selected");
                             if (mods.onlineCheck())
                             {
-                                downloader.downloadCursedDlls(Directory.Exists("BepInEx"));
+                                downloader.downloadTNHTweaker(Directory.Exists("BepInEx"));
+                                installer.installTNHTweaker();
                             }
+
                         }
                         if (input == "All" | input == "all" | input == "4")
                         {
@@ -156,13 +163,15 @@ namespace H3VRModInstaller
     {
         private Downloader downloader = new Downloader();
         private ModList mods = new ModList();
-
+        private InstallMods installer = new InstallMods();
 
         public bool downloadWurstMod(bool hasBepInEx)
         {
             if(!hasBepInEx)
                 Console.WriteLine("BepInEx not detected! Downloading.");
                 downloader.downloadMod(mods.wurstModPaths[0], mods.wurstModFiles[0]);
+                installer.installBepInEx(true);
+                
             /*
             var wurstModDeps = new List<Mods>
             {
@@ -182,6 +191,7 @@ namespace H3VRModInstaller
             if(!hasBepInEx)
                 Console.WriteLine("BepInEx not detected! Downloading.");
                 downloader.downloadMod(mods.wurstModPaths[0], mods.wurstModFiles[0]);
+                installer.installBepInEx(true);
             for (int i = 1; i < 3; i++)
             {
                 downloader.downloadMod(mods.cursedDllsPaths[i], mods.cursedDllsFiles[i]);
@@ -193,6 +203,7 @@ namespace H3VRModInstaller
             if(!hasBepInEx)
                 Console.WriteLine("BepInEx not detected! Downloading.");
                 downloader.downloadMod(mods.wurstModPaths[0], mods.wurstModFiles[0]);
+                installer.installBepInEx(true);
             for (int i = 1; i < 2; i++)
             {
                 downloader.downloadMod(mods.TNHTweakerPaths[i], mods.TNHTweakerFiles[i]);
@@ -205,6 +216,7 @@ namespace H3VRModInstaller
             if(!hasBepInEx)
                 Console.WriteLine("BepInEx not detected! Downloading.");
                 downloader.downloadMod(mods.wurstModPaths[0], mods.wurstModFiles[0]);
+                installer.installBepInEx(true);
             for (int i = 1; i < 3; i++)
             {
                 downloader.downloadMod(mods.wurstModPaths[i], mods.wurstModFiles[i]);
@@ -263,13 +275,16 @@ namespace H3VRModInstaller
             installer.unzip("BepInEx_x64_5.4.4.0.zip", "", deleteFilesAfterInstall);
 
             Console.WriteLine("Finishing BepInEx installation");
-            Process.Start("H3VR.exe");
-            bool bepinexInstalled = Directory.Exists("BepInEx/Plugins");
-            while (bepinexInstalled)
+            if (!RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
             {
-                foreach (var proccess in Process.GetProcessesByName("H3VR"))
+                Process.Start("H3VR.exe");
+                bool bepinexInstalled = Directory.Exists("BepInEx/Plugins");
+                while (bepinexInstalled)
                 {
-                    proccess.Kill();
+                    foreach (var proccess in Process.GetProcessesByName("H3VR"))
+                    {
+                        proccess.Kill();
+                    }
                 }
             }
             Console.WriteLine("Installed BepInEx!");
