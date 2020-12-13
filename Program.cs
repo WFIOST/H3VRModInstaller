@@ -319,7 +319,7 @@ namespace H3VRModInstaller
 
         public bool installTNHTweaker()
         {
-            installer.moveFileToPlugins("TakeAndHoldTweaker.dll");
+            installer.moveFileToPlugins("/TakeAndHoldTweaker.dll");
             Console.WriteLine("Installed TNH Tweaker!");
             return true;
         }
