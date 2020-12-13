@@ -5,12 +5,8 @@
     <projectFile>H3VRModInstaller.GUI/H3VRModInstaller.GUI.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="11646549-311b-4445-a706-8ab87333e815" name="Default Changelist" comment="No more backend">
-      <change afterPath="$PROJECT_DIR$/H3VRModInstaller.Backend/Common/Directories.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/ModCheck.cs" beforeDir="false" afterPath="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Common/ModCheck.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.Backend/H3VRModInstaller.Backend.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/H3VRModInstaller.Backend/H3VRModInstaller.Backend.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.Backend/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/LICENSE" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.Backend/MainClass.cs" beforeDir="false" afterPath="$PROJECT_DIR$/H3VRModInstaller.Backend/MainClass.cs" afterDir="false" />
+    <list default="true" id="11646549-311b-4445-a706-8ab87333e815" name="Default Changelist" comment="more stuff">
+      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Common/ModCheck.cs" beforeDir="false" afterPath="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Common/ModCheck.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,9 +44,9 @@
       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Common/Prin.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Common/Print.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Common/Directories.cs" />
-      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Common/ModCheck.cs" />
       <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch_1.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/MainClass.cs" />
+      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Common/ModCheck.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1lah3QXp00T3AT7tcB4yg7113kU" />
@@ -61,6 +57,8 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.3496708" />
+    <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.0" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -123,7 +121,7 @@
       <workItem from="1607840919589" duration="404000" />
       <workItem from="1607841534509" duration="1859000" />
       <workItem from="1607845861837" duration="1008000" />
-      <workItem from="1607887306409" duration="5839000" />
+      <workItem from="1607887306409" duration="7502000" />
     </task>
     <task id="LOCAL-00001" summary="Split func.cs">
       <created>1607847473285</created>
@@ -146,7 +144,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607889413608</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="more stuff">
+      <created>1607894876932</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1607894876932</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -171,6 +176,7 @@
     <MESSAGE value="Split func.cs" />
     <MESSAGE value="Reorganised the classes, functions, and namespaces" />
     <MESSAGE value="No more backend" />
-    <option name="LAST_COMMIT_MESSAGE" value="No more backend" />
+    <MESSAGE value="more stuff" />
+    <option name="LAST_COMMIT_MESSAGE" value="more stuff" />
   </component>
 </project>
