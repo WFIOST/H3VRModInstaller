@@ -4,7 +4,7 @@ using System.IO.Compression;
 using System.Net;
 using System.Net.NetworkInformation;
 
-namespace H3VRModInstaller
+namespace H3VRModInstaller.Backend
 {
 	internal class Installer
 	{
