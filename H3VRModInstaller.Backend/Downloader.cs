@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net;
+using System.IO;
 
 namespace H3VRModInstaller.Backend.Net
 {
@@ -16,30 +17,53 @@ namespace H3VRModInstaller.Backend.Net
 
             downloader.DownloadFile(locationOfFile + fileToDownload, fileToDownload);
 
-            Console.WriteLine("Successfully Downloaded Mod \"{0}\" from \"{1}{0}\"\n", fileToDownload, locationOfFile);
+			string dir = Directory.GetCurrentDirectory();
+			dir += @"\";
+
+			string fullLocOfFile = dir + fileToDownload;
+			Console.WriteLine(fullLocOfFile);
+
+			System.IO.FileInfo fi = new System.IO.FileInfo(fullLocOfFile);
+
+
+			if (fi.Exists){
+				Console.WriteLine("found downloaded file!");
+				fi.MoveTo(dir + "download.zip");}
+			else Console.WriteLine("Can't find downloaded file!");
+
+			Console.WriteLine("Successfully Downloaded Mod \"{0}\" from \"{1}{0}\"\n", fileToDownload, locationOfFile);
 
             return true;
         }
 
-        public bool downloadMod(bool hasBepInEx, MainClass.ListMods mod, bool downloadAll = false)
+		public bool downloadModDirector(MainClass.ListMods mod, bool downloadAll = false)
         {
-            if (!hasBepInEx)
+			if (!mods.onlineCheck()) { Console.WriteLine("Not connected to internet, or GitHub is down!"); return false; }
+ /*           if (!Directory.Exists(Directory.GetCurrentDirectory() + "/BepInEx/"))
             {
                 Console.WriteLine("BepInEx not detected! Downloading.");
-                downloadMod(mods.wurstModPaths[0], mods.wurstModFiles[0]);
-                installer.installBepInEx();
-            }
+                downloadMod(mods.BepInExInfo[1], mods.BepInExInfo[0]);
+                installer.installMod("BepInEx", true);
+            }*/
             if (downloadAll)
             {
                 for (int i = 0; i < Enum.GetNames(typeof(MainClass.ListMods)).Length; i++)
                 {
                     var _mod = (MainClass.ListMods)i;
-                    for (var x = 1; x < mods.getModFile(_mod).Item1.Length; x++) downloadMod(mods.getModFile(_mod).Item2[i], mods.getModFile(_mod).Item1[i]);
-                }
+					for (var x = 1; x < mods.getModInfo(_mod).Item1.Length; x++)
+					{
+						downloadMod(mods.getModInfo(_mod).Item2[i], mods.getModInfo(_mod).Item1[i]);
+						installer.installMod(mods.getModInfo(_mod).Item1[i]);
+					}
+				}
             }
             else
             {
-                for (var i = 1; i < mods.getModFile(mod).Item1.Length; i++) downloadMod(mods.getModFile(mod).Item2[i], mods.getModFile(mod).Item1[i]);
+				for (var i = 1; i < mods.getModInfo(mod).Item1.Length; i++)
+				{
+					downloadMod(mods.getModInfo(mod).Item2[i], mods.getModInfo(mod).Item1[i]);
+					installer.installMod(mods.getModInfo(mod).Item1[i]);
+				}
             }
             return true;
         }

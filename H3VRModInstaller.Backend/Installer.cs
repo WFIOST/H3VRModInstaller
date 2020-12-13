@@ -11,7 +11,7 @@ namespace H3VRModInstaller.Backend
         {
             //why do I even have this?
             Console.WriteLine("Unzipping " + fileToUnzip);
-            ZipFile.ExtractToDirectory(fileToUnzip, unzipLocation);
+            ZipFile.ExtractToDirectory(fileToUnzip, unzipLocation, true);
             if (deleteArchiveAfterUnzip)
                 Console.WriteLine("Cleaning up");
             File.Delete(fileToUnzip);
@@ -33,7 +33,13 @@ namespace H3VRModInstaller.Backend
     {
         private static readonly Installer installer = new();
 
-        public bool installBepInEx()
+		public bool installMod(string name, bool delArchive = false)
+		{
+			installer.unzip("download.zip", Directory.GetCurrentDirectory() + "/", delArchive);
+			Console.WriteLine("Installed " + name);
+			return true;
+		}
+ /*       public bool installBepInEx()
         {
             installer.unzip("BepInEx_x64_5.4.4.0.zip", Directory.GetCurrentDirectory() + "/", false);
             Console.WriteLine("Installed BepInEx!");
@@ -77,6 +83,6 @@ namespace H3VRModInstaller.Backend
 
             Console.WriteLine("Successfully installed ALL mods!");
             return true;
-        }
+        }*/
     }
 }
