@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="$PROJECT_DIR$" t="IncludeFlat">
+    <e p="C:\Users\jagbh\AppData\local\JetBrains\Rider2020.3\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\jagbh\AppData\local\JetBrains\Rider2020.3\resharper-host\local\Transient\Rider\v203\SolutionCaches\_H3VRModInstaller.787033117.00" t="ExcludeRecursive" />
+    <e p="D:\Programmings\H3VR\H3VRModInstaller" t="IncludeFlat">
       <e p="H3VRModInstaller.Backend" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
         <e p="Downloader.cs" t="Include" />
@@ -20,10 +22,23 @@
         </e>
         <e p="README.md" t="Include" />
       </e>
+      <e p="H3VRModInstaller.GUI" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Form1.cs" t="Include" />
+        <e p="Form1.Designer.cs" t="Include" />
+        <e p="H3VRModInstaller.GUI.csproj" t="IncludeRecursive" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="net5.0-windows" t="Include">
+              <e p="H3VRModInstaller.GUI.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Program.cs" t="Include" />
+        <e p="Program.cs~" t="Include" />
+      </e>
       <e p="H3VRModInstaller.sln" t="IncludeFlat" />
       <e p="packages" t="ExcludeRecursive" />
     </e>
-    <e p="$USER_HOME$/Library/Caches/JetBrains/Rider2020.3/extResources" t="IncludeRecursive" />
-    <e p="$USER_HOME$/Library/Caches/JetBrains/Rider2020.3/resharper-host/local/Transient/Rider/v203/SolutionCaches/_H3VRModInstaller.-1689452777.00" t="ExcludeRecursive" />
   </component>
 </project>

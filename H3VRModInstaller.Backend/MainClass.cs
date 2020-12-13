@@ -19,7 +19,7 @@ namespace H3VRModInstaller.Backend
 			TnHTweaker
 		}
 
-		private static void Main(string[] args)
+		public static void Main(string[] args)
         {
 
             if (File.Exists("H3VR.exe") || BypassH3VR)
