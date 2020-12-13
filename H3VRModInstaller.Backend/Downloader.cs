@@ -14,7 +14,6 @@ namespace H3VRModInstaller.Backend.Net
         {
             Console.WriteLine("Downloading Mod \"{0}\" from \"{1}{0}\"\n", fileToDownload, locationOfFile);
 
-
             downloader.DownloadFile(locationOfFile + fileToDownload, fileToDownload);
 
 			string dir = Directory.GetCurrentDirectory();
@@ -59,10 +58,12 @@ namespace H3VRModInstaller.Backend.Net
             }
             else
             {
-				for (var i = 1; i < mods.getModInfo(mod).Item1.Length; i++)
+				var result = mods.getModInfo(mod);
+				for (var i = 1; i < result.Item3.Length - 1; i++)
 				{
-					downloadMod(mods.getModInfo(mod).Item2[i], mods.getModInfo(mod).Item1[i]);
-					installer.installMod(mods.getModInfo(mod).Item1[i]);
+					if (result.Item2[i] == "") break;
+					downloadMod(result.Item2[i], result.Item1[i]);
+					installer.installMod(result.Item1[i]);
 				}
             }
             return true;

@@ -32,7 +32,7 @@ namespace H3VRModInstaller.Backend
 		}
 
 
-        public Tuple<string[], string[]> getModInfo(MainClass.ListMods mod, string[] resultFile = null, string[] resultPath = null)
+        public Tuple<string[], string[], string[]> getModInfo(MainClass.ListMods mod, string[] resultFile = null, string[] resultPath = null)
         {
 			if (resultFile == null)
 			{
@@ -45,43 +45,45 @@ namespace H3VRModInstaller.Backend
 			Tuple<string[], string[]> result;
 			result = Tuple.Create<string[], string[]>(BepInExInfo, ResourceRedirectorInfo);
 			Console.WriteLine("Getting mod info for " + mod);
+			string[] info = new string[1];
 			switch (mod)
             {
 				case MainClass.ListMods.BepInEx:
-					result = parseInfo(BepInExInfo, resultFile, resultPath);
+					info = BepInExInfo;
 					break;
 				case MainClass.ListMods.ResourceRedirector:
-					result = parseInfo(ResourceRedirectorInfo, resultFile, resultPath);
+					info = ResourceRedirectorInfo;
 					break;
 				case MainClass.ListMods.Deli:
-					result = parseInfo(DeliInfo, resultFile, resultPath);
+					info = DeliInfo;
 					break;
 				case MainClass.ListMods.Monomod:
-					result = parseInfo(MonomodInfo, resultFile, resultPath);
+					info = MonomodInfo;
 					break;
 
 				case MainClass.ListMods.CursedDLLs:
-					result = parseInfo(CursedDllsInfo, resultFile, resultPath);
+					info = CursedDllsInfo;
 					break;
 				case MainClass.ListMods.WurstMod:
-					result = parseInfo(WurstModInfo, resultFile, resultPath);
+					info = WurstModInfo;
 					break;
                 case MainClass.ListMods.TnHTweaker:
-					result = parseInfo(TnHTweaker, resultFile, resultPath);
+					info = TnHTweaker;
 					break;
 				case MainClass.ListMods.Sideloader:
-					result = parseInfo(SideLoaderInfo, resultFile, resultPath);
+					info = SideLoaderInfo;
 					break;
 				case MainClass.ListMods.LSIIC:
-					result = parseInfo(LSIICInfo, resultFile, resultPath);
+					info = LSIICInfo;
 					break;
 			}
+			result = parseInfo(info, resultFile, resultPath);
 			resultFile = result.Item1;
 			resultPath = result.Item2;
 
 			Console.WriteLine(resultFile[0] + ", " + resultFile[1] + ", " + resultFile[2] + ", " + resultFile[3] + ", " + resultFile[4] + ", " + resultFile[5]);
 
-			return Tuple.Create<string[], string[]>(resultFile, resultPath);
+			return Tuple.Create<string[], string[], string[]>(resultFile, resultPath, info);
         }
 
 		public string[] BepInExInfo = { "BepInEx_x64_5.4.4.0.zip", "https://github.com/BepInEx/BepInEx/releases/download/v5.4.4/" };
