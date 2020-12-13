@@ -4,7 +4,6 @@ using System.IO.Compression;
 using System.Net;
 using System.Net.NetworkInformation;
 
-
 namespace H3VRModInstaller
 {
     internal class Program
@@ -76,13 +75,11 @@ namespace H3VRModInstaller
                     installer.installAll();
                     Console.Write("Press any key to exit the installer");
                     Console.ReadKey();
-                    return;
                 }
                 else
                 {
                     Console.WriteLine("INVALID INPUT");
                     Console.ReadKey();
-                    return;
                 }
             }
 
@@ -243,7 +240,8 @@ namespace H3VRModInstaller
                 downloader.downloadMod(mods.wurstModPaths[i], mods.wurstModFiles[i]);
                 downloader.downloadMod(mods.cursedDllsPaths[i], mods.cursedDllsFiles[i]);
             }
-            for (var i = 1; i < 2; i++) 
+
+            for (var i = 1; i < 2; i++)
                 downloader.downloadMod(mods.TNHTweakerPaths[i], mods.TNHTweakerFiles[i]);
 
             return true;
@@ -331,10 +329,9 @@ namespace H3VRModInstaller
             installCurseddlls();
             Console.WriteLine("Installing TNH Tweaker!");
             installTNHTweaker();
-            
+
             Console.WriteLine("Successfully installed ALL mods!");
             return true;
         }
-        
     }
 }
