@@ -3,6 +3,8 @@ using System.IO;
 using H3VRModInstaller.Net;
 using H3VRModInstaller.Filesys;
 using H3VRModInstaller.Filesys.Common;
+using H3VRModInstaller.Common;
+
 
 namespace H3VRModInstaller
 {
@@ -29,8 +31,7 @@ namespace H3VRModInstaller
 
         public static void Main(string[] args)
         {
-
-			if (File.Exists("H3VR.exe") || BypassH3VR)
+	        if (File.Exists("H3VR.exe") || BypassH3VR)
 			{
 				Console.WriteLine("H3VR.exe detected");
 				Console.WriteLine("Welcome to the H3VR Mod installer!");
