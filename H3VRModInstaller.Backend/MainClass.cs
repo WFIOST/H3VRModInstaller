@@ -1,25 +1,22 @@
 using System;
 using System.IO;
-using System.IO.Compression;
-using System.Net;
-using System.Net.NetworkInformation;
 
 namespace H3VRModInstaller.Backend
 {
     internal class MainClass
     {
-		private static bool BypassH3VR = true;
-		private static readonly ModList mods = new ModList();
-		private static readonly Downloader downloader = new Downloader();
+        private static bool BypassH3VR = true;
+        private static readonly ModList mods = new ModList();
+        private static readonly Downloader downloader = new Downloader();
         private static readonly InstallMods installer = new InstallMods();
-		public enum ListMods
-		{
-			WurstMod,
-			CursedDLLs,
-			TnHTweaker
-		}
+        public enum ListMods
+        {
+            WurstMod,
+            CursedDLLs,
+            TnHTweaker
+        }
 
-		public static void Main(string[] args)
+        public static void Main(string[] args)
         {
 
             if (File.Exists("H3VR.exe") || BypassH3VR)
@@ -99,11 +96,11 @@ namespace H3VRModInstaller.Backend
             }
         }
     }
-/*
-    public struct Mods
-    {
-        public string[] Path { get; set; }
-        public string[] Files { get; set; }
-    }
-*/
+    /*
+        public struct Mods
+        {
+            public string[] Path { get; set; }
+            public string[] Files { get; set; }
+        }
+    */
 }
