@@ -1,25 +1,11 @@
 ﻿using System;
 using System.IO;
 using System.IO.Compression;
-using H3VRModInstaller.Backend.Files;
 
-namespace H3VRModInstaller.Backend
+namespace H3VRModInstaller.Backend.Filesys
 {
     class Installer
     {
-        public bool unzip(string fileToUnzip, string unzipLocation, bool deleteArchiveAfterUnzip)
-        {
-            //why do I even have this?
-            Console.WriteLine("Unzipping " + fileToUnzip);
-            ZipFile.ExtractToDirectory(fileToUnzip, unzipLocation, true);
-            if (deleteArchiveAfterUnzip)
-                Console.WriteLine("Cleaning up");
-            File.Delete(fileToUnzip);
-            return true;
-        }
-
-
-
         public bool installDeliMod(string deliMod, string modsDir = "Mods/")
         {
             if (!Directory.Exists(modsDir))
@@ -31,7 +17,7 @@ namespace H3VRModInstaller.Backend
 
     internal class InstallMods
     {
-        private static readonly Installer installer = new();
+        private static readonly Zip installer = new();
 
 		public bool installMod(string name, bool delArchive = false)
 		{

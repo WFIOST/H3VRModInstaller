@@ -1,6 +1,8 @@
 using System;
 using System.IO;
 using H3VRModInstaller.Backend.Net;
+using H3VRModInstaller.Backend.Filesys;
+using H3VRModInstaller.Backend.Filesys.Common;
 
 namespace H3VRModInstaller.Backend
 {
@@ -10,6 +12,8 @@ namespace H3VRModInstaller.Backend
         private static readonly ModList mods = new ModList();
         private static readonly Downloader downloader = new Downloader();
         private static readonly InstallMods installer = new InstallMods();
+        
+        
         public enum ListMods
         {
 			BepInEx,
@@ -59,11 +63,13 @@ namespace H3VRModInstaller.Backend
 						break;
 					case "exit":
 						return;
+					/*
 					case "dl basemods":
 						Console.WriteLine("Downloading base mods!");
 						downloader.downloadModDirector(ListMods.WurstMod);
 						downloader.downloadModDirector(ListMods.TnHTweaker);
 						break;
+					*/
 				}
 				Console.ReadKey();
 

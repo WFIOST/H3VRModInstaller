@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Net;
 using System.IO;
+using H3VRModInstaller.Backend.Filesys;
+using H3VRModInstaller.Backend.Filesys.Common;
 
 namespace H3VRModInstaller.Backend.Net
 {

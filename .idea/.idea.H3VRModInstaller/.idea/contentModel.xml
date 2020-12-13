@@ -4,14 +4,23 @@
     <e p="$PROJECT_DIR$" t="IncludeFlat">
       <e p="H3VRModInstaller.Backend" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
-        <e p="Downloader.cs" t="Include" />
-        <e p="FileSys.cs" t="Include" />
+        <e p="Filesys" t="Include">
+          <e p="Common" t="Include">
+            <e p="ModList.cs" t="Include" />
+          </e>
+          <e p="Director.cs" t="Include" />
+          <e p="Files.cs" t="Include" />
+          <e p="Installer.cs" t="Include" />
+          <e p="ModCheck.cs" t="Include" />
+          <e p="Zip.cs" t="Include" />
+        </e>
         <e p="H3VRModInstaller.Backend.csproj" t="IncludeRecursive" />
-        <e p="Installer.cs" t="Include" />
         <e p="LICENSE" t="Include" />
         <e p="MainClass.cs" t="Include" />
-        <e p="ModList.cs" t="Include" />
-        <e p="NetCheck.cs" t="Include" />
+        <e p="Net" t="Include">
+          <e p="Downloader.cs" t="Include" />
+          <e p="NetCheck.cs" t="Include" />
+        </e>
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
             <e p="net5.0" t="Include">
@@ -24,6 +33,7 @@
         <e p="bin" t="ExcludeRecursive" />
         <e p="Form1.cs" t="Include" />
         <e p="Form1.Designer.cs" t="Include" />
+        <e p="Form1.resx" t="Include" />
         <e p="H3VRModInstaller.GUI.csproj" t="IncludeRecursive" />
         <e p="obj" t="ExcludeRecursive" />
         <e p="Program.cs" t="Include" />

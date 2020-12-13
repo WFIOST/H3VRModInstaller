@@ -1,7 +1,7 @@
 ﻿using System;
 using H3VRModInstaller.Backend.Net;
 
-namespace H3VRModInstaller.Backend
+namespace H3VRModInstaller.Backend.Filesys.Common
 {
     class ModList
     {
