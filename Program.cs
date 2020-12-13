@@ -4,14 +4,13 @@ using System.IO.Compression;
 using System.Net;
 using System.Net.NetworkInformation;
 
-
 namespace H3VRModInstaller
 {
     internal class Program
     {
-        private static readonly ModList mods = new();
-        private static readonly DownloadMods downloader = new();
-        private static readonly InstallMods installer = new();
+        private static readonly ModList Mods = new();
+        private static readonly DownloadMods Downloader = new();
+        private static readonly InstallMods Installer = new();
 
         private static void Main(string[] args)
         {
@@ -30,10 +29,10 @@ namespace H3VRModInstaller
                     (input == "1"))
                 {
                     Console.WriteLine("WurstMod selected");
-                    if (mods.onlineCheck())
+                    if (ModList.OnlineCheck())
                     {
-                        downloader.downloadWurstMod(Directory.Exists(Directory.GetCurrentDirectory() + "/BepInEx/"));
-                        installer.installWurstMod();
+                        Downloader.DownloadWurstMod(Directory.Exists(Directory.GetCurrentDirectory() + "/BepInEx/"));
+                        InstallMods.InstallWurstMod();
                         Console.Write("Press any key to exit the installer");
                         Console.ReadKey();
                         return;
@@ -44,10 +43,10 @@ namespace H3VRModInstaller
                     (input == "Cursed.dlls") | (input == "cursed dll") | (input == "curseddll") | (input == "2"))
                 {
                     Console.WriteLine("CursedDLLs selected");
-                    if (mods.onlineCheck())
+                    if (ModList.OnlineCheck())
                     {
-                        downloader.downloadCursedDlls(Directory.Exists(Directory.GetCurrentDirectory() + "/BepInEx/"));
-                        installer.installCurseddlls();
+                        Downloader.DownloadCursedDlls(Directory.Exists(Directory.GetCurrentDirectory() + "/BepInEx/"));
+                        InstallMods.InstallCurseddlls();
                         Console.Write("Press any key to exit the installer");
                         Console.ReadKey();
                         return;
@@ -58,10 +57,10 @@ namespace H3VRModInstaller
                     (input == "tnh tweaker") | (input == "3"))
                 {
                     Console.WriteLine("TNHTweaker selected");
-                    if (mods.onlineCheck())
+                    if (ModList.OnlineCheck())
                     {
-                        downloader.downloadTNHTweaker(Directory.Exists(Directory.GetCurrentDirectory() + "/BepInEx/"));
-                        installer.installTNHTweaker();
+                        Downloader.DownloadTnhTweaker(Directory.Exists(Directory.GetCurrentDirectory() + "/BepInEx/"));
+                        InstallMods.InstallTnhTweaker();
                         Console.Write("Press any key to exit the installer");
                         Console.ReadKey();
                         return;
@@ -71,18 +70,16 @@ namespace H3VRModInstaller
                 if ((input == "All") | (input == "all") | (input == "4"))
                 {
                     Console.WriteLine("All selected");
-                    if (mods.onlineCheck())
-                        downloader.downloadAll(Directory.Exists(Directory.GetCurrentDirectory() + "/BepInEx/"));
-                    installer.installAll();
+                    if (ModList.OnlineCheck())
+                        Downloader.DownloadAll(Directory.Exists(Directory.GetCurrentDirectory() + "/BepInEx/"));
+                    Installer.InstallAll();
                     Console.Write("Press any key to exit the installer");
                     Console.ReadKey();
-                    return;
                 }
                 else
                 {
                     Console.WriteLine("INVALID INPUT");
                     Console.ReadKey();
-                    return;
                 }
             }
 
@@ -104,38 +101,48 @@ namespace H3VRModInstaller
 */
     internal class ModList
     {
-        public string[] cursedDllsFiles =
-            {"BepInEx_x64_5.4.4.0.zip", "BepInEx.MonoMod.Loader_1.0.0.0.zip", "CursedDlls.BepInEx_v1.3.zip"};
+        public readonly string[] CursedDllsFiles =
+        {
+            "BepInEx_x64_5.4.4.0.zip", "BepInEx.MonoMod.Loader_1.0.0.0.zip", "CursedDlls.BepInEx_v1.3.zip"
+        };
 
-        public string[] cursedDllsPaths =
+        public readonly string[] CursedDllsPaths =
         {
             "https://github.com/BepInEx/BepInEx/releases/download/v5.4.4/",
             "https://github.com/BepInEx/BepInEx.MonoMod.Loader/releases/download/v1.0.0.0/",
             "https://github.com/drummerdude2003/CursedDlls.BepinEx/releases/download/v1.3/"
         };
 
-        public string[] TNHTweakerFiles = {"BepInEx_x64_5.4.4.0.zip", "TakeAndHoldTweaker.dll"};
+        public readonly string[] TnhTweakerFiles =
+        {
+            "BepInEx_x64_5.4.4.0.zip", "TakeAndHoldTweaker.dll"
+        };
 
-        public string[] TNHTweakerPaths =
+        public readonly string[] TnhTweakerPaths =
         {
             "https://github.com/BepInEx/BepInEx/releases/download/v5.4.4/",
             "https://github.com/devyndamonster/TakeAndHoldTweaker/releases/download/v1.3.0/"
         };
 
-        public string[] wurstModFiles = {"BepInEx_x64_5.4.4.0.zip", "Deli-v0.2.5.zip", "WurstMod.deli"};
+        public readonly string[] WurstModFiles =
+        {
+            "BepInEx_x64_5.4.4.0.zip", "Deli-v0.2.5.zip", "WurstMod.deli"
+        };
 
-        public string[] wurstModPaths =
+        public readonly string[] WurstModPaths =
         {
             "https://github.com/BepInEx/BepInEx/releases/download/v5.4.4/",
             "https://github.com/Deli-Counter/Deli/releases/download/v0.2.5/",
             "https://github.com/Nolenz/WurstMod/releases/download/v2.0.2.0/"
         };
+        
+        
 
-        public bool onlineCheck()
+        public static bool OnlineCheck()
         {
             var checkOnline = new CheckOnline();
 
-            if (checkOnline.isOnline("www.github.com"))
+            if (CheckOnline.isOnline("www.github.com"))
             {
                 Console.WriteLine("GitHub is Online!");
                 return true;
@@ -148,28 +155,29 @@ namespace H3VRModInstaller
 
     internal class CheckOnline
     {
-        public bool isOnline(string URL)
+        public static bool isOnline(string url)
         {
             var ping = new Ping();
-            var reply = ping.Send(URL, 1000);
+            var reply = ping.Send(url, 1000);
 
 
-            if (reply.Status == IPStatus.Success)
+            if (reply != null && reply.Status == IPStatus.Success)
                 return true;
+
             return false;
         }
     }
 
     internal class Downloader
     {
-        private readonly WebClient downloader = new();
+        private readonly WebClient _downloader = new();
 
-        public bool downloadMod(string locationOfFile, string fileToDownload)
+        public bool DownloadMod(string locationOfFile, string fileToDownload)
         {
             Console.WriteLine("Downloading Mod \"{0}\" from \"{1}{0}\"\n", fileToDownload, locationOfFile);
 
 
-            downloader.DownloadFile(locationOfFile + fileToDownload, fileToDownload);
+            _downloader.DownloadFile(locationOfFile + fileToDownload, fileToDownload);
 
             Console.WriteLine("Successfully Downloaded Mod \"{0}\" from \"{1}{0}\"\n", fileToDownload, locationOfFile);
 
@@ -179,17 +187,17 @@ namespace H3VRModInstaller
 
     internal class DownloadMods
     {
-        private readonly Downloader downloader = new();
-        private readonly InstallMods installer = new();
-        private readonly ModList mods = new();
+        private readonly Downloader _downloader = new();
+        private readonly InstallMods _installer = new();
+        private readonly ModList _mods = new();
 
-        public bool downloadWurstMod(bool hasBepInEx)
+        public bool DownloadWurstMod(bool hasBepInEx)
         {
             if (!hasBepInEx)
             {
                 Console.WriteLine("BepInEx not detected! Downloading.");
-                downloader.downloadMod(mods.wurstModPaths[0], mods.wurstModFiles[0]);
-                installer.installBepInEx();
+                _downloader.DownloadMod(_mods.WurstModPaths[0], _mods.WurstModFiles[0]);
+                InstallMods.InstallBepInEx();
             }
 
             /*
@@ -199,52 +207,53 @@ namespace H3VRModInstaller
             };
             */
 
-            for (var i = 1; i < 3; i++) downloader.downloadMod(mods.wurstModPaths[i], mods.wurstModFiles[i]);
+            for (var i = 1; i < 3; i++) _downloader.DownloadMod(_mods.WurstModPaths[i], _mods.WurstModFiles[i]);
             return true;
         }
 
-        public bool downloadCursedDlls(bool hasBepInEx)
+        public bool DownloadCursedDlls(bool hasBepInEx)
         {
             if (!hasBepInEx)
             {
                 Console.WriteLine("BepInEx not detected! Downloading.");
-                downloader.downloadMod(mods.wurstModPaths[0], mods.wurstModFiles[0]);
-                installer.installBepInEx();
+                _downloader.DownloadMod(_mods.WurstModPaths[0], _mods.WurstModFiles[0]);
+                InstallMods.InstallBepInEx();
             }
 
-            for (var i = 1; i < 3; i++) downloader.downloadMod(mods.cursedDllsPaths[i], mods.cursedDllsFiles[i]);
+            for (var i = 1; i < 3; i++) _downloader.DownloadMod(_mods.CursedDllsPaths[i], _mods.CursedDllsFiles[i]);
             return true;
         }
 
-        public bool downloadTNHTweaker(bool hasBepInEx)
+        public bool DownloadTnhTweaker(bool hasBepInEx)
         {
             if (!hasBepInEx)
             {
                 Console.WriteLine("BepInEx not detected! Downloading.");
-                downloader.downloadMod(mods.wurstModPaths[0], mods.wurstModFiles[0]);
-                installer.installBepInEx();
+                _downloader.DownloadMod(_mods.WurstModPaths[0], _mods.WurstModFiles[0]);
+                InstallMods.InstallBepInEx();
             }
 
-            for (var i = 1; i < 2; i++) downloader.downloadMod(mods.TNHTweakerPaths[i], mods.TNHTweakerFiles[i]);
+            for (var i = 1; i < 2; i++) _downloader.DownloadMod(_mods.TnhTweakerPaths[i], _mods.TnhTweakerFiles[i]);
             return true;
         }
 
-        public bool downloadAll(bool hasBepInEx)
+        public bool DownloadAll(bool hasBepInEx)
         {
             if (!hasBepInEx)
             {
                 Console.WriteLine("BepInEx not detected! Downloading.");
-                downloader.downloadMod(mods.wurstModPaths[0], mods.wurstModFiles[0]);
-                installer.installBepInEx();
+                _downloader.DownloadMod(_mods.WurstModPaths[0], _mods.WurstModFiles[0]);
+                InstallMods.InstallBepInEx();
             }
 
             for (var i = 1; i < 3; i++)
             {
-                downloader.downloadMod(mods.wurstModPaths[i], mods.wurstModFiles[i]);
-                downloader.downloadMod(mods.cursedDllsPaths[i], mods.cursedDllsFiles[i]);
+                _downloader.DownloadMod(_mods.WurstModPaths[i], _mods.WurstModFiles[i]);
+                _downloader.DownloadMod(_mods.CursedDllsPaths[i], _mods.CursedDllsFiles[i]);
             }
-            for (var i = 1; i < 2; i++) 
-                downloader.downloadMod(mods.TNHTweakerPaths[i], mods.TNHTweakerFiles[i]);
+
+            for (var i = 1; i < 2; i++)
+                _downloader.DownloadMod(_mods.TnhTweakerPaths[i], _mods.TnhTweakerFiles[i]);
 
             return true;
         }
@@ -252,7 +261,7 @@ namespace H3VRModInstaller
 
     internal class Installer
     {
-        public bool unzip(string fileToUnzip, string unzipLocation, bool deleteArchiveAfterUnzip)
+        public bool Unzip(string fileToUnzip, string unzipLocation, bool deleteArchiveAfterUnzip)
         {
             //why do I even have this?
             Console.WriteLine("Unzipping " + fileToUnzip);
@@ -263,21 +272,22 @@ namespace H3VRModInstaller
             return true;
         }
 
-        public bool moveFileToPlugins(string fileToMove, string locationToMoveTo = "BepInEx/Plugins")
+        public bool MoveFileToPlugins(string fileToMove, string locationToMoveTo = "BepInEx/Plugins")
         {
             //this is even more redundant!
             File.Move(fileToMove, locationToMoveTo + fileToMove);
             return true;
         }
 
+        /*
         public bool moveDirToBepInEx(string dirToMove, string locationToMoveTo)
         {
             //more redundancy
             Directory.Move(dirToMove, locationToMoveTo + dirToMove);
             return true;
         }
-
-        public bool installDeliMod(string deliMod, string modsDir = "Mods/")
+        */
+        public bool InstallDeliMod(string deliMod, string modsDir = "Mods/")
         {
             if (!Directory.Exists(modsDir))
                 Directory.CreateDirectory(modsDir);
@@ -288,53 +298,52 @@ namespace H3VRModInstaller
 
     internal class InstallMods
     {
-        private static readonly Installer installer = new();
+        private static readonly Installer Installer = new();
 
-        public bool installBepInEx()
+        public static bool InstallBepInEx()
         {
-            installer.unzip("BepInEx_x64_5.4.4.0.zip", Directory.GetCurrentDirectory() + "/", false);
+            Installer.Unzip("BepInEx_x64_5.4.4.0.zip", Directory.GetCurrentDirectory() + "/", false);
             Console.WriteLine("Installed BepInEx!");
             return true;
         }
 
-        public bool installWurstMod()
+        public static bool InstallWurstMod()
         {
-            installer.unzip("Deli-v0.2.5.zip", Directory.GetCurrentDirectory(), true);
+            Installer.Unzip("Deli-v0.2.5.zip", Directory.GetCurrentDirectory(), true);
             Console.WriteLine("Installed Deli!");
 
-            installer.installDeliMod("WurstMod.deli");
+            Installer.InstallDeliMod("WurstMod.deli");
             Console.WriteLine("Installed WurstMod!");
             return true;
         }
 
-        public bool installCurseddlls()
+        public static bool InstallCurseddlls()
         {
-            installer.unzip("BepInEx.MonoMod.Loader_1.0.0.0.zip", Directory.GetCurrentDirectory() + "/", true);
+            Installer.Unzip("BepInEx.MonoMod.Loader_1.0.0.0.zip", Directory.GetCurrentDirectory() + "/", true);
             Console.WriteLine("Installed Monomod!");
-            installer.unzip("CursedDlls.BepInEx_v1.3.zip", Directory.GetCurrentDirectory() + "/", true);
+            Installer.Unzip("CursedDlls.BepInEx_v1.3.zip", Directory.GetCurrentDirectory() + "/", true);
             Console.WriteLine("Installed Cursed.Dlls!");
             return true;
         }
 
-        public bool installTNHTweaker()
+        public static bool InstallTnhTweaker()
         {
-            installer.moveFileToPlugins("TakeAndHoldTweaker.dll");
+            Installer.MoveFileToPlugins("TakeAndHoldTweaker.dll");
             Console.WriteLine("Installed TNH Tweaker!");
             return true;
         }
 
-        public bool installAll()
+        public bool InstallAll()
         {
             Console.WriteLine("Installing WurstMod!");
-            installWurstMod();
+            InstallWurstMod();
             Console.WriteLine("Installing Cursed Dlls!");
-            installCurseddlls();
+            InstallCurseddlls();
             Console.WriteLine("Installing TNH Tweaker!");
-            installTNHTweaker();
-            
+            InstallTnhTweaker();
+
             Console.WriteLine("Successfully installed ALL mods!");
             return true;
         }
-        
     }
 }
