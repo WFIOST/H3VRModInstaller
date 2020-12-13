@@ -83,13 +83,9 @@ namespace H3VRModInstaller.Filesys.Common
                 return false;
             }
         }
-
-
         public string[] CheckMods(string[] installedMods)
         {
-
-
-
+            
             return installedMods;
         }
     }
