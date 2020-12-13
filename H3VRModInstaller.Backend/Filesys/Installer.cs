@@ -2,7 +2,7 @@
 using System.IO;
 using System.IO.Compression;
 
-namespace H3VRModInstaller.Backend.Filesys
+namespace H3VRModInstaller.Filesys
 {
     class Installer
     {

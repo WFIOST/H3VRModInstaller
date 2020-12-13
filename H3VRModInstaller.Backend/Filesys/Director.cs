@@ -1,6 +1,6 @@
 using System.IO;
 
-namespace H3VRModInstaller.Backend.Filesys
+namespace H3VRModInstaller.Filesys
 {
     public class Director
     {

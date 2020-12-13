@@ -2,7 +2,7 @@ using System.IO;
 using System;
 using System.IO.Compression;
 
-namespace H3VRModInstaller.Backend.Filesys
+namespace H3VRModInstaller.Filesys
 {
     public class Zip
     {

@@ -1,10 +1,10 @@
 using System;
 using System.IO;
-using H3VRModInstaller.Backend.Net;
-using H3VRModInstaller.Backend.Filesys;
-using H3VRModInstaller.Backend.Filesys.Common;
+using H3VRModInstaller.Net;
+using H3VRModInstaller.Filesys;
+using H3VRModInstaller.Filesys.Common;
 
-namespace H3VRModInstaller.Backend
+namespace H3VRModInstaller
 {
     class MainClass
     {

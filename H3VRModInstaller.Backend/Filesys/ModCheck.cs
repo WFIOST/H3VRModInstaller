@@ -1,4 +1,4 @@
-namespace H3VRModInstaller.Backend.Filesys
+namespace H3VRModInstaller.Filesys
 {
     public class ModCheck
     {

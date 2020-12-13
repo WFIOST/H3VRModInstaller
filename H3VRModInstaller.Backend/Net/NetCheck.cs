@@ -1,6 +1,6 @@
 ﻿using System.Net.NetworkInformation;
 
-namespace H3VRModInstaller.Backend.Net
+namespace H3VRModInstaller.Net
 {
     class NetCheck
     {
