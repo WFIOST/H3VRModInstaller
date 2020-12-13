@@ -4,71 +4,39 @@ using System.IO.Compression;
 
 namespace H3VRModInstaller.Filesys
 {
-    class Installer
-    {
-        public bool installDeliMod(string deliMod, string modsDir = "Mods/")
-        {
-            if (!Directory.Exists(modsDir))
-                Directory.CreateDirectory(modsDir);
-            File.Move(deliMod, modsDir + deliMod);
-            return true;
-        }
-    }
+	internal class InstallMods
+	{
+		private static readonly Zip installer = new();
 
-    internal class InstallMods
-    {
-        private static readonly Zip installer = new();
-
-		public bool installMod(string name, bool delArchive = false)
+		public bool installMod(string name, string[,] args, bool delArchive = false)
 		{
-			installer.unzip("download.zip", Directory.GetCurrentDirectory() + "/", delArchive);
+			bool _parsed = false;
+			for (int i = 0; i <= args.GetLength(0); i++)
+			{
+				if (args[i, 0] == "moveToFolder" && args[i, 1] == name) {
+					moveToFolder(args[i, 2], args[i, 3], args[i, 4]);
+					_parsed = true;
+				}
+				if (args[i, 0] == "unzipToDir" && args[i, 1] == name)
+					{installer.unzip("download.zip", Directory.GetCurrentDirectory() + "/", delArchive);
+					_parsed = true;
+				}
+				if (args[i, 0] == "break") break;
+			}
+
+			if (_parsed != true) installer.unzip("download.zip", Directory.GetCurrentDirectory() + "/", delArchive);
+
 			Console.WriteLine("Installed " + name);
 			return true;
 		}
- /*       public bool installBepInEx()
-        {
-            installer.unzip("BepInEx_x64_5.4.4.0.zip", Directory.GetCurrentDirectory() + "/", false);
-            Console.WriteLine("Installed BepInEx!");
-            return true;
-        }
-
-        public bool installWurstMod()
-        {
-            installer.unzip("Deli-v0.2.5.zip", Directory.GetCurrentDirectory(), true);
-            Console.WriteLine("Installed Deli!");
-
-            installer.installDeliMod("WurstMod.deli");
-            Console.WriteLine("Installed WurstMod!");
-            return true;
-        }
-
-        public bool installCurseddlls()
-        {
-            installer.unzip("BepInEx.MonoMod.Loader_1.0.0.0.zip", Directory.GetCurrentDirectory() + "/", true);
-            Console.WriteLine("Installed Monomod!");
-            installer.unzip("CursedDlls.BepInEx_v1.3.zip", Directory.GetCurrentDirectory() + "/", true);
-            Console.WriteLine("Installed Cursed.Dlls!");
-            return true;
-        }
-
-        public bool installTNHTweaker()
-        {
-            FileSys.moveFileToPlugins("/TakeAndHoldTweaker.dll");
-            Console.WriteLine("Installed TNH Tweaker!");
-            return true;
-        }
-
-        public bool installAll()
-        {
-            Console.WriteLine("Installing WurstMod!");
-            installWurstMod();
-            Console.WriteLine("Installing Cursed Dlls!");
-            installCurseddlls();
-            Console.WriteLine("Installing TNH Tweaker!");
-            installTNHTweaker();
-
-            Console.WriteLine("Successfully installed ALL mods!");
-            return true;
-        }*/
-    }
+		public static bool moveToFolder(string mod, string dir, string renameTo = "")
+		{
+			if (renameTo == "") renameTo = mod;
+			if (!Directory.Exists(dir))
+				Directory.CreateDirectory(dir);
+			Console.WriteLine("Moving " + mod + " to dir " + dir + " as " + renameTo);
+			File.Move(mod, dir + renameTo);
+			return true;
+		}
+	}
 }

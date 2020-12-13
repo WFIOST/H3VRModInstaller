@@ -32,7 +32,7 @@ namespace H3VRModInstaller.Filesys.Common
 		}
 
 
-        public Tuple<string[], string[], string[]> getModInfo(MainClass.ListMods mod, string[] resultFile = null, string[] resultPath = null)
+        public Tuple<string[], string[], string[], string[,]> getModInfo(MainClass.ListMods mod, string[] resultFile = null, string[] resultPath = null)
         {
 			if (resultFile == null)
 			{
@@ -45,6 +45,7 @@ namespace H3VRModInstaller.Filesys.Common
 			Tuple<string[], string[]> result;
 			result = Tuple.Create<string[], string[]>(BepInExInfo, ResourceRedirectorInfo);
 			Console.WriteLine("Getting mod info for " + mod);
+			string[,] installargs = new string[Enum.GetNames(typeof(MainClass.ListMods)).Length + 2, 10];
 			string[] info = new string[1];
 			switch (mod)
             {
@@ -66,6 +67,11 @@ namespace H3VRModInstaller.Filesys.Common
 					break;
 				case MainClass.ListMods.WurstMod:
 					info = WurstModInfo;
+					installargs[(int)mod, 0] = "moveToFolder"; //argument
+					installargs[(int)mod, 1] = "WurstMod.deli"; //mod to move
+					installargs[(int)mod, 2] = "download.zip"; //file to move
+					installargs[(int)mod, 3] = "Mods/"; //dir to move to
+					installargs[(int)mod, 4] = "WurstMod.deli"; //name it as
 					break;
                 case MainClass.ListMods.TnHTweaker:
 					info = TnHTweaker;
@@ -80,10 +86,11 @@ namespace H3VRModInstaller.Filesys.Common
 			result = parseInfo(info, resultFile, resultPath);
 			resultFile = result.Item1;
 			resultPath = result.Item2;
+			installargs[Enum.GetNames(typeof(MainClass.ListMods)).Length + 1, 0] = "break";
 
 			Console.WriteLine(resultFile[0] + ", " + resultFile[1] + ", " + resultFile[2] + ", " + resultFile[3] + ", " + resultFile[4] + ", " + resultFile[5]);
 
-			return Tuple.Create<string[], string[], string[]>(resultFile, resultPath, info);
+			return Tuple.Create<string[], string[], string[], string[,]>(resultFile, resultPath, info, installargs);
         }
 
 		public string[] BepInExInfo = { "BepInEx_x64_5.4.4.0.zip", "https://github.com/BepInEx/BepInEx/releases/download/v5.4.4/" };

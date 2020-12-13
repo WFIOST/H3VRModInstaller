@@ -14,12 +14,13 @@ namespace H3VRModInstaller
         private static readonly InstallMods installer = new InstallMods();
         
         
-        public enum ListMods
+        public enum ListMods // do NOT assign ints to them, you will fuck up the installer.
         {
 			BepInEx,
 			ResourceRedirector,
 			Deli,
 			Monomod,
+
             WurstMod,
             CursedDLLs,
             TnHTweaker,
@@ -35,12 +36,8 @@ namespace H3VRModInstaller
 				Console.WriteLine("H3VR.exe detected");
 				Console.WriteLine("Welcome to the H3VR Mod installer!");
 				Start:
-				Console.WriteLine("Please select the mod you would like to install!");
-				Console.WriteLine("1: WurstMod");
-				Console.WriteLine("2: Cursed DLLs");
-				Console.WriteLine("3: TNHTweaker");
-				Console.WriteLine("4: All");
-				Console.Write("Input the mod you would like to install: ");
+				Console.WriteLine("Please select the mod you would like to install using 'dl [modnamehere]' ");
+				Console.WriteLine("ex: 'dl wurstmod'");
 				var input = Console.ReadLine();
 
 				switch (input)
@@ -57,10 +54,19 @@ namespace H3VRModInstaller
 						Console.WriteLine("Downloading TnHTweaker!");
 						downloader.downloadModDirector(ListMods.TnHTweaker);
 						break;
+					case "dl lsiic":
+						Console.WriteLine("Downloading all!");
+						downloader.downloadModDirector(ListMods.LSIIC, true);
+						break;
+					case "dl sideloader":
+						Console.WriteLine("Downloading all!");
+						downloader.downloadModDirector(ListMods.Sideloader, true);
+						break;
 					case "dl all":
 						Console.WriteLine("Downloading all!");
 						downloader.downloadModDirector(ListMods.WurstMod, true);
 						break;
+
 					case "exit":
 						return;
 					/*
@@ -71,7 +77,7 @@ namespace H3VRModInstaller
 						break;
 					*/
 				}
-				Console.ReadKey();
+				goto Start;
 
 			}
 			else
