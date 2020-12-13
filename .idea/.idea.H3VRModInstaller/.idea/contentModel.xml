@@ -4,18 +4,20 @@
     <e p="$PROJECT_DIR$" t="IncludeFlat">
       <e p="H3VRModInstaller.Backend" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
+        <e p="Common" t="Include">
+          <e p="Directories.cs" t="Include" />
+        </e>
         <e p="Filesys" t="Include">
           <e p="Common" t="Include">
+            <e p="ModCheck.cs" t="Include" />
             <e p="ModList.cs" t="Include" />
           </e>
           <e p="Director.cs" t="Include" />
           <e p="Files.cs" t="Include" />
           <e p="Installer.cs" t="Include" />
-          <e p="ModCheck.cs" t="Include" />
           <e p="Zip.cs" t="Include" />
         </e>
         <e p="H3VRModInstaller.Backend.csproj" t="IncludeRecursive" />
-        <e p="LICENSE" t="Include" />
         <e p="MainClass.cs" t="Include" />
         <e p="Net" t="Include">
           <e p="Downloader.cs" t="Include" />
