@@ -1,8 +1,9 @@
 ﻿using System;
+using H3VRModInstaller.Backend.Net;
 
 namespace H3VRModInstaller.Backend
 {
-    internal class ModList
+    class ModList
     {
         public Tuple<string[], string[]> getModFile(MainClass.ListMods mod)
         {
@@ -55,7 +56,7 @@ namespace H3VRModInstaller.Backend
 
         public bool onlineCheck()
         {
-            if (func.isOnline("www.github.com"))
+            if (NetCheck.isOnline("www.github.com"))
             {
                 Console.WriteLine("GitHub is Online!");
                 return true;

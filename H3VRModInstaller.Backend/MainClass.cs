@@ -1,15 +1,17 @@
 using System;
 using System.IO;
+using H3VRModInstaller.Backend.Net;
 
 namespace H3VRModInstaller.Backend
 {
-    internal class MainClass
+    class MainClass
     {
         private static bool BypassH3VR = true;
         private static readonly ModList mods = new ModList();
         private static readonly Downloader downloader = new Downloader();
         private static readonly InstallMods installer = new InstallMods();
         public enum ListMods
+        
         {
             WurstMod,
             CursedDLLs,

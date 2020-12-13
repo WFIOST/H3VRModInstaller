@@ -1,10 +1,11 @@
 ﻿using System;
 using System.IO;
 using System.IO.Compression;
+using H3VRModInstaller.Backend.Files;
 
 namespace H3VRModInstaller.Backend
 {
-    internal class Installer
+    class Installer
     {
         public bool unzip(string fileToUnzip, string unzipLocation, bool deleteArchiveAfterUnzip)
         {
@@ -60,7 +61,7 @@ namespace H3VRModInstaller.Backend
 
         public bool installTNHTweaker()
         {
-            func.moveFileToPlugins("/TakeAndHoldTweaker.dll");
+            FileSys.moveFileToPlugins("/TakeAndHoldTweaker.dll");
             Console.WriteLine("Installed TNH Tweaker!");
             return true;
         }

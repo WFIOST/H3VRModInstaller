@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Net;
 
-namespace H3VRModInstaller.Backend
+namespace H3VRModInstaller.Backend.Net
 {
-    internal class Downloader
+    class Downloader
     {
         private readonly WebClient downloader = new();
         private readonly InstallMods installer = new();
