@@ -5,53 +5,89 @@
     <projectFile>H3VRModInstaller.GUI/H3VRModInstaller.GUI.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="11646549-311b-4445-a706-8ab87333e815" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/H3VRModInstaller.Backend/FileSys.cs" afterDir="false" />
+    <list default="true" id="11646549-311b-4445-a706-8ab87333e815" name="Default Changelist" comment="Started ModCheck.cs">
+      <change afterPath="$PROJECT_DIR$/H3VRModInstaller.JSON/Mods/BepInEx.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/H3VRModInstaller.JSON/Mods/Schema.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/H3VRModInstaller.JSON/Net/GetMods.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.H3VRModInstaller/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.H3VRModInstaller/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.H3VRModInstaller/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.H3VRModInstaller/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.Backend/Downloader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/H3VRModInstaller.Backend/Downloader.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.Backend/Installer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/H3VRModInstaller.Backend/Installer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.Backend/MainClass.cs" beforeDir="false" afterPath="$PROJECT_DIR$/H3VRModInstaller.Backend/MainClass.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.Backend/ModList.cs" beforeDir="false" afterPath="$PROJECT_DIR$/H3VRModInstaller.Backend/ModList.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.Backend/func.cs" beforeDir="false" afterPath="$PROJECT_DIR$/H3VRModInstaller.Backend/func.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.sln" beforeDir="false" afterPath="$PROJECT_DIR$/H3VRModInstaller.sln" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JSON File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/75619FE8-0086-4006-A73D-344D590FBFA4/6/Console.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
       <option value="$PROJECT_DIR$/H3VRModInstaller.GUI/Form1.cs" />
-      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/MainClass.cs" />
-      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/ModList.cs" />
+      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/func.cs" />
+      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/ModCheck.cs" />
+      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/FileSys.cs" />
+      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Zip.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Downloader.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Installer.cs" />
-      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/func.cs" />
-      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/FileSys.cs" />
+      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/ModList.cs" />
+      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Common/ModList.cs" />
+      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Director.cs" />
+      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Files.cs" />
+      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Installer.cs" />
+      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/ModCheck.cs" />
+      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Zip.cs" />
+      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Net/Downloader.cs" />
+      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Net/NetCheck.cs" />
+      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Common/Directories.cs" />
+      <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch.cs" />
+      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Common/Prin.cs" />
+      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Common/Print.cs" />
+      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Common/Directories.cs" />
+      <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch_1.cs" />
+      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Common/ModCheck.cs" />
+      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/MainClass.cs" />
+      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Net/JSON/GetMods.cs" />
+      <option value="$PROJECT_DIR$/H3VRModInstaller.JSON/Class1.cs" />
+      <option value="$PROJECT_DIR$/H3VRModInstaller.JSON/JSON/GetMods.cs" />
+      <option value="$PROJECT_DIR$/H3VRModInstaller.JSON/Net/GetMods.cs" />
+      <option value="$PROJECT_DIR$/H3VRModInstaller.JSON/Mods/Schema.json" />
+      <option value="$PROJECT_DIR$/H3VRModInstaller.JSON/Mods/BepInEx.json" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1lah3QXp00T3AT7tcB4yg7113kU" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
+    <option name="autoscrollFromSource" value="true" />
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.3496708" />
+    <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.0" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="C#" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="settings.editor.selected.configurable" value="preferences.environmentSetup" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected=".NET Project.H3VRModInstaller.Backend">
@@ -102,8 +138,52 @@
       <updated>1607840913767</updated>
       <workItem from="1607840919589" duration="404000" />
       <workItem from="1607841534509" duration="1859000" />
-      <workItem from="1607845861837" duration="935000" />
+      <workItem from="1607845861837" duration="1008000" />
+      <workItem from="1607887306409" duration="8057000" />
     </task>
+    <task id="LOCAL-00001" summary="Split func.cs">
+      <created>1607847473285</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1607847473285</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Reorganised the classes, functions, and namespaces">
+      <created>1607889242550</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1607889242550</updated>
+    </task>
+    <task id="LOCAL-00003" summary="No more backend">
+      <created>1607889413608</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1607889413608</updated>
+    </task>
+    <task id="LOCAL-00004" summary="more stuff">
+      <created>1607894876932</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1607894876932</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Started ModCheck.cs">
+      <created>1607896213320</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1607896213320</updated>
+    </task>
+    <task id="LOCAL-00006" summary="deleted gui">
+      <created>1607974835102</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1607974835102</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -121,8 +201,16 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="Split func.cs" />
+    <MESSAGE value="Reorganised the classes, functions, and namespaces" />
+    <MESSAGE value="No more backend" />
+    <MESSAGE value="more stuff" />
+    <MESSAGE value="Started ModCheck.cs" />
+    <MESSAGE value="deleted gui" />
+    <option name="LAST_COMMIT_MESSAGE" value="deleted gui" />
   </component>
 </project>
