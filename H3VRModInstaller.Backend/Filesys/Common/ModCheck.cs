@@ -7,7 +7,7 @@ namespace H3VRModInstaller.Filesys.Common
     public class ModCheck
     {
 
-        public static bool CheckBepInEx()
+        public bool CheckBepInEx()
         {
             if (Directory.Exists(Directories.bepinexDir))
             {
@@ -18,7 +18,7 @@ namespace H3VRModInstaller.Filesys.Common
                 return false;
             }
         }
-        public static bool CheckSideloader()
+        public bool CheckSideloader()
         {
             if (File.Exists(Directories.pluginsDir + "H3VR.Sideloader.dll") )
             {
@@ -30,7 +30,7 @@ namespace H3VRModInstaller.Filesys.Common
             }
         }
         
-        public static bool CheckDeli()
+        public bool CheckDeli()
         {
             if (File.Exists(Directories.pluginsDir + "Deli/Deli.Runtime.dll") )
             {
@@ -41,7 +41,7 @@ namespace H3VRModInstaller.Filesys.Common
                 return false;
             }
         }
-        public static bool CheckTNHTweaker()
+        public bool CheckTNHTweaker()
         {
             if (File.Exists(Directories.pluginsDir + "TakeAndHoldTweaker.dll") )
             {
@@ -52,7 +52,7 @@ namespace H3VRModInstaller.Filesys.Common
                 return false;
             }
         }
-        public static bool CheckWurstMod()
+        public bool CheckWurstMod()
         {
             if (File.Exists(Directories.modsDirs + "WurstMod.deli") )
             {
@@ -63,7 +63,7 @@ namespace H3VRModInstaller.Filesys.Common
                 return false;
             }
         }
-        public static bool CheckCursedDlls()
+        public bool CheckCursedDlls()
         {
             if (Directory.Exists(Directories.pluginsDir + "CursedDlls") )
             {
@@ -74,7 +74,7 @@ namespace H3VRModInstaller.Filesys.Common
                 return false;
             }
         }
-        public static bool CheckLSIIC()
+        public bool CheckLSIIC()
         {
             if (Directory.Exists(Directories.pluginsDir + "LSIIC") )
             {
