@@ -5,21 +5,8 @@
     <projectFile>H3VRModInstaller.GUI/H3VRModInstaller.GUI.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="11646549-311b-4445-a706-8ab87333e815" name="Default Changelist" comment="Started ModCheck.cs">
-      <change afterPath="$PROJECT_DIR$/H3VRModInstaller.JSON/Deserialise.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.H3VRModInstaller/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.H3VRModInstaller/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.H3VRModInstaller/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.H3VRModInstaller/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.Backend/H3VRModInstaller.Backend.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/H3VRModInstaller.Backend/H3VRModInstaller.Backend.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.Backend/MainClass.cs" beforeDir="false" afterPath="$PROJECT_DIR$/H3VRModInstaller.Backend/MainClass.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.GUI/Form1.Designer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.GUI/Form1.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.GUI/Form1.resx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.GUI/H3VRModInstaller.GUI.csproj" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.GUI/Program.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.JSON/H3VRModInstaller.JSON.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/H3VRModInstaller.JSON/H3VRModInstaller.JSON.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.JSON/Mods/Schema.json" beforeDir="false" afterPath="$PROJECT_DIR$/H3VRModInstaller.JSON/Mods/Schema.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.JSON/Net/GetMods.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.sln" beforeDir="false" afterPath="$PROJECT_DIR$/H3VRModInstaller.sln" afterDir="false" />
+    <list default="true" id="11646549-311b-4445-a706-8ab87333e815" name="Default Changelist" comment="JSOOOOON (pt 3)">
+      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.JSON/Deserialise.cs" beforeDir="false" afterPath="$PROJECT_DIR$/H3VRModInstaller.JSON/Deserialise.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,6 +31,8 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/75619FE8-0086-4006-A73D-344D590FBFA4/6/Console.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/mainuser/Documents/H3VRModInstaller/H3VRModInstaller.JSON/Deserialise.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/mainuser/Documents/H3VRModInstaller/H3VRModInstaller.JSON/Deserialise.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
@@ -155,7 +144,7 @@
       <workItem from="1607841534509" duration="1859000" />
       <workItem from="1607845861837" duration="1008000" />
       <workItem from="1607887306409" duration="8057000" />
-      <workItem from="1607982651112" duration="3055000" />
+      <workItem from="1607982651112" duration="3449000" />
     </task>
     <task id="LOCAL-00001" summary="Split func.cs">
       <created>1607847473285</created>
@@ -206,7 +195,28 @@
       <option name="project" value="LOCAL" />
       <updated>1607976207987</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="JSOOOOON!">
+      <created>1607988119694</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1607988119694</updated>
+    </task>
+    <task id="LOCAL-00009" summary="JSOOOOON!">
+      <created>1607988275935</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1607988275935</updated>
+    </task>
+    <task id="LOCAL-00010" summary="JSOOOOON (pt 3)">
+      <created>1607988334876</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1607988334876</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -235,6 +245,8 @@
     <MESSAGE value="Started ModCheck.cs" />
     <MESSAGE value="deleted gui" />
     <MESSAGE value="Jasoooooooooon!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Jasoooooooooon!" />
+    <MESSAGE value="JSOOOOON!" />
+    <MESSAGE value="JSOOOOON (pt 3)" />
+    <option name="LAST_COMMIT_MESSAGE" value="JSOOOOON (pt 3)" />
   </component>
 </project>

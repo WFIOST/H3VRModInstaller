@@ -1,3 +1,4 @@
+using System;
 using Newtonsoft.Json;
 using System.IO;
 
@@ -18,16 +19,24 @@ namespace H3VRModInstaller.Json
 
     public class Serialisation
     {
-        
+        private ModFile ModFile = new ModFile();
        
         public string Deserialise(string FileToDeserialise)
         {
-            ModFile ModFile = JsonConvert.DeserializeObject<ModFile>(File.ReadAllText(@FileToDeserialise));
+            ModFile DeserialisedModFile = JsonConvert.DeserializeObject<ModFile>(File.ReadAllText(@FileToDeserialise));
 
-            
+            Console.WriteLine("Deserialised Json: " + DeserialisedModFile);
 
             return "Deserialised JSON file " + FileToDeserialise;
         }
+
+        public string Serialise(string FileToSerialise)
+        {
+            string SerialisedObject = JsonConvert.SerializeObject(ModFile);
+            
+            return "Serialised JSON file " + FileToSerialise;
+        }
         
+
     }
 }
