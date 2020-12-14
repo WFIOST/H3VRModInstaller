@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.IO;
 using H3VRModInstaller.Common;
 
@@ -5,7 +6,8 @@ namespace H3VRModInstaller.Filesys.Common
 {
     public class ModCheck
     {
-        public bool CheckBepInEx()
+
+        public static bool CheckBepInEx()
         {
             if (Directory.Exists(Directories.bepinexDir))
             {
@@ -16,7 +18,7 @@ namespace H3VRModInstaller.Filesys.Common
                 return false;
             }
         }
-        public bool CheckSideloader()
+        public static bool CheckSideloader()
         {
             if (File.Exists(Directories.pluginsDir + "H3VR.Sideloader.dll") )
             {
@@ -28,7 +30,7 @@ namespace H3VRModInstaller.Filesys.Common
             }
         }
         
-        public bool CheckDeli()
+        public static bool CheckDeli()
         {
             if (File.Exists(Directories.pluginsDir + "Deli/Deli.Runtime.dll") )
             {
@@ -39,7 +41,7 @@ namespace H3VRModInstaller.Filesys.Common
                 return false;
             }
         }
-        public bool CheckTNHTweaker()
+        public static bool CheckTNHTweaker()
         {
             if (File.Exists(Directories.pluginsDir + "TakeAndHoldTweaker.dll") )
             {
@@ -50,7 +52,7 @@ namespace H3VRModInstaller.Filesys.Common
                 return false;
             }
         }
-        public bool CheckWurstMod()
+        public static bool CheckWurstMod()
         {
             if (File.Exists(Directories.modsDirs + "WurstMod.deli") )
             {
@@ -61,7 +63,7 @@ namespace H3VRModInstaller.Filesys.Common
                 return false;
             }
         }
-        public bool CheckCursedDlls()
+        public static bool CheckCursedDlls()
         {
             if (Directory.Exists(Directories.pluginsDir + "CursedDlls") )
             {
@@ -72,7 +74,7 @@ namespace H3VRModInstaller.Filesys.Common
                 return false;
             }
         }
-        public bool CheckLSIIC()
+        public static bool CheckLSIIC()
         {
             if (Directory.Exists(Directories.pluginsDir + "LSIIC") )
             {
@@ -83,9 +85,47 @@ namespace H3VRModInstaller.Filesys.Common
                 return false;
             }
         }
-        public string[] CheckMods(string[] installedMods)
+        public List<string> CheckMods(List<string> installedMods)
         {
-            
+            if (CheckDeli())
+            {
+                installedMods.Add("Deli");
+            }
+
+            if (CheckSideloader())
+            {
+                installedMods.Add("Sideloader");
+            }
+
+            if (CheckCursedDlls())
+            {
+                installedMods.Add("Cursed DLLs");
+            }
+
+            if (CheckWurstMod())
+            {
+                installedMods.Add("Wurst Mod");
+                
+            }
+
+            if (CheckBepInEx())
+            {
+                installedMods.Add("BepInEx");
+                
+            }
+
+            if (CheckTNHTweaker())
+            {
+                installedMods.Add("TNH Tweaker");
+                
+            }
+
+            if (CheckLSIIC())
+            {
+                installedMods.Add("LSIIC");
+                
+            }
+
             return installedMods;
         }
     }
