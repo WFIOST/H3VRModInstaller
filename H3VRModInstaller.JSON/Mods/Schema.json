@@ -1,26 +1,16 @@
 {
   "Name": "string",
-  
-  "RawName": "string",
-  
-  "Author": 
-  [
+  "File": "string",
+  "Author": [
     "string"
   ],
-  
   "Version": "string",
-  
   "Description": "string",
-  
   "Path": "string",
-  
-  "Arguments": 
-  [
+  "Arguments": [
     "string"
   ],
-  
-  "Dependencies": 
-  [
+  "Dependencies": [
     "string"
   ]
 }

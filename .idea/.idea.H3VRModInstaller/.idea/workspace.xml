@@ -6,11 +6,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="11646549-311b-4445-a706-8ab87333e815" name="Default Changelist" comment="Started ModCheck.cs">
-      <change afterPath="$PROJECT_DIR$/H3VRModInstaller.JSON/Mods/BepInEx.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/H3VRModInstaller.JSON/Mods/Schema.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/H3VRModInstaller.JSON/Net/GetMods.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/H3VRModInstaller.JSON/Deserialise.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.H3VRModInstaller/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.H3VRModInstaller/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.H3VRModInstaller/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.H3VRModInstaller/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.Backend/H3VRModInstaller.Backend.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/H3VRModInstaller.Backend/H3VRModInstaller.Backend.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.Backend/MainClass.cs" beforeDir="false" afterPath="$PROJECT_DIR$/H3VRModInstaller.Backend/MainClass.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.GUI/Form1.Designer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.GUI/Form1.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.GUI/Form1.resx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.GUI/H3VRModInstaller.GUI.csproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.GUI/Program.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.JSON/H3VRModInstaller.JSON.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/H3VRModInstaller.JSON/H3VRModInstaller.JSON.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.JSON/Mods/Schema.json" beforeDir="false" afterPath="$PROJECT_DIR$/H3VRModInstaller.JSON/Mods/Schema.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.JSON/Net/GetMods.cs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/H3VRModInstaller.sln" beforeDir="false" afterPath="$PROJECT_DIR$/H3VRModInstaller.sln" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -26,6 +34,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="refactored" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="UPDATE_TYPE" value="REBASE" />
   </component>
@@ -57,13 +70,15 @@
       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Common/Directories.cs" />
       <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch_1.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Common/ModCheck.cs" />
-      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/MainClass.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Net/JSON/GetMods.cs" />
-      <option value="$PROJECT_DIR$/H3VRModInstaller.JSON/Class1.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.JSON/JSON/GetMods.cs" />
-      <option value="$PROJECT_DIR$/H3VRModInstaller.JSON/Net/GetMods.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.JSON/Mods/Schema.json" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.JSON/Mods/BepInEx.json" />
+      <option value="$PROJECT_DIR$/H3VRModInstaller.JSON/Net/GetMods.cs" />
+      <option value="$PROJECT_DIR$/H3VRModInstaller.JSON/Class1.cs" />
+      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/MainClass.cs" />
+      <option value="$PROJECT_DIR$/H3VRModInstaller.JSON/GetMods.cs" />
+      <option value="$PROJECT_DIR$/H3VRModInstaller.JSON/Deserialise.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1lah3QXp00T3AT7tcB4yg7113kU" />
@@ -140,6 +155,7 @@
       <workItem from="1607841534509" duration="1859000" />
       <workItem from="1607845861837" duration="1008000" />
       <workItem from="1607887306409" duration="8057000" />
+      <workItem from="1607982651112" duration="3055000" />
     </task>
     <task id="LOCAL-00001" summary="Split func.cs">
       <created>1607847473285</created>
@@ -183,7 +199,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607974835102</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Jasoooooooooon!">
+      <created>1607976207987</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1607976207987</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -211,6 +234,7 @@
     <MESSAGE value="more stuff" />
     <MESSAGE value="Started ModCheck.cs" />
     <MESSAGE value="deleted gui" />
-    <option name="LAST_COMMIT_MESSAGE" value="deleted gui" />
+    <MESSAGE value="Jasoooooooooon!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Jasoooooooooon!" />
   </component>
 </project>

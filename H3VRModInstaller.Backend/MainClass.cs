@@ -11,38 +11,36 @@ namespace H3VRModInstaller
     class MainClass
     {
         private static bool BypassH3VR = true;
-        private static readonly ModList mods = new ModList();
         private static readonly Downloader downloader = new Downloader();
-        private static readonly InstallMods installer = new InstallMods();
-        
-        
- /*       public enum ListMods // do NOT assign ints to them, you will fuck up the installer.
-        {
-			BepInEx,
-			ResourceRedirector,
-			Deli,
-			Monomod,
 
-            WurstMod,
-            TnHTweaker,
-			Sideloader,
-			LSIIC,
-			H3VRUtilities,
 
-			CursedDLLs,
-			pccg,
-			meatyceiver,
-			meatssidecharger,
-			meatsrigs,
-			meatsmags,
-			meatsmodulsr,
-			meatsmodulpp,
-			meatsmodulak,
-			modular,
-			meatsmodularparts,
-			ebr
-
-        }*/
+        /*       public enum ListMods // do NOT assign ints to them, you will fuck up the installer.
+               {
+			       BepInEx,
+			       ResourceRedirector,
+			       Deli,
+			       Monomod,
+       
+                   WurstMod,
+                   TnHTweaker,
+			       Sideloader,
+			       LSIIC,
+			       H3VRUtilities,
+       
+			       CursedDLLs,
+			       pccg,
+			       meatyceiver,
+			       meatssidecharger,
+			       meatsrigs,
+			       meatsmags,
+			       meatsmodulsr,
+			       meatsmodulpp,
+			       meatsmodulak,
+			       modular,
+			       meatsmodularparts,
+			       ebr
+       
+               }*/
 
         public static void Main(string[] args)
         {

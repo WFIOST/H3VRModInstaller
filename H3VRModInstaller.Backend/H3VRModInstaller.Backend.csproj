@@ -10,7 +10,6 @@
 
   <ItemGroup>
     <PackageReference Include="Glob" Version="1.2.0-alpha0032" />
-    <PackageReference Include="Microsoft.Extensions.FileSystemGlobbing" Version="5.0.0" />
   </ItemGroup>
 
 </Project>
