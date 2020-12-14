@@ -1,0 +1,26 @@
+{
+  "Name": "string",
+  
+  "RawName": "string",
+  
+  "Author": 
+  [
+    "string"
+  ],
+  
+  "Version": "string",
+  
+  "Description": "string",
+  
+  "Path": "string",
+  
+  "Arguments": 
+  [
+    "string"
+  ],
+  
+  "Dependencies": 
+  [
+    "string"
+  ]
+}

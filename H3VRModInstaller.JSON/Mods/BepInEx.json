@@ -1,0 +1,25 @@
+{
+  "Name": "BepInEx",
+
+  "RawName": "BepInEx_x64_5.4.4.0.zip",
+
+  "Author":
+  [
+    "Bepis",
+    "Horse"
+  ],
+
+  "Version": "5.4.4.0",
+
+  "Description": "Modloader for Unity games! Required for all H3VR mods",
+
+  "Path": "https://github.com/BepInEx/BepInEx/releases/download/v5.4.4/",
+
+  "Arguments":
+  [
+  ],
+
+  "Dependencies":
+  [
+  ]
+}
