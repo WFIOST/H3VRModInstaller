@@ -5,182 +5,147 @@ namespace H3VRModInstaller.Filesys.Common
 {
     class ModList
     {
-		public Tuple<string[], string[]> parseInfo(string[] infopath, string[] resultFile, string[] resultPath)
+		public Tuple<string[,]> parseInfo(string[] infopath, string[,] modlist)
 		{
 			Console.WriteLine("Parsing " + infopath[0]);
-			for (int i = 0; i < resultFile.Length; i++)
+			Console.WriteLine("modlist is " + modlist.GetLength(0) + " by " + modlist.GetLength(1));
+			for (int i = 0; i < modlist.GetLength(0); i++)
 			{
-				if (resultFile[i] == null || resultFile[i] == "")
+				bool _brk = false;
+				if (modlist[i, 0] == "" || modlist[i, 0] == null)
 				{
-					resultFile[i] = infopath[0];
-					resultPath[i] = infopath[1];
-					break;
+					modlist[i, 0] = infopath[0];
+					modlist[i, 1] = infopath[1];
+					modlist[i, 2] = infopath[2];
+					_brk = true;
 				}
+				else Console.WriteLine("Line is " + modlist[i, 0] + " , not empty!");
+				if (_brk) break;
 			}
 
-			for (int i = 2; i < infopath.Length; i++)
+			for (int i = 3; i < infopath.Length; i++)
 			{
 				if (infopath[i] == "") { Console.WriteLine("End of dependencies!"); break; }
-				int num = i - 1;
-				int numofdep = infopath.Length - 2;
+				int num = i - 2;
+				int numofdep = infopath.Length - 3;
 				Console.WriteLine(infopath[0] + " is getting dependency " + infopath[i] + ", dependency " + num + " of " + numofdep);
-				Enum.TryParse(infopath[i], out MainClass.ListMods dependency);
-				getModInfo(dependency, resultFile, resultPath);
+//				Enum.TryParse(infopath[i], out MainClass.ListMods dependency);
+				getModInfo(infopath[i], modlist);
 			}
 			if (infopath.Length < 2) { Console.WriteLine("No dependencies, skipping!"); }
-			return Tuple.Create<string[], string[]>(resultFile, resultPath);
+			return Tuple.Create<string[,]>(modlist);
 		}
 
+		private const string VO = "VirtualObjects/";
 
-        public Tuple<string[], string[], string[], string[,]> getModInfo(MainClass.ListMods mod, string[] resultFile = null, string[] resultPath = null)
+		public Tuple<string[,]> getModInfo(string mod, string[,] modlist = null)
         {
-			if (resultFile == null)
+			if (modlist == null)
 			{
-				resultFile = new string[50];
+				modlist = new string[10,5];
 			}
-			if (resultPath == null)
-			{
-				resultPath = new string[50];
-			}
-			Tuple<string[], string[]> result;
-			result = Tuple.Create<string[], string[]>(BepInExInfo, ResourceRedirectorInfo);
+
+			Tuple<string[,]> result;
 			Console.WriteLine("Getting mod info for " + mod);
-			string[,] installargs = new string[Enum.GetNames(typeof(MainClass.ListMods)).Length + 2, 11];
 			string[] info = new string[1];
 			switch (mod)
             {
-				case MainClass.ListMods.BepInEx:
+				case "bepinex":
 					info = BepInExInfo;
 					break;
-				case MainClass.ListMods.ResourceRedirector:
+				case "resourceredirector":
 					info = ResourceRedirectorInfo;
 					break;
-				case MainClass.ListMods.Deli:
+				case "deli":
 					info = DeliInfo;
 					break;
-				case MainClass.ListMods.Monomod:
+				case "monomod":
 					info = MonomodInfo;
 					break;
-				case MainClass.ListMods.CursedDLLs:
+				case "curseddlls":
 					info = CursedDllsInfo;
 					break;
-				case MainClass.ListMods.WurstMod:
+				case "wurstmod":
 					info = WurstModInfo;
-					installargs[(int)mod, 0] = "moveToFolder"; //argument
-					installargs[(int)mod, 2] = "download.zip"; //file to move
-					installargs[(int)mod, 3] = "Mods/"; //dir to move to
-					installargs[(int)mod, 4] = "WurstMod.deli"; //name it as
 					break;
-                case MainClass.ListMods.TnHTweaker:
+                case "tnhtweaker":
 					info = TnHTweaker;
-					installargs[(int)mod, 0] = "moveToFolder"; //argument
-					installargs[(int)mod, 2] = "download.zip"; //file to move
-					installargs[(int)mod, 3] = "BepInEx/plugins/"; //dir to move to
-					installargs[(int)mod, 4] = "TakeAndHoldTweaker.dll"; //name it as
 					break;
-				case MainClass.ListMods.Sideloader:
+				case "sideloader":
 					info = SideloaderInfo;
 					break;
-				case MainClass.ListMods.LSIIC:
+				case "lsiic":
 					info = LSIICInfo;
-					installargs[(int)mod, 0] = "addFolder";
-					installargs[(int)mod, 2] = "VirtualObjects/";
-					installargs[(int)mod, 10] = "DoNotParse";
 					break;
-				case MainClass.ListMods.H3VRUtilities:
+				case "h3vrutils":
 					info = H3VRUtilsInfo;
-					installargs[(int)mod, 0] = "unzipToDir";
-					installargs[(int)mod, 2] = "Mods/";
 					break;
-				case MainClass.ListMods.pccg:
+				case "pccg":
 					info = pccgInfo;
-					installargs[(int)mod, 0] = "unzipToDir";
-					installargs[(int)mod, 2] = "VirtualObjects/";
 					break;
-				case MainClass.ListMods.meatyceiver:
+				case "meatyceiver":
 					info = meatyceiverInfo;
-					installargs[(int)mod, 0] = "unzipToDir";
-					installargs[(int)mod, 2] = "BepInEx/plugins";
 					break;
-				case MainClass.ListMods.meatssidecharger:
+				case "meatssidecharger":
 					info = meatsSideChargerInfo;
-					installargs[(int)mod, 0] = "unzipToDir";
-					installargs[(int)mod, 2] = "VirtualObjects/";
 					break;
-				case MainClass.ListMods.meatsrigs:
+				case "meatsrigs":
 					info = meatsRigsInfo;
-					installargs[(int)mod, 0] = "unzipToDir";
-					installargs[(int)mod, 2] = "VirtualObjects/";
 					break;
-				case MainClass.ListMods.meatsmags:
+				case "meatsmags":
 					info = meatsMagsInfo;
-					installargs[(int)mod, 0] = "unzipToDir";
-					installargs[(int)mod, 2] = "VirtualObjects/";
 					break;
-				case MainClass.ListMods.meatsmodulsr:
+				case "meatsmodulsr":
 					info = meatsModulSRInfo;
-					installargs[(int)mod, 0] = "unzipToDir";
-					installargs[(int)mod, 2] = "VirtualObjects/";
 					break;
-				case MainClass.ListMods.meatsmodulpp:
+				case "meatsmodulpp":
 					info = meatsModulPPInfo;
-					installargs[(int)mod, 0] = "unzipToDir";
-					installargs[(int)mod, 2] = "VirtualObjects/";
 					break;
-				case MainClass.ListMods.meatsmodulak:
+				case "meatsmodulak":
 					info = meatsModulAKInfo;
-					installargs[(int)mod, 0] = "unzipToDir";
-					installargs[(int)mod, 2] = "VirtualObjects/";
 					break;
-				case MainClass.ListMods.modular:
+				case "modular":
 					info = ModulARInfo;
-					installargs[(int)mod, 0] = "unzipToDir";
-					installargs[(int)mod, 2] = "VirtualObjects/";
 					break;
-				case MainClass.ListMods.meatsmodularparts:
+				case "meatsmodularparts":
 					info = meatsModulARPartsInfo;
-					installargs[(int)mod, 0] = "unzipToDir";
-					installargs[(int)mod, 2] = "VirtualObjects/";
 					break;
-				case MainClass.ListMods.ebr:
+				case "ebr":
 					info = ebrInfo;
-					installargs[(int)mod, 0] = "unzipToDir";
-					installargs[(int)mod, 2] = "VirtualObjects/";
 					break;
 			}
-			installargs[(int)mod, 1] = info[0];
-			result = parseInfo(info, resultFile, resultPath);
-			resultFile = result.Item1;
-			resultPath = result.Item2;
-			installargs[Enum.GetNames(typeof(MainClass.ListMods)).Length + 1, 0] = "break";
+			if(info.Length == 1) { Console.WriteLine("Fail to find mod!"); }
+			result = parseInfo(info, modlist);
 
-			Console.WriteLine(resultFile[0] + ", " + resultFile[1] + ", " + resultFile[2] + ", " + resultFile[3] + ", " + resultFile[4] + ", " + resultFile[5]);
-
-			return Tuple.Create<string[], string[], string[], string[,]>(resultFile, resultPath, info, installargs);
+			for (int i = 0; i < modlist.GetLength(0) - 1; i++) {
+				if (modlist[i, 0] == null) break;
+				Console.WriteLine("mod info:" + modlist[i, 0] + ", " + modlist[i, 1] + ", " + modlist[i, 2]);
+			}
+			return Tuple.Create<string[,]>(result.Item1);
         }
 
-		public string[] BepInExInfo = { "BepInEx_x64_5.4.4.0.zip", "https://github.com/BepInEx/BepInEx/releases/download/v5.4.4/" };
-		public string[] ResourceRedirectorInfo = { "XUnity.ResourceRedirector-BepIn-5x-1.1.3.zip", "https://github.com/bbepis/XUnity.AutoTranslator/releases/download/v4.13.0/"};
-		public string[] DeliInfo = { "Deli-v0.2.5.zip", "https://github.com/Deli-Counter/Deli/releases/download/v0.2.5/"};
-		public string[] MonomodInfo = { "BepInEx.MonoMod.Loader_1.0.0.0.zip", "https://github.com/BepInEx/BepInEx.MonoMod.Loader/releases/download/v1.0.0.0/" };
-		public string[] SideloaderInfo = { "H3VR.Sideloader_v0.3.3.zip", "https://github.com/denikson/H3VR.Sideloader/releases/download/v0.3.3/", "BepInEx", "ResourceRedirector" };
-		public string[] LSIICInfo = { "LSIIC-v1.3.zip", "https://github.com/BlockBuilder57/LSIIC/releases/download/v1.3/", "BepInEx", "Sideloader" };
+		public string[] BepInExInfo = { "BepInEx_x64_5.4.4.0.zip", "https://github.com/BepInEx/BepInEx/releases/download/v5.4.4/", "" };
+		public string[] ResourceRedirectorInfo = { "XUnity.ResourceRedirector-BepIn-5x-1.1.3.zip", "https://github.com/bbepis/XUnity.AutoTranslator/releases/download/v4.13.0/", "" };
+		public string[] DeliInfo = { "Deli-v0.2.5.zip", "https://github.com/Deli-Counter/Deli/releases/download/v0.2.5/", "" };
+		public string[] MonomodInfo = { "BepInEx.MonoMod.Loader_1.0.0.0.zip", "https://github.com/BepInEx/BepInEx.MonoMod.Loader/releases/download/v1.0.0.0/", "" };
+		public string[] SideloaderInfo = { "H3VR.Sideloader_v0.3.3.zip", "https://github.com/denikson/H3VR.Sideloader/releases/download/v0.3.3/", "",  "bepinex", "ResourceRedirector" };
+		public string[] LSIICInfo = { "LSIIC-v1.3.zip", "https://github.com/BlockBuilder57/LSIIC/releases/download/v1.3/", "addFolder?VirtualObjects/?unzipToDir?", "bepinex", "sideloader" };
 
-		public string[] CursedDllsInfo = { "CursedDlls.BepInEx_v1.3.zip", "https://github.com/drummerdude2003/CursedDlls.BepinEx/releases/download/v1.3/", "BepInEx", "Monomod" };
-		public string[] WurstModInfo = { "WurstMod.deli", "https://github.com/Nolenz/WurstMod/releases/download/v2.0.2.0/", "BepInEx", "Deli"};
-		public string[] TnHTweaker = { "TakeAndHoldTweaker.dll", "https://github.com/devyndamonster/TakeAndHoldTweaker/releases/download/v1.3.0/", "BepInEx" };
-		public string[] H3VRUtilsInfo = { "H3VRUtilities.zip", "https://bonetome.com/download.php?file=MTRmZjdkYWM4M2YzNDdmNCszNjUrODUx", "BepInEx", "Sideloader" };
-		public string[] pccgInfo = { "PotatoesCustomGuns.zip", "https://bonetome.com/download.php?file=NGFmYTMxOWRjNmEwMTdhMSszNjUrNzUw", "LSIIC" };
-		public string[] meatyceiverInfo = { "Meatyceiver032.zip", "https://bonetome.com/download.php?file=ZDMxZjYzMTgxYTg5OTdlYiszNjUrODk0", "BepInEx" };
-		public string[] meatsSideChargerInfo = { "TurtsSidechARger.zip", "https://bonetome.com/download.php?file=OTI3NTY5Y2ZlYThiMzZkNCszNjUrOTQ2", "LSIIC" };
-		public string[] meatsRigsInfo = { "MeatsRigs.zip", "https://bonetome.com/download.php?file=OGViNjM0MGVlOTUwMGYzNyszNjUrOTMw", "LSIIC" };
-		public string[] meatsMagsInfo = { "MeatsMagazines.zip", "https://bonetome.com/download.php?file=MzZmNmEzNDZmNzJhNDdiMiszNjUrODkw", "LSIIC" };
-		public string[] meatsModulSRInfo = { "MeatsModulSR1.1.zip", "https://bonetome.com/download.php?file=YjQzZTQ1MTM2MDQ0ODg3MSszNjUrODgz", "LSIIC" };
-		public string[] meatsModulPPInfo = { "MeatsModulPP.zip", "https://bonetome.com/download.php?file=ODQ4YThkNDZjMGZhYzNmYSszNjUrODc3", "LSIIC" };
-		public string[] ModulARInfo = { "modular.zip", "https://bonetome.com/download.php?file=MjgxMDkxOThkYTE0Mjg4MCszNjUrODUw", "LSIIC" };
-		public string[] meatsModulAKInfo = { "MeatsModulAK1.1.zip", "https://bonetome.com/download.php?file=NzFhNzc3MWJiZjQ2OWJhOCszNjUrODYx", "LSIIC" };
-		public string[] meatsModulARPartsInfo = { "MeatsARParts.zip", "https://bonetome.com/download.php?file=NDU1MzQwZmVkOTA4YmYzYyszNjUrODQ3", "LSIIC" };
-		public string[] ebrInfo = { "mk14+dcsb.zip", "https://bonetome.com/download.php?file=YzM2MTcyN2ZlYTRjNWRhNiszNjUrODg4", "LSIIC"};
+		public string[] CursedDllsInfo = { "CursedDlls.BepInEx_v1.3.zip", "https://github.com/drummerdude2003/CursedDlls.BepinEx/releases/download/v1.3/", "", "bepinex", "Monomod" };
+		public string[] WurstModInfo = { "WurstMod.deli", "https://github.com/Nolenz/WurstMod/releases/download/v2.0.2.0/", "moveToFolder?WurstMod.deli?Mods/?WurstMod.deli", "bepinex", "deli"};
+		public string[] TnHTweaker = { "TakeAndHoldTweaker.dll", "https://github.com/devyndamonster/TakeAndHoldTweaker/releases/download/v1.3.0/", "moveToFolder?TakeAndHoldTweaker.dll?BepInEx/plugins/?TakeAndHoldTweaker.dll", "bepinex" };
+		public string[] H3VRUtilsInfo = { "H3VRUtilities.zip", "https://bonetome.com/download.php?file=MTRmZjdkYWM4M2YzNDdmNCszNjUrODUx", "unzipToDir?Mods/", "bepinex", "sideloader" };
+		public string[] pccgInfo = { "PotatoesCustomGuns.zip", "https://bonetome.com/download.php?file=NGFmYTMxOWRjNmEwMTdhMSszNjUrNzUw", "unzipToDir?VirtualObjects/", "lsiic" };
+		public string[] meatyceiverInfo = { "Meatyceiver032.zip", "https://bonetome.com/download.php?file=ZDMxZjYzMTgxYTg5OTdlYiszNjUrODk0", "unzipToDir?BepInEx/plugins/", "bepinex" };
+		public string[] meatsSideChargerInfo = { "TurtsSidechARger.zip", "https://bonetome.com/download.php?file=OTI3NTY5Y2ZlYThiMzZkNCszNjUrOTQ2", "unzipToDir?VirtualObjects/", "lsiic" };
+		public string[] meatsRigsInfo = { "MeatsRigs.zip", "https://bonetome.com/download.php?file=OGViNjM0MGVlOTUwMGYzNyszNjUrOTMw", "unzipToDir?VirtualObjects/", "lsiic" };
+		public string[] meatsMagsInfo = { "MeatsMagazines.zip", "https://bonetome.com/download.php?file=MzZmNmEzNDZmNzJhNDdiMiszNjUrODkw", "unzipToDir?VirtualObjects/", "lsiic" };
+		public string[] meatsModulSRInfo = { "MeatsModulSR1.1.zip", "https://bonetome.com/download.php?file=YjQzZTQ1MTM2MDQ0ODg3MSszNjUrODgz", "unzipToDir?VirtualObjects/", "lsiic" };
+		public string[] meatsModulPPInfo = { "MeatsModulPP.zip", "https://bonetome.com/download.php?file=ODQ4YThkNDZjMGZhYzNmYSszNjUrODc3", "unzipToDir?VirtualObjects/", "lsiic" };
+		public string[] ModulARInfo = { "modular.zip", "https://bonetome.com/download.php?file=MjgxMDkxOThkYTE0Mjg4MCszNjUrODUw", "unzipToDir?VirtualObjects/", "lsiic" };
+		public string[] meatsModulAKInfo = { "MeatsModulAK1.1.zip", "https://bonetome.com/download.php?file=NzFhNzc3MWJiZjQ2OWJhOCszNjUrODYx", "unzipToDir?VirtualObjects/", "lsiic" };
+		public string[] meatsModulARPartsInfo = { "MeatsARParts.zip", "https://bonetome.com/download.php?file=NDU1MzQwZmVkOTA4YmYzYyszNjUrODQ3", "unzipToDir?VirtualObjects/", "lsiic" };
+		public string[] ebrInfo = { "mk14+dcsb.zip", "https://bonetome.com/download.php?file=YzM2MTcyN2ZlYTRjNWRhNiszNjUrODg4", "unzipToDir?VirtualObjects/", "lsiic" };
 
 		public bool onlineCheck()
         {

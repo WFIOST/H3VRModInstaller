@@ -8,37 +8,41 @@ namespace H3VRModInstaller.Filesys
 	{
 		private static readonly Zip installer = new();
 
-		public bool installMod(string name, string[,] args, bool delArchive = false)
+		public bool installMod(string[] fileinfo, bool delArchive = false)
 		{
-			bool _parsed = false;
-			for (int i = 0; i < args.GetLength(0); i++)
+
+			if (fileinfo[2] == "")
 			{
-				if (args[i, 1] == name)
-				{
-					if (args[i, 0] == "moveToFolder")
-					{
-						moveToFolder(args[i, 2], args[i, 3], args[i, 4]);
-						if (args[i, 10] != "DoNotParse") _parsed = true;
-					}
-					if (args[i, 0] == "unzipToDir")
-					{
-						Console.WriteLine("Unzipping...");
-						installer.unzip("download.zip", Directory.GetCurrentDirectory() + "/" + args[i, 2], delArchive);
-						if (args[i, 10] != "DoNotParse") _parsed = true;
-					}
-					if (args[i, 0] == "addFolder")
-					{
-						Console.WriteLine("Creating Directory " + args[i, 2]);
-						Directory.CreateDirectory(args[i, 2]);
-						if (args[i, 10] != "DoNotParse") _parsed = true;
-					}
-					if (args[i, 0] == "break") break;
-				}
+				fileinfo[2] = "unzipToDir?";
+			}
+			string[] args = fileinfo[2].Split('?');
+
+			Console.WriteLine("");
+			for (int i = 0; i < args.Length; i++)
+			{
+				Console.Write(args[i] + ", ");
 			}
 
-			if (_parsed != true) { installer.unzip("download.zip", Directory.GetCurrentDirectory() + "/", delArchive); Console.WriteLine("Unzipping..."); }
+			for (int i = 0; i < args.Length; i++)
+			{
+				if (args[i] == "moveToFolder")
+				{
+					moveToFolder(args[i + 1], args[i + 2], args[i + 3]);
+				}
+				if (args[i] == "unzipToDir")
+				{
+					Console.WriteLine("Unzipping to " + args[i + 1]);
+					installer.unzip(fileinfo[0], Directory.GetCurrentDirectory() + "/" + args[i + 1], delArchive);
+				}
+				if (args[i] == "addFolder")
+				{
+					Console.WriteLine("Creating Directory " + args[i + 1]);
+					Directory.CreateDirectory(args[i + 1]);
+				}
+				if (args[i] == "break") break;
+			}
 
-			Console.WriteLine("Installed " + name);
+			Console.WriteLine("Installed " + fileinfo[0]);
 			return true;
 		}
 		public static bool moveToFolder(string mod, string dir, string renameTo = "")

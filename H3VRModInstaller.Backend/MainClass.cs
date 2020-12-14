@@ -16,7 +16,7 @@ namespace H3VRModInstaller
         private static readonly InstallMods installer = new InstallMods();
         
         
-        public enum ListMods // do NOT assign ints to them, you will fuck up the installer.
+ /*       public enum ListMods // do NOT assign ints to them, you will fuck up the installer.
         {
 			BepInEx,
 			ResourceRedirector,
@@ -42,7 +42,7 @@ namespace H3VRModInstaller
 			meatsmodularparts,
 			ebr
 
-        }
+        }*/
 
         public static void Main(string[] args)
         {
@@ -55,7 +55,16 @@ namespace H3VRModInstaller
 				Console.WriteLine("ex: 'dl wurstmod'");
 				var input = Console.ReadLine();
 
-				switch (input)
+				string[] inputargs = input.Split(' ');
+
+				switch (inputargs[0])
+				{
+					case "dl":
+						downloader.downloadModDirector(inputargs[1]);
+					break;
+				}
+
+/*				switch (input)
 				{
 					case "dl wurstmod":
 						Console.WriteLine("Downloading WurstMod!");
@@ -143,14 +152,15 @@ namespace H3VRModInstaller
 
 					case "exit":
 						return;
-					/*
+						
+					
 					case "dl basemods":
 						Console.WriteLine("Downloading base mods!");
 						downloader.downloadModDirector(ListMods.WurstMod);
 						downloader.downloadModDirector(ListMods.TnHTweaker);
 						break;
-					*/
-				}
+					
+				}*/
 				goto Start;
 
 			}
@@ -161,18 +171,8 @@ namespace H3VRModInstaller
 			}
 			Console.ReadKey();
 		}
-	
-		public void startInstall(ListMods mod, bool installAll = false)
-		{
-			Console.WriteLine( mod + " selected");
-			if (mods.onlineCheck())
-			{
-				downloader.downloadModDirector(mod, installAll);
-				Console.Write("Press any key to exit the installer");
-				Console.ReadKey();
-				return;
-			}
-		}
+
+
 	}
     /*
         public struct Mods

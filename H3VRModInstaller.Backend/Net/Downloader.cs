@@ -12,8 +12,13 @@ namespace H3VRModInstaller.Net
 		private readonly InstallMods installer = new();
 		private readonly ModList mods = new();
 
-		public string downloadMod(string locationOfFile, string fileToDownload)
+		public bool downloadMod(string[] fileinfo)
 		{
+			if(fileinfo[0] == "" || fileinfo[0] == null) { return false; }
+
+			string fileToDownload = fileinfo[0];
+			string locationOfFile = fileinfo[1];
+
 			Console.WriteLine("Downloading Mod \"{0}\" from \"{1}{0}\"\n", fileToDownload, locationOfFile);
 
 			downloader.DownloadFile(locationOfFile + fileToDownload, fileToDownload);
@@ -29,27 +34,32 @@ namespace H3VRModInstaller.Net
 			System.IO.FileInfo fi = new System.IO.FileInfo(fullLocOfFile);
 
 
-			if (fi.Exists)
+/*			if (fi.Exists)
 			{
 				Console.WriteLine("found downloaded file!");
 				fi.MoveTo(dir + "download.zip");
 			}
-			else Console.WriteLine("Can't find downloaded file!");
+			else Console.WriteLine("Can't find downloaded file!");*/
 
 			Console.WriteLine("Successfully Downloaded Mod \"{0}\" from \"{1}{0}\"\n", fileToDownload, locationOfFile);
 
-			return fileToDownload;
+			installer.installMod(fileinfo);
+
+			return true;
 		}
 
-		public bool downloadModDirector(MainClass.ListMods mod, bool downloadAll = false)
+		public bool downloadModDirector(string mod, bool downloadAll = false)
 		{
 			if (!mods.onlineCheck()) { Console.WriteLine("Not connected to internet, or GitHub is down!"); return false; }
 			var result = mods.getModInfo(mod);
-			for (var i = 0; i < result.Item3.Length - 1; i++)
+
+			for (var i = 0; i < result.Item1.GetLength(0); i++)
 			{
-				if (result.Item2[i] == "") break;
-				downloadMod(result.Item2[i], result.Item1[i]);
-				installer.installMod(result.Item1[i], result.Item4);
+				string[] fileinfo = new string[3];
+				fileinfo[0] = result.Item1[i, 0];
+				fileinfo[1] = result.Item1[i, 1];
+				fileinfo[2] = result.Item1[i, 2];
+				downloadMod(fileinfo);
 			}
 			return true;
 		}
