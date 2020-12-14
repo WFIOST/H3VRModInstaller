@@ -18,11 +18,11 @@ namespace H3VRModInstaller.Json
 
     public class Serialisation
     {
-        public ModFile ModFile;
+        
        
         public string Deserialise(string FileToDeserialise)
         {
-            ModFile = JsonConvert.DeserializeObject<ModFile>(File.ReadAllText(@FileToDeserialise));
+            ModFile ModFile = JsonConvert.DeserializeObject<ModFile>(File.ReadAllText(@FileToDeserialise));
 
             
 
