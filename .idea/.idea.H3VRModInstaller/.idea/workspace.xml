@@ -6,13 +6,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="11646549-311b-4445-a706-8ab87333e815" name="Default Changelist" comment="Started ModCheck.cs">
+      <change afterPath="$PROJECT_DIR$/H3VRModInstaller.JSON/Mods/BepInEx.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/H3VRModInstaller.JSON/Mods/Schema.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/H3VRModInstaller.JSON/Net/GetMods.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.H3VRModInstaller/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.H3VRModInstaller/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.H3VRModInstaller/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.H3VRModInstaller/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.sln" beforeDir="false" afterPath="$PROJECT_DIR$/H3VRModInstaller.sln" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JSON File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -45,13 +56,20 @@
       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Common/Print.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Common/Directories.cs" />
       <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch_1.cs" />
-      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/MainClass.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Common/ModCheck.cs" />
+      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/MainClass.cs" />
+      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Net/JSON/GetMods.cs" />
+      <option value="$PROJECT_DIR$/H3VRModInstaller.JSON/Class1.cs" />
+      <option value="$PROJECT_DIR$/H3VRModInstaller.JSON/JSON/GetMods.cs" />
+      <option value="$PROJECT_DIR$/H3VRModInstaller.JSON/Net/GetMods.cs" />
+      <option value="$PROJECT_DIR$/H3VRModInstaller.JSON/Mods/Schema.json" />
+      <option value="$PROJECT_DIR$/H3VRModInstaller.JSON/Mods/BepInEx.json" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1lah3QXp00T3AT7tcB4yg7113kU" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
+    <option name="autoscrollFromSource" value="true" />
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
@@ -158,7 +176,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607896213320</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="deleted gui">
+      <created>1607974835102</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1607974835102</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -185,6 +210,7 @@
     <MESSAGE value="No more backend" />
     <MESSAGE value="more stuff" />
     <MESSAGE value="Started ModCheck.cs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Started ModCheck.cs" />
+    <MESSAGE value="deleted gui" />
+    <option name="LAST_COMMIT_MESSAGE" value="deleted gui" />
   </component>
 </project>

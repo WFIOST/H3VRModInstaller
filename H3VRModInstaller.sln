@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H3VRModInstaller.Backend", "H3VRModInstaller.Backend\H3VRModInstaller.Backend.csproj", "{43F2F4A3-C2F2-4DEE-A9C9-ADA6601F396A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H3VRModInstaller.JSON", "H3VRModInstaller.JSON\H3VRModInstaller.JSON.csproj", "{A40D68A0-E4E3-43EC-8B1E-A0A332D5ED46}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,5 +35,19 @@ Global
 		{43F2F4A3-C2F2-4DEE-A9C9-ADA6601F396A}.Debug|x64.Build.0 = OneFile|Any CPU
 		{43F2F4A3-C2F2-4DEE-A9C9-ADA6601F396A}.OneFile|x64.ActiveCfg = OneFile|x64
 		{43F2F4A3-C2F2-4DEE-A9C9-ADA6601F396A}.OneFile|x64.Build.0 = OneFile|x64
+		{A40D68A0-E4E3-43EC-8B1E-A0A332D5ED46}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A40D68A0-E4E3-43EC-8B1E-A0A332D5ED46}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A40D68A0-E4E3-43EC-8B1E-A0A332D5ED46}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{A40D68A0-E4E3-43EC-8B1E-A0A332D5ED46}.Debug|x64.Build.0 = Debug|Any CPU
+		{A40D68A0-E4E3-43EC-8B1E-A0A332D5ED46}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{A40D68A0-E4E3-43EC-8B1E-A0A332D5ED46}.Debug|x86.Build.0 = Debug|Any CPU
+		{A40D68A0-E4E3-43EC-8B1E-A0A332D5ED46}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A40D68A0-E4E3-43EC-8B1E-A0A332D5ED46}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A40D68A0-E4E3-43EC-8B1E-A0A332D5ED46}.Release|x64.ActiveCfg = Release|Any CPU
+		{A40D68A0-E4E3-43EC-8B1E-A0A332D5ED46}.Release|x64.Build.0 = Release|Any CPU
+		{A40D68A0-E4E3-43EC-8B1E-A0A332D5ED46}.Release|x86.ActiveCfg = Release|Any CPU
+		{A40D68A0-E4E3-43EC-8B1E-A0A332D5ED46}.Release|x86.Build.0 = Release|Any CPU
+		{A40D68A0-E4E3-43EC-8B1E-A0A332D5ED46}.OneFile|x64.ActiveCfg = Debug|Any CPU
+		{A40D68A0-E4E3-43EC-8B1E-A0A332D5ED46}.OneFile|x64.Build.0 = Debug|Any CPU
 	EndGlobalSection
 EndGlobal

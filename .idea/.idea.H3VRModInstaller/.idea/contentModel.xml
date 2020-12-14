@@ -31,14 +31,23 @@
           </e>
         </e>
       </e>
-      <e p="H3VRModInstaller.GUI" t="IncludeRecursive">
+      <e p="H3VRModInstaller.JSON" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
-        <e p="Form1.cs" t="Include" />
-        <e p="Form1.Designer.cs" t="Include" />
-        <e p="Form1.resx" t="Include" />
-        <e p="H3VRModInstaller.GUI.csproj" t="IncludeRecursive" />
-        <e p="obj" t="ExcludeRecursive" />
-        <e p="Program.cs" t="Include" />
+        <e p="H3VRModInstaller.JSON.csproj" t="IncludeRecursive" />
+        <e p="Mods" t="Include">
+          <e p="BepInEx.json" t="Include" />
+          <e p="Schema.json" t="Include" />
+        </e>
+        <e p="Net" t="Include">
+          <e p="GetMods.cs" t="Include" />
+        </e>
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="net5.0" t="Include">
+              <e p="H3VRModInstaller.JSON.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
       </e>
       <e p="H3VRModInstaller.sln" t="IncludeFlat" />
       <e p="packages" t="ExcludeRecursive" />
