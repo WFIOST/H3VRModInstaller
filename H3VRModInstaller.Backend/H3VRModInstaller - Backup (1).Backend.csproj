@@ -6,8 +6,4 @@
     <StartupObject>H3VRModInstaller.Backend.MainClass</StartupObject>
   </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Glob" Version="1.2.0-alpha0032" />
-  </ItemGroup>
-
 </Project>
