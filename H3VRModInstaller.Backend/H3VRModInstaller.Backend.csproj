@@ -3,7 +3,7 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net5.0</TargetFramework>
-    <StartupObject>H3VRModInstaller.Backend.MainClass</StartupObject>
+    <StartupObject>H3VRModInstaller.MainClass</StartupObject>
   </PropertyGroup>
 
   <ItemGroup>
