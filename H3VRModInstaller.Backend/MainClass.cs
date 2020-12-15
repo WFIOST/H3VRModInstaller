@@ -1,7 +1,6 @@
 using System;
 using System.IO;
 using H3VRModInstaller.Net;
-using H3VRModInstaller.Json;
 
 
 namespace H3VRModInstaller
