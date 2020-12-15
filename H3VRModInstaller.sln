@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H3VRModInstaller.Backend", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H3VRModInstaller.JSON", "H3VRModInstaller.JSON\H3VRModInstaller.JSON.csproj", "{ED823251-E971-4AD8-811A-768AC2CD63EA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H3VRModInstaller.GUI", "H3VRModInstaller.GUI\H3VRModInstaller.GUI.csproj", "{26A54777-94EC-40AA-BE9A-0F2BA64734EA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -56,6 +58,24 @@ Global
 		{ED823251-E971-4AD8-811A-768AC2CD63EA}.Release|x64.Build.0 = Release|Any CPU
 		{ED823251-E971-4AD8-811A-768AC2CD63EA}.Release|x86.ActiveCfg = Release|Any CPU
 		{ED823251-E971-4AD8-811A-768AC2CD63EA}.Release|x86.Build.0 = Release|Any CPU
+		{26A54777-94EC-40AA-BE9A-0F2BA64734EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26A54777-94EC-40AA-BE9A-0F2BA64734EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26A54777-94EC-40AA-BE9A-0F2BA64734EA}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{26A54777-94EC-40AA-BE9A-0F2BA64734EA}.Debug|x64.Build.0 = Debug|Any CPU
+		{26A54777-94EC-40AA-BE9A-0F2BA64734EA}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{26A54777-94EC-40AA-BE9A-0F2BA64734EA}.Debug|x86.Build.0 = Debug|Any CPU
+		{26A54777-94EC-40AA-BE9A-0F2BA64734EA}.OneFile|Any CPU.ActiveCfg = Debug|Any CPU
+		{26A54777-94EC-40AA-BE9A-0F2BA64734EA}.OneFile|Any CPU.Build.0 = Debug|Any CPU
+		{26A54777-94EC-40AA-BE9A-0F2BA64734EA}.OneFile|x64.ActiveCfg = Debug|Any CPU
+		{26A54777-94EC-40AA-BE9A-0F2BA64734EA}.OneFile|x64.Build.0 = Debug|Any CPU
+		{26A54777-94EC-40AA-BE9A-0F2BA64734EA}.OneFile|x86.ActiveCfg = Debug|Any CPU
+		{26A54777-94EC-40AA-BE9A-0F2BA64734EA}.OneFile|x86.Build.0 = Debug|Any CPU
+		{26A54777-94EC-40AA-BE9A-0F2BA64734EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26A54777-94EC-40AA-BE9A-0F2BA64734EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26A54777-94EC-40AA-BE9A-0F2BA64734EA}.Release|x64.ActiveCfg = Release|Any CPU
+		{26A54777-94EC-40AA-BE9A-0F2BA64734EA}.Release|x64.Build.0 = Release|Any CPU
+		{26A54777-94EC-40AA-BE9A-0F2BA64734EA}.Release|x86.ActiveCfg = Release|Any CPU
+		{26A54777-94EC-40AA-BE9A-0F2BA64734EA}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
