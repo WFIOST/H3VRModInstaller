@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using System.Net;
 using System.IO;
 using H3VRModInstaller.Filesys;
@@ -8,38 +9,36 @@ namespace H3VRModInstaller.Net
 {
 	class Downloader
 	{
+
 		private readonly WebClient downloader = new();
 		private readonly InstallMods installer = new();
 		private readonly ModList mods = new();
+		private bool finished = false;
 
 		public bool downloadMod(string[] fileinfo)
 		{
-			if(fileinfo[0] == "" || fileinfo[0] == null) { return false; }
+			finished = false;
+			if (fileinfo[0] == "" || fileinfo[0] == null) { return false; }
 
 			string fileToDownload = fileinfo[0];
 			string locationOfFile = fileinfo[1];
 
+			Uri fileloc = new Uri(locationOfFile + fileToDownload);
+
 			Console.WriteLine("Downloading Mod \"{0}\" from \"{1}{0}\"\n", fileToDownload, locationOfFile);
 
-			downloader.DownloadFile(locationOfFile + fileToDownload, fileToDownload);
+			Console.WriteLine("");
+
+			downloader.DownloadFileCompleted += dlcomplete;
+			downloader.DownloadProgressChanged += dlprogress;
+			downloader.DownloadFileAsync(fileloc, fileToDownload);
+			while (!finished)
+			{
+				Thread.Sleep(50);
+			}
+			finished = false;
 
 			Console.WriteLine("File Downloaded");
-
-			string dir = Directory.GetCurrentDirectory();
-			dir += @"\";
-
-			string fullLocOfFile = dir + fileToDownload;
-			Console.WriteLine(fullLocOfFile);
-
-			System.IO.FileInfo fi = new System.IO.FileInfo(fullLocOfFile);
-
-
-/*			if (fi.Exists)
-			{
-				Console.WriteLine("found downloaded file!");
-				fi.MoveTo(dir + "download.zip");
-			}
-			else Console.WriteLine("Can't find downloaded file!");*/
 
 			Console.WriteLine("Successfully Downloaded Mod \"{0}\" from \"{1}{0}\"\n", fileToDownload, locationOfFile);
 
@@ -48,11 +47,26 @@ namespace H3VRModInstaller.Net
 			return true;
 		}
 
+		public void dlcomplete(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
+		{
+			finished = true;
+		}
+
+		public void dlprogress(object sender, DownloadProgressChangedEventArgs e)
+		{
+			float percentage = ((float)e.BytesReceived / (float)e.TotalBytesToReceive) * 100;
+
+			string percentagetext = String.Format("{0:00.00}", percentage);
+			Console.Write("\r" + percentagetext + "% downloaded!");
+//			Console.Write("\r" + e.BytesReceived + " out of " + e.TotalBytesToReceive + " bytes received");
+		}
+
+
 		public bool downloadModDirector(string mod, bool downloadAll = false)
 		{
 			if (!mods.onlineCheck()) { Console.WriteLine("Not connected to internet, or GitHub is down!"); return false; }
 			var result = mods.getModInfo(mod);
-
+			if (result == null) return false;
 			for (var i = 0; i < result.Item1.GetLength(0); i++)
 			{
 				string[] fileinfo = new string[3];
