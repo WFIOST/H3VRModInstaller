@@ -7,7 +7,7 @@ namespace H3VRModInstaller
 {
     class MainClass
     {
-        private static bool BypassH3VR = true;
+        private static bool BypassH3VR = false;
         private static readonly Downloader downloader = new Downloader();
 
         public static void Main(string[] args)
