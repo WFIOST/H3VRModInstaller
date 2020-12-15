@@ -17,11 +17,11 @@ namespace H3VRModInstaller.Json
         
     }
 
-    public class Serialisation
+    public static class Serialisation
     {
-        private ModFile ModFile = new ModFile();
+        private static ModFile ModFile = new ModFile();
        
-        public string Deserialise(string FileToDeserialise)
+        public static string Deserialise(string FileToDeserialise)
         {
             ModFile DeserialisedModFile = JsonConvert.DeserializeObject<ModFile>(File.ReadAllText(@FileToDeserialise));
 
@@ -30,7 +30,7 @@ namespace H3VRModInstaller.Json
             return "Deserialised JSON file " + FileToDeserialise;
         }
 
-        public string Serialise(string FileToSerialise)
+        public static string Serialise(string FileToSerialise)
         {
             string SerialisedObject = JsonConvert.SerializeObject(ModFile);
             

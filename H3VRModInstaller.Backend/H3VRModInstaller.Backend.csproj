@@ -12,4 +12,8 @@
     <PackageReference Include="Glob" Version="1.2.0-alpha0032" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\H3VRModInstaller.JSON\H3VRModInstaller.JSON.csproj" />
+  </ItemGroup>
+
 </Project>

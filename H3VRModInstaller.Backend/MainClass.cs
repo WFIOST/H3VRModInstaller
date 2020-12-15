@@ -1,9 +1,7 @@
 using System;
 using System.IO;
 using H3VRModInstaller.Net;
-using H3VRModInstaller.Filesys;
-using H3VRModInstaller.Filesys.Common;
-using H3VRModInstaller.Common;
+using H3VRModInstaller.Json;
 
 
 namespace H3VRModInstaller
@@ -44,6 +42,9 @@ namespace H3VRModInstaller
 
         public static void Main(string[] args)
         {
+	        Serialisation.Deserialise("");	        
+	        
+	        
 	        if (File.Exists("H3VR.exe") || BypassH3VR)
 			{
 				Console.WriteLine("H3VR.exe detected");
