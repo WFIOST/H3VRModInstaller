@@ -116,6 +116,9 @@ namespace H3VRModInstaller.Filesys.Common
 				case "meatsmpx":
 					info = meatsmpxInfo;
 					break;
+				case "meatsmodulm4":
+					info = meatsmodulm4Info;
+					break;
 				case "ebr":
 					info = ebrInfo;
 					break;
@@ -138,9 +141,9 @@ namespace H3VRModInstaller.Filesys.Common
 		public string[] LSIICInfo = { "LSIIC-v1.3.zip", "https://github.com/BlockBuilder57/LSIIC/releases/download/v1.3/", "addFolder?VirtualObjects/?unzipToDir?", "bepinex", "sideloader" };
 		public string[] ConfigurationManagerInfo = { "BepInEx.ConfigurationManager_v16.1.zip", "https://github.com/BepInEx/BepInEx.ConfigurationManager/releases/download/v16.1/", "", "bepinex" };
 
-		public string[] CursedDllsInfo = { "CursedDlls.BepInEx_v1.3.zip", "https://github.com/drummerdude2003/CursedDlls.BepinEx/releases/download/v1.3/", "", "bepinex", "monomod" };
-		public string[] WurstModInfo = { "WurstMod.deli", "https://github.com/Nolenz/WurstMod/releases/download/v2.0.2.0/", "moveToFolder?WurstMod.deli?Mods/?WurstMod.deli", "bepinex", "deli"};
-		public string[] TnHTweaker = { "TakeAndHoldTweaker.dll", "https://github.com/devyndamonster/TakeAndHoldTweaker/releases/download/v1.3.0/", "moveToFolder?TakeAndHoldTweaker.dll?BepInEx/plugins/?TakeAndHoldTweaker.dll", "bepinex" };
+		public string[] CursedDllsInfo = { "CursedDlls.BepInEx_v1.3.zip", "https://github.com/drummerdude2003/CursedDlls.BepinEx/releases/download/v1.3/", "unzipToDir?BepInEx/plugins/", "bepinex", "monomod" };
+		public string[] WurstModInfo = { "WurstMod.deli", "https://github.com/Nolenz/WurstMod/releases/download/v2.0.2.0/", "", "bepinex", "deli"};
+		public string[] TnHTweaker = { "TakeAndHoldTweaker.Unzip.Me.zip", "https://github.com/devyndamonster/TakeAndHoldTweaker/releases/download/v1.4.0/", "", "bepinex", "deli" };
 		public string[] H3VRUtilsInfo = { "H3VRUtilities.zip", "https://bonetome.com/download.php?file=MTRmZjdkYWM4M2YzNDdmNCszNjUrODUx", "unzipToDir?Mods/", "bepinex", "sideloader" };
 		public string[] pccgInfo = { "PotatoesCustomGuns.zip", "https://bonetome.com/download.php?file=NGFmYTMxOWRjNmEwMTdhMSszNjUrNzUw", "unzipToDir?VirtualObjects/", "lsiic" };
 		public string[] meatyceiverInfo = { "Meatyceiver032.zip", "https://bonetome.com/download.php?file=ZDMxZjYzMTgxYTg5OTdlYiszNjUrODk0", "unzipToDir?BepInEx/plugins/", "bepinex", "configurationmanager" };
@@ -153,7 +156,8 @@ namespace H3VRModInstaller.Filesys.Common
 		public string[] meatsModulAKInfo = { "MeatsModulAK1.1.zip", "https://bonetome.com/download.php?file=NzFhNzc3MWJiZjQ2OWJhOCszNjUrODYx", "unzipToDir?VirtualObjects/", "lsiic", "h3vrutils" };
 		public string[] meatsModulARPartsInfo = { "MeatsARParts.zip", "https://bonetome.com/download.php?file=NDU1MzQwZmVkOTA4YmYzYyszNjUrODQ3", "unzipToDir?VirtualObjects/", "lsiic", "modular" };
 		public string[] ebrInfo = { "mk14+dcsb.zip", "https://bonetome.com/download.php?file=YzM2MTcyN2ZlYTRjNWRhNiszNjUrODg4", "unzipToDir?VirtualObjects/", "lsiic" };
-		public string[] meatsmpxInfo = { "MeatsModulMPX", "https://bonetome.com/download.php?file=ZmZjNzFkZjA3NjM4NTI2NCszNjUrOTU1", "unzipToDir?VirtualObjects/", "lsiic", "h3vrutils", "modular"};
+		public string[] meatsmpxInfo = { "MeatsModulMPX.zip", "https://bonetome.com/download.php?file=ZmZjNzFkZjA3NjM4NTI2NCszNjUrOTU1", "unzipToDir?VirtualObjects/", "lsiic", "h3vrutils", "modular"};
+		public string[] meatsmodulm4Info = { "MeatsModulM4.zip", "https://bonetome.com/download.php?file=MGI3M2Y4ZGUwMjM5OWI2NyszNjUrOTYw", "unzipToDir?VirtualObjects/", "lsiic"};
 
 		public bool onlineCheck()
         {

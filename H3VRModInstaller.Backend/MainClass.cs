@@ -107,6 +107,7 @@ namespace H3VRModInstaller
 			Console.WriteLine("meatsmodulak");
 			Console.WriteLine("meatsmodularparts");
 			Console.WriteLine("meatsmpx");
+			Console.WriteLine("meatsmodulm4");
 			Console.WriteLine("ebr");
 		}
 	}
