@@ -1,6 +1,6 @@
 using System.IO;
 
-namespace H3VRModInstaller.Common
+namespace H3VRModInstaller.Filesys.Common
 {
     public class Directories
     {

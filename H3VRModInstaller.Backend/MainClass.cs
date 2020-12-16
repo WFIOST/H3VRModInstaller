@@ -7,6 +7,7 @@ namespace H3VRModInstaller
 {
     class MainClass
     {
+	    private static Serialisation Json = new Serialisation();
         private static bool BypassH3VR = false;
         private static readonly Downloader downloader = new Downloader();
         public static void Main(string[] args)
@@ -17,6 +18,10 @@ namespace H3VRModInstaller
 			{
 				Console.WriteLine("H3VR.exe detected");
 				Console.WriteLine("Welcome to the H3VR Mod installer!");
+				
+				Console.WriteLine("BepInEx Serialised");
+				Json.SerialiseBepInEx();
+				
 				Start:
 				Console.WriteLine("Please select the mod you would like to install using 'dl [modnamehere]' ");
 				Console.WriteLine("ex: 'dl wurstmod'");

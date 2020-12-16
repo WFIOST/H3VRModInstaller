@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System.IO;
-using H3VRModInstaller.Common;
+using H3VRModInstaller.Filesys.Common;
 
 namespace H3VRModInstaller.Filesys.Common
 {

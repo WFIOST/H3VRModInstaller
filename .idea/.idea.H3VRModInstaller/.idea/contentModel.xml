@@ -6,12 +6,10 @@
         <e p="bin" t="ExcludeRecursive" />
         <e p="Common" t="Include">
           <e p="Directories.cs" t="Include" />
+          <e p="ModCheck.cs" t="Include" />
+          <e p="ModList.cs" t="Include" />
         </e>
         <e p="Filesys" t="Include">
-          <e p="Common" t="Include">
-            <e p="ModCheck.cs" t="Include" />
-            <e p="ModList.cs" t="Include" />
-          </e>
           <e p="Director.cs" t="Include" />
           <e p="Files.cs" t="Include" />
           <e p="Installer.cs" t="Include" />

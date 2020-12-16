@@ -7,15 +7,13 @@
     <projectFile>H3VRModInstaller.JSON/H3VRModInstaller.JSON.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="11646549-311b-4445-a706-8ab87333e815" name="Default Changelist" comment="Nae naed forms again">
-      <change afterPath="$PROJECT_DIR$/H3VRModInstaller.JSON/MainClass.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/H3VRModInstaller.JSON/Serialisation.cs" afterDir="false" />
+    <list default="true" id="11646549-311b-4445-a706-8ab87333e815" name="Default Changelist" comment="Fixed TNHTweaker deli">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.H3VRModInstaller/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.H3VRModInstaller/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.H3VRModInstaller/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.H3VRModInstaller/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Common/ModList.cs" beforeDir="false" afterPath="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Common/ModList.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.Backend/H3VRModInstaller.Backend.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/H3VRModInstaller.Backend/H3VRModInstaller.Backend.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.Backend/Common/Directories.cs" beforeDir="false" afterPath="$PROJECT_DIR$/H3VRModInstaller.Backend/Common/Directories.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Common/ModCheck.cs" beforeDir="false" afterPath="$PROJECT_DIR$/H3VRModInstaller.Backend/Common/ModCheck.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Common/ModList.cs" beforeDir="false" afterPath="$PROJECT_DIR$/H3VRModInstaller.Backend/Common/ModList.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/H3VRModInstaller.Backend/MainClass.cs" beforeDir="false" afterPath="$PROJECT_DIR$/H3VRModInstaller.Backend/MainClass.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.JSON/Deserialise.cs" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,7 +36,8 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/mainuser/Documents/H3VRModInstaller/H3VRModInstaller.Backend/Filesys/Common/ModCheck.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
@@ -61,9 +60,7 @@
       <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Common/Prin.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Common/Print.cs" />
-      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Common/Directories.cs" />
       <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch_1.cs" />
-      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Common/ModCheck.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Net/JSON/GetMods.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.JSON/JSON/GetMods.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.JSON/Mods/Schema.json" />
@@ -74,8 +71,11 @@
       <option value="$PROJECT_DIR$/H3VRModInstaller.JSON/MainClass.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.JSON/Deserialise.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.JSON/Serialisation.cs" />
-      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/MainClass.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Common/ModList.cs" />
+      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Common/ModCheck.cs" />
+      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Common/Directories.cs" />
+      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Common/ModCheck.cs" />
+      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/MainClass.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1lah3QXp00T3AT7tcB4yg7113kU" />
@@ -192,7 +192,7 @@
       <workItem from="1607982651112" duration="3814000" />
       <workItem from="1608067909319" duration="494000" />
       <workItem from="1608138848366" duration="2061000" />
-      <workItem from="1608144367162" duration="1219000" />
+      <workItem from="1608144367162" duration="1878000" />
     </task>
     <task id="LOCAL-00001" summary="Split func.cs">
       <created>1607847473285</created>
@@ -278,7 +278,21 @@
       <option name="project" value="LOCAL" />
       <updated>1608067952622</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Added modcheck">
+      <created>1608145964825</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1608145964826</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Fixed TNHTweaker deli">
+      <created>1608146188292</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1608146188292</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -311,6 +325,8 @@
     <MESSAGE value="JSOOOOON (pt 3)" />
     <MESSAGE value="JSOOOOON (pt 4)" />
     <MESSAGE value="Nae naed forms again" />
-    <option name="LAST_COMMIT_MESSAGE" value="Nae naed forms again" />
+    <MESSAGE value="Added modcheck" />
+    <MESSAGE value="Fixed TNHTweaker deli" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed TNHTweaker deli" />
   </component>
 </project>
