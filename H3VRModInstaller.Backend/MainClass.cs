@@ -1,7 +1,7 @@
 using System;
 using System.IO;
 using H3VRModInstaller.Net;
-
+using H3VRModInstaller.Json;
 
 namespace H3VRModInstaller
 {
@@ -9,7 +9,6 @@ namespace H3VRModInstaller
     {
         private static bool BypassH3VR = false;
         private static readonly Downloader downloader = new Downloader();
-
         public static void Main(string[] args)
         {        
 	        

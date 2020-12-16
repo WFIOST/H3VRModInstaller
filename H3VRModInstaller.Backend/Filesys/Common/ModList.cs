@@ -5,6 +5,7 @@ namespace H3VRModInstaller.Filesys.Common
 {
     class ModList
     {
+	    private ModCheck modCheck = new ModCheck();
 		public Tuple<string[,]> parseInfo(string[] infopath, string[,] modlist)
 		{
 			Console.WriteLine("Parsing " + infopath[0]);
@@ -54,31 +55,82 @@ namespace H3VRModInstaller.Filesys.Common
 					info = ConfigurationManagerInfo;
 					break;
 				case "bepinex":
-					info = BepInExInfo;
+					if (!modCheck.CheckBepInEx())
+					{
+						info = BepInExInfo;
+					}
+					else
+					{
+						Console.WriteLine("BepInEx detected");
+					}
 					break;
 				case "resourceredirector":
 					info = ResourceRedirectorInfo;
 					break;
 				case "deli":
-					info = DeliInfo;
+					if (!modCheck.CheckDeli())
+					{
+						info = DeliInfo;
+					}
+					else
+					{
+						Console.WriteLine("Deli detected");
+					}
 					break;
 				case "monomod":
 					info = MonomodInfo;
 					break;
 				case "curseddlls":
-					info = CursedDllsInfo;
+					if (!modCheck.CheckCursedDlls())
+					{
+						info = CursedDllsInfo;
+					}
+					else
+					{
+						Console.WriteLine("CursedDLLs detected");
+					}
 					break;
 				case "wurstmod":
-					info = WurstModInfo;
+					if (!modCheck.CheckWurstMod())
+					{
+						info = WurstModInfo;
+					}
+					else
+					{
+						Console.WriteLine("WurstMod detected");
+					}
+
 					break;
                 case "tnhtweaker":
-					info = TnHTweaker;
-					break;
+	                if (!modCheck.CheckTNHTweaker())
+	                {
+		                info = TnHTweaker;
+	                }
+	                else
+	                {
+		                Console.WriteLine("TNH Tweaker detected");
+	                }
+	                break;
 				case "sideloader":
-					info = SideloaderInfo;
+					if (!modCheck.CheckSideloader())
+					{
+						info = SideloaderInfo;
+					}
+					else
+					{
+						Console.WriteLine("Sideloader Detected");
+					}
+
 					break;
 				case "lsiic":
-					info = LSIICInfo;
+					if (!modCheck.CheckLSIIC())
+					{
+						info = LSIICInfo;
+					}
+					else
+					{
+						Console.WriteLine("LSIIC Detected");
+					}
 					break;
 				case "h3vrutils":
 					info = H3VRUtilsInfo;
