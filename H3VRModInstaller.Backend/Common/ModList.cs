@@ -197,6 +197,7 @@ namespace H3VRModInstaller.Filesys.Common
 		public string[] WurstModInfo = { "WurstMod.deli", "https://github.com/Nolenz/WurstMod/releases/download/v2.0.2.0/", "", "bepinex", "deli"};
 		public string[] TnHTweaker = { "TakeAndHoldTweaker.Unzip.Me.zip", "https://github.com/devyndamonster/TakeAndHoldTweaker/releases/download/v1.4.0/", "", "bepinex", "deli" };
 		public string[] H3VRUtilsInfo = { "H3VRUtilities.zip", "https://bonetome.com/download.php?file=MTRmZjdkYWM4M2YzNDdmNCszNjUrODUx", "unzipToDir?Mods/", "bepinex", "sideloader" };
+		
 		public string[] pccgInfo = { "PotatoesCustomGuns.zip", "https://bonetome.com/download.php?file=NGFmYTMxOWRjNmEwMTdhMSszNjUrNzUw", "unzipToDir?VirtualObjects/", "lsiic" };
 		public string[] meatyceiverInfo = { "Meatyceiver032.zip", "https://bonetome.com/download.php?file=ZDMxZjYzMTgxYTg5OTdlYiszNjUrODk0", "unzipToDir?BepInEx/plugins/", "bepinex", "configurationmanager" };
 		public string[] meatsSideChargerInfo = { "TurtsSidechARger.zip", "https://bonetome.com/download.php?file=OTI3NTY5Y2ZlYThiMzZkNCszNjUrOTQ2", "unzipToDir?VirtualObjects/", "lsiic" };
