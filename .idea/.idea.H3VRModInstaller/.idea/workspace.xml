@@ -7,9 +7,10 @@
     <projectFile>H3VRModInstaller.JSON/H3VRModInstaller.JSON.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="11646549-311b-4445-a706-8ab87333e815" name="Default Changelist" comment="Added serialise tests">
+    <list default="true" id="11646549-311b-4445-a706-8ab87333e815" name="Default Changelist" comment="kill me">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.H3VRModInstaller/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.H3VRModInstaller/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/H3VRModInstaller.Backend/MainClass.cs" beforeDir="false" afterPath="$PROJECT_DIR$/H3VRModInstaller.Backend/MainClass.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.Backend/Net/Downloader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/H3VRModInstaller.Backend/Net/Downloader.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,6 +34,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="mock:///Users/mainuser/Documents/H3VRModInstaller/H3VRModInstaller.Backend/Filesys/Common/ModCheck.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/mainuser/Documents/H3VRModInstaller/H3VRModInstaller.Backend/MainClass.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
@@ -50,7 +52,6 @@
       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Installer.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/ModCheck.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Zip.cs" />
-      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Net/Downloader.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Net/NetCheck.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Common/Directories.cs" />
       <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch.cs" />
@@ -72,6 +73,7 @@
       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Common/Directories.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Common/ModCheck.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/MainClass.cs" />
+      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Net/Downloader.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1lah3QXp00T3AT7tcB4yg7113kU" />
@@ -99,7 +101,11 @@
     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
-  <component name="RunManager" selected=".NET Project.H3VRModInstaller.Backend">
+  <component name="RunManager" selected="Publish to folder.ModInstaller">
+    <configuration name="ModInstaller" type="DotNetFolderPublish" factoryName="Publish to folder" temporary="true">
+      <riderPublish runtime="osx-x64" target_folder="$PROJECT_DIR$/test" target_framework="net5.0" uuid_high="4896244729092656622" uuid_low="-6212243280892053142" />
+      <method v="2" />
+    </configuration>
     <configuration name="H3VRModInstaller.Backend" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
       <option name="PROGRAM_PARAMETERS" value="" />
@@ -172,6 +178,11 @@
         <option name="Build" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Publish to folder.ModInstaller" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -188,7 +199,7 @@
       <workItem from="1607982651112" duration="3814000" />
       <workItem from="1608067909319" duration="494000" />
       <workItem from="1608138848366" duration="2061000" />
-      <workItem from="1608144367162" duration="2690000" />
+      <workItem from="1608144367162" duration="4711000" />
     </task>
     <task id="LOCAL-00001" summary="Split func.cs">
       <created>1607847473285</created>
@@ -295,7 +306,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608146701813</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="kill me">
+      <created>1608148068463</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1608148068463</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -331,6 +349,7 @@
     <MESSAGE value="Added modcheck" />
     <MESSAGE value="Fixed TNHTweaker deli" />
     <MESSAGE value="Added serialise tests" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added serialise tests" />
+    <MESSAGE value="kill me" />
+    <option name="LAST_COMMIT_MESSAGE" value="kill me" />
   </component>
 </project>

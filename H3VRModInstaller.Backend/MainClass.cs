@@ -32,7 +32,7 @@ namespace H3VRModInstaller
 				switch (inputargs[0])
 				{
 					case "dl":
-						downloader.downloadModDirector(inputargs[1]);
+						downloader.DownloadModDirector(inputargs[1]);
 						break;
 					case "launch":
 

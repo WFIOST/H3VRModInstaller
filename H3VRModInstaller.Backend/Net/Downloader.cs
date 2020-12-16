@@ -15,7 +15,7 @@ namespace H3VRModInstaller.Net
 		private readonly ModList mods = new();
 		private bool finished = false;
 
-		public bool downloadMod(string[] fileinfo)
+		public bool DownloadMod(string[] fileinfo)
 		{
 			finished = false;
 			if (fileinfo[0] == "" || fileinfo[0] == null) { return false; }
@@ -55,14 +55,13 @@ namespace H3VRModInstaller.Net
 		public void dlprogress(object sender, DownloadProgressChangedEventArgs e)
 		{
 			float percentage = ((float)e.BytesReceived / (float)e.TotalBytesToReceive) * 100;
-
 			string percentagetext = String.Format("{0:00.00}", percentage);
 			Console.Write("\r" + percentagetext + "% downloaded!");
 //			Console.Write("\r" + e.BytesReceived + " out of " + e.TotalBytesToReceive + " bytes received");
 		}
 
 
-		public bool downloadModDirector(string mod, bool downloadAll = false)
+		public bool DownloadModDirector(string mod, bool downloadAll = false)
 		{
 			if (!mods.onlineCheck()) { Console.WriteLine("Not connected to internet, or GitHub is down!"); return false; }
 			var result = mods.getModInfo(mod);
@@ -73,7 +72,7 @@ namespace H3VRModInstaller.Net
 				fileinfo[0] = result.Item1[i, 0];
 				fileinfo[1] = result.Item1[i, 1];
 				fileinfo[2] = result.Item1[i, 2];
-				downloadMod(fileinfo);
+				DownloadMod(fileinfo);
 			}
 			return true;
 		}
