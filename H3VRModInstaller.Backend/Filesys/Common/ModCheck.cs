@@ -43,7 +43,7 @@ namespace H3VRModInstaller.Filesys.Common
         }
         public bool CheckTNHTweaker()
         {
-            if (File.Exists(Directories.pluginsDir + "TakeAndHoldTweaker.dll") )
+            if (File.Exists(Directories.modsDirs + "TakeAndHoldTweaker.deli") )
             {
                 return true;
             }
