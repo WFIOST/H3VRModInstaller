@@ -9,7 +9,7 @@ namespace H3VRModInstaller
     class MainClass
     {
 	    //private static Serialisation Json = new Serialisation();
-        private static bool BypassH3VR = false;
+        private static bool BypassH3VR = true;
         private static readonly Downloader downloader = new Downloader();
         public static void Main(string[] args)
         {        
