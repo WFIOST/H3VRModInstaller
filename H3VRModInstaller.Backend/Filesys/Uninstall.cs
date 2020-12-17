@@ -1,8 +1,6 @@
 using GlobExpressions;
 using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices;
-using H3VRModInstaller.Filesys.Common;
 
 
 namespace H3VRModInstaller.Filesys
@@ -14,7 +12,6 @@ namespace H3VRModInstaller.Filesys
         VirtualObjects,
         CustomCharacters,
         Maps
-        
     }
     
     public class Uninstall
@@ -25,7 +22,7 @@ namespace H3VRModInstaller.Filesys
         string[] deliModsToDelete = Glob.FilesAndDirectories(@"Mods/", "**.deli").ToArray();
         public bool Delete(string[] modToRemove, Dirs directory)
         {
-            string dir;
+            string dir = "";
             switch (directory)
             {
                 case Dirs.Mods:
@@ -43,10 +40,8 @@ namespace H3VRModInstaller.Filesys
                 case Dirs.Maps:
                     dir = "CustomLevels/";
                     break;
-
-
             }
-            File.Delete(modToRemove[0]);
+            File.Delete(dir + modToRemove[0]);
             return true;
         }
 
