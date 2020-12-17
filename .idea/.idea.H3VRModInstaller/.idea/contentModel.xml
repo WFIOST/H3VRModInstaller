@@ -13,6 +13,7 @@
           <e p="Director.cs" t="Include" />
           <e p="Files.cs" t="Include" />
           <e p="Installer.cs" t="Include" />
+          <e p="Uninstall.cs" t="Include" />
           <e p="Zip.cs" t="Include" />
         </e>
         <e p="H3VRModInstaller.Backend.csproj" t="IncludeRecursive" />
@@ -43,7 +44,6 @@
         <e p="bin" t="ExcludeRecursive" />
         <e p="GetMods.cs" t="Include" />
         <e p="H3VRModInstaller.JSON.csproj" t="IncludeRecursive" />
-        <e p="MainClass.cs" t="Include" />
         <e p="Mods" t="Include">
           <e p="BepInEx.json" t="Include" />
           <e p="Schema.json" t="Include" />

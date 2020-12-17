@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Threading;
 using System.Net;
-using System.IO;
 using H3VRModInstaller.Filesys;
 using H3VRModInstaller.Filesys.Common;
 
@@ -76,5 +75,6 @@ namespace H3VRModInstaller.Net
 			}
 			return true;
 		}
+		
 	}
 }

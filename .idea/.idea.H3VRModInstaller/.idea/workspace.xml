@@ -7,8 +7,11 @@
     <projectFile>H3VRModInstaller.JSON/H3VRModInstaller.JSON.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="11646549-311b-4445-a706-8ab87333e815" name="Default Changelist" comment="kill me">
+    <list default="true" id="11646549-311b-4445-a706-8ab87333e815" name="Default Changelist" comment="fixed H3VRModInstaller.JSON.csproj">
+      <change afterPath="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Uninstall.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.H3VRModInstaller/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.H3VRModInstaller/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.H3VRModInstaller/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.H3VRModInstaller/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.Backend/H3VRModInstaller.Backend.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/H3VRModInstaller.Backend/H3VRModInstaller.Backend.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/H3VRModInstaller.Backend/MainClass.cs" beforeDir="false" afterPath="$PROJECT_DIR$/H3VRModInstaller.Backend/MainClass.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/H3VRModInstaller.Backend/Net/Downloader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/H3VRModInstaller.Backend/Net/Downloader.cs" afterDir="false" />
     </list>
@@ -33,8 +36,6 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock:///Users/mainuser/Documents/H3VRModInstaller/H3VRModInstaller.Backend/Filesys/Common/ModCheck.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/mainuser/Documents/H3VRModInstaller/H3VRModInstaller.Backend/MainClass.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
@@ -74,6 +75,7 @@
       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Common/ModCheck.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/MainClass.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Net/Downloader.cs" />
+      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Uninstall.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1lah3QXp00T3AT7tcB4yg7113kU" />
@@ -199,7 +201,10 @@
       <workItem from="1607982651112" duration="3814000" />
       <workItem from="1608067909319" duration="494000" />
       <workItem from="1608138848366" duration="2061000" />
-      <workItem from="1608144367162" duration="4711000" />
+      <workItem from="1608144367162" duration="5401000" />
+      <workItem from="1608152354724" duration="2280000" />
+      <workItem from="1608186512308" duration="30000" />
+      <workItem from="1608227405647" duration="1871000" />
     </task>
     <task id="LOCAL-00001" summary="Split func.cs">
       <created>1607847473285</created>
@@ -313,7 +318,21 @@
       <option name="project" value="LOCAL" />
       <updated>1608148068463</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="kill me">
+      <created>1608150453128</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1608150453129</updated>
+    </task>
+    <task id="LOCAL-00018" summary="fixed H3VRModInstaller.JSON.csproj">
+      <created>1608150610052</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1608150610052</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -350,6 +369,26 @@
     <MESSAGE value="Fixed TNHTweaker deli" />
     <MESSAGE value="Added serialise tests" />
     <MESSAGE value="kill me" />
-    <option name="LAST_COMMIT_MESSAGE" value="kill me" />
+    <MESSAGE value="fixed H3VRModInstaller.JSON.csproj" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed H3VRModInstaller.JSON.csproj" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/H3VRModInstaller.Backend/MainClass.cs</url>
+          <line>55</line>
+          <properties documentPath="$PROJECT_DIR$/H3VRModInstaller.Backend/MainClass.cs" initialLine="54" containingFunctionPresentation="method 'Main'">
+            <startOffsets>
+              <option value="1545" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1568" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

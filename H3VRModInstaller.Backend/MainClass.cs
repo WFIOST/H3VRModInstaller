@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using System.IO;
 using H3VRModInstaller.Net;
 //using H3VRModInstaller.Json;
@@ -35,7 +36,7 @@ namespace H3VRModInstaller
 						downloader.DownloadModDirector(inputargs[1]);
 						break;
 					case "launch":
-
+						Process.Start("h3vr.exe");
 						break;
 					case "list":
 						switch (inputargs[1])
@@ -58,6 +59,8 @@ namespace H3VRModInstaller
 								break;
 						}
 						break;
+					case "rm":
+						
 					case "exit":
 						return;
 				}

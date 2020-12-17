@@ -7,11 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Glob" Version="1.2.0-alpha0032" />
+    <ProjectReference Include="..\H3VRModInstaller.JSON\H3VRModInstaller.JSON.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\H3VRModInstaller.JSON\H3VRModInstaller.JSON.csproj" />
+    <PackageReference Include="Glob" Version="1.2.0-alpha0032" />
   </ItemGroup>
 
 </Project>
