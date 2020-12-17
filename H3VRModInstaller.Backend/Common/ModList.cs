@@ -194,7 +194,7 @@ namespace H3VRModInstaller.Filesys.Common
 		public string[] ConfigurationManagerInfo = { "BepInEx.ConfigurationManager_v16.1.zip", "https://github.com/BepInEx/BepInEx.ConfigurationManager/releases/download/v16.1/", "", "bepinex" };
 
 		public string[] CursedDllsInfo = { "CursedDlls.BepInEx_v1.3.zip", "https://github.com/drummerdude2003/CursedDlls.BepinEx/releases/download/v1.3/", "unzipToDir?BepInEx/plugins/", "bepinex", "monomod" };
-		public string[] WurstModInfo = { "WurstMod.deli", "https://github.com/Nolenz/WurstMod/releases/download/v2.0.2.0/", "", "bepinex", "deli"};
+		public string[] WurstModInfo = { "WurstMod.deli", "https://github.com/Nolenz/WurstMod/releases/download/v2.0.2.0/", "moveToFolder?WurstMod.deli?Mods/?WurstMod.deli", "bepinex", "deli"};
 		public string[] TnHTweaker = { "TakeAndHoldTweaker.Unzip.Me.zip", "https://github.com/devyndamonster/TakeAndHoldTweaker/releases/download/v1.4.0/", "", "bepinex", "deli" };
 		public string[] H3VRUtilsInfo = { "H3VRUtilities.zip", "https://bonetome.com/download.php?file=MTRmZjdkYWM4M2YzNDdmNCszNjUrODUx", "unzipToDir?Mods/", "bepinex", "sideloader" };
 		
