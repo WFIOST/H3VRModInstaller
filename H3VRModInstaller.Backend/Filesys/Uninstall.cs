@@ -20,7 +20,7 @@ namespace H3VRModInstaller.Filesys
         string[] h3ModsToDelete = Glob.FilesAndDirectories(@"Mods/", "**.h3mod").ToArray();
         string[] hotModsToDelete = Glob.FilesAndDirectories(@"Mods/", "**.hotmod").ToArray();
         string[] deliModsToDelete = Glob.FilesAndDirectories(@"Mods/", "**.deli").ToArray();
-        public bool Delete(string[] modToRemove, Dirs directory)
+        public bool Delete(string modToRemove, Dirs directory)
         {
             string dir = "";
             switch (directory)
@@ -41,7 +41,7 @@ namespace H3VRModInstaller.Filesys
                     dir = "CustomLevels/";
                     break;
             }
-            File.Delete(dir + modToRemove[0]);
+            File.Delete(dir + modToRemove);
             return true;
         }
 

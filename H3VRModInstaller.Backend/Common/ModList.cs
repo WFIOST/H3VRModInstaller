@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using H3VRModInstaller.Net;
 
 namespace H3VRModInstaller.Filesys.Common
@@ -223,5 +224,31 @@ namespace H3VRModInstaller.Filesys.Common
             Console.WriteLine("Github is either down, or no internet is detected!");
             return false;
         }
+
+
+		
+		//this was a pain to make
+		public string wurstModFile = Directory.GetCurrentDirectory() + "Mods/WurstMod.deli";
+		public string tnhTweakerFile = Directory.GetCurrentDirectory() + "Mods/TakeAndHoldTweaker.deli";
+		public string[] cursedDLLFiles = { Directory.GetCurrentDirectory() + "BepInEx/Plugins/CursedDlls/Cursed.BetterBipods.dll", Directory.GetCurrentDirectory() + "BepInEx/Plugins/CursedDlls/Cursed.FullAuto.dll", Directory.GetCurrentDirectory() + "BepInEx/Plugins/CursedDlls/Cursed.LoadScene.dll", Directory.GetCurrentDirectory() + "BepInEx/Plugins/CursedDlls/Cursed.RemoveAttachmentChecks.dll", Directory.GetCurrentDirectory() + "BepInEx/Plugins/CursedDlls/Cursed.RemoveMagCheck.dll", Directory.GetCurrentDirectory() + "BepInEx/Plugins/CursedDlls/Cursed.RemoveRoundTypeCheck.dll", Directory.GetCurrentDirectory() + "BepInEx/Plugins/CursedDlls/Cursed.SuppressAssemblyLoadErrors.dll", Directory.GetCurrentDirectory() + "BepInEx/Plugins/CursedDlls/Cursed.TimeScale.dll", Directory.GetCurrentDirectory() + "BepInEx/Plugins/CursedDlls/Cursed.UnlockAll.dll"};
+		public string[] deliFiles = { Directory.GetCurrentDirectory() + "BepInEx/Plugins/Deli/Deli.Runtime.dll", Directory.GetCurrentDirectory() + "BepInEx/Patchers/Deli/ADepIn.dll", Directory.GetCurrentDirectory() + "BepInEx/Patchers/Deli/Deli.dll", Directory.GetCurrentDirectory() + "BepInEx/Patchers/Deli/DotNetZip.dll", Directory.GetCurrentDirectory() + "BepInEx/Patchers/Deli/I18N.dll", Directory.GetCurrentDirectory() + "BepInEx/Patchers/Deli/I18N.West.dll", Directory.GetCurrentDirectory() + "Mods/Deli.Core.deli", Directory.GetCurrentDirectory() + "Mods/Deli.MonoMod.deli"};
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 }
