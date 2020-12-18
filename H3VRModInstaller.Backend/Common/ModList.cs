@@ -64,6 +64,7 @@ namespace H3VRModInstaller.Filesys.Common
 					{
 						Console.WriteLine("BepInEx detected");
 					}
+					info = BepInExInfo;
 					break;
 				case "resourceredirector":
 					info = ResourceRedirectorInfo;
@@ -77,6 +78,7 @@ namespace H3VRModInstaller.Filesys.Common
 					{
 						Console.WriteLine("Deli detected");
 					}
+					info = DeliInfo;
 					break;
 				case "monomod":
 					info = MonomodInfo;
@@ -90,6 +92,7 @@ namespace H3VRModInstaller.Filesys.Common
 					{
 						Console.WriteLine("CursedDLLs detected");
 					}
+					info = CursedDllsInfo;
 					break;
 				case "wurstmod":
 					if (!modCheck.CheckWurstMod())
@@ -100,7 +103,7 @@ namespace H3VRModInstaller.Filesys.Common
 					{
 						Console.WriteLine("WurstMod detected");
 					}
-
+					info = WurstModInfo;
 					break;
                 case "tnhtweaker":
 	                if (!modCheck.CheckTNHTweaker())
@@ -111,7 +114,8 @@ namespace H3VRModInstaller.Filesys.Common
 	                {
 		                Console.WriteLine("TNH Tweaker detected");
 	                }
-	                break;
+					info = TnHTweaker;
+					break;
 				case "sideloader":
 					if (!modCheck.CheckSideloader())
 					{
@@ -121,7 +125,7 @@ namespace H3VRModInstaller.Filesys.Common
 					{
 						Console.WriteLine("Sideloader Detected");
 					}
-
+					info = SideloaderInfo;
 					break;
 				case "lsiic":
 					if (!modCheck.CheckLSIIC())
@@ -132,6 +136,7 @@ namespace H3VRModInstaller.Filesys.Common
 					{
 						Console.WriteLine("LSIIC Detected");
 					}
+					info = LSIICInfo;
 					break;
 				case "h3vrutils":
 					info = H3VRUtilsInfo;
