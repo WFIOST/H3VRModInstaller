@@ -32,11 +32,22 @@ namespace H3VRModInstaller.Json
             BepInEx.Dependencies[0] = "";
             
             string serialisedBepInEx = JsonConvert.SerializeObject(BepInEx);
+            makeModFilesDir();
             File.Create(Directory.GetCurrentDirectory() + "/ModFiles/BepInEx.json");
             File.WriteAllText(Directory.GetCurrentDirectory() + "/ModFiles/BepInEx.json", serialisedBepInEx);
             Console.WriteLine(serialisedBepInEx);
             return true;
         }
+
+        private bool makeModFilesDir()
+        {
+            if (!Directory.Exists("/ModFiles/"))
+            {
+                Directory.CreateDirectory("/ModFiles/");
+            }
+            return true;
+        }
+        
     }
     
 }
