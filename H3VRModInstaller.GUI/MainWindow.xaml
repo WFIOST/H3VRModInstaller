@@ -31,7 +31,7 @@
 			</Button>
 		</StackPanel>
 		<TextBlock x:Name="title" FontFamily="Tahoma" FontSize="48" FontWeight="Normal" TextAlignment="Center" Text="H3VR Mod Installer"/>
-		<Button x:Name="cmdInstall" Margin="469,109,274,387">
+		<Button x:Name="cmdInstall" Margin="469,109,274,387" Click="InstallMod">
 			<TextBlock x:Name="cmdInstallText" Text = "Install" FontFamily="Tahoma" FontSize="36" FontWeight="Normal" TextAlignment="Center" Height="44" Width="239"/>
 		</Button>
 		<Button x:Name="cmdDelete" Margin="728,109,15,387">
@@ -40,7 +40,7 @@
 		<TextBlock x:Name="ModSelectedText" Text = "BepInEx" FontFamily="Tahoma" FontSize="36" FontWeight="Normal" TextAlignment="Center" Margin="469,61,15,438"/>
 		<TextBlock x:Name="ModSelectedDesc" FontFamily="Consolas" FontSize="22" FontWeight="Normal" TextAlignment="Left" Margin="469,160,15,146" Background="#FFD1D1D1" Grid.ColumnSpan="1" TextWrapping="Wrap"><Run Text="BepInEx is a mod "/><Run Language="en-gb" Text="injector"/><Run Text=" necessary for every single H3VR mod."/></TextBlock>
 		<ScrollBar x:Name="ModScrollBar" Margin="428,57,547,101" Background="White" BorderBrush="#FFBDBDBD" Foreground="Black"/>
-		<Button x:Name="Launch" Margin="464,446,212,10">
+		<Button x:Name="Launch" Margin="464,446,212,10" Click="LaunchGame">
 			<TextBlock x:Name="cmdInstallText1" Text = "Launch H3VR" FontFamily="Tahoma" FontSize="48" FontWeight="Normal" TextAlignment="Center" Height="56" Width="293"/>
 		</Button>
 		<CheckBox x:Name="DisModsCheckBox" Margin="867,438,10,2">

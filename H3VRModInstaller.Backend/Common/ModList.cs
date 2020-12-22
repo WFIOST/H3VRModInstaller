@@ -7,7 +7,7 @@ namespace H3VRModInstaller.Filesys.Common
     class ModList
     {
 	    private ModCheck modCheck = new ModCheck();
-		public Tuple<string[,]> parseInfo(string[] infopath, string[,] modlist)
+		public Tuple<string[,]> parseInfo(string[] infopath, string[,] modlist, string mod)
 		{
 			Console.WriteLine("Parsing " + infopath[0]);
 			Console.WriteLine("modlist is " + modlist.GetLength(0) + " by " + modlist.GetLength(1));
@@ -19,6 +19,7 @@ namespace H3VRModInstaller.Filesys.Common
 					modlist[i, 0] = infopath[0];
 					modlist[i, 1] = infopath[1];
 					modlist[i, 2] = infopath[2];
+					modlist[i, 3] = mod;
 					_brk = true;
 				}
 				else Console.WriteLine("Line is " + modlist[i, 0] + " , not empty!");
@@ -182,7 +183,7 @@ namespace H3VRModInstaller.Filesys.Common
 					break;
 			}
 			if(info.Length == 1) { Console.WriteLine("Fail to find mod!"); return null; }
-			result = parseInfo(info, modlist);
+			result = parseInfo(info, modlist, mod);
 
 			for (int i = 0; i < modlist.GetLength(0) - 1; i++) {
 				if (modlist[i, 0] == null) break;

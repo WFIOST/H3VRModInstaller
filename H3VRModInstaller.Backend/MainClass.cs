@@ -2,7 +2,7 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using H3VRModInstaller.Net;
-//using H3VRModInstaller.Json;
+using H3VRModInstaller.JSON;
 
 namespace H3VRModInstaller
 {
@@ -32,6 +32,10 @@ namespace H3VRModInstaller
 
 				switch (inputargs[0])
 				{
+					case "wipe":
+						File.Delete(Directory.GetCurrentDirectory() + @"\installedmods.json");
+						Console.WriteLine("Wiped!");
+						break;
 					case "dl":
 						downloader.DownloadModDirector(inputargs[1]);
 						break;
@@ -57,6 +61,9 @@ namespace H3VRModInstaller
 								Console.WriteLine("");
 								listAllCustomItems();
 								break;
+							case "installedmods":
+								Console.WriteLine(ReturnArrayInString(InstalledMods.GetInstalledMods()));
+								break;
 						}
 						break;
 					case "rm":
@@ -74,6 +81,17 @@ namespace H3VRModInstaller
 				Console.ReadKey();
 			}
 			Console.ReadKey();
+		}
+
+		public static string ReturnArrayInString(string[] array)
+		{
+			string strng = "";
+			for (int i = 0; i < array.Length; i++)
+			{
+				strng += array[i];
+				strng += ", ";
+			}
+			return strng;
 		}
 
 		public static void listAllDependencyMods()

@@ -2,7 +2,7 @@ using System;
 using Newtonsoft.Json;
 using System.IO;
 
-namespace H3VRModInstaller.Json
+namespace H3VRModInstaller.JSON
 {
     public class ModFile
     {
@@ -16,7 +16,7 @@ namespace H3VRModInstaller.Json
         public string[] Dependencies { get; set; }
     }
 
-    public class Serialisation
+    public class GetModLists
     {
         private ModFile BepInEx = new ModFile();
         public bool SerialiseBepInEx()

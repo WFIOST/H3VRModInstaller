@@ -6,4 +6,8 @@
         <UseWPF>true</UseWPF>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\H3VRModInstaller.Backend\H3VRModInstaller.Backend.csproj" />
+    </ItemGroup>
+
 </Project>

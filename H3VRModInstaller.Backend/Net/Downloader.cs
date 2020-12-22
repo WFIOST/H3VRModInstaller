@@ -3,6 +3,7 @@ using System.Threading;
 using System.Net;
 using H3VRModInstaller.Filesys;
 using H3VRModInstaller.Filesys.Common;
+using H3VRModInstaller.JSON;
 
 namespace H3VRModInstaller.Net
 {
@@ -13,23 +14,20 @@ namespace H3VRModInstaller.Net
 		private readonly InstallMods installer = new();
 		private readonly ModList mods = new();
 		private bool finished = false;
-		public string[] ModsDownloaded;
 
 		public bool DownloadMod(string[] fileinfo)
 		{
-			if (ModsDownloaded == null)
-			{
-				ModsDownloaded = new string[0];
-			}
+			string[] installedmods = InstalledMods.GetInstalledMods();
 			finished = false;
 			if (fileinfo[0] == "" || fileinfo[0] == null) { return false; }
 
 			string fileToDownload = fileinfo[0];
 			string locationOfFile = fileinfo[1];
 
-			for (int i = 0; i < ModsDownloaded.Length; i++)
+			bool redownload = false;
+			for (int i = 0; i < installedmods.Length; i++)
 			{
-				if (fileToDownload == ModsDownloaded[i])
+				if (fileinfo[4] == installedmods[i])
 				{
 					if (fileinfo[3] == "0")
 					{
@@ -38,6 +36,7 @@ namespace H3VRModInstaller.Net
 						var input = Console.ReadLine();
 						if (input == "y")
 						{
+							redownload = true;
 							break;
 						}
 						else if (input == "n")
@@ -73,9 +72,9 @@ namespace H3VRModInstaller.Net
 
 			installer.installMod(fileinfo);
 
-			Array.Resize<string>(ref ModsDownloaded, ModsDownloaded.Length + 1);
-			ModsDownloaded[ModsDownloaded.Length - 1] = fileToDownload;
-
+			//			Array.Resize<string>(ref ModsDownloaded, ModsDownloaded.Length + 1);
+			//			ModsDownloaded[ModsDownloaded.Length - 1] = fileinfo[4];
+			if(!redownload) InstalledMods.AddInstalledMods(fileinfo[4]);
 			return true;
 		}
 
@@ -99,11 +98,12 @@ namespace H3VRModInstaller.Net
 			if (result == null) return false;
 			for (var i = 0; i < result.Item1.GetLength(0); i++)
 			{
-				string[] fileinfo = new string[4];
-				fileinfo[0] = result.Item1[i, 0];
-				fileinfo[1] = result.Item1[i, 1];
-				fileinfo[2] = result.Item1[i, 2];
-				fileinfo[3] = i.ToString();
+				string[] fileinfo = new string[5];
+				fileinfo[0] = result.Item1[i, 0]; //File name
+				fileinfo[1] = result.Item1[i, 1]; //File loc
+				fileinfo[2] = result.Item1[i, 2]; //args
+				fileinfo[3] = i.ToString(); //modnumber
+				fileinfo[4] = result.Item1[i, 3]; //File ID
 				DownloadMod(fileinfo);
 			}
 			return true;
