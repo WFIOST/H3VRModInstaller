@@ -7,9 +7,9 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="558" Width="992">
 	<Grid>
-		<Border x:Name="ModInfoBorder_Copy" Background="#FF9B9B9B" Margin="10,57,564,10"/>
+		<Border x:Name="ModInfoBorder_Copy" Background="#FF9B9B9B" Margin="10,57,564,101"/>
 		<Border x:Name="ModInfoBorder" Background="#FF9B9B9B" Margin="464,57,10,101"/>
-		<StackPanel x:Name="ModListPanel" Margin="10,57,564,10" RenderTransformOrigin="0.5,0.5">
+		<StackPanel x:Name="ModListPanel" Margin="10,57,564,102" RenderTransformOrigin="0.5,0.5">
 			<StackPanel.Resources>
 				<Style TargetType="{x:Type Button}">
 					<Setter Property="Margin" Value="5" />
@@ -30,7 +30,7 @@
 				<TextBlock x:Name="TxtMod2" Text = "WurstMod" FontFamily="Tahoma" FontSize="36" FontWeight="Normal" TextAlignment="Center" Height="43" Width="400" />
 			</Button>
 		</StackPanel>
-		<TextBlock x:Name="title" Text = "H3VR Mod Installer" FontFamily="Consolas" FontSize="48" FontWeight="Bold" TextAlignment="Center"/>
+		<TextBlock x:Name="title" FontFamily="Tahoma" FontSize="48" FontWeight="Normal" TextAlignment="Center" Text="H3VR Mod Installer"/>
 		<Button x:Name="cmdInstall" Margin="469,109,274,387">
 			<TextBlock x:Name="cmdInstallText" Text = "Install" FontFamily="Tahoma" FontSize="36" FontWeight="Normal" TextAlignment="Center" Height="44" Width="239"/>
 		</Button>
@@ -38,13 +38,30 @@
 			<TextBlock x:Name="cmdDeleteText" Text = "Delete" FontFamily="Tahoma" FontSize="36" FontWeight="Normal" TextAlignment="Center" Height="44" Width="239"/>
 		</Button>
 		<TextBlock x:Name="ModSelectedText" Text = "BepInEx" FontFamily="Tahoma" FontSize="36" FontWeight="Normal" TextAlignment="Center" Margin="469,61,15,438"/>
-		<TextBlock x:Name="ModSelectedDesc" FontFamily="Consolas" FontSize="22" FontWeight="Normal" TextAlignment="Left" Margin="469,160,15,204" Background="#FFD1D1D1" Grid.ColumnSpan="1" TextWrapping="Wrap"><Run Text="BepInEx is a mod "/><Run Language="en-gb" Text="injector"/><Run Text=" necessary for every single H3VR mod."/></TextBlock>
-		<ScrollBar Margin="428,57,547,10" Background="White" BorderBrush="#FFBDBDBD" Foreground="Black"/>
-		<Button x:Name="Launch" Margin="464,470,279,26">
-			<TextBlock x:Name="cmdInstallText1" Text = "Launch H3VR" FontFamily="Tahoma" FontSize="36" FontWeight="Normal" TextAlignment="Center" Height="44" Width="239"/>
+		<TextBlock x:Name="ModSelectedDesc" FontFamily="Consolas" FontSize="22" FontWeight="Normal" TextAlignment="Left" Margin="469,160,15,146" Background="#FFD1D1D1" Grid.ColumnSpan="1" TextWrapping="Wrap"><Run Text="BepInEx is a mod "/><Run Language="en-gb" Text="injector"/><Run Text=" necessary for every single H3VR mod."/></TextBlock>
+		<ScrollBar x:Name="ModScrollBar" Margin="428,57,547,101" Background="White" BorderBrush="#FFBDBDBD" Foreground="Black"/>
+		<Button x:Name="Launch" Margin="464,446,212,10">
+			<TextBlock x:Name="cmdInstallText1" Text = "Launch H3VR" FontFamily="Tahoma" FontSize="48" FontWeight="Normal" TextAlignment="Center" Height="56" Width="293"/>
 		</Button>
-		<Button x:Name="LaunchUnmod" Margin="723,470,20,26">
-			<TextBlock x:Name="cmdDeleteText1" Text = "Vanilla Launch" FontFamily="Tahoma" FontSize="36" FontWeight="Normal" TextAlignment="Center" Height="44" Width="239"/>
+		<CheckBox x:Name="DisModsCheckBox" Margin="867,438,10,2">
+			<CheckBox.LayoutTransform>
+				<ScaleTransform ScaleX="7" ScaleY="7" />
+			</CheckBox.LayoutTransform>
+		</CheckBox>
+		<ProgressBar x:Name="DLprogress" Margin="469,400,113,105" RenderTransformOrigin="0.5,0.5">
+			<ProgressBar.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform AngleX="0.734"/>
+					<RotateTransform/>
+					<TranslateTransform X="0.237"/>
+				</TransformGroup>
+			</ProgressBar.RenderTransform>
+		</ProgressBar>
+		<TextBlock x:Name="DisableMods" FontFamily="Tahoma" FontSize="24" FontWeight="Normal" TextAlignment="Center" Margin="762,458,102,22"><Run Text="Disable"/><LineBreak/><Run Text="Mods"/></TextBlock>
+		<TextBlock x:Name="Percentage" FontFamily="Consolas" FontSize="24" FontWeight="Normal" TextAlignment="Center" Margin="860,403,-7,107" Text="100.00%"/>
+		<Button x:Name="Launch_Copy" Margin="10,446,792,8">
+			<TextBlock x:Name="cmdInstallText2" FontFamily="Tahoma" FontSize="48" FontWeight="Normal" TextAlignment="Center" Height="56" Width="180"><Run Language="en-gb" Text="Back"/><LineBreak/><Run Language="en-gb"/></TextBlock>
 		</Button>
 	</Grid>
 </Window>
