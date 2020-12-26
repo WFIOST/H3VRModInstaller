@@ -3,27 +3,31 @@ using System.Diagnostics;
 using System.IO;
 using H3VRModInstaller.Net;
 using H3VRModInstaller.JSON;
+using GlobExpressions;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace H3VRModInstaller
 {
     class MainClass
     {
 	    //private static Serialisation Json = new Serialisation();
-        private static bool BypassH3VR = true;
+        private static bool BypassH3VR = false;
         private static readonly Downloader downloader = new Downloader();
         public static void Main(string[] args)
         {        
 	        
 	        
-	        if (File.Exists("H3VR.exe") || BypassH3VR)
+	        if (File.Exists(ModLists.h3vrdir + @"\H3VR.exe") || BypassH3VR)
 			{
 				Console.WriteLine("H3VR.exe detected");
+				ModLists.ModListDownload();
 				Console.WriteLine("Welcome to the H3VR Mod installer!");
-
-				Start:
 				Console.WriteLine("Please select the mod you would like to install using 'dl [modnamehere]' ");
 				Console.WriteLine("ex: 'dl wurstmod'");
-				Console.WriteLine("For a full list of mods, type 'list all', 'list dependencies', 'list scripts', or 'list items'");
+				Console.WriteLine("To see a list of downloadable mods, type 'modlists'");
+				Console.WriteLine("To see a list of commands, type 'help'");
+			Start:
 				var input = Console.ReadLine();
 
 				string[] inputargs = input.Split(' ');
@@ -36,40 +40,52 @@ namespace H3VRModInstaller
 						File.Delete(Directory.GetCurrentDirectory() + @"\installedmods.json");
 						Console.WriteLine("Wiped!");
 						break;
-					case "dl":
-						downloader.DownloadModDirector(inputargs[1]);
+					case "modlists":
+						listmodlists();
 						break;
-					case "launch":
-						Process.Start("h3vr.exe");
+					case "check":
+
+						ModListFormat[] ml = ModLists.LoadModLists();
+
+						for (int i = 0; i < ml.Length; i++)
+						{
+							for (int x = 0; x < ml[i].modlist.Length; x++)
+							{
+								if (ml[i].modlist[x].modID == inputargs[1])
+								{
+									string link = ml[i].modlist[x].Website;
+									var psi = new ProcessStartInfo
+									{
+										FileName = link,
+										UseShellExecute = true
+									};
+									Process.Start(psi);
+								}
+							}
+						}
+
+						break;
+					case "dl":
+						Downloader.DownloadModDirector(inputargs[1]);
 						break;
 					case "list":
-						switch (inputargs[1])
-						{
-							case "dependencies":
-								listAllDependencyMods();
-								break;
-							case "scripts":
-								listAllCustomScripts();
-								break;
-							case "items":
-								listAllCustomItems();
-								break;
-							case "all":
-								listAllDependencyMods();
-								Console.WriteLine("");
-								listAllCustomScripts();
-								Console.WriteLine("");
-								listAllCustomItems();
-								break;
-							case "installedmods":
-								Console.WriteLine(ReturnArrayInString(InstalledMods.GetInstalledMods()));
-								break;
-						}
+						if (inputargs[1] == "installedmods") { Console.WriteLine(ReturnArrayInString(InstalledMods.GetInstalledMods())); }
+						else { list(inputargs[1]); }
 						break;
-					case "rm":
-						
 					case "exit":
 						return;
+					case "help":
+						Console.WriteLine("wipe - Wipes all data for installed mods.");
+						Console.WriteLine("modlists - Lists all modlists, which are lists of mods.");
+						Console.WriteLine("dl [modname] - Downloads mod listed.");
+						Console.WriteLine("check [modname] - Opens browser to modpage.");
+						Console.WriteLine("list [modlist] - Lists all mods contained in a modlist.");
+						Console.WriteLine("list installedmods - Lists all mods registered as installed.");
+						Console.WriteLine("exit - Close H3VRModInstaller.");
+						break;
+					default:
+						Console.WriteLine("Invalid command!");
+						break;
 				}
 
 				goto Start;
@@ -94,43 +110,41 @@ namespace H3VRModInstaller
 			return strng;
 		}
 
-		public static void listAllDependencyMods()
+		public static void listmodlists()
 		{
-			Console.WriteLine("List of all dependency mods (Does not add any content by itself, allows other mods to add content)");
-			Console.WriteLine("bepinex");
-			Console.WriteLine("resourceredirector");
-			Console.WriteLine("deli");
-			Console.WriteLine("monomod");
-			Console.WriteLine("wurstmod");
-			Console.WriteLine("tnhtweaker");
-			Console.WriteLine("sideloader");
-			Console.WriteLine("lsiic");
-			Console.WriteLine("h3vrutils");
-			Console.WriteLine("configurationmanager");
+			Console.WriteLine("");
+			string[] jsonfiles = Glob.FilesAndDirectories(Directory.GetCurrentDirectory() + @"/ModInstallerLists/", "**.json").ToArray();
+			for (int i = 0; i < jsonfiles.Length; i++)
+			{
+				jsonfiles[i] = jsonfiles[i].Remove(jsonfiles[i].Length - 5, 5);
+				Console.WriteLine(jsonfiles[i]);
+			}
+			Console.WriteLine("");
 		}
 
-		public static void listAllCustomScripts()
+		public static void list(string input)
 		{
-			Console.WriteLine("List of all custom scripts");
-			Console.WriteLine("curseddlls");
-			Console.WriteLine("meatyceiver");
-		}
-
-		public static void listAllCustomItems()
-		{
-			Console.WriteLine("List of all custom items (NOTE: downloads are real slow, just sit tight.)");
-			Console.WriteLine("pccg");
-			Console.WriteLine("modular");
-			Console.WriteLine("meatssidecharger");
-			Console.WriteLine("meatsrigs");
-			Console.WriteLine("meatsmags");
-			Console.WriteLine("meatsmodulsr");
-			Console.WriteLine("meatsmodulpp");
-			Console.WriteLine("meatsmodulak");
-			Console.WriteLine("meatsmodularparts");
-			Console.WriteLine("meatsmpx");
-			Console.WriteLine("meatsmodulm4");
-			Console.WriteLine("ebr");
+			Console.WriteLine("");
+			string jsonname = input + ".json";
+			string[] jsonfiles = Glob.FilesAndDirectories(Directory.GetCurrentDirectory() + @"/ModInstallerLists/", "**.json").ToArray();
+			bool foundmod = false;
+			for (int i = 0; i < jsonfiles.Length; i++)
+			{
+				if(jsonname == jsonfiles[i])
+				{
+					foundmod = true;
+					ModListFormat mods = ModLists.LoadSpecificJSON(jsonname);
+					for (int x = 0; x < mods.modlist.Length; x++)
+					{
+						Console.WriteLine(mods.modlist[x].modID);
+					}
+				}
+			}
+			if(foundmod == false)
+			{
+				Console.WriteLine("List not found!");
+			}
+			Console.WriteLine("");
 		}
 	}
 }

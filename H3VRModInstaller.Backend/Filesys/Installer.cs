@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.IO.Compression;
+using H3VRModInstaller.JSON;
 
 namespace H3VRModInstaller.Filesys
 {
@@ -10,6 +11,7 @@ namespace H3VRModInstaller.Filesys
 
 		public bool installMod(string[] fileinfo, bool delArchive = false)
 		{
+			fileinfo[2].Replace("BACKSLASH", @"\");
 
 			if (fileinfo[2] == "")
 			{
@@ -32,12 +34,12 @@ namespace H3VRModInstaller.Filesys
 				if (args[i] == "unzipToDir")
 				{
 					Console.WriteLine("Unzipping to " + args[i + 1]);
-					installer.unzip(fileinfo[0], Directory.GetCurrentDirectory() + "/" + args[i + 1], delArchive);
+					installer.unzip(fileinfo[0], ModLists.h3vrdir + "/" + args[i + 1], delArchive);
 				}
 				if (args[i] == "addFolder")
 				{
 					Console.WriteLine("Creating Directory " + args[i + 1]);
-					Directory.CreateDirectory(args[i + 1]);
+					Directory.CreateDirectory(ModLists.h3vrdir + args[i + 1]);
 				}
 				if (args[i] == "break") break;
 			}
@@ -48,6 +50,7 @@ namespace H3VRModInstaller.Filesys
 		public static bool moveToFolder(string mod, string dir, string renameTo = "")
 		{
 			if (renameTo == "") renameTo = mod;
+			dir = ModLists.h3vrdir + @"\" + dir;
 			if (!Directory.Exists(dir))
 				Directory.CreateDirectory(dir);
 			Console.WriteLine("Moving " + mod + " to dir " + dir + " as " + renameTo);

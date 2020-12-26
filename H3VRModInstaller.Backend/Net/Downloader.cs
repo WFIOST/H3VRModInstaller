@@ -5,17 +5,17 @@ using H3VRModInstaller.Filesys;
 using H3VRModInstaller.Filesys.Common;
 using H3VRModInstaller.JSON;
 
-namespace H3VRModInstaller.Net
+namespace H3VRModInstaller
 {
-	class Downloader
+	public class Downloader
 	{
 
-		private readonly WebClient downloader = new();
-		private readonly InstallMods installer = new();
-		private readonly ModList mods = new();
-		private bool finished = false;
+		private static readonly WebClient downloader = new();
+		private static readonly InstallMods installer = new();
+		private static readonly ModList mods = new();
+		private static bool finished = false;
 
-		public bool DownloadMod(string[] fileinfo)
+		public static bool DownloadMod(string[] fileinfo, bool autoredownload = false)
 		{
 			string[] installedmods = InstalledMods.GetInstalledMods();
 			finished = false;
@@ -25,31 +25,34 @@ namespace H3VRModInstaller.Net
 			string locationOfFile = fileinfo[1];
 
 			bool redownload = false;
-			for (int i = 0; i < installedmods.Length; i++)
+			if (!autoredownload)
 			{
-				if (fileinfo[4] == installedmods[i])
+				for (int i = 0; i < installedmods.Length; i++)
 				{
-					if (fileinfo[3] == "0")
+					if (fileinfo[4] == installedmods[i])
 					{
+						if (fileinfo[3] == "0")
+						{
 						repeat:
-						Console.WriteLine("Mod already installed Are you sure you want to reinstall? (y/n)");
-						var input = Console.ReadLine();
-						if (input == "y")
-						{
-							redownload = true;
-							break;
+							Console.WriteLine("Mod already installed Are you sure you want to reinstall? (y/n)");
+							var input = Console.ReadLine();
+							if (input == "y")
+							{
+								redownload = true;
+								break;
+							}
+							else if (input == "n")
+							{
+								return false;
+							}
+							else goto repeat;
 						}
-						else if (input == "n")
-						{
-							return false;
-						}
-						else goto repeat;
+						Console.WriteLine("Mod already installed!");
+						return false;
 					}
-					Console.WriteLine("Mod already installed!");
-					return false;
 				}
 			}
-
+			else redownload = true;
 			Uri fileloc = new Uri(locationOfFile + fileToDownload);
 
 			Console.WriteLine("Downloading Mod \"{0}\" from \"{1}{0}\"\n", fileToDownload, locationOfFile);
@@ -78,12 +81,12 @@ namespace H3VRModInstaller.Net
 			return true;
 		}
 
-		public void dlcomplete(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
+		public static void dlcomplete(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
 		{
 			finished = true;
 		}
 
-		public void dlprogress(object sender, DownloadProgressChangedEventArgs e)
+		public static void dlprogress(object sender, DownloadProgressChangedEventArgs e)
 		{
 			float percentage = ((float)e.BytesReceived / (float)e.TotalBytesToReceive) * 100;
 			string percentagetext = String.Format("{0:00.00}", percentage);
@@ -91,7 +94,7 @@ namespace H3VRModInstaller.Net
 		}
 
 
-		public bool DownloadModDirector(string mod, bool downloadAll = false)
+		public static bool DownloadModDirector(string mod, bool downloadAll = false)
 		{
 			if (!mods.onlineCheck()) { Console.WriteLine("Not connected to internet, or GitHub is down!"); return false; }
 			var result = mods.getModInfo(mod);
