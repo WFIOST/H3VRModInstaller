@@ -5,11 +5,10 @@ using H3VRModInstaller.JSON;
 
 namespace H3VRModInstaller.Filesys
 {
-	internal class InstallMods
+	public class Installer
 	{
-		private static readonly Zip installer = new();
 
-		public bool installMod(string[] fileinfo, bool delArchive = false)
+		public static bool installMod(string[] fileinfo, bool delArchive = false)
 		{
 			fileinfo[2].Replace("BACKSLASH", @"\");
 
@@ -34,12 +33,12 @@ namespace H3VRModInstaller.Filesys
 				if (args[i] == "unzipToDir")
 				{
 					Console.WriteLine("Unzipping to " + args[i + 1]);
-					installer.unzip(fileinfo[0], ModLists.h3vrdir + "/" + args[i + 1], delArchive);
+					Zip.unzip(fileinfo[0], JSONModList.h3vrdir + "/" + args[i + 1], delArchive);
 				}
 				if (args[i] == "addFolder")
 				{
 					Console.WriteLine("Creating Directory " + args[i + 1]);
-					Directory.CreateDirectory(ModLists.h3vrdir + args[i + 1]);
+					Directory.CreateDirectory(JSONModList.h3vrdir + args[i + 1]);
 				}
 				if (args[i] == "break") break;
 			}
@@ -50,17 +49,17 @@ namespace H3VRModInstaller.Filesys
 		public static bool moveToFolder(string mod, string dir, string renameTo = "")
 		{
 			if (renameTo == "") renameTo = mod;
-			dir = ModLists.h3vrdir + @"\" + dir;
+			dir = JSONModList.h3vrdir + @"\" + dir;
 			if (!Directory.Exists(dir))
 				Directory.CreateDirectory(dir);
 			Console.WriteLine("Moving " + mod + " to dir " + dir + " as " + renameTo);
-			if(File.Exists(ModLists.h3vrdir + @"\" + mod))
+			if(File.Exists(JSONModList.h3vrdir + @"\" + mod))
 			{
-				File.Move(ModLists.h3vrdir + @"\" + mod, dir + renameTo, true);
+				File.Move(JSONModList.h3vrdir + @"\" + mod, dir + renameTo, true);
 			}
-			if(Directory.Exists(ModLists.h3vrdir + @"\" + mod))
+			if(Directory.Exists(JSONModList.h3vrdir + @"\" + mod))
 			{
-				Directory.Move(ModLists.h3vrdir + @"\" + mod, dir + renameTo);
+				Directory.Move(JSONModList.h3vrdir + @"\" + mod, dir + renameTo);
 			}
 			return true;
 		}

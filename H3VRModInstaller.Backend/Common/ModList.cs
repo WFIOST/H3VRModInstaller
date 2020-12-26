@@ -8,7 +8,7 @@ namespace H3VRModInstaller.Filesys.Common
     class ModList
     {
 	    private ModCheck modCheck = new ModCheck();
-		public Tuple<string[,]> parseInfo(string[] infopath, string[,] modlist, string mod)
+		public static Tuple<string[,]> parseInfo(string[] infopath, string[,] modlist, string mod)
 		{
 			Console.WriteLine("Parsing " + infopath[0]);
 			for (int i = 0; i < modlist.GetLength(0); i++)
@@ -39,19 +39,20 @@ namespace H3VRModInstaller.Filesys.Common
 		}
 
 		private const string VO = "VirtualObjects/";
+		public static ModListFormat[] ml = null;
 
-		public Tuple<string[,]> getModInfo(string mod, string[,] modlist = null)
+		public static Tuple<string[,]> getModInfo(string mod, string[,] modlist = null)
 		{
 			if (modlist == null)
 			{
 				modlist = new string[10, 5];
 			}
+			ml = JSONModList.getmodLists();
+
 
 			Tuple<string[,]> result;
 			Console.WriteLine("Getting mod info for " + mod);
 			string[] info = new string[1];
-
-			ModListFormat[] ml = ModLists.LoadModLists();
 
 			for (int i = 0; i < ml.Length; i++)
 			{
@@ -78,18 +79,6 @@ namespace H3VRModInstaller.Filesys.Common
 				Console.WriteLine("mod info:" + modlist[i, 0] + ", " + modlist[i, 1] + ", " + modlist[i, 2]);
 			}
 			return Tuple.Create<string[,]>(result.Item1);
-        }
-
-		public bool onlineCheck()
-        {
-            if (NetCheck.isOnline("www.github.com"))
-            {
-                Console.WriteLine("GitHub is Online!");
-                return true;
-            }
-
-            Console.WriteLine("Github is either down, or no internet is detected!");
-            return false;
         }
 
 

@@ -7,7 +7,7 @@ namespace H3VRModInstaller.Filesys
     public class Zip
     {
 
-        public bool unzip(string fileToUnzip, string unzipLocation, bool deleteArchiveAfterUnzip)
+        public static bool unzip(string fileToUnzip, string unzipLocation, bool deleteArchiveAfterUnzip)
         {
             //why do I even have this?
             Console.WriteLine("Unzipping " + fileToUnzip);

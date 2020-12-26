@@ -2,6 +2,7 @@
 using System.Threading;
 using System.Net;
 using H3VRModInstaller.Filesys;
+using H3VRModInstaller.Net;
 using H3VRModInstaller.Filesys.Common;
 using H3VRModInstaller.JSON;
 
@@ -11,13 +12,11 @@ namespace H3VRModInstaller
 	{
 
 		private static readonly WebClient downloader = new();
-		private static readonly InstallMods installer = new();
-		private static readonly ModList mods = new();
 		private static bool finished = false;
 
 		public static bool DownloadMod(string[] fileinfo, bool autoredownload = false, bool skipdl = false)
 		{
-			if(skipdl == true) { installer.installMod(fileinfo); return true; }
+			if(skipdl == true) { Installer.installMod(fileinfo); return true; }
 			string[] installedmods = InstalledMods.GetInstalledMods();
 			finished = false;
 			if (fileinfo[0] == "" || fileinfo[0] == null) { return false; }
@@ -74,10 +73,8 @@ namespace H3VRModInstaller
 
 			Console.WriteLine("Successfully Downloaded Mod \"{0}\" from \"{1}{0}\"\n", fileToDownload, locationOfFile);
 
-			installer.installMod(fileinfo);
+			Installer.installMod(fileinfo);
 
-			//			Array.Resize<string>(ref ModsDownloaded, ModsDownloaded.Length + 1);
-			//			ModsDownloaded[ModsDownloaded.Length - 1] = fileinfo[4];
 			if(!redownload) InstalledMods.AddInstalledMods(fileinfo[4]);
 			return true;
 		}
@@ -106,8 +103,8 @@ namespace H3VRModInstaller
 
 		public static bool DownloadModDirector(string mod, bool skipdl = false)
 		{
-			if (!mods.onlineCheck()) { Console.WriteLine("Not connected to internet, or GitHub is down!"); return false; }
-			var result = mods.getModInfo(mod);
+			if (!NetCheck.isOnline(MainClass.pingsite)) { Console.WriteLine("Not connected to internet, or " + MainClass.pingsite + " is down!"); return false; }
+			var result = ModList.getModInfo(mod);
 			if (result == null) return false;
 			for (var i = 0; i < result.Item1.GetLength(0); i++)
 			{

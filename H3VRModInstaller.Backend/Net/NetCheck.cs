@@ -9,9 +9,7 @@ namespace H3VRModInstaller.Net
             var ping = new Ping();
             var reply = ping.Send(URL, 1000);
 
-
-            if (reply.Status == IPStatus.Success)
-                return true;
+			if (reply.Status == IPStatus.Success) return true;
             return false;
         }
 
