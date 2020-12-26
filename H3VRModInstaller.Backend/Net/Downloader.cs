@@ -15,8 +15,9 @@ namespace H3VRModInstaller
 		private static readonly ModList mods = new();
 		private static bool finished = false;
 
-		public static bool DownloadMod(string[] fileinfo, bool autoredownload = false)
+		public static bool DownloadMod(string[] fileinfo, bool autoredownload = false, bool skipdl = false)
 		{
+			if(skipdl == true) { installer.installMod(fileinfo); return true; }
 			string[] installedmods = InstalledMods.GetInstalledMods();
 			finished = false;
 			if (fileinfo[0] == "" || fileinfo[0] == null) { return false; }
@@ -88,13 +89,22 @@ namespace H3VRModInstaller
 
 		public static void dlprogress(object sender, DownloadProgressChangedEventArgs e)
 		{
-			float percentage = ((float)e.BytesReceived / (float)e.TotalBytesToReceive) * 100;
-			string percentagetext = String.Format("{0:00.00}", percentage);
-			Console.Write("\r" + percentagetext + "% downloaded!");
+			if ((float)e.TotalBytesToReceive <= 10)
+			{
+				float mbs = (float)e.BytesReceived / 1000000f;
+				string mbstext = String.Format("{0:00.00}", mbs);
+				Console.Write("\r" + mbstext + "MBs downloaded!");
+			}
+			else
+			{
+				float percentage = ((float)e.BytesReceived / (float)e.TotalBytesToReceive) * 100;
+				string percentagetext = String.Format("{0:00.00}", percentage);
+				Console.Write("\r" + percentagetext + "% downloaded!");
+			}
 		}
 
 
-		public static bool DownloadModDirector(string mod, bool downloadAll = false)
+		public static bool DownloadModDirector(string mod, bool skipdl = false)
 		{
 			if (!mods.onlineCheck()) { Console.WriteLine("Not connected to internet, or GitHub is down!"); return false; }
 			var result = mods.getModInfo(mod);
@@ -107,7 +117,7 @@ namespace H3VRModInstaller
 				fileinfo[2] = result.Item1[i, 2]; //args
 				fileinfo[3] = i.ToString(); //modnumber
 				fileinfo[4] = result.Item1[i, 3]; //File ID
-				DownloadMod(fileinfo);
+				DownloadMod(fileinfo, false, skipdl);
 			}
 			return true;
 		}

@@ -15,8 +15,8 @@ namespace H3VRModInstaller
         private static bool BypassH3VR = false;
         private static readonly Downloader downloader = new Downloader();
         public static void Main(string[] args)
-        {        
-	        
+        {
+			Console.WriteLine("Detecting if " + ModLists.h3vrdir + @"\H3VR.exe" + " exists...");
 	        
 	        if (File.Exists(ModLists.h3vrdir + @"\H3VR.exe") || BypassH3VR)
 			{
@@ -67,6 +67,9 @@ namespace H3VRModInstaller
 						break;
 					case "dl":
 						Downloader.DownloadModDirector(inputargs[1]);
+						break;
+					case "install":
+						Downloader.DownloadModDirector(inputargs[1], true);
 						break;
 					case "list":
 						if (inputargs[1] == "installedmods") { Console.WriteLine(ReturnArrayInString(InstalledMods.GetInstalledMods())); }

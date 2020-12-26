@@ -54,7 +54,14 @@ namespace H3VRModInstaller.Filesys
 			if (!Directory.Exists(dir))
 				Directory.CreateDirectory(dir);
 			Console.WriteLine("Moving " + mod + " to dir " + dir + " as " + renameTo);
-			File.Move(mod, dir + renameTo, true);
+			if(File.Exists(ModLists.h3vrdir + @"\" + mod))
+			{
+				File.Move(ModLists.h3vrdir + @"\" + mod, dir + renameTo, true);
+			}
+			if(Directory.Exists(ModLists.h3vrdir + @"\" + mod))
+			{
+				Directory.Move(ModLists.h3vrdir + @"\" + mod, dir + renameTo);
+			}
 			return true;
 		}
 	}
