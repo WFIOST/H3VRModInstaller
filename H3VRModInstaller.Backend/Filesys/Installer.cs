@@ -33,7 +33,7 @@ namespace H3VRModInstaller.Filesys
 				if (args[i] == "unzipToDir")
 				{
 					if (MainClass.enableDebugging) Console.WriteLine("Unzipping to " + args[i + 1]);
-					Zip.unzip(fileinfo[0], JSONModList.h3vrdir + "/" + args[i + 1], delArchive);
+					Zip.unzip(fileinfo[0], Directory.GetCurrentDirectory() + "/" + args[i + 1], delArchive);
 				}
 				if (args[i] == "addFolder")
 				{
@@ -51,15 +51,19 @@ namespace H3VRModInstaller.Filesys
 			if (renameTo == "") renameTo = mod;
 			dir = JSONModList.h3vrdir + @"\" + dir;
 			if (!Directory.Exists(dir)) Directory.CreateDirectory(dir);
-			if (MainClass.enableDebugging) Console.WriteLine("Moving " + mod + " to dir " + dir + " as " + renameTo);
-			if(File.Exists(Directory.GetCurrentDirectory() + @"\" + mod))
+			if (MainClass.enableDebugging) Console.WriteLine("Moving " + Directory.GetCurrentDirectory() + @"\" + mod + " to dir " + dir + " as " + renameTo);
+			if (File.Exists(Directory.GetCurrentDirectory() + @"\" + mod))
 			{
+				if (MainClass.enableDebugging) Console.WriteLine("Moving as file!");
 				File.Move(Directory.GetCurrentDirectory() + @"\" + mod, dir + renameTo, true);
 			}
-			if(Directory.Exists(Directory.GetCurrentDirectory() + @"\" + mod))
+			else
+			if (Directory.Exists(Directory.GetCurrentDirectory() + @"\" + mod))
 			{
+				if (MainClass.enableDebugging) Console.WriteLine("Moving as directory!");
 				Directory.Move(Directory.GetCurrentDirectory() + @"\" + mod, dir + renameTo);
 			}
+			else Console.WriteLine("Cannot find file to move!");
 			return true;
 		}
 	}

@@ -46,9 +46,9 @@ namespace H3VRModInstaller.JSON
 			File.Delete(modlistloc[1]);
 		}
 
-		public static ModListFormat[] getmodLists(bool enabledebugging)
+		public static ModListFormat[] getmodLists(bool enabledebugging, bool reload = false)
 		{
-			if (ml == null) { ml = loadModLists(enabledebugging); }
+			if (ml == null || reload) { ml = loadModLists(enabledebugging); }
 			return ml;
 		}
 

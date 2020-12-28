@@ -40,6 +40,9 @@ namespace H3VRModInstaller
 
 			switch (inputargs[0])
 			{
+				case "reload":
+					JSONModList.getmodLists(enableDebugging, true);
+					break;
 				case "wipe":
 					File.Delete(Directory.GetCurrentDirectory() + @"\installedmods.json");
 					Console.WriteLine("Wiped!");
