@@ -46,31 +46,31 @@ namespace H3VRModInstaller.JSON
 			File.Delete(modlistloc[1]);
 		}
 
-		public static ModListFormat[] getmodLists()
+		public static ModListFormat[] getmodLists(bool enabledebugging)
 		{
-			if (ml == null) { ml = loadModLists(); }
+			if (ml == null) { ml = loadModLists(enabledebugging); }
 			return ml;
 		}
 
-        public static ModListFormat[] loadModLists(string[] jsonfiles = null)
+        public static ModListFormat[] loadModLists(bool enabledebugging, string[] jsonfiles = null)
         {
 			if (jsonfiles == null)
 			{
 				jsonfiles = Glob.FilesAndDirectories(modinstallerdir, "**.json").ToArray();
-				Console.WriteLine("Found " + jsonfiles.Length + " json files to read from!");
+				if(enabledebugging) Console.WriteLine("Found " + jsonfiles.Length + " json files to read from!");
 			}
 			ModListFormat[] mods = new ModListFormat[jsonfiles.Length];
 			for (int i = 0; i < jsonfiles.Length; i++)
 			{
-				mods[i] = DeserializeModListFormat(jsonfiles[i]);
+				mods[i] = DeserializeModListFormat(jsonfiles[i], enabledebugging);
 			}
 			return mods;
 		}
 
-		public static ModListFormat DeserializeModListFormat(string jsontoload)
+		public static ModListFormat DeserializeModListFormat(string jsontoload, bool enabledebugging)
 		{
 			ModListFormat _ml = new ModListFormat();
-			Console.WriteLine("Loading " + jsontoload);
+			if (enabledebugging) Console.WriteLine("Loading " + jsontoload);
 			_ml = JsonConvert.DeserializeObject<ModListFormat>(File.ReadAllText(modinstallerdir + jsontoload));
 			return _ml;
 		}

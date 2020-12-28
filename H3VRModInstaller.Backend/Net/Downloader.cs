@@ -47,7 +47,7 @@ namespace H3VRModInstaller
 							}
 							else goto repeat;
 						}
-						Console.WriteLine("Mod already installed!");
+						if (MainClass.enableDebugging) Console.WriteLine(fileinfo[4] + " is already installed!");
 						return false;
 					}
 				}
@@ -55,7 +55,7 @@ namespace H3VRModInstaller
 			else redownload = true;
 			Uri fileloc = new Uri(locationOfFile + fileToDownload);
 
-			Console.WriteLine("Downloading Mod \"{0}\" from \"{1}{0}\"\n", fileToDownload, locationOfFile);
+			if (MainClass.enableDebugging) Console.WriteLine("Downloading {0} from {1}{0}", fileToDownload, locationOfFile);
 
 
 			Console.WriteLine("");
@@ -69,11 +69,10 @@ namespace H3VRModInstaller
 			}
 			finished = false;
 
-			Console.WriteLine("File Downloaded");
+			Console.WriteLine("Successfully Downloaded {0}", fileToDownload, locationOfFile);
+			if (MainClass.enableDebugging) Console.Write("from {1}{0}", fileToDownload, locationOfFile);
 
-			Console.WriteLine("Successfully Downloaded Mod \"{0}\" from \"{1}{0}\"\n", fileToDownload, locationOfFile);
-
-			Installer.installMod(fileinfo);
+				Installer.installMod(fileinfo);
 
 			if(!redownload) InstalledMods.AddInstalledMods(fileinfo[4]);
 			return true;

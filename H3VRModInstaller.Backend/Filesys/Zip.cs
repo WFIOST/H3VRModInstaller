@@ -12,8 +12,8 @@ namespace H3VRModInstaller.Filesys
             //why do I even have this?
             Console.WriteLine("Unzipping " + fileToUnzip);
             ZipFile.ExtractToDirectory(fileToUnzip, unzipLocation, true);
-            if (deleteArchiveAfterUnzip)
-                Console.WriteLine("Cleaning up");
+				if (deleteArchiveAfterUnzip)
+					Console.WriteLine("Cleaning up");
             File.Delete(fileToUnzip);
             return true;
         }

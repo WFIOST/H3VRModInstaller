@@ -9,12 +9,13 @@ using System.Linq;
 
 namespace H3VRModInstaller
 {
-	class MainClass
+	public class MainClass
 	{
 		//private static Serialisation Json = new Serialisation();
-		public static bool BypassExec = true;
+		public static bool BypassExec = false;
 		public static readonly string execdir = JSONModList.h3vrdir + @"\H3VR.exe";
 		public static string pingsite = "www.github.com";
+		public static bool enableDebugging = false;
 
 		public static void Main(string[] args)
 		{
@@ -48,7 +49,7 @@ namespace H3VRModInstaller
 					break;
 				case "check":
 
-					ModListFormat[] ml = JSONModList.getmodLists();
+					ModListFormat[] ml = JSONModList.getmodLists(MainClass.enableDebugging);
 
 					for (int i = 0; i < ml.Length; i++)
 					{
@@ -88,6 +89,10 @@ namespace H3VRModInstaller
 					Console.WriteLine("list [modlist] - Lists all mods contained in a modlist.");
 					Console.WriteLine("list installedmods - Lists all mods registered as installed.");
 					Console.WriteLine("exit - Close H3VRModInstaller.");
+					break;
+				case "toggledebugging":
+					enableDebugging = !enableDebugging;
+					Console.WriteLine("Debugging is now " + enableDebugging);
 					break;
 				default:
 					Console.WriteLine("Invalid command!");
@@ -135,7 +140,7 @@ namespace H3VRModInstaller
 				{
 					foundmod = true;
 					string[] jsonarray = { jsonname };
-					ModListFormat[] modarray = JSONModList.loadModLists(jsonarray);
+					ModListFormat[] modarray = JSONModList.loadModLists(MainClass.enableDebugging, jsonarray);
 					ModListFormat mods = modarray[0];
 					for (int x = 0; x < mods.modlist.Length; x++)
 					{

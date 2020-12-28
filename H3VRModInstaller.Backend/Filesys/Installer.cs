@@ -18,10 +18,10 @@ namespace H3VRModInstaller.Filesys
 			}
 			string[] args = fileinfo[2].Split('?');
 
-			Console.WriteLine("");
+			if (MainClass.enableDebugging) Console.WriteLine("");
 			for (int i = 0; i < args.Length; i++)
 			{
-				Console.Write(args[i] + ", ");
+				if (MainClass.enableDebugging) Console.Write(args[i] + ", ");
 			}
 
 			for (int i = 0; i < args.Length; i++)
@@ -32,12 +32,12 @@ namespace H3VRModInstaller.Filesys
 				}
 				if (args[i] == "unzipToDir")
 				{
-					Console.WriteLine("Unzipping to " + args[i + 1]);
+					if (MainClass.enableDebugging) Console.WriteLine("Unzipping to " + args[i + 1]);
 					Zip.unzip(fileinfo[0], JSONModList.h3vrdir + "/" + args[i + 1], delArchive);
 				}
 				if (args[i] == "addFolder")
 				{
-					Console.WriteLine("Creating Directory " + args[i + 1]);
+					if (MainClass.enableDebugging) Console.WriteLine("Creating Directory " + args[i + 1]);
 					Directory.CreateDirectory(JSONModList.h3vrdir + args[i + 1]);
 				}
 				if (args[i] == "break") break;
@@ -50,16 +50,15 @@ namespace H3VRModInstaller.Filesys
 		{
 			if (renameTo == "") renameTo = mod;
 			dir = JSONModList.h3vrdir + @"\" + dir;
-			if (!Directory.Exists(dir))
-				Directory.CreateDirectory(dir);
-			Console.WriteLine("Moving " + mod + " to dir " + dir + " as " + renameTo);
-			if(File.Exists(JSONModList.h3vrdir + @"\" + mod))
+			if (!Directory.Exists(dir)) Directory.CreateDirectory(dir);
+			if (MainClass.enableDebugging) Console.WriteLine("Moving " + mod + " to dir " + dir + " as " + renameTo);
+			if(File.Exists(Directory.GetCurrentDirectory() + @"\" + mod))
 			{
-				File.Move(JSONModList.h3vrdir + @"\" + mod, dir + renameTo, true);
+				File.Move(Directory.GetCurrentDirectory() + @"\" + mod, dir + renameTo, true);
 			}
-			if(Directory.Exists(JSONModList.h3vrdir + @"\" + mod))
+			if(Directory.Exists(Directory.GetCurrentDirectory() + @"\" + mod))
 			{
-				Directory.Move(JSONModList.h3vrdir + @"\" + mod, dir + renameTo);
+				Directory.Move(Directory.GetCurrentDirectory() + @"\" + mod, dir + renameTo);
 			}
 			return true;
 		}
