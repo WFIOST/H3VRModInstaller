@@ -50,6 +50,3 @@ For a whole list of mods, simply type `list all` .
 1. meatsmpx
 1. ebr
 
-## Current known issues
-
-The installer may sometimes crash when installing an already installed mod.
