@@ -24,23 +24,23 @@ Instructions are shown upon launching the executable. Type in `help` for more in
 
 1. Type `modlists`, which will return something similar to:
 
-`charactermods
+`charactermods`
 
-codemods
+`codemods`
 
-customitems
+`customitems`
 
-dependencies
+`dependencies`
 
-mapmods`
+`mapmods`
 
 2. Type `list mapmods`, which will return:
 
-`shootyhouse
+`shootyhouse`
 
-promeatheus
+`promeatheus`
 
-wurstwar`
+`wurstwar`
 
 3. Then, you can type in `dl shootyhouse`, or if you want more info on it, `check shootyhouse`. H3VRMI will take the reins from here, and download all the dependencies and install them for you.
 
