@@ -7,7 +7,6 @@
         <e p="cock.cs" t="Include" />
         <e p="Common" t="Include">
           <e p="Directories.cs" t="Include" />
-          <e p="ModCheck.cs" t="Include" />
           <e p="ModList.cs" t="Include" />
         </e>
         <e p="Filesys" t="Include">
@@ -50,6 +49,7 @@
             </e>
           </e>
         </e>
+        <e p="RegisterMods.cs" t="Include" />
       </e>
       <e p="H3VRModInstaller.sln" t="IncludeFlat" />
       <e p="packages" t="ExcludeRecursive" />

@@ -10,7 +10,7 @@ namespace H3VRModInstaller.JSON
 {
     public class ModFile
     {
-		public string modID { get; set; }
+		public string ModId { get; set; }
 		public string Name { get; set; }
 		public string RawName { get; set; }
 		public string[] Author { get; set; }
@@ -24,39 +24,39 @@ namespace H3VRModInstaller.JSON
 
 	public class ModListFormat
 	{
-		public ModFile[] modlist { get; set; }
+		public ModFile[] Modlist { get; set; }
 	}
 
-    public class JSONModList
+    public class JsonModList
     {
-		private static readonly WebClient client = new WebClient();
-		public static string h3vrdir = Directory.GetParent(Directory.GetCurrentDirectory()).ToString();
-		public static string modinstallerdir = Directory.GetCurrentDirectory() + @"/ModInstallerLists/";
-		public static string[] modlistloc = { "https://github.com/Frityet/H3VRModInstaller/releases/download/database/", "ModList.zip" };
-		public static ModListFormat[] ml = null;
+		private static readonly WebClient Client = new WebClient();
+		public static string H3Vrdir = Directory.GetParent(Directory.GetCurrentDirectory()).ToString();
+		public static string Modinstallerdir = Directory.GetCurrentDirectory() + @"/ModInstallerLists/";
+		public static string[] Modlistloc = { "https://github.com/Frityet/H3VRModInstaller/releases/download/database/", "ModList.zip" };
+		public static ModListFormat[] Ml = null;
 
-		public static void dlModList()
+		public static void DlModList()
 		{
-			Uri fileloc = new Uri(modlistloc[0] + modlistloc[1]);
+			Uri fileloc = new Uri(Modlistloc[0] + Modlistloc[1]);
 			Console.WriteLine("Downloading Mod Database...");
-			client.DownloadFile(fileloc, modlistloc[1]);
+			Client.DownloadFile(fileloc, Modlistloc[1]);
 			Console.WriteLine("Successfully Downloaded Mod Database");
-			Directory.CreateDirectory(modinstallerdir);
-			ZipFile.ExtractToDirectory(modlistloc[1], modinstallerdir, true);
-			File.Delete(modlistloc[1]);
+			Directory.CreateDirectory(Modinstallerdir);
+			ZipFile.ExtractToDirectory(Modlistloc[1], Modinstallerdir, true);
+			File.Delete(Modlistloc[1]);
 		}
 
-		public static ModListFormat[] getmodLists(bool enabledebugging, bool reload = false)
+		public static ModListFormat[] GetmodLists(bool enabledebugging, bool reload = false)
 		{
-			if (ml == null || reload) { ml = loadModLists(enabledebugging); }
-			return ml;
+			if (Ml == null || reload) { Ml = LoadModLists(enabledebugging); }
+			return Ml;
 		}
 
-        public static ModListFormat[] loadModLists(bool enabledebugging, string[] jsonfiles = null)
+        public static ModListFormat[] LoadModLists(bool enabledebugging, string[] jsonfiles = null)
         {
 			if (jsonfiles == null)
 			{
-				jsonfiles = Glob.FilesAndDirectories(modinstallerdir, "**.json").ToArray();
+				jsonfiles = Glob.FilesAndDirectories(Modinstallerdir, "**.json").ToArray();
 				if(enabledebugging) Console.WriteLine("Found " + jsonfiles.Length + " json files to read from!");
 			}
 			ModListFormat[] mods = new ModListFormat[jsonfiles.Length];
@@ -69,10 +69,10 @@ namespace H3VRModInstaller.JSON
 
 		public static ModListFormat DeserializeModListFormat(string jsontoload, bool enabledebugging)
 		{
-			ModListFormat _ml = new ModListFormat();
+			ModListFormat modList = new ModListFormat();
 			if (enabledebugging) Console.WriteLine("Loading " + jsontoload);
-			_ml = JsonConvert.DeserializeObject<ModListFormat>(File.ReadAllText(modinstallerdir + jsontoload));
-			return _ml;
+			modList = JsonConvert.DeserializeObject<ModListFormat>(File.ReadAllText(Modinstallerdir + jsontoload));
+			return modList;
 		}
 	}
 

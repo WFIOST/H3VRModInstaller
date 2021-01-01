@@ -5,10 +5,11 @@ using H3VRModInstaller.JSON;
 
 namespace H3VRModInstaller.Filesys.Common
 {
+	
     class ModList
     {
-	    private ModCheck modCheck = new ModCheck();
-		public static Tuple<string[,]> parseInfo(string[] infopath, string[,] modlist, string mod)
+	    
+	    public static Tuple<string[,]> parseInfo(string[] infopath, string[,] modlist, string mod)
 		{
 			if (MainClass.enableDebugging) Console.WriteLine("Parsing " + infopath[0]);
 			for (int i = 0; i < modlist.GetLength(0); i++)
@@ -47,7 +48,7 @@ namespace H3VRModInstaller.Filesys.Common
 			{
 				modlist = new string[10, 5];
 			}
-			ml = JSONModList.getmodLists(MainClass.enableDebugging);
+			ml = JsonModList.GetmodLists(MainClass.enableDebugging);
 
 
 			Tuple<string[,]> result;
@@ -56,15 +57,15 @@ namespace H3VRModInstaller.Filesys.Common
 
 			for (int i = 0; i < ml.Length; i++)
 			{
-				for (int x = 0; x < ml[i].modlist.Length; x++)
+				for (int x = 0; x < ml[i].Modlist.Length; x++)
 				{
-					if (ml[i].modlist[x].modID == mod)
+					if (ml[i].Modlist[x].ModId == mod)
 					{
-						string[] _modresult = { ml[i].modlist[x].RawName, ml[i].modlist[x].Path, ml[i].modlist[x].Arguments };
-						Array.Resize<string>(ref _modresult, _modresult.Length + ml[i].modlist[x].Dependencies.Length);
-						for (int y = 0; y < ml[i].modlist[x].Dependencies.Length; y++)
+						string[] _modresult = { ml[i].Modlist[x].RawName, ml[i].Modlist[x].Path, ml[i].Modlist[x].Arguments };
+						Array.Resize<string>(ref _modresult, _modresult.Length + ml[i].Modlist[x].Dependencies.Length);
+						for (int y = 0; y < ml[i].Modlist[x].Dependencies.Length; y++)
 						{
-							_modresult[3 + y] = ml[i].modlist[x].Dependencies[y];
+							_modresult[3 + y] = ml[i].Modlist[x].Dependencies[y];
 						}
 						info = _modresult;
 					}
@@ -82,14 +83,13 @@ namespace H3VRModInstaller.Filesys.Common
         }
 
 
-		
+		/*
 		//this was a pain to make
 		public string wurstModFile = Directory.GetCurrentDirectory() + "Mods/WurstMod.deli";
 		public string tnhTweakerFile = Directory.GetCurrentDirectory() + "Mods/TakeAndHoldTweaker.deli";
 		public string[] cursedDLLFiles = { Directory.GetCurrentDirectory() + "BepInEx/Plugins/CursedDlls/Cursed.BetterBipods.dll", Directory.GetCurrentDirectory() + "BepInEx/Plugins/CursedDlls/Cursed.FullAuto.dll", Directory.GetCurrentDirectory() + "BepInEx/Plugins/CursedDlls/Cursed.LoadScene.dll", Directory.GetCurrentDirectory() + "BepInEx/Plugins/CursedDlls/Cursed.RemoveAttachmentChecks.dll", Directory.GetCurrentDirectory() + "BepInEx/Plugins/CursedDlls/Cursed.RemoveMagCheck.dll", Directory.GetCurrentDirectory() + "BepInEx/Plugins/CursedDlls/Cursed.RemoveRoundTypeCheck.dll", Directory.GetCurrentDirectory() + "BepInEx/Plugins/CursedDlls/Cursed.SuppressAssemblyLoadErrors.dll", Directory.GetCurrentDirectory() + "BepInEx/Plugins/CursedDlls/Cursed.TimeScale.dll", Directory.GetCurrentDirectory() + "BepInEx/Plugins/CursedDlls/Cursed.UnlockAll.dll"};
 		public string[] deliFiles = { Directory.GetCurrentDirectory() + "BepInEx/Plugins/Deli/Deli.Runtime.dll", Directory.GetCurrentDirectory() + "BepInEx/Patchers/Deli/ADepIn.dll", Directory.GetCurrentDirectory() + "BepInEx/Patchers/Deli/Deli.dll", Directory.GetCurrentDirectory() + "BepInEx/Patchers/Deli/DotNetZip.dll", Directory.GetCurrentDirectory() + "BepInEx/Patchers/Deli/I18N.dll", Directory.GetCurrentDirectory() + "BepInEx/Patchers/Deli/I18N.West.dll", Directory.GetCurrentDirectory() + "Mods/Deli.Core.deli", Directory.GetCurrentDirectory() + "Mods/Deli.MonoMod.deli"};
-		
-
+		*/
 
 
 

@@ -8,8 +8,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="11646549-311b-4445-a706-8ab87333e815" name="Default Changelist" comment="Added more features to class Uninstall">
+      <change afterPath="$PROJECT_DIR$/H3VRModInstaller.JSON/RegisterMods.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.H3VRModInstaller/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.H3VRModInstaller/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Uninstall.cs" beforeDir="false" afterPath="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Uninstall.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.H3VRModInstaller/.idea/shelf/Uncommitted_changes_before_Update_at_12_14_2020_7_25_PM_[Default_Changelist]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.H3VRModInstaller/.idea/shelf/Uncommitted_changes_before_Update_at_12_14_2020_7_25_PM__Default_Changelist_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.H3VRModInstaller/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.H3VRModInstaller/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.Backend/Common/ModCheck.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.Backend/Common/ModList.cs" beforeDir="false" afterPath="$PROJECT_DIR$/H3VRModInstaller.Backend/Common/ModList.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.Backend/MainClass.cs" beforeDir="false" afterPath="$PROJECT_DIR$/H3VRModInstaller.Backend/MainClass.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.Backend/cock.cs" beforeDir="false" afterPath="$PROJECT_DIR$/H3VRModInstaller.Backend/cock.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.JSON/JSONModList.cs" beforeDir="false" afterPath="$PROJECT_DIR$/H3VRModInstaller.JSON/JSONModList.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,8 +40,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock:///Users/mainuser/Documents/H3VRModInstaller/H3VRModInstaller.Backend/Filesys/Uninstall.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/2AA2A3CB-0BB3-4180-8A73-130472434128/17/Array.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
@@ -70,10 +77,14 @@
       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Common/ModCheck.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Common/Directories.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Common/ModCheck.cs" />
-      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/MainClass.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Net/Downloader.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Potatoes.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Uninstall.cs" />
+      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/cock.cs" />
+      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/MainClass.cs" />
+      <option value="$PROJECT_DIR$/H3VRModInstaller.JSON/RegisterMods.cs" />
+      <option value="$PROJECT_DIR$/H3VRModInstaller.JSON/JSONModList.cs" />
+      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Common/ModList.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1lah3QXp00T3AT7tcB4yg7113kU" />
@@ -98,7 +109,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected="Publish to folder.ModInstaller">
@@ -203,6 +214,8 @@
       <workItem from="1608152354724" duration="2280000" />
       <workItem from="1608186512308" duration="30000" />
       <workItem from="1608227405647" duration="3832000" />
+      <workItem from="1609531485278" duration="1218000" />
+      <workItem from="1609532848718" duration="407000" />
     </task>
     <task id="LOCAL-00001" summary="Split func.cs">
       <created>1607847473285</created>
@@ -385,24 +398,5 @@
     <MESSAGE value="Added deletion" />
     <MESSAGE value="Added more features to class Uninstall" />
     <option name="LAST_COMMIT_MESSAGE" value="Added more features to class Uninstall" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/H3VRModInstaller.Backend/MainClass.cs</url>
-          <line>55</line>
-          <properties documentPath="$PROJECT_DIR$/H3VRModInstaller.Backend/MainClass.cs" initialLine="54" containingFunctionPresentation="method 'Main'">
-            <startOffsets>
-              <option value="1545" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1568" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

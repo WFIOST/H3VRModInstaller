@@ -38,7 +38,7 @@ namespace H3VRModInstaller.Filesys
 				if (args[i] == "addFolder")
 				{
 					if (MainClass.enableDebugging) Console.WriteLine("Creating Directory " + args[i + 1]);
-					Directory.CreateDirectory(JSONModList.h3vrdir + args[i + 1]);
+					Directory.CreateDirectory(JsonModList.H3Vrdir + args[i + 1]);
 				}
 				if (args[i] == "break") break;
 			}
@@ -49,7 +49,7 @@ namespace H3VRModInstaller.Filesys
 		public static bool moveToFolder(string mod, string dir, string renameTo = "")
 		{
 			if (renameTo == "") renameTo = mod;
-			dir = JSONModList.h3vrdir + @"\" + dir;
+			dir = JsonModList.H3Vrdir + @"\" + dir;
 			if (!Directory.Exists(dir)) Directory.CreateDirectory(dir);
 			if (MainClass.enableDebugging) Console.WriteLine("Moving " + Directory.GetCurrentDirectory() + @"\" + mod + " to dir " + dir + " as " + renameTo);
 			if (File.Exists(Directory.GetCurrentDirectory() + @"\" + mod))
