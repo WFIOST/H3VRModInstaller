@@ -9,15 +9,17 @@
         <e p="bin" t="ExcludeRecursive" />
         <e p="cock.cs" t="Include" />
         <e p="Common" t="Include">
-          <e p="Common.cs" t="Include" />
-          <e p="Directories.cs" t="Include" />
           <e p="JSON" t="Include">
             <e p="JSONCommon.cs" t="Include" />
           </e>
-          <e p="ModList.cs" t="Include" />
+          <e p="ModInstallerCommon.cs" t="Include" />
         </e>
         <e p="Filesys" t="Include">
+          <e p="Config" t="Include">
+            <e p="EditConfig.cs" t="Include" />
+          </e>
           <e p="Installer.cs" t="Include" />
+          <e p="ModParsing.cs" t="Include" />
           <e p="RegisterMods.cs" t="Include" />
           <e p="Uninstall.cs" t="Include" />
           <e p="Zip.cs" t="Include" />

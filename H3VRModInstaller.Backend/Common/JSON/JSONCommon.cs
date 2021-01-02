@@ -6,9 +6,9 @@ using H3VRModInstaller.Common;
 namespace H3VRModInstaller.JSON.Common
 {
     /// <summary>
-    /// ModInstallerCommon fields and functions for JSON!
+    /// Common fields and functions for JSON!
     /// </summary>
-    public class Common
+    public class CommonJSON
     {
         /// <summary>
         /// All JSON files in the database!

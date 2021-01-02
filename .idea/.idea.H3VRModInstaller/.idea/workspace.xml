@@ -11,18 +11,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="11646549-311b-4445-a706-8ab87333e815" name="Default Changelist" comment="THE GUI">
+      <change afterPath="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Config/EditConfig.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.H3VRModInstaller/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.H3VRModInstaller/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.H3VRModInstaller/.idea/shelf/Uncommitted_changes_before_Update_at_12_25_2020_9_15_PM__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.H3VRModInstaller/.idea/shelf/Uncommitted_changes_before_Update_at_12_25_2020_9_15_PM__Default_Changelist_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.H3VRModInstaller/.idea/shelf/Uncommitted_changes_before_Update_at_12_25_2020_9_18_PM__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.H3VRModInstaller/.idea/shelf/Uncommitted_changes_before_Update_at_12_25_2020_9_18_PM__Default_Changelist_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.H3VRModInstaller/.idea/shelf/Uncommitted_changes_before_Update_at_12_29_2020_9_35_PM__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.H3VRModInstaller/.idea/shelf/Uncommitted_changes_before_Update_at_12_29_2020_9_35_PM__Default_Changelist_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.H3VRModInstaller/.idea/shelf/Uncommitted_changes_before_Update_at_1_1_2021_12_58_PM__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.H3VRModInstaller/.idea/shelf/Uncommitted_changes_before_Update_at_1_1_2021_12_58_PM__Default_Changelist_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.H3VRModInstaller/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.H3VRModInstaller/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.Backend/Common/MICommon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/H3VRModInstaller.Backend/Common/Common.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Installer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Installer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.JSON/H3VRModInstaller.JSON.csproj" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/Glob.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/H3VRModInstaller.Backend" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/H3VRModInstaller.Backend.deps.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/H3VRModInstaller.Backend.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/H3VRModInstaller.Backend.runtimeconfig.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/H3VRModInstaller.JSON.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/Newtonsoft.Json.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.Backend/Common/JSON/JSONCommon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/H3VRModInstaller.Backend/Common/JSON/JSONCommon.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,11 +48,10 @@
     <setting file="file://$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/RegisterMods.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/H3VRModInstaller.Backend/Net/NetCheck.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/H3VRModInstaller.Backend/Common/JSON/JSONCommon.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/H3VRModInstaller.Backend/Common/ModList.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/H3VRModInstaller.Backend/cock.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/H3VRModInstaller.Backend/JSON/JSONModList.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/0FD34F9D-1354-4305-971D-B5674D2A2A66/23/File.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://diff.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/H3VRModInstaller.Backend/Common/Directories.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Uninstall.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Installer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Zip.cs" root0="FORCE_HIGHLIGHTING" />
@@ -93,7 +88,6 @@
       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Common/ModList.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Common/ModCheck.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Common/ModCheck.cs" />
-      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Net/Downloader.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Potatoes.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Common/ModList.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.JSON/JSONModList.cs" />
@@ -102,14 +96,19 @@
       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/cock.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.JSON/RegisterMods.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.JSON/Common/Common.cs" />
-      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Common/JSON/JSONCommon.cs" />
-      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/MainClass.cs" />
-      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/JSON/JSONModList.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Zip.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Uninstall.cs" />
-      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Installer.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Common/Directories.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Common/Common.cs" />
+      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Common/StandardCommon.cs" />
+      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Common/ModInstallerCommon.cs" />
+      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Installer.cs" />
+      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/JSON/JSONModList.cs" />
+      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/JSON/ModList.cs" />
+      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Net/Downloader.cs" />
+      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/MainClass.cs" />
+      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Common/JSON/JSONCommon.cs" />
+      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Config/EditConfig.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1lah3QXp00T3AT7tcB4yg7113kU" />
@@ -418,7 +417,14 @@
       <option name="project" value="LOCAL" />
       <updated>1609559174646</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Refactoring!">
+      <created>1609562767035</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1609562767035</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -462,6 +468,7 @@
     <MESSAGE value="Merge json and backend" />
     <MESSAGE value="fixx" />
     <MESSAGE value="fix comments" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix comments" />
+    <MESSAGE value="Refactoring!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactoring!" />
   </component>
 </project>
