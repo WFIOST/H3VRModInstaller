@@ -1,5 +1,5 @@
 ﻿
-namespace H3VRModInstaller.Forms
+namespace H3VRModInstaller.GUI
 {
     partial class mainwindow
     {
@@ -136,6 +136,7 @@ namespace H3VRModInstaller.Forms
             this.launch.TabIndex = 1;
             this.launch.Text = "Launch H3VR";
             this.launch.UseVisualStyleBackColor = true;
+            this.launch.Click += new System.EventHandler(this.launch_Click);
             // 
             // ModsEnabled
             // 

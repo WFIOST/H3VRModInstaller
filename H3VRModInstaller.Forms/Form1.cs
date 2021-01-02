@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace H3VRModInstaller.Forms
+namespace H3VRModInstaller.GUI
 {
     public partial class mainwindow : Form
     {
@@ -35,6 +36,11 @@ namespace H3VRModInstaller.Forms
         private void DownloadableModsLabel_Click(object sender, EventArgs e)
         {
             
+        }
+
+        private void launch_Click(object sender, EventArgs e)
+        {
+            Process.Start("");
         }
     }
 }
