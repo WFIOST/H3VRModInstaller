@@ -10,7 +10,9 @@
     <projectFile>H3VRModInstaller.Forms/H3VRModInstaller.Forms.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="11646549-311b-4445-a706-8ab87333e815" name="Default Changelist" comment="More comments&#10;added an ungodly amount of comments" />
+    <list default="true" id="11646549-311b-4445-a706-8ab87333e815" name="Default Changelist" comment="C# proj stuf">
+      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Installer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Installer.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -112,9 +114,9 @@
       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Zip.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Uninstall.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/ModParsing.cs" />
-      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Installer.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Config/EditConfig.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/docfx_project/_site/index.html" />
+      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Installer.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1lah3QXp00T3AT7tcB4yg7113kU" />
@@ -437,7 +439,14 @@
       <option name="project" value="LOCAL" />
       <updated>1609584558944</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="C# proj stuf">
+      <created>1609585217546</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1609585217546</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -483,6 +492,7 @@
     <MESSAGE value="fix comments" />
     <MESSAGE value="Refactoring!" />
     <MESSAGE value="More comments&#10;added an ungodly amount of comments" />
-    <option name="LAST_COMMIT_MESSAGE" value="More comments&#10;added an ungodly amount of comments" />
+    <MESSAGE value="C# proj stuf" />
+    <option name="LAST_COMMIT_MESSAGE" value="C# proj stuf" />
   </component>
 </project>

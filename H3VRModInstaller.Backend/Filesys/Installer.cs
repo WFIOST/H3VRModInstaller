@@ -64,7 +64,7 @@ namespace H3VRModInstaller.Filesys
 		/// <param name="renameTo">What the file should be renamed to after</param>
 		/// <returns>Boolean, true</returns>
 		/// <remarks>
-		/// Honestly, this function needs a lot of work, its disgusting 
+		/// Honestly, this function needs a lot of work, its disgusting //TODO: fix this shit 
 		/// </remarks>
 		public static bool moveToFolder(string mod, string dir, string renameTo = "")
 		{
