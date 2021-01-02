@@ -8,7 +8,7 @@ using System.IO.Compression;
 
 namespace H3VRModInstaller.JSON
 {
-    public class ModFile
+	public class ModFile
     {
 		public string ModId { get; set; }
 		public string Name { get; set; }
@@ -22,11 +22,14 @@ namespace H3VRModInstaller.JSON
         public string[] Dependencies { get; set; }
     }
 
+	/// <summary>
+	/// Another level to the JSON I guess?
+	/// </summary>
 	public class ModListFormat
 	{
 		public ModFile[] Modlist { get; set; }
 	}
-
+	
     public class JsonModList
     {
 		private static readonly WebClient Client = new WebClient();

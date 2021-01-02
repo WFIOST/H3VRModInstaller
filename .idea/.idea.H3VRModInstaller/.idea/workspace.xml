@@ -7,11 +7,11 @@
     <projectFile>H3VRModInstaller.JSON/H3VRModInstaller.JSON.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="11646549-311b-4445-a706-8ab87333e815" name="Default Changelist" comment="Added more features to class Uninstall">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.H3VRModInstaller/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.H3VRModInstaller/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.H3VRModInstaller/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.H3VRModInstaller/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.Backend/Common/JSON/JSONCommon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/H3VRModInstaller.Backend/Common/JSON/JSONCommon.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Installer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Installer.cs" afterDir="false" />
+    <list default="true" id="11646549-311b-4445-a706-8ab87333e815" name="Default Changelist" comment="fix comments">
+      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Uninstall.cs" beforeDir="false" afterPath="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Uninstall.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Zip.cs" beforeDir="false" afterPath="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Zip.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.Backend/JSON/JSONModList.cs" beforeDir="false" afterPath="$PROJECT_DIR$/H3VRModInstaller.Backend/JSON/JSONModList.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.Backend/MainClass.cs" beforeDir="false" afterPath="$PROJECT_DIR$/H3VRModInstaller.Backend/MainClass.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,6 +41,8 @@
     <setting file="mock:///Users/frityet/Documents/H3VRModInstaller/H3VRModInstaller.JSON/Common.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/H3VRModInstaller.Backend/JSON/JSONModList.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/H3VRModInstaller.Backend/Common/JSON/JSONCommon.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///Users/frityet/Documents/H3VRModInstaller/H3VRModInstaller.Backend/MainClass.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/frityet/Documents/H3VRModInstaller/H3VRModInstaller.Backend/MainClass.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/H3VRModInstaller.Backend/cock.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
@@ -56,7 +58,6 @@
       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Director.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Files.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/ModCheck.cs" />
-      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Zip.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Net/NetCheck.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Common/Directories.cs" />
       <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch.cs" />
@@ -79,8 +80,6 @@
       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Common/ModCheck.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Net/Downloader.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Potatoes.cs" />
-      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Uninstall.cs" />
-      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/MainClass.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Common/ModList.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.JSON/JSONModList.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.JSON/common.cs" />
@@ -90,6 +89,10 @@
       <option value="$PROJECT_DIR$/H3VRModInstaller.JSON/Common/Common.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Common/JSON/JSONCommon.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Installer.cs" />
+      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/MainClass.cs" />
+      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/JSON/JSONModList.cs" />
+      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Zip.cs" />
+      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Uninstall.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1lah3QXp00T3AT7tcB4yg7113kU" />
@@ -221,7 +224,7 @@
       <workItem from="1608227405647" duration="3832000" />
       <workItem from="1609531485278" duration="1218000" />
       <workItem from="1609532848718" duration="1674000" />
-      <workItem from="1609556525722" duration="2211000" />
+      <workItem from="1609556525722" duration="3179000" />
     </task>
     <task id="LOCAL-00001" summary="Split func.cs">
       <created>1607847473285</created>
@@ -384,7 +387,21 @@
       <option name="project" value="LOCAL" />
       <updated>1609558246778</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="fixx">
+      <created>1609559006279</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1609559006279</updated>
+    </task>
+    <task id="LOCAL-00025" summary="fix comments">
+      <created>1609559174646</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1609559174646</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -426,6 +443,8 @@
     <MESSAGE value="Added more features to class Uninstall" />
     <MESSAGE value="Fixes" />
     <MESSAGE value="Merge json and backend" />
-    <option name="LAST_COMMIT_MESSAGE" value="Merge json and backend" />
+    <MESSAGE value="fixx" />
+    <MESSAGE value="fix comments" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix comments" />
   </component>
 </project>

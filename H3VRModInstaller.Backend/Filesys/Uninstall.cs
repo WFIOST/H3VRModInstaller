@@ -5,6 +5,9 @@ using System.Linq;
 
 namespace H3VRModInstaller.Filesys
 {
+    /// <summary>
+    /// Enum for the directories, pretty useless,
+    /// </summary>
     public enum Dirs
     {
         Mods,
@@ -16,10 +19,27 @@ namespace H3VRModInstaller.Filesys
     
     public class Uninstall
     {
+        /// <summary>
+        /// Gets all of the assemblies to delete, located in the "BepInEx/Plugins" directory
+        /// </summary>
         string[] dllFilesToDelete = Glob.FilesAndDirectories(@"BepInEx/Plugins/", "**.dll").ToArray();
+        
+        /// <summary>
+        /// Gets all the h3mods to delete, located in the "Mods/" directory
+        /// </summary>
         string[] h3ModsToDelete = Glob.FilesAndDirectories(@"Mods/", "**.h3mod").ToArray();
+        
+        /// <summary>
+        /// Gets all the hotmods to delete, located in the "Mods/" directory
+        /// </summary>
         string[] hotModsToDelete = Glob.FilesAndDirectories(@"Mods/", "**.hotmod").ToArray();
+        
+        /// <summary>
+        /// Gets all the deli mods to delete, located in the "Mods/" directory
+        /// </summary>
         string[] deliModsToDelete = Glob.FilesAndDirectories(@"Mods/", "**.deli").ToArray();
+        
+        
         public bool Delete(string modToRemove, Dirs directory)
         {
             string dir = "";

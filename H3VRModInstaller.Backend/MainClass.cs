@@ -43,7 +43,7 @@ namespace H3VRModInstaller
 			Console.WriteLine("Please select the mod you would like to install using 'dl [modnamehere]' ");
 			Console.WriteLine("ex: 'dl wurstmod'");
 			Console.WriteLine("To see a list of downloadable mods, type 'modlists'");
-			Console.WriteLine("To see a list of commands, type 'help'");
+			Console.WriteLine("To see a list of commands, type 'help' \n");
 		Start:
 			var input = Console.ReadLine();
 
@@ -51,10 +51,11 @@ namespace H3VRModInstaller
 
 			Array.Resize<string>(ref inputargs, 10); //ensures no "OUT OF INDEX TIME TO SHIT MYSELF REEEE"
 
-			Console.WriteLine("");
+		
 
 			switch (inputargs[0])
 			{
+				
 				case "reload":
 					JsonModList.GetmodLists(enableDebugging, true);
 					break;
