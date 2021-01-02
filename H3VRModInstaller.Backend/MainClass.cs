@@ -4,7 +4,7 @@ using System.IO;
 using H3VRModInstaller.Net;
 using H3VRModInstaller.JSON;
 using GlobExpressions;
-using System.Collections.Generic;
+using H3VRModInstaller.Common;
 using System.Linq;
 
 namespace H3VRModInstaller
@@ -14,12 +14,12 @@ namespace H3VRModInstaller
 
 		public static void Main(string[] args)
 		{
-			Console.WriteLine("Detecting if " + MICommon.execdir + " exists...");
+			Console.WriteLine("Detecting if " + ModInstallerCommon.execdir + " exists...");
 
 			//exe check
-			if (!File.Exists(MICommon.execdir) && !MICommon.BypassExec) { MICommon.throwexept("H3VR not found!"); return; } else { Console.WriteLine("H3VR found!"); }
+			if (!File.Exists(ModInstallerCommon.execdir) && !ModInstallerCommon.BypassExec) { ModInstallerCommon.throwexept("H3VR not found!"); return; } else { Console.WriteLine("H3VR found!"); }
 			//online check
-			if (!NetCheck.isOnline(MICommon.pingsite)) { MICommon.throwexept("Cannot connect to github!"); return; }
+			if (!NetCheck.isOnline(ModInstallerCommon.pingsite)) { ModInstallerCommon.throwexept("Cannot connect to github!"); return; }
 			//gets the whole dl list possible
 			JsonModList.dlModList();
 			Console.WriteLine("Welcome to the H3VR Mod installer!");
@@ -78,7 +78,7 @@ namespace H3VRModInstaller
 					Downloader.DownloadModDirector(inputargs[1], true);
 					break;
 				case "list":
-					if (inputargs[1] == "installedmods") { Console.WriteLine(MICommon.ReturnArrayInString(InstalledMods.GetInstalledMods())); }
+					if (inputargs[1] == "installedmods") { Console.WriteLine(ModInstallerCommon.ReturnArrayInString(InstalledMods.GetInstalledMods())); }
 					else { list(inputargs[1]); }
 					break;
 				case "exit":
@@ -93,8 +93,8 @@ namespace H3VRModInstaller
 					Console.WriteLine("exit - Close H3VRModInstaller.");
 					break;
 				case "toggledebugging":
-					MICommon.enableDebugging = !MICommon.enableDebugging;
-					Console.WriteLine("Debugging is now " + MICommon.enableDebugging);
+					ModInstallerCommon.enableDebugging = !ModInstallerCommon.enableDebugging;
+					Console.WriteLine("Debugging is now " + ModInstallerCommon.enableDebugging);
 					break;
 				//deletion
 				case "rm":

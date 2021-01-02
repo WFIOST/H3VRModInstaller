@@ -10,10 +10,12 @@ using GlobExpressions;
 using System.Net;
 using System.IO.Compression;
 
-namespace H3VRModInstaller
+namespace H3VRModInstaller.Common
 {
-	//For commonly used vars and voids.
-	public class MICommon
+	/// <summary>
+	/// Commonly used functions and fields
+	/// </summary>
+	public class ModInstallerCommon
 	{
 		/// <summary>
 		/// Enables Debugging
@@ -72,5 +74,10 @@ namespace H3VRModInstaller
 			}
 			return strng;
 		}
+		
+		public static string h3vrDir = Directory.GetCurrentDirectory() + "/";
+		public static string bepinexDir = Directory.GetCurrentDirectory() + "/" + "BepInEx/";
+		public static string pluginsDir = Directory.GetCurrentDirectory() + "/" + "BepInEx/" + "Plugins/";
+		public static string modsDirs = Directory.GetCurrentDirectory() + "/" + "mods/";
 	}
 }

@@ -1,13 +1,22 @@
 ﻿using System;
 using System.IO;
 using System.IO.Compression;
-using H3VRModInstaller.JSON;
+using H3VRModInstaller.Common;
 
 namespace H3VRModInstaller.Filesys
 {
+	/// <summary>
+	/// This class manages the installation of mods!
+	/// </summary>
 	public class Installer
 	{
 
+		/// <summary>
+		/// This function installs a mod based off the parameters provided. The first parameter is the an 5-length array which represents the file info. The second parameter is a bool which determines if the archive will be deleted after installation.
+		/// </summary>
+		/// <param name="File Info"></param>
+		/// <param name="Delete Archive"></param>
+		/// <returns>Boolean</returns>
 		public static bool installMod(string[] fileinfo, bool delArchive = false)
 		{
 			fileinfo[2].Replace("BACKSLASH", @"\");
@@ -18,10 +27,10 @@ namespace H3VRModInstaller.Filesys
 			}
 			string[] args = fileinfo[2].Split('?');
 
-			MICommon.DebugLog("");
+			ModInstallerCommon.DebugLog("");
 			for (int i = 0; i < args.Length; i++)
 			{
-				MICommon.DebugLog(args[i] + ", ");
+				ModInstallerCommon.DebugLog(args[i] + ", ");
 			}
 
 			for (int i = 0; i < args.Length; i++)
@@ -32,13 +41,13 @@ namespace H3VRModInstaller.Filesys
 				}
 				if (args[i] == "unzipToDir")
 				{
-					MICommon.DebugLog("Unzipping to " + args[i + 1]);
-					Zip.unzip(fileinfo[0], MICommon.MainFiledir + "/" + args[i + 1], delArchive);
+					ModInstallerCommon.DebugLog("Unzipping to " + args[i + 1]);
+					Zip.unzip(fileinfo[0], ModInstallerCommon.MainFiledir + "/" + args[i + 1], delArchive);
 				}
 				if (args[i] == "addFolder")
 				{
-					MICommon.DebugLog("Creating Directory " + args[i + 1]);
-					Directory.CreateDirectory(MICommon.MainFiledir + args[i + 1]);
+					ModInstallerCommon.DebugLog("Creating Directory " + args[i + 1]);
+					Directory.CreateDirectory(ModInstallerCommon.MainFiledir + args[i + 1]);
 				}
 				if (args[i] == "break") break;
 			}
@@ -46,31 +55,38 @@ namespace H3VRModInstaller.Filesys
 			Console.WriteLine("Installed " + fileinfo[0]);
 			return true;
 		}
+		/// <summary>
+		/// This function moves the mod (first parameter) to the second parameter location, and renames it to the third parameter
+		/// </summary>
+		/// <param name="Mod to Move"></param>
+		/// <param name="Directory to move to"></param>
+		/// <param name="String to rename to"></param>
+		/// <returns></returns>
 		public static bool moveToFolder(string mod, string dir, string renameTo = "")
 		{
 			if (renameTo == "") renameTo = mod;
-			dir = MICommon.MainFiledir + @"\" + dir;
+			dir = ModInstallerCommon.MainFiledir + @"\" + dir;
 			if (!Directory.Exists(dir)) Directory.CreateDirectory(dir);
-			MICommon.DebugLog("Moving " + Directory.GetCurrentDirectory() + @"\" + mod + " to dir " + dir + " as " + renameTo);
-			if (File.Exists(MICommon.MainFiledir + @"\" + mod))
+			ModInstallerCommon.DebugLog("Moving " + Directory.GetCurrentDirectory() + @"\" + mod + " to dir " + dir + " as " + renameTo);
+			if (File.Exists(ModInstallerCommon.MainFiledir + @"\" + mod))
 			{
-				MICommon.DebugLog("Moving as file!");
-				File.Move(MICommon.MainFiledir + @"\" + mod, dir + renameTo, true);
+				ModInstallerCommon.DebugLog("Moving as file!");
+				File.Move(ModInstallerCommon.MainFiledir + @"\" + mod, dir + renameTo, true);
 			}
 			if (File.Exists(Directory.GetCurrentDirectory() + @"\" + mod))
 			{
-				MICommon.DebugLog("Moving as file!");
+				ModInstallerCommon.DebugLog("Moving as file!");
 				File.Move(Directory.GetCurrentDirectory() + @"\" + mod, dir + renameTo, true);
 			}
 			else
-			if (Directory.Exists(MICommon.MainFiledir + @"\" + mod))
+			if (Directory.Exists(ModInstallerCommon.MainFiledir + @"\" + mod))
 			{
-				MICommon.DebugLog("Moving as directory!");
-				Directory.Move(MICommon.MainFiledir + @"\" + mod, dir + renameTo);
+				ModInstallerCommon.DebugLog("Moving as directory!");
+				Directory.Move(ModInstallerCommon.MainFiledir + @"\" + mod, dir + renameTo);
 			}
 			if (Directory.Exists(Directory.GetCurrentDirectory() + @"\" + mod))
 			{
-				MICommon.DebugLog("Moving as directory!");
+				ModInstallerCommon.DebugLog("Moving as directory!");
 				Directory.Move(Directory.GetCurrentDirectory() + @"\" + mod, dir + renameTo);
 			}
 			else Console.WriteLine("Cannot find file to move!");

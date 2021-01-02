@@ -1,8 +1,7 @@
 ﻿using System;
-using System.IO;
-using H3VRModInstaller.Net;
+using H3VRModInstaller.Common;
 using H3VRModInstaller.JSON;
-using H3VRModInstaller;
+
 
 namespace H3VRModInstaller.Filesys.Common
 {
@@ -12,7 +11,7 @@ namespace H3VRModInstaller.Filesys.Common
 	    
 	    public static Tuple<string[,]> parseInfo(string[] infopath, string[,] modlist, string mod)
 		{
-			MICommon.DebugLog("Parsing " + infopath[0]);
+			ModInstallerCommon.DebugLog("Parsing " + infopath[0]);
 			for (int i = 0; i < modlist.GetLength(0); i++)
 			{
 				bool _brk = false;
@@ -53,7 +52,7 @@ namespace H3VRModInstaller.Filesys.Common
 
 
 			Tuple<string[,]> result;
-			MICommon.DebugLog("Getting mod info for " + mod);
+			ModInstallerCommon.DebugLog("Getting mod info for " + mod);
 			string[] info = new string[1];
 
 			for (int i = 0; i < ml.Length; i++)
@@ -78,7 +77,7 @@ namespace H3VRModInstaller.Filesys.Common
 
 			for (int i = 0; i < modlist.GetLength(0) - 1; i++) {
 				if (modlist[i, 0] == null) break;
-				MICommon.DebugLog("mod info:" + modlist[i, 0] + ", " + modlist[i, 1] + ", " + modlist[i, 2]);
+				ModInstallerCommon.DebugLog("mod info:" + modlist[i, 0] + ", " + modlist[i, 1] + ", " + modlist[i, 2]);
 			}
 			return Tuple.Create<string[,]>(result.Item1);
         }

@@ -5,6 +5,7 @@ using System.Linq;
 using GlobExpressions;
 using System.Net;
 using System.IO.Compression;
+using H3VRModInstaller.Common;
 
 namespace H3VRModInstaller.JSON
 {
@@ -37,13 +38,13 @@ namespace H3VRModInstaller.JSON
 
 		public static void dlModList()
 		{
-			Uri fileloc = new Uri(MICommon.Modlistloc[0] + MICommon.Modlistloc[1]);
+			Uri fileloc = new Uri(ModInstallerCommon.Modlistloc[0] + ModInstallerCommon.Modlistloc[1]);
 			Console.WriteLine("Downloading Mod Database...");
-			Client.DownloadFile(fileloc, MICommon.Modlistloc[1]);
+			Client.DownloadFile(fileloc, ModInstallerCommon.Modlistloc[1]);
 			Console.WriteLine("Successfully Downloaded Mod Database");
-			Directory.CreateDirectory(MICommon.Modinstallerdir);
-			ZipFile.ExtractToDirectory(MICommon.Modlistloc[1], MICommon.Modinstallerdir, true);
-			File.Delete(MICommon.Modlistloc[1]);
+			Directory.CreateDirectory(ModInstallerCommon.Modinstallerdir);
+			ZipFile.ExtractToDirectory(ModInstallerCommon.Modlistloc[1], ModInstallerCommon.Modinstallerdir, true);
+			File.Delete(ModInstallerCommon.Modlistloc[1]);
 		}
 
 		public static ModListFormat[] GetmodLists(bool reload = false, string[] jsonfiles = null)
@@ -52,8 +53,8 @@ namespace H3VRModInstaller.JSON
 			{
 				if (jsonfiles == null)
 				{
-					jsonfiles = Glob.FilesAndDirectories(MICommon.Modinstallerdir, "**.json").ToArray();
-					MICommon.DebugLog("Found " + jsonfiles.Length + " json files to read from!");
+					jsonfiles = Glob.FilesAndDirectories(ModInstallerCommon.Modinstallerdir, "**.json").ToArray();
+					ModInstallerCommon.DebugLog("Found " + jsonfiles.Length + " json files to read from!");
 				}
 				ModListFormat[] mods = new ModListFormat[jsonfiles.Length];
 				for (int i = 0; i < jsonfiles.Length; i++)
@@ -67,8 +68,8 @@ namespace H3VRModInstaller.JSON
 		public static ModListFormat DeserializeModListFormat(string jsontoload)
 		{
 			ModListFormat modList = new ModListFormat();
-			MICommon.DebugLog("Loading " + jsontoload);
-			modList = JsonConvert.DeserializeObject<ModListFormat>(File.ReadAllText(MICommon.Modinstallerdir + jsontoload));
+			ModInstallerCommon.DebugLog("Loading " + jsontoload);
+			modList = JsonConvert.DeserializeObject<ModListFormat>(File.ReadAllText(ModInstallerCommon.Modinstallerdir + jsontoload));
 			return modList;
 		}
 	}
