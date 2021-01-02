@@ -44,9 +44,33 @@ namespace H3VRModInstaller
 		/// </summary>
 		public static string[] Modlistloc = { "https://github.com/Frityet/H3VRModInstaller/releases/download/database/", "ModList.zip" };
 
+		/// <summary>
+		/// Writes line if enabledebugging is true.
+		/// </summary>
 		public static void DebugLog(string input)
 		{
 			if (enableDebugging) Console.WriteLine(input);
+		}
+
+		//i'm not even sure why i made this, i was just too lazy to write two lines.
+		public static void throwexept(string error)
+		{
+			Console.WriteLine(error);
+			Console.ReadKey();
+		}
+
+		/// <summary>
+		/// returns a string array as foo[1], foo[2], foo[3], etc
+		/// </summary>
+		public static string ReturnArrayInString(string[] array)
+		{
+			string strng = "";
+			for (int i = 0; i < array.Length; i++)
+			{
+				strng += array[i];
+				strng += ", ";
+			}
+			return strng;
 		}
 	}
 }

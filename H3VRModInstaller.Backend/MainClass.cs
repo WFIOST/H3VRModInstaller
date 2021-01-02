@@ -17,9 +17,9 @@ namespace H3VRModInstaller
 			Console.WriteLine("Detecting if " + MICommon.execdir + " exists...");
 
 			//exe check
-			if (!File.Exists(MICommon.execdir) && !MICommon.BypassExec) { throwexept("H3VR not found!"); return; } else { Console.WriteLine("H3VR found!"); }
+			if (!File.Exists(MICommon.execdir) && !MICommon.BypassExec) { MICommon.throwexept("H3VR not found!"); return; } else { Console.WriteLine("H3VR found!"); }
 			//online check
-			if (!NetCheck.isOnline(MICommon.pingsite)) { throwexept("Cannot connect to github!"); return; }
+			if (!NetCheck.isOnline(MICommon.pingsite)) { MICommon.throwexept("Cannot connect to github!"); return; }
 			//gets the whole dl list possible
 			JsonModList.dlModList();
 			Console.WriteLine("Welcome to the H3VR Mod installer!");
@@ -78,7 +78,7 @@ namespace H3VRModInstaller
 					Downloader.DownloadModDirector(inputargs[1], true);
 					break;
 				case "list":
-					if (inputargs[1] == "installedmods") { Console.WriteLine(ReturnArrayInString(InstalledMods.GetInstalledMods())); }
+					if (inputargs[1] == "installedmods") { Console.WriteLine(MICommon.ReturnArrayInString(InstalledMods.GetInstalledMods())); }
 					else { list(inputargs[1]); }
 					break;
 				case "exit":
@@ -113,24 +113,7 @@ namespace H3VRModInstaller
 			goto Start;
 		}
 
-		//i'm not even sure why i made this, i was just too lazy to write two lines.
-		public static void throwexept(string error)
-		{
-			Console.WriteLine(error);
-			Console.ReadKey();
-		}
 
-		//returns a string array as foo[1], foo[2], foo[3], etc
-		public static string ReturnArrayInString(string[] array)
-		{
-			string strng = "";
-			for (int i = 0; i < array.Length; i++)
-			{
-				strng += array[i];
-				strng += ", ";
-			}
-			return strng;
-		}
 
 		//returns list of modlists, aka modlists
 		public static void listmodlists()
