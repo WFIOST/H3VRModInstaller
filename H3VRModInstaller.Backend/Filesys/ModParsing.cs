@@ -7,9 +7,18 @@ using H3VRModInstaller.JSON;
 
 namespace H3VRModInstaller
 {
+	/// <summary>
+	/// Parses together the deserialised JSON files
+	/// </summary>
 	public class ModParsing
 	{
-		
+		/// <summary>
+		/// Gets the mod info of a deserialized <c>ModFile</c> class
+		/// </summary>
+		/// <param name="mod">Mod</param>
+		/// <param name="result">ModFile array to be returned</param>
+		/// <param name="returndependencies">Defines if dependencies would be returned</param>
+		/// <returns></returns>
 		public static ModFile[] getModInfo(string mod, ModFile[] result = null, bool returndependencies = true)
 		{
 			if (result == null) result = new ModFile[0];

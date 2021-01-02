@@ -5,18 +5,37 @@ using System.Linq;
 
 namespace H3VRModInstaller.Filesys
 {
+
     /// <summary>
-    /// Enum for the directories, pretty useless,
+    /// Enums for choosing directories
     /// </summary>
     public enum Dirs
     {
+        /// <summary>
+        /// The <c>/Mods/</c> Directory
+        /// </summary>
         Mods,
+        /// <summary>
+        /// The <c>/BepInEx/Plugins/</c> Directory
+        /// </summary>
         Plugins,
+        /// <summary>
+        /// The <c>/VirtualObjects/</c> Directory
+        /// </summary>
         VirtualObjects,
+        /// <summary>
+        /// The <c>/CustomCharacters/</c> Directory
+        /// </summary>
         CustomCharacters,
+        /// <summary>
+        /// The <c>/CustomLevels/</c> Directory
+        /// </summary>
         Maps
     }
     
+    /// <summary>
+    /// WIP class to handle uninstallation
+    /// </summary>
     public class Uninstall
     {
         /// <summary>
@@ -40,6 +59,12 @@ namespace H3VRModInstaller.Filesys
         string[] deliModsToDelete = Glob.FilesAndDirectories(@"Mods/", "**.deli").ToArray();
         
         
+        /// <summary>
+        /// Deletes the mod based off the arguments, to be revamped soon
+        /// </summary>
+        /// <param name="modToRemove">The mod to delete</param>
+        /// <param name="directory">the directory to delete from</param>
+        /// <returns></returns>
         public bool Delete(string modToRemove, Dirs directory)
         {
             string dir = "";

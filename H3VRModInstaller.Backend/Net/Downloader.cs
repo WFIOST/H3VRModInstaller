@@ -14,6 +14,14 @@ namespace H3VRModInstaller
 		private static readonly WebClient downloader = new();
 		private static bool finished = false;
 
+		/// <summary>
+		/// Downloads the mod specified
+		/// </summary>
+		/// <param name="fileinfo">ModFile, specify here which mod to use</param>
+		/// <param name="modnum">Checks if mod already installed</param>
+		/// <param name="autoredownload">Auto redownload?</param>
+		/// <param name="skipdl">Skips the download process, mostly used for debugging</param>
+		/// <returns>Boolean, true</returns>
 		public static bool DownloadMod(ModFile fileinfo, int modnum, bool autoredownload = false, bool skipdl = false)
 		{
 			if(skipdl == true) { Installer.installMod(fileinfo); return true; }
@@ -77,12 +85,18 @@ namespace H3VRModInstaller
 			if(!redownload) InstalledMods.AddInstalledMods(fileinfo.ModId);
 			return true;
 		}
-
 		public static void dlcomplete(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
 		{
 			finished = true;
+			
 		}
 
+		
+		/// <summary>
+		/// Reports on download progress
+		/// </summary>
+		/// <param name="sender">Sender</param>
+		/// <param name="e">Event Arguments</param>
 		public static void dlprogress(object sender, DownloadProgressChangedEventArgs e)
 		{
 			if ((float)e.TotalBytesToReceive <= 10)
@@ -100,6 +114,12 @@ namespace H3VRModInstaller
 		}
 
 
+		/// <summary>
+		/// Directs the mod downloading
+		/// </summary>
+		/// <param name="mod">Mod to direct</param>
+		/// <param name="skipdl">Skips the download process</param>
+		/// <returns>Boolean, true</returns>
 		public static bool DownloadModDirector(string mod, bool skipdl = false)
 		{
 			if (!NetCheck.isOnline(ModInstallerCommon.pingsite)) { Console.WriteLine("Not connected to internet, or " + ModInstallerCommon.pingsite + " is down!"); return false; }

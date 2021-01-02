@@ -9,9 +9,16 @@ using System.Linq;
 
 namespace H3VRModInstaller
 {
+	/// <summary>
+	/// MainClass, dunno what you expected
+	/// </summary>
 	public class MainClass
 	{
 
+		/// <summary>
+		/// Main function, the args arent used though
+		/// </summary>
+		/// <param name="args">dunno why these are here</param>
 		public static void Main(string[] args)
 		{
 			Console.WriteLine("Detecting if " + ModInstallerCommon.execdir + " exists...");
@@ -21,7 +28,7 @@ namespace H3VRModInstaller
 			//online check
 			if (!NetCheck.isOnline(ModInstallerCommon.pingsite)) { ModInstallerCommon.throwexept("Cannot connect to github!"); return; }
 			//gets the whole dl list possible
-			JsonModList.dlModList();
+			JsonModList.DlModList();
 			Console.WriteLine("Welcome to the H3VR Mod installer!");
 			Console.WriteLine("Please select the mod you would like to install using 'dl [modnamehere]' ");
 			Console.WriteLine("ex: 'dl wurstmod'");

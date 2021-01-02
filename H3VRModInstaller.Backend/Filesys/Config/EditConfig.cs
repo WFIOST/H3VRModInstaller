@@ -8,12 +8,30 @@ namespace H3VRModInstaller.Filesys.Config
     /// </summary>
     public class Configs
     {
+        /// <summary>
+        /// Defines what type of edit is to be carried out in the file
+        /// </summary>
         public enum TypeOfEdit
         {
+            /// <summary>
+            /// Boolean
+            /// </summary>
             Bool,
+            /// <summary>
+            /// String
+            /// </summary>
             String, 
+            /// <summary>
+            /// BepInEx, possible inputs: //TODO: add possible inputs (LogChannel)
+            /// </summary>
             LogChannel,
+            /// <summary>
+            /// BepInEx, possible inputs: //TODO: add possible inputs (ConsoleOutRedirectType)
+            /// </summary>
             ConsoleOutRedirectType,
+            /// <summary>
+            /// BepInEx, possible inputs: //TODO: add possible inputs (LogLevel)
+            /// </summary>
             LogLevel
         }
         /// <summary>

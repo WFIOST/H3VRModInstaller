@@ -17,8 +17,8 @@ namespace H3VRModInstaller.JSON.Common
         /// <summary>
         /// Gets every filepath of the mods, and adds them to the list defined as the secont parameter
         /// </summary>
-        /// <param name="Files To Sort"></param>
-        /// <param name="List to append to"></param>
+        /// <param name="FilesToSort">Files to sort</param>
+        /// <param name="ListToAppendTo">List to Append to</param>
         /// <returns>Returns the list which was specified in second parameter</returns>
         public List<string> GetEachPath(string[] FilesToSort, List<string> ListToAppendTo)
         {

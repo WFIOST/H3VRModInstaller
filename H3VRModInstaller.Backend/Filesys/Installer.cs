@@ -15,8 +15,8 @@ namespace H3VRModInstaller.Filesys
 		/// <summary>
 		/// This function installs a mod based off the parameters provided. The first parameter is the an 5-length array which represents the file info. The second parameter is a bool which determines if the archive will be deleted after installation.
 		/// </summary>
-		/// <param name="File Info"></param>
-		/// <param name="Delete Archive"></param>
+		/// <param name="fileinfo">ModFile class, gets the <c>rawname</c> from it</param>
+		/// <param name="delArchive">Defines if the archive should be deleted after installation</param>
 		/// <returns>Boolean</returns>
 		public static bool installMod(ModFile fileinfo, bool delArchive = false)
 		{
@@ -43,7 +43,7 @@ namespace H3VRModInstaller.Filesys
 				if (args[i] == "unzipToDir")
 				{
 					ModInstallerCommon.DebugLog("Unzipping to " + args[i + 1]);
-					Zip.unzip(fileinfo.RawName, ModInstallerCommon.MainFiledir + "/" + args[i + 1], delArchive);
+					Zip.Unzip(fileinfo.RawName, ModInstallerCommon.MainFiledir + "/" + args[i + 1], delArchive);
 				}
 				if (args[i] == "addFolder")
 				{
@@ -59,10 +59,13 @@ namespace H3VRModInstaller.Filesys
 		/// <summary>
 		/// This function moves the mod (first parameter) to the second parameter location, and renames it to the third parameter
 		/// </summary>
-		/// <param name="Mod to Move"></param>
-		/// <param name="Directory to move to"></param>
-		/// <param name="String to rename to"></param>
-		/// <returns></returns>
+		/// <param name="mod">The mod to be moved</param>
+		/// <param name="dir">The Directory to be moved to</param>
+		/// <param name="renameTo">What the file should be renamed to after</param>
+		/// <returns>Boolean, true</returns>
+		/// <remarks>
+		/// Honestly, this function needs a lot of work, its disgusting 
+		/// </remarks>
 		public static bool moveToFolder(string mod, string dir, string renameTo = "")
 		{
 			if (renameTo == "") renameTo = mod;

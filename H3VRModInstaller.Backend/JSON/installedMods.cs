@@ -8,14 +8,26 @@ using System.IO.Compression;
 
 namespace H3VRModInstaller.JSON
 {
+	/// <summary>
+	/// Another layer for multiple mods in one file
+	/// </summary>
 	public class InstalledModsFormat
 	{
+		/// <summary>
+		/// Read class comment
+		/// </summary>
 		public string[] InstalledMods { get; set; }
 	}
 
+	/// <summary>
+	/// Actions for the installed mods. Serialised
+	/// </summary>
 	public class InstalledMods
 	{
-		//gets currently installed mods from json
+		/// <summary>
+		/// Gets the currently installed mods from the JSON files
+		/// </summary>
+		/// <returns>String array with the installed mods</returns>
 		public static string[] GetInstalledMods()
 		{
 			if (!File.Exists(Directory.GetCurrentDirectory() + @"\installedmods.json")) return new string[0];
@@ -23,8 +35,11 @@ namespace H3VRModInstaller.JSON
 			if (input == null) return new string[0];
 			return input.InstalledMods;
 		}
-
-		//adds a mod id to the json file
+		
+		/// <summary>
+		/// Adds a <c>ModID</c> to the JSON file
+		/// </summary>
+		/// <param name="addmod">Mod to add</param>
 		public static void AddInstalledMods(string addmod)
 		{
 			string[] file = new string[0];
