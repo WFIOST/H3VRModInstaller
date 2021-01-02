@@ -20,11 +20,11 @@ namespace H3VRModInstaller.Common
 		/// <summary>
 		/// Enables Debugging
 		/// </summary>
-		public static bool enableDebugging = false;
+		public static bool enableDebugging = true;
 		/// <summary>
 		/// Bypasses the check for H3VR.EXE
 		/// </summary>
-		public static bool BypassExec = false;
+		public static bool BypassExec = true;
 		/// <summary>
 		/// Location of H3VR.EXE, auto stops if not detected
 		/// </summary>

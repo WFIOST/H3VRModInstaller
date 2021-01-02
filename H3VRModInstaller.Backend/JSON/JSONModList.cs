@@ -51,15 +51,17 @@ namespace H3VRModInstaller.JSON
 		{
 			if (ModList == null || reload)
 			{
+				Console.WriteLine("Modlist null!");
 				if (jsonfiles == null)
 				{
+					Console.WriteLine("jsonfiles null!");
 					jsonfiles = Glob.FilesAndDirectories(ModInstallerCommon.Modinstallerdir, "**.json").ToArray();
 					ModInstallerCommon.DebugLog("Found " + jsonfiles.Length + " json files to read from!");
 				}
-				ModListFormat[] mods = new ModListFormat[jsonfiles.Length];
+				ModList = new ModListFormat[jsonfiles.Length];
 				for (int i = 0; i < jsonfiles.Length; i++)
 				{
-					mods[i] = DeserializeModListFormat(jsonfiles[i]);
+					ModList[i] = DeserializeModListFormat(jsonfiles[i]);
 				}
 			}
 			return ModList;
