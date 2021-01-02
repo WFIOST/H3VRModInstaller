@@ -3,7 +3,6 @@ using System.Threading;
 using System.Net;
 using H3VRModInstaller.Filesys;
 using H3VRModInstaller.Net;
-using H3VRModInstaller.Filesys.Common;
 using H3VRModInstaller.JSON;
 using H3VRModInstaller.Common;
 
@@ -15,24 +14,24 @@ namespace H3VRModInstaller
 		private static readonly WebClient downloader = new();
 		private static bool finished = false;
 
-		public static bool DownloadMod(string[] fileinfo, bool autoredownload = false, bool skipdl = false)
+		public static bool DownloadMod(ModFile fileinfo, int modnum, bool autoredownload = false, bool skipdl = false)
 		{
 			if(skipdl == true) { Installer.installMod(fileinfo); return true; }
 			string[] installedmods = InstalledMods.GetInstalledMods();
 			finished = false;
-			if (fileinfo[0] == "" || fileinfo[0] == null) { return false; }
+			if (fileinfo.RawName == "" || fileinfo.RawName == null) { return false; }
 
-			string fileToDownload = fileinfo[0];
-			string locationOfFile = fileinfo[1];
+			string fileToDownload = fileinfo.RawName;
+			string locationOfFile = fileinfo.Path;
 
 			bool redownload = false;
 			if (!autoredownload)
 			{
 				for (int i = 0; i < installedmods.Length; i++)
 				{
-					if (fileinfo[4] == installedmods[i])
+					if (fileinfo.ModId == installedmods[i])
 					{
-						if (fileinfo[3] == "0")
+						if (modnum == 0)
 						{
 						repeat:
 							Console.WriteLine("Mod already installed Are you sure you want to reinstall? (y/n)");
@@ -48,7 +47,7 @@ namespace H3VRModInstaller
 							}
 							else goto repeat;
 						}
-						ModInstallerCommon.DebugLog(fileinfo[4] + " is already installed!");
+						ModInstallerCommon.DebugLog(fileinfo.ModId + " is already installed!");
 						return false;
 					}
 				}
@@ -73,9 +72,9 @@ namespace H3VRModInstaller
 			Console.WriteLine("Successfully Downloaded {0}", fileToDownload, locationOfFile);
 			if (ModInstallerCommon.enableDebugging) Console.Write("from {1}{0}", fileToDownload, locationOfFile);
 
-				Installer.installMod(fileinfo);
+			Installer.installMod(fileinfo);
 
-			if(!redownload) InstalledMods.AddInstalledMods(fileinfo[4]);
+			if(!redownload) InstalledMods.AddInstalledMods(fileinfo.ModId);
 			return true;
 		}
 
@@ -104,17 +103,17 @@ namespace H3VRModInstaller
 		public static bool DownloadModDirector(string mod, bool skipdl = false)
 		{
 			if (!NetCheck.isOnline(ModInstallerCommon.pingsite)) { Console.WriteLine("Not connected to internet, or " + ModInstallerCommon.pingsite + " is down!"); return false; }
-			var result = ModList.getModInfo(mod);
+			var result = ModParsing.getModInfo(mod);
 			if (result == null) return false;
-			for (var i = 0; i < result.Item1.GetLength(0); i++)
+			for (var i = 0; i < result.Length; i++)
 			{
-				string[] fileinfo = new string[5];
+/*				string[] fileinfo = new string[5];
 				fileinfo[0] = result.Item1[i, 0]; //File name
 				fileinfo[1] = result.Item1[i, 1]; //File loc
 				fileinfo[2] = result.Item1[i, 2]; //args
 				fileinfo[3] = i.ToString(); //modnumber
-				fileinfo[4] = result.Item1[i, 3]; //File ID
-				DownloadMod(fileinfo, false, skipdl);
+				fileinfo[4] = result.Item1[i, 3]; //File ID*/
+				DownloadMod(result[i], i, false, skipdl);
 			}
 			return true;
 		}

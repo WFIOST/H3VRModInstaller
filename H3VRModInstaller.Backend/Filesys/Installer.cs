@@ -2,6 +2,7 @@
 using System.IO;
 using System.IO.Compression;
 using H3VRModInstaller.Common;
+using H3VRModInstaller.JSON;
 
 namespace H3VRModInstaller.Filesys
 {
@@ -17,15 +18,15 @@ namespace H3VRModInstaller.Filesys
 		/// <param name="File Info"></param>
 		/// <param name="Delete Archive"></param>
 		/// <returns>Boolean</returns>
-		public static bool installMod(string[] fileinfo, bool delArchive = false)
+		public static bool installMod(ModFile fileinfo, bool delArchive = false)
 		{
-			fileinfo[2].Replace("BACKSLASH", @"\");
+			fileinfo.Arguments.Replace("BACKSLASH", @"\");
 
-			if (fileinfo[2] == "")
+			if (fileinfo.Arguments == "")
 			{
-				fileinfo[2] = "unzipToDir?";
+				fileinfo.Arguments = "unzipToDir?";
 			}
-			string[] args = fileinfo[2].Split('?');
+			string[] args = fileinfo.Arguments.Split('?');
 
 			ModInstallerCommon.DebugLog("");
 			for (int i = 0; i < args.Length; i++)
@@ -42,7 +43,7 @@ namespace H3VRModInstaller.Filesys
 				if (args[i] == "unzipToDir")
 				{
 					ModInstallerCommon.DebugLog("Unzipping to " + args[i + 1]);
-					Zip.unzip(fileinfo[0], ModInstallerCommon.MainFiledir + "/" + args[i + 1], delArchive);
+					Zip.unzip(fileinfo.RawName, ModInstallerCommon.MainFiledir + "/" + args[i + 1], delArchive);
 				}
 				if (args[i] == "addFolder")
 				{
@@ -52,7 +53,7 @@ namespace H3VRModInstaller.Filesys
 				if (args[i] == "break") break;
 			}
 
-			Console.WriteLine("Installed " + fileinfo[0]);
+			Console.WriteLine("Installed " + fileinfo.Name);
 			return true;
 		}
 		/// <summary>
