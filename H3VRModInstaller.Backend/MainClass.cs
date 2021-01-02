@@ -11,7 +11,6 @@ namespace H3VRModInstaller
 {
 	public class MainClass
 	{
-<<<<<<< Updated upstream
 		/// <summary>
 		/// Bypasses the check for H3VR.EXE
 		/// </summary>
@@ -29,12 +28,6 @@ namespace H3VRModInstaller
 		/// Enables Debugging
 		/// </summary>
 		public static bool enableDebugging = false; 
-=======
-		public static bool BypassExec = false; //bypasses check for the exe
-		public static readonly string execdir = modLists.H3Vrdir + @"\H3VR.exe"; //loc of the exe, auto stops if not detected
-		public static string pingsite = "www.github.com"; //website used to ping to ensure internet access
-		public static bool enableDebugging = false; //shits all over the console if true
->>>>>>> Stashed changes
 
 		public static void Main(string[] args)
 		{
@@ -45,7 +38,7 @@ namespace H3VRModInstaller
 			//online check
 			if (!NetCheck.isOnline(pingsite)) { throwexept("Cannot connect to github!"); return; }
 			//gets the whole dl list possible
-			modLists.DlModList();
+			JsonModList.DlModList();
 			Console.WriteLine("Welcome to the H3VR Mod installer!");
 			Console.WriteLine("Please select the mod you would like to install using 'dl [modnamehere]' ");
 			Console.WriteLine("ex: 'dl wurstmod'");
@@ -64,7 +57,7 @@ namespace H3VRModInstaller
 			{
 				
 				case "reload":
-					modLists.GetmodLists(enableDebugging, true);
+					JsonModList.GetmodLists(enableDebugging, true);
 					break;
 				case "wipe":
 					File.Delete(Directory.GetCurrentDirectory() + @"\installedmods.json");
@@ -75,7 +68,7 @@ namespace H3VRModInstaller
 					break;
 				case "check":
 					
-					ModListFormat[] ml = modLists.GetmodLists(MainClass.enableDebugging);
+					ModListFormat[] ml = JsonModList.GetmodLists(MainClass.enableDebugging);
 
 					for (int i = 0; i < ml.Length; i++)
 					{
@@ -179,7 +172,7 @@ namespace H3VRModInstaller
 				{
 					foundmod = true;
 					string[] jsonarray = { jsonname };
-					ModListFormat[] modarray = modLists.LoadModLists(MainClass.enableDebugging, jsonarray);
+					ModListFormat[] modarray = JsonModList.LoadModLists(MainClass.enableDebugging, jsonarray);
 					ModListFormat mods = modarray[0];
 					for (int x = 0; x < mods.Modlist.Length; x++)
 					{

@@ -7,15 +7,16 @@ namespace H3VRModInstaller.Filesys
 {
 	public class Installer
 	{
-		//installs the mod, not sure what you expected.
+
 		public static bool installMod(string[] fileinfo, bool delArchive = false)
 		{
-			//catches no args
+			fileinfo[2].Replace("BACKSLASH", @"\");
+
 			if (fileinfo[2] == "")
 			{
 				fileinfo[2] = "unzipToDir?";
 			}
-			string[] args = fileinfo[2].Split('?'); //spits args line by ?
+			string[] args = fileinfo[2].Split('?');
 
 			if (MainClass.enableDebugging) Console.WriteLine("");
 			for (int i = 0; i < args.Length; i++)
@@ -45,24 +46,21 @@ namespace H3VRModInstaller.Filesys
 			Console.WriteLine("Installed " + fileinfo[0]);
 			return true;
 		}
-
 		public static bool moveToFolder(string mod, string dir, string renameTo = "")
 		{
 			if (renameTo == "") renameTo = mod;
 			dir = JsonModList.H3Vrdir + @"\" + dir;
 			if (!Directory.Exists(dir)) Directory.CreateDirectory(dir);
 			if (MainClass.enableDebugging) Console.WriteLine("Moving " + Directory.GetCurrentDirectory() + @"\" + mod + " to dir " + dir + " as " + renameTo);
-			
-			//why is this code repeating four times over? BODGE!
-			if (File.Exists(JsonModList.H3Vrdir + @"\" + mod)) //make sure the file exists
+			if (File.Exists(JsonModList.H3Vrdir + @"\" + mod))
 			{
 				if (MainClass.enableDebugging) Console.WriteLine("Moving as file!");
-				File.Move(JsonModList.H3Vrdir + @"\" + mod, dir + renameTo, true); //moves file
+				File.Move(JsonModList.H3Vrdir + @"\" + mod, dir + renameTo, true);
 			}
 			if (File.Exists(Directory.GetCurrentDirectory() + @"\" + mod))
 			{
 				if (MainClass.enableDebugging) Console.WriteLine("Moving as file!");
-				File.Move(Directory.GetCurrentDirectory() + @"\" + mod, dir + renameTo, true); //i'm actually surprised this works. it really shouldn't.
+				File.Move(Directory.GetCurrentDirectory() + @"\" + mod, dir + renameTo, true);
 			}
 			else
 			if (Directory.Exists(JsonModList.H3Vrdir + @"\" + mod))
