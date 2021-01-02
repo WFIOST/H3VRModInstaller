@@ -11,22 +11,20 @@ namespace H3VRModInstaller
 {
 	public class MainClass
 	{
-
-
-
-		
-		//private static Serialisation Json = new Serialisation();
-		public static bool BypassExec = false;
-		public static readonly string execdir = JsonModList.H3Vrdir + @"\H3VR.exe";
-		public static string pingsite = "www.github.com";
-		public static bool enableDebugging = false;
+		public static bool BypassExec = false; //bypasses check for the exe
+		public static readonly string execdir = JsonModList.H3Vrdir + @"\H3VR.exe"; //loc of the exe, auto stops if not detected
+		public static string pingsite = "www.github.com"; //website used to ping to ensure internet access
+		public static bool enableDebugging = false; //shits all over the console if true
 
 		public static void Main(string[] args)
 		{
 			Console.WriteLine("Detecting if " + execdir + " exists...");
 
+			//exe check
 			if (!File.Exists(execdir) && !BypassExec) { throwexept("H3VR not found!"); return; } else { Console.WriteLine("H3VR found!"); }
+			//online check
 			if (!NetCheck.isOnline(pingsite)) { throwexept("Cannot connect to github!"); return; }
+			//gets the whole dl list possible
 			JsonModList.DlModList();
 			Console.WriteLine("Welcome to the H3VR Mod installer!");
 			Console.WriteLine("Please select the mod you would like to install using 'dl [modnamehere]' ");
@@ -38,7 +36,7 @@ namespace H3VRModInstaller
 
 			string[] inputargs = input.Split(' ');
 
-			Array.Resize<string>(ref inputargs, 10);
+			Array.Resize<string>(ref inputargs, 10); //ensures no "OUT OF INDEX TIME TO SHIT MYSELF REEEE"
 
 			Console.WriteLine("");
 
@@ -55,7 +53,7 @@ namespace H3VRModInstaller
 					listmodlists();
 					break;
 				case "check":
-
+					
 					ModListFormat[] ml = JsonModList.GetmodLists(MainClass.enableDebugging);
 
 					for (int i = 0; i < ml.Length; i++)
@@ -118,12 +116,14 @@ namespace H3VRModInstaller
 			goto Start;
 		}
 
+		//i'm not even sure why i made this, i was just too lazy to write two lines.
 		public static void throwexept(string error)
 		{
 			Console.WriteLine(error);
 			Console.ReadKey();
 		}
 
+		//returns a string array as foo[1], foo[2], foo[3], etc
 		public static string ReturnArrayInString(string[] array)
 		{
 			string strng = "";
@@ -135,6 +135,7 @@ namespace H3VRModInstaller
 			return strng;
 		}
 
+		//returns list of modlists, aka modlists
 		public static void listmodlists()
 		{
 			string[] jsonfiles = Glob.FilesAndDirectories(Directory.GetCurrentDirectory() + @"/ModInstallerLists/", "**.json").ToArray();
@@ -145,6 +146,7 @@ namespace H3VRModInstaller
 			}
 		}
 
+		//returns list of mods in a modlist
 		public static void list(string input)
 		{
 			string jsonname = input + ".json";
