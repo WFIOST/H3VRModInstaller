@@ -19,11 +19,10 @@ namespace H3VRModInstaller.JSON.Common
         /// </summary>
         /// <param name="Files To Sort"></param>
         /// <param name="List to append to"></param>
-        /// <returns>Returns the list which was specified in secont parameter</returns>
+        /// <returns>Returns the list which was specified in second parameter</returns>
         public List<string> GetEachPath(string[] FilesToSort, List<string> ListToAppendTo)
         {
             
-
             return ListToAppendTo;
         }
         
