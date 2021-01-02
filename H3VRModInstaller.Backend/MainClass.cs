@@ -11,34 +11,17 @@ namespace H3VRModInstaller
 {
 	public class MainClass
 	{
-		/// <summary>
-		/// Bypasses the check for H3VR.EXE
-		/// </summary>
-		public static bool BypassExec = false; 
-		
-		/// <summary>
-		/// Location of H3VR.EXE, auto stops if not detected
-		/// </summary>
-		public static readonly string execdir = JsonModList.H3Vrdir + @"\H3VR.exe"; 
-		/// <summary>
-		/// Website used to ping to ensure internet access
-		/// </summary>
-		public static string pingsite = "www.github.com"; 
-		/// <summary>
-		/// Enables Debugging
-		/// </summary>
-		public static bool enableDebugging = false; 
 
 		public static void Main(string[] args)
 		{
-			Console.WriteLine("Detecting if " + execdir + " exists...");
+			Console.WriteLine("Detecting if " + MICommon.execdir + " exists...");
 
 			//exe check
-			if (!File.Exists(execdir) && !BypassExec) { throwexept("H3VR not found!"); return; } else { Console.WriteLine("H3VR found!"); }
+			if (!File.Exists(MICommon.execdir) && !MICommon.BypassExec) { throwexept("H3VR not found!"); return; } else { Console.WriteLine("H3VR found!"); }
 			//online check
-			if (!NetCheck.isOnline(pingsite)) { throwexept("Cannot connect to github!"); return; }
+			if (!NetCheck.isOnline(MICommon.pingsite)) { throwexept("Cannot connect to github!"); return; }
 			//gets the whole dl list possible
-			JsonModList.DlModList();
+			JsonModList.dlModList();
 			Console.WriteLine("Welcome to the H3VR Mod installer!");
 			Console.WriteLine("Please select the mod you would like to install using 'dl [modnamehere]' ");
 			Console.WriteLine("ex: 'dl wurstmod'");
@@ -57,7 +40,7 @@ namespace H3VRModInstaller
 			{
 				
 				case "reload":
-					JsonModList.GetmodLists(enableDebugging, true);
+					JsonModList.GetmodLists(true);
 					break;
 				case "wipe":
 					File.Delete(Directory.GetCurrentDirectory() + @"\installedmods.json");
@@ -68,7 +51,7 @@ namespace H3VRModInstaller
 					break;
 				case "check":
 					
-					ModListFormat[] ml = JsonModList.GetmodLists(MainClass.enableDebugging);
+					ModListFormat[] ml = JsonModList.GetmodLists();
 
 					for (int i = 0; i < ml.Length; i++)
 					{
@@ -110,8 +93,8 @@ namespace H3VRModInstaller
 					Console.WriteLine("exit - Close H3VRModInstaller.");
 					break;
 				case "toggledebugging":
-					enableDebugging = !enableDebugging;
-					Console.WriteLine("Debugging is now " + enableDebugging);
+					MICommon.enableDebugging = !MICommon.enableDebugging;
+					Console.WriteLine("Debugging is now " + MICommon.enableDebugging);
 					break;
 				//deletion
 				case "rm":
@@ -172,7 +155,7 @@ namespace H3VRModInstaller
 				{
 					foundmod = true;
 					string[] jsonarray = { jsonname };
-					ModListFormat[] modarray = JsonModList.LoadModLists(MainClass.enableDebugging, jsonarray);
+					ModListFormat[] modarray = JsonModList.GetmodLists(false, jsonarray);
 					ModListFormat mods = modarray[0];
 					for (int x = 0; x < mods.Modlist.Length; x++)
 					{

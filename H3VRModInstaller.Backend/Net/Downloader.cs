@@ -47,7 +47,7 @@ namespace H3VRModInstaller
 							}
 							else goto repeat;
 						}
-						if (MainClass.enableDebugging) Console.WriteLine(fileinfo[4] + " is already installed!");
+						MICommon.DebugLog(fileinfo[4] + " is already installed!");
 						return false;
 					}
 				}
@@ -55,7 +55,7 @@ namespace H3VRModInstaller
 			else redownload = true;
 			Uri fileloc = new Uri(locationOfFile + fileToDownload);
 
-			if (MainClass.enableDebugging) Console.WriteLine("Downloading {0} from {1}{0}", fileToDownload, locationOfFile);
+			if (MICommon.enableDebugging) Console.WriteLine("Downloading {0} from {1}{0}", fileToDownload, locationOfFile);
 
 
 			Console.WriteLine("");
@@ -70,7 +70,7 @@ namespace H3VRModInstaller
 			finished = false;
 
 			Console.WriteLine("Successfully Downloaded {0}", fileToDownload, locationOfFile);
-			if (MainClass.enableDebugging) Console.Write("from {1}{0}", fileToDownload, locationOfFile);
+			if (MICommon.enableDebugging) Console.Write("from {1}{0}", fileToDownload, locationOfFile);
 
 				Installer.installMod(fileinfo);
 
@@ -102,7 +102,7 @@ namespace H3VRModInstaller
 
 		public static bool DownloadModDirector(string mod, bool skipdl = false)
 		{
-			if (!NetCheck.isOnline(MainClass.pingsite)) { Console.WriteLine("Not connected to internet, or " + MainClass.pingsite + " is down!"); return false; }
+			if (!NetCheck.isOnline(MICommon.pingsite)) { Console.WriteLine("Not connected to internet, or " + MICommon.pingsite + " is down!"); return false; }
 			var result = ModList.getModInfo(mod);
 			if (result == null) return false;
 			for (var i = 0; i < result.Item1.GetLength(0); i++)

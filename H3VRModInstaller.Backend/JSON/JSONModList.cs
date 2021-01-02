@@ -33,78 +33,43 @@ namespace H3VRModInstaller.JSON
     public class JsonModList
     {
 		private static readonly WebClient Client = new WebClient();
-		public static string H3Vrdir = Directory.GetParent(Directory.GetCurrentDirectory()).ToString();
-		public static string Modinstallerdir = Directory.GetCurrentDirectory() + @"/ModInstallerLists/";
-		public static string[] Modlistloc = { "https://github.com/Frityet/H3VRModInstaller/releases/download/database/", "ModList.zip" };
-		public static ModListFormat[] Ml = null;
+		public static ModListFormat[] ModList = null;
 
-		public static void DlModList()
+		public static void dlModList()
 		{
-			Uri fileloc = new Uri(Modlistloc[0] + Modlistloc[1]);
+			Uri fileloc = new Uri(MICommon.Modlistloc[0] + MICommon.Modlistloc[1]);
 			Console.WriteLine("Downloading Mod Database...");
-			Client.DownloadFile(fileloc, Modlistloc[1]);
+			Client.DownloadFile(fileloc, MICommon.Modlistloc[1]);
 			Console.WriteLine("Successfully Downloaded Mod Database");
-			Directory.CreateDirectory(Modinstallerdir);
-			ZipFile.ExtractToDirectory(Modlistloc[1], Modinstallerdir, true);
-			File.Delete(Modlistloc[1]);
+			Directory.CreateDirectory(MICommon.Modinstallerdir);
+			ZipFile.ExtractToDirectory(MICommon.Modlistloc[1], MICommon.Modinstallerdir, true);
+			File.Delete(MICommon.Modlistloc[1]);
 		}
 
-		public static ModListFormat[] GetmodLists(bool enabledebugging, bool reload = false)
+		public static ModListFormat[] GetmodLists(bool reload = false, string[] jsonfiles = null)
 		{
-			if (Ml == null || reload) { Ml = LoadModLists(enabledebugging); }
-			return Ml;
+			if (ModList == null || reload)
+			{
+				if (jsonfiles == null)
+				{
+					jsonfiles = Glob.FilesAndDirectories(MICommon.Modinstallerdir, "**.json").ToArray();
+					MICommon.DebugLog("Found " + jsonfiles.Length + " json files to read from!");
+				}
+				ModListFormat[] mods = new ModListFormat[jsonfiles.Length];
+				for (int i = 0; i < jsonfiles.Length; i++)
+				{
+					mods[i] = DeserializeModListFormat(jsonfiles[i]);
+				}
+			}
+			return ModList;
 		}
 
-        public static ModListFormat[] LoadModLists(bool enabledebugging, string[] jsonfiles = null)
-        {
-			if (jsonfiles == null)
-			{
-				jsonfiles = Glob.FilesAndDirectories(Modinstallerdir, "**.json").ToArray();
-				if(enabledebugging) Console.WriteLine("Found " + jsonfiles.Length + " json files to read from!");
-			}
-			ModListFormat[] mods = new ModListFormat[jsonfiles.Length];
-			for (int i = 0; i < jsonfiles.Length; i++)
-			{
-				mods[i] = DeserializeModListFormat(jsonfiles[i], enabledebugging);
-			}
-			return mods;
-		}
-
-		public static ModListFormat DeserializeModListFormat(string jsontoload, bool enabledebugging)
+		public static ModListFormat DeserializeModListFormat(string jsontoload)
 		{
 			ModListFormat modList = new ModListFormat();
-			if (enabledebugging) Console.WriteLine("Loading " + jsontoload);
-			modList = JsonConvert.DeserializeObject<ModListFormat>(File.ReadAllText(Modinstallerdir + jsontoload));
+			MICommon.DebugLog("Loading " + jsontoload);
+			modList = JsonConvert.DeserializeObject<ModListFormat>(File.ReadAllText(MICommon.Modinstallerdir + jsontoload));
 			return modList;
-		}
-	}
-
-	public class InstalledModsFormat
-	{
-		public string[] InstalledMods { get; set; }
-	}
-
-	public class InstalledMods
-	{
-
-		public static string[] GetInstalledMods()
-		{
-			if (!File.Exists(Directory.GetCurrentDirectory() + @"\installedmods.json")) return new string[0];
-			InstalledModsFormat input = JsonConvert.DeserializeObject<InstalledModsFormat>(File.ReadAllText(Directory.GetCurrentDirectory() + "/installedmods.json"));
-			if (input == null) return new string[0];
-			return input.InstalledMods;
-		}
-
-		public static void AddInstalledMods(string addmod)
-		{
-			string[] file = new string[0];
-			file = GetInstalledMods();
-			Array.Resize<string>(ref file, file.Length + 1);
-			InstalledModsFormat modexport = new InstalledModsFormat();
-			file[file.Length - 1] = addmod;
-			modexport.InstalledMods = file;
-			string output = JsonConvert.SerializeObject(modexport);
-			File.WriteAllText(Directory.GetCurrentDirectory() + @"\installedmods.json", output);
 		}
 	}
 }

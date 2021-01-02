@@ -18,10 +18,10 @@ namespace H3VRModInstaller.Filesys
 			}
 			string[] args = fileinfo[2].Split('?');
 
-			if (MainClass.enableDebugging) Console.WriteLine("");
+			MICommon.DebugLog("");
 			for (int i = 0; i < args.Length; i++)
 			{
-				if (MainClass.enableDebugging) Console.Write(args[i] + ", ");
+				MICommon.DebugLog(args[i] + ", ");
 			}
 
 			for (int i = 0; i < args.Length; i++)
@@ -32,13 +32,13 @@ namespace H3VRModInstaller.Filesys
 				}
 				if (args[i] == "unzipToDir")
 				{
-					if (MainClass.enableDebugging) Console.WriteLine("Unzipping to " + args[i + 1]);
-					Zip.unzip(fileinfo[0], JsonModList.H3Vrdir + "/" + args[i + 1], delArchive);
+					MICommon.DebugLog("Unzipping to " + args[i + 1]);
+					Zip.unzip(fileinfo[0], MICommon.MainFiledir + "/" + args[i + 1], delArchive);
 				}
 				if (args[i] == "addFolder")
 				{
-					if (MainClass.enableDebugging) Console.WriteLine("Creating Directory " + args[i + 1]);
-					Directory.CreateDirectory(JsonModList.H3Vrdir + args[i + 1]);
+					MICommon.DebugLog("Creating Directory " + args[i + 1]);
+					Directory.CreateDirectory(MICommon.MainFiledir + args[i + 1]);
 				}
 				if (args[i] == "break") break;
 			}
@@ -49,28 +49,28 @@ namespace H3VRModInstaller.Filesys
 		public static bool moveToFolder(string mod, string dir, string renameTo = "")
 		{
 			if (renameTo == "") renameTo = mod;
-			dir = JsonModList.H3Vrdir + @"\" + dir;
+			dir = MICommon.MainFiledir + @"\" + dir;
 			if (!Directory.Exists(dir)) Directory.CreateDirectory(dir);
-			if (MainClass.enableDebugging) Console.WriteLine("Moving " + Directory.GetCurrentDirectory() + @"\" + mod + " to dir " + dir + " as " + renameTo);
-			if (File.Exists(JsonModList.H3Vrdir + @"\" + mod))
+			MICommon.DebugLog("Moving " + Directory.GetCurrentDirectory() + @"\" + mod + " to dir " + dir + " as " + renameTo);
+			if (File.Exists(MICommon.MainFiledir + @"\" + mod))
 			{
-				if (MainClass.enableDebugging) Console.WriteLine("Moving as file!");
-				File.Move(JsonModList.H3Vrdir + @"\" + mod, dir + renameTo, true);
+				MICommon.DebugLog("Moving as file!");
+				File.Move(MICommon.MainFiledir + @"\" + mod, dir + renameTo, true);
 			}
 			if (File.Exists(Directory.GetCurrentDirectory() + @"\" + mod))
 			{
-				if (MainClass.enableDebugging) Console.WriteLine("Moving as file!");
+				MICommon.DebugLog("Moving as file!");
 				File.Move(Directory.GetCurrentDirectory() + @"\" + mod, dir + renameTo, true);
 			}
 			else
-			if (Directory.Exists(JsonModList.H3Vrdir + @"\" + mod))
+			if (Directory.Exists(MICommon.MainFiledir + @"\" + mod))
 			{
-				if (MainClass.enableDebugging) Console.WriteLine("Moving as directory!");
-				Directory.Move(JsonModList.H3Vrdir + @"\" + mod, dir + renameTo);
+				MICommon.DebugLog("Moving as directory!");
+				Directory.Move(MICommon.MainFiledir + @"\" + mod, dir + renameTo);
 			}
 			if (Directory.Exists(Directory.GetCurrentDirectory() + @"\" + mod))
 			{
-				if (MainClass.enableDebugging) Console.WriteLine("Moving as directory!");
+				MICommon.DebugLog("Moving as directory!");
 				Directory.Move(Directory.GetCurrentDirectory() + @"\" + mod, dir + renameTo);
 			}
 			else Console.WriteLine("Cannot find file to move!");

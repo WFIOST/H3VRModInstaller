@@ -13,7 +13,7 @@ namespace H3VRModInstaller.JSON.Common
         /// <summary>
         /// All JSON files in the database!
         /// </summary>
-        public string[] JsonFiles = Glob.FilesAndDirectories(JsonModList.Modinstallerdir, "**.json").ToArray();
+        public string[] JsonFiles = Glob.FilesAndDirectories(MICommon.Modinstallerdir, "**.json").ToArray();
         /// <summary>
         /// Gets every filepath of the mods, and adds them to the list defined as the secont parameter
         /// </summary>
