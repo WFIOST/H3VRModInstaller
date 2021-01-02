@@ -25,7 +25,7 @@ namespace H3VRModInstaller
 		public static bool DownloadMod(ModFile fileinfo, int modnum, bool autoredownload = false, bool skipdl = false)
 		{
 			if(skipdl == true) { Installer.installMod(fileinfo); return true; }
-			string[] installedmods = InstalledMods.GetInstalledMods();
+			ModFile[] installedmods = InstalledMods.GetInstalledMods();
 			finished = false;
 			if (fileinfo.RawName == "" || fileinfo.RawName == null) { return false; }
 
@@ -37,7 +37,7 @@ namespace H3VRModInstaller
 			{
 				for (int i = 0; i < installedmods.Length; i++)
 				{
-					if (fileinfo.ModId == installedmods[i])
+					if (fileinfo.ModId == installedmods[i].ModId)
 					{
 						if (modnum == 0)
 						{

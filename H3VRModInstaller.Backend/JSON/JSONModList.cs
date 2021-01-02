@@ -9,10 +9,8 @@ using H3VRModInstaller.Common;
 
 namespace H3VRModInstaller.JSON
 {
-	
-	
 	/// <summary>
-	/// The definition of the JSON file
+	/// Standard JSON file info for a mod
 	/// </summary>
 	public class ModFile
     {
@@ -62,10 +60,11 @@ namespace H3VRModInstaller.JSON
 	    /// All the dependencies of the mod, must be the <c>ModID</c>
 	    /// </summary>
         public string[] Dependencies { get; set; }
+		public string DelInfo { get; set; }
     }
 
 	/// <summary>
-	/// Another level to the JSON I guess?
+	/// Contains an array of ModFiles.
 	/// </summary>
 	public class ModListFormat
 	{
@@ -83,11 +82,10 @@ namespace H3VRModInstaller.JSON
 		private static readonly WebClient Client = new();
 		public static ModListFormat[] ModList;
 
-		
 		/// <summary>
-		/// Downloads the latest modlist
+		/// Downloads mods from ModInstallerCommon.Modlistloc
 		/// </summary>
-		public static void DlModList()
+		public static void dlModList()
 		{
 			Uri fileloc = new Uri(ModInstallerCommon.Modlistloc[0] + ModInstallerCommon.Modlistloc[1]);
 			Console.WriteLine("Downloading Mod Database...");
@@ -118,18 +116,17 @@ namespace H3VRModInstaller.JSON
 				ModList = new ModListFormat[jsonfiles.Length];
 				for (int i = 0; i < jsonfiles.Length; i++)
 				{
-					ModList[i] = DeserializeModListFormat(jsonfiles[i]);
+					ModList[i] = deserializeModListFormat(jsonfiles[i]);
 				}
 			}
 			return ModList;
 		}
 
 		/// <summary>
-		/// Deserialises the ModList
+		/// Deserializes JSON file given JSON file name.
 		/// </summary>
 		/// <param name="jsontoload">Json file to load</param>
 		/// <returns>ModList</returns>
-		public static ModListFormat DeserializeModListFormat(string jsontoload)
 		{
 			ModListFormat modList = new ModListFormat();
 			ModInstallerCommon.DebugLog("Loading " + jsontoload);
