@@ -22,7 +22,7 @@ namespace H3VRModInstaller
 		public static ModFile[] getModInfo(string mod, ModFile[] result = null, bool returndependencies = true)
 		{
 			if (result == null) result = new ModFile[0];
-			ModListFormat[] ML = JsonModList.GetmodLists();
+			ModListFormat[] ML = JsonModList.getmodLists();
 
 			for (int i = 0; i < ML.Length; i++)
 			{
