@@ -7,14 +7,21 @@
         <e p="cock.cs" t="Include" />
         <e p="Common" t="Include">
           <e p="Directories.cs" t="Include" />
+          <e p="JSON" t="Include">
+            <e p="JSONCommon.cs" t="Include" />
+          </e>
           <e p="ModList.cs" t="Include" />
         </e>
         <e p="Filesys" t="Include">
           <e p="Installer.cs" t="Include" />
+          <e p="RegisterMods.cs" t="Include" />
           <e p="Uninstall.cs" t="Include" />
           <e p="Zip.cs" t="Include" />
         </e>
         <e p="H3VRModInstaller.Backend.csproj" t="IncludeRecursive" />
+        <e p="JSON" t="Include">
+          <e p="JSONModList.cs" t="Include" />
+        </e>
         <e p="MainClass.cs" t="Include" />
         <e p="Net" t="Include">
           <e p="Downloader.cs" t="Include" />
@@ -40,8 +47,8 @@
       </e>
       <e p="H3VRModInstaller.JSON" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
+        <e p="Common" t="Include" />
         <e p="H3VRModInstaller.JSON.csproj" t="IncludeRecursive" />
-        <e p="JSONModList.cs" t="Include" />
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
             <e p="net5.0" t="Include">
@@ -49,7 +56,6 @@
             </e>
           </e>
         </e>
-        <e p="RegisterMods.cs" t="Include" />
       </e>
       <e p="H3VRModInstaller.sln" t="IncludeFlat" />
       <e p="packages" t="ExcludeRecursive" />

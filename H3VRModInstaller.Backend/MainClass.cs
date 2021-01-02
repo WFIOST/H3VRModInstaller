@@ -11,6 +11,10 @@ namespace H3VRModInstaller
 {
 	public class MainClass
 	{
+
+
+
+		
 		//private static Serialisation Json = new Serialisation();
 		public static bool BypassExec = false;
 		public static readonly string execdir = JsonModList.H3Vrdir + @"\H3VR.exe";
