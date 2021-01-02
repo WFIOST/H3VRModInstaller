@@ -47,7 +47,7 @@ namespace H3VRModInstaller
 			{
 				
 				case "reload":
-					JsonModList.getmodLists(true);
+					JsonModList.GetModLists(true);
 					break;
 				case "wipe":
 					File.Delete(Directory.GetCurrentDirectory() + @"\installedmods.json");
@@ -58,7 +58,7 @@ namespace H3VRModInstaller
 					break;
 				case "check":
 					
-					ModListFormat[] ml = JsonModList.getmodLists();
+					ModListFormat[] ml = JsonModList.GetModLists();
 
 					for (int i = 0; i < ml.Length; i++)
 					{
@@ -148,7 +148,7 @@ namespace H3VRModInstaller
 				if (jsonname == jsonfiles[i])
 				{
 					foundmod = true;
-					ModListFormat mods = JsonModList.deserializeModListFormat(jsonname);
+					ModListFormat mods = JsonModList.DeserializeModListFormat(jsonname);
 					for (int x = 0; x < mods.Modlist.Length; x++)
 					{
 						Console.WriteLine(mods.Modlist[x].ModId);

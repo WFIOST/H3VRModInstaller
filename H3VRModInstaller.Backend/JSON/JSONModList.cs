@@ -60,6 +60,7 @@ namespace H3VRModInstaller.JSON
 	    /// All the dependencies of the mod, must be the <c>ModID</c>
 	    /// </summary>
         public string[] Dependencies { get; set; }
+	    
 		public string DelInfo { get; set; }
     }
 
@@ -85,7 +86,7 @@ namespace H3VRModInstaller.JSON
 		/// <summary>
 		/// Downloads mods from ModInstallerCommon.Modlistloc
 		/// </summary>
-		public static void dlModList()
+		public static void DlModList()
 		{
 			Uri fileloc = new Uri(ModInstallerCommon.Modlistloc[0] + ModInstallerCommon.Modlistloc[1]);
 			Console.WriteLine("Downloading Mod Database...");
@@ -102,7 +103,7 @@ namespace H3VRModInstaller.JSON
 		/// <param name="reload">Reload?</param>
 		/// <param name="jsonfiles">Specify the json files you would like to use, this is a path</param>
 		/// <returns>ModList</returns>
-		public static ModListFormat[] GetmodLists(bool reload = false, string[] jsonfiles = null)
+		public static ModListFormat[] GetModLists(bool reload = false, string[] jsonfiles = null)
 		{
 			if (ModList == null || reload)
 			{
