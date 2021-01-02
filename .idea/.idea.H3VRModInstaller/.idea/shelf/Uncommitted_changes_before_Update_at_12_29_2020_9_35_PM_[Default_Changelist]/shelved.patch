@@ -1,0 +1,595 @@
+Index: H3VRModInstaller.Backend/MainClass.cs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>using System;\r\nusing System.Diagnostics;\r\nusing System.IO;\r\nusing H3VRModInstaller.Net;\r\nusing H3VRModInstaller.JSON;\r\nusing GlobExpressions;\r\nusing System.Collections.Generic;\r\nusing System.Linq;\r\n\r\nnamespace H3VRModInstaller\r\n{\r\n    class MainClass\r\n    {\r\n\t    //private static Serialisation Json = new Serialisation();\r\n        private static bool BypassH3VR = false;\r\n        private static readonly Downloader downloader = new Downloader();\r\n        public static void Main(string[] args)\r\n        {        \r\n\t        \r\n\t        \r\n\t        if (File.Exists(ModLists.h3vrdir + @\"\\H3VR.exe\") || BypassH3VR)\r\n\t\t\t{\r\n\t\t\t\tConsole.WriteLine(\"H3VR.exe detected\");\r\n\t\t\t\tModLists.ModListDownload();\r\n\t\t\t\tConsole.WriteLine(\"Welcome to the H3VR Mod installer!\");\r\n\t\t\t\tConsole.WriteLine(\"Please select the mod you would like to install using 'dl [modnamehere]' \");\r\n\t\t\t\tConsole.WriteLine(\"ex: 'dl wurstmod'\");\r\n\t\t\t\tConsole.WriteLine(\"To see a list of downloadable mods, type 'modlists'\");\r\n\t\t\t\tConsole.WriteLine(\"To see a list of commands, type 'help'\");\r\n\t\t\tStart:\r\n\t\t\t\tvar input = Console.ReadLine();\r\n\r\n\t\t\t\tstring[] inputargs = input.Split(' ');\r\n\r\n\t\t\t\tArray.Resize<string>(ref inputargs, 10);\r\n\r\n\t\t\t\tswitch (inputargs[0])\r\n\t\t\t\t{\r\n\t\t\t\t\tcase \"wipe\":\r\n\t\t\t\t\t\tFile.Delete(Directory.GetCurrentDirectory() + @\"\\installedmods.json\");\r\n\t\t\t\t\t\tConsole.WriteLine(\"Wiped!\");\r\n\t\t\t\t\t\tbreak;\r\n\t\t\t\t\tcase \"modlists\":\r\n\t\t\t\t\t\tlistmodlists();\r\n\t\t\t\t\t\tbreak;\r\n\t\t\t\t\tcase \"check\":\r\n\r\n\t\t\t\t\t\tModListFormat[] ml = ModLists.LoadModLists();\r\n\r\n\t\t\t\t\t\tfor (int i = 0; i < ml.Length; i++)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tfor (int x = 0; x < ml[i].modlist.Length; x++)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tif (ml[i].modlist[x].modID == inputargs[1])\r\n\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\tstring link = ml[i].modlist[x].Website;\r\n\t\t\t\t\t\t\t\t\tvar psi = new ProcessStartInfo\r\n\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\tFileName = link,\r\n\t\t\t\t\t\t\t\t\t\tUseShellExecute = true\r\n\t\t\t\t\t\t\t\t\t};\r\n\t\t\t\t\t\t\t\t\tProcess.Start(psi);\r\n\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t}\r\n\r\n\t\t\t\t\t\tbreak;\r\n\t\t\t\t\tcase \"dl\":\r\n\t\t\t\t\t\tDownloader.DownloadModDirector(inputargs[1]);\r\n\t\t\t\t\t\tbreak;\r\n\t\t\t\t\tcase \"list\":\r\n\t\t\t\t\t\tif (inputargs[1] == \"installedmods\") { Console.WriteLine(ReturnArrayInString(InstalledMods.GetInstalledMods())); }\r\n\t\t\t\t\t\telse { list(inputargs[1]); }\r\n\t\t\t\t\t\tbreak;\r\n\t\t\t\t\tcase \"exit\":\r\n\t\t\t\t\t\treturn;\r\n\t\t\t\t\tcase \"help\":\r\n\t\t\t\t\t\tConsole.WriteLine(\"wipe - Wipes all data for installed mods.\");\r\n\t\t\t\t\t\tConsole.WriteLine(\"modlists - Lists all modlists, which are lists of mods.\");\r\n\t\t\t\t\t\tConsole.WriteLine(\"dl [modname] - Downloads mod listed.\");\r\n\t\t\t\t\t\tConsole.WriteLine(\"check [modname] - Opens browser to modpage.\");\r\n\t\t\t\t\t\tConsole.WriteLine(\"list [modlist] - Lists all mods contained in a modlist.\");\r\n\t\t\t\t\t\tConsole.WriteLine(\"list installedmods - Lists all mods registered as installed.\");\r\n\t\t\t\t\t\tConsole.WriteLine(\"exit - Close H3VRModInstaller.\");\r\n\t\t\t\t\t\tbreak;\r\n\t\t\t\t\tdefault:\r\n\t\t\t\t\t\tConsole.WriteLine(\"Invalid command!\");\r\n\t\t\t\t\t\tbreak;\r\n\t\t\t\t}\r\n\r\n\t\t\t\tgoto Start;\r\n\r\n\t\t\t}\r\n\t\t\telse\r\n\t\t\t{\r\n\t\t\t\tConsole.WriteLine(\"H3VR.exe not detected!\");\r\n\t\t\t\tConsole.ReadKey();\r\n\t\t\t}\r\n\t\t\tConsole.ReadKey();\r\n\t\t}\r\n\r\n\t\tpublic static string ReturnArrayInString(string[] array)\r\n\t\t{\r\n\t\t\tstring strng = \"\";\r\n\t\t\tfor (int i = 0; i < array.Length; i++)\r\n\t\t\t{\r\n\t\t\t\tstrng += array[i];\r\n\t\t\t\tstrng += \", \";\r\n\t\t\t}\r\n\t\t\treturn strng;\r\n\t\t}\r\n\r\n\t\tpublic static void listmodlists()\r\n\t\t{\r\n\t\t\tConsole.WriteLine(\"\");\r\n\t\t\tstring[] jsonfiles = Glob.FilesAndDirectories(Directory.GetCurrentDirectory() + @\"/ModInstallerLists/\", \"**.json\").ToArray();\r\n\t\t\tfor (int i = 0; i < jsonfiles.Length; i++)\r\n\t\t\t{\r\n\t\t\t\tjsonfiles[i] = jsonfiles[i].Remove(jsonfiles[i].Length - 5, 5);\r\n\t\t\t\tConsole.WriteLine(jsonfiles[i]);\r\n\t\t\t}\r\n\t\t\tConsole.WriteLine(\"\");\r\n\t\t}\r\n\r\n\t\tpublic static void list(string input)\r\n\t\t{\r\n\t\t\tConsole.WriteLine(\"\");\r\n\t\t\tstring jsonname = input + \".json\";\r\n\t\t\tstring[] jsonfiles = Glob.FilesAndDirectories(Directory.GetCurrentDirectory() + @\"/ModInstallerLists/\", \"**.json\").ToArray();\r\n\t\t\tbool foundmod = false;\r\n\t\t\tfor (int i = 0; i < jsonfiles.Length; i++)\r\n\t\t\t{\r\n\t\t\t\tif(jsonname == jsonfiles[i])\r\n\t\t\t\t{\r\n\t\t\t\t\tfoundmod = true;\r\n\t\t\t\t\tModListFormat mods = ModLists.LoadSpecificJSON(jsonname);\r\n\t\t\t\t\tfor (int x = 0; x < mods.modlist.Length; x++)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tConsole.WriteLine(mods.modlist[x].modID);\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tif(foundmod == false)\r\n\t\t\t{\r\n\t\t\t\tConsole.WriteLine(\"List not found!\");\r\n\t\t\t}\r\n\t\t\tConsole.WriteLine(\"\");\r\n\t\t}\r\n\t}\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/H3VRModInstaller.Backend/MainClass.cs b/H3VRModInstaller.Backend/MainClass.cs
+--- a/H3VRModInstaller.Backend/MainClass.cs	(revision c709817ae41f332622d9ce3f90e2b3d6e534d295)
++++ b/H3VRModInstaller.Backend/MainClass.cs	(date 1608960107472)
+@@ -49,11 +49,11 @@
+ 
+ 						for (int i = 0; i < ml.Length; i++)
+ 						{
+-							for (int x = 0; x < ml[i].modlist.Length; x++)
++							for (int x = 0; x < ml[i].Modlist.Length; x++)
+ 							{
+-								if (ml[i].modlist[x].modID == inputargs[1])
++								if (ml[i].Modlist[x].ModID == inputargs[1])
+ 								{
+-									string link = ml[i].modlist[x].Website;
++									string link = ml[i].Modlist[x].Website;
+ 									var psi = new ProcessStartInfo
+ 									{
+ 										FileName = link,
+@@ -134,9 +134,9 @@
+ 				{
+ 					foundmod = true;
+ 					ModListFormat mods = ModLists.LoadSpecificJSON(jsonname);
+-					for (int x = 0; x < mods.modlist.Length; x++)
++					for (int x = 0; x < mods.Modlist.Length; x++)
+ 					{
+-						Console.WriteLine(mods.modlist[x].modID);
++						Console.WriteLine(mods.Modlist[x].ModID);
+ 					}
+ 				}
+ 			}
+Index: H3VRModInstaller.JSON/GetModLists.cs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>using System;\r\nusing Newtonsoft.Json;\r\nusing System.IO;\r\nusing System.Linq;\r\nusing GlobExpressions;\r\nusing System.Net;\r\nusing System.IO.Compression;\r\n\r\nnamespace H3VRModInstaller.JSON\r\n{\r\n    public class ModFile\r\n    {\r\n\t\tpublic string modID { get; set; }\r\n\t\tpublic string Name { get; set; }\r\n\t\tpublic string RawName { get; set; }\r\n\t\tpublic string[] Author { get; set; }\r\n\t\tpublic string Version { get; set; }\r\n\t\tpublic string Description { get; set; }\r\n\t\tpublic string Path { get; set; }\r\n\t\tpublic string Website { get; set; }\r\n\t\tpublic string Arguments { get; set; }\r\n        public string[] Dependencies { get; set; }\r\n    }\r\n\r\n\tpublic class ModListFormat\r\n\t{\r\n\t\tpublic ModFile[] modlist { get; set; }\r\n\t}\r\n\r\n    public class ModLists\r\n    {\r\n\t\tprivate static readonly WebClient client = new WebClient();\r\n\t\tpublic static string h3vrdir = Directory.GetParent(Directory.GetCurrentDirectory()).ToString();\r\n\t\tpublic static void ModListDownload()\r\n\t\t{\r\n\t\t\tstring locationOfFile = \"https://github.com/Frityet/H3VRModInstaller/releases/download/database/\";\r\n\t\t\tstring fileToDownload = \"ModList.zip\";\r\n\t\t\tUri fileloc = new Uri(locationOfFile + fileToDownload);\r\n\t\t\tConsole.WriteLine(\"Downloading Mod Database...\");\r\n\t\t\tclient.DownloadFile(fileloc, fileToDownload);\r\n\t\t\tConsole.WriteLine(\"Successfully Downloaded Mod Database\");\r\n\t\t\tDirectory.CreateDirectory(@\"/ModInstallerLists/\");\r\n\t\t\tConsole.WriteLine(\"Unzipping \" + fileToDownload);\r\n\t\t\tZipFile.ExtractToDirectory(fileToDownload, Directory.GetCurrentDirectory() + @\"/ModInstallerLists/\", true);\r\n\t\t\tFile.Delete(fileToDownload);\r\n\t\t}\r\n\r\n        public static ModListFormat[] LoadModLists()\r\n        {\r\n\t\t\tModListFormat _ml = new ModListFormat();\r\n\t\t\tstring[] jsonfiles = Glob.FilesAndDirectories(Directory.GetCurrentDirectory() + @\"/ModInstallerLists/\", \"**.json\").ToArray();\r\n\t\t\tConsole.WriteLine(\"Found \" + jsonfiles.Length + \" json files to read from!\");\r\n\t\t\tModListFormat[] mods = new ModListFormat[jsonfiles.Length];\r\n\t\t\tfor (int i = 0; i < jsonfiles.Length; i++)\r\n\t\t\t{\r\n\t\t\t\t\r\n\t\t\t\tmods[i] = JsonConvert.DeserializeObject<ModListFormat>(File.ReadAllText(Directory.GetCurrentDirectory() + @\"/ModInstallerLists/\" + jsonfiles[i]));\r\n\t\t\t}\r\n\t\t\treturn mods;\r\n\t\t}\r\n\r\n\t\tpublic static ModListFormat LoadSpecificJSON(string jsontoload)\r\n\t\t{\r\n\t\t\tModListFormat _ml = new ModListFormat();\r\n\t\t\tConsole.WriteLine(\"Loading \" + jsontoload);\r\n\t\t\t_ml = JsonConvert.DeserializeObject<ModListFormat>(File.ReadAllText(Directory.GetCurrentDirectory() + @\"/ModInstallerLists/\" + jsontoload));\r\n\t\t\treturn _ml;\r\n\t\t}\r\n\t}\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/H3VRModInstaller.JSON/GetModLists.cs b/H3VRModInstaller.JSON/GetModLists.cs
+--- a/H3VRModInstaller.JSON/GetModLists.cs	(revision c709817ae41f332622d9ce3f90e2b3d6e534d295)
++++ b/H3VRModInstaller.JSON/GetModLists.cs	(date 1608960393056)
+@@ -10,7 +10,7 @@
+ {
+     public class ModFile
+     {
+-		public string modID { get; set; }
++		public string ModID { get; set; }
+ 		public string Name { get; set; }
+ 		public string RawName { get; set; }
+ 		public string[] Author { get; set; }
+@@ -24,7 +24,7 @@
+ 
+ 	public class ModListFormat
+ 	{
+-		public ModFile[] modlist { get; set; }
++		public ModFile[] Modlist { get; set; }
+ 	}
+ 
+     public class ModLists
+@@ -47,7 +47,7 @@
+ 
+         public static ModListFormat[] LoadModLists()
+         {
+-			ModListFormat _ml = new ModListFormat();
++			//ModListFormat _ml = new ModListFormat();
+ 			string[] jsonfiles = Glob.FilesAndDirectories(Directory.GetCurrentDirectory() + @"/ModInstallerLists/", "**.json").ToArray();
+ 			Console.WriteLine("Found " + jsonfiles.Length + " json files to read from!");
+ 			ModListFormat[] mods = new ModListFormat[jsonfiles.Length];
+@@ -61,10 +61,10 @@
+ 
+ 		public static ModListFormat LoadSpecificJSON(string jsontoload)
+ 		{
+-			ModListFormat _ml = new ModListFormat();
++			ModListFormat modList = new ModListFormat();
+ 			Console.WriteLine("Loading " + jsontoload);
+-			_ml = JsonConvert.DeserializeObject<ModListFormat>(File.ReadAllText(Directory.GetCurrentDirectory() + @"/ModInstallerLists/" + jsontoload));
+-			return _ml;
++			modList = JsonConvert.DeserializeObject<ModListFormat>(File.ReadAllText(Directory.GetCurrentDirectory() + @"/ModInstallerLists/" + jsontoload));
++			return modList;
+ 		}
+ 	}
+ }
+\ No newline at end of file
+Index: H3VRModInstaller.Backend/Common/ModList.cs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>using System;\r\nusing System.IO;\r\nusing H3VRModInstaller.Net;\r\nusing H3VRModInstaller.JSON;\r\n\r\nnamespace H3VRModInstaller.Filesys.Common\r\n{\r\n    class ModList\r\n    {\r\n\t    private ModCheck modCheck = new ModCheck();\r\n\t\tpublic Tuple<string[,]> parseInfo(string[] infopath, string[,] modlist, string mod)\r\n\t\t{\r\n\t\t\tConsole.WriteLine(\"Parsing \" + infopath[0]);\r\n\t\t\tfor (int i = 0; i < modlist.GetLength(0); i++)\r\n\t\t\t{\r\n\t\t\t\tbool _brk = false;\r\n\t\t\t\tif (modlist[i, 0] == \"\" || modlist[i, 0] == null)\r\n\t\t\t\t{\r\n\t\t\t\t\tmodlist[i, 0] = infopath[0];\r\n\t\t\t\t\tmodlist[i, 1] = infopath[1];\r\n\t\t\t\t\tmodlist[i, 2] = infopath[2];\r\n\t\t\t\t\tmodlist[i, 3] = mod;\r\n\t\t\t\t\t_brk = true;\r\n\t\t\t\t}\r\n\t\t\t\tif (_brk) break;\r\n\t\t\t}\r\n\r\n\t\t\tfor (int i = 3; i < infopath.Length; i++)\r\n\t\t\t{\r\n\t\t\t\tif (infopath[i] == \"\") { Console.WriteLine(\"End of dependencies!\"); break; }\r\n\t\t\t\tint num = i - 2;\r\n\t\t\t\tint numofdep = infopath.Length - 3;\r\n\t\t\t\tConsole.WriteLine(infopath[0] + \" is getting dependency \" + infopath[i] + \", dependency \" + num + \" of \" + numofdep);\r\n//\t\t\t\tEnum.TryParse(infopath[i], out MainClass.ListMods dependency);\r\n\t\t\t\tgetModInfo(infopath[i], modlist);\r\n\t\t\t}\r\n\t\t\tif (infopath.Length < 2) { Console.WriteLine(\"No dependencies, skipping!\"); }\r\n\t\t\treturn Tuple.Create<string[,]>(modlist);\r\n\t\t}\r\n\r\n\t\tprivate const string VO = \"VirtualObjects/\";\r\n\r\n\t\tpublic Tuple<string[,]> getModInfo(string mod, string[,] modlist = null)\r\n\t\t{\r\n\t\t\tif (modlist == null)\r\n\t\t\t{\r\n\t\t\t\tmodlist = new string[10, 5];\r\n\t\t\t}\r\n\r\n\t\t\tTuple<string[,]> result;\r\n\t\t\tConsole.WriteLine(\"Getting mod info for \" + mod);\r\n\t\t\tstring[] info = new string[1];\r\n\r\n\t\t\tModListFormat[] ml = ModLists.LoadModLists();\r\n\r\n\t\t\tfor (int i = 0; i < ml.Length; i++)\r\n\t\t\t{\r\n\t\t\t\tfor (int x = 0; x < ml[i].modlist.Length; x++)\r\n\t\t\t\t{\r\n\t\t\t\t\tif (ml[i].modlist[x].modID == mod)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tstring[] _modresult = { ml[i].modlist[x].RawName, ml[i].modlist[x].Path, ml[i].modlist[x].Arguments };\r\n\t\t\t\t\t\tArray.Resize<string>(ref _modresult, _modresult.Length + ml[i].modlist[x].Dependencies.Length);\r\n\t\t\t\t\t\tfor (int y = 0; y < ml[i].modlist[x].Dependencies.Length; y++)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t_modresult[3 + y] = ml[i].modlist[x].Dependencies[y];\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tinfo = _modresult;\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t}\r\n\r\n\t\t\tif(info.Length == 1) { Console.WriteLine(\"Fail to find mod!\"); return null; }\r\n\t\t\tresult = parseInfo(info, modlist, mod);\r\n\r\n\t\t\tfor (int i = 0; i < modlist.GetLength(0) - 1; i++) {\r\n\t\t\t\tif (modlist[i, 0] == null) break;\r\n\t\t\t\tConsole.WriteLine(\"mod info:\" + modlist[i, 0] + \", \" + modlist[i, 1] + \", \" + modlist[i, 2]);\r\n\t\t\t}\r\n\t\t\treturn Tuple.Create<string[,]>(result.Item1);\r\n        }\r\n\r\n\t\tpublic bool onlineCheck()\r\n        {\r\n            if (NetCheck.isOnline(\"www.github.com\"))\r\n            {\r\n                Console.WriteLine(\"GitHub is Online!\");\r\n                return true;\r\n            }\r\n\r\n            Console.WriteLine(\"Github is either down, or no internet is detected!\");\r\n            return false;\r\n        }\r\n\r\n\r\n\t\t\r\n\t\t//this was a pain to make\r\n\t\tpublic string wurstModFile = Directory.GetCurrentDirectory() + \"Mods/WurstMod.deli\";\r\n\t\tpublic string tnhTweakerFile = Directory.GetCurrentDirectory() + \"Mods/TakeAndHoldTweaker.deli\";\r\n\t\tpublic string[] cursedDLLFiles = { Directory.GetCurrentDirectory() + \"BepInEx/Plugins/CursedDlls/Cursed.BetterBipods.dll\", Directory.GetCurrentDirectory() + \"BepInEx/Plugins/CursedDlls/Cursed.FullAuto.dll\", Directory.GetCurrentDirectory() + \"BepInEx/Plugins/CursedDlls/Cursed.LoadScene.dll\", Directory.GetCurrentDirectory() + \"BepInEx/Plugins/CursedDlls/Cursed.RemoveAttachmentChecks.dll\", Directory.GetCurrentDirectory() + \"BepInEx/Plugins/CursedDlls/Cursed.RemoveMagCheck.dll\", Directory.GetCurrentDirectory() + \"BepInEx/Plugins/CursedDlls/Cursed.RemoveRoundTypeCheck.dll\", Directory.GetCurrentDirectory() + \"BepInEx/Plugins/CursedDlls/Cursed.SuppressAssemblyLoadErrors.dll\", Directory.GetCurrentDirectory() + \"BepInEx/Plugins/CursedDlls/Cursed.TimeScale.dll\", Directory.GetCurrentDirectory() + \"BepInEx/Plugins/CursedDlls/Cursed.UnlockAll.dll\"};\r\n\t\tpublic string[] deliFiles = { Directory.GetCurrentDirectory() + \"BepInEx/Plugins/Deli/Deli.Runtime.dll\", Directory.GetCurrentDirectory() + \"BepInEx/Patchers/Deli/ADepIn.dll\", Directory.GetCurrentDirectory() + \"BepInEx/Patchers/Deli/Deli.dll\", Directory.GetCurrentDirectory() + \"BepInEx/Patchers/Deli/DotNetZip.dll\", Directory.GetCurrentDirectory() + \"BepInEx/Patchers/Deli/I18N.dll\", Directory.GetCurrentDirectory() + \"BepInEx/Patchers/Deli/I18N.West.dll\", Directory.GetCurrentDirectory() + \"Mods/Deli.Core.deli\", Directory.GetCurrentDirectory() + \"Mods/Deli.MonoMod.deli\"};\r\n\t\t\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/H3VRModInstaller.Backend/Common/ModList.cs b/H3VRModInstaller.Backend/Common/ModList.cs
+--- a/H3VRModInstaller.Backend/Common/ModList.cs	(revision c709817ae41f332622d9ce3f90e2b3d6e534d295)
++++ b/H3VRModInstaller.Backend/Common/ModList.cs	(date 1608960050201)
+@@ -55,15 +55,15 @@
+ 
+ 			for (int i = 0; i < ml.Length; i++)
+ 			{
+-				for (int x = 0; x < ml[i].modlist.Length; x++)
++				for (int x = 0; x < ml[i].Modlist.Length; x++)
+ 				{
+-					if (ml[i].modlist[x].modID == mod)
++					if (ml[i].Modlist[x].ModID == mod)
+ 					{
+-						string[] _modresult = { ml[i].modlist[x].RawName, ml[i].modlist[x].Path, ml[i].modlist[x].Arguments };
+-						Array.Resize<string>(ref _modresult, _modresult.Length + ml[i].modlist[x].Dependencies.Length);
+-						for (int y = 0; y < ml[i].modlist[x].Dependencies.Length; y++)
++						string[] _modresult = { ml[i].Modlist[x].RawName, ml[i].Modlist[x].Path, ml[i].Modlist[x].Arguments };
++						Array.Resize<string>(ref _modresult, _modresult.Length + ml[i].Modlist[x].Dependencies.Length);
++						for (int y = 0; y < ml[i].Modlist[x].Dependencies.Length; y++)
+ 						{
+-							_modresult[3 + y] = ml[i].modlist[x].Dependencies[y];
++							_modresult[3 + y] = ml[i].Modlist[x].Dependencies[y];
+ 						}
+ 						info = _modresult;
+ 					}
+@@ -93,13 +93,13 @@
+         }
+ 
+ 
+-		
++		/*
+ 		//this was a pain to make
+ 		public string wurstModFile = Directory.GetCurrentDirectory() + "Mods/WurstMod.deli";
+ 		public string tnhTweakerFile = Directory.GetCurrentDirectory() + "Mods/TakeAndHoldTweaker.deli";
+ 		public string[] cursedDLLFiles = { Directory.GetCurrentDirectory() + "BepInEx/Plugins/CursedDlls/Cursed.BetterBipods.dll", Directory.GetCurrentDirectory() + "BepInEx/Plugins/CursedDlls/Cursed.FullAuto.dll", Directory.GetCurrentDirectory() + "BepInEx/Plugins/CursedDlls/Cursed.LoadScene.dll", Directory.GetCurrentDirectory() + "BepInEx/Plugins/CursedDlls/Cursed.RemoveAttachmentChecks.dll", Directory.GetCurrentDirectory() + "BepInEx/Plugins/CursedDlls/Cursed.RemoveMagCheck.dll", Directory.GetCurrentDirectory() + "BepInEx/Plugins/CursedDlls/Cursed.RemoveRoundTypeCheck.dll", Directory.GetCurrentDirectory() + "BepInEx/Plugins/CursedDlls/Cursed.SuppressAssemblyLoadErrors.dll", Directory.GetCurrentDirectory() + "BepInEx/Plugins/CursedDlls/Cursed.TimeScale.dll", Directory.GetCurrentDirectory() + "BepInEx/Plugins/CursedDlls/Cursed.UnlockAll.dll"};
+ 		public string[] deliFiles = { Directory.GetCurrentDirectory() + "BepInEx/Plugins/Deli/Deli.Runtime.dll", Directory.GetCurrentDirectory() + "BepInEx/Patchers/Deli/ADepIn.dll", Directory.GetCurrentDirectory() + "BepInEx/Patchers/Deli/Deli.dll", Directory.GetCurrentDirectory() + "BepInEx/Patchers/Deli/DotNetZip.dll", Directory.GetCurrentDirectory() + "BepInEx/Patchers/Deli/I18N.dll", Directory.GetCurrentDirectory() + "BepInEx/Patchers/Deli/I18N.West.dll", Directory.GetCurrentDirectory() + "Mods/Deli.Core.deli", Directory.GetCurrentDirectory() + "Mods/Deli.MonoMod.deli"};
+-		
++		*/
+ 
+ 
+ 
+Index: H3VRModInstaller.JSON/GetMods.cs
+===================================================================
+diff --git a/H3VRModInstaller.JSON/GetMods.cs b/H3VRModInstaller.JSON/GetMods.cs
+deleted file mode 100644
+--- a/H3VRModInstaller.JSON/GetMods.cs	(revision c709817ae41f332622d9ce3f90e2b3d6e534d295)
++++ /dev/null	(revision c709817ae41f332622d9ce3f90e2b3d6e534d295)
+@@ -1,7 +0,0 @@
+-using Newtonsoft.Json;
+-using H3VRModInstaller.JSON;
+-
+-namespace H3VRModInstaller.JSON.Net
+-{
+-    
+-}
+\ No newline at end of file
+Index: .idea/.idea.H3VRModInstaller/.idea/shelf/Uncommitted_changes_before_Update_at_12_14_2020_7_25_PM_[Default_Changelist]/shelved.patch
+===================================================================
+diff --git a/.idea/.idea.H3VRModInstaller/.idea/shelf/Uncommitted_changes_before_Update_at_12_14_2020_7_25_PM_[Default_Changelist]/shelved.patch b/.idea/.idea.H3VRModInstaller/.idea/shelf/Uncommitted_changes_before_Update_at_12_14_2020_7_25_PM_[Default_Changelist]/shelved.patch
+deleted file mode 100644
+--- a/.idea/.idea.H3VRModInstaller/.idea/shelf/Uncommitted_changes_before_Update_at_12_14_2020_7_25_PM_[Default_Changelist]/shelved.patch	(revision c709817ae41f332622d9ce3f90e2b3d6e534d295)
++++ /dev/null	(revision c709817ae41f332622d9ce3f90e2b3d6e534d295)
+@@ -1,179 +0,0 @@
+-Index: H3VRModInstaller.GUI/H3VRModInstaller - Backup.GUI.csproj
+-===================================================================
+-diff --git a/H3VRModInstaller.GUI/H3VRModInstaller - Backup.GUI.csproj b/H3VRModInstaller.GUI/H3VRModInstaller - Backup.GUI.csproj
+-deleted file mode 100644
+---- a/H3VRModInstaller.GUI/H3VRModInstaller - Backup.GUI.csproj	(revision 951bb98b0292c3a96b1e384dfc72e3fbee0577ba)
+-+++ /dev/null	(revision 951bb98b0292c3a96b1e384dfc72e3fbee0577ba)
+-@@ -1,11 +0,0 @@
+--<Project Sdk="Microsoft.NET.Sdk">
+--
+--    <PropertyGroup>
+--        <OutputType>WinExe</OutputType>
+--        <TargetFramework>net5.0-windows</TargetFramework>
+--        <UseWindowsForms>true</UseWindowsForms>
+--        <Configurations>Debug;Release;OneFile</Configurations>
+--        <Platforms>AnyCPU;x64</Platforms>
+--    </PropertyGroup>
+--
+--</Project>
+-\ No newline at end of file
+-Index: H3VRModInstaller.GUI/H3VRModInstaller - Backup (1).GUI.csproj
+-===================================================================
+-diff --git a/H3VRModInstaller.GUI/H3VRModInstaller - Backup (1).GUI.csproj b/H3VRModInstaller.GUI/H3VRModInstaller - Backup (1).GUI.csproj
+-deleted file mode 100644
+---- a/H3VRModInstaller.GUI/H3VRModInstaller - Backup (1).GUI.csproj	(revision 951bb98b0292c3a96b1e384dfc72e3fbee0577ba)
+-+++ /dev/null	(revision 951bb98b0292c3a96b1e384dfc72e3fbee0577ba)
+-@@ -1,9 +0,0 @@
+--<Project Sdk="Microsoft.NET.Sdk">
+--
+--    <PropertyGroup>
+--        <OutputType>WinExe</OutputType>
+--        <TargetFramework>net5.0-windows</TargetFramework>
+--        <UseWindowsForms>true</UseWindowsForms>
+--    </PropertyGroup>
+--
+--</Project>
+-\ No newline at end of file
+-Index: H3VRModInstaller.Backend/MainClass.cs
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+>using System;\r\nusing System.IO;\r\nusing H3VRModInstaller.Net;\r\nusing H3VRModInstaller.Json;\r\n\r\n\r\nnamespace H3VRModInstaller\r\n{\r\n    class MainClass\r\n    {\r\n        private static bool BypassH3VR = true;\r\n        private static readonly Downloader downloader = new Downloader();\r\n\r\n\r\n        /*       public enum ListMods // do NOT assign ints to them, you will fuck up the installer.\r\n               {\r\n\t\t\t       BepInEx,\r\n\t\t\t       ResourceRedirector,\r\n\t\t\t       Deli,\r\n\t\t\t       Monomod,\r\n       \r\n                   WurstMod,\r\n                   TnHTweaker,\r\n\t\t\t       Sideloader,\r\n\t\t\t       LSIIC,\r\n\t\t\t       H3VRUtilities,\r\n       \r\n\t\t\t       CursedDLLs,\r\n\t\t\t       pccg,\r\n\t\t\t       meatyceiver,\r\n\t\t\t       meatssidecharger,\r\n\t\t\t       meatsrigs,\r\n\t\t\t       meatsmags,\r\n\t\t\t       meatsmodulsr,\r\n\t\t\t       meatsmodulpp,\r\n\t\t\t       meatsmodulak,\r\n\t\t\t       modular,\r\n\t\t\t       meatsmodularparts,\r\n\t\t\t       ebr\r\n       \r\n               }*/\r\n\r\n        public static void Main(string[] args)\r\n        {\r\n\t        Serialisation.Deserialise(\"\");\t        \r\n\t        \r\n\t        \r\n\t        if (File.Exists(\"H3VR.exe\") || BypassH3VR)\r\n\t\t\t{\r\n\t\t\t\tConsole.WriteLine(\"H3VR.exe detected\");\r\n\t\t\t\tConsole.WriteLine(\"Welcome to the H3VR Mod installer!\");\r\n\t\t\t\tStart:\r\n\t\t\t\tConsole.WriteLine(\"Please select the mod you would like to install using 'dl [modnamehere]' \");\r\n\t\t\t\tConsole.WriteLine(\"ex: 'dl wurstmod'\");\r\n\t\t\t\tvar input = Console.ReadLine();\r\n\r\n\t\t\t\tstring[] inputargs = input.Split(' ');\r\n\r\n\t\t\t\tswitch (inputargs[0])\r\n\t\t\t\t{\r\n\t\t\t\t\tcase \"dl\":\r\n\t\t\t\t\t\tdownloader.downloadModDirector(inputargs[1]);\r\n\t\t\t\t\tbreak;\r\n\t\t\t\t}\r\n\r\n/*\t\t\t\tswitch (input)\r\n\t\t\t\t{\r\n\t\t\t\t\tcase \"dl wurstmod\":\r\n\t\t\t\t\t\tConsole.WriteLine(\"Downloading WurstMod!\");\r\n\t\t\t\t\t\tdownloader.downloadModDirector(ListMods.WurstMod);\r\n\t\t\t\t\t\tbreak;\r\n\t\t\t\t\tcase \"dl curseddlls\":\r\n\t\t\t\t\t\tConsole.WriteLine(\"Downloading CursedDLLs!\");\r\n\t\t\t\t\t\tdownloader.downloadModDirector(ListMods.CursedDLLs);\r\n\t\t\t\t\t\tbreak;\r\n\t\t\t\t\tcase \"dl tnhtweaker\":\r\n\t\t\t\t\t\tConsole.WriteLine(\"Downloading TnHTweaker!\");\r\n\t\t\t\t\t\tdownloader.downloadModDirector(ListMods.TnHTweaker);\r\n\t\t\t\t\t\tbreak;\r\n\t\t\t\t\tcase \"dl lsiic\":\r\n\t\t\t\t\t\tConsole.WriteLine(\"Downloading LSIIC!\");\r\n\t\t\t\t\t\tdownloader.downloadModDirector(ListMods.LSIIC);\r\n\t\t\t\t\t\tbreak;\r\n\t\t\t\t\tcase \"dl sideloader\":\r\n\t\t\t\t\t\tConsole.WriteLine(\"Downloading Sideloader!\");\r\n\t\t\t\t\t\tdownloader.downloadModDirector(ListMods.Sideloader);\r\n\t\t\t\t\t\tbreak;\r\n\t\t\t\t\tcase \"dl h3vrutils\":\r\n\t\t\t\t\t\tConsole.WriteLine(\"Downloading H3VR Utilities!\");\r\n\t\t\t\t\t\tdownloader.downloadModDirector(ListMods.H3VRUtilities);\r\n\t\t\t\t\t\tbreak;\r\n\t\t\t\t\tcase \"dl meatyceiver\":\r\n\t\t\t\t\t\tConsole.WriteLine(\"Downloading Meatyceiver!\");\r\n\t\t\t\t\t\tdownloader.downloadModDirector(ListMods.meatyceiver);\r\n\t\t\t\t\t\tbreak;\r\n\t\t\t\t\tcase \"dl pccg\":\r\n\t\t\t\t\t\tConsole.WriteLine(\"Downloading Potatoes' Compiled Custom Guns!\");\r\n\t\t\t\t\t\tdownloader.downloadModDirector(ListMods.pccg);\r\n\t\t\t\t\t\tbreak;\r\n\t\t\t\t\tcase \"dl meatssidecharger\":\r\n\t\t\t\t\t\tConsole.WriteLine(\"Downloading Meat's  Side ChARger!\");\r\n\t\t\t\t\t\tdownloader.downloadModDirector(ListMods.meatssidecharger);\r\n\t\t\t\t\t\tbreak;\r\n\t\t\t\t\tcase \"dl meatsrigs\":\r\n\t\t\t\t\t\tConsole.WriteLine(\"Downloading Meat's Rigs!\");\r\n\t\t\t\t\t\tdownloader.downloadModDirector(ListMods.meatsrigs);\r\n\t\t\t\t\t\tbreak;\r\n\t\t\t\t\tcase \"dl meatsmags\":\r\n\t\t\t\t\t\tConsole.WriteLine(\"Downloading Meat's Mags!\");\r\n\t\t\t\t\t\tdownloader.downloadModDirector(ListMods.meatsmags);\r\n\t\t\t\t\t\tbreak;\r\n\t\t\t\t\tcase \"dl meatsmodulsr\":\r\n\t\t\t\t\t\tConsole.WriteLine(\"Downloading Meat's ModulSR!\");\r\n\t\t\t\t\t\tdownloader.downloadModDirector(ListMods.meatsmodulsr);\r\n\t\t\t\t\t\tbreak;\r\n\t\t\t\t\tcase \"dl meatsmodulpp\":\r\n\t\t\t\t\t\tConsole.WriteLine(\"Downloading Meat's ModulPP!\");\r\n\t\t\t\t\t\tdownloader.downloadModDirector(ListMods.meatsmodulpp);\r\n\t\t\t\t\t\tbreak;\r\n\t\t\t\t\tcase \"dl meatsmodulak\":\r\n\t\t\t\t\t\tConsole.WriteLine(\"Downloading Meat's ModulAK!\");\r\n\t\t\t\t\t\tdownloader.downloadModDirector(ListMods.meatsmodulak);\r\n\t\t\t\t\t\tbreak;\r\n\t\t\t\t\tcase \"dl meatsmodularparts\":\r\n\t\t\t\t\t\tConsole.WriteLine(\"Downloading Meat's ModulAR Parts!\");\r\n\t\t\t\t\t\tdownloader.downloadModDirector(ListMods.meatsmodularparts);\r\n\t\t\t\t\t\tbreak;\r\n\t\t\t\t\tcase \"dl modular\":\r\n\t\t\t\t\t\tConsole.WriteLine(\"Downloading ModulAR!\");\r\n\t\t\t\t\t\tdownloader.downloadModDirector(ListMods.modular);\r\n\t\t\t\t\t\tbreak;\r\n\t\t\t\t\tcase \"dl meats\":\r\n\t\t\t\t\t\tConsole.WriteLine(\"Downloading all of Meat's mods!\");\r\n\t\t\t\t\t\tdownloader.downloadModDirector(ListMods.meatssidecharger);\r\n\t\t\t\t\t\tdownloader.downloadModDirector(ListMods.meatsrigs);\r\n\t\t\t\t\t\tdownloader.downloadModDirector(ListMods.meatsmags);\r\n\t\t\t\t\t\tdownloader.downloadModDirector(ListMods.meatsmodulsr);\r\n\t\t\t\t\t\tdownloader.downloadModDirector(ListMods.meatsmodulpp);\r\n\t\t\t\t\t\tdownloader.downloadModDirector(ListMods.meatsmodulak);\r\n\t\t\t\t\t\tdownloader.downloadModDirector(ListMods.meatsmodularparts);\r\n\t\t\t\t\t\tdownloader.downloadModDirector(ListMods.modular);\r\n\t\t\t\t\t\tbreak;\r\n\t\t\t\t\tcase \"dl ebr\":\r\n\t\t\t\t\t\tConsole.WriteLine(\"Downloading MK14 EBR!\");\r\n\t\t\t\t\t\tdownloader.downloadModDirector(ListMods.ebr);\r\n\t\t\t\t\t\tbreak;\r\n\t\t\t\t\tcase \"dl all\":\r\n\t\t\t\t\t\tConsole.WriteLine(\"Downloading all!\");\r\n\t\t\t\t\t\tdownloader.downloadModDirector(ListMods.WurstMod, true);\r\n\t\t\t\t\t\tbreak;\r\n\r\n\t\t\t\t\tcase \"exit\":\r\n\t\t\t\t\t\treturn;\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\r\n\t\t\t\t\tcase \"dl basemods\":\r\n\t\t\t\t\t\tConsole.WriteLine(\"Downloading base mods!\");\r\n\t\t\t\t\t\tdownloader.downloadModDirector(ListMods.WurstMod);\r\n\t\t\t\t\t\tdownloader.downloadModDirector(ListMods.TnHTweaker);\r\n\t\t\t\t\t\tbreak;\r\n\t\t\t\t\t\r\n\t\t\t\t}*/\r\n\t\t\t\tgoto Start;\r\n\r\n\t\t\t}\r\n\t\t\telse\r\n\t\t\t{\r\n\t\t\t\tConsole.WriteLine(\"H3VR.exe not detected!\");\r\n\t\t\t\tConsole.ReadKey();\r\n\t\t\t}\r\n\t\t\tConsole.ReadKey();\r\n\t\t}\r\n\r\n\r\n\t}\r\n    /*\r\n        public struct Mods\r\n        {\r\n            public string[] Path { get; set; }\r\n            public string[] Files { get; set; }\r\n        }\r\n    */\r\n}
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/H3VRModInstaller.Backend/MainClass.cs b/H3VRModInstaller.Backend/MainClass.cs
+---- a/H3VRModInstaller.Backend/MainClass.cs	(revision 951bb98b0292c3a96b1e384dfc72e3fbee0577ba)
+-+++ b/H3VRModInstaller.Backend/MainClass.cs	(date 1608002114101)
+-@@ -42,9 +42,8 @@
+- 
+-         public static void Main(string[] args)
+-         {
+--	        Serialisation.Deserialise("");	        
+--	        
+--	        
+-+
+-+
+- 	        if (File.Exists("H3VR.exe") || BypassH3VR)
+- 			{
+- 				Console.WriteLine("H3VR.exe detected");
+-Index: H3VRModInstaller.Backend/Filesys/Common/ModList.cs
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+>using System;\r\nusing H3VRModInstaller.Net;\r\n\r\nnamespace H3VRModInstaller.Filesys.Common\r\n{\r\n    class ModList\r\n    {\r\n\t\tpublic Tuple<string[,]> parseInfo(string[] infopath, string[,] modlist)\r\n\t\t{\r\n\t\t\tConsole.WriteLine(\"Parsing \" + infopath[0]);\r\n\t\t\tConsole.WriteLine(\"modlist is \" + modlist.GetLength(0) + \" by \" + modlist.GetLength(1));\r\n\t\t\tfor (int i = 0; i < modlist.GetLength(0); i++)\r\n\t\t\t{\r\n\t\t\t\tbool _brk = false;\r\n\t\t\t\tif (modlist[i, 0] == \"\" || modlist[i, 0] == null)\r\n\t\t\t\t{\r\n\t\t\t\t\tmodlist[i, 0] = infopath[0];\r\n\t\t\t\t\tmodlist[i, 1] = infopath[1];\r\n\t\t\t\t\tmodlist[i, 2] = infopath[2];\r\n\t\t\t\t\t_brk = true;\r\n\t\t\t\t}\r\n\t\t\t\telse Console.WriteLine(\"Line is \" + modlist[i, 0] + \" , not empty!\");\r\n\t\t\t\tif (_brk) break;\r\n\t\t\t}\r\n\r\n\t\t\tfor (int i = 3; i < infopath.Length; i++)\r\n\t\t\t{\r\n\t\t\t\tif (infopath[i] == \"\") { Console.WriteLine(\"End of dependencies!\"); break; }\r\n\t\t\t\tint num = i - 2;\r\n\t\t\t\tint numofdep = infopath.Length - 3;\r\n\t\t\t\tConsole.WriteLine(infopath[0] + \" is getting dependency \" + infopath[i] + \", dependency \" + num + \" of \" + numofdep);\r\n//\t\t\t\tEnum.TryParse(infopath[i], out MainClass.ListMods dependency);\r\n\t\t\t\tgetModInfo(infopath[i], modlist);\r\n\t\t\t}\r\n\t\t\tif (infopath.Length < 2) { Console.WriteLine(\"No dependencies, skipping!\"); }\r\n\t\t\treturn Tuple.Create<string[,]>(modlist);\r\n\t\t}\r\n\r\n\t\tprivate const string VO = \"VirtualObjects/\";\r\n\r\n\t\tpublic Tuple<string[,]> getModInfo(string mod, string[,] modlist = null)\r\n        {\r\n\t\t\tif (modlist == null)\r\n\t\t\t{\r\n\t\t\t\tmodlist = new string[10,5];\r\n\t\t\t}\r\n\r\n\t\t\tTuple<string[,]> result;\r\n\t\t\tConsole.WriteLine(\"Getting mod info for \" + mod);\r\n\t\t\tstring[] info = new string[1];\r\n\t\t\tswitch (mod)\r\n            {\r\n\t\t\t\tcase \"bepinex\":\r\n\t\t\t\t\tinfo = BepInExInfo;\r\n\t\t\t\t\tbreak;\r\n\t\t\t\tcase \"resourceredirector\":\r\n\t\t\t\t\tinfo = ResourceRedirectorInfo;\r\n\t\t\t\t\tbreak;\r\n\t\t\t\tcase \"deli\":\r\n\t\t\t\t\tinfo = DeliInfo;\r\n\t\t\t\t\tbreak;\r\n\t\t\t\tcase \"monomod\":\r\n\t\t\t\t\tinfo = MonomodInfo;\r\n\t\t\t\t\tbreak;\r\n\t\t\t\tcase \"curseddlls\":\r\n\t\t\t\t\tinfo = CursedDllsInfo;\r\n\t\t\t\t\tbreak;\r\n\t\t\t\tcase \"wurstmod\":\r\n\t\t\t\t\tinfo = WurstModInfo;\r\n\t\t\t\t\tbreak;\r\n                case \"tnhtweaker\":\r\n\t\t\t\t\tinfo = TnHTweaker;\r\n\t\t\t\t\tbreak;\r\n\t\t\t\tcase \"sideloader\":\r\n\t\t\t\t\tinfo = SideloaderInfo;\r\n\t\t\t\t\tbreak;\r\n\t\t\t\tcase \"lsiic\":\r\n\t\t\t\t\tinfo = LSIICInfo;\r\n\t\t\t\t\tbreak;\r\n\t\t\t\tcase \"h3vrutils\":\r\n\t\t\t\t\tinfo = H3VRUtilsInfo;\r\n\t\t\t\t\tbreak;\r\n\t\t\t\tcase \"pccg\":\r\n\t\t\t\t\tinfo = pccgInfo;\r\n\t\t\t\t\tbreak;\r\n\t\t\t\tcase \"meatyceiver\":\r\n\t\t\t\t\tinfo = meatyceiverInfo;\r\n\t\t\t\t\tbreak;\r\n\t\t\t\tcase \"meatssidecharger\":\r\n\t\t\t\t\tinfo = meatsSideChargerInfo;\r\n\t\t\t\t\tbreak;\r\n\t\t\t\tcase \"meatsrigs\":\r\n\t\t\t\t\tinfo = meatsRigsInfo;\r\n\t\t\t\t\tbreak;\r\n\t\t\t\tcase \"meatsmags\":\r\n\t\t\t\t\tinfo = meatsMagsInfo;\r\n\t\t\t\t\tbreak;\r\n\t\t\t\tcase \"meatsmodulsr\":\r\n\t\t\t\t\tinfo = meatsModulSRInfo;\r\n\t\t\t\t\tbreak;\r\n\t\t\t\tcase \"meatsmodulpp\":\r\n\t\t\t\t\tinfo = meatsModulPPInfo;\r\n\t\t\t\t\tbreak;\r\n\t\t\t\tcase \"meatsmodulak\":\r\n\t\t\t\t\tinfo = meatsModulAKInfo;\r\n\t\t\t\t\tbreak;\r\n\t\t\t\tcase \"modular\":\r\n\t\t\t\t\tinfo = ModulARInfo;\r\n\t\t\t\t\tbreak;\r\n\t\t\t\tcase \"meatsmodularparts\":\r\n\t\t\t\t\tinfo = meatsModulARPartsInfo;\r\n\t\t\t\t\tbreak;\r\n\t\t\t\tcase \"ebr\":\r\n\t\t\t\t\tinfo = ebrInfo;\r\n\t\t\t\t\tbreak;\r\n\t\t\t}\r\n\t\t\tif(info.Length == 1) { Console.WriteLine(\"Fail to find mod!\"); }\r\n\t\t\tresult = parseInfo(info, modlist);\r\n\r\n\t\t\tfor (int i = 0; i < modlist.GetLength(0) - 1; i++) {\r\n\t\t\t\tif (modlist[i, 0] == null) break;\r\n\t\t\t\tConsole.WriteLine(\"mod info:\" + modlist[i, 0] + \", \" + modlist[i, 1] + \", \" + modlist[i, 2]);\r\n\t\t\t}\r\n\t\t\treturn Tuple.Create<string[,]>(result.Item1);\r\n        }\r\n\r\n\t\tpublic string[] BepInExInfo = { \"BepInEx_x64_5.4.4.0.zip\", \"https://github.com/BepInEx/BepInEx/releases/download/v5.4.4/\", \"\" };\r\n\t\tpublic string[] ResourceRedirectorInfo = { \"XUnity.ResourceRedirector-BepIn-5x-1.1.3.zip\", \"https://github.com/bbepis/XUnity.AutoTranslator/releases/download/v4.13.0/\", \"\" };\r\n\t\tpublic string[] DeliInfo = { \"Deli-v0.2.5.zip\", \"https://github.com/Deli-Counter/Deli/releases/download/v0.2.5/\", \"\" };\r\n\t\tpublic string[] MonomodInfo = { \"BepInEx.MonoMod.Loader_1.0.0.0.zip\", \"https://github.com/BepInEx/BepInEx.MonoMod.Loader/releases/download/v1.0.0.0/\", \"\" };\r\n\t\tpublic string[] SideloaderInfo = { \"H3VR.Sideloader_v0.3.3.zip\", \"https://github.com/denikson/H3VR.Sideloader/releases/download/v0.3.3/\", \"\",  \"bepinex\", \"ResourceRedirector\" };\r\n\t\tpublic string[] LSIICInfo = { \"LSIIC-v1.3.zip\", \"https://github.com/BlockBuilder57/LSIIC/releases/download/v1.3/\", \"addFolder?VirtualObjects/?unzipToDir?\", \"bepinex\", \"sideloader\" };\r\n\r\n\t\tpublic string[] CursedDllsInfo = { \"CursedDlls.BepInEx_v1.3.zip\", \"https://github.com/drummerdude2003/CursedDlls.BepinEx/releases/download/v1.3/\", \"\", \"bepinex\", \"Monomod\" };\r\n\t\tpublic string[] WurstModInfo = { \"WurstMod.deli\", \"https://github.com/Nolenz/WurstMod/releases/download/v2.0.2.0/\", \"moveToFolder?WurstMod.deli?Mods/?WurstMod.deli\", \"bepinex\", \"deli\"};\r\n\t\tpublic string[] TnHTweaker = { \"TakeAndHoldTweaker.dll\", \"https://github.com/devyndamonster/TakeAndHoldTweaker/releases/download/v1.3.0/\", \"moveToFolder?TakeAndHoldTweaker.dll?BepInEx/plugins/?TakeAndHoldTweaker.dll\", \"bepinex\" };\r\n\t\tpublic string[] H3VRUtilsInfo = { \"H3VRUtilities.zip\", \"https://bonetome.com/download.php?file=MTRmZjdkYWM4M2YzNDdmNCszNjUrODUx\", \"unzipToDir?Mods/\", \"bepinex\", \"sideloader\" };\r\n\t\tpublic string[] pccgInfo = { \"PotatoesCustomGuns.zip\", \"https://bonetome.com/download.php?file=NGFmYTMxOWRjNmEwMTdhMSszNjUrNzUw\", \"unzipToDir?VirtualObjects/\", \"lsiic\" };\r\n\t\tpublic string[] meatyceiverInfo = { \"Meatyceiver032.zip\", \"https://bonetome.com/download.php?file=ZDMxZjYzMTgxYTg5OTdlYiszNjUrODk0\", \"unzipToDir?BepInEx/plugins/\", \"bepinex\" };\r\n\t\tpublic string[] meatsSideChargerInfo = { \"TurtsSidechARger.zip\", \"https://bonetome.com/download.php?file=OTI3NTY5Y2ZlYThiMzZkNCszNjUrOTQ2\", \"unzipToDir?VirtualObjects/\", \"lsiic\" };\r\n\t\tpublic string[] meatsRigsInfo = { \"MeatsRigs.zip\", \"https://bonetome.com/download.php?file=OGViNjM0MGVlOTUwMGYzNyszNjUrOTMw\", \"unzipToDir?VirtualObjects/\", \"lsiic\" };\r\n\t\tpublic string[] meatsMagsInfo = { \"MeatsMagazines.zip\", \"https://bonetome.com/download.php?file=MzZmNmEzNDZmNzJhNDdiMiszNjUrODkw\", \"unzipToDir?VirtualObjects/\", \"lsiic\" };\r\n\t\tpublic string[] meatsModulSRInfo = { \"MeatsModulSR1.1.zip\", \"https://bonetome.com/download.php?file=YjQzZTQ1MTM2MDQ0ODg3MSszNjUrODgz\", \"unzipToDir?VirtualObjects/\", \"lsiic\" };\r\n\t\tpublic string[] meatsModulPPInfo = { \"MeatsModulPP.zip\", \"https://bonetome.com/download.php?file=ODQ4YThkNDZjMGZhYzNmYSszNjUrODc3\", \"unzipToDir?VirtualObjects/\", \"lsiic\" };\r\n\t\tpublic string[] ModulARInfo = { \"modular.zip\", \"https://bonetome.com/download.php?file=MjgxMDkxOThkYTE0Mjg4MCszNjUrODUw\", \"unzipToDir?VirtualObjects/\", \"lsiic\" };\r\n\t\tpublic string[] meatsModulAKInfo = { \"MeatsModulAK1.1.zip\", \"https://bonetome.com/download.php?file=NzFhNzc3MWJiZjQ2OWJhOCszNjUrODYx\", \"unzipToDir?VirtualObjects/\", \"lsiic\" };\r\n\t\tpublic string[] meatsModulARPartsInfo = { \"MeatsARParts.zip\", \"https://bonetome.com/download.php?file=NDU1MzQwZmVkOTA4YmYzYyszNjUrODQ3\", \"unzipToDir?VirtualObjects/\", \"lsiic\" };\r\n\t\tpublic string[] ebrInfo = { \"mk14+dcsb.zip\", \"https://bonetome.com/download.php?file=YzM2MTcyN2ZlYTRjNWRhNiszNjUrODg4\", \"unzipToDir?VirtualObjects/\", \"lsiic\" };\r\n\r\n\t\tpublic bool onlineCheck()\r\n        {\r\n            if (NetCheck.isOnline(\"www.github.com\"))\r\n            {\r\n                Console.WriteLine(\"GitHub is Online!\");\r\n                return true;\r\n            }\r\n\r\n            Console.WriteLine(\"Github is either down, or no internet is detected!\");\r\n            return false;\r\n        }\r\n    }\r\n}\r\n
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/H3VRModInstaller.Backend/Filesys/Common/ModList.cs b/H3VRModInstaller.Backend/Filesys/Common/ModList.cs
+---- a/H3VRModInstaller.Backend/Filesys/Common/ModList.cs	(revision 951bb98b0292c3a96b1e384dfc72e3fbee0577ba)
+-+++ b/H3VRModInstaller.Backend/Filesys/Common/ModList.cs	(date 1608002704122)
+-@@ -128,7 +128,7 @@
+- 		public string[] ResourceRedirectorInfo = { "XUnity.ResourceRedirector-BepIn-5x-1.1.3.zip", "https://github.com/bbepis/XUnity.AutoTranslator/releases/download/v4.13.0/", "" };
+- 		public string[] DeliInfo = { "Deli-v0.2.5.zip", "https://github.com/Deli-Counter/Deli/releases/download/v0.2.5/", "" };
+- 		public string[] MonomodInfo = { "BepInEx.MonoMod.Loader_1.0.0.0.zip", "https://github.com/BepInEx/BepInEx.MonoMod.Loader/releases/download/v1.0.0.0/", "" };
+--		public string[] SideloaderInfo = { "H3VR.Sideloader_v0.3.3.zip", "https://github.com/denikson/H3VR.Sideloader/releases/download/v0.3.3/", "",  "bepinex", "ResourceRedirector" };
+-+		public string[] SideloaderInfo = { "H3VR.Sideloader_v0.3.3.zip", "https://github.com/denikson/H3VR.Sideloader/releases/download/v0.3.3/", "",  "bepinex", "resourceredirector" };
+- 		public string[] LSIICInfo = { "LSIIC-v1.3.zip", "https://github.com/BlockBuilder57/LSIIC/releases/download/v1.3/", "addFolder?VirtualObjects/?unzipToDir?", "bepinex", "sideloader" };
+- 
+- 		public string[] CursedDllsInfo = { "CursedDlls.BepInEx_v1.3.zip", "https://github.com/drummerdude2003/CursedDlls.BepinEx/releases/download/v1.3/", "", "bepinex", "Monomod" };
+-Index: .idea/.idea.H3VRModInstaller/.idea/contentModel.xml
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ContentModelStore\">\r\n    <e p=\"$PROJECT_DIR$\" t=\"IncludeFlat\">\r\n      <e p=\"H3VRModInstaller.Backend\" t=\"IncludeRecursive\">\r\n        <e p=\"bin\" t=\"ExcludeRecursive\" />\r\n        <e p=\"Common\" t=\"Include\">\r\n          <e p=\"Directories.cs\" t=\"Include\" />\r\n        </e>\r\n        <e p=\"Filesys\" t=\"Include\">\r\n          <e p=\"Common\" t=\"Include\">\r\n            <e p=\"ModCheck.cs\" t=\"Include\" />\r\n            <e p=\"ModList.cs\" t=\"Include\" />\r\n          </e>\r\n          <e p=\"Director.cs\" t=\"Include\" />\r\n          <e p=\"Files.cs\" t=\"Include\" />\r\n          <e p=\"Installer.cs\" t=\"Include\" />\r\n          <e p=\"Zip.cs\" t=\"Include\" />\r\n        </e>\r\n        <e p=\"H3VRModInstaller.Backend.csproj\" t=\"IncludeRecursive\" />\r\n        <e p=\"MainClass.cs\" t=\"Include\" />\r\n        <e p=\"Net\" t=\"Include\">\r\n          <e p=\"Downloader.cs\" t=\"Include\" />\r\n          <e p=\"NetCheck.cs\" t=\"Include\" />\r\n        </e>\r\n        <e p=\"obj\" t=\"ExcludeRecursive\">\r\n          <e p=\"Debug\" t=\"Include\">\r\n            <e p=\"net5.0\" t=\"Include\">\r\n              <e p=\"H3VRModInstaller.Backend.AssemblyInfo.cs\" t=\"Include\" />\r\n            </e>\r\n          </e>\r\n        </e>\r\n      </e>\r\n      <e p=\"H3VRModInstaller.JSON\" t=\"IncludeRecursive\">\r\n        <e p=\"bin\" t=\"ExcludeRecursive\" />\r\n        <e p=\"Deserialise.cs\" t=\"Include\" />\r\n        <e p=\"GetMods.cs\" t=\"Include\" />\r\n        <e p=\"H3VRModInstaller.JSON.csproj\" t=\"IncludeRecursive\" />\r\n        <e p=\"Mods\" t=\"Include\">\r\n          <e p=\"BepInEx.json\" t=\"Include\" />\r\n          <e p=\"Schema.json\" t=\"Include\" />\r\n        </e>\r\n        <e p=\"obj\" t=\"ExcludeRecursive\">\r\n          <e p=\"Debug\" t=\"Include\">\r\n            <e p=\"net5.0\" t=\"Include\">\r\n              <e p=\"H3VRModInstaller.JSON.AssemblyInfo.cs\" t=\"Include\" />\r\n            </e>\r\n          </e>\r\n        </e>\r\n      </e>\r\n      <e p=\"H3VRModInstaller.sln\" t=\"IncludeFlat\" />\r\n      <e p=\"packages\" t=\"ExcludeRecursive\" />\r\n    </e>\r\n    <e p=\"$APPLICATION_CONFIG_DIR$/scratches\" t=\"IncludeRecursive\" />\r\n    <e p=\"$USER_HOME$/Library/Caches/JetBrains/Rider2020.3/extResources\" t=\"IncludeRecursive\" />\r\n    <e p=\"$USER_HOME$/Library/Caches/JetBrains/Rider2020.3/resharper-host/local/Transient/Rider/v203/SolutionCaches/_H3VRModInstaller.-1689452777.00\" t=\"ExcludeRecursive\" />\r\n  </component>\r\n</project>
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/.idea/.idea.H3VRModInstaller/.idea/contentModel.xml b/.idea/.idea.H3VRModInstaller/.idea/contentModel.xml
+---- a/.idea/.idea.H3VRModInstaller/.idea/contentModel.xml	(revision 951bb98b0292c3a96b1e384dfc72e3fbee0577ba)
+-+++ b/.idea/.idea.H3VRModInstaller/.idea/contentModel.xml	(date 1608002156889)
+-@@ -1,7 +1,9 @@
+- <?xml version="1.0" encoding="UTF-8"?>
+- <project version="4">
+-   <component name="ContentModelStore">
+--    <e p="$PROJECT_DIR$" t="IncludeFlat">
+-+    <e p="C:\Users\jagbh\AppData\local\JetBrains\Rider2020.3\extResources" t="IncludeRecursive" />
+-+    <e p="C:\Users\jagbh\AppData\local\JetBrains\Rider2020.3\resharper-host\local\Transient\Rider\v203\SolutionCaches\_H3VRModInstaller.787033117.00" t="ExcludeRecursive" />
+-+    <e p="D:\Programmings\H3VR\H3VRModInstaller" t="IncludeFlat">
+-       <e p="H3VRModInstaller.Backend" t="IncludeRecursive">
+-         <e p="bin" t="ExcludeRecursive" />
+-         <e p="Common" t="Include">
+-@@ -24,7 +26,7 @@
+-           <e p="NetCheck.cs" t="Include" />
+-         </e>
+-         <e p="obj" t="ExcludeRecursive">
+--          <e p="Debug" t="Include">
+-+          <e p="OneFile" t="Include">
+-             <e p="net5.0" t="Include">
+-               <e p="H3VRModInstaller.Backend.AssemblyInfo.cs" t="Include" />
+-             </e>
+-@@ -51,8 +53,5 @@
+-       <e p="H3VRModInstaller.sln" t="IncludeFlat" />
+-       <e p="packages" t="ExcludeRecursive" />
+-     </e>
+--    <e p="$APPLICATION_CONFIG_DIR$/scratches" t="IncludeRecursive" />
+--    <e p="$USER_HOME$/Library/Caches/JetBrains/Rider2020.3/extResources" t="IncludeRecursive" />
+--    <e p="$USER_HOME$/Library/Caches/JetBrains/Rider2020.3/resharper-host/local/Transient/Rider/v203/SolutionCaches/_H3VRModInstaller.-1689452777.00" t="ExcludeRecursive" />
+-   </component>
+- </project>
+-\ No newline at end of file
+-Index: .idea/.idea.H3VRModInstaller/.idea/workspace.xml
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoGeneratedRunConfigurationManager\">\r\n    <projectFile>H3VRModInstaller.Backend/H3VRModInstaller.Backend.csproj</projectFile>\r\n    <projectFile>H3VRModInstaller.GUI/H3VRModInstaller.GUI.csproj</projectFile>\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"11646549-311b-4445-a706-8ab87333e815\" name=\"Default Changelist\" comment=\"JSOOOOON (pt 4)\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/.idea.H3VRModInstaller/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/.idea.H3VRModInstaller/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/H3VRModInstaller.Backend/H3VRModInstaller.Backend.csproj\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/H3VRModInstaller.Backend/H3VRModInstaller.Backend.csproj\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/H3VRModInstaller.Backend/MainClass.cs\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/H3VRModInstaller.Backend/MainClass.cs\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/H3VRModInstaller.JSON/Mods/BepInEx.json\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/H3VRModInstaller.JSON/Mods/BepInEx.json\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"JSON File\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$\" value=\"refactored\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n    <option name=\"UPDATE_TYPE\" value=\"REBASE\" />\r\n  </component>\r\n  <component name=\"HighlightingSettingsPerFile\">\r\n    <setting file=\"file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/75619FE8-0086-4006-A73D-344D590FBFA4/6/Console.cs\" root0=\"SKIP_HIGHLIGHTING\" />\r\n    <setting file=\"mock:///Users/mainuser/Documents/H3VRModInstaller/H3VRModInstaller.JSON/Deserialise.cs\" root0=\"SKIP_HIGHLIGHTING\" />\r\n    <setting file=\"mock:///Users/mainuser/Documents/H3VRModInstaller/H3VRModInstaller.JSON/Deserialise.cs\" root0=\"SKIP_HIGHLIGHTING\" />\r\n    <setting file=\"mock:///Users/mainuser/Documents/H3VRModInstaller/H3VRModInstaller.JSON/Deserialise.cs\" root0=\"SKIP_HIGHLIGHTING\" />\r\n  </component>\r\n  <component name=\"IdeDocumentHistory\">\r\n    <changedPaths>\r\n      <option value=\"$PROJECT_DIR$/H3VRModInstaller.GUI/Form1.cs\" />\r\n      <option value=\"$PROJECT_DIR$/H3VRModInstaller.Backend/func.cs\" />\r\n      <option value=\"$PROJECT_DIR$/H3VRModInstaller.Backend/ModCheck.cs\" />\r\n      <option value=\"$PROJECT_DIR$/H3VRModInstaller.Backend/FileSys.cs\" />\r\n      <option value=\"$PROJECT_DIR$/H3VRModInstaller.Backend/Zip.cs\" />\r\n      <option value=\"$PROJECT_DIR$/H3VRModInstaller.Backend/Downloader.cs\" />\r\n      <option value=\"$PROJECT_DIR$/H3VRModInstaller.Backend/Installer.cs\" />\r\n      <option value=\"$PROJECT_DIR$/H3VRModInstaller.Backend/ModList.cs\" />\r\n      <option value=\"$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Common/ModList.cs\" />\r\n      <option value=\"$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Director.cs\" />\r\n      <option value=\"$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Files.cs\" />\r\n      <option value=\"$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Installer.cs\" />\r\n      <option value=\"$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/ModCheck.cs\" />\r\n      <option value=\"$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Zip.cs\" />\r\n      <option value=\"$PROJECT_DIR$/H3VRModInstaller.Backend/Net/Downloader.cs\" />\r\n      <option value=\"$PROJECT_DIR$/H3VRModInstaller.Backend/Net/NetCheck.cs\" />\r\n      <option value=\"$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Common/Directories.cs\" />\r\n      <option value=\"$APPLICATION_CONFIG_DIR$/scratches/scratch.cs\" />\r\n      <option value=\"$PROJECT_DIR$/H3VRModInstaller.Backend/Common/Prin.cs\" />\r\n      <option value=\"$PROJECT_DIR$/H3VRModInstaller.Backend/Common/Print.cs\" />\r\n      <option value=\"$PROJECT_DIR$/H3VRModInstaller.Backend/Common/Directories.cs\" />\r\n      <option value=\"$APPLICATION_CONFIG_DIR$/scratches/scratch_1.cs\" />\r\n      <option value=\"$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Common/ModCheck.cs\" />\r\n      <option value=\"$PROJECT_DIR$/H3VRModInstaller.Backend/Net/JSON/GetMods.cs\" />\r\n      <option value=\"$PROJECT_DIR$/H3VRModInstaller.JSON/JSON/GetMods.cs\" />\r\n      <option value=\"$PROJECT_DIR$/H3VRModInstaller.JSON/Mods/Schema.json\" />\r\n      <option value=\"$PROJECT_DIR$/H3VRModInstaller.JSON/Net/GetMods.cs\" />\r\n      <option value=\"$PROJECT_DIR$/H3VRModInstaller.JSON/Class1.cs\" />\r\n      <option value=\"$PROJECT_DIR$/H3VRModInstaller.JSON/GetMods.cs\" />\r\n      <option value=\"$PROJECT_DIR$/H3VRModInstaller.JSON/Deserialise.cs\" />\r\n      <option value=\"$PROJECT_DIR$/H3VRModInstaller.JSON/Mods/BepInEx.json\" />\r\n      <option value=\"$PROJECT_DIR$/H3VRModInstaller.Backend/MainClass.cs\" />\r\n    </changedPaths>\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"1lah3QXp00T3AT7tcB4yg7113kU\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"autoscrollFromSource\" value=\"true\" />\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">\r\n    <property name=\"ASKED_ADD_EXTERNAL_FILES\" value=\"true\" />\r\n    <property name=\"DebuggerViewTab_PTCS_FirstProportionKey\" value=\"0.3496708\" />\r\n    <property name=\"DebuggerViewTab_PTCS_LastProportionKey\" value=\"0.0\" />\r\n    <property name=\"RunOnceActivity.OpenProjectViewOnStart\" value=\"true\" />\r\n    <property name=\"RunOnceActivity.ShowReadmeOnStart\" value=\"true\" />\r\n    <property name=\"WebServerToolWindowFactoryState\" value=\"false\" />\r\n    <property name=\"com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File\" value=\"C#\" />\r\n    <property name=\"node.js.detected.package.eslint\" value=\"true\" />\r\n    <property name=\"node.js.detected.package.tslint\" value=\"true\" />\r\n    <property name=\"node.js.path.for.package.eslint\" value=\"project\" />\r\n    <property name=\"node.js.path.for.package.tslint\" value=\"project\" />\r\n    <property name=\"node.js.selected.package.eslint\" value=\"(autodetect)\" />\r\n    <property name=\"node.js.selected.package.tslint\" value=\"(autodetect)\" />\r\n    <property name=\"settings.editor.selected.configurable\" value=\"editor.preferences.fonts.default\" />\r\n    <property name=\"vue.rearranger.settings.migration\" value=\"true\" />\r\n  </component>\r\n  <component name=\"RunManager\" selected=\".NET Project.H3VRModInstaller.Backend\">\r\n    <configuration name=\"H3VRModInstaller.Backend\" type=\"DotNetProject\" factoryName=\".NET Project\">\r\n      <option name=\"EXE_PATH\" value=\"\" />\r\n      <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n      <option name=\"WORKING_DIRECTORY\" value=\"\" />\r\n      <option name=\"PASS_PARENT_ENVS\" value=\"1\" />\r\n      <option name=\"USE_EXTERNAL_CONSOLE\" value=\"0\" />\r\n      <option name=\"USE_MONO\" value=\"0\" />\r\n      <option name=\"RUNTIME_ARGUMENTS\" value=\"\" />\r\n      <option name=\"PROJECT_PATH\" value=\"$PROJECT_DIR$/H3VRModInstaller.Backend/H3VRModInstaller.Backend.csproj\" />\r\n      <option name=\"PROJECT_EXE_PATH_TRACKING\" value=\"1\" />\r\n      <option name=\"PROJECT_ARGUMENTS_TRACKING\" value=\"1\" />\r\n      <option name=\"PROJECT_WORKING_DIRECTORY_TRACKING\" value=\"1\" />\r\n      <option name=\"PROJECT_KIND\" value=\"DotNetCore\" />\r\n      <option name=\"PROJECT_TFM\" value=\"\" />\r\n      <method v=\"2\">\r\n        <option name=\"Build\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"H3VRModInstaller.GUI\" type=\"DotNetProject\" factoryName=\".NET Project\">\r\n      <option name=\"EXE_PATH\" value=\"\" />\r\n      <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n      <option name=\"WORKING_DIRECTORY\" value=\"\" />\r\n      <option name=\"PASS_PARENT_ENVS\" value=\"1\" />\r\n      <option name=\"USE_EXTERNAL_CONSOLE\" value=\"0\" />\r\n      <option name=\"USE_MONO\" value=\"0\" />\r\n      <option name=\"RUNTIME_ARGUMENTS\" value=\"\" />\r\n      <option name=\"PROJECT_PATH\" value=\"$PROJECT_DIR$/H3VRModInstaller.GUI/H3VRModInstaller.GUI.csproj\" />\r\n      <option name=\"PROJECT_EXE_PATH_TRACKING\" value=\"1\" />\r\n      <option name=\"PROJECT_ARGUMENTS_TRACKING\" value=\"1\" />\r\n      <option name=\"PROJECT_WORKING_DIRECTORY_TRACKING\" value=\"1\" />\r\n      <option name=\"PROJECT_KIND\" value=\"DotNetCore\" />\r\n      <option name=\"PROJECT_TFM\" value=\"\" />\r\n      <method v=\"2\">\r\n        <option name=\"Build\" />\r\n      </method>\r\n    </configuration>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"11646549-311b-4445-a706-8ab87333e815\" name=\"Default Changelist\" comment=\"\" />\r\n      <created>1607840913767</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1607840913767</updated>\r\n      <workItem from=\"1607840919589\" duration=\"404000\" />\r\n      <workItem from=\"1607841534509\" duration=\"1859000\" />\r\n      <workItem from=\"1607845861837\" duration=\"1008000\" />\r\n      <workItem from=\"1607887306409\" duration=\"8057000\" />\r\n      <workItem from=\"1607982651112\" duration=\"3814000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"Split func.cs\">\r\n      <created>1607847473285</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1607847473285</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"Reorganised the classes, functions, and namespaces\">\r\n      <created>1607889242550</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1607889242550</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"No more backend\">\r\n      <created>1607889413608</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1607889413608</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"more stuff\">\r\n      <created>1607894876932</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1607894876932</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"Started ModCheck.cs\">\r\n      <created>1607896213320</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1607896213320</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00006\" summary=\"deleted gui\">\r\n      <created>1607974835102</created>\r\n      <option name=\"number\" value=\"00006\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1607974835102</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00007\" summary=\"Jasoooooooooon!\">\r\n      <created>1607976207987</created>\r\n      <option name=\"number\" value=\"00007\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00007\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1607976207987</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00008\" summary=\"JSOOOOON!\">\r\n      <created>1607988119694</created>\r\n      <option name=\"number\" value=\"00008\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00008\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1607988119694</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00009\" summary=\"JSOOOOON!\">\r\n      <created>1607988275935</created>\r\n      <option name=\"number\" value=\"00009\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00009\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1607988275935</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00010\" summary=\"JSOOOOON (pt 3)\">\r\n      <created>1607988334876</created>\r\n      <option name=\"number\" value=\"00010\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00010\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1607988334876</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00011\" summary=\"JSOOOOON (pt 4)\">\r\n      <created>1607988531981</created>\r\n      <option name=\"number\" value=\"00011\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00011\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1607988531981</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"12\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"UnityProjectConfiguration\" hasMinimizedUI=\"false\" />\r\n  <component name=\"UnityUnitTestConfiguration\" currentTestLauncher=\"NUnit\" />\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n    <option name=\"oldMeFiltersMigrated\" value=\"true\" />\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <option name=\"CLEAR_INITIAL_COMMIT_MESSAGE\" value=\"true\" />\r\n    <MESSAGE value=\"Split func.cs\" />\r\n    <MESSAGE value=\"Reorganised the classes, functions, and namespaces\" />\r\n    <MESSAGE value=\"No more backend\" />\r\n    <MESSAGE value=\"more stuff\" />\r\n    <MESSAGE value=\"Started ModCheck.cs\" />\r\n    <MESSAGE value=\"deleted gui\" />\r\n    <MESSAGE value=\"Jasoooooooooon!\" />\r\n    <MESSAGE value=\"JSOOOOON!\" />\r\n    <MESSAGE value=\"JSOOOOON (pt 3)\" />\r\n    <MESSAGE value=\"JSOOOOON (pt 4)\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"JSOOOOON (pt 4)\" />\r\n  </component>\r\n</project>
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/.idea/.idea.H3VRModInstaller/.idea/workspace.xml b/.idea/.idea.H3VRModInstaller/.idea/workspace.xml
+---- a/.idea/.idea.H3VRModInstaller/.idea/workspace.xml	(revision 951bb98b0292c3a96b1e384dfc72e3fbee0577ba)
+-+++ b/.idea/.idea.H3VRModInstaller/.idea/workspace.xml	(date 1608002704545)
+-@@ -6,10 +6,12 @@
+-   </component>
+-   <component name="ChangeListManager">
+-     <list default="true" id="11646549-311b-4445-a706-8ab87333e815" name="Default Changelist" comment="JSOOOOON (pt 4)">
+-+      <change beforePath="$PROJECT_DIR$/.idea/.idea.H3VRModInstaller/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.H3VRModInstaller/.idea/contentModel.xml" afterDir="false" />
+-       <change beforePath="$PROJECT_DIR$/.idea/.idea.H3VRModInstaller/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.H3VRModInstaller/.idea/workspace.xml" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.Backend/H3VRModInstaller.Backend.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/H3VRModInstaller.Backend/H3VRModInstaller.Backend.csproj" afterDir="false" />
+-+      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Common/ModList.cs" beforeDir="false" afterPath="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Common/ModList.cs" afterDir="false" />
+-       <change beforePath="$PROJECT_DIR$/H3VRModInstaller.Backend/MainClass.cs" beforeDir="false" afterPath="$PROJECT_DIR$/H3VRModInstaller.Backend/MainClass.cs" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.JSON/Mods/BepInEx.json" beforeDir="false" afterPath="$PROJECT_DIR$/H3VRModInstaller.JSON/Mods/BepInEx.json" afterDir="false" />
+-+      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.GUI/H3VRModInstaller - Backup (1).GUI.csproj" beforeDir="false" />
+-+      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.GUI/H3VRModInstaller - Backup.GUI.csproj" beforeDir="false" />
+-     </list>
+-     <option name="SHOW_DIALOG" value="false" />
+-     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+-@@ -31,12 +33,6 @@
+-     </option>
+-     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+-     <option name="UPDATE_TYPE" value="REBASE" />
+--  </component>
+--  <component name="HighlightingSettingsPerFile">
+--    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/75619FE8-0086-4006-A73D-344D590FBFA4/6/Console.cs" root0="SKIP_HIGHLIGHTING" />
+--    <setting file="mock:///Users/mainuser/Documents/H3VRModInstaller/H3VRModInstaller.JSON/Deserialise.cs" root0="SKIP_HIGHLIGHTING" />
+--    <setting file="mock:///Users/mainuser/Documents/H3VRModInstaller/H3VRModInstaller.JSON/Deserialise.cs" root0="SKIP_HIGHLIGHTING" />
+--    <setting file="mock:///Users/mainuser/Documents/H3VRModInstaller/H3VRModInstaller.JSON/Deserialise.cs" root0="SKIP_HIGHLIGHTING" />
+-   </component>
+-   <component name="IdeDocumentHistory">
+-     <changedPaths>
+-@@ -48,7 +44,6 @@
+-       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Downloader.cs" />
+-       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Installer.cs" />
+-       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/ModList.cs" />
+--      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Common/ModList.cs" />
+-       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Director.cs" />
+-       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Files.cs" />
+-       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Installer.cs" />
+-@@ -72,6 +67,7 @@
+-       <option value="$PROJECT_DIR$/H3VRModInstaller.JSON/Deserialise.cs" />
+-       <option value="$PROJECT_DIR$/H3VRModInstaller.JSON/Mods/BepInEx.json" />
+-       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/MainClass.cs" />
+-+      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Common/ModList.cs" />
+-     </changedPaths>
+-   </component>
+-   <component name="ProjectId" id="1lah3QXp00T3AT7tcB4yg7113kU" />
+-@@ -95,6 +91,7 @@
+-     <property name="node.js.path.for.package.tslint" value="project" />
+-     <property name="node.js.selected.package.eslint" value="(autodetect)" />
+-     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+-+    <property name="nodejs_package_manager_path" value="npm" />
+-     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+-     <property name="vue.rearranger.settings.migration" value="true" />
+-   </component>
+Index: .idea/.idea.H3VRModInstaller/.idea/shelf/Uncommitted_changes_before_Update_at_12_14_2020_7_25_PM__Default_Changelist_.xml
+===================================================================
+diff --git a/.idea/.idea.H3VRModInstaller/.idea/shelf/Uncommitted_changes_before_Update_at_12_14_2020_7_25_PM__Default_Changelist_.xml b/.idea/.idea.H3VRModInstaller/.idea/shelf/Uncommitted_changes_before_Update_at_12_14_2020_7_25_PM__Default_Changelist_.xml
+deleted file mode 100644
+--- a/.idea/.idea.H3VRModInstaller/.idea/shelf/Uncommitted_changes_before_Update_at_12_14_2020_7_25_PM__Default_Changelist_.xml	(revision c709817ae41f332622d9ce3f90e2b3d6e534d295)
++++ /dev/null	(revision c709817ae41f332622d9ce3f90e2b3d6e534d295)
+@@ -1,4 +0,0 @@
+-<changelist name="Uncommitted_changes_before_Update_at_12_14_2020_7_25_PM_[Default_Changelist]" date="1608002753878" recycled="true" deleted="true">
+-  <option name="PATH" value="$PROJECT_DIR$/.idea/.idea.H3VRModInstaller/.idea/shelf/Uncommitted_changes_before_Update_at_12_14_2020_7_25_PM_[Default_Changelist]/shelved.patch" />
+-  <option name="DESCRIPTION" value="Uncommitted changes before Update at 12/14/2020 7:25 PM [Default Changelist]" />
+-</changelist>
+\ No newline at end of file
+Index: .idea/.idea.H3VRModInstaller/.idea/contentModel.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ContentModelStore\">\r\n    <e p=\"$PROJECT_DIR$\" t=\"IncludeFlat\">\r\n      <e p=\"H3VRModInstaller.Backend\" t=\"IncludeRecursive\">\r\n        <e p=\"bin\" t=\"ExcludeRecursive\" />\r\n        <e p=\"Common\" t=\"Include\">\r\n          <e p=\"Directories.cs\" t=\"Include\" />\r\n          <e p=\"ModCheck.cs\" t=\"Include\" />\r\n          <e p=\"ModList.cs\" t=\"Include\" />\r\n        </e>\r\n        <e p=\"Filesys\" t=\"Include\">\r\n          <e p=\"Director.cs\" t=\"Include\" />\r\n          <e p=\"Files.cs\" t=\"Include\" />\r\n          <e p=\"Installer.cs\" t=\"Include\" />\r\n          <e p=\"Uninstall.cs\" t=\"Include\" />\r\n          <e p=\"Zip.cs\" t=\"Include\" />\r\n        </e>\r\n        <e p=\"H3VRModInstaller.Backend.csproj\" t=\"IncludeRecursive\" />\r\n        <e p=\"MainClass.cs\" t=\"Include\" />\r\n        <e p=\"Net\" t=\"Include\">\r\n          <e p=\"Downloader.cs\" t=\"Include\" />\r\n          <e p=\"NetCheck.cs\" t=\"Include\" />\r\n        </e>\r\n        <e p=\"obj\" t=\"ExcludeRecursive\">\r\n          <e p=\"Debug\" t=\"Include\">\r\n            <e p=\"net5.0\" t=\"Include\">\r\n              <e p=\"H3VRModInstaller.Backend.AssemblyInfo.cs\" t=\"Include\" />\r\n            </e>\r\n          </e>\r\n        </e>\r\n      </e>\r\n      <e p=\"H3VRModInstaller.GUI\" t=\"IncludeRecursive\">\r\n        <e p=\"App.xaml\" t=\"Include\" />\r\n        <e p=\"App.xaml.cs\" t=\"Include\" />\r\n        <e p=\"AssemblyInfo.cs\" t=\"Include\" />\r\n        <e p=\"bin\" t=\"ExcludeRecursive\" />\r\n        <e p=\"H3VRModInstaller.GUI.csproj\" t=\"IncludeRecursive\" />\r\n        <e p=\"MainWindow.xaml\" t=\"Include\" />\r\n        <e p=\"MainWindow.xaml.cs\" t=\"Include\" />\r\n        <e p=\"obj\" t=\"ExcludeRecursive\" />\r\n      </e>\r\n      <e p=\"H3VRModInstaller.JSON\" t=\"IncludeRecursive\">\r\n        <e p=\"bin\" t=\"ExcludeRecursive\" />\r\n        <e p=\"GetMods.cs\" t=\"Include\" />\r\n        <e p=\"H3VRModInstaller.JSON.csproj\" t=\"IncludeRecursive\" />\r\n        <e p=\"Mods\" t=\"Include\">\r\n          <e p=\"BepInEx.json\" t=\"Include\" />\r\n          <e p=\"Schema.json\" t=\"Include\" />\r\n        </e>\r\n        <e p=\"obj\" t=\"ExcludeRecursive\">\r\n          <e p=\"Debug\" t=\"Include\">\r\n            <e p=\"net5.0\" t=\"Include\">\r\n              <e p=\"H3VRModInstaller.JSON.AssemblyInfo.cs\" t=\"Include\" />\r\n            </e>\r\n          </e>\r\n        </e>\r\n        <e p=\"Serialisation.cs\" t=\"Include\" />\r\n      </e>\r\n      <e p=\"H3VRModInstaller.sln\" t=\"IncludeFlat\" />\r\n      <e p=\"packages\" t=\"ExcludeRecursive\" />\r\n    </e>\r\n    <e p=\"$APPLICATION_CONFIG_DIR$/scratches\" t=\"IncludeRecursive\" />\r\n    <e p=\"$USER_HOME$/Library/Caches/JetBrains/Rider2020.3/extResources\" t=\"IncludeRecursive\" />\r\n    <e p=\"$USER_HOME$/Library/Caches/JetBrains/Rider2020.3/resharper-host/local/Transient/Rider/v203/SolutionCaches/_H3VRModInstaller.-1689452777.00\" t=\"ExcludeRecursive\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/.idea.H3VRModInstaller/.idea/contentModel.xml b/.idea/.idea.H3VRModInstaller/.idea/contentModel.xml
+--- a/.idea/.idea.H3VRModInstaller/.idea/contentModel.xml	(revision c709817ae41f332622d9ce3f90e2b3d6e534d295)
++++ b/.idea/.idea.H3VRModInstaller/.idea/contentModel.xml	(date 1608959938331)
+@@ -1,17 +1,18 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+   <component name="ContentModelStore">
+-    <e p="$PROJECT_DIR$" t="IncludeFlat">
++    <e p="C:\Users\jagbh\AppData\local\JetBrains\Rider2020.3\extResources" t="IncludeRecursive" />
++    <e p="C:\Users\jagbh\AppData\local\JetBrains\Rider2020.3\resharper-host\local\Transient\Rider\v203\SolutionCaches\_H3VRModInstaller.787033117.00" t="ExcludeRecursive" />
++    <e p="D:\Programmings\H3VR\H3VRModInstaller" t="IncludeFlat">
+       <e p="H3VRModInstaller.Backend" t="IncludeRecursive">
+         <e p="bin" t="ExcludeRecursive" />
++        <e p="cock.cs" t="Include" />
+         <e p="Common" t="Include">
+           <e p="Directories.cs" t="Include" />
+           <e p="ModCheck.cs" t="Include" />
+           <e p="ModList.cs" t="Include" />
+         </e>
+         <e p="Filesys" t="Include">
+-          <e p="Director.cs" t="Include" />
+-          <e p="Files.cs" t="Include" />
+           <e p="Installer.cs" t="Include" />
+           <e p="Uninstall.cs" t="Include" />
+           <e p="Zip.cs" t="Include" />
+@@ -23,11 +24,34 @@
+           <e p="NetCheck.cs" t="Include" />
+         </e>
+         <e p="obj" t="ExcludeRecursive">
+-          <e p="Debug" t="Include">
++          <e p="OneFile" t="Include">
+             <e p="net5.0" t="Include">
+               <e p="H3VRModInstaller.Backend.AssemblyInfo.cs" t="Include" />
+             </e>
+           </e>
++        </e>
++        <e p="publish" t="Include">
++          <e p="Glob.dll" t="Include" />
++          <e p="H3VRModInstaller.Backend.deps.json" t="Include" />
++          <e p="H3VRModInstaller.Backend.dll" t="Include" />
++          <e p="H3VRModInstaller.Backend.exe" t="Include" />
++          <e p="H3VRModInstaller.Backend.pdb" t="Include" />
++          <e p="H3VRModInstaller.Backend.runtimeconfig.json" t="Include" />
++          <e p="H3VRModInstaller.JSON.dll" t="Include" />
++          <e p="H3VRModInstaller.JSON.exe" t="Include" />
++          <e p="H3VRModInstaller.JSON.pdb" t="Include" />
++          <e p="new" t="Include">
++            <e p="Glob.dll" t="Include" />
++            <e p="H3VRModInstaller.Backend.deps.json" t="Include" />
++            <e p="H3VRModInstaller.Backend.dll" t="Include" />
++            <e p="H3VRModInstaller.Backend.exe" t="Include" />
++            <e p="H3VRModInstaller.Backend.pdb" t="Include" />
++            <e p="H3VRModInstaller.Backend.runtimeconfig.json" t="Include" />
++            <e p="H3VRModInstaller.JSON.dll" t="Include" />
++            <e p="H3VRModInstaller.JSON.pdb" t="Include" />
++            <e p="Newtonsoft.Json.dll" t="Include" />
++          </e>
++          <e p="Newtonsoft.Json.dll" t="Include" />
+         </e>
+       </e>
+       <e p="H3VRModInstaller.GUI" t="IncludeRecursive">
+@@ -38,12 +62,21 @@
+         <e p="H3VRModInstaller.GUI.csproj" t="IncludeRecursive" />
+         <e p="MainWindow.xaml" t="Include" />
+         <e p="MainWindow.xaml.cs" t="Include" />
+-        <e p="obj" t="ExcludeRecursive" />
++        <e p="obj" t="ExcludeRecursive">
++          <e p="Debug" t="Include">
++            <e p="net5.0-windows" t="Include">
++              <e p="App.g.cs" t="Include" />
++              <e p="H3VRModInstaller.GUI.AssemblyInfo.cs" t="Include" />
++              <e p="MainWindow.g.cs" t="Include" />
++            </e>
++          </e>
++        </e>
+       </e>
+       <e p="H3VRModInstaller.JSON" t="IncludeRecursive">
+         <e p="bin" t="ExcludeRecursive" />
+-        <e p="GetMods.cs" t="Include" />
++        <e p="GetModLists.cs" t="Include" />
+         <e p="H3VRModInstaller.JSON.csproj" t="IncludeRecursive" />
++        <e p="InstalledMods.cs" t="Include" />
+         <e p="Mods" t="Include">
+           <e p="BepInEx.json" t="Include" />
+           <e p="Schema.json" t="Include" />
+@@ -55,13 +88,9 @@
+             </e>
+           </e>
+         </e>
+-        <e p="Serialisation.cs" t="Include" />
+       </e>
+       <e p="H3VRModInstaller.sln" t="IncludeFlat" />
+       <e p="packages" t="ExcludeRecursive" />
+     </e>
+-    <e p="$APPLICATION_CONFIG_DIR$/scratches" t="IncludeRecursive" />
+-    <e p="$USER_HOME$/Library/Caches/JetBrains/Rider2020.3/extResources" t="IncludeRecursive" />
+-    <e p="$USER_HOME$/Library/Caches/JetBrains/Rider2020.3/resharper-host/local/Transient/Rider/v203/SolutionCaches/_H3VRModInstaller.-1689452777.00" t="ExcludeRecursive" />
+   </component>
+ </project>
+\ No newline at end of file
+Index: .idea/.idea.H3VRModInstaller/.idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoGeneratedRunConfigurationManager\">\r\n    <projectFile>H3VRModInstaller.Backend/H3VRModInstaller.Backend.csproj</projectFile>\r\n    <projectFile>H3VRModInstaller.GUI/H3VRModInstaller.GUI.csproj</projectFile>\r\n    <projectFile>H3VRModInstaller.GUI.Forms/H3VRModInstaller.GUI.Forms.csproj</projectFile>\r\n    <projectFile>H3VRModInstaller.JSON/H3VRModInstaller.JSON.csproj</projectFile>\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"11646549-311b-4445-a706-8ab87333e815\" name=\"Default Changelist\" comment=\"Added more features to class Uninstall\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/.idea.H3VRModInstaller/.idea/contentModel.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/.idea.H3VRModInstaller/.idea/contentModel.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Uninstall.cs\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Uninstall.cs\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"JSON File\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$\" value=\"refactored\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"HighlightingSettingsPerFile\">\r\n    <setting file=\"mock:///Users/mainuser/Documents/H3VRModInstaller/H3VRModInstaller.Backend/Filesys/Uninstall.cs\" root0=\"SKIP_HIGHLIGHTING\" />\r\n    <setting file=\"file://$APPLICATION_CONFIG_DIR$/scratches/scratch.cs\" root0=\"FORCE_HIGHLIGHTING\" />\r\n  </component>\r\n  <component name=\"IdeDocumentHistory\">\r\n    <changedPaths>\r\n      <option value=\"$PROJECT_DIR$/H3VRModInstaller.GUI/Form1.cs\" />\r\n      <option value=\"$PROJECT_DIR$/H3VRModInstaller.Backend/func.cs\" />\r\n      <option value=\"$PROJECT_DIR$/H3VRModInstaller.Backend/ModCheck.cs\" />\r\n      <option value=\"$PROJECT_DIR$/H3VRModInstaller.Backend/FileSys.cs\" />\r\n      <option value=\"$PROJECT_DIR$/H3VRModInstaller.Backend/Zip.cs\" />\r\n      <option value=\"$PROJECT_DIR$/H3VRModInstaller.Backend/Downloader.cs\" />\r\n      <option value=\"$PROJECT_DIR$/H3VRModInstaller.Backend/Installer.cs\" />\r\n      <option value=\"$PROJECT_DIR$/H3VRModInstaller.Backend/ModList.cs\" />\r\n      <option value=\"$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Director.cs\" />\r\n      <option value=\"$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Files.cs\" />\r\n      <option value=\"$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Installer.cs\" />\r\n      <option value=\"$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/ModCheck.cs\" />\r\n      <option value=\"$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Zip.cs\" />\r\n      <option value=\"$PROJECT_DIR$/H3VRModInstaller.Backend/Net/NetCheck.cs\" />\r\n      <option value=\"$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Common/Directories.cs\" />\r\n      <option value=\"$APPLICATION_CONFIG_DIR$/scratches/scratch.cs\" />\r\n      <option value=\"$PROJECT_DIR$/H3VRModInstaller.Backend/Common/Prin.cs\" />\r\n      <option value=\"$PROJECT_DIR$/H3VRModInstaller.Backend/Common/Print.cs\" />\r\n      <option value=\"$APPLICATION_CONFIG_DIR$/scratches/scratch_1.cs\" />\r\n      <option value=\"$PROJECT_DIR$/H3VRModInstaller.Backend/Net/JSON/GetMods.cs\" />\r\n      <option value=\"$PROJECT_DIR$/H3VRModInstaller.JSON/JSON/GetMods.cs\" />\r\n      <option value=\"$PROJECT_DIR$/H3VRModInstaller.JSON/Mods/Schema.json\" />\r\n      <option value=\"$PROJECT_DIR$/H3VRModInstaller.JSON/Net/GetMods.cs\" />\r\n      <option value=\"$PROJECT_DIR$/H3VRModInstaller.JSON/Class1.cs\" />\r\n      <option value=\"$PROJECT_DIR$/H3VRModInstaller.JSON/GetMods.cs\" />\r\n      <option value=\"$PROJECT_DIR$/H3VRModInstaller.JSON/Mods/BepInEx.json\" />\r\n      <option value=\"$PROJECT_DIR$/H3VRModInstaller.JSON/MainClass.cs\" />\r\n      <option value=\"$PROJECT_DIR$/H3VRModInstaller.JSON/Deserialise.cs\" />\r\n      <option value=\"$PROJECT_DIR$/H3VRModInstaller.JSON/Serialisation.cs\" />\r\n      <option value=\"$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Common/ModList.cs\" />\r\n      <option value=\"$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Common/ModCheck.cs\" />\r\n      <option value=\"$PROJECT_DIR$/H3VRModInstaller.Backend/Common/Directories.cs\" />\r\n      <option value=\"$PROJECT_DIR$/H3VRModInstaller.Backend/Common/ModCheck.cs\" />\r\n      <option value=\"$PROJECT_DIR$/H3VRModInstaller.Backend/MainClass.cs\" />\r\n      <option value=\"$PROJECT_DIR$/H3VRModInstaller.Backend/Net/Downloader.cs\" />\r\n      <option value=\"$PROJECT_DIR$/H3VRModInstaller.Backend/Potatoes.cs\" />\r\n      <option value=\"$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Uninstall.cs\" />\r\n    </changedPaths>\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"1lah3QXp00T3AT7tcB4yg7113kU\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"autoscrollFromSource\" value=\"true\" />\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">\r\n    <property name=\"ASKED_ADD_EXTERNAL_FILES\" value=\"true\" />\r\n    <property name=\"DebuggerViewTab_PTCS_FirstProportionKey\" value=\"0.3496708\" />\r\n    <property name=\"DebuggerViewTab_PTCS_LastProportionKey\" value=\"0.0\" />\r\n    <property name=\"RunOnceActivity.OpenProjectViewOnStart\" value=\"true\" />\r\n    <property name=\"RunOnceActivity.ShowReadmeOnStart\" value=\"true\" />\r\n    <property name=\"WebServerToolWindowFactoryState\" value=\"false\" />\r\n    <property name=\"com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File\" value=\"C#\" />\r\n    <property name=\"node.js.detected.package.eslint\" value=\"true\" />\r\n    <property name=\"node.js.detected.package.tslint\" value=\"true\" />\r\n    <property name=\"node.js.path.for.package.eslint\" value=\"project\" />\r\n    <property name=\"node.js.path.for.package.tslint\" value=\"project\" />\r\n    <property name=\"node.js.selected.package.eslint\" value=\"(autodetect)\" />\r\n    <property name=\"node.js.selected.package.tslint\" value=\"(autodetect)\" />\r\n    <property name=\"nodejs_package_manager_path\" value=\"npm\" />\r\n    <property name=\"settings.editor.selected.configurable\" value=\"editor.preferences.fonts.default\" />\r\n    <property name=\"vue.rearranger.settings.migration\" value=\"true\" />\r\n  </component>\r\n  <component name=\"RunManager\" selected=\"Publish to folder.ModInstaller\">\r\n    <configuration name=\"ModInstaller\" type=\"DotNetFolderPublish\" factoryName=\"Publish to folder\" temporary=\"true\">\r\n      <riderPublish runtime=\"osx-x64\" target_folder=\"$PROJECT_DIR$/test\" target_framework=\"net5.0\" uuid_high=\"4896244729092656622\" uuid_low=\"-6212243280892053142\" />\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <configuration name=\"H3VRModInstaller.Backend\" type=\"DotNetProject\" factoryName=\".NET Project\">\r\n      <option name=\"EXE_PATH\" value=\"\" />\r\n      <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n      <option name=\"WORKING_DIRECTORY\" value=\"\" />\r\n      <option name=\"PASS_PARENT_ENVS\" value=\"1\" />\r\n      <option name=\"USE_EXTERNAL_CONSOLE\" value=\"0\" />\r\n      <option name=\"USE_MONO\" value=\"0\" />\r\n      <option name=\"RUNTIME_ARGUMENTS\" value=\"\" />\r\n      <option name=\"PROJECT_PATH\" value=\"$PROJECT_DIR$/H3VRModInstaller.Backend/H3VRModInstaller.Backend.csproj\" />\r\n      <option name=\"PROJECT_EXE_PATH_TRACKING\" value=\"1\" />\r\n      <option name=\"PROJECT_ARGUMENTS_TRACKING\" value=\"1\" />\r\n      <option name=\"PROJECT_WORKING_DIRECTORY_TRACKING\" value=\"1\" />\r\n      <option name=\"PROJECT_KIND\" value=\"DotNetCore\" />\r\n      <option name=\"PROJECT_TFM\" value=\"\" />\r\n      <method v=\"2\">\r\n        <option name=\"Build\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"H3VRModInstaller.GUI\" type=\"DotNetProject\" factoryName=\".NET Project\">\r\n      <option name=\"EXE_PATH\" value=\"\" />\r\n      <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n      <option name=\"WORKING_DIRECTORY\" value=\"\" />\r\n      <option name=\"PASS_PARENT_ENVS\" value=\"1\" />\r\n      <option name=\"USE_EXTERNAL_CONSOLE\" value=\"0\" />\r\n      <option name=\"USE_MONO\" value=\"0\" />\r\n      <option name=\"RUNTIME_ARGUMENTS\" value=\"\" />\r\n      <option name=\"PROJECT_PATH\" value=\"$PROJECT_DIR$/H3VRModInstaller.GUI/H3VRModInstaller.GUI.csproj\" />\r\n      <option name=\"PROJECT_EXE_PATH_TRACKING\" value=\"1\" />\r\n      <option name=\"PROJECT_ARGUMENTS_TRACKING\" value=\"1\" />\r\n      <option name=\"PROJECT_WORKING_DIRECTORY_TRACKING\" value=\"1\" />\r\n      <option name=\"PROJECT_KIND\" value=\"DotNetCore\" />\r\n      <option name=\"PROJECT_TFM\" value=\"\" />\r\n      <method v=\"2\">\r\n        <option name=\"Build\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"H3VRModInstaller.GUI.Forms\" type=\"DotNetProject\" factoryName=\".NET Project\">\r\n      <option name=\"EXE_PATH\" value=\"\" />\r\n      <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n      <option name=\"WORKING_DIRECTORY\" value=\"\" />\r\n      <option name=\"PASS_PARENT_ENVS\" value=\"1\" />\r\n      <option name=\"USE_EXTERNAL_CONSOLE\" value=\"0\" />\r\n      <option name=\"USE_MONO\" value=\"0\" />\r\n      <option name=\"RUNTIME_ARGUMENTS\" value=\"\" />\r\n      <option name=\"PROJECT_PATH\" value=\"$PROJECT_DIR$/H3VRModInstaller.GUI.Forms/H3VRModInstaller.GUI.Forms.csproj\" />\r\n      <option name=\"PROJECT_EXE_PATH_TRACKING\" value=\"1\" />\r\n      <option name=\"PROJECT_ARGUMENTS_TRACKING\" value=\"1\" />\r\n      <option name=\"PROJECT_WORKING_DIRECTORY_TRACKING\" value=\"1\" />\r\n      <option name=\"PROJECT_KIND\" value=\"DotNetCore\" />\r\n      <option name=\"PROJECT_TFM\" value=\"\" />\r\n      <method v=\"2\">\r\n        <option name=\"Build\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"H3VRModInstaller.JSON\" type=\"DotNetProject\" factoryName=\".NET Project\">\r\n      <option name=\"EXE_PATH\" value=\"\" />\r\n      <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n      <option name=\"WORKING_DIRECTORY\" value=\"\" />\r\n      <option name=\"PASS_PARENT_ENVS\" value=\"1\" />\r\n      <option name=\"USE_EXTERNAL_CONSOLE\" value=\"0\" />\r\n      <option name=\"USE_MONO\" value=\"0\" />\r\n      <option name=\"RUNTIME_ARGUMENTS\" value=\"\" />\r\n      <option name=\"PROJECT_PATH\" value=\"$PROJECT_DIR$/H3VRModInstaller.JSON/H3VRModInstaller.JSON.csproj\" />\r\n      <option name=\"PROJECT_EXE_PATH_TRACKING\" value=\"1\" />\r\n      <option name=\"PROJECT_ARGUMENTS_TRACKING\" value=\"1\" />\r\n      <option name=\"PROJECT_WORKING_DIRECTORY_TRACKING\" value=\"1\" />\r\n      <option name=\"PROJECT_KIND\" value=\"DotNetCore\" />\r\n      <option name=\"PROJECT_TFM\" value=\"\" />\r\n      <method v=\"2\">\r\n        <option name=\"Build\" />\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Publish to folder.ModInstaller\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"11646549-311b-4445-a706-8ab87333e815\" name=\"Default Changelist\" comment=\"\" />\r\n      <created>1607840913767</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1607840913767</updated>\r\n      <workItem from=\"1607840919589\" duration=\"404000\" />\r\n      <workItem from=\"1607841534509\" duration=\"1859000\" />\r\n      <workItem from=\"1607845861837\" duration=\"1008000\" />\r\n      <workItem from=\"1607887306409\" duration=\"8057000\" />\r\n      <workItem from=\"1607982651112\" duration=\"3814000\" />\r\n      <workItem from=\"1608067909319\" duration=\"494000\" />\r\n      <workItem from=\"1608138848366\" duration=\"2061000\" />\r\n      <workItem from=\"1608144367162\" duration=\"5401000\" />\r\n      <workItem from=\"1608152354724\" duration=\"2280000\" />\r\n      <workItem from=\"1608186512308\" duration=\"30000\" />\r\n      <workItem from=\"1608227405647\" duration=\"3832000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"Split func.cs\">\r\n      <created>1607847473285</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1607847473285</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"Reorganised the classes, functions, and namespaces\">\r\n      <created>1607889242550</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1607889242550</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"No more backend\">\r\n      <created>1607889413608</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1607889413608</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"more stuff\">\r\n      <created>1607894876932</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1607894876932</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"Started ModCheck.cs\">\r\n      <created>1607896213320</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1607896213320</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00006\" summary=\"deleted gui\">\r\n      <created>1607974835102</created>\r\n      <option name=\"number\" value=\"00006\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1607974835102</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00007\" summary=\"Jasoooooooooon!\">\r\n      <created>1607976207987</created>\r\n      <option name=\"number\" value=\"00007\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00007\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1607976207987</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00008\" summary=\"JSOOOOON!\">\r\n      <created>1607988119694</created>\r\n      <option name=\"number\" value=\"00008\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00008\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1607988119694</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00009\" summary=\"JSOOOOON!\">\r\n      <created>1607988275935</created>\r\n      <option name=\"number\" value=\"00009\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00009\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1607988275935</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00010\" summary=\"JSOOOOON (pt 3)\">\r\n      <created>1607988334876</created>\r\n      <option name=\"number\" value=\"00010\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00010\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1607988334876</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00011\" summary=\"JSOOOOON (pt 4)\">\r\n      <created>1607988531981</created>\r\n      <option name=\"number\" value=\"00011\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00011\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1607988531981</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00012\" summary=\"Nae naed forms again\">\r\n      <created>1608067952622</created>\r\n      <option name=\"number\" value=\"00012\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00012\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1608067952622</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00013\" summary=\"Added modcheck\">\r\n      <created>1608145964825</created>\r\n      <option name=\"number\" value=\"00013\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00013\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1608145964826</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00014\" summary=\"Fixed TNHTweaker deli\">\r\n      <created>1608146188292</created>\r\n      <option name=\"number\" value=\"00014\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00014\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1608146188292</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00015\" summary=\"Added serialise tests\">\r\n      <created>1608146701813</created>\r\n      <option name=\"number\" value=\"00015\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00015\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1608146701813</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00016\" summary=\"kill me\">\r\n      <created>1608148068463</created>\r\n      <option name=\"number\" value=\"00016\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00016\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1608148068463</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00017\" summary=\"kill me\">\r\n      <created>1608150453128</created>\r\n      <option name=\"number\" value=\"00017\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00017\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1608150453129</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00018\" summary=\"fixed H3VRModInstaller.JSON.csproj\">\r\n      <created>1608150610052</created>\r\n      <option name=\"number\" value=\"00018\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00018\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1608150610052</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00019\" summary=\"Added deletion\">\r\n      <created>1608229429958</created>\r\n      <option name=\"number\" value=\"00019\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00019\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1608229429958</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00020\" summary=\"Added more features to class Uninstall\">\r\n      <created>1608234232043</created>\r\n      <option name=\"number\" value=\"00020\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00020\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1608234232043</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"21\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"UnityProjectConfiguration\" hasMinimizedUI=\"false\" />\r\n  <component name=\"UnityUnitTestConfiguration\" currentTestLauncher=\"NUnit\" />\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n    <option name=\"oldMeFiltersMigrated\" value=\"true\" />\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <option name=\"CLEAR_INITIAL_COMMIT_MESSAGE\" value=\"true\" />\r\n    <MESSAGE value=\"Split func.cs\" />\r\n    <MESSAGE value=\"Reorganised the classes, functions, and namespaces\" />\r\n    <MESSAGE value=\"No more backend\" />\r\n    <MESSAGE value=\"more stuff\" />\r\n    <MESSAGE value=\"Started ModCheck.cs\" />\r\n    <MESSAGE value=\"deleted gui\" />\r\n    <MESSAGE value=\"Jasoooooooooon!\" />\r\n    <MESSAGE value=\"JSOOOOON!\" />\r\n    <MESSAGE value=\"JSOOOOON (pt 3)\" />\r\n    <MESSAGE value=\"JSOOOOON (pt 4)\" />\r\n    <MESSAGE value=\"Nae naed forms again\" />\r\n    <MESSAGE value=\"Added modcheck\" />\r\n    <MESSAGE value=\"Fixed TNHTweaker deli\" />\r\n    <MESSAGE value=\"Added serialise tests\" />\r\n    <MESSAGE value=\"kill me\" />\r\n    <MESSAGE value=\"fixed H3VRModInstaller.JSON.csproj\" />\r\n    <MESSAGE value=\"Added deletion\" />\r\n    <MESSAGE value=\"Added more features to class Uninstall\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Added more features to class Uninstall\" />\r\n  </component>\r\n  <component name=\"XDebuggerManager\">\r\n    <breakpoint-manager>\r\n      <breakpoints>\r\n        <line-breakpoint enabled=\"true\" type=\"DotNet Breakpoints\">\r\n          <url>file://$PROJECT_DIR$/H3VRModInstaller.Backend/MainClass.cs</url>\r\n          <line>55</line>\r\n          <properties documentPath=\"$PROJECT_DIR$/H3VRModInstaller.Backend/MainClass.cs\" initialLine=\"54\" containingFunctionPresentation=\"method 'Main'\">\r\n            <startOffsets>\r\n              <option value=\"1545\" />\r\n            </startOffsets>\r\n            <endOffsets>\r\n              <option value=\"1568\" />\r\n            </endOffsets>\r\n          </properties>\r\n          <option name=\"timeStamp\" value=\"1\" />\r\n        </line-breakpoint>\r\n      </breakpoints>\r\n    </breakpoint-manager>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/.idea.H3VRModInstaller/.idea/workspace.xml b/.idea/.idea.H3VRModInstaller/.idea/workspace.xml
+--- a/.idea/.idea.H3VRModInstaller/.idea/workspace.xml	(revision c709817ae41f332622d9ce3f90e2b3d6e534d295)
++++ b/.idea/.idea.H3VRModInstaller/.idea/workspace.xml	(date 1609306486741)
+@@ -3,13 +3,20 @@
+   <component name="AutoGeneratedRunConfigurationManager">
+     <projectFile>H3VRModInstaller.Backend/H3VRModInstaller.Backend.csproj</projectFile>
+     <projectFile>H3VRModInstaller.GUI/H3VRModInstaller.GUI.csproj</projectFile>
++    <projectFile>H3VR.ModInstallerGUI.Forms/H3VR.ModInstallerGUI.Forms.csproj</projectFile>
+     <projectFile>H3VRModInstaller.GUI.Forms/H3VRModInstaller.GUI.Forms.csproj</projectFile>
+     <projectFile>H3VRModInstaller.JSON/H3VRModInstaller.JSON.csproj</projectFile>
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="11646549-311b-4445-a706-8ab87333e815" name="Default Changelist" comment="Added more features to class Uninstall">
++    <list default="true" id="11646549-311b-4445-a706-8ab87333e815" name="Default Changelist" comment="Json? more like BADson!">
+       <change beforePath="$PROJECT_DIR$/.idea/.idea.H3VRModInstaller/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.H3VRModInstaller/.idea/contentModel.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Uninstall.cs" beforeDir="false" afterPath="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Uninstall.cs" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/.idea.H3VRModInstaller/.idea/shelf/Uncommitted_changes_before_Update_at_12_14_2020_7_25_PM_[Default_Changelist]/shelved.patch" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/.idea.H3VRModInstaller/.idea/shelf/Uncommitted_changes_before_Update_at_12_14_2020_7_25_PM__Default_Changelist_.xml" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/.idea.H3VRModInstaller/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.H3VRModInstaller/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.Backend/Common/ModList.cs" beforeDir="false" afterPath="$PROJECT_DIR$/H3VRModInstaller.Backend/Common/ModList.cs" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.Backend/MainClass.cs" beforeDir="false" afterPath="$PROJECT_DIR$/H3VRModInstaller.Backend/MainClass.cs" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.JSON/GetModLists.cs" beforeDir="false" afterPath="$PROJECT_DIR$/H3VRModInstaller.JSON/GetModLists.cs" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.JSON/GetMods.cs" beforeDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -30,10 +37,6 @@
+       </map>
+     </option>
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+-  </component>
+-  <component name="HighlightingSettingsPerFile">
+-    <setting file="mock:///Users/mainuser/Documents/H3VRModInstaller/H3VRModInstaller.Backend/Filesys/Uninstall.cs" root0="SKIP_HIGHLIGHTING" />
+-    <setting file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch.cs" root0="FORCE_HIGHLIGHTING" />
+   </component>
+   <component name="IdeDocumentHistory">
+     <changedPaths>
+@@ -70,10 +73,14 @@
+       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Common/ModCheck.cs" />
+       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Common/Directories.cs" />
+       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Common/ModCheck.cs" />
+-      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/MainClass.cs" />
+       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Net/Downloader.cs" />
+       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Potatoes.cs" />
+       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Uninstall.cs" />
++      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/cock.cs" />
++      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Common/ModList.cs" />
++      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/MainClass.cs" />
++      <option value="$PROJECT_DIR$/H3VRModInstaller.JSON/GetModLists.cs" />
++      <option value="$PROJECT_DIR$/H3VRModInstaller.GUI/MainWindow.xaml" />
+     </changedPaths>
+   </component>
+   <component name="ProjectId" id="1lah3QXp00T3AT7tcB4yg7113kU" />
+@@ -101,9 +108,13 @@
+     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+     <property name="vue.rearranger.settings.migration" value="true" />
+   </component>
+-  <component name="RunManager" selected="Publish to folder.ModInstaller">
++  <component name="RunManager" selected="Publish to folder.new">
+     <configuration name="ModInstaller" type="DotNetFolderPublish" factoryName="Publish to folder" temporary="true">
+       <riderPublish runtime="osx-x64" target_folder="$PROJECT_DIR$/test" target_framework="net5.0" uuid_high="4896244729092656622" uuid_low="-6212243280892053142" />
++      <method v="2" />
++    </configuration>
++    <configuration name="new" type="DotNetFolderPublish" factoryName="Publish to folder" temporary="true">
++      <riderPublish runtime="win-x64" target_folder="$PROJECT_DIR$/H3VRModInstaller.Backend/publish/new" target_framework="net5.0" uuid_high="4896244729092656622" uuid_low="-6212243280892053142" />
+       <method v="2" />
+     </configuration>
+     <configuration name="H3VRModInstaller.Backend" type="DotNetProject" factoryName=".NET Project">
+@@ -180,6 +191,7 @@
+     </configuration>
+     <recent_temporary>
+       <list>
++        <item itemvalue="Publish to folder.new" />
+         <item itemvalue="Publish to folder.ModInstaller" />
+       </list>
+     </recent_temporary>
+@@ -203,6 +215,9 @@
+       <workItem from="1608152354724" duration="2280000" />
+       <workItem from="1608186512308" duration="30000" />
+       <workItem from="1608227405647" duration="3832000" />
++      <workItem from="1608672872011" duration="749000" />
++      <workItem from="1608959749526" duration="1559000" />
++      <workItem from="1609306112397" duration="374000" />
+     </task>
+     <task id="LOCAL-00001" summary="Split func.cs">
+       <created>1607847473285</created>
+@@ -344,7 +359,14 @@
+       <option name="project" value="LOCAL" />
+       <updated>1608234232043</updated>
+     </task>
+-    <option name="localTasksCounter" value="21" />
++    <task id="LOCAL-00021" summary="more Serialisation.cs">
++      <created>1608672937784</created>
++      <option name="number" value="00021" />
++      <option name="presentableId" value="LOCAL-00021" />
++      <option name="project" value="LOCAL" />
++      <updated>1608672937784</updated>
++    </task>
++    <option name="localTasksCounter" value="22" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -384,25 +406,7 @@
+     <MESSAGE value="fixed H3VRModInstaller.JSON.csproj" />
+     <MESSAGE value="Added deletion" />
+     <MESSAGE value="Added more features to class Uninstall" />
+-    <option name="LAST_COMMIT_MESSAGE" value="Added more features to class Uninstall" />
+-  </component>
+-  <component name="XDebuggerManager">
+-    <breakpoint-manager>
+-      <breakpoints>
+-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+-          <url>file://$PROJECT_DIR$/H3VRModInstaller.Backend/MainClass.cs</url>
+-          <line>55</line>
+-          <properties documentPath="$PROJECT_DIR$/H3VRModInstaller.Backend/MainClass.cs" initialLine="54" containingFunctionPresentation="method 'Main'">
+-            <startOffsets>
+-              <option value="1545" />
+-            </startOffsets>
+-            <endOffsets>
+-              <option value="1568" />
+-            </endOffsets>
+-          </properties>
+-          <option name="timeStamp" value="1" />
+-        </line-breakpoint>
+-      </breakpoints>
+-    </breakpoint-manager>
++    <MESSAGE value="more Serialisation.cs" />
++    <option name="LAST_COMMIT_MESSAGE" value="more Serialisation.cs" />
+   </component>
+ </project>
+\ No newline at end of file

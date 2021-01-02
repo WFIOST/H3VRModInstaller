@@ -10,46 +10,39 @@ If using the net5.0 version, simply drag-drop it into the folder.
 
 ## Usage instructions
 
-Upon opening the program, type `dl [modnamehere]`
+Instructions are shown upon launching the executable. Type in `help` for more info.
 
-As an example, typing `dl wurstmod` downloads wurstmod.
+- `wipe` wipes `installedmods.json` which contains information about what mods have been downloaded, stopping H3VRMI from reinstalling already downloaded mods.
+- `dl [modname]` downloads the mod from the modid typed.
+- `check [modname]` opens up the mod page in your browser.
+- `modlists` lists all modlists, which are a list of multiple mods.
+- `list [modlist]` lists all modids contained in a modlist.
+- `list installedmods` lists all installed mods H3VRMI knows about.
+- `exit` Closes H3VRMI.
 
-For a whole list of mods, simply type `list all` .
+## Example Of Installing A Mod
 
-## List of mods currently downloadable
+1. Type `modlists`, which will return something similar to:
 
-### Dependency Mods
+`charactermods`
 
-1. bepinex
-1. resourceredirector
-1. deli
-1. monomod
-1. wurstmod
-1. tnhtweaker
-1. sideloader
-1. lsiic
-1. h3vrutils
-1. configurationmanager
+`codemods`
 
-### Custom Script Mods
+`customitems`
 
-1. curseddlls
-1. meatyceiver
+`dependencies`
 
-### Custom Item Mods
+`mapmods`
 
-1. pccg
-1. modular
-1. meatssidecharger
-1. meatsrigs
-1. meatsmags
-1. meatsmodulsr
-1. meatsmodulpp
-1. meatsmodulak
-1. meatsmodularparts
-1. meatsmpx
-1. ebr
+2. Type `list mapmods`, which will return:
 
-## Current known issues
+`shootyhouse`
 
-The installer may sometimes crash when installing an already installed mod.
+`promeatheus`
+
+`wurstwar`
+
+3. Then, you can type in `dl shootyhouse`, or if you want more info on it, `check shootyhouse`. H3VRMI will take the reins from here, and download all the dependencies and install them for you.
+
+
+
