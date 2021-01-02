@@ -31,7 +31,7 @@ namespace H3VRModInstaller.JSON
 		/// Gets the currently installed mods from the JSON files
 		/// </summary>
 		/// <returns>String array with the installed mods</returns>
-		public static string[] GetInstalledMods()
+		public static ModFile[] GetInstalledMods()
 		{
 			if (!File.Exists(Directory.GetCurrentDirectory() + @"\installedmods.json")) return new ModFile[0];
 			InstalledModsFormat input = null;
