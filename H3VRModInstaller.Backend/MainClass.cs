@@ -11,10 +11,23 @@ namespace H3VRModInstaller
 {
 	public class MainClass
 	{
-		public static bool BypassExec = false; //bypasses check for the exe
-		public static readonly string execdir = JsonModList.H3Vrdir + @"\H3VR.exe"; //loc of the exe, auto stops if not detected
-		public static string pingsite = "www.github.com"; //website used to ping to ensure internet access
-		public static bool enableDebugging = false; //shits all over the console if true
+		/// <summary>
+		/// Bypasses the check for H3VR.EXE
+		/// </summary>
+		public static bool BypassExec = false; 
+		
+		/// <summary>
+		/// Location of H3VR.EXE, auto stops if not detected
+		/// </summary>
+		public static readonly string execdir = JsonModList.H3Vrdir + @"\H3VR.exe"; 
+		/// <summary>
+		/// Website used to ping to ensure internet access
+		/// </summary>
+		public static string pingsite = "www.github.com"; 
+		/// <summary>
+		/// Enables Debugging
+		/// </summary>
+		public static bool enableDebugging = false; 
 
 		public static void Main(string[] args)
 		{
