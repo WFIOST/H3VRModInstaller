@@ -116,7 +116,7 @@ namespace H3VRModInstaller.JSON
 				ModList = new ModListFormat[jsonfiles.Length];
 				for (int i = 0; i < jsonfiles.Length; i++)
 				{
-					ModList[i] = deserializeModListFormat(jsonfiles[i]);
+					ModList[i] = DeserializeModListFormat(jsonfiles[i]);
 				}
 			}
 			return ModList;
@@ -127,6 +127,7 @@ namespace H3VRModInstaller.JSON
 		/// </summary>
 		/// <param name="jsontoload">Json file to load</param>
 		/// <returns>ModList</returns>
+		public static ModListFormat DeserializeModListFormat(string jsontoload)
 		{
 			ModListFormat modList = new ModListFormat();
 			ModInstallerCommon.DebugLog("Loading " + jsontoload);
