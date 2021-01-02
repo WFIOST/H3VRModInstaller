@@ -29,8 +29,13 @@ namespace H3VRModInstaller.JSON
 	{
 		public ModFile[] Modlist { get; set; }
 	}
+<<<<<<< Updated upstream:H3VRModInstaller.Backend/JSON/JSONModList.cs
 	
     public class JsonModList
+=======
+
+    public class modLists
+>>>>>>> Stashed changes:H3VRModInstaller.Backend/JSON/modLists.cs
     {
 		private static readonly WebClient Client = new WebClient();
 		public static string H3Vrdir = Directory.GetParent(Directory.GetCurrentDirectory()).ToString();
@@ -76,35 +81,6 @@ namespace H3VRModInstaller.JSON
 			if (enabledebugging) Console.WriteLine("Loading " + jsontoload);
 			modList = JsonConvert.DeserializeObject<ModListFormat>(File.ReadAllText(Modinstallerdir + jsontoload));
 			return modList;
-		}
-	}
-
-	public class InstalledModsFormat
-	{
-		public string[] InstalledMods { get; set; }
-	}
-
-	public class InstalledMods
-	{
-
-		public static string[] GetInstalledMods()
-		{
-			if (!File.Exists(Directory.GetCurrentDirectory() + @"\installedmods.json")) return new string[0];
-			InstalledModsFormat input = JsonConvert.DeserializeObject<InstalledModsFormat>(File.ReadAllText(Directory.GetCurrentDirectory() + "/installedmods.json"));
-			if (input == null) return new string[0];
-			return input.InstalledMods;
-		}
-
-		public static void AddInstalledMods(string addmod)
-		{
-			string[] file = new string[0];
-			file = GetInstalledMods();
-			Array.Resize<string>(ref file, file.Length + 1);
-			InstalledModsFormat modexport = new InstalledModsFormat();
-			file[file.Length - 1] = addmod;
-			modexport.InstalledMods = file;
-			string output = JsonConvert.SerializeObject(modexport);
-			File.WriteAllText(Directory.GetCurrentDirectory() + @"\installedmods.json", output);
 		}
 	}
 }
