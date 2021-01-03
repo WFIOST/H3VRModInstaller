@@ -76,7 +76,7 @@ namespace H3VRModInstaller.GUI
             // 
             this.InstalledModsLabel.AutoSize = true;
             this.InstalledModsLabel.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
-            this.InstalledModsLabel.Location = new System.Drawing.Point(78, 212);
+            this.InstalledModsLabel.Location = new System.Drawing.Point(66, 212);
             this.InstalledModsLabel.Name = "InstalledModsLabel";
             this.InstalledModsLabel.Size = new System.Drawing.Size(135, 25);
             this.InstalledModsLabel.TabIndex = 5;
@@ -86,7 +86,9 @@ namespace H3VRModInstaller.GUI
             // 
             this.InstalledModsList.FormattingEnabled = true;
             this.InstalledModsList.Location = new System.Drawing.Point(15, 237);
+            this.InstalledModsList.MultiColumn = true;
             this.InstalledModsList.Name = "InstalledModsList";
+            this.InstalledModsList.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.InstalledModsList.Size = new System.Drawing.Size(237, 121);
             this.InstalledModsList.TabIndex = 4;
             // 
@@ -115,7 +117,9 @@ namespace H3VRModInstaller.GUI
             // 
             this.DownloadableMods.FormattingEnabled = true;
             this.DownloadableMods.Location = new System.Drawing.Point(15, 88);
+            this.DownloadableMods.MultiColumn = true;
             this.DownloadableMods.Name = "DownloadableMods";
+            this.DownloadableMods.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.DownloadableMods.Size = new System.Drawing.Size(237, 121);
             this.DownloadableMods.TabIndex = 1;
             // 

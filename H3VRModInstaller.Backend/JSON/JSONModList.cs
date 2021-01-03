@@ -61,6 +61,7 @@ namespace H3VRModInstaller.JSON
 	    /// </summary>
         public string[] Dependencies { get; set; }
 	    
+	    
 		public string DelInfo { get; set; }
     }
 

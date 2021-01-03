@@ -20,6 +20,7 @@ namespace H3VRModInstaller.GUI
         {
             InitializeComponent();
 
+
             ModsEnabled.Checked = true;
         }
 
