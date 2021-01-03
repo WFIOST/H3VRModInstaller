@@ -56,12 +56,14 @@ namespace H3VRModInstaller.JSON
 	    /// The <c>?</c> in the arguments are used as they cannot be inputted normally, and seperate the arguments
 	    /// </remarks>
 		public string Arguments { get; set; }
-	    /// <summary>
-	    /// All the dependencies of the mod, must be the <c>ModID</c>
-	    /// </summary>
-        public string[] Dependencies { get; set; }
-	    
+		/// <summary>
+		/// Info needed to delete this file.
+		/// </summary>
 		public string DelInfo { get; set; }
+		/// <summary>
+		/// All the dependencies of the mod, must be the <c>ModID</c>
+		/// </summary>
+		public string[] Dependencies { get; set; }
     }
 
 	/// <summary>
@@ -88,6 +90,7 @@ namespace H3VRModInstaller.JSON
 		/// </summary>
 		public static void DlModList()
 		{
+			if (ModInstallerCommon.dlmodlist == false) { Console.WriteLine("Download aborted."); return; }
 			Uri fileloc = new Uri(ModInstallerCommon.Modlistloc[0] + ModInstallerCommon.Modlistloc[1]);
 			Console.WriteLine("Downloading Mod Database...");
 			Client.DownloadFile(fileloc, ModInstallerCommon.Modlistloc[1]);
@@ -100,8 +103,8 @@ namespace H3VRModInstaller.JSON
 		/// <summary>
 		/// Gets the modlists and deseralises them, returning a ModList
 		/// </summary>
-		/// <param name="reload">Reload?</param>
-		/// <param name="jsonfiles">Specify the json files you would like to use, this is a path</param>
+		/// <param name="reload">Forces reloading ModLists.</param>
+		/// <param name="jsonfiles">Specify the json file(s) you want to use</param>
 		/// <returns>ModList</returns>
 		public static ModListFormat[] GetModLists(bool reload = false, string[] jsonfiles = null)
 		{
@@ -134,6 +137,14 @@ namespace H3VRModInstaller.JSON
 			ModInstallerCommon.DebugLog("Loading " + jsontoload);
 			modList = JsonConvert.DeserializeObject<ModListFormat>(File.ReadAllText(ModInstallerCommon.Modinstallerdir + jsontoload));
 			return modList;
+		}
+
+		/// <summary>
+		/// Returns the modfile of modinstallerinfo.h3vrmi.
+		/// </summary>
+		public static ModFile GetOnlineModInstallerInfo()
+		{
+			return JsonConvert.DeserializeObject<ModListFormat>(File.ReadAllText(ModInstallerCommon.Modinstallerdir + "modinstallerinfo.h3vrmi")).Modlist[0];
 		}
 	}
 }

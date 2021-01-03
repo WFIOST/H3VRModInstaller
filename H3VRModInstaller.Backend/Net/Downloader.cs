@@ -35,7 +35,6 @@ namespace H3VRModInstaller.Net
 			string fileToDownload = fileinfo.RawName;
 			string locationOfFile = fileinfo.Path;
 
-			bool redownload = false;
 			if (!autoredownload)
 			{
 				for (int i = 0; i < installedmods.Length; i++)
@@ -49,7 +48,7 @@ namespace H3VRModInstaller.Net
 							var input = Console.ReadLine();
 							if (input == "y")
 							{
-								redownload = true;
+								Uninstaller.DeleteMod(fileinfo.ModId);
 								break;
 							}
 							else if (input == "n")
@@ -63,7 +62,6 @@ namespace H3VRModInstaller.Net
 					}
 				}
 			}
-			else redownload = true;
 			Uri fileloc = new Uri(locationOfFile + fileToDownload);
 
 			if (ModInstallerCommon.EnableDebugging) Console.WriteLine("Downloading {0} from {1}{0}", fileToDownload, locationOfFile);
@@ -85,7 +83,7 @@ namespace H3VRModInstaller.Net
 
 			Installer.InstallMod(fileinfo);
 
-			if(!redownload) InstalledMods.AddInstalledMods(fileinfo.ModId);
+			InstalledMods.AddInstalledMod(fileinfo.ModId);
 			return true;
 		}
 		public static void Dlcomplete(object sender, System.ComponentModel.AsyncCompletedEventArgs e)

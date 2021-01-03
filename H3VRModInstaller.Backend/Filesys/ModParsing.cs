@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using H3VRModInstaller.JSON;
 
-namespace H3VRModInstaller
+namespace H3VRModInstaller.Filesys
 {
 	/// <summary>
 	/// Parses together the deserialised JSON files

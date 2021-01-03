@@ -6,6 +6,7 @@ using H3VRModInstaller.JSON;
 using GlobExpressions;
 using H3VRModInstaller.Common;
 using System.Linq;
+using H3VRModInstaller.Filesys;
 
 namespace H3VRModInstaller
 {
@@ -34,6 +35,7 @@ namespace H3VRModInstaller
 			Console.WriteLine("ex: 'dl wurstmod'");
 			Console.WriteLine("To see a list of downloadable mods, type 'modlists'");
 			Console.WriteLine("To see a list of commands, type 'help' \n");
+			CheckVersion();
 		Start:
 			var input = Console.ReadLine();
 
@@ -45,7 +47,6 @@ namespace H3VRModInstaller
 
 			switch (inputargs[0])
 			{
-				
 				case "reload":
 					JsonModList.GetModLists(true);
 					break;
@@ -88,7 +89,7 @@ namespace H3VRModInstaller
 					if (inputargs[1] == "installedmods")
 					{
 						ModFile[] mf = InstalledMods.GetInstalledMods();
-						for (int i = 0; i < mf.Length; i++) { Console.WriteLine(mf[i].Name); }
+						for (int i = 0; i < mf.Length; i++) { Console.WriteLine(mf[i].ModId); }
 					}
 					else { List(inputargs[1]); }
 					break;
@@ -109,12 +110,9 @@ namespace H3VRModInstaller
 					break;
 				//deletion
 				case "rm":
-					Console.WriteLine($"Deleting {inputargs[1]}");
-					 
+					Console.WriteLine($"Deleting {inputargs[1]}...");
+					Uninstaller.DeleteMod(inputargs[1]);
 					break;
-					
-				
-				
 				default:
 					Console.WriteLine("Invalid command!");
 					break;
@@ -158,6 +156,27 @@ namespace H3VRModInstaller
 			if (foundmod == false)
 			{
 				Console.WriteLine("List not found!");
+			}
+		}
+
+		public static void CheckVersion()
+		{
+			Version publicversion = null;
+			Version.TryParse(JsonModList.GetOnlineModInstallerInfo().Version, out publicversion); //turns string ModFile.Version to a Version variable
+			switch(ModInstallerCommon.ModInstallerVersion.CompareTo(publicversion))
+			{
+				case 0: //if same version
+					Console.WriteLine("Mod installer is up to date!");
+					break;
+				case 1: //if it has a higher version than listed online
+					Console.WriteLine("Mod installer is a newer version than is found online! What's going on?!");
+					Console.WriteLine("(Current version is {0}, version found is {1})", ModInstallerCommon.ModInstallerVersion, publicversion);
+					break;
+					break;
+				case -1: //if out of date
+					Console.WriteLine("Mod installer is out of date! Please update!");
+					Console.WriteLine("(Current version is {0}, version found is {1})", ModInstallerCommon.ModInstallerVersion, publicversion);
+					break;
 			}
 		}
 	}

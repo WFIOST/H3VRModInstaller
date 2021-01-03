@@ -22,6 +22,10 @@ namespace H3VRModInstaller.Common
 		/// </summary>
 		public static bool EnableDebugging = true;
 		/// <summary>
+		/// Useful for debugging.
+		/// </summary>
+		public static bool dlmodlist = true;
+		/// <summary>
 		/// Bypasses the check for H3VR.EXE
 		/// </summary>
 		public static bool BypassExec = true;
@@ -45,6 +49,10 @@ namespace H3VRModInstaller.Common
 		/// Website where the database is located.
 		/// </summary>
 		public static string[] Modlistloc = { "https://github.com/Frityet/H3VRModInstaller/releases/download/database/", "ModList.zip" };
+		/// <summary>
+		/// Current version.
+		/// </summary>
+		public static Version ModInstallerVersion = new Version(1,0,0);
 
 		/// <summary>
 		/// Writes line if enabledebugging is true.
