@@ -31,7 +31,7 @@ namespace H3VRModInstaller.Common
 			/// <summary>
 			/// Location of H3VR.EXE, auto stops if not detected
 			/// </summary>
-			public static readonly string execdir = MainFiledir + @"\H3VR.exe";
+			public static string execdir = MainFiledir + @"\H3VR.exe";
 			/// <summary>
 			/// Loc of the main file with the exe inside
 			/// </summary>
@@ -54,25 +54,9 @@ namespace H3VRModInstaller.Common
 		/// </summary>
 		public static bool BypassExec = true;
 		/// <summary>
-		/// Location of H3VR.EXE, auto stops if not detected
-		/// </summary>
-		public static string Execdir = MainFiledir + @"\H3VR.exe";
-		/// <summary>
 		/// Website used to ping to ensure internet access
 		/// </summary>
 		public static string Pingsite = "www.github.com";
-		/// <summary>
-		/// Loc of the main file with the exe inside
-		/// </summary>
-		public static string MainFiledir = Directory.GetParent(Directory.GetCurrentDirectory()).ToString();
-		/// <summary>
-		/// loc of the MI lists.
-		/// </summary>
-		public static string Modinstallerdir = Directory.GetCurrentDirectory() + @"/ModInstallerLists/";
-		/// <summary>
-		/// Website where the database is located.
-		/// </summary>
-		public static string[] Modlistloc = { "https://github.com/Frityet/H3VRModInstaller/releases/download/database/", "ModList.zip" };
 		/// <summary>
 		/// Current version.
 		/// </summary>
@@ -85,9 +69,9 @@ namespace H3VRModInstaller.Common
 			MICVarsTemplate depinput = JsonConvert.DeserializeObject<MICVarsTemplate>(File.ReadAllText(Directory.GetCurrentDirectory() + @"\" + "MICoverride.json"));
 			if (depinput.EnableDebugging != null) enableDebugging = depinput.EnableDebugging;
 			if (depinput.BypassExec != null) BypassExec = depinput.BypassExec;
-			if (depinput.Execname != null) Execdir = MainFiledir + depinput.Execname;
+			if (depinput.Execname != null) Files.execdir = Files.MainFiledir + depinput.Execname;
 			if (depinput.Pingsite != null) Pingsite = depinput.Pingsite;
-			if (depinput.Modlistloc != null) Modlistloc = depinput.Modlistloc;
+			if (depinput.Modlistloc != null) Files.Modlistloc = depinput.Modlistloc;
 		}
 
 		/// <summary>
