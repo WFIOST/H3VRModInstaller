@@ -45,18 +45,11 @@ namespace H3VRModInstaller.GUI
         private void launch_Click(object sender, EventArgs e)
         {
 
-            if (ModsEnabled.Checked)
-                if (File.Exists(ModInstallerCommon.Files.MainFiledir + GUICommon.Files.DisabledName))
-                        File.Move(ModInstallerCommon.Files.MainFiledir + GUICommon.Files.DisabledName, ModInstallerCommon.Files.MainFiledir + GUICommon.Files.EnabledName);
-                else
-                {
-                    goto FuckYou;
-                }
+            if (ModsEnabled.Checked) if (File.Exists(ModInstallerCommon.Files.MainFiledir + GUICommon.Files.DisabledName)) File.Move(ModInstallerCommon.Files.MainFiledir + GUICommon.Files.DisabledName, ModInstallerCommon.Files.MainFiledir + GUICommon.Files.EnabledName);
             
-            if (!ModsEnabled.Checked)
-                File.Move(ModInstallerCommon.Files.MainFiledir + GUICommon.Files.EnabledName, ModInstallerCommon.Files.MainFiledir +GUICommon.Files.DisabledName);
-
-            FuckYou:
+            
+            if (!ModsEnabled.Checked) File.Move(ModInstallerCommon.Files.MainFiledir + GUICommon.Files.EnabledName, ModInstallerCommon.Files.MainFiledir +GUICommon.Files.DisabledName);
+            
             if (ModInstallerCommon.enableDebugging)
             {
                 MessageBox.Show("Launching H3VR at: \n" + GUICommon.Files.EXEPath);
