@@ -20,8 +20,8 @@
           </e>
           <e p="Installer.cs" t="Include" />
           <e p="ModParsing.cs" t="Include" />
-          <e p="RegisterMods.cs" t="Include" />
           <e p="Uninstall.cs" t="Include" />
+          <e p="Uninstaller.cs" t="Include" />
           <e p="Zip.cs" t="Include" />
         </e>
         <e p="H3VRModInstaller.Backend.csproj" t="IncludeRecursive" />

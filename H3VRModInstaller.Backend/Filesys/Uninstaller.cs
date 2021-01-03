@@ -31,8 +31,8 @@ namespace H3VRModInstaller.Filesys
 			string[] args = mf.DelInfo.Split('?');
 
 			for (int i = 0; i < args.Length; i++) {
-				if (File.Exists(ModInstallerCommon.MainFiledir + @"\" + args[i]))File.Delete(ModInstallerCommon.MainFiledir + @"\" + args[i]);
-				else if (Directory.Exists(ModInstallerCommon.MainFiledir + @"\" + args[i])) Directory.Delete(ModInstallerCommon.MainFiledir + @"\" + args[i]);
+				if (File.Exists(ModInstallerCommon.Files.MainFiledir + @"\" + args[i]))File.Delete(ModInstallerCommon.Files.MainFiledir + @"\" + args[i]);
+				else if (Directory.Exists(ModInstallerCommon.Files.MainFiledir + @"\" + args[i])) Directory.Delete(ModInstallerCommon.Files.MainFiledir + @"\" + args[i]);
 			}
 		}
 	}

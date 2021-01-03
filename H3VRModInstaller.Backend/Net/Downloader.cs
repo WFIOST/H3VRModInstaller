@@ -64,7 +64,7 @@ namespace H3VRModInstaller.Net
 			}
 			Uri fileloc = new Uri(locationOfFile + fileToDownload);
 
-			if (ModInstallerCommon.EnableDebugging) Console.WriteLine("Downloading {0} from {1}{0}", fileToDownload, locationOfFile);
+			if (ModInstallerCommon.enableDebugging) Console.WriteLine("Downloading {0} from {1}{0}", fileToDownload, locationOfFile);
 
 
 			Console.WriteLine("");
@@ -79,7 +79,7 @@ namespace H3VRModInstaller.Net
 			_finished = false;
 
 			Console.WriteLine("Successfully Downloaded {0}", fileToDownload, locationOfFile);
-			if (ModInstallerCommon.EnableDebugging) Console.Write("from {1}{0}", fileToDownload, locationOfFile);
+			if (ModInstallerCommon.enableDebugging) Console.Write("from {1}{0}", fileToDownload, locationOfFile);
 
 			Installer.InstallMod(fileinfo);
 
@@ -123,7 +123,7 @@ namespace H3VRModInstaller.Net
 		/// <returns>Boolean, true</returns>
 		public static bool DownloadModDirector(string mod, bool skipdl = false)
 		{
-			if (!NetCheck.isOnline(ModInstallerCommon.Pingsite)) { Console.WriteLine("Not connected to internet, or " + ModInstallerCommon.Pingsite + " is down!"); return false; }
+			if (!NetCheck.isOnline(ModInstallerCommon.pingsite)) { Console.WriteLine("Not connected to internet, or " + ModInstallerCommon.pingsite + " is down!"); return false; }
 			var result = ModParsing.GetModInfo(mod);
 			if (result == null) return false;
 			for (var i = 0; i < result.Length; i++)
