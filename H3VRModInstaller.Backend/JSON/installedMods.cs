@@ -61,7 +61,7 @@ namespace H3VRModInstaller.JSON
 		{
 			ModFile[] file = GetInstalledMods(); //gets the installed mods file
 			Array.Resize<ModFile>(ref file, file.Length + 1); //adds new room for new mod
-			file[file.Length - 1] = ModParsing.getModInfo(addmod, null, false)[0]; //sets new room in array to modinfo of addmod
+			file[file.Length - 1] = ModParsing.GetModInfo(addmod, null, false)[0]; //sets new room in array to modinfo of addmod
 			InstalledModsFormat modexport = new InstalledModsFormat();
 			modexport.InstalledMods = file; //drops file into installedmodsformat
 			File.WriteAllText(Directory.GetCurrentDirectory() + @"\installedmods.json", JsonConvert.SerializeObject(modexport)); //serialize and write to file

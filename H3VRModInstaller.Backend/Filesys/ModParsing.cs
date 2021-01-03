@@ -19,24 +19,24 @@ namespace H3VRModInstaller
 		/// <param name="result">ModFile array to be returned</param>
 		/// <param name="returndependencies">Defines if dependencies would be returned</param>
 		/// <returns></returns>
-		public static ModFile[] getModInfo(string mod, ModFile[] result = null, bool returndependencies = true)
+		public static ModFile[] GetModInfo(string mod, ModFile[] result = null, bool returndependencies = true)
 		{
 			if (result == null) result = new ModFile[0];
-			ModListFormat[] ML = JsonModList.GetModLists();
+			ModListFormat[] ml = JsonModList.GetModLists();
 
-			for (int i = 0; i < ML.Length; i++)
+			for (int i = 0; i < ml.Length; i++)
 			{
-				for (int x = 0; x < ML[i].Modlist.Length; x++)
+				for (int x = 0; x < ml[i].Modlist.Length; x++)
 				{
-					if (ML[i].Modlist[x].ModId == mod)
+					if (ml[i].Modlist[x].ModId == mod)
 					{
 						Array.Resize<ModFile>(ref result, result.Length + 1);
-						result[result.Length - 1] = ML[i].Modlist[x];
+						result[result.Length - 1] = ml[i].Modlist[x];
 						if (returndependencies)
 						{
 							for (int y = 0; y < result[result.Length - 1].Dependencies.Length; y++)
 							{
-								result = getModInfo(result[result.Length - 1].Dependencies[y], result);
+								result = GetModInfo(result[result.Length - 1].Dependencies[y], result);
 							}
 						}
 					}

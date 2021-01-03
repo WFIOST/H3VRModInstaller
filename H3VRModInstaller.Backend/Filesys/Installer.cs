@@ -18,7 +18,7 @@ namespace H3VRModInstaller.Filesys
 		/// <param name="fileinfo">ModFile class, gets the <c>rawname</c> from it</param>
 		/// <param name="delArchive">Defines if the archive should be deleted after installation</param>
 		/// <returns>Boolean</returns>
-		public static bool installMod(ModFile fileinfo, bool delArchive = false)
+		public static bool InstallMod(ModFile fileinfo, bool delArchive = false)
 		{
 			fileinfo.Arguments.Replace("BACKSLASH", @"\");
 
@@ -38,7 +38,7 @@ namespace H3VRModInstaller.Filesys
 			{
 				if (args[i] == "moveToFolder")
 				{
-					moveToFolder(args[i + 1], args[i + 2], args[i + 3]);
+					MoveToFolder(args[i + 1], args[i + 2], args[i + 3]);
 				}
 				if (args[i] == "unzipToDir")
 				{
@@ -66,7 +66,7 @@ namespace H3VRModInstaller.Filesys
 		/// <remarks>
 		/// Honestly, this function needs a lot of work, its disgusting //TODO: fix this shit 
 		/// </remarks>
-		public static bool moveToFolder(string mod, string dir, string renameTo = "")
+		public static bool MoveToFolder(string mod, string dir, string renameTo = "")
 		{
 			if (renameTo == "") renameTo = mod;
 			dir = ModInstallerCommon.MainFiledir + @"\" + dir;

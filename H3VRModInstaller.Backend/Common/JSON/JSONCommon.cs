@@ -8,7 +8,7 @@ namespace H3VRModInstaller.JSON.Common
     /// <summary>
     /// Common fields and functions for JSON!
     /// </summary>
-    public class CommonJSON
+    public class CommonJson
     {
         /// <summary>
         /// All JSON files in the database!
@@ -17,13 +17,13 @@ namespace H3VRModInstaller.JSON.Common
         /// <summary>
         /// Gets every filepath of the mods, and adds them to the list defined as the secont parameter
         /// </summary>
-        /// <param name="FilesToSort">Files to sort</param>
-        /// <param name="ListToAppendTo">List to Append to</param>
+        /// <param name="filesToSort">Files to sort</param>
+        /// <param name="listToAppendTo">List to Append to</param>
         /// <returns>Returns the list which was specified in second parameter</returns>
-        public List<string> GetEachPath(string[] FilesToSort, List<string> ListToAppendTo)
+        public List<string> GetEachPath(string[] filesToSort, List<string> listToAppendTo)
         {
             
-            return ListToAppendTo;
+            return listToAppendTo;
         }
         
     }

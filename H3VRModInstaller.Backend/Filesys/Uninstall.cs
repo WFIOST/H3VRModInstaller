@@ -41,22 +41,22 @@ namespace H3VRModInstaller.Filesys
         /// <summary>
         /// Gets all of the assemblies to delete, located in the "BepInEx/Plugins" directory
         /// </summary>
-        string[] dllFilesToDelete = Glob.FilesAndDirectories(@"BepInEx/Plugins/", "**.dll").ToArray();
+        string[] _dllFilesToDelete = Glob.FilesAndDirectories(@"BepInEx/Plugins/", "**.dll").ToArray();
         
         /// <summary>
         /// Gets all the h3mods to delete, located in the "Mods/" directory
         /// </summary>
-        string[] h3ModsToDelete = Glob.FilesAndDirectories(@"Mods/", "**.h3mod").ToArray();
+        string[] _h3ModsToDelete = Glob.FilesAndDirectories(@"Mods/", "**.h3mod").ToArray();
         
         /// <summary>
         /// Gets all the hotmods to delete, located in the "Mods/" directory
         /// </summary>
-        string[] hotModsToDelete = Glob.FilesAndDirectories(@"Mods/", "**.hotmod").ToArray();
+        string[] _hotModsToDelete = Glob.FilesAndDirectories(@"Mods/", "**.hotmod").ToArray();
         
         /// <summary>
         /// Gets all the deli mods to delete, located in the "Mods/" directory
         /// </summary>
-        string[] deliModsToDelete = Glob.FilesAndDirectories(@"Mods/", "**.deli").ToArray();
+        string[] _deliModsToDelete = Glob.FilesAndDirectories(@"Mods/", "**.deli").ToArray();
         
         
         /// <summary>
@@ -104,31 +104,31 @@ namespace H3VRModInstaller.Filesys
 
         public bool DeleteAllDlls()
         {
-            for (int i = 0; i <= dllFilesToDelete.Length; i++)
+            for (int i = 0; i <= _dllFilesToDelete.Length; i++)
             {
-                File.Delete(dllFilesToDelete[i]);
+                File.Delete(_dllFilesToDelete[i]);
             }
             return true;
         }
 
         public bool DeleteAllH3Mods()
         {
-            for (int i = 0; i <= h3ModsToDelete.Length; i++)
+            for (int i = 0; i <= _h3ModsToDelete.Length; i++)
             {
-                File.Delete(h3ModsToDelete[i]);
+                File.Delete(_h3ModsToDelete[i]);
             }
-            for (int i = 0; i <= hotModsToDelete.Length; i++)
+            for (int i = 0; i <= _hotModsToDelete.Length; i++)
             {
-                File.Delete(hotModsToDelete[i]);
+                File.Delete(_hotModsToDelete[i]);
             }
             return true;
         }
 
         public bool DeleteAllDeliMods()
         {
-            for (int i = 0; i <= deliModsToDelete.Length; i++)
+            for (int i = 0; i <= _deliModsToDelete.Length; i++)
             {
-                File.Delete(deliModsToDelete[i]);
+                File.Delete(_deliModsToDelete[i]);
             }
             return true;
         }

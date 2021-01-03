@@ -20,7 +20,7 @@ namespace H3VRModInstaller.Common
 		/// <summary>
 		/// Enables Debugging
 		/// </summary>
-		public static bool enableDebugging = true;
+		public static bool EnableDebugging = true;
 		/// <summary>
 		/// Bypasses the check for H3VR.EXE
 		/// </summary>
@@ -28,11 +28,11 @@ namespace H3VRModInstaller.Common
 		/// <summary>
 		/// Location of H3VR.EXE, auto stops if not detected
 		/// </summary>
-		public static readonly string execdir = MainFiledir + @"\H3VR.exe";
+		public static readonly string Execdir = MainFiledir + @"\H3VR.exe";
 		/// <summary>
 		/// Website used to ping to ensure internet access
 		/// </summary>
-		public static string pingsite = "www.github.com";
+		public static string Pingsite = "www.github.com";
 		/// <summary>
 		/// Loc of the main file with the exe inside
 		/// </summary>
@@ -51,11 +51,11 @@ namespace H3VRModInstaller.Common
 		/// </summary>
 		public static void DebugLog(string input)
 		{
-			if (enableDebugging) Console.WriteLine(input);
+			if (EnableDebugging) Console.WriteLine(input);
 		}
 
 		//i'm not even sure why i made this, i was just too lazy to write two lines.
-		public static void throwexept(string error)
+		public static void Throwexept(string error)
 		{
 			Console.WriteLine(error);
 			Console.ReadKey();
@@ -84,19 +84,19 @@ namespace H3VRModInstaller.Common
 			/// <summary>
 			/// H3VR Directory
 			/// </summary>
-			public static string h3vrDir = Directory.GetCurrentDirectory() + "/";
+			public static string H3VrDir = Directory.GetCurrentDirectory() + "/";
 			/// <summary>
 			/// BepInEx Directory
 			/// </summary>
-			public static string bepinexDir = Directory.GetCurrentDirectory() + "/" + "BepInEx/";
+			public static string BepinexDir = Directory.GetCurrentDirectory() + "/" + "BepInEx/";
 			/// <summary>
 			/// Plugins Directory
 			/// </summary>
-			public static string pluginsDir = Directory.GetCurrentDirectory() + "/" + "BepInEx/" + "Plugins/";
+			public static string PluginsDir = Directory.GetCurrentDirectory() + "/" + "BepInEx/" + "Plugins/";
 			/// <summary>
 			/// Mods Directory
 			/// </summary>
-			public static string modsDirs = Directory.GetCurrentDirectory() + "/" + "mods/";
+			public static string ModsDirs = Directory.GetCurrentDirectory() + "/" + "mods/";
 		}
 	}
 	

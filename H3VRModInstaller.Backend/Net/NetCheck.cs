@@ -10,16 +10,16 @@ namespace H3VRModInstaller.Net
         /// <summary>
         /// Pings a URL (first param) with a timeout of 1000
         /// </summary>
-        /// <param name="URL">
+        /// <param name="url">
         /// URL of the site you would like to ping
         /// 
         /// <para>Keep in mind, this cannot have <c>https://</c></para>
         /// </param>
         /// <returns></returns>
-        public static bool isOnline(string URL)
+        public static bool isOnline(string url)
         {
             var ping = new Ping();
-            var reply = ping.Send(URL, 1000);
+            var reply = ping.Send(url, 1000);
 
 			if (reply.Status == IPStatus.Success) return true;
             
