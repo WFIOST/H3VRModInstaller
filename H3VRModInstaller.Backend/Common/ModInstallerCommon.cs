@@ -75,9 +75,31 @@ namespace H3VRModInstaller.Common
 			return strng;
 		}
 		
-		public static string h3vrDir = Directory.GetCurrentDirectory() + "/";
-		public static string bepinexDir = Directory.GetCurrentDirectory() + "/" + "BepInEx/";
-		public static string pluginsDir = Directory.GetCurrentDirectory() + "/" + "BepInEx/" + "Plugins/";
-		public static string modsDirs = Directory.GetCurrentDirectory() + "/" + "mods/";
+
+		/// <summary>
+		/// Commonly used directories
+		/// </summary>
+		public struct Directories
+		{
+			/// <summary>
+			/// H3VR Directory
+			/// </summary>
+			public static string h3vrDir = Directory.GetCurrentDirectory() + "/";
+			/// <summary>
+			/// BepInEx Directory
+			/// </summary>
+			public static string bepinexDir = Directory.GetCurrentDirectory() + "/" + "BepInEx/";
+			/// <summary>
+			/// Plugins Directory
+			/// </summary>
+			public static string pluginsDir = Directory.GetCurrentDirectory() + "/" + "BepInEx/" + "Plugins/";
+			/// <summary>
+			/// Mods Directory
+			/// </summary>
+			public static string modsDirs = Directory.GetCurrentDirectory() + "/" + "mods/";
+		}
 	}
+	
+	
+
 }

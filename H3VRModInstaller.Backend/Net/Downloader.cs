@@ -6,12 +6,15 @@ using H3VRModInstaller.Net;
 using H3VRModInstaller.JSON;
 using H3VRModInstaller.Common;
 
-namespace H3VRModInstaller
+namespace H3VRModInstaller.Net
 {
+	/// <summary>
+	/// This class is for downloading mods
+	/// </summary>
 	public class Downloader
 	{
 
-		private static readonly WebClient downloader = new();
+		private static readonly WebClient _Downloader = new();
 		private static bool finished = false;
 
 		/// <summary>
@@ -68,9 +71,9 @@ namespace H3VRModInstaller
 
 			Console.WriteLine("");
 
-			downloader.DownloadFileCompleted += dlcomplete;
-			downloader.DownloadProgressChanged += dlprogress;
-			downloader.DownloadFileAsync(fileloc, fileToDownload);
+			_Downloader.DownloadFileCompleted += dlcomplete;
+			_Downloader.DownloadProgressChanged += dlprogress;
+			_Downloader.DownloadFileAsync(fileloc, fileToDownload);
 			while (!finished)
 			{
 				Thread.Sleep(50);
