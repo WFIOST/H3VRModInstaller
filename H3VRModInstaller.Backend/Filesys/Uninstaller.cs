@@ -27,12 +27,21 @@ namespace H3VRModInstaller.Filesys
 
 		private static void parseDelArgs(ModFile mf)
 		{
-			if (mf.DelInfo == null) { Console.WriteLine("There's no info on how to delete this mod! Please ask the creators to add that in!"); return; }
+			if (mf.DelInfo == null)
+			{
+				mf = ModParsing.GetModInfo(mf.ModId, null, false)[0];
+				if (mf.DelInfo == null)
+				{
+					Console.WriteLine("There's no info on how to delete this mod! Please ask the creators to add that in!");
+					return;
+				}
+			}
 			string[] args = mf.DelInfo.Split('?');
 
-			for (int i = 0; i < args.Length; i++) {
-				if (File.Exists(ModInstallerCommon.Files.MainFiledir + @"\" + args[i]))File.Delete(ModInstallerCommon.Files.MainFiledir + @"\" + args[i]);
-				else if (Directory.Exists(ModInstallerCommon.Files.MainFiledir + @"\" + args[i])) Directory.Delete(ModInstallerCommon.Files.MainFiledir + @"\" + args[i]);
+			for (int i = 0; i < args.Length; i++)
+			{
+				if (File.Exists(ModInstallerCommon.MainFiledir + @"\" + args[i])) File.Delete(ModInstallerCommon.MainFiledir + @"\" + args[i]);
+				else if (Directory.Exists(ModInstallerCommon.MainFiledir + @"\" + args[i])) Directory.Delete(ModInstallerCommon.MainFiledir + @"\" + args[i]);
 			}
 		}
 	}
