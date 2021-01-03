@@ -21,12 +21,12 @@ namespace H3VRModInstaller
 		/// <param name="args">dunno why these are here</param>
 		public static void Main(string[] args)
 		{
-			Console.WriteLine("Detecting if " + ModInstallerCommon.Files.execdir + " exists...");
-
+			ModInstallerCommon.overrideMICVars();
 			//exe check
+			Console.WriteLine("Detecting if " + ModInstallerCommon.Files.execdir + " exists...");
 			if (!File.Exists(ModInstallerCommon.Files.execdir) && !ModInstallerCommon.BypassExec) { ModInstallerCommon.throwexept("H3VR not found!"); return; } else { Console.WriteLine("H3VR found!"); }
 			//online check
-			if (!NetCheck.isOnline(ModInstallerCommon.pingsite)) { ModInstallerCommon.throwexept("Cannot connect to github!"); return; }
+			if (!NetCheck.isOnline(ModInstallerCommon.Pingsite)) { ModInstallerCommon.throwexept("Cannot connect to github!"); return; }
 			//gets the whole dl list possible
 			JsonModList.DlModList();
 			Console.WriteLine("Welcome to the H3VR Mod installer!");

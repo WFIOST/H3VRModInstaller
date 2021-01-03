@@ -15,14 +15,10 @@ namespace H3VRModInstaller.Common
 	public class MICVarsTemplate
 	{
 		public bool EnableDebugging { get; set; }
-		public bool dlmodlist { get; set; }
 		public bool BypassExec { get; set; }
-		public string Execdir { get; set; }
+		public string Execname { get; set; }
 		public string Pingsite { get; set; }
-		public string MainFiledir { get; set; }
-		public string Modinstallerdir { get; set; }
 		public string[] Modlistloc { get; set; }
-		public Version ModInstallerVersion { get; set; }
 	}
 
 	/// <summary>
@@ -35,7 +31,7 @@ namespace H3VRModInstaller.Common
 			/// <summary>
 			/// Location of H3VR.EXE, auto stops if not detected
 			/// </summary>
-			public static readonly string execdir = MainFiledir + @"/h3vr.exe";
+			public static readonly string execdir = MainFiledir + @"\H3VR.exe";
 			/// <summary>
 			/// Loc of the main file with the exe inside
 			/// </summary>
@@ -47,12 +43,7 @@ namespace H3VRModInstaller.Common
 			/// <summary>
 			/// Website where the database is located.
 			/// </summary>
-			public static string[] Modlistloc = { "https://github.com/Frityet/H3VRModInstaller/releases/download/database/", "ModList.zip" };
-			
-			
-			
-
-
+			public static string[] Modlistloc = { "https://github.com/Frityet/H3VRModInstaller/releases/download/database/ModList.zip", "ModList.zip" };
 		}
 		/// <summary>
 		/// Enables Debugging
@@ -62,14 +53,6 @@ namespace H3VRModInstaller.Common
 		/// Bypasses the check for H3VR.EXE
 		/// </summary>
 		public static bool BypassExec = true;
-<<<<<<< Updated upstream
-
-		/// <summary>
-		/// Website used to ping to ensure internet access
-		/// </summary>
-		public static string pingsite = "www.github.com";
-
-=======
 		/// <summary>
 		/// Location of H3VR.EXE, auto stops if not detected
 		/// </summary>
@@ -100,16 +83,12 @@ namespace H3VRModInstaller.Common
 			if (!File.Exists(Directory.GetCurrentDirectory() + @"\" + "MICoverride.json")) return;
 			Console.WriteLine("MICOverride.json detected!");
 			MICVarsTemplate depinput = JsonConvert.DeserializeObject<MICVarsTemplate>(File.ReadAllText(Directory.GetCurrentDirectory() + @"\" + "MICoverride.json"));
-			if (depinput.EnableDebugging != null) EnableDebugging = depinput.EnableDebugging;
-			if (depinput.dlmodlist != null)
+			if (depinput.EnableDebugging != null) enableDebugging = depinput.EnableDebugging;
 			if (depinput.BypassExec != null) BypassExec = depinput.BypassExec;
-			if (depinput.Execdir != null) Execdir = depinput.Execdir;
+			if (depinput.Execname != null) Execdir = MainFiledir + depinput.Execname;
 			if (depinput.Pingsite != null) Pingsite = depinput.Pingsite;
-			if (depinput.MainFiledir != null) MainFiledir = depinput.MainFiledir;
-			if (depinput.Modinstallerdir != null) Modinstallerdir = depinput.Modinstallerdir;
 			if (depinput.Modlistloc != null) Modlistloc = depinput.Modlistloc;
 		}
->>>>>>> Stashed changes
 
 		/// <summary>
 		/// Writes line if enabledebugging is true.
@@ -142,10 +121,4 @@ namespace H3VRModInstaller.Common
 
 
 	}
-<<<<<<< Updated upstream
-=======
-
-
-
->>>>>>> Stashed changes
 }

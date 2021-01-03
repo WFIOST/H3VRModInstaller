@@ -123,8 +123,8 @@ namespace H3VRModInstaller.Net
 		/// <returns>Boolean, true</returns>
 		public static bool DownloadModDirector(string mod, bool skipdl = false)
 		{
-			if (!NetCheck.isOnline(ModInstallerCommon.pingsite)) { Console.WriteLine("Not connected to internet, or " + ModInstallerCommon.pingsite + " is down!"); return false; }
-			var result = ModParsing.GetModInfo(mod);
+			if (!NetCheck.isOnline(ModInstallerCommon.Pingsite)) { Console.WriteLine("Not connected to internet, or " + ModInstallerCommon.Pingsite + " is down!"); return false; }
+			var result = ModParsing.GetModInfoAndDependencies(mod);
 			if (result == null) return false;
 			for (var i = 0; i < result.Length; i++)
 			{

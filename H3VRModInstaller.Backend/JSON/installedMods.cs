@@ -27,6 +27,7 @@ namespace H3VRModInstaller.JSON
 	/// </summary>
 	public class InstalledMods
 	{
+
 		/// <summary>
 		/// Gets the currently installed mods from the JSON files
 		/// </summary>
@@ -61,7 +62,7 @@ namespace H3VRModInstaller.JSON
 		{
 			ModFile[] file = GetInstalledMods(); //gets the installed mods file
 			Array.Resize<ModFile>(ref file, file.Length + 1); //adds new room for new mod
-			file[file.Length - 1] = ModParsing.GetModInfo(addmod, null, false)[0]; //sets new room in array to modinfo of addmod
+			file[file.Length - 1] = ModParsing.GetSpecificMod(addmod); //sets new room in array to modinfo of addmod
 			writeInstalledModToJson(file);
 		}
 

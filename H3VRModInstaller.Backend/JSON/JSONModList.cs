@@ -88,7 +88,7 @@ namespace H3VRModInstaller.JSON
 		/// </summary>
 		public static void DlModList()
 		{
-			Uri fileloc = new Uri(ModInstallerCommon.Files.Modlistloc[0] + ModInstallerCommon.Files.Modlistloc[1]);
+			Uri fileloc = new Uri(ModInstallerCommon.Files.Modlistloc[0]);
 			Console.WriteLine("Downloading Mod Database...");
 			Client.DownloadFile(fileloc, ModInstallerCommon.Files.Modlistloc[1]);
 			Console.WriteLine("Successfully Downloaded Mod Database");

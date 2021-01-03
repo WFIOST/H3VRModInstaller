@@ -11,6 +11,7 @@ namespace H3VRModInstaller.Filesys
 {
 	public class Uninstaller
 	{
+
 		public static void DeleteMod(string modid)
 		{
 			ModFile[] instmods = InstalledMods.GetInstalledMods();
@@ -29,7 +30,7 @@ namespace H3VRModInstaller.Filesys
 		{
 			if (mf.DelInfo == null)
 			{
-				mf = ModParsing.GetModInfo(mf.ModId, null, false)[0];
+				mf = ModParsing.GetSpecificMod(mf.ModId);
 				if (mf.DelInfo == null)
 				{
 					Console.WriteLine("There's no info on how to delete this mod! Please ask the creators to add that in!");
