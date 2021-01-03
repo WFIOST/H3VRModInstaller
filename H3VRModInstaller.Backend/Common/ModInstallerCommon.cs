@@ -35,11 +35,11 @@ namespace H3VRModInstaller.Common
 			/// <summary>
 			/// Location of H3VR.EXE, auto stops if not detected
 			/// </summary>
-			public static readonly string execdir = MainFiledir + @"\H3VR.exe";
+			public static readonly string execdir = MainFiledir + @"/h3vr.exe";
 			/// <summary>
 			/// Loc of the main file with the exe inside
 			/// </summary>
-			public static string MainFiledir = Directory.GetParent(Directory.GetCurrentDirectory()).ToString();
+			public static string MainFiledir = Directory.GetParent(Directory.GetCurrentDirectory()).FullName;
 			/// <summary>
 			/// loc of the MI lists.
 			/// </summary>

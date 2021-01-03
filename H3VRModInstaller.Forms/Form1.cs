@@ -15,15 +15,12 @@ namespace H3VRModInstaller.GUI
 {
     public partial class mainwindow : Form
     {
-        public bool ModsEnabledChecked;
+
         public mainwindow()
         {
             InitializeComponent();
-            
+
             ModsEnabled.Checked = true;
-            
-            
-            
         }
 
         private void ModsEnabled_CheckedChanged(object sender, EventArgs e)
@@ -47,10 +44,27 @@ namespace H3VRModInstaller.GUI
 
         private void launch_Click(object sender, EventArgs e)
         {
-            if (ModsEnabled.Checked) File.Move(ModInstallerCommon.Files.MainFiledir + "winhttp.dll", ModInstallerCommon.Files.MainFiledir + "DISABLED");
+
+            if (ModsEnabled.Checked)
+                if (File.Exists(ModInstallerCommon.Files.MainFiledir + GUICommon.Files.DisabledName))
+                        File.Move(ModInstallerCommon.Files.MainFiledir + GUICommon.Files.DisabledName, ModInstallerCommon.Files.MainFiledir + GUICommon.Files.EnabledName);
+                else
+                {
+                    goto FuckYou;
+                }
             
-                
-            Process.Start(ModInstallerCommon.Files.execdir);
+            if (!ModsEnabled.Checked)
+                File.Move(ModInstallerCommon.Files.MainFiledir + GUICommon.Files.EnabledName, ModInstallerCommon.Files.MainFiledir +GUICommon.Files.DisabledName);
+
+            FuckYou:
+            if (ModInstallerCommon.enableDebugging)
+            {
+                MessageBox.Show("Launching H3VR at: \n" + GUICommon.Files.EXEPath);
+                MessageBox.Show($"Directories: \n {ModInstallerCommon.Files.MainFiledir} \n {Directory.GetCurrentDirectory()}");
+            }
+
+            Process.Start(GUICommon.Files.EXEPath);
+            
         }
     }
 }
