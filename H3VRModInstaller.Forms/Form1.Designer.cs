@@ -1,4 +1,6 @@
 ﻿
+using System.Windows.Forms;
+
 namespace H3VRModInstaller.GUI
 {
     partial class mainwindow
@@ -313,6 +315,9 @@ namespace H3VRModInstaller.GUI
         private System.Windows.Forms.ListBox InstallableModsList;
         private System.Windows.Forms.ListBox InstalledModsList;
         private System.Windows.Forms.Label SelectedModText;
+
+
+        
     }
 }
 

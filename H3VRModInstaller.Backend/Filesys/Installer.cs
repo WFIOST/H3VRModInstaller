@@ -43,12 +43,12 @@ namespace H3VRModInstaller.Filesys
 				if (args[i] == "unzipToDir")
 				{
 					ModInstallerCommon.DebugLog("Unzipping to " + args[i + 1]);
-					Zip.Unzip(fileinfo.RawName, ModInstallerCommon.MainFiledir + "/" + args[i + 1], delArchive);
+					Zip.Unzip(fileinfo.RawName, ModInstallerCommon.Files.MainFiledir + "/" + args[i + 1], delArchive);
 				}
 				if (args[i] == "addFolder")
 				{
 					ModInstallerCommon.DebugLog("Creating Directory " + args[i + 1]);
-					Directory.CreateDirectory(ModInstallerCommon.MainFiledir + args[i + 1]);
+					Directory.CreateDirectory(ModInstallerCommon.Files.MainFiledir + args[i + 1]);
 				}
 				if (args[i] == "break") break;
 			}
@@ -69,13 +69,13 @@ namespace H3VRModInstaller.Filesys
 		public static bool MoveToFolder(string mod, string dir, string renameTo = "")
 		{
 			if (renameTo == "") renameTo = mod;
-			dir = ModInstallerCommon.MainFiledir + @"\" + dir;
+			dir = ModInstallerCommon.Files.MainFiledir + @"\" + dir;
 			if (!Directory.Exists(dir)) Directory.CreateDirectory(dir);
 			ModInstallerCommon.DebugLog("Moving " + Directory.GetCurrentDirectory() + @"\" + mod + " to dir " + dir + " as " + renameTo);
-			if (File.Exists(ModInstallerCommon.MainFiledir + @"\" + mod))
+			if (File.Exists(ModInstallerCommon.Files.MainFiledir + @"\" + mod))
 			{
 				ModInstallerCommon.DebugLog("Moving as file!");
-				File.Move(ModInstallerCommon.MainFiledir + @"\" + mod, dir + renameTo, true);
+				File.Move(ModInstallerCommon.Files.MainFiledir + @"\" + mod, dir + renameTo, true);
 			}
 			if (File.Exists(Directory.GetCurrentDirectory() + @"\" + mod))
 			{
@@ -83,10 +83,10 @@ namespace H3VRModInstaller.Filesys
 				File.Move(Directory.GetCurrentDirectory() + @"\" + mod, dir + renameTo, true);
 			}
 			else
-			if (Directory.Exists(ModInstallerCommon.MainFiledir + @"\" + mod))
+			if (Directory.Exists(ModInstallerCommon.Files.MainFiledir + @"\" + mod))
 			{
 				ModInstallerCommon.DebugLog("Moving as directory!");
-				Directory.Move(ModInstallerCommon.MainFiledir + @"\" + mod, dir + renameTo);
+				Directory.Move(ModInstallerCommon.Files.MainFiledir + @"\" + mod, dir + renameTo);
 			}
 			if (Directory.Exists(Directory.GetCurrentDirectory() + @"\" + mod))
 			{

@@ -6,7 +6,6 @@ using H3VRModInstaller.JSON;
 using GlobExpressions;
 using H3VRModInstaller.Common;
 using System.Linq;
-using H3VRModInstaller.Filesys;
 
 namespace H3VRModInstaller
 {
@@ -22,12 +21,12 @@ namespace H3VRModInstaller
 		/// <param name="args">dunno why these are here</param>
 		public static void Main(string[] args)
 		{
-			Console.WriteLine("Detecting if " + ModInstallerCommon.Execdir + " exists...");
+			Console.WriteLine("Detecting if " + ModInstallerCommon.Files.execdir + " exists...");
 
 			//exe check
-			if (!File.Exists(ModInstallerCommon.Execdir) && !ModInstallerCommon.BypassExec) { ModInstallerCommon.Throwexept("H3VR not found!"); return; } else { Console.WriteLine("H3VR found!"); }
+			if (!File.Exists(ModInstallerCommon.Files.execdir) && !ModInstallerCommon.BypassExec) { ModInstallerCommon.throwexept("H3VR not found!"); return; } else { Console.WriteLine("H3VR found!"); }
 			//online check
-			if (!NetCheck.isOnline(ModInstallerCommon.Pingsite)) { ModInstallerCommon.Throwexept("Cannot connect to github!"); return; }
+			if (!NetCheck.isOnline(ModInstallerCommon.pingsite)) { ModInstallerCommon.throwexept("Cannot connect to github!"); return; }
 			//gets the whole dl list possible
 			JsonModList.DlModList();
 			Console.WriteLine("Welcome to the H3VR Mod installer!");
@@ -35,7 +34,6 @@ namespace H3VRModInstaller
 			Console.WriteLine("ex: 'dl wurstmod'");
 			Console.WriteLine("To see a list of downloadable mods, type 'modlists'");
 			Console.WriteLine("To see a list of commands, type 'help' \n");
-			CheckVersion();
 		Start:
 			var input = Console.ReadLine();
 
@@ -47,6 +45,7 @@ namespace H3VRModInstaller
 
 			switch (inputargs[0])
 			{
+				
 				case "reload":
 					JsonModList.GetModLists(true);
 					break;
@@ -55,7 +54,7 @@ namespace H3VRModInstaller
 					Console.WriteLine("Wiped!");
 					break;
 				case "modlists":
-					Listmodlists();
+					listmodlists();
 					break;
 				case "check":
 					
@@ -89,9 +88,9 @@ namespace H3VRModInstaller
 					if (inputargs[1] == "installedmods")
 					{
 						ModFile[] mf = InstalledMods.GetInstalledMods();
-						for (int i = 0; i < mf.Length; i++) { Console.WriteLine(mf[i].ModId); }
+						for (int i = 0; i < mf.Length; i++) { Console.WriteLine(mf[i].Name); }
 					}
-					else { List(inputargs[1]); }
+					else { list(inputargs[1]); }
 					break;
 				case "exit":
 					return;
@@ -105,14 +104,17 @@ namespace H3VRModInstaller
 					Console.WriteLine("exit - Close H3VRModInstaller.");
 					break;
 				case "toggledebugging":
-					ModInstallerCommon.EnableDebugging = !ModInstallerCommon.EnableDebugging;
-					Console.WriteLine("Debugging is now " + ModInstallerCommon.EnableDebugging);
+					ModInstallerCommon.enableDebugging = !ModInstallerCommon.enableDebugging;
+					Console.WriteLine("Debugging is now " + ModInstallerCommon.enableDebugging);
 					break;
 				//deletion
 				case "rm":
-					Console.WriteLine($"Deleting {inputargs[1]}...");
-					Uninstaller.DeleteMod(inputargs[1]);
+					Console.WriteLine($"Deleting {inputargs[1]}");
+					 
 					break;
+					
+				
+				
 				default:
 					Console.WriteLine("Invalid command!");
 					break;
@@ -125,7 +127,7 @@ namespace H3VRModInstaller
 
 
 		//returns list of modlists, aka modlists
-		public static void Listmodlists()
+		public static void listmodlists()
 		{
 			string[] jsonfiles = Glob.FilesAndDirectories(Directory.GetCurrentDirectory() + @"/ModInstallerLists/", "**.json").ToArray();
 			for (int i = 0; i < jsonfiles.Length; i++)
@@ -136,7 +138,7 @@ namespace H3VRModInstaller
 		}
 
 		//returns list of mods in a modlist
-		public static void List(string input)
+		public static void list(string input)
 		{
 			string jsonname = input + ".json";
 			string[] jsonfiles = Glob.FilesAndDirectories(Directory.GetCurrentDirectory() + @"/ModInstallerLists/", "**.json").ToArray();
@@ -156,27 +158,6 @@ namespace H3VRModInstaller
 			if (foundmod == false)
 			{
 				Console.WriteLine("List not found!");
-			}
-		}
-
-		public static void CheckVersion()
-		{
-			Version publicversion = null;
-			Version.TryParse(JsonModList.GetOnlineModInstallerInfo().Version, out publicversion); //turns string ModFile.Version to a Version variable
-			switch(ModInstallerCommon.ModInstallerVersion.CompareTo(publicversion))
-			{
-				case 0: //if same version
-					Console.WriteLine("Mod installer is up to date!");
-					break;
-				case 1: //if it has a higher version than listed online
-					Console.WriteLine("Mod installer is a newer version than is found online! What's going on?!");
-					Console.WriteLine("(Current version is {0}, version found is {1})", ModInstallerCommon.ModInstallerVersion, publicversion);
-					break;
-					break;
-				case -1: //if out of date
-					Console.WriteLine("Mod installer is out of date! Please update!");
-					Console.WriteLine("(Current version is {0}, version found is {1})", ModInstallerCommon.ModInstallerVersion, publicversion);
-					break;
 			}
 		}
 	}

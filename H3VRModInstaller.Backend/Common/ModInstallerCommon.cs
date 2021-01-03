@@ -17,53 +17,55 @@ namespace H3VRModInstaller.Common
 	/// </summary>
 	public class ModInstallerCommon
 	{
+		public struct Files
+		{
+			/// <summary>
+			/// Location of H3VR.EXE, auto stops if not detected
+			/// </summary>
+			public static readonly string execdir = MainFiledir + @"\H3VR.exe";
+			/// <summary>
+			/// Loc of the main file with the exe inside
+			/// </summary>
+			public static string MainFiledir = Directory.GetParent(Directory.GetCurrentDirectory()).ToString();
+			/// <summary>
+			/// loc of the MI lists.
+			/// </summary>
+			public static string Modinstallerdir = Directory.GetCurrentDirectory() + @"/ModInstallerLists/";
+			/// <summary>
+			/// Website where the database is located.
+			/// </summary>
+			public static string[] Modlistloc = { "https://github.com/Frityet/H3VRModInstaller/releases/download/database/", "ModList.zip" };
+			
+			
+			
+
+
+		}
 		/// <summary>
 		/// Enables Debugging
 		/// </summary>
-		public static bool EnableDebugging = true;
-		/// <summary>
-		/// Useful for debugging.
-		/// </summary>
-		public static bool dlmodlist = true;
+		public static bool enableDebugging = true;
 		/// <summary>
 		/// Bypasses the check for H3VR.EXE
 		/// </summary>
 		public static bool BypassExec = true;
-		/// <summary>
-		/// Location of H3VR.EXE, auto stops if not detected
-		/// </summary>
-		public static readonly string Execdir = MainFiledir + @"\H3VR.exe";
+
 		/// <summary>
 		/// Website used to ping to ensure internet access
 		/// </summary>
-		public static string Pingsite = "www.github.com";
-		/// <summary>
-		/// Loc of the main file with the exe inside
-		/// </summary>
-		public static string MainFiledir = Directory.GetParent(Directory.GetCurrentDirectory()).ToString();
-		/// <summary>
-		/// loc of the MI lists.
-		/// </summary>
-		public static string Modinstallerdir = Directory.GetCurrentDirectory() + @"/ModInstallerLists/";
-		/// <summary>
-		/// Website where the database is located.
-		/// </summary>
-		public static string[] Modlistloc = { "https://github.com/Frityet/H3VRModInstaller/releases/download/database/", "ModList.zip" };
-		/// <summary>
-		/// Current version.
-		/// </summary>
-		public static Version ModInstallerVersion = new Version(1,0,0);
+		public static string pingsite = "www.github.com";
+
 
 		/// <summary>
 		/// Writes line if enabledebugging is true.
 		/// </summary>
 		public static void DebugLog(string input)
 		{
-			if (EnableDebugging) Console.WriteLine(input);
+			if (enableDebugging) Console.WriteLine(input);
 		}
 
 		//i'm not even sure why i made this, i was just too lazy to write two lines.
-		public static void Throwexept(string error)
+		public static void throwexept(string error)
 		{
 			Console.WriteLine(error);
 			Console.ReadKey();
@@ -84,30 +86,5 @@ namespace H3VRModInstaller.Common
 		}
 		
 
-		/// <summary>
-		/// Commonly used directories
-		/// </summary>
-		public struct Directories
-		{
-			/// <summary>
-			/// H3VR Directory
-			/// </summary>
-			public static string H3VrDir = Directory.GetCurrentDirectory() + "/";
-			/// <summary>
-			/// BepInEx Directory
-			/// </summary>
-			public static string BepinexDir = Directory.GetCurrentDirectory() + "/" + "BepInEx/";
-			/// <summary>
-			/// Plugins Directory
-			/// </summary>
-			public static string PluginsDir = Directory.GetCurrentDirectory() + "/" + "BepInEx/" + "Plugins/";
-			/// <summary>
-			/// Mods Directory
-			/// </summary>
-			public static string ModsDirs = Directory.GetCurrentDirectory() + "/" + "mods/";
-		}
 	}
-	
-	
-
 }

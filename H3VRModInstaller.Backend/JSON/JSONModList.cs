@@ -56,14 +56,12 @@ namespace H3VRModInstaller.JSON
 	    /// The <c>?</c> in the arguments are used as they cannot be inputted normally, and seperate the arguments
 	    /// </remarks>
 		public string Arguments { get; set; }
-		/// <summary>
-		/// Info needed to delete this file.
-		/// </summary>
+	    /// <summary>
+	    /// All the dependencies of the mod, must be the <c>ModID</c>
+	    /// </summary>
+        public string[] Dependencies { get; set; }
+	    
 		public string DelInfo { get; set; }
-		/// <summary>
-		/// All the dependencies of the mod, must be the <c>ModID</c>
-		/// </summary>
-		public string[] Dependencies { get; set; }
     }
 
 	/// <summary>
@@ -90,21 +88,20 @@ namespace H3VRModInstaller.JSON
 		/// </summary>
 		public static void DlModList()
 		{
-			if (ModInstallerCommon.dlmodlist == false) { Console.WriteLine("Download aborted."); return; }
-			Uri fileloc = new Uri(ModInstallerCommon.Modlistloc[0] + ModInstallerCommon.Modlistloc[1]);
+			Uri fileloc = new Uri(ModInstallerCommon.Files.Modlistloc[0] + ModInstallerCommon.Files.Modlistloc[1]);
 			Console.WriteLine("Downloading Mod Database...");
-			Client.DownloadFile(fileloc, ModInstallerCommon.Modlistloc[1]);
+			Client.DownloadFile(fileloc, ModInstallerCommon.Files.Modlistloc[1]);
 			Console.WriteLine("Successfully Downloaded Mod Database");
-			Directory.CreateDirectory(ModInstallerCommon.Modinstallerdir);
-			ZipFile.ExtractToDirectory(ModInstallerCommon.Modlistloc[1], ModInstallerCommon.Modinstallerdir, true);
-			File.Delete(ModInstallerCommon.Modlistloc[1]);
+			Directory.CreateDirectory(ModInstallerCommon.Files.Modinstallerdir);
+			ZipFile.ExtractToDirectory(ModInstallerCommon.Files.Modlistloc[1], ModInstallerCommon.Files.Modinstallerdir, true);
+			File.Delete(ModInstallerCommon.Files.Modlistloc[1]);
 		}
 		
 		/// <summary>
 		/// Gets the modlists and deseralises them, returning a ModList
 		/// </summary>
-		/// <param name="reload">Forces reloading ModLists.</param>
-		/// <param name="jsonfiles">Specify the json file(s) you want to use</param>
+		/// <param name="reload">Reload?</param>
+		/// <param name="jsonfiles">Specify the json files you would like to use, this is a path</param>
 		/// <returns>ModList</returns>
 		public static ModListFormat[] GetModLists(bool reload = false, string[] jsonfiles = null)
 		{
@@ -114,7 +111,7 @@ namespace H3VRModInstaller.JSON
 				if (jsonfiles == null)
 				{
 					Console.WriteLine("jsonfiles null!");
-					jsonfiles = Glob.FilesAndDirectories(ModInstallerCommon.Modinstallerdir, "**.json").ToArray();
+					jsonfiles = Glob.FilesAndDirectories(ModInstallerCommon.Files.Modinstallerdir, "**.json").ToArray();
 					ModInstallerCommon.DebugLog("Found " + jsonfiles.Length + " json files to read from!");
 				}
 				ModList = new ModListFormat[jsonfiles.Length];
@@ -135,16 +132,8 @@ namespace H3VRModInstaller.JSON
 		{
 			ModListFormat modList = new ModListFormat();
 			ModInstallerCommon.DebugLog("Loading " + jsontoload);
-			modList = JsonConvert.DeserializeObject<ModListFormat>(File.ReadAllText(ModInstallerCommon.Modinstallerdir + jsontoload));
+			modList = JsonConvert.DeserializeObject<ModListFormat>(File.ReadAllText(ModInstallerCommon.Files.Modinstallerdir + jsontoload));
 			return modList;
-		}
-
-		/// <summary>
-		/// Returns the modfile of modinstallerinfo.h3vrmi.
-		/// </summary>
-		public static ModFile GetOnlineModInstallerInfo()
-		{
-			return JsonConvert.DeserializeObject<ModListFormat>(File.ReadAllText(ModInstallerCommon.Modinstallerdir + "modinstallerinfo.h3vrmi")).Modlist[0];
 		}
 	}
 }
