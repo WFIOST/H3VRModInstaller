@@ -31,7 +31,7 @@ namespace H3VRModInstaller.Filesys
 			if (mf.DelInfo == null)
 			{
 				mf = ModParsing.GetSpecificMod(mf.ModId);
-				if (mf.DelInfo == null)
+				if (mf.DelInfo == null || mf.DelInfo == "")
 				{
 					Console.WriteLine("There's no info on how to delete this mod! Please ask the creators to add that in!");
 					return;

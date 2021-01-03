@@ -103,6 +103,15 @@ namespace H3VRModInstaller.Common
 			return strng;
 		}
 
-
+		public static ModFile[] GetAllMods()
+		{
+			ModFile[] result = new ModFile[0];
+			ModListFormat[] jsonfiles = JsonModList.GetModLists();
+			for (int i = 0; i < jsonfiles.Length; i++)
+			{
+				result = result.Concat(jsonfiles[i].Modlist).ToArray();
+			}
+			return result;
+		}
 	}
 }
