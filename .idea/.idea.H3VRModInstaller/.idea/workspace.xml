@@ -12,15 +12,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="11646549-311b-4445-a706-8ab87333e815" name="Default Changelist" comment="ListStuff">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.H3VRModInstaller/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.H3VRModInstaller/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.H3VRModInstaller/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.H3VRModInstaller/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.Backend/Common/GUICommon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/H3VRModInstaller.Backend/Common/GUICommon.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.Backend/Common/JSON/JSONCommon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/H3VRModInstaller.Backend/Common/JSON/JSONCommon.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.Backend/JSON/JSONModList.cs" beforeDir="false" afterPath="$PROJECT_DIR$/H3VRModInstaller.Backend/JSON/JSONModList.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.Backend/Net/Downloader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/H3VRModInstaller.Backend/Net/Downloader.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/H3VRModInstaller.Forms/Form1.Designer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/H3VRModInstaller.Forms/Form1.Designer.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/H3VRModInstaller.Forms/Form1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/H3VRModInstaller.Forms/Form1.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.Forms/Form1.resx" beforeDir="false" afterPath="$PROJECT_DIR$/H3VRModInstaller.Forms/Form1.resx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,6 +48,7 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/H3VRModInstaller.Backend/MainClass.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/H3VRModInstaller.Backend/Net/Downloader.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/314F5023-3B7E-48C5-8C8F-5FFAD0523408/F7/ListView.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/H3VRModInstaller.Backend/Net/NetCheck.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/H3VRModInstaller.Backend/Common/JSON/JSONCommon.cs" root0="FORCE_HIGHLIGHTING" />
@@ -115,12 +110,12 @@
       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Installer.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Uninstaller.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.Forms/GUICommon.cs" />
-      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Common/ModInstallerCommon.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/JSON/JSONModList.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Common/JSON/JSONCommon.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Common/GUICommon.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.Forms/Form1.Designer.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Net/Downloader.cs" />
+      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Common/ModInstallerCommon.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.Forms/Form1.cs" />
     </changedPaths>
   </component>
@@ -226,7 +221,7 @@
       <workItem from="1609621246212" duration="437000" />
       <workItem from="1609642351920" duration="17257000" />
       <workItem from="1609709110597" duration="13765000" />
-      <workItem from="1609740348172" duration="307000" />
+      <workItem from="1609740348172" duration="7641000" />
     </task>
     <task id="LOCAL-00001" summary="Split func.cs">
       <created>1607847473285</created>
@@ -480,7 +475,14 @@
       <option name="project" value="LOCAL" />
       <updated>1609655317345</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="Broken, working on it">
+      <created>1609741039798</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1609741039798</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -502,7 +504,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="JSOOOOON (pt 3)" />
     <MESSAGE value="JSOOOOON (pt 4)" />
     <MESSAGE value="Nae naed forms again" />
     <MESSAGE value="Added modcheck" />
@@ -527,6 +528,7 @@
     <MESSAGE value="wow" />
     <MESSAGE value="Cleanup" />
     <MESSAGE value="ListStuff" />
-    <option name="LAST_COMMIT_MESSAGE" value="ListStuff" />
+    <MESSAGE value="Broken, working on it" />
+    <option name="LAST_COMMIT_MESSAGE" value="Broken, working on it" />
   </component>
 </project>

@@ -73,16 +73,18 @@ namespace H3VRModInstaller.GUI
 
             ModsEnabled.Checked = true;
 
+            JsonModList.DlModList();
+            
             ModFile[] input = ModInstallerCommon.GetAllMods();
 
             ModFile[] installedMods = JSON.InstalledMods.GetInstalledMods();
 
-            MessageBox.Show($"MODS LENGTH: {input.Length.ToString()}");
+            //MessageBox.Show($"MODS LENGTH: {input.Length.ToString()}");
             for (int i = 0; i < input.Length; i++)
             {
-                MessageBox.Show($"Mods: {installedMods[i].RawName}");
-                //try
-                //{
+                //MessageBox.Show($"Mods: {installedMods[i].RawName}");
+                try
+                {
                     if (input[i].RawName == installedMods[i].RawName) 
                     {
                         var installedMod = new ListViewItem(input[i].Name, 0);
@@ -97,10 +99,12 @@ namespace H3VRModInstaller.GUI
                         
                         InstalledModsList.Items.Add(installedMod);
                     }
-                //}
-                //catch (Exception exception)
-                //{
-                //}
+                }
+                catch (Exception exception)
+                {
+
+                    //throw;
+                }
 
                 var mod = new ListViewItem(input[i].Name, 0);
                 
@@ -140,17 +144,84 @@ namespace H3VRModInstaller.GUI
 
         private void InstallButton_Click(object sender, EventArgs e)
         {
-            var modToDownload = DownloadableModsList.SelectedItems[0].SubItems[4].Text;
-            MessageBox.Show($"Mod to download: {modToDownload}");
-
-            
-            Downloader.DownloadModDirector(modToDownload);
+            if (!Terminator.IsBusy)
+            {
+                Terminator.RunWorkerAsync();
+            }
         }
 
         private void InstalledModsList_SelectedIndexChanged(object sender, EventArgs e)
         {
             UpdateButton.Show();
             Delete.Show();
+        }
+
+        private void Terminator_DoWork(object sender, DoWorkEventArgs e)
+        {
+            var modToDownload = DownloadableModsList.SelectedItems[0].SubItems[4].Text;
+            try
+            {
+                
+                MessageBox.Show($"Mod to download: {modToDownload}");
+                Downloader.DownloadModDirector(modToDownload);
+            }
+            catch (Exception exception)
+            {
+                Terminator.CancelAsync();
+                MessageBox.Show($"Failed to install mod {modToDownload} \n \n {exception.Message}!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void Terminator_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            var modToDownload = DownloadableModsList.SelectedItems[0].SubItems[4].Text;
+            //UpdateInstalledList();
+            MessageBox.Show($"Sucessfully downloaded mod {modToDownload}", "Sucess!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            
+            
+        }
+
+        private void Terminator_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            /*
+            ProgressBar.Value = e.ProgressPercentage;
+            PersentageText.Text = string.Format("{0}%", e.ProgressPercentage);
+            ProgressBar.Update();
+            */
+        }
+
+        public void UpdateInstalledList()
+        {
+            MessageBox.Show("Updating Installed List");
+            ModFile[] input = ModInstallerCommon.GetAllMods();
+
+            ModFile[] installedMods = JSON.InstalledMods.GetInstalledMods();
+
+            for (int i = 0; i < input.Length; i++)
+            {
+                try
+                {
+                    if (input[i].RawName == installedMods[i].RawName) 
+                    {
+                        var installedMod = new ListViewItem(input[i].Name, 0);
+                        
+                        installedMod.SubItems.Add(input[i].Version);
+                        
+                        installedMod.SubItems.Add(input[i].Author[0]);
+                        
+                        installedMod.SubItems.Add(input[i].Description);
+                        
+                        installedMod.SubItems.Add(input[i].ModId);
+                        
+                        InstalledModsList.Items.Add(installedMod);
+                    }
+                }
+                catch (Exception exception)
+                {
+
+                    //throw;
+                }
+            }
         }
     }
 }

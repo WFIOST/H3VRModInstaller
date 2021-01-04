@@ -324,6 +324,9 @@ namespace H3VRModInstaller.GUI
             // Terminator
             // 
             this.Terminator.WorkerReportsProgress = true;
+            this.Terminator.DoWork += new System.ComponentModel.DoWorkEventHandler(this.Terminator_DoWork);
+            this.Terminator.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.Terminator_ProgressChanged);
+            this.Terminator.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.Terminator_RunWorkerCompleted);
             // 
             // mainwindow
             // 
