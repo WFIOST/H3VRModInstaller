@@ -33,11 +33,17 @@ namespace H3VRModInstaller.GUI
         private void InitializeComponent()
         {
             this.ModList = new System.Windows.Forms.Panel();
+            this.InstalledModsList = new System.Windows.Forms.ListView();
+            this.InstalledModName = new System.Windows.Forms.ColumnHeader();
+            this.InstalledModVersion = new System.Windows.Forms.ColumnHeader();
+            this.InstalledModAuthor = new System.Windows.Forms.ColumnHeader();
+            this.DownloadableModsList = new System.Windows.Forms.ListView();
+            this.ModName = new System.Windows.Forms.ColumnHeader();
+            this.ModVersion = new System.Windows.Forms.ColumnHeader();
+            this.ModAuthor = new System.Windows.Forms.ColumnHeader();
             this.InstalledModsLabel = new System.Windows.Forms.Label();
-            this.InstalledModsList = new System.Windows.Forms.ListBox();
             this.DownloadableModsLabel = new System.Windows.Forms.Label();
             this.Divider = new System.Windows.Forms.Label();
-            this.DownloadableMods = new System.Windows.Forms.ListBox();
             this.modlisttext = new System.Windows.Forms.Label();
             this.launch = new System.Windows.Forms.Button();
             this.ModsEnabled = new System.Windows.Forms.CheckBox();
@@ -52,6 +58,7 @@ namespace H3VRModInstaller.GUI
             this.ProgressPanel = new System.Windows.Forms.Panel();
             this.ProgressBar = new System.Windows.Forms.ProgressBar();
             this.PersentageText = new System.Windows.Forms.Label();
+            this.Terminator = new System.ComponentModel.BackgroundWorker();
             this.ModList.SuspendLayout();
             this.ControlPanel.SuspendLayout();
             this.InfoPanel.SuspendLayout();
@@ -61,46 +68,101 @@ namespace H3VRModInstaller.GUI
             // ModList
             // 
             this.ModList.BackColor = System.Drawing.Color.FromArgb(((int) (((byte) (224)))), ((int) (((byte) (224)))), ((int) (((byte) (224)))));
-            this.ModList.Controls.Add(this.InstalledModsLabel);
             this.ModList.Controls.Add(this.InstalledModsList);
+            this.ModList.Controls.Add(this.DownloadableModsList);
+            this.ModList.Controls.Add(this.InstalledModsLabel);
             this.ModList.Controls.Add(this.DownloadableModsLabel);
             this.ModList.Controls.Add(this.Divider);
-            this.ModList.Controls.Add(this.DownloadableMods);
             this.ModList.Controls.Add(this.modlisttext);
             this.ModList.Location = new System.Drawing.Point(7, 9);
             this.ModList.Name = "ModList";
             this.ModList.Size = new System.Drawing.Size(266, 371);
             this.ModList.TabIndex = 0;
             // 
+            // InstalledModsList
+            // 
+            this.InstalledModsList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {this.InstalledModName, this.InstalledModVersion, this.InstalledModAuthor});
+            this.InstalledModsList.FullRowSelect = true;
+            this.InstalledModsList.GridLines = true;
+            this.InstalledModsList.HideSelection = false;
+            this.InstalledModsList.Location = new System.Drawing.Point(15, 239);
+            this.InstalledModsList.Name = "InstalledModsList";
+            this.InstalledModsList.Size = new System.Drawing.Size(236, 121);
+            this.InstalledModsList.TabIndex = 7;
+            this.InstalledModsList.UseCompatibleStateImageBehavior = false;
+            this.InstalledModsList.View = System.Windows.Forms.View.Details;
+            this.InstalledModsList.SelectedIndexChanged += new System.EventHandler(this.InstalledModsList_SelectedIndexChanged);
+            // 
+            // InstalledModName
+            // 
+            this.InstalledModName.Name = "InstalledModName";
+            this.InstalledModName.Text = "Name";
+            this.InstalledModName.Width = 78;
+            // 
+            // InstalledModVersion
+            // 
+            this.InstalledModVersion.Name = "InstalledModVersion";
+            this.InstalledModVersion.Text = "Version";
+            this.InstalledModVersion.Width = 73;
+            // 
+            // InstalledModAuthor
+            // 
+            this.InstalledModAuthor.Name = "InstalledModAuthor";
+            this.InstalledModAuthor.Text = "Author";
+            this.InstalledModAuthor.Width = 108;
+            // 
+            // DownloadableModsList
+            // 
+            this.DownloadableModsList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {this.ModName, this.ModVersion, this.ModAuthor});
+            this.DownloadableModsList.FullRowSelect = true;
+            this.DownloadableModsList.GridLines = true;
+            this.DownloadableModsList.HideSelection = false;
+            this.DownloadableModsList.Location = new System.Drawing.Point(15, 84);
+            this.DownloadableModsList.Name = "DownloadableModsList";
+            this.DownloadableModsList.Size = new System.Drawing.Size(236, 129);
+            this.DownloadableModsList.TabIndex = 6;
+            this.DownloadableModsList.UseCompatibleStateImageBehavior = false;
+            this.DownloadableModsList.View = System.Windows.Forms.View.Details;
+            this.DownloadableModsList.SelectedIndexChanged += new System.EventHandler(this.DownloadableModsList_SelectedIndexChanged);
+            // 
+            // ModName
+            // 
+            this.ModName.Name = "ModName";
+            this.ModName.Text = "Name";
+            this.ModName.Width = 70;
+            // 
+            // ModVersion
+            // 
+            this.ModVersion.Name = "ModVersion";
+            this.ModVersion.Text = "Version";
+            this.ModVersion.Width = 75;
+            // 
+            // ModAuthor
+            // 
+            this.ModAuthor.Name = "ModAuthor";
+            this.ModAuthor.Text = "Author";
+            this.ModAuthor.Width = 112;
+            // 
             // InstalledModsLabel
             // 
             this.InstalledModsLabel.AutoSize = true;
-            this.InstalledModsLabel.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.InstalledModsLabel.Font = new System.Drawing.Font("Segoe UI", 14.25F);
             this.InstalledModsLabel.Location = new System.Drawing.Point(66, 212);
             this.InstalledModsLabel.Name = "InstalledModsLabel";
             this.InstalledModsLabel.Size = new System.Drawing.Size(135, 25);
             this.InstalledModsLabel.TabIndex = 5;
             this.InstalledModsLabel.Text = "Installed Mods";
             // 
-            // InstalledModsList
-            // 
-            this.InstalledModsList.FormattingEnabled = true;
-            this.InstalledModsList.Location = new System.Drawing.Point(15, 237);
-            this.InstalledModsList.MultiColumn = true;
-            this.InstalledModsList.Name = "InstalledModsList";
-            this.InstalledModsList.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.InstalledModsList.Size = new System.Drawing.Size(237, 121);
-            this.InstalledModsList.TabIndex = 4;
-            // 
             // DownloadableModsLabel
             // 
             this.DownloadableModsLabel.AutoSize = true;
-            this.DownloadableModsLabel.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
-            this.DownloadableModsLabel.Location = new System.Drawing.Point(50, 60);
+            this.DownloadableModsLabel.Font = new System.Drawing.Font("Segoe UI", 14.25F);
+            this.DownloadableModsLabel.Location = new System.Drawing.Point(41, 59);
             this.DownloadableModsLabel.Name = "DownloadableModsLabel";
             this.DownloadableModsLabel.Size = new System.Drawing.Size(186, 25);
             this.DownloadableModsLabel.TabIndex = 3;
             this.DownloadableModsLabel.Text = "Downloadable Mods";
+            this.DownloadableModsLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.DownloadableModsLabel.Click += new System.EventHandler(this.DownloadableModsLabel_Click);
             // 
             // Divider
@@ -112,16 +174,6 @@ namespace H3VRModInstaller.GUI
             this.Divider.Name = "Divider";
             this.Divider.Size = new System.Drawing.Size(266, 2);
             this.Divider.TabIndex = 2;
-            // 
-            // DownloadableMods
-            // 
-            this.DownloadableMods.FormattingEnabled = true;
-            this.DownloadableMods.Location = new System.Drawing.Point(15, 88);
-            this.DownloadableMods.MultiColumn = true;
-            this.DownloadableMods.Name = "DownloadableMods";
-            this.DownloadableMods.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.DownloadableMods.Size = new System.Drawing.Size(237, 121);
-            this.DownloadableMods.TabIndex = 1;
             // 
             // modlisttext
             // 
@@ -183,15 +235,15 @@ namespace H3VRModInstaller.GUI
             // 
             // ModInfo
             // 
-            this.ModInfo.Location = new System.Drawing.Point(3, 17);
+            this.ModInfo.Location = new System.Drawing.Point(0, 17);
             this.ModInfo.Name = "ModInfo";
-            this.ModInfo.Size = new System.Drawing.Size(382, 128);
+            this.ModInfo.Size = new System.Drawing.Size(400, 128);
             this.ModInfo.TabIndex = 1;
             this.ModInfo.Text = "Mod Info Here!";
             // 
             // ModInformationLabel
             // 
-            this.ModInformationLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.ModInformationLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
             this.ModInformationLabel.Location = new System.Drawing.Point(125, -3);
             this.ModInformationLabel.Name = "ModInformationLabel";
             this.ModInformationLabel.Size = new System.Drawing.Size(133, 22);
@@ -202,7 +254,7 @@ namespace H3VRModInstaller.GUI
             // Delete
             // 
             this.Delete.BackColor = System.Drawing.Color.White;
-            this.Delete.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.Delete.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.Delete.Location = new System.Drawing.Point(5, 96);
             this.Delete.Name = "Delete";
             this.Delete.Size = new System.Drawing.Size(400, 26);
@@ -213,7 +265,7 @@ namespace H3VRModInstaller.GUI
             // UpdateButton
             // 
             this.UpdateButton.BackColor = System.Drawing.Color.White;
-            this.UpdateButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.UpdateButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.UpdateButton.Location = new System.Drawing.Point(5, 64);
             this.UpdateButton.Name = "UpdateButton";
             this.UpdateButton.Size = new System.Drawing.Size(400, 26);
@@ -224,20 +276,21 @@ namespace H3VRModInstaller.GUI
             // InstallButton
             // 
             this.InstallButton.BackColor = System.Drawing.Color.White;
-            this.InstallButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.InstallButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.InstallButton.Location = new System.Drawing.Point(5, 32);
             this.InstallButton.Name = "InstallButton";
             this.InstallButton.Size = new System.Drawing.Size(400, 26);
             this.InstallButton.TabIndex = 1;
             this.InstallButton.Text = "Install";
             this.InstallButton.UseVisualStyleBackColor = false;
+            this.InstallButton.Click += new System.EventHandler(this.InstallButton_Click);
             // 
             // SelectedModText
             // 
-            this.SelectedModText.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
-            this.SelectedModText.Location = new System.Drawing.Point(5, 2);
+            this.SelectedModText.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F);
+            this.SelectedModText.Location = new System.Drawing.Point(5, 0);
             this.SelectedModText.Name = "SelectedModText";
-            this.SelectedModText.Size = new System.Drawing.Size(388, 20);
+            this.SelectedModText.Size = new System.Drawing.Size(400, 20);
             this.SelectedModText.TabIndex = 0;
             this.SelectedModText.Text = "Selected Mod: ";
             this.SelectedModText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -268,6 +321,10 @@ namespace H3VRModInstaller.GUI
             this.PersentageText.TabIndex = 0;
             this.PersentageText.Text = "0%";
             // 
+            // Terminator
+            // 
+            this.Terminator.WorkerReportsProgress = true;
+            // 
             // mainwindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -279,8 +336,10 @@ namespace H3VRModInstaller.GUI
             this.Controls.Add(this.launch);
             this.Controls.Add(this.ModList);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "mainwindow";
             this.Text = "H3VR Mod Installer";
+            this.Load += new System.EventHandler(this.LoadGUI);
             this.ModList.ResumeLayout(false);
             this.ModList.PerformLayout();
             this.ControlPanel.ResumeLayout(false);
@@ -290,6 +349,13 @@ namespace H3VRModInstaller.GUI
             this.ResumeLayout(false);
             this.PerformLayout();
         }
+
+        private System.Windows.Forms.ColumnHeader InstalledModAuthor;
+
+        private System.Windows.Forms.ColumnHeader InstalledModName;
+        private System.Windows.Forms.ColumnHeader InstalledModVersion;
+        private System.Windows.Forms.ColumnHeader InstalledModSize;
+        private System.Windows.Forms.ListView InstalledModsList;
 
         private System.Windows.Forms.Label ModInfo;
 
@@ -311,17 +377,17 @@ namespace H3VRModInstaller.GUI
         private System.Windows.Forms.Panel ProgressPanel;
         private System.Windows.Forms.Label PersentageText;
         private System.Windows.Forms.ProgressBar ProgressBar;
-        private System.Windows.Forms.ListBox DownloadableMods;
         private System.Windows.Forms.Label Divider;
         private System.Windows.Forms.Label DownloadableModsLabel;
         private System.Windows.Forms.Label InstalledModsLabel;
         private System.Windows.Forms.ListBox InstalledMods;
-        private System.Windows.Forms.ListBox InstallableModsList;
-        private System.Windows.Forms.ListBox InstalledModsList;
+        //private System.Windows.Forms.ListBox InstallableModsList;
         private System.Windows.Forms.Label SelectedModText;
-
-
-        
+        private ListView DownloadableModsList;
+        private ColumnHeader ModName;
+        private ColumnHeader ModVersion;
+        private ColumnHeader ModAuthor;
+        private System.ComponentModel.BackgroundWorker Terminator;
     }
 }
 

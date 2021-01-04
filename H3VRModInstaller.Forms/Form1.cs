@@ -9,7 +9,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 using H3VRModInstaller.Common;
+using H3VRModInstaller.JSON;
+using H3VRModInstaller.JSON.Common;
+using H3VRModInstaller.Net;
 
 namespace H3VRModInstaller.GUI
 {
@@ -19,10 +23,10 @@ namespace H3VRModInstaller.GUI
         public mainwindow()
         {
             InitializeComponent();
-
-
-            ModsEnabled.Checked = true;
         }
+
+
+        
 
         private void ModsEnabled_CheckedChanged(object sender, EventArgs e)
         {
@@ -59,6 +63,94 @@ namespace H3VRModInstaller.GUI
 
             Process.Start(GUICommon.Files.EXEPath);
             
+        }
+
+        private void LoadGUI(object sender, EventArgs e)
+        {
+            InstallButton.Hide();
+            UpdateButton.Hide();
+            Delete.Hide();
+
+            ModsEnabled.Checked = true;
+
+            ModFile[] input = ModInstallerCommon.GetAllMods();
+
+            ModFile[] installedMods = JSON.InstalledMods.GetInstalledMods();
+
+            MessageBox.Show($"MODS LENGTH: {input.Length.ToString()}");
+            for (int i = 0; i < input.Length; i++)
+            {
+                MessageBox.Show($"Mods: {installedMods[i].RawName}");
+                //try
+                //{
+                    if (input[i].RawName == installedMods[i].RawName) 
+                    {
+                        var installedMod = new ListViewItem(input[i].Name, 0);
+                        
+                        installedMod.SubItems.Add(input[i].Version);
+                        
+                        installedMod.SubItems.Add(input[i].Author[0]);
+                        
+                        installedMod.SubItems.Add(input[i].Description);
+                        
+                        installedMod.SubItems.Add(input[i].ModId);
+                        
+                        InstalledModsList.Items.Add(installedMod);
+                    }
+                //}
+                //catch (Exception exception)
+                //{
+                //}
+
+                var mod = new ListViewItem(input[i].Name, 0);
+                
+                mod.SubItems.Add(input[i].Version);
+                
+                mod.SubItems.Add(input[i].Author[0]);
+                
+                mod.SubItems.Add(input[i].Description);
+                
+                mod.SubItems.Add(input[i].ModId);
+                
+                DownloadableModsList.Items.Add(mod);
+                
+            }
+            
+        }
+
+        private void DownloadableModsList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            InstallButton.Show();
+            try
+            {
+                SelectedModText.Text = "Selected Mod: " + DownloadableModsList.SelectedItems[0].Text;
+
+                
+                ModInfo.Text = DownloadableModsList.SelectedItems[0].SubItems[3].Text;
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine("winforms is doing it again");
+                //throw;
+            }
+            
+            
+            
+        }
+
+        private void InstallButton_Click(object sender, EventArgs e)
+        {
+            var modToDownload = DownloadableModsList.SelectedItems[0].SubItems[4].Text;
+            MessageBox.Show($"Mod to download: {modToDownload}");
+
+            
+            Downloader.DownloadModDirector(modToDownload);
+        }
+
+        private void InstalledModsList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdateButton.Show();
+            Delete.Show();
         }
     }
 }

@@ -9,6 +9,7 @@
         <e p="bin" t="ExcludeRecursive" />
         <e p="cock.cs" t="Include" />
         <e p="Common" t="Include">
+          <e p="GUICommon.cs" t="Include" />
           <e p="JSON" t="Include">
             <e p="JSONCommon.cs" t="Include" />
           </e>

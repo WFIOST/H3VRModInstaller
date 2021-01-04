@@ -11,10 +11,16 @@
     <projectFile>H3VRModInstaller.Forms.Core/H3VRModInstaller.Forms.Core.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="11646549-311b-4445-a706-8ab87333e815" name="Default Changelist" comment="Added `files` struct">
+    <list default="true" id="11646549-311b-4445-a706-8ab87333e815" name="Default Changelist" comment="ListStuff">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.H3VRModInstaller/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.H3VRModInstaller/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Uninstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Uninstaller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.H3VRModInstaller/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.H3VRModInstaller/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.Backend/Common/GUICommon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/H3VRModInstaller.Backend/Common/GUICommon.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.Backend/Common/JSON/JSONCommon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/H3VRModInstaller.Backend/Common/JSON/JSONCommon.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.Backend/JSON/JSONModList.cs" beforeDir="false" afterPath="$PROJECT_DIR$/H3VRModInstaller.Backend/JSON/JSONModList.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/H3VRModInstaller.Backend/Net/Downloader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/H3VRModInstaller.Backend/Net/Downloader.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.Forms/Form1.Designer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/H3VRModInstaller.Forms/Form1.Designer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.Forms/Form1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/H3VRModInstaller.Forms/Form1.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.Forms/Form1.resx" beforeDir="false" afterPath="$PROJECT_DIR$/H3VRModInstaller.Forms/Form1.resx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,6 +57,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/H3VRModInstaller.Backend/Net/NetCheck.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/H3VRModInstaller.Backend/Common/JSON/JSONCommon.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/C80B499D-ADA7-49E0-A8EE-7A9B1744160B/19/Array.CoreCLR.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/314F5023-3B7E-48C5-8C8F-5FFAD0523408/29/CheckBox.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/H3VRModInstaller.Backend/cock.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/H3VRModInstaller.Backend/JSON/JSONModList.cs" root0="FORCE_HIGHLIGHTING" />
@@ -64,8 +71,6 @@
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/ModCheck.cs" />
-      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Common/Directories.cs" />
       <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Common/Prin.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Common/Print.cs" />
@@ -106,15 +111,17 @@
       <option value="$PROJECT_DIR$/H3VRModInstaller.Forms.Core/Form1.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.Forms.Core/Form1.Designer.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.Forms/Program.cs" />
-      <option value="$PROJECT_DIR$/H3VRModInstaller.Forms/Form1.Designer.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/MainClass.cs" />
-      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Common/ModInstallerCommon.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Installer.cs" />
-      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Common/JSON/JSONCommon.cs" />
-      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/JSON/JSONModList.cs" />
-      <option value="$PROJECT_DIR$/H3VRModInstaller.Forms/Form1.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Uninstaller.cs" />
+      <option value="$PROJECT_DIR$/H3VRModInstaller.Forms/GUICommon.cs" />
+      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Common/ModInstallerCommon.cs" />
+      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/JSON/JSONModList.cs" />
+      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Common/JSON/JSONCommon.cs" />
+      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Common/GUICommon.cs" />
+      <option value="$PROJECT_DIR$/H3VRModInstaller.Forms/Form1.Designer.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Net/Downloader.cs" />
+      <option value="$PROJECT_DIR$/H3VRModInstaller.Forms/Form1.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1lah3QXp00T3AT7tcB4yg7113kU" />
@@ -217,7 +224,9 @@
       <workItem from="1609532848718" duration="1674000" />
       <workItem from="1609556525722" duration="3179000" />
       <workItem from="1609621246212" duration="437000" />
-      <workItem from="1609642351920" duration="3524000" />
+      <workItem from="1609642351920" duration="17257000" />
+      <workItem from="1609709110597" duration="13765000" />
+      <workItem from="1609740348172" duration="307000" />
     </task>
     <task id="LOCAL-00001" summary="Split func.cs">
       <created>1607847473285</created>
@@ -443,7 +452,35 @@
       <option name="project" value="LOCAL" />
       <updated>1609647687031</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="more fixed">
+      <created>1609647830576</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1609647830576</updated>
+    </task>
+    <task id="LOCAL-00034" summary="wow">
+      <created>1609653561723</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1609653561723</updated>
+    </task>
+    <task id="LOCAL-00035" summary="Cleanup">
+      <created>1609654167079</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1609654167079</updated>
+    </task>
+    <task id="LOCAL-00036" summary="ListStuff">
+      <created>1609655317345</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1609655317345</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -465,10 +502,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Started ModCheck.cs" />
-    <MESSAGE value="deleted gui" />
-    <MESSAGE value="Jasoooooooooon!" />
-    <MESSAGE value="JSOOOOON!" />
     <MESSAGE value="JSOOOOON (pt 3)" />
     <MESSAGE value="JSOOOOON (pt 4)" />
     <MESSAGE value="Nae naed forms again" />
@@ -490,6 +523,10 @@
     <MESSAGE value="Fixed" />
     <MESSAGE value="Fixed winforms" />
     <MESSAGE value="Added `files` struct" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added `files` struct" />
+    <MESSAGE value="more fixed" />
+    <MESSAGE value="wow" />
+    <MESSAGE value="Cleanup" />
+    <MESSAGE value="ListStuff" />
+    <option name="LAST_COMMIT_MESSAGE" value="ListStuff" />
   </component>
 </project>

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Net;
 using H3VRModInstaller.Filesys;
@@ -14,6 +15,8 @@ namespace H3VRModInstaller.Net
 	public class Downloader
 	{
 
+		public Dictionary<string, ModFile> stringToModfile = new Dictionary<string, ModFile>();
+		
 		private static readonly WebClient _Downloader = new();
 		private static bool _finished = false;
 
@@ -30,7 +33,7 @@ namespace H3VRModInstaller.Net
 			if(skipdl == true) { Installer.InstallMod(fileinfo); return true; }
 			ModFile[] installedmods = InstalledMods.GetInstalledMods();
 			_finished = false;
-			if (fileinfo.RawName == "" || fileinfo.RawName == null) { return false; }
+			if (string.IsNullOrEmpty(fileinfo.RawName)) { return false; }
 
 			string fileToDownload = fileinfo.RawName;
 			string locationOfFile = fileinfo.Path;

@@ -64,6 +64,7 @@ namespace H3VRModInstaller.JSON
 	    
 		public string DelInfo { get; set; }
     }
+	
 
 	/// <summary>
 	/// Contains an array of ModFiles.
