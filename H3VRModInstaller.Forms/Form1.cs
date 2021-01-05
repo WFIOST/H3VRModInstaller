@@ -66,7 +66,7 @@ namespace H3VRModInstaller.GUI
 			if (ModInstallerCommon.enableDebugging)
 			{
 				MessageBox.Show("Launching H3VR at: \n" + GUICommon.Files.EXEPath);
-				MessageBox.Show($"Directories: \n {ModInstallerCommon.Files.MainFiledir} \n {Directory.GetCurrentDirectory()}");
+				//MessageBox.Show($"Directories: \n {ModInstallerCommon.Files.MainFiledir} \n {Directory.GetCurrentDirectory()}");
 			}
 
 			Process.Start(GUICommon.Files.EXEPath);
@@ -134,9 +134,20 @@ namespace H3VRModInstaller.GUI
 			ModVer.Hide();
 			Delete.Hide();
 
-			trycatchtext(SelectedModText, "Selected Mod: " + DownloadableModsList.SelectedItems[0].Text);
-			trycatchtext(ModInfo, DownloadableModsList.SelectedItems[0].SubItems[3].Text);
-			impModID = DownloadableModsList.SelectedItems[0].SubItems[4].Text;
+
+			try
+			{
+
+				trycatchtext(SelectedModText, "Selected Mod: " + DownloadableModsList.SelectedItems[0].Text);
+				trycatchtext(ModInfo, DownloadableModsList.SelectedItems[0].SubItems[3].Text);
+				impModID = DownloadableModsList.SelectedItems[0].SubItems[4].Text;
+
+			}
+			catch (Exception exception)
+			{
+				//sike lmao
+			}
+
 
 
 
@@ -152,8 +163,10 @@ namespace H3VRModInstaller.GUI
 
 		private void InstalledModsList_SelectedIndexChanged(object sender, EventArgs e)
 		{
+			/*
 			UpdateButton.Show();
 			Delete.Show();
+			*/
 			ModVer.Show();
 			try
 			{
@@ -192,6 +205,7 @@ namespace H3VRModInstaller.GUI
 			var modToDownload = DownloadableModsList.SelectedItems[0].SubItems[4].Text;
 			//UpdateInstalledList();
 			MessageBox.Show($"Sucessfully downloaded mod {modToDownload}", "Sucess!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+			LoadGUI(null, null);
 		}
 
 		private void Terminator_ProgressChanged(object sender, ProgressChangedEventArgs e)
