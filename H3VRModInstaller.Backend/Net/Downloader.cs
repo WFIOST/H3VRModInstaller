@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Net;
 using H3VRModInstaller.Filesys;
@@ -14,6 +15,8 @@ namespace H3VRModInstaller.Net
 	public class Downloader
 	{
 
+		public Dictionary<string, ModFile> stringToModfile = new Dictionary<string, ModFile>();
+		
 		private static readonly WebClient _Downloader = new();
 		private static bool _finished = false;
 
@@ -30,12 +33,11 @@ namespace H3VRModInstaller.Net
 			if(skipdl == true) { Installer.InstallMod(fileinfo); return true; }
 			ModFile[] installedmods = InstalledMods.GetInstalledMods();
 			_finished = false;
-			if (fileinfo.RawName == "" || fileinfo.RawName == null) { return false; }
+			if (string.IsNullOrEmpty(fileinfo.RawName)) { return false; }
 
 			string fileToDownload = fileinfo.RawName;
 			string locationOfFile = fileinfo.Path;
 
-			bool redownload = false;
 			if (!autoredownload)
 			{
 				for (int i = 0; i < installedmods.Length; i++)
@@ -49,7 +51,7 @@ namespace H3VRModInstaller.Net
 							var input = Console.ReadLine();
 							if (input == "y")
 							{
-								redownload = true;
+								Uninstaller.DeleteMod(fileinfo.ModId);
 								break;
 							}
 							else if (input == "n")
@@ -63,10 +65,9 @@ namespace H3VRModInstaller.Net
 					}
 				}
 			}
-			else redownload = true;
 			Uri fileloc = new Uri(locationOfFile + fileToDownload);
 
-			if (ModInstallerCommon.EnableDebugging) Console.WriteLine("Downloading {0} from {1}{0}", fileToDownload, locationOfFile);
+			if (ModInstallerCommon.enableDebugging) Console.WriteLine("Downloading {0} from {1}{0}", fileToDownload, locationOfFile);
 
 
 			Console.WriteLine("");
@@ -81,11 +82,11 @@ namespace H3VRModInstaller.Net
 			_finished = false;
 
 			Console.WriteLine("Successfully Downloaded {0}", fileToDownload, locationOfFile);
-			if (ModInstallerCommon.EnableDebugging) Console.Write("from {1}{0}", fileToDownload, locationOfFile);
+			if (ModInstallerCommon.enableDebugging) Console.Write("from {1}{0}", fileToDownload, locationOfFile);
 
 			Installer.InstallMod(fileinfo);
 
-			if(!redownload) InstalledMods.AddInstalledMods(fileinfo.ModId);
+			InstalledMods.AddInstalledMod(fileinfo.ModId);
 			return true;
 		}
 		public static void Dlcomplete(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
@@ -126,7 +127,7 @@ namespace H3VRModInstaller.Net
 		public static bool DownloadModDirector(string mod, bool skipdl = false)
 		{
 			if (!NetCheck.isOnline(ModInstallerCommon.Pingsite)) { Console.WriteLine("Not connected to internet, or " + ModInstallerCommon.Pingsite + " is down!"); return false; }
-			var result = ModParsing.GetModInfo(mod);
+			var result = ModParsing.GetModInfoAndDependencies(mod);
 			if (result == null) return false;
 			for (var i = 0; i < result.Length; i++)
 			{

@@ -11,18 +11,10 @@
     <projectFile>H3VRModInstaller.Forms.Core/H3VRModInstaller.Forms.Core.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="11646549-311b-4445-a706-8ab87333e815" name="Default Changelist" comment="Renamed lots">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.H3VRModInstaller/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.H3VRModInstaller/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.H3VRModInstaller/.idea/shelf/Uncommitted_changes_before_Update_at_12_29_2020_9_35_PM_[Default_Changelist]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.H3VRModInstaller/.idea/shelf/Uncommitted_changes_before_Update_at_12_29_2020_9_35_PM__Default_Changelist_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.H3VRModInstaller/.idea/shelf/Uncommitted_changes_before_Update_at_1_1_2021_12_58_PM_[Default_Changelist]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.H3VRModInstaller/.idea/shelf/Uncommitted_changes_before_Update_at_1_1_2021_12_58_PM__Default_Changelist_.xml" beforeDir="false" />
+    <list default="true" id="11646549-311b-4445-a706-8ab87333e815" name="Default Changelist" comment="ListStuff">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.H3VRModInstaller/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.H3VRModInstaller/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Config/EditConfig.cs" beforeDir="false" afterPath="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Config/EditConfig.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Installer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Installer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Zip.cs" beforeDir="false" afterPath="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Zip.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.Backend/H3VRModInstaller.Backend.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/H3VRModInstaller.Backend/H3VRModInstaller.Backend.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.Backend/JSON/installedMods.cs" beforeDir="false" afterPath="$PROJECT_DIR$/H3VRModInstaller.Backend/JSON/installedMods.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.Forms/Form1.Designer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/H3VRModInstaller.Forms/Form1.Designer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.Forms/Form1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/H3VRModInstaller.Forms/Form1.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,27 +46,26 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Installer.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/RegisterMods.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/H3VRModInstaller.Forms/Form1.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Uninstall.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/H3VRModInstaller.Forms/Form1.Designer.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Zip.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/H3VRModInstaller.Forms/Program.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/H3VRModInstaller.Backend/JSON/JSONModList.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/H3VRModInstaller.Backend/MainClass.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/H3VRModInstaller.Backend/Net/Downloader.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/314F5023-3B7E-48C5-8C8F-5FFAD0523408/F7/ListView.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/H3VRModInstaller.Backend/Net/NetCheck.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/44333F93-2A13-45F8-8805-30C5F9AB573B/7/WebClient.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/H3VRModInstaller.Backend/cock.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/H3VRModInstaller.Backend/Common/JSON/JSONCommon.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/C80B499D-ADA7-49E0-A8EE-7A9B1744160B/19/Array.CoreCLR.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/314F5023-3B7E-48C5-8C8F-5FFAD0523408/29/CheckBox.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/H3VRModInstaller.Backend/cock.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/H3VRModInstaller.Backend/JSON/JSONModList.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/0FD34F9D-1354-4305-971D-B5674D2A2A66/23/File.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/H3VRModInstaller.Forms/Form1.Designer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/H3VRModInstaller.Forms/Program.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/H3VRModInstaller.Forms/Form1.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Uninstall.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Installer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Zip.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Director.cs" />
-      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Files.cs" />
-      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/ModCheck.cs" />
-      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Common/Directories.cs" />
       <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Common/Prin.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Common/Print.cs" />
@@ -105,23 +96,27 @@
       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/JSON/ModList.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/H3VRModInstaller.Backend.csproj" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/cock.cs" />
-      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Common/JSON/JSONCommon.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Net/NetCheck.cs" />
+      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Zip.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Uninstall.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/ModParsing.cs" />
+      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Config/EditConfig.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/docfx_project/_site/index.html" />
-      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/JSON/JSONModList.cs" />
-      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/MainClass.cs" />
-      <option value="$PROJECT_DIR$/H3VRModInstaller.Forms/Form1.cs" />
+      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/JSON/installedMods.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.Forms.Core/Form1.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.Forms.Core/Form1.Designer.cs" />
-      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Common/ModInstallerCommon.cs" />
-      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Net/Downloader.cs" />
-      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/JSON/installedMods.cs" />
-      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Config/EditConfig.cs" />
+      <option value="$PROJECT_DIR$/H3VRModInstaller.Forms/Program.cs" />
+      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/MainClass.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Installer.cs" />
-      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Zip.cs" />
-      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/JSON/Database/modinstallerinfo.h3vrmi" />
+      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Uninstaller.cs" />
+      <option value="$PROJECT_DIR$/H3VRModInstaller.Forms/GUICommon.cs" />
+      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/JSON/JSONModList.cs" />
+      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Common/JSON/JSONCommon.cs" />
+      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Common/GUICommon.cs" />
+      <option value="$PROJECT_DIR$/H3VRModInstaller.Forms/Form1.Designer.cs" />
+      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Net/Downloader.cs" />
+      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Common/ModInstallerCommon.cs" />
+      <option value="$PROJECT_DIR$/H3VRModInstaller.Forms/Form1.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1lah3QXp00T3AT7tcB4yg7113kU" />
@@ -146,18 +141,36 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.C#" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
-  <component name="RunManager" selected="Publish to folder.ModInstaller">
+  <component name="RunManager" selected=".NET Project.Forms">
     <configuration name="ModInstaller" type="DotNetFolderPublish" factoryName="Publish to folder" temporary="true">
       <riderPublish runtime="osx-x64" target_folder="$PROJECT_DIR$/test" target_framework="net5.0" uuid_high="4896244729092656622" uuid_low="-6212243280892053142" />
       <method v="2" />
     </configuration>
-    <configuration name="H3VRModInstaller.Backend" type="DotNetProject" factoryName=".NET Project">
-      <option name="EXE_PATH" value="" />
+    <configuration name="Forms" type="DotNetProject" factoryName=".NET Project">
+      <option name="EXE_PATH" value="$PROJECT_DIR$/H3VRModInstaller.Forms/bin/Debug/net5.0-windows/H3VRModInstaller.GUI.dll" />
       <option name="PROGRAM_PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/H3VRModInstaller.Forms/bin/Debug/net5.0-windows" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="USE_MONO" value="0" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
+      <option name="PROJECT_PATH" value="$PROJECT_DIR$/H3VRModInstaller.Forms/H3VRModInstaller.Forms.csproj" />
+      <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
+      <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
+      <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
+      <option name="PROJECT_KIND" value="DotNetCore" />
+      <option name="PROJECT_TFM" value="net5.0-windows7.0" />
+      <method v="2">
+        <option name="Build" />
+      </method>
+    </configuration>
+    <configuration name="H3VRModInstaller.Backend" type="DotNetProject" factoryName=".NET Project">
+      <option name="EXE_PATH" value="$PROJECT_DIR$/H3VRModInstaller.Backend/bin/OneFile/net5.0/H3VRModInstaller.Backend.dll" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/H3VRModInstaller.Backend/bin/OneFile/net5.0" />
       <option name="PASS_PARENT_ENVS" value="1" />
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
       <option name="USE_MONO" value="0" />
@@ -167,83 +180,16 @@
       <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
       <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
       <option name="PROJECT_KIND" value="DotNetCore" />
-      <option name="PROJECT_TFM" value="" />
+      <option name="PROJECT_TFM" value="net5.0" />
       <method v="2">
         <option name="Build" />
       </method>
     </configuration>
-    <configuration name="H3VRModInstaller.Forms.Core" type="DotNetProject" factoryName=".NET Project">
-      <option name="EXE_PATH" value="" />
-      <option name="PROGRAM_PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="PASS_PARENT_ENVS" value="1" />
-      <option name="USE_EXTERNAL_CONSOLE" value="0" />
-      <option name="USE_MONO" value="0" />
-      <option name="RUNTIME_ARGUMENTS" value="" />
-      <option name="PROJECT_PATH" value="$PROJECT_DIR$/H3VRModInstaller.Forms.Core/H3VRModInstaller.Forms.Core.csproj" />
-      <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
-      <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
-      <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
-      <option name="PROJECT_KIND" value="DotNetCore" />
-      <option name="PROJECT_TFM" value="" />
-      <method v="2">
-        <option name="Build" />
-      </method>
-    </configuration>
-    <configuration name="H3VRModInstaller.GUI" type="DotNetProject" factoryName=".NET Project">
-      <option name="EXE_PATH" value="" />
-      <option name="PROGRAM_PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="PASS_PARENT_ENVS" value="1" />
-      <option name="USE_EXTERNAL_CONSOLE" value="0" />
-      <option name="USE_MONO" value="0" />
-      <option name="RUNTIME_ARGUMENTS" value="" />
-      <option name="PROJECT_PATH" value="$PROJECT_DIR$/H3VRModInstaller.GUI/H3VRModInstaller.GUI.csproj" />
-      <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
-      <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
-      <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
-      <option name="PROJECT_KIND" value="DotNetCore" />
-      <option name="PROJECT_TFM" value="" />
-      <method v="2">
-        <option name="Build" />
-      </method>
-    </configuration>
-    <configuration name="H3VRModInstaller.GUI.Forms" type="DotNetProject" factoryName=".NET Project">
-      <option name="EXE_PATH" value="" />
-      <option name="PROGRAM_PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="PASS_PARENT_ENVS" value="1" />
-      <option name="USE_EXTERNAL_CONSOLE" value="0" />
-      <option name="USE_MONO" value="0" />
-      <option name="RUNTIME_ARGUMENTS" value="" />
-      <option name="PROJECT_PATH" value="$PROJECT_DIR$/H3VRModInstaller.GUI.Forms/H3VRModInstaller.GUI.Forms.csproj" />
-      <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
-      <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
-      <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
-      <option name="PROJECT_KIND" value="DotNetCore" />
-      <option name="PROJECT_TFM" value="" />
-      <method v="2">
-        <option name="Build" />
-      </method>
-    </configuration>
-    <configuration name="H3VRModInstaller.JSON" type="DotNetProject" factoryName=".NET Project">
-      <option name="EXE_PATH" value="" />
-      <option name="PROGRAM_PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="PASS_PARENT_ENVS" value="1" />
-      <option name="USE_EXTERNAL_CONSOLE" value="0" />
-      <option name="USE_MONO" value="0" />
-      <option name="RUNTIME_ARGUMENTS" value="" />
-      <option name="PROJECT_PATH" value="$PROJECT_DIR$/H3VRModInstaller.JSON/H3VRModInstaller.JSON.csproj" />
-      <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
-      <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
-      <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
-      <option name="PROJECT_KIND" value="DotNetCore" />
-      <option name="PROJECT_TFM" value="" />
-      <method v="2">
-        <option name="Build" />
-      </method>
-    </configuration>
+    <list>
+      <item itemvalue=".NET Project.Forms" />
+      <item itemvalue=".NET Project.H3VRModInstaller.Backend" />
+      <item itemvalue="Publish to folder.ModInstaller" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Publish to folder.ModInstaller" />
@@ -273,10 +219,9 @@
       <workItem from="1609532848718" duration="1674000" />
       <workItem from="1609556525722" duration="3179000" />
       <workItem from="1609621246212" duration="437000" />
-      <workItem from="1609627127637" duration="4976000" />
-      <workItem from="1609800611176" duration="598000" />
-      <workItem from="1610224384892" duration="2000" />
-      <workItem from="1610235124201" duration="491000" />
+      <workItem from="1609642351920" duration="17257000" />
+      <workItem from="1609709110597" duration="13765000" />
+      <workItem from="1609740348172" duration="7641000" />
     </task>
     <task id="LOCAL-00001" summary="Split func.cs">
       <created>1607847473285</created>
@@ -488,21 +433,56 @@
       <option name="project" value="LOCAL" />
       <updated>1609625346038</updated>
     </task>
-    <task id="LOCAL-00031" summary="Renamed lots">
-      <created>1609632479488</created>
+    <task id="LOCAL-00031" summary="Fixed winforms">
+      <created>1609627073014</created>
       <option name="number" value="00031" />
       <option name="presentableId" value="LOCAL-00031" />
       <option name="project" value="LOCAL" />
-      <updated>1609632479488</updated>
+      <updated>1609627073014</updated>
     </task>
-    <task id="LOCAL-00032" summary="Renamed lots">
-      <created>1609632537147</created>
+    <task id="LOCAL-00032" summary="Added `files` struct">
+      <created>1609647687031</created>
       <option name="number" value="00032" />
       <option name="presentableId" value="LOCAL-00032" />
       <option name="project" value="LOCAL" />
-      <updated>1609632537147</updated>
+      <updated>1609647687031</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="more fixed">
+      <created>1609647830576</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1609647830576</updated>
+    </task>
+    <task id="LOCAL-00034" summary="wow">
+      <created>1609653561723</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1609653561723</updated>
+    </task>
+    <task id="LOCAL-00035" summary="Cleanup">
+      <created>1609654167079</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1609654167079</updated>
+    </task>
+    <task id="LOCAL-00036" summary="ListStuff">
+      <created>1609655317345</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1609655317345</updated>
+    </task>
+    <task id="LOCAL-00037" summary="Broken, working on it">
+      <created>1609741039798</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1609741039798</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -524,12 +504,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="more stuff" />
-    <MESSAGE value="Started ModCheck.cs" />
-    <MESSAGE value="deleted gui" />
-    <MESSAGE value="Jasoooooooooon!" />
-    <MESSAGE value="JSOOOOON!" />
-    <MESSAGE value="JSOOOOON (pt 3)" />
     <MESSAGE value="JSOOOOON (pt 4)" />
     <MESSAGE value="Nae naed forms again" />
     <MESSAGE value="Added modcheck" />
@@ -548,7 +522,13 @@
     <MESSAGE value="C# proj stuf" />
     <MESSAGE value="final commit of the night" />
     <MESSAGE value="Fixed" />
-    <MESSAGE value="Renamed lots" />
-    <option name="LAST_COMMIT_MESSAGE" value="Renamed lots" />
+    <MESSAGE value="Fixed winforms" />
+    <MESSAGE value="Added `files` struct" />
+    <MESSAGE value="more fixed" />
+    <MESSAGE value="wow" />
+    <MESSAGE value="Cleanup" />
+    <MESSAGE value="ListStuff" />
+    <MESSAGE value="Broken, working on it" />
+    <option name="LAST_COMMIT_MESSAGE" value="Broken, working on it" />
   </component>
 </project>

@@ -21,12 +21,12 @@ namespace H3VRModInstaller
 		/// <param name="args">dunno why these are here</param>
 		public static void Main(string[] args)
 		{
-			Console.WriteLine("Detecting if " + ModInstallerCommon.Execdir + " exists...");
-
+			ModInstallerCommon.overrideMICVars();
 			//exe check
-			if (!File.Exists(ModInstallerCommon.Execdir) && !ModInstallerCommon.BypassExec) { ModInstallerCommon.Throwexept("H3VR not found!"); return; } else { Console.WriteLine("H3VR found!"); }
+			Console.WriteLine("Detecting if " + ModInstallerCommon.Files.execdir + " exists...");
+			if (!File.Exists(ModInstallerCommon.Files.execdir) && !ModInstallerCommon.BypassExec) { ModInstallerCommon.throwexept("H3VR not found!"); return; } else { Console.WriteLine("H3VR found!"); }
 			//online check
-			if (!NetCheck.isOnline(ModInstallerCommon.Pingsite)) { ModInstallerCommon.Throwexept("Cannot connect to github!"); return; }
+			if (!NetCheck.isOnline(ModInstallerCommon.Pingsite)) { ModInstallerCommon.throwexept("Cannot connect to github!"); return; }
 			//gets the whole dl list possible
 			JsonModList.DlModList();
 			Console.WriteLine("Welcome to the H3VR Mod installer!");
@@ -54,7 +54,7 @@ namespace H3VRModInstaller
 					Console.WriteLine("Wiped!");
 					break;
 				case "modlists":
-					Listmodlists();
+					listmodlists();
 					break;
 				case "check":
 					
@@ -90,7 +90,7 @@ namespace H3VRModInstaller
 						ModFile[] mf = InstalledMods.GetInstalledMods();
 						for (int i = 0; i < mf.Length; i++) { Console.WriteLine(mf[i].Name); }
 					}
-					else { List(inputargs[1]); }
+					else { list(inputargs[1]); }
 					break;
 				case "exit":
 					return;
@@ -104,8 +104,8 @@ namespace H3VRModInstaller
 					Console.WriteLine("exit - Close H3VRModInstaller.");
 					break;
 				case "toggledebugging":
-					ModInstallerCommon.EnableDebugging = !ModInstallerCommon.EnableDebugging;
-					Console.WriteLine("Debugging is now " + ModInstallerCommon.EnableDebugging);
+					ModInstallerCommon.enableDebugging = !ModInstallerCommon.enableDebugging;
+					Console.WriteLine("Debugging is now " + ModInstallerCommon.enableDebugging);
 					break;
 				//deletion
 				case "rm":
@@ -127,7 +127,7 @@ namespace H3VRModInstaller
 
 
 		//returns list of modlists, aka modlists
-		public static void Listmodlists()
+		public static void listmodlists()
 		{
 			string[] jsonfiles = Glob.FilesAndDirectories(Directory.GetCurrentDirectory() + @"/ModInstallerLists/", "**.json").ToArray();
 			for (int i = 0; i < jsonfiles.Length; i++)
@@ -138,7 +138,7 @@ namespace H3VRModInstaller
 		}
 
 		//returns list of mods in a modlist
-		public static void List(string input)
+		public static void list(string input)
 		{
 			string jsonname = input + ".json";
 			string[] jsonfiles = Glob.FilesAndDirectories(Directory.GetCurrentDirectory() + @"/ModInstallerLists/", "**.json").ToArray();

@@ -5,7 +5,7 @@ using System.Linq;
 using GlobExpressions;
 using System.Net;
 using System.IO.Compression;
-using H3VRModInstaller;
+using H3VRModInstaller.Filesys;
 
 namespace H3VRModInstaller.JSON
 {
@@ -36,6 +36,7 @@ namespace H3VRModInstaller.JSON
 	/// </summary>
 	public class InstalledMods
 	{
+
 		/// <summary>
 		/// Gets the currently installed mods from the JSON files
 		/// </summary>
@@ -51,7 +52,7 @@ namespace H3VRModInstaller.JSON
 					depinput = JsonConvert.DeserializeObject<DeprecatedInstalledModsFormat>(File.ReadAllText(Directory.GetCurrentDirectory() + "/installedmods.json"));
 					File.Delete(Directory.GetCurrentDirectory() + @"\installedmods.json");
 					Console.WriteLine("installedmods.json is in a deprecated format, converting!");
-					for (int i = 0; i < depinput.InstalledMods.Length; i++) { AddInstalledMods(depinput.InstalledMods[i]); }
+					for (int i = 0; i < depinput.InstalledMods.Length; i++) { AddInstalledMod(depinput.InstalledMods[i]); }
 				}
 				catch {
 					Console.WriteLine("installedmods.json isn't formatted correctly, deleting!");
@@ -61,18 +62,44 @@ namespace H3VRModInstaller.JSON
 			if (input == null) return new ModFile[0];
 			return input.InstalledMods;
 		}
-		
+
 		/// <summary>
-		/// Adds a <c>ModID</c> to the JSON file
+		/// Adds a <c>ModFile</c> to the InstalledMods JSON file
 		/// </summary>
 		/// <param name="addmod">Mod to add</param>
-		public static void AddInstalledMods(string addmod)
+		public static void AddInstalledMod(string addmod)
 		{
 			ModFile[] file = GetInstalledMods(); //gets the installed mods file
 			Array.Resize<ModFile>(ref file, file.Length + 1); //adds new room for new mod
-			file[file.Length - 1] = ModParsing.GetModInfo(addmod, null, false)[0]; //sets new room in array to modinfo of addmod
+			file[file.Length - 1] = ModParsing.GetSpecificMod(addmod); //sets new room in array to modinfo of addmod
+			writeInstalledModToJson(file);
+		}
+
+		/// <summary>
+		/// Removes a <c>ModFile</c> to the InstalledMods JSON file
+		/// </summary>
+		/// <param name="removemod">Mod to remove</param>
+		public static void RemoveInstalledMod(string removemod)
+		{
+			ModFile[] file = GetInstalledMods(); //gets the installed mods file
+			int loc = -1;
+			for(int i = 0; i < file.Length; i++) //finds modfile of mod given modid
+			{
+				if (file[i].ModId == removemod)
+				{
+					loc = i;
+					break;
+				}
+			}
+			if (loc == -1) { Console.WriteLine("Cannot find mod to remove!"); return; }
+			file = file.Where(val => val != file[loc]).ToArray(); //removes instance of modfiles exact to file[loc] and shifts it all over so there's no gap in the array
+			writeInstalledModToJson(file);
+		}
+
+		private static void writeInstalledModToJson(ModFile[] files)
+		{
 			InstalledModsFormat modexport = new InstalledModsFormat();
-			modexport.InstalledMods = file; //drops file into installedmodsformat
+			modexport.InstalledMods = files; //drops file into installedmodsformat
 			File.WriteAllText(Directory.GetCurrentDirectory() + @"\installedmods.json", JsonConvert.SerializeObject(modexport)); //serialize and write to file
 		}
 	}
