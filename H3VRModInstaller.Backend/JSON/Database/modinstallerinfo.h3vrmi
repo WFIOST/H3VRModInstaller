@@ -1,0 +1,19 @@
+`{
+  "modlist": [
+    {
+      "modID": "uniqueidmodinstaller",
+      "Name": "H3VRModInstaller",
+      "RawName": "BepInEx_x64_5.4.4.0.zip",
+      "Author": [
+        "Frityet",
+        "potatoes1286"
+      ],
+      "Version": "0.4.0",
+      "Description": "Hey! This thingy here is just to know what is the newest version of H3VRMI.",
+      "Path": "",
+	  "Website": "https://github.com/Frityet/H3VRModInstaller",
+      "Arguments": "",
+      "Dependencies": []
+    }
+  ]
+}`

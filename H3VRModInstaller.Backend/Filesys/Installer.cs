@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
 using H3VRModInstaller.Common;
@@ -56,6 +57,7 @@ namespace H3VRModInstaller.Filesys
 			Console.WriteLine("Installed " + fileinfo.Name);
 			return true;
 		}
+
 		/// <summary>
 		/// This function moves the mod (first parameter) to the second parameter location, and renames it to the third parameter
 		/// </summary>
@@ -66,6 +68,8 @@ namespace H3VRModInstaller.Filesys
 		/// <remarks>
 		/// Honestly, this function needs a lot of work, its disgusting //TODO: fix this shit 
 		/// </remarks>
+
+		
 		public static bool MoveToFolder(string mod, string dir, string renameTo = "")
 		{
 			if (renameTo == "") renameTo = mod;
@@ -96,5 +100,7 @@ namespace H3VRModInstaller.Filesys
 			else Console.WriteLine("Cannot find file to move!");
 			return true;
 		}
+		
+		
 	}
 }

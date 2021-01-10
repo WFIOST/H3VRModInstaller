@@ -23,6 +23,15 @@
         </e>
         <e p="H3VRModInstaller.Backend.csproj" t="IncludeRecursive" />
         <e p="JSON" t="Include">
+          <e p="Database" t="Include">
+            <e p="charactermods.json" t="Include" />
+            <e p="codemods.json" t="Include" />
+            <e p="customitems.json" t="Include" />
+            <e p="dependencies.json" t="Include" />
+            <e p="mapmods.json" t="Include" />
+            <e p="modinstallerinfo.h3vrmi" t="Include" />
+          </e>
+          <e p="GetMods.cs" t="Include" />
           <e p="installedMods.cs" t="Include" />
           <e p="JSONModList.cs" t="Include" />
         </e>

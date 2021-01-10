@@ -1,0 +1,249 @@
+{
+  "modlist": [
+    {
+      "modID": "pccg",
+      "Name": "Potatoes' Custom Guns",
+      "RawName": "PotatoesCustomGuns.zip",
+      "Author": [
+        "Potatoes"
+      ],
+      "Version": "5.2.0",
+      "Description": "Adds a massive amount of firearms to the game.",
+      "Path": "https://bonetome.com/download.php?file=NGFmYTMxOWRjNmEwMTdhMSszNjUrNzUw",
+	  "Website": "https://bonetome.com/h3vr/weapons/142/",
+      "Arguments": "unzipToDir?VirtualObjects/",
+	  "DelInfo": "VirtualObjects/Potatoes' Custom Guns",
+      "Dependencies": [
+        "lsiic",
+        "h3vrutils"
+      ]
+    },
+    {
+      "modID": "modular",
+      "Name": "ModulAR",
+      "RawName": "modular.zip",
+      "Author": [
+        "KamikazeF0X"
+      ],
+      "Version": "1.0.0",
+      "Description": "modulAR",
+      "Path": "https://bonetome.com/download.php?file=MjgxMDkxOThkYTE0Mjg4MCszNjUrODUw",
+	  "Website": "https://bonetome.com/h3vr/weapons/159/",
+      "Arguments": "unzipToDir?VirtualObjects/",
+	  "DelInfo": "VirtualObjects/modular",
+      "Dependencies": [
+        "lsiic"
+      ]
+    },
+    {
+      "modID": "meatssidecharger",
+      "Name": "Turt's Side ChARger",
+      "RawName": "TurtsSidechARger.zip",
+      "Author": [
+        "Meat_Banono"
+      ],
+      "Version": "1.0.0",
+      "Description": "Side Charger AR",
+      "Path": "https://bonetome.com/download.php?file=OTI3NTY5Y2ZlYThiMzZkNCszNjUrOTQ2",
+	  "Website": "https://bonetome.com/h3vr/weapons/184/",
+      "Arguments": "unzipToDir?VirtualObjects/",
+	  "DelInfo": "VirtualObjects/SidechARger",
+      "Dependencies": [
+        "meatsmodularparts",
+        "lsiic"
+      ]
+    },
+    {
+      "modID": "meatsrigs",
+      "Name": "Meat's Rigs",
+      "RawName": "MeatsRigs.zip",
+      "Author": [
+        "Meat_Banono"
+      ],
+      "Version": "1.0.0",
+      "Description": "Meat's Rigs",
+      "Path": "https://bonetome.com/download.php?file=OGViNjM0MGVlOTUwMGYzNyszNjUrOTMw",
+	  "Website": "https://bonetome.com/h3vr/weapons/176/",
+      "Arguments": "unzipToDir?VirtualObjects/",
+      "Dependencies": [
+        "lsiic"
+      ]
+    },
+    {
+      "modID": "meatsmags",
+      "Name": "Meat's Mags",
+      "RawName": "MeatsMagazines.zip",
+      "Author": [
+        "Meat_Banono"
+      ],
+      "Version": "1.0.0",
+      "Description": "Extra mags for AKs and ARs.",
+      "Path": "https://bonetome.com/download.php?file=MzZmNmEzNDZmNzJhNDdiMiszNjUrODkw",
+	  "Website": "https://bonetome.com/h3vr/weapons/170/",
+      "Arguments": "unzipToDir?VirtualObjects/",
+	  "DelInfo": "VirtualObjects/Magazines",
+      "Dependencies": [
+        "lsiic"
+      ]
+    },
+    {
+      "modID": "meatsmodulsr",
+      "Name": "Meat's ModulSR",
+      "RawName": "MeatsModulSR1.1.zip",
+      "Author": [
+        "Meat_Banono"
+      ],
+      "Version": "1.0.0",
+      "Description": "Modular 308 AR15",
+      "Path": "https://bonetome.com/download.php?file=YjQzZTQ1MTM2MDQ0ODg3MSszNjUrODgz",
+	  "Website": "https://bonetome.com/h3vr/weapons/167/",
+      "Arguments": "unzipToDir?VirtualObjects/",
+	  "DelInfo": "VirtualObjects/ModulSR",
+      "Dependencies": [
+        "lsiic",
+        "meatsmodularparts"
+      ]
+    },
+    {
+      "modID": "meatsmodulpp",
+      "Name": "Meat's ModulPP",
+      "RawName": "MeatsModulPP.zip",
+      "Author": [
+        "Meat_Banono"
+      ],
+      "Version": "1.0.0",
+      "Description": "Adds a modular PP bizon.",
+      "Path": "https://bonetome.com/download.php?file=ODQ4YThkNDZjMGZhYzNmYSszNjUrODc3",
+	  "Website": "https://bonetome.com/h3vr/weapons/165/",
+      "Arguments": "unzipToDir?VirtualObjects/",
+	  "DelInfo": "VirtualObjects/ModulPP",
+      "Dependencies": [
+        "lsiic",
+        "meatsmodulak"
+      ]
+    },
+    {
+      "modID": "meatsmodulak",
+      "Name": "Meat's ModulAK",
+      "RawName": "MeatsModulAK1.1.zip",
+      "Author": [
+        "Meat_Banono"
+      ],
+      "Version": "1.0.0",
+      "Description": "Adds a modular AK.",
+      "Path": "https://bonetome.com/download.php?file=NzFhNzc3MWJiZjQ2OWJhOCszNjUrODYx",
+	  "Website": "https://bonetome.com/h3vr/weapons/162/",
+      "Arguments": "unzipToDir?VirtualObjects/",
+	  "DelInfo": "VirtualObjects/AKParts",
+      "Dependencies": [
+        "lsiic",
+        "h3vrutils"
+      ]
+    },
+    {
+      "modID": "meatsmodularparts",
+      "Name": "Meat's ModulAR Parts",
+      "RawName": "MeatsARParts.zip",
+      "Author": [
+        "Meat_Banono"
+      ],
+      "Version": "1.0.0",
+      "Description": "Adds modular AR parts for the ModulAR.",
+      "Path": "https://bonetome.com/download.php?file=NDU1MzQwZmVkOTA4YmYzYyszNjUrODQ3",
+	  "Website": "https://bonetome.com/h3vr/weapons/157/",
+      "Arguments": "unzipToDir?VirtualObjects/",
+	  "DelInfo": "VirtualObjects/ARParts",
+      "Dependencies": [
+        "lsiic",
+        "modular"
+      ]
+    },
+    {
+      "modID": "meatsmodulmpx",
+      "Name": "Meat's ModulMPX",
+      "RawName": "MeatsModulMPX.zip",
+      "Author": [
+        "Meat_Banono"
+      ],
+      "Version": "1.1.0",
+      "Description": "mpx",
+      "Path": "https://bonetome.com/download.php?file=ZmZjNzFkZjA3NjM4NTI2NCszNjUrOTU1",
+	  "Website": "https://bonetome.com/h3vr/weapons/187/",
+      "Arguments": "unzipToDir?VirtualObjects/",
+	  "DelInfo": "VirtualObjects/ModulMPX",
+      "Dependencies": [
+        "lsiic",
+        "h3vrutils",
+        "modular"
+      ]
+    },
+    {
+      "modID": "ebr",
+      "Name": "M14 EBR",
+      "RawName": "mk14+dcsb.zip",
+      "Author": [
+        "Carkidd"
+      ],
+      "Version": "1.0.0",
+      "Description": "Adds an mk14 EBR.",
+      "Path": "https://bonetome.com/download.php?file=YzM2MTcyN2ZlYTRjNWRhNiszNjUrODg4",
+	  "Website": "https://bonetome.com/h3vr/weapons/169/",
+      "Arguments": "unzipToDir?VirtualObjects/",
+	  "DelInfo": "VirtualObjects/mk14 ebr",
+      "Dependencies": [
+        "lsiic"
+      ]
+    },
+    {
+      "modID": "meatsmodulm4",
+      "Name": "Meats ModulM4",
+      "RawName": "MeatsModulM4.zip",
+      "Author": [
+        "MeatBanono"
+      ],
+      "Version": "1.0.0",
+      "Description": "Adds a modular m4.",
+      "Path": "https://bonetome.com/download.php?file=MGI3M2Y4ZGUwMjM5OWI2NyszNjUrOTYw",
+	  "Website": "https://bonetome.com/h3vr/weapons/188/",
+      "Arguments": "unzipToDir?VirtualObjects/",
+	  "DelInfo": "VirtualObjects/ModulAR2.0",
+      "Dependencies": [
+        "lsiic",
+        "meatsmodularparts"
+      ]
+    },
+	{
+      "modID": "meatsmemes",
+      "Name": "Meats Memes",
+      "RawName": "Meatsmemes.zip",
+      "Author": [
+        "MeatBanono"
+      ],
+      "Version": "1.0.0",
+      "Description": "memes",
+      "Path": "https://bonetome.com/download.php?file=Mzg2Y2U2ZDE5ZWNlYjIxMSszNjUrOTcy",
+	  "Website": "https://bonetome.com/h3vr/weapons/191/",
+      "Arguments": "unzipToDir?VirtualObjects/",
+	  "DelInfo": "VirtualObjects/memes",
+      "Dependencies": [
+        "lsiic"
+      ]
+    },
+	{
+      "modID": "gunshields",
+      "Name": "Gunshields",
+      "RawName": "gunshields1.0.2.7z",
+      "Author": [
+        "Carkidd"
+      ],
+      "Version": "1.0.0",
+      "Description": "GUNSHIELDS",
+      "Path": "https://bonetome.com/download.php?file=MGI3M2Y4ZGUwMjM5OWI2NyszNjUrOTYw",
+	  "Website": "https://bonetome.com/h3vr/weapons/193/",
+      "Arguments": "unzipToDir?VirtualObjects/",
+      "Dependencies": [
+        "lsiic"
+      ]
+    }
+  ]
+}

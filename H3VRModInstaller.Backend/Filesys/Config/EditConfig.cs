@@ -37,9 +37,9 @@ namespace H3VRModInstaller.Filesys.Config
         /// <summary>
          /// Gets all the info in a <c>config</c> file, then gets all the editable fields, and edits them to have the correct info
          /// </summary>
-         /// <param name="fileToEdit"></param>
-         /// <param name="fieldToEdit"></param>
-         /// <param name="textToAdd"></param>
+         /// <param name="fileToEdit">The file to be edited</param>
+         /// <param name="fieldToEdit">Which field in the file is going to be edited (REGEX)</param>
+         /// <param name="textToAdd">What to add to the file</param>
          /// <returns><c>true</c></returns>
         public static bool EditConfigFile(string fileToEdit, string[] fieldToEdit, string[] textToAdd)
         {

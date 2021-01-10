@@ -1,5 +1,6 @@
 using System.IO;
 using System;
+using SharpCompress;
 using System.IO.Compression;
 
 namespace H3VRModInstaller.Filesys
@@ -9,7 +10,6 @@ namespace H3VRModInstaller.Filesys
     /// </summary>
     public class Zip
     {
-
         /// <summary>
         /// This bool unzips the compressed mod and moves it into the correct location
         /// </summary>
@@ -19,12 +19,21 @@ namespace H3VRModInstaller.Filesys
         /// <returns>Boolean, true</returns>
         public static bool Unzip(string fileToUnzip, string unzipLocation, bool deleteArchiveAfterUnzip)
         {
-            //why do I even have this?
-            Console.WriteLine("Unzipping " + fileToUnzip);
+
+            if (fileToUnzip.EndsWith(".RAR") || fileToUnzip.EndsWith(".rar")) UnRar(fileToUnzip);
+
+                Console.WriteLine("Unzipping " + fileToUnzip);
             ZipFile.ExtractToDirectory(fileToUnzip, unzipLocation, true);
 				if (deleteArchiveAfterUnzip)
 					Console.WriteLine("Cleaning up");
             File.Delete(fileToUnzip);
+            return true;
+        }
+
+        public static bool UnRar(string fileToUnzip)
+        {
+
+
             return true;
         }
     }

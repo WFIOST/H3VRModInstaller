@@ -1,0 +1,42 @@
+{
+  "modlist": [
+    {
+      "modID": "curseddlls",
+      "Name": "CursedDlls",
+      "RawName": "CursedDlls.BepInEx_v1.3.zip",
+      "Author": [
+        "BlockBuilder57",
+        "drummerdude2003"
+      ],
+      "Version": "5.4.4.0",
+      "Description": "Removes checks.",
+      "Path": "https://github.com/drummerdude2003/CursedDlls.BepinEx/releases/download/v1.3/",
+	  "Website": "https://github.com/drummerdude2003/CursedDlls.BepinEx",
+      "Arguments": "unzipToDir??",
+	  "DelInfo": "BepInEx/plugins/CursedDlls",
+      "Dependencies": [
+		"bepinex",
+		"monomod"
+	  ]
+    },
+    {
+      "modID": "meatyceiver",
+      "Name": "Meatyceiver 2",
+      "RawName": "Meatyceiver032.zip",
+      "Author": [
+        "Potatoes",
+        "Frityet"
+      ],
+      "Version": "0.3.2",
+      "Description": "Adds jamming.",
+      "Path": "https://bonetome.com/download.php?file=ZDMxZjYzMTgxYTg5OTdlYiszNjUrODk0",
+	  "Website": "https://bonetome.com/h3vr/weapons/171/",
+      "Arguments": "unzipToDir?BepInEx/plugins/",
+	  "DelInfo": "BepInEx/plugins/Meatyceiver2.dll",
+      "Dependencies": [
+        "bepinex",
+		"configurationmanager"
+      ]
+    }
+  ]
+}

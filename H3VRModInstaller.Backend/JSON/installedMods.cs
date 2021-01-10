@@ -14,11 +14,20 @@ namespace H3VRModInstaller.JSON
 	/// </summary>
 	public class InstalledModsFormat
 	{
+		/// <summary>
+		/// <c>ModFile</c> array of installed mods
+		/// </summary>
 		public ModFile[] InstalledMods { get; set; }
 	}
 
+	/// <summary>
+	/// Old installed mods format, dont use this
+	/// </summary>
 	public class DeprecatedInstalledModsFormat
 	{
+		/// <summary>
+		/// String array of installed mods (DEPRECIATED)
+		/// </summary>
 		public string[] InstalledMods { get; set; }
 	}
 
