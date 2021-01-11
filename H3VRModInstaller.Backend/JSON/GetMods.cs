@@ -18,28 +18,17 @@ namespace H3VRModInstaller.JSON
             for (var i = 0; i <= JsonCommon.OnlineDatabaseTEST.Length; i++)
             {
                 var client = new HttpClient();
-                try	
-                {
-                    var response = await client.GetAsync(JsonCommon.OnlineDatabaseTEST[i]);
-                    response.EnsureSuccessStatusCode();
-                    var responseBody = await response.Content.ReadAsStringAsync();
-                    var mods = JsonConvert.DeserializeObject<ModListFormat>(responseBody);
+                var response = await client.GetAsync(JsonCommon.OnlineDatabaseTEST[i]);
+                var responseBody = await response.Content.ReadAsStringAsync();
+                var mods = JsonConvert.DeserializeObject<ModListFormat>(responseBody);
 
-                    Array.Sort(mods.Modlist);
-                    
-                    foreach (var t in mods.Modlist)
-                    {
-                        
-                        Console.WriteLine($"Name: {t.Name}\n");
-                    }
-                    
-                }
-                catch(Exception e)
+                foreach (var t in mods.Modlist)
                 {
-                    Console.WriteLine("\nException Caught!");	
-                    Console.WriteLine("Message: {0} ",e.Message);
+                    Console.WriteLine("Name: {0} \n", t.Name);
                 }
+                
             }
+            
         }
     }
 }
