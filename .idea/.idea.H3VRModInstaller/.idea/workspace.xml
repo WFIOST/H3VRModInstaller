@@ -12,9 +12,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="11646549-311b-4445-a706-8ab87333e815" name="Default Changelist" comment="ListStuff">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.H3VRModInstaller/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.H3VRModInstaller/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.H3VRModInstaller/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.H3VRModInstaller/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.Forms/Form1.Designer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/H3VRModInstaller.Forms/Form1.Designer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.Forms/Form1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/H3VRModInstaller.Forms/Form1.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.Backend/Common/GUICommon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/H3VRModInstaller.Backend/Common/GUICommon.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.Backend/Common/JSON/JSONCommon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/H3VRModInstaller.Backend/Common/JSON/JSONCommon.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.Backend/Common/ModInstallerCommon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/H3VRModInstaller.Backend/Common/ModInstallerCommon.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.Backend/JSON/GetMods.cs" beforeDir="false" afterPath="$PROJECT_DIR$/H3VRModInstaller.Backend/JSON/GetMods.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.Backend/MainClass.cs" beforeDir="false" afterPath="$PROJECT_DIR$/H3VRModInstaller.Backend/MainClass.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,7 +39,6 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitSEFilterConfiguration">
     <file-type-list>
@@ -46,27 +49,23 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Installer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/H3VRModInstaller.Forms/Form1.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/H3VRModInstaller.Forms/Form1.Designer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Zip.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/H3VRModInstaller.Forms/Program.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/H3VRModInstaller.Backend/JSON/JSONModList.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/H3VRModInstaller.Backend/MainClass.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/H3VRModInstaller.Backend/Net/Downloader.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/314F5023-3B7E-48C5-8C8F-5FFAD0523408/F7/ListView.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/H3VRModInstaller.Backend/Net/NetCheck.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///Users/frityet/Documents/H3VRModInstaller/H3VRModInstaller.Backend/JSON/installedMods.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/44333F93-2A13-45F8-8805-30C5F9AB573B/7/WebClient.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/H3VRModInstaller.Backend/Common/JSON/JSONCommon.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/C80B499D-ADA7-49E0-A8EE-7A9B1744160B/19/Array.CoreCLR.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/314F5023-3B7E-48C5-8C8F-5FFAD0523408/29/CheckBox.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/H3VRModInstaller.Backend/cock.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/H3VRModInstaller.Backend/JSON/JSONModList.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/0FD34F9D-1354-4305-971D-B5674D2A2A66/23/File.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/H3VRModInstaller.Forms/Form1.Designer.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/H3VRModInstaller.Forms/Program.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/H3VRModInstaller.Forms/Form1.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Uninstall.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Installer.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Zip.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///Users/frityet/Documents/H3VRModInstaller/H3VRModInstaller.Backend/Filesys/Installer.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/frityet/Documents/H3VRModInstaller/H3VRModInstaller.Backend/Filesys/Zip.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-      <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Common/Prin.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Common/Print.cs" />
       <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch_1.cs" />
@@ -106,17 +105,18 @@
       <option value="$PROJECT_DIR$/H3VRModInstaller.Forms.Core/Form1.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.Forms.Core/Form1.Designer.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.Forms/Program.cs" />
-      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/MainClass.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Installer.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Uninstaller.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.Forms/GUICommon.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/JSON/JSONModList.cs" />
-      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Common/JSON/JSONCommon.cs" />
-      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Common/GUICommon.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.Forms/Form1.Designer.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Net/Downloader.cs" />
-      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Common/ModInstallerCommon.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.Forms/Form1.cs" />
+      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Common/GUICommon.cs" />
+      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Common/ModInstallerCommon.cs" />
+      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Common/JSON/JSONCommon.cs" />
+      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/MainClass.cs" />
+      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/JSON/GetMods.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1lah3QXp00T3AT7tcB4yg7113kU" />
@@ -144,7 +144,7 @@
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
-  <component name="RunManager" selected=".NET Project.Forms">
+  <component name="RunManager" selected=".NET Project.H3VRModInstaller.Backend">
     <configuration name="ModInstaller" type="DotNetFolderPublish" factoryName="Publish to folder" temporary="true">
       <riderPublish runtime="osx-x64" target_folder="$PROJECT_DIR$/test" target_framework="net5.0" uuid_high="4896244729092656622" uuid_low="-6212243280892053142" />
       <method v="2" />

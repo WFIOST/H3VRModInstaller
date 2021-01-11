@@ -12,13 +12,13 @@ using System.IO.Compression;
 
 namespace H3VRModInstaller.Common
 {
-	public class MICVarsTemplate
+	public struct CommonVariables
 	{
-		public bool EnableDebugging { get; set; }
-		public bool BypassExec { get; set; }
-		public string Execname { get; set; }
-		public string Pingsite { get; set; }
-		public string[] Modlistloc { get; set; }
+		public static bool EnableDebugging { get; set; }
+		public static bool BypassExec { get; set; }
+		public static string Execname { get; set; }
+		public static string Pingsite { get; set; }
+		public static string[] Modlistloc { get; set; }
 	}
 
 	/// <summary>
@@ -62,17 +62,7 @@ namespace H3VRModInstaller.Common
 		/// </summary>
 		public static Version ModInstallerVersion = new Version(1, 0, 0);
 
-		public static void overrideMICVars()
-		{
-			if (!File.Exists(Directory.GetCurrentDirectory() + @"\" + "MICoverride.json")) return;
-			Console.WriteLine("MICOverride.json detected!");
-			MICVarsTemplate depinput = JsonConvert.DeserializeObject<MICVarsTemplate>(File.ReadAllText(Directory.GetCurrentDirectory() + @"\" + "MICoverride.json"));
-			if (depinput.EnableDebugging != null) enableDebugging = depinput.EnableDebugging;
-			if (depinput.BypassExec != null) BypassExec = depinput.BypassExec;
-			if (depinput.Execname != null) Files.execdir = Files.MainFiledir + depinput.Execname;
-			if (depinput.Pingsite != null) Pingsite = depinput.Pingsite;
-			if (depinput.Modlistloc != null) Files.Modlistloc = depinput.Modlistloc;
-		}
+
 
 		/// <summary>
 		/// Writes line if enabledebugging is true.
@@ -103,15 +93,11 @@ namespace H3VRModInstaller.Common
 			return strng;
 		}
 
-		public static ModFile[] GetAllMods()
-		{
-			ModFile[] result = new ModFile[0];
-			ModListFormat[] jsonfiles = JsonModList.GetModLists();
-			for (int i = 0; i < jsonfiles.Length; i++)
-			{
-				result = result.Concat(jsonfiles[i].Modlist).ToArray();
-			}
-			return result;
-		}
+
+		
+
+
+
+
 	}
 }

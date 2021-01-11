@@ -6,6 +6,7 @@ using H3VRModInstaller.JSON;
 using GlobExpressions;
 using H3VRModInstaller.Common;
 using System.Linq;
+using H3VRModInstaller.JSON.Common;
 
 namespace H3VRModInstaller
 {
@@ -21,7 +22,11 @@ namespace H3VRModInstaller
 		/// <param name="args">dunno why these are here</param>
 		public static void Main(string[] args)
 		{
-			ModInstallerCommon.overrideMICVars();
+			OnlineDatabase.GetMods();
+			Console.ReadKey();
+
+			/*
+			JsonCommon.OverrideModInstallerVariables();
 			//exe check
 			Console.WriteLine("Detecting if " + ModInstallerCommon.Files.execdir + " exists...");
 			if (!File.Exists(ModInstallerCommon.Files.execdir) && !ModInstallerCommon.BypassExec) { ModInstallerCommon.throwexept("H3VR not found!"); return; } else { Console.WriteLine("H3VR found!"); }
@@ -159,6 +164,8 @@ namespace H3VRModInstaller
 			{
 				Console.WriteLine("List not found!");
 			}
+			*/
 		}
+		
 	}
 }

@@ -36,7 +36,7 @@ namespace H3VRModInstaller.GUI
         
         public ModListFile[] MapModList(ModListFile[] output)
         {
-            ModFile[] input = ModInstallerCommon.GetAllMods();
+            ModFile[] input = JsonCommon.GetAllMods();
 
             output = new ModListFile[JsonCommon.JsonFiles.Length];
 
