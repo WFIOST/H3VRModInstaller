@@ -15,17 +15,26 @@ namespace H3VRModInstaller.JSON
         /// </summary>
         public static async void GetMods()
         {
-            for (var i = 0; i <= JsonCommon.OnlineDatabaseTEST.Length; i++)
-            {
-                var client = new HttpClient();
-                var response = await client.GetAsync(JsonCommon.OnlineDatabaseTEST[i]);
-                var responseBody = await response.Content.ReadAsStringAsync();
-                var mods = JsonConvert.DeserializeObject<ModListFormat>(responseBody);
 
-                foreach (var t in mods.Modlist)
+            try
+            {
+                for (var i = 0; i <= JsonCommon.OnlineDatabaseTEST.Length; i++)
                 {
-                    Console.WriteLine("Name: {0} \n", t.Name);
+                    var client = new HttpClient();
+                    var response = await client.GetAsync(JsonCommon.OnlineDatabaseTEST[i]);
+                    var responseBody = await response.Content.ReadAsStringAsync();
+                    var mods = JsonConvert.DeserializeObject<ModListFormat>(responseBody);
+
+                    foreach (var t in mods.Modlist)
+                    {
+                        Console.WriteLine("Name: {0} \n", t.Name);
+                    }
+                
                 }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("lmfao erro");
                 
             }
             
