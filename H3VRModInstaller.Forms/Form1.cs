@@ -23,6 +23,16 @@ namespace H3VRModInstaller.GUI
 	{
 
 		public string impModID;
+		public string[] command;
+
+		public void StartTerminator(string strngcommand)
+		{
+			if (!Terminator.IsBusy)
+			{
+				command = strngcommand.Split(' ');
+				Terminator.RunWorkerAsync();
+			}
+		}
 
 		public mainwindow()
 		{
@@ -86,45 +96,7 @@ namespace H3VRModInstaller.GUI
 			Delete.Hide();
 
 			ModsEnabled.Checked = true;
-
-			JsonModList.DlModList();
-
-			ModFile[] input = ModInstallerCommon.GetAllMods();
-
-			ModFile[] installedMods = JSON.InstalledMods.GetInstalledMods();
-
-			ModFile[] list = null;
-
-			int relevantint = 0;
-
-			//MessageBox.Show($"MODS LENGTH: {input.Length.ToString()}");
-			for (int i = 0; i < input.Length; i++)
-			{
-
-				//this just checks if the mod we're working with is an installedmod, or a dl mod in isinstldmod
-				bool isinstldmod = false;
-				int x = 0;
-				for (x = 0; x < installedMods.Length; x++)
-				{
-					if (input[i].ModId == installedMods[x].ModId) { isinstldmod = true; break; }
-				}
-
-				//sets vars to installedmods or input
-				if (isinstldmod) { list = installedMods; relevantint = x; } else { list = input; relevantint = i; }
-
-
-				var mod = new ListViewItem(list[relevantint].Name, 0); //0
-				mod.SubItems.Add(list[relevantint].Version); //1
-				mod.SubItems.Add(list[relevantint].Author[0]); //2
-				mod.SubItems.Add(list[relevantint].Description); //3
-				mod.SubItems.Add(list[relevantint].ModId); //4
-
-
-				if (!isinstldmod) DownloadableModsList.Items.Add(mod);
-				else InstalledModsList.Items.Add(mod);
-
-			}
-
+			UpdateModList();
 		}
 
 		private void DownloadableModsList_SelectedIndexChanged(object sender, EventArgs e)
@@ -147,29 +119,38 @@ namespace H3VRModInstaller.GUI
 			{
 				//sike lmao
 			}
-
-
-
-
 		}
 
 		private void InstallButton_Click(object sender, EventArgs e)
 		{
-			if (!Terminator.IsBusy)
-			{
-				Terminator.RunWorkerAsync();
-			}
+			StartTerminator("dl " + impModID);
 		}
 
 		private void InstalledModsList_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			/*
+
 			UpdateButton.Show();
 			Delete.Show();
-			*/
+
 			ModVer.Show();
 			try
 			{
+
+				trycatchtext(SelectedModText, "Selected Mod: " + DownloadableModsList.SelectedItems[0].Text);
+				trycatchtext(ModInfo, DownloadableModsList.SelectedItems[0].SubItems[3].Text);
+				impModID = DownloadableModsList.SelectedItems[0].SubItems[4].Text;
+
+			}
+			catch (Exception exception)
+			{
+				//sike lmao
+			}
+
+			try
+			{
+				impModID = InstalledModsList.SelectedItems[0].SubItems[4].Text;
+				SelectedModText.Text = "Selected Mod: " + InstalledModsList.SelectedItems[0].Text;
+				ModInfo.Text = InstalledModsList.SelectedItems[0].SubItems[3].Text;
 				ModVer.Text = "Current Ver: " + InstalledModsList.SelectedItems[0].SubItems[1].Text + ", Online Version: " + ModParsing.GetSpecificMod(InstalledModsList.SelectedItems[0].SubItems[4].Text).Version;
 			}
 			catch { }
@@ -188,10 +169,7 @@ namespace H3VRModInstaller.GUI
 			}
 			try
 			{
-				Console.WriteLine("Downloading modid " + mod);
-				var result = MessageBox.Show($"Are you sure you want to download {mod}?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-				if (result == DialogResult.No) { return; }
-				Downloader.DownloadModDirector(mod);
+				MainClass.doCommand(command);
 			}
 			catch (Exception exception)
 			{
@@ -202,29 +180,77 @@ namespace H3VRModInstaller.GUI
 
 		private void Terminator_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
 		{
-			var modToDownload = DownloadableModsList.SelectedItems[0].SubItems[4].Text;
-			//UpdateInstalledList();
-			MessageBox.Show($"Sucessfully downloaded mod {modToDownload}", "Sucess!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-			LoadGUI(null, null);
+			string downloadedMod = "";
+			try //try getting selected downloadablemodslist
+			{
+				downloadedMod = DownloadableModsList.SelectedItems[0].SubItems[4].Text;
+			}
+			catch //if it fails to, get the selected installedmodslist
+			{
+				downloadedMod = InstalledModsList.SelectedItems[0].SubItems[4].Text;
+			} //probably the stupidest bodge i've ever done lel --potatoes
+			UpdateModList();
+			MessageBox.Show($"Sucessfully downloaded mod {downloadedMod}", "Sucess!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 		}
 
 		private void Terminator_ProgressChanged(object sender, ProgressChangedEventArgs e)
 		{
-			/*
             ProgressBar.Value = e.ProgressPercentage;
             PersentageText.Text = string.Format("{0}%", e.ProgressPercentage);
             ProgressBar.Update();
-            */
 		}
 
-		public void UpdateInstalledList()
+		public void UpdateModList()
 		{
+			DownloadableModsList.Items.Clear();
+			InstalledModsList.Items.Clear();
+
+			JsonModList.DlModList();
+
+			ModFile[] input = JsonCommon.GetAllMods();
+
+			ModFile[] installedMods = JSON.InstalledMods.GetInstalledMods();
+
+			ModFile[] list = null;
+
+			int relevantint = 0;
+
+			//MessageBox.Show($"MODS LENGTH: {input.Length.ToString()}");
+			for (int i = 0; i < input.Length; i++)
+			{
+				//this just checks if the mod we're working with is an installedmod, or a dl mod in isinstldmod
+				bool isinstldmod = false;
+				int x = 0;
+				for (x = 0; x < installedMods.Length; x++)
+				{
+					if (input[i].ModId == installedMods[x].ModId) { isinstldmod = true; break; }
+				}
+
+				//sets vars to installedmods or input
+				if (isinstldmod) { list = installedMods; relevantint = x; } else { list = input; relevantint = i; }
+
+
+				var mod = new ListViewItem(list[relevantint].Name, 0); //0
+				mod.SubItems.Add(list[relevantint].Version); //1
+				mod.SubItems.Add(list[relevantint].Author[0]); //2
+				mod.SubItems.Add(list[relevantint].Description); //3
+				mod.SubItems.Add(list[relevantint].ModId); //4
+
+
+				if (!isinstldmod) DownloadableModsList.Items.Add(mod);
+				else InstalledModsList.Items.Add(mod);
+			}
 
 		}
 
 		private void UpdateButton_Click(object sender, EventArgs e)
 		{
+			StartTerminator("dl " + impModID);
+		}
 
+		private void Delete_Click(object sender, EventArgs e)
+		{
+			StartTerminator("rm " + impModID);
 		}
 	}
 }

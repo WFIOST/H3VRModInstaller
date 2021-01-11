@@ -46,11 +46,18 @@ namespace H3VRModInstaller
 
 			Array.Resize<string>(ref inputargs, 10); //ensures no "OUT OF INDEX TIME TO SHIT MYSELF REEEE"
 
-		
 
+			doCommand(inputargs);
+
+			Console.WriteLine("");
+			goto Start;
+		}
+
+		public static void doCommand(string[] inputargs)
+		{
 			switch (inputargs[0])
 			{
-				
+
 				case "reload":
 					JsonModList.GetModLists(true);
 					break;
@@ -62,7 +69,7 @@ namespace H3VRModInstaller
 					listmodlists();
 					break;
 				case "check":
-					
+
 					ModListFormat[] ml = JsonModList.GetModLists();
 
 					for (int i = 0; i < ml.Length; i++)
@@ -115,20 +122,17 @@ namespace H3VRModInstaller
 				//deletion
 				case "rm":
 					Console.WriteLine($"Deleting {inputargs[1]}");
-					 
+
 					break;
-					
-				
-				
+
+
+
 				default:
 					Console.WriteLine("Invalid command!");
 					break;
-				
-			}
-			Console.WriteLine("");
-			goto Start;
-		}
 
+			}
+		}
 
 
 		//returns list of modlists, aka modlists
