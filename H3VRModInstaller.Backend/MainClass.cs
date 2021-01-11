@@ -16,6 +16,7 @@ namespace H3VRModInstaller
 	public class MainClass
 	{
 
+
 		/// <summary>
 		/// Main function, the args arent used though
 		/// </summary>
@@ -25,7 +26,6 @@ namespace H3VRModInstaller
 			OnlineDatabase.GetMods();
 			Console.ReadKey();
 
-			/*
 			JsonCommon.OverrideModInstallerVariables();
 			//exe check
 			Console.WriteLine("Detecting if " + ModInstallerCommon.Files.execdir + " exists...");
@@ -164,7 +164,6 @@ namespace H3VRModInstaller
 			{
 				Console.WriteLine("List not found!");
 			}
-			*/
 		}
 		
 	}
