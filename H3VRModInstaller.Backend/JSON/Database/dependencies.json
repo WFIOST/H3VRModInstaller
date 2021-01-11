@@ -12,9 +12,9 @@
       "Version": "5.4.4.0",
       "Description": "Modloader for Unity games! Required for all H3VR mods",
       "Path": "https://github.com/BepInEx/BepInEx/releases/download/v5.4.4/",
-	  "Website": "https://github.com/BepInEx/BepInEx/",
+      "Website": "https://github.com/BepInEx/BepInEx/",
       "Arguments": "",
-	  "DelInfo": "BepInEx?winhttp.dll",
+      "DelInfo": "BepInEx?winhttp.dll",
       "Dependencies": []
     },
     {
@@ -30,9 +30,9 @@
       "Version": "1.1.3",
       "Description": "Resource Redirector",
       "Path": "https://github.com/bbepis/XUnity.AutoTranslator/releases/download/v4.13.0/",
-	  "Website": "https://github.com/bbepis/XUnity.AutoTranslator/",
+      "Website": "https://github.com/bbepis/XUnity.AutoTranslator/",
       "Arguments": "",
-	  "DelInfo": "BepInEx/plugins/XUnity.ResourceRedirector",
+      "DelInfo": "BepInEx/plugins/XUnity.ResourceRedirector",
       "Dependencies": [
         "bepinex"
       ]
@@ -47,9 +47,9 @@
       "Version": "0.2.5",
       "Description": "Mod loader for Wurstmod and TnHTweaker",
       "Path": "https://github.com/Deli-Counter/Deli/releases/download/v0.2.5/",
-	  "Website": "https://github.com/Deli-Counter/Deli/",
+      "Website": "https://github.com/Deli-Counter/Deli/",
       "Arguments": "",
-	  "DelInfo": "Mods/Deli.Core.deli?Mods/Deli.Monomod.deli",
+      "DelInfo": "Mods/Deli.Core.deli?Mods/Deli.Monomod.deli",
       "Dependencies": [
         "bepinex"
       ]
@@ -65,9 +65,9 @@
       "Version": "1.0.0.0",
       "Description": "Requirement for Sideloader.",
       "Path": "https://github.com/BepInEx/BepInEx.MonoMod.Loader/releases/download/v1.0.0.0/",
-	  "Website": "https://github.com/BepInEx/BepInEx.MonoMod.Loader/",
+      "Website": "https://github.com/BepInEx/BepInEx.MonoMod.Loader/",
       "Arguments": "",
-	  "DelInfo": "BepInEx/core/MonoMod.dll?BepInEx/patchers/BepInEx.MonoMod.Loader.dll",
+      "DelInfo": "BepInEx/core/MonoMod.dll?BepInEx/patchers/BepInEx.MonoMod.Loader.dll",
       "Dependencies": []
     },
     {
@@ -81,9 +81,9 @@
       "Version": "5.4.4.0",
       "Description": "Loads map mods for h3vr.",
       "Path": "https://github.com/Nolenz/WurstMod/releases/download/v2.0.2.0/",
-	  "Website": "https://github.com/Nolenz/WurstMod/",
+      "Website": "https://github.com/Nolenz/WurstMod/",
       "Arguments": "moveToFolder?WurstMod.deli?Mods/?WurstMod.deli",
-	  "DelInfo": "Mods/WurstMod.deli",
+      "DelInfo": "Mods/WurstMod.deli",
       "Dependencies": [
         "bepinex",
         "deli"
@@ -99,9 +99,9 @@
       "Version": "1.4.0",
       "Description": "Loads custom characters.",
       "Path": "https://github.com/devyndamonster/TakeAndHoldTweaker/releases/download/v1.4.0/",
-	  "Website": "https://github.com/devyndamonster/TakeAndHoldTweaker/",
+      "Website": "https://github.com/devyndamonster/TakeAndHoldTweaker/",
       "Arguments": "",
-	  "DelInfo": "TNH_Tweaker?Mods/TakeAndHoldTweaker.zip",
+      "DelInfo": "TNH_Tweaker?Mods/TakeAndHoldTweaker.zip",
       "Dependencies": [
         "bepinex",
         "deli"
@@ -118,9 +118,9 @@
       "Version": "0.3.3",
       "Description": "Loads skins and some scripts for h3vr.",
       "Path": "https://github.com/denikson/H3VR.Sideloader/releases/download/v0.3.3/",
-	  "Website": "https://github.com/denikson/H3VR.Sideloader/",
+      "Website": "https://github.com/denikson/H3VR.Sideloader/",
       "Arguments": "",
-	  "DelInfo": "BepInEx/plugins/H3VR.Sideloader.dll",
+      "DelInfo": "BepInEx/plugins/H3VR.Sideloader.dll",
       "Dependencies": [
         "bepinex",
         "deli"
@@ -136,9 +136,9 @@
       "Version": "1.3.0",
       "Description": "loads custom guns",
       "Path": "https://github.com/BlockBuilder57/LSIIC/releases/download/v1.3/",
-	  "Website": "https://github.com/BlockBuilder57/LSIIC/",
+      "Website": "https://github.com/BlockBuilder57/LSIIC/",
       "Arguments": "addFolder?VirtualObjects/?unzipToDir?",
-	  "DelInfo": "BepInEx/monomod/LSIIC?Mods/LSIIC.h3mod",
+      "DelInfo": "BepInEx/monomod/LSIIC?Mods/LSIIC.h3mod",
       "Dependencies": [
         "bepinex",
         "deli"
@@ -155,9 +155,9 @@
       "Version": "3.0.0",
       "Description": "A bunch of scripts for others to use.",
       "Path": "https://bonetome.com/download.php?file=MTRmZjdkYWM4M2YzNDdmNCszNjUrODUx",
-	  "Website": "https://bonetome.com/h3vr/mods/160/",
+      "Website": "https://bonetome.com/h3vr/mods/160/",
       "Arguments": "unzipToDir?Mods/",
-	  "DelInfo": "Mods/H3VRUtils.hotmod",
+      "DelInfo": "Mods/H3VRUtils.hotmod",
       "Dependencies": [
         "bepinex",
         "sideloader"
@@ -174,9 +174,9 @@
       "Version": "16.1.0",
       "Description": "Allows pressing f1 to modify config ingame.",
       "Path": "https://github.com/BepInEx/BepInEx.ConfigurationManager/releases/download/v16.1/",
-	  "Website": "https://github.com/BepInEx/BepInEx.ConfigurationManager/",
+      "Website": "https://github.com/BepInEx/BepInEx.ConfigurationManager/",
       "Arguments": "",
-	  "DelInfo": "BepInEx/plugins/ConfigurationManager.dll?BepInEx/plugins/ConfigurationManager.xml",
+      "DelInfo": "BepInEx/plugins/ConfigurationManager.dll?BepInEx/plugins/ConfigurationManager.xml",
       "Dependencies": [
         "bepinex"
       ]

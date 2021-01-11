@@ -1,4 +1,4 @@
-`{
+{
   "modlist": [
     {
       "modID": "uniqueidmodinstaller",
@@ -16,4 +16,4 @@
       "Dependencies": []
     }
   ]
-}`
+}

@@ -1,4 +1,4 @@
-using System;
+using System.Collections.Generic;
 using System.Net.Http;
 using Newtonsoft.Json;
 using H3VRModInstaller.JSON.Common;
@@ -13,31 +13,16 @@ namespace H3VRModInstaller.JSON
         /// <summary>
         /// Gets the mods
         /// </summary>
-        public static async void GetMods()
+        public static async IAsyncEnumerable<ModFile[]> GetMods()
         {
-
-            try
-            {
                 for (var i = 0; i <= JsonCommon.OnlineDatabaseTEST.Length; i++)
                 {
                     var client = new HttpClient();
                     var response = await client.GetAsync(JsonCommon.OnlineDatabaseTEST[i]);
                     var responseBody = await response.Content.ReadAsStringAsync();
                     var mods = JsonConvert.DeserializeObject<ModListFormat>(responseBody);
-
-                    foreach (var t in mods.Modlist)
-                    {
-                        Console.WriteLine("Name: {0} \n", t.Name);
-                    }
-                
+                    yield return mods.Modlist;
                 }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("lmfao erro");
-                
-            }
-            
         }
     }
 }
