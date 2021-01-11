@@ -11,11 +11,11 @@
       "Version": "1.0.0",
       "Description": "",
       "Path": "https://bonetome.com/download.php?file=MmI5NzlkOTRkZTI3MzUyYyszNjUrOTQw",
-	  "Website": "https://bonetome.com/h3vr/map/181/",
+      "Website": "https://bonetome.com/h3vr/map/181/",
       "Arguments": "moveToFolder?ShootyHouse.zip?Mods/?ShootyHouse.zip",
       "Dependencies": [
-		"wurstmod"
-	  ]
+        "wurstmod"
+      ]
     },
     {
       "modID": "promeatheus",
@@ -27,13 +27,13 @@
       "Version": "1.1.0",
       "Description": "",
       "Path": "https://bonetome.com/download.php?file=YmQ1ZWFmZjgzZWU3NzVmMiszNjUrOTk4",
-	  "Website": "https://bonetome.com/h3vr/map/198/",
+      "Website": "https://bonetome.com/h3vr/map/198/",
       "Arguments": "moveToFolder?Promeatheus_1.1.0.0.zip?Mods/?Promeatheus_1.1.0.0.zip",
       "Dependencies": [
         "wurstmod"
       ]
     },
-	{
+    {
       "modID": "wurstwar",
       "Name": "Wurst War 2",
       "RawName": "Wurst_War_II_1.2.1.zip",
@@ -43,7 +43,7 @@
       "Version": "1.2.1",
       "Description": "",
       "Path": "https://bonetome.com/download.php?file=MDg4OTYxMmY2M2FiMDY1MSszNjUrNTY0",
-	  "Website": "https://bonetome.com/h3vr/map/87/",
+      "Website": "https://bonetome.com/h3vr/map/87/",
       "Arguments": "unzipToDir??moveToFolder?Wurst War II Generic?CustomLevels/Generic/?Wurst War II Generic?moveToFolder?Wurst War II TNH?CustomLevels/TakeAndHold/?Wurst War II TNH",
       "Dependencies": [
         "wurstmod"

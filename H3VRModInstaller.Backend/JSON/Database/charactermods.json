@@ -10,14 +10,14 @@
       "Version": "1.4.0",
       "Description": "",
       "Path": "https://github.com/devyndamonster/TakeAndHoldTweaker/releases/download/v1.4.0/",
-	  "Website": "https://github.com/devyndamonster/TakeAndHoldTweaker/releases/tag/v1.4.0",
+      "Website": "https://github.com/devyndamonster/TakeAndHoldTweaker/releases/tag/v1.4.0",
       "Arguments": "moveToFolder?ComradeKolbasa.zip?Mods/?ComradeKolbasa.zip",
-	  "DelInfo": "Mods/ComradeKolbasa.zip",
+      "DelInfo": "Mods/ComradeKolbasa.zip",
       "Dependencies": [
-		"tnhtweaker"
-	  ]
+        "tnhtweaker"
+      ]
     },
-	{
+    {
       "modID": "pmcpete",
       "Name": "PMC Pete",
       "RawName": "PMCPete.zip",
@@ -27,21 +27,21 @@
       "Version": "1.4.0",
       "Description": "",
       "Path": "https://github.com/devyndamonster/TakeAndHoldTweaker/releases/download/v1.4.0/",
-	  "Website": "https://github.com/devyndamonster/TakeAndHoldTweaker/releases/tag/v1.4.0",
+      "Website": "https://github.com/devyndamonster/TakeAndHoldTweaker/releases/tag/v1.4.0",
       "Arguments": "moveToFolder?PMCPete.zip?Mods/?PMCPete.zip",
-	  "DelInfo": "Mods/PMCPete.zip",
+      "DelInfo": "Mods/PMCPete.zip",
       "Dependencies": [
-		"tnhtweaker",
-		"meatsmodulak",
-		"meatsmodularparts",
-		"modular",
-		"meatsmodulsr",
-		"meatsmodulpp",
-		"ebr",
-		"meatsrigs"
-	  ]
+        "tnhtweaker",
+        "meatsmodulak",
+        "meatsmodularparts",
+        "modular",
+        "meatsmodulsr",
+        "meatsmodulpp",
+        "ebr",
+        "meatsrigs"
+      ]
     },
-	{
+    {
       "modID": "timetraveltimmy",
       "Name": "Time Travel Timmy",
       "RawName": "TimeTravelTimmy.zip",
@@ -51,12 +51,12 @@
       "Version": "1.4.0",
       "Description": "",
       "Path": "https://github.com/devyndamonster/TakeAndHoldTweaker/releases/download/v1.4.0/",
-	  "Website": "https://github.com/devyndamonster/TakeAndHoldTweaker/releases/tag/v1.4.0",
+      "Website": "https://github.com/devyndamonster/TakeAndHoldTweaker/releases/tag/v1.4.0",
       "Arguments": "moveToFolder?TimeTravelTimmy.zip?Mods/?TimeTravelTimmy.zip",
-	  "DelInfo": "Mods/TimeTravelTimmy.zip",
+      "DelInfo": "Mods/TimeTravelTimmy.zip",
       "Dependencies": [
-		"tnhtweaker"
-	  ]
+        "tnhtweaker"
+      ]
     },
     {
       "modID": "scifisofia",
@@ -68,14 +68,14 @@
       "Version": "1.0.1",
       "Description": "",
       "Path": "https://bonetome.com/download.php?file=ZjNmZDcwNTRhZDVjYjI5YSszNjUrOTk3",
-	  "Website": "https://bonetome.com/h3vr/characters/197/",
+      "Website": "https://bonetome.com/h3vr/characters/197/",
       "Arguments": "moveToFolder?SciFiSofia.zip?Mods/?SciFiSofia.zip",
-	  "DelInfo": "Mods/SciFiSofia.zip",
+      "DelInfo": "Mods/SciFiSofia.zip",
       "Dependencies": [
-		"tnhtweaker"
-	  ]
+        "tnhtweaker"
+      ]
     },
-	{
+    {
       "modID": "johnwurst",
       "Name": "John Wurst",
       "RawName": "JohnWurst.zip",
@@ -85,12 +85,12 @@
       "Version": "1.0.1",
       "Description": "",
       "Path": "https://bonetome.com/download.php?file=OTI3NDIwMzcyMjJmNmRhNSszNjUrOTgw",
-	  "Website": "https://bonetome.com/h3vr/characters/195/",
+      "Website": "https://bonetome.com/h3vr/characters/195/",
       "Arguments": "moveToFolder?JohnWurst.zip?Mods/?JohnWurst.zip",
-	  "DelInfo": "Mods/JohnWurst.zip",
+      "DelInfo": "Mods/JohnWurst.zip",
       "Dependencies": [
-		"tnhtweaker"
-	  ]
+        "tnhtweaker"
+      ]
     },
     {
       "modID": "bratwurstbernie",
@@ -102,12 +102,12 @@
       "Version": "1.1.0",
       "Description": "",
       "Path": "https://bonetome.com/download.php?file=MDEyYzgxYzQ1YTUyOTJlYSszNjUrODY2",
-	  "Website": "https://bonetome.com/h3vr/characters/164/",
+      "Website": "https://bonetome.com/h3vr/characters/164/",
       "Arguments": "unzipToDir?Mods/",
-	  "DelInfo": "Mods/BratwurstBernie.deli",
+      "DelInfo": "Mods/BratwurstBernie.deli",
       "Dependencies": [
-		"tnhtweaker"
-	  ]
+        "tnhtweaker"
+      ]
     },
     {
       "modID": "greatwargunther",
@@ -119,13 +119,13 @@
       "Version": "1.0.7",
       "Description": "",
       "Path": "https://bonetome.com/download.php?file=OTE5NDUyYWJhMTRiMGRmYSszNjUrODYy",
-	  "Website": "https://bonetome.com/h3vr/characters/163/",
+      "Website": "https://bonetome.com/h3vr/characters/163/",
       "Arguments": "moveToFolder?GreatWarGunther.zip?Mods/?GreatWarGunther.zip",
-	  "DelInfo": "Mods/GreatWarGunther.zip",
+      "DelInfo": "Mods/GreatWarGunther.zip",
       "Dependencies": [
-		"tnhtweaker",
-		"doomboxsgermanuniforms"
-	  ]
+        "tnhtweaker",
+        "doomboxsgermanuniforms"
+      ]
     },
     {
       "modID": "allrounderrandy",
@@ -137,14 +137,14 @@
       "Version": "1.0.1",
       "Description": "",
       "Path": "https://bonetome.com/download.php?file=ZDA4ZjhlOWU3NjczYjE5MiszNjUrODYw",
-	  "Website": "https://bonetome.com/h3vr/characters/161/",
+      "Website": "https://bonetome.com/h3vr/characters/161/",
       "Arguments": "unzipToDir??moveToFolder?All Rounder Randy/Mods/?/?Mods/?moveToFolder?All Rounder Randy/TNH_Tweaker/?/?TNH_Tweaker/",
       "DelInfo": "",
-	  "Dependencies": [
-		"tnhtweaker"
-	  ]
+      "Dependencies": [
+        "tnhtweaker"
+      ]
     },
-	{
+    {
       "modID": "scavsigvoicelines",
       "Name": "Scavsig Voicelines",
       "RawName": "ScavsigVoices.rar",
@@ -154,13 +154,13 @@
       "Version": "1.0.0",
       "Description": "",
       "Path": "https://bonetome.com/download.php?file=MWE4YTBkMTQ5ZDNhYzk5NiszNjUrODk3",
-	  "Website": "https://bonetome.com/h3vr/characters/172/",
+      "Website": "https://bonetome.com/h3vr/characters/172/",
       "Arguments": "unzipToDir?Mods/",
       "Dependencies": [
-		"sideloader"
-	  ]
+        "sideloader"
+      ]
     },
-	{
+    {
       "modID": "doomboxsgermanuniforms",
       "Name": "Doombox's German Uniforms",
       "RawName": "germanuniforms.zip",
@@ -170,13 +170,13 @@
       "Version": "1.0.0",
       "Description": "",
       "Path": "https://bonetome.com/download.php?file=ZTkyNjc1MzFjMDRjNmM5YyszNjUrOTc0",
-	  "Website": "https://bonetome.com/h3vr/characters/192/",
+      "Website": "https://bonetome.com/h3vr/characters/192/",
       "Arguments": "unzipToDir?VirtualObjects/",
-	  "DelInfo": "VirtualObjects/german uniforms",
+      "DelInfo": "VirtualObjects/german uniforms",
       "Dependencies": [
-		"tnhtweaker",
-		"lsiic"
-	  ]
+        "tnhtweaker",
+        "lsiic"
+      ]
     }
   ]
 }

@@ -10,9 +10,9 @@
       "Version": "5.2.0",
       "Description": "Adds a massive amount of firearms to the game.",
       "Path": "https://bonetome.com/download.php?file=NGFmYTMxOWRjNmEwMTdhMSszNjUrNzUw",
-	  "Website": "https://bonetome.com/h3vr/weapons/142/",
+      "Website": "https://bonetome.com/h3vr/weapons/142/",
       "Arguments": "unzipToDir?VirtualObjects/",
-	  "DelInfo": "VirtualObjects/Potatoes' Custom Guns",
+      "DelInfo": "VirtualObjects/Potatoes' Custom Guns",
       "Dependencies": [
         "lsiic",
         "h3vrutils"
@@ -28,9 +28,9 @@
       "Version": "1.0.0",
       "Description": "modulAR",
       "Path": "https://bonetome.com/download.php?file=MjgxMDkxOThkYTE0Mjg4MCszNjUrODUw",
-	  "Website": "https://bonetome.com/h3vr/weapons/159/",
+      "Website": "https://bonetome.com/h3vr/weapons/159/",
       "Arguments": "unzipToDir?VirtualObjects/",
-	  "DelInfo": "VirtualObjects/modular",
+      "DelInfo": "VirtualObjects/modular",
       "Dependencies": [
         "lsiic"
       ]
@@ -45,9 +45,9 @@
       "Version": "1.0.0",
       "Description": "Side Charger AR",
       "Path": "https://bonetome.com/download.php?file=OTI3NTY5Y2ZlYThiMzZkNCszNjUrOTQ2",
-	  "Website": "https://bonetome.com/h3vr/weapons/184/",
+      "Website": "https://bonetome.com/h3vr/weapons/184/",
       "Arguments": "unzipToDir?VirtualObjects/",
-	  "DelInfo": "VirtualObjects/SidechARger",
+      "DelInfo": "VirtualObjects/SidechARger",
       "Dependencies": [
         "meatsmodularparts",
         "lsiic"
@@ -63,7 +63,7 @@
       "Version": "1.0.0",
       "Description": "Meat's Rigs",
       "Path": "https://bonetome.com/download.php?file=OGViNjM0MGVlOTUwMGYzNyszNjUrOTMw",
-	  "Website": "https://bonetome.com/h3vr/weapons/176/",
+      "Website": "https://bonetome.com/h3vr/weapons/176/",
       "Arguments": "unzipToDir?VirtualObjects/",
       "Dependencies": [
         "lsiic"
@@ -79,9 +79,9 @@
       "Version": "1.0.0",
       "Description": "Extra mags for AKs and ARs.",
       "Path": "https://bonetome.com/download.php?file=MzZmNmEzNDZmNzJhNDdiMiszNjUrODkw",
-	  "Website": "https://bonetome.com/h3vr/weapons/170/",
+      "Website": "https://bonetome.com/h3vr/weapons/170/",
       "Arguments": "unzipToDir?VirtualObjects/",
-	  "DelInfo": "VirtualObjects/Magazines",
+      "DelInfo": "VirtualObjects/Magazines",
       "Dependencies": [
         "lsiic"
       ]
@@ -96,9 +96,9 @@
       "Version": "1.0.0",
       "Description": "Modular 308 AR15",
       "Path": "https://bonetome.com/download.php?file=YjQzZTQ1MTM2MDQ0ODg3MSszNjUrODgz",
-	  "Website": "https://bonetome.com/h3vr/weapons/167/",
+      "Website": "https://bonetome.com/h3vr/weapons/167/",
       "Arguments": "unzipToDir?VirtualObjects/",
-	  "DelInfo": "VirtualObjects/ModulSR",
+      "DelInfo": "VirtualObjects/ModulSR",
       "Dependencies": [
         "lsiic",
         "meatsmodularparts"
@@ -114,9 +114,9 @@
       "Version": "1.0.0",
       "Description": "Adds a modular PP bizon.",
       "Path": "https://bonetome.com/download.php?file=ODQ4YThkNDZjMGZhYzNmYSszNjUrODc3",
-	  "Website": "https://bonetome.com/h3vr/weapons/165/",
+      "Website": "https://bonetome.com/h3vr/weapons/165/",
       "Arguments": "unzipToDir?VirtualObjects/",
-	  "DelInfo": "VirtualObjects/ModulPP",
+      "DelInfo": "VirtualObjects/ModulPP",
       "Dependencies": [
         "lsiic",
         "meatsmodulak"
@@ -132,9 +132,9 @@
       "Version": "1.0.0",
       "Description": "Adds a modular AK.",
       "Path": "https://bonetome.com/download.php?file=NzFhNzc3MWJiZjQ2OWJhOCszNjUrODYx",
-	  "Website": "https://bonetome.com/h3vr/weapons/162/",
+      "Website": "https://bonetome.com/h3vr/weapons/162/",
       "Arguments": "unzipToDir?VirtualObjects/",
-	  "DelInfo": "VirtualObjects/AKParts",
+      "DelInfo": "VirtualObjects/AKParts",
       "Dependencies": [
         "lsiic",
         "h3vrutils"
@@ -150,9 +150,9 @@
       "Version": "1.0.0",
       "Description": "Adds modular AR parts for the ModulAR.",
       "Path": "https://bonetome.com/download.php?file=NDU1MzQwZmVkOTA4YmYzYyszNjUrODQ3",
-	  "Website": "https://bonetome.com/h3vr/weapons/157/",
+      "Website": "https://bonetome.com/h3vr/weapons/157/",
       "Arguments": "unzipToDir?VirtualObjects/",
-	  "DelInfo": "VirtualObjects/ARParts",
+      "DelInfo": "VirtualObjects/ARParts",
       "Dependencies": [
         "lsiic",
         "modular"
@@ -168,9 +168,9 @@
       "Version": "1.1.0",
       "Description": "mpx",
       "Path": "https://bonetome.com/download.php?file=ZmZjNzFkZjA3NjM4NTI2NCszNjUrOTU1",
-	  "Website": "https://bonetome.com/h3vr/weapons/187/",
+      "Website": "https://bonetome.com/h3vr/weapons/187/",
       "Arguments": "unzipToDir?VirtualObjects/",
-	  "DelInfo": "VirtualObjects/ModulMPX",
+      "DelInfo": "VirtualObjects/ModulMPX",
       "Dependencies": [
         "lsiic",
         "h3vrutils",
@@ -187,9 +187,9 @@
       "Version": "1.0.0",
       "Description": "Adds an mk14 EBR.",
       "Path": "https://bonetome.com/download.php?file=YzM2MTcyN2ZlYTRjNWRhNiszNjUrODg4",
-	  "Website": "https://bonetome.com/h3vr/weapons/169/",
+      "Website": "https://bonetome.com/h3vr/weapons/169/",
       "Arguments": "unzipToDir?VirtualObjects/",
-	  "DelInfo": "VirtualObjects/mk14 ebr",
+      "DelInfo": "VirtualObjects/mk14 ebr",
       "Dependencies": [
         "lsiic"
       ]
@@ -204,15 +204,15 @@
       "Version": "1.0.0",
       "Description": "Adds a modular m4.",
       "Path": "https://bonetome.com/download.php?file=MGI3M2Y4ZGUwMjM5OWI2NyszNjUrOTYw",
-	  "Website": "https://bonetome.com/h3vr/weapons/188/",
+      "Website": "https://bonetome.com/h3vr/weapons/188/",
       "Arguments": "unzipToDir?VirtualObjects/",
-	  "DelInfo": "VirtualObjects/ModulAR2.0",
+      "DelInfo": "VirtualObjects/ModulAR2.0",
       "Dependencies": [
         "lsiic",
         "meatsmodularparts"
       ]
     },
-	{
+    {
       "modID": "meatsmemes",
       "Name": "Meats Memes",
       "RawName": "Meatsmemes.zip",
@@ -222,14 +222,14 @@
       "Version": "1.0.0",
       "Description": "memes",
       "Path": "https://bonetome.com/download.php?file=Mzg2Y2U2ZDE5ZWNlYjIxMSszNjUrOTcy",
-	  "Website": "https://bonetome.com/h3vr/weapons/191/",
+      "Website": "https://bonetome.com/h3vr/weapons/191/",
       "Arguments": "unzipToDir?VirtualObjects/",
-	  "DelInfo": "VirtualObjects/memes",
+      "DelInfo": "VirtualObjects/memes",
       "Dependencies": [
         "lsiic"
       ]
     },
-	{
+    {
       "modID": "gunshields",
       "Name": "Gunshields",
       "RawName": "gunshields1.0.2.7z",
@@ -239,7 +239,7 @@
       "Version": "1.0.0",
       "Description": "GUNSHIELDS",
       "Path": "https://bonetome.com/download.php?file=MGI3M2Y4ZGUwMjM5OWI2NyszNjUrOTYw",
-	  "Website": "https://bonetome.com/h3vr/weapons/193/",
+      "Website": "https://bonetome.com/h3vr/weapons/193/",
       "Arguments": "unzipToDir?VirtualObjects/",
       "Dependencies": [
         "lsiic"

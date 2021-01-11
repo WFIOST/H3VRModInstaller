@@ -12,13 +12,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="11646549-311b-4445-a706-8ab87333e815" name="Default Changelist" comment="ListStuff">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.H3VRModInstaller/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.H3VRModInstaller/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.H3VRModInstaller/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.H3VRModInstaller/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.Backend/Common/GUICommon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/H3VRModInstaller.Backend/Common/GUICommon.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.Backend/Common/JSON/JSONCommon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/H3VRModInstaller.Backend/Common/JSON/JSONCommon.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.Backend/Common/ModInstallerCommon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/H3VRModInstaller.Backend/Common/ModInstallerCommon.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/H3VRModInstaller.Backend/JSON/GetMods.cs" beforeDir="false" afterPath="$PROJECT_DIR$/H3VRModInstaller.Backend/JSON/GetMods.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.Backend/MainClass.cs" beforeDir="false" afterPath="$PROJECT_DIR$/H3VRModInstaller.Backend/MainClass.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,15 +49,16 @@
     <setting file="file://$PROJECT_DIR$/H3VRModInstaller.Forms/Form1.Designer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Zip.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/H3VRModInstaller.Forms/Program.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///Users/frityet/Documents/H3VRModInstaller/H3VRModInstaller.Backend/JSON/GetMods.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/H3VRModInstaller.Backend/JSON/JSONModList.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/H3VRModInstaller.Backend/MainClass.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///Users/frityet/Documents/H3VRModInstaller/H3VRModInstaller.Backend/JSON/GetMods.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/H3VRModInstaller.Backend/Net/Downloader.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/H3VRModInstaller.Backend/Net/NetCheck.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///Users/frityet/Documents/H3VRModInstaller/H3VRModInstaller.Backend/JSON/installedMods.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/frityet/Documents/H3VRModInstaller/H3VRModInstaller.Backend/JSON/GetMods.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/44333F93-2A13-45F8-8805-30C5F9AB573B/7/WebClient.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/frityet/Documents/H3VRModInstaller/H3VRModInstaller.Backend/MainClass.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/H3VRModInstaller.Backend/Common/JSON/JSONCommon.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///Users/frityet/Documents/H3VRModInstaller/H3VRModInstaller.Backend/Filesys/Installer.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/frityet/Documents/H3VRModInstaller/H3VRModInstaller.Backend/Filesys/Zip.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
@@ -108,7 +104,6 @@
       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Installer.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Uninstaller.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.Forms/GUICommon.cs" />
-      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/JSON/JSONModList.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.Forms/Form1.Designer.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Net/Downloader.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.Forms/Form1.cs" />
@@ -117,6 +112,7 @@
       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Common/JSON/JSONCommon.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/MainClass.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/JSON/GetMods.cs" />
+      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/JSON/JSONModList.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1lah3QXp00T3AT7tcB4yg7113kU" />
@@ -222,6 +218,7 @@
       <workItem from="1609642351920" duration="17257000" />
       <workItem from="1609709110597" duration="13765000" />
       <workItem from="1609740348172" duration="7641000" />
+      <workItem from="1610400663289" duration="3430000" />
     </task>
     <task id="LOCAL-00001" summary="Split func.cs">
       <created>1607847473285</created>
@@ -482,7 +479,42 @@
       <option name="project" value="LOCAL" />
       <updated>1609741039798</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="yeet">
+      <created>1610400864964</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1610400864964</updated>
+    </task>
+    <task id="LOCAL-00039" summary="more fix">
+      <created>1610401333798</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1610401333798</updated>
+    </task>
+    <task id="LOCAL-00040" summary="hot secks">
+      <created>1610402584288</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1610402584288</updated>
+    </task>
+    <task id="LOCAL-00041" summary="hot secks">
+      <created>1610402699804</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1610402699804</updated>
+    </task>
+    <task id="LOCAL-00042" summary="alrighty working">
+      <created>1610403331335</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1610403331335</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -504,10 +536,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="JSOOOOON (pt 4)" />
-    <MESSAGE value="Nae naed forms again" />
-    <MESSAGE value="Added modcheck" />
-    <MESSAGE value="Fixed TNHTweaker deli" />
     <MESSAGE value="Added serialise tests" />
     <MESSAGE value="kill me" />
     <MESSAGE value="fixed H3VRModInstaller.JSON.csproj" />
@@ -529,6 +557,10 @@
     <MESSAGE value="Cleanup" />
     <MESSAGE value="ListStuff" />
     <MESSAGE value="Broken, working on it" />
-    <option name="LAST_COMMIT_MESSAGE" value="Broken, working on it" />
+    <MESSAGE value="yeet" />
+    <MESSAGE value="more fix" />
+    <MESSAGE value="hot secks" />
+    <MESSAGE value="alrighty working" />
+    <option name="LAST_COMMIT_MESSAGE" value="alrighty working" />
   </component>
 </project>
