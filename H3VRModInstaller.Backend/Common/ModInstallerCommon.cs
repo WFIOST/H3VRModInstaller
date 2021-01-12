@@ -9,6 +9,8 @@ using System.IO;
 using GlobExpressions;
 using System.Net;
 using System.IO.Compression;
+using H3VRModInstaller.GUI;
+using H3VRModInstaller.Filesys;
 
 namespace H3VRModInstaller.Common
 {
@@ -62,6 +64,8 @@ namespace H3VRModInstaller.Common
 		/// </summary>
 		public static Version ModInstallerVersion = new Version(1, 0, 0);
 
+
+		
 
 
 		/// <summary>

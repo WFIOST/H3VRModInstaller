@@ -44,6 +44,7 @@ namespace H3VRModInstaller.JSON
 		public static ModFile[] GetInstalledMods()
 		{
 			if (!File.Exists(Directory.GetCurrentDirectory() + @"\installedmods.json")) return new ModFile[0];
+			Console.WriteLine("Reading from " + Directory.GetCurrentDirectory() + @"\installedmods.json");
 			InstalledModsFormat input = null;
 			DeprecatedInstalledModsFormat depinput = null;
 			try { input = JsonConvert.DeserializeObject<InstalledModsFormat>(File.ReadAllText(Directory.GetCurrentDirectory() + "/installedmods.json")); }

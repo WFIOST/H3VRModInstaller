@@ -19,11 +19,14 @@ using H3VRModInstaller.Filesys;
 
 namespace H3VRModInstaller.GUI
 {
+
 	public partial class mainwindow : Form
 	{
 
 		public string impModID;
 		public string[] command;
+
+
 
 		public void StartTerminator(string strngcommand)
 		{
@@ -37,6 +40,18 @@ namespace H3VRModInstaller.GUI
 		public mainwindow()
 		{
 			InitializeComponent();
+			Downloader.NotifyForms.NotifyUpdateProgressBar += _nu_updatebar;
+		}
+
+		public void _nu_updatebar(float[] info)
+		{
+			
+			updatebar(info);
+		}
+
+		public void updatebar(float[] info)
+		{
+			ProgressBar.Value = (int)info[0];
 		}
 
 		public void trycatchtext(Label label, string text)
@@ -44,6 +59,7 @@ namespace H3VRModInstaller.GUI
 			try { label.Text = text; } catch { }
 		}
 
+		
 
 
 		private void ModsEnabled_CheckedChanged(object sender, EventArgs e)
@@ -89,6 +105,7 @@ namespace H3VRModInstaller.GUI
 
 		private void LoadGUI(object sender, EventArgs e)
 		{
+
 			AllocConsole();
 			InstallButton.Hide();
 			UpdateButton.Hide();
@@ -195,9 +212,7 @@ namespace H3VRModInstaller.GUI
 
 		private void Terminator_ProgressChanged(object sender, ProgressChangedEventArgs e)
 		{
-            ProgressBar.Value = e.ProgressPercentage;
-            PersentageText.Text = string.Format("{0}%", e.ProgressPercentage);
-            ProgressBar.Update();
+			
 		}
 
 		public void UpdateModList()

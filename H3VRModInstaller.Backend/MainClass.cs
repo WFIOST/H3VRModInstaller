@@ -7,6 +7,7 @@ using GlobExpressions;
 using H3VRModInstaller.Common;
 using System.Linq;
 using H3VRModInstaller.JSON.Common;
+using H3VRModInstaller.Filesys;
 
 namespace H3VRModInstaller
 {
@@ -122,11 +123,8 @@ namespace H3VRModInstaller
 				//deletion
 				case "rm":
 					Console.WriteLine($"Deleting {inputargs[1]}");
-
+					Uninstaller.DeleteMod(inputargs[1]);
 					break;
-
-
-
 				default:
 					Console.WriteLine("Invalid command!");
 					break;
