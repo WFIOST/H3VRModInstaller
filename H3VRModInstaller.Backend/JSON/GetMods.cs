@@ -1,7 +1,10 @@
+using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Net.Http;
 using Newtonsoft.Json;
 using H3VRModInstaller.JSON.Common;
+using Newtonsoft.Json.Linq;
 
 namespace H3VRModInstaller.JSON
 {
@@ -13,16 +16,37 @@ namespace H3VRModInstaller.JSON
         /// <summary>
         /// Gets the mods
         /// </summary>
-        public static async IAsyncEnumerable<ModFile[]> GetMods()
+        public static ModFile[] GetMods(ModFile[] AmoungDrip = null)
         {
-                for (var i = 0; i <= JsonCommon.OnlineDatabaseTEST.Length; i++)
+
+
+
+            try
+            {
+                for (int i = 0; i < JsonCommon.OnlineDatabaseTEST.Length; i++)
                 {
-                    var client = new HttpClient();
-                    var response = await client.GetAsync(JsonCommon.OnlineDatabaseTEST[i]);
-                    var responseBody = await response.Content.ReadAsStringAsync();
-                    var mods = JsonConvert.DeserializeObject<ModListFormat>(responseBody);
-                    yield return mods.Modlist;
+                    var shitCumPiss = new WebClient();
+                
+                    var bigBigChungus = shitCumPiss.DownloadString(JsonCommon.OnlineDatabaseTEST[i]);
+                
+                    //Console.WriteLine(bigBigChungus);
+                
+                    var whenTheImposterIsSus = JsonConvert.DeserializeObject<ModListFormat>(bigBigChungus);
+
+
+                    for (int j = 0; j < whenTheImposterIsSus.Modlist.Length; j++)
+                    {
+                        Console.WriteLine("Name: {0}", whenTheImposterIsSus.Modlist[j].Name);
+                    }
+                
                 }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("lmfao it error, *cums*");
+            }
+            
+            return null;
         }
     }
 }

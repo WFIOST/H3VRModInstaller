@@ -15,7 +15,7 @@ namespace H3VRModInstaller.JSON
 	public class InstalledModsFormat
 	{
 		/// <summary>
-		/// <c>ModFile</c> array of installed mods
+		/// <c>ModFile</c> iarray of installed mods
 		/// </summary>
 		public ModFile[] InstalledMods { get; set; }
 	}
