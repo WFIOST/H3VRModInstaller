@@ -1,51 +1,31 @@
 using System;
-using System.Collections.Generic;
 using System.Net;
-using System.Net.Http;
-using Newtonsoft.Json;
 using H3VRModInstaller.JSON.Common;
-using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
 
 namespace H3VRModInstaller.JSON
 {
     /// <summary>
-    /// (NEW) Gets the JSON ModFiles from GitHub itself instead of downloading it 
+    ///<c>(NEW)</c> Gets the JSON ModFiles from GitHub itself instead of downloading it
     /// </summary>
     public class OnlineDatabase
     {
         /// <summary>
-        /// Gets the mods
+        ///     Gets the mods
         /// </summary>
-        public static ModFile[] GetMods(ModFile[] AmoungDrip = null)
+        public static ModFile[] GetMods(ModFile[] AmongDrip = null)
         {
+            //May god forgive me for my sins
 
-
-
-            try
+            foreach (var c in JsonCommon.OnlineDatabaseTEST)
             {
-                for (int i = 0; i < JsonCommon.OnlineDatabaseTEST.Length; i++)
-                {
-                    var shitCumPiss = new WebClient();
-                
-                    var bigBigChungus = shitCumPiss.DownloadString(JsonCommon.OnlineDatabaseTEST[i]);
-                
-                    //Console.WriteLine(bigBigChungus);
-                
-                    var whenTheImposterIsSus = JsonConvert.DeserializeObject<ModListFormat>(bigBigChungus);
+                var webClient = new WebClient();
+                var serialisedJSON = webClient.DownloadString(c);
+                var serialised = JsonConvert.DeserializeObject<ModListFormat>(serialisedJSON);
+                foreach (var p in serialised.Modlist) Console.WriteLine("Name: {0}", p.Name);
+            }
 
 
-                    for (int j = 0; j < whenTheImposterIsSus.Modlist.Length; j++)
-                    {
-                        Console.WriteLine("Name: {0}", whenTheImposterIsSus.Modlist[j].Name);
-                    }
-                
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("lmfao it error, *cums*");
-            }
-            
             return null;
         }
     }
