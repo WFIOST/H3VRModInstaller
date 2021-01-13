@@ -34,7 +34,7 @@ namespace H3VRModInstaller.Filesys
                 if (args[i] == "unzipToDir")
                 {
                     ModInstallerCommon.DebugLog("Unzipping to " + args[i + 1]);
-                    Zip.Unzip(fileinfo.RawName, ModInstallerCommon.Files.MainFiledir + "/" + args[i + 1], delArchive);
+                    Archives.UnArchive(fileinfo.RawName, ModInstallerCommon.Files.MainFiledir + "/" + args[i + 1], delArchive, Archives.ArchiveType.RAR);
                 }
 
                 if (args[i] == "addFolder")
