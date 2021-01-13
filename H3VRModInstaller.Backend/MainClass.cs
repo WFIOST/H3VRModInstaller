@@ -10,6 +10,7 @@ using H3VRModInstaller.JSON.Common;
 using H3VRModInstaller.Net;
 
 
+
 namespace H3VRModInstaller
 {
 
@@ -18,6 +19,7 @@ namespace H3VRModInstaller
 	/// </summary>
 	public class MainClass
     {
+        
 	    /// <summary>
 	    ///     Main function, the args arent used though
 	    /// </summary>
