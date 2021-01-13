@@ -15,7 +15,6 @@ namespace H3VRModInstaller.Sandbox
             {
                 Console.WriteLine("Raw Names: {0}", modfiles[i].RawName);
             }
-            
             Console.ReadLine();
         }
     }

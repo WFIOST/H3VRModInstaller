@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Net;
 using H3VRModInstaller.JSON.Common;
 using H3VRModInstaller.JSON;
@@ -17,15 +18,19 @@ namespace H3VRModInstaller.Sandbox.JSON
         /// <returns>ModFile Array</returns>
         public static ModFile[] GetMods()
         {
-            ModListFormat mods = new ModListFormat();
+            List<ModFile> mods = new();
             foreach (var URL in JsonCommon.OnlineDatabaseTEST)
             {
                 var client = new WebClient();
                 var serialised = client.DownloadString(URL);
-                mods = JsonConvert.DeserializeObject<ModListFormat>(serialised);
+                var modList = JsonConvert.DeserializeObject<ModListFormat>(serialised);
+                for (int i = 0; i < modList.Modlist.Length; i++)
+                {
+                    mods.Add(modList.Modlist[i]);
+                }
             }
             Console.WriteLine("Got Mods!");
-            return mods.Modlist;
+            return mods.ToArray();
         }
         
     }

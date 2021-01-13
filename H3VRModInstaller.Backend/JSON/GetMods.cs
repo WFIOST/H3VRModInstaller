@@ -2,6 +2,7 @@ using System;
 using System.Net;
 using H3VRModInstaller.JSON.Common;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace H3VRModInstaller.JSON
 {
@@ -13,17 +14,21 @@ namespace H3VRModInstaller.JSON
         /// <summary>
         ///     Gets the mods
         /// </summary>
-        public static ModFile[] GetMods(ModFile[] ModFilesToGet = null)
+        public static ModFile[] GetMods()
         {
-            //May god forgive me for my sins
-            foreach (var c in JsonCommon.OnlineDatabaseTEST)
+            List<ModFile> mods = new();
+            foreach (var URL in JsonCommon.OnlineDatabaseTEST)
             {
-                var webClient = new WebClient();
-                var serialised = webClient.DownloadString(c);
-                var deserialised = JsonModList.DeserializeModListFormat(serialised);
-                ModFilesToGet = deserialised.Modlist;
+                var client = new WebClient();
+                var serialised = client.DownloadString(URL);
+                var modList = JsonConvert.DeserializeObject<ModListFormat>(serialised);
+                for (int i = 0; i < modList.Modlist.Length; i++)
+                {
+                    mods.Add(modList.Modlist[i]);
+                }
             }
-            return ModFilesToGet;
+            Console.WriteLine("Got Mods!");
+            return mods.ToArray();
         }
         
         
