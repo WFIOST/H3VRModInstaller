@@ -3,12 +3,35 @@ using System.IO;
 
 namespace H3VRModInstaller.Common
 {
+    /// <summary>
+    /// Some common variables used across the project
+    /// </summary>
     public struct CommonVariables
     {
+        /// <summary>
+        /// Enable debugging
+        /// </summary>
+        /// <value>Boolean</value>
         public static bool EnableDebugging { get; set; }
+        /// <summary>
+        /// Bypass EXE check?
+        /// </summary>
+        /// <value>Boolean</value>
         public static bool BypassExec { get; set; }
+        /// <summary>
+        /// Name for the H3VR .exe, kinda useless
+        /// </summary>
+        /// <value>String</value>
         public static string Execname { get; set; }
+        /// <summary>
+        /// Site of what needs to be pinged. Literally could be anything
+        /// </summary>
+        /// <value>String</value>
         public static string Pingsite { get; set; }
+        /// <summary>
+        /// Location of the <c>ModLists</c> .json files
+        /// </summary>
+        /// <value></value>
         public static string[] Modlistloc { get; set; }
     }
 
@@ -46,7 +69,10 @@ namespace H3VRModInstaller.Common
             if (enableDebugging) Console.WriteLine(input);
         }
 
-        //i'm not even sure why i made this, i was just too lazy to write two lines.
+        /// <summary>
+        /// i'm not even sure why i made this, i was just too lazy to write two lines.
+        /// </summary>
+        /// <param name="error">Error to write</param>
         public static void throwexept(string error)
         {
             Console.WriteLine(error);
@@ -68,6 +94,9 @@ namespace H3VRModInstaller.Common
             return strng;
         }
 
+        /// <summary>
+        /// Useful fields for filesystem work
+        /// </summary>
         public struct Files
         {
 	        /// <summary>

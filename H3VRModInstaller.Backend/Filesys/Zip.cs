@@ -28,6 +28,11 @@ namespace H3VRModInstaller.Filesys
             return true;
         }
 
+        /// <summary>
+        /// WIP unrar function
+        /// </summary>
+        /// <param name="fileToUnzip"></param>
+        /// <returns>Boolean, if did unzip</returns>
         public static bool UnRar(string fileToUnzip)
         {
             return true;

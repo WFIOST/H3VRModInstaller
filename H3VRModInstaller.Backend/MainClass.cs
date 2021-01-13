@@ -12,6 +12,7 @@ using H3VRModInstaller.Net;
 
 namespace H3VRModInstaller
 {
+
 	/// <summary>
 	///     MainClass, dunno what you expected
 	/// </summary>
@@ -63,6 +64,10 @@ namespace H3VRModInstaller
             goto Start;
         }
 
+        /// <summary>
+        /// Backend input
+        /// </summary>
+        /// <param name="inputargs">Input</param>
         public static void doCommand(string[] inputargs)
         {
             switch (inputargs[0])

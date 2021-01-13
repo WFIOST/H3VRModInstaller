@@ -8,37 +8,29 @@ namespace H3VRModInstaller.GUI
     /// </summary>
     public class GUICommon
     {
+        /// <summary>
+        /// lmao it made me xml comment this
+        /// </summary>
         public string SelectedModText = "Selected Mod: ";
-
-        public ModListFile[] MapModList(ModListFile[] output)
-        {
-            var input = JsonCommon.GetAllMods();
-
-            output = new ModListFile[JsonCommon.JsonFiles.Length];
-
-            for (var i = 0; i <= JsonCommon.JsonFiles.Length; i++)
-            {
-                input[i].Name = output[i].Name;
-                input[i].Version = output[i].Version;
-                input[i].Dependencies = output[i].Dependencies;
-            }
-
-            return output;
-        }
-
+        /// <summary>
+        /// File stuff, but for the GUI
+        /// </summary>
         public struct Files
         {
+            /// <summary>
+            /// H3VR EXE path, but for the GUI because for some reason using the one from Backend breaks it
+            /// </summary>
             public static string EXEPath = ModInstallerCommon.Files.MainFiledir + @"\h3vr.exe";
+            /// <summary>
+            /// Enabled name of the file which enables mods
+            /// </summary>
             public static string EnabledName = @"/winhttp.dll";
+            /// <summary>
+            /// Disabled name of the file which enables mods
+            /// </summary>
             public static string DisabledName = @"/WinHTTP.dll.DISABLED";
         }
 
 
-        public class ModListFile
-        {
-            public string Name { get; set; }
-            public string Version { get; set; }
-            public string[] Dependencies { get; set; }
-        }
     }
 }

@@ -71,6 +71,10 @@ namespace H3VRModInstaller.JSON
 	    public string[] Dependencies { get; set; }
 
 
+		/// <summary>
+		/// The deletion info for a mod
+		/// </summary>
+		/// <value>String</value>
         public string DelInfo { get; set; }
     }
 
@@ -92,6 +96,9 @@ namespace H3VRModInstaller.JSON
 	public class JsonModList
     {
         private static readonly WebClient Client = new();
+		/// <summary>
+		/// Mod list array to repersent all mods
+		/// </summary>
         public static ModListFormat[] ModList;
 
         /// <summary>

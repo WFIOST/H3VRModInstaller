@@ -57,8 +57,6 @@ namespace H3VRModInstaller.Filesys.Config
                 //string[] fields = reg
             }
 
-            var finishedEditing = false;
-
             return true;
         }
     }
