@@ -33,7 +33,7 @@ namespace H3VRModInstaller.JSON.Common
             {"MapMods", new Uri("https://raw.githubusercontent.com/Frityet/H3VRModInstaller/master/H3VRModInstaller.Backend/JSON/Database/mapmods.json")}
         };
         */
-        public static Uri[] OnlineDatabaseTEST =
+        public static Uri[] DatabaseURLs =
         {
             new("https://raw.githubusercontent.com/Frityet/H3VRModInstaller/master/H3VRModInstaller.Backend/JSON/Database/charactermods.json"),
             new("https://raw.githubusercontent.com/Frityet/H3VRModInstaller/master/H3VRModInstaller.Backend/JSON/Database/codemods.json"),

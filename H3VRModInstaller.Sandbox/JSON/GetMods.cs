@@ -19,7 +19,7 @@ namespace H3VRModInstaller.Sandbox.JSON
         public static ModFile[] GetMods()
         {
             List<ModFile> mods = new();
-            foreach (var URL in JsonCommon.OnlineDatabaseTEST)
+            foreach (var URL in JsonCommon.DatabaseURLs)
             {
                 var client = new WebClient();
                 var serialised = client.DownloadString(URL);
