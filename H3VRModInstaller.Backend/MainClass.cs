@@ -23,7 +23,6 @@ namespace H3VRModInstaller
 	    /// <param name="args">dunno why these are here</param>
 	    public static void Main(string[] args)
         {
-            OnlineDatabase.GetMods();
             Console.ReadKey();
 
             JsonCommon.OverrideModInstallerVariables();

@@ -11,9 +11,10 @@
     <projectFile>H3VRModInstaller.Forms.Core/H3VRModInstaller.Forms.Core.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="11646549-311b-4445-a706-8ab87333e815" name="Default Changelist" comment="WORKING!">
+    <list default="true" id="11646549-311b-4445-a706-8ab87333e815" name="Default Changelist" comment="My sanity is gone">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.H3VRModInstaller/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.H3VRModInstaller/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/H3VRModInstaller.Backend/JSON/GetMods.cs" beforeDir="false" afterPath="$PROJECT_DIR$/H3VRModInstaller.Backend/JSON/GetMods.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.Backend/MainClass.cs" beforeDir="false" afterPath="$PROJECT_DIR$/H3VRModInstaller.Backend/MainClass.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,13 +51,14 @@
     <setting file="file://$PROJECT_DIR$/H3VRModInstaller.Forms/Form1.Designer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Zip.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/H3VRModInstaller.Forms/Program.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/44333F93-2A13-45F8-8805-30C5F9AB573B/7/WebClient.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/frityet/Documents/H3VRModInstaller/H3VRModInstaller.Backend/JSON/GetMods.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/H3VRModInstaller.Backend/JSON/JSONModList.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/H3VRModInstaller.Backend/MainClass.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/H3VRModInstaller.Backend/Net/Downloader.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/H3VRModInstaller.Backend/Common/JSON/JSONCommon.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/H3VRModInstaller.Backend/Net/NetCheck.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///Users/frityet/Documents/H3VRModInstaller/H3VRModInstaller.Backend/Net/Downloader.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/44333F93-2A13-45F8-8805-30C5F9AB573B/7/WebClient.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/frityet/Documents/H3VRModInstaller/H3VRModInstaller.Backend/JSON/GetMods.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/H3VRModInstaller.Backend/Common/JSON/JSONCommon.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
@@ -105,12 +107,12 @@
       <option value="$PROJECT_DIR$/H3VRModInstaller.Forms/Form1.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Common/GUICommon.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Common/ModInstallerCommon.cs" />
-      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/MainClass.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/JSON/JSONModList.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/JSON/Database/charactermods.json" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/JSON/installedMods.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Common/JSON/JSONCommon.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/JSON/GetMods.cs" />
+      <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/MainClass.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1lah3QXp00T3AT7tcB4yg7113kU" />
@@ -217,7 +219,7 @@
       <workItem from="1609709110597" duration="13765000" />
       <workItem from="1609740348172" duration="7641000" />
       <workItem from="1610400663289" duration="5734000" />
-      <workItem from="1610480924343" duration="2382000" />
+      <workItem from="1610480924343" duration="3300000" />
     </task>
     <task id="LOCAL-00001" summary="Split func.cs">
       <created>1607847473285</created>
@@ -520,7 +522,14 @@
       <option name="project" value="LOCAL" />
       <updated>1610485297563</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="My sanity is gone">
+      <created>1610486749540</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1610486749540</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -542,7 +551,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="kill me" />
     <MESSAGE value="fixed H3VRModInstaller.JSON.csproj" />
     <MESSAGE value="Added deletion" />
     <MESSAGE value="Added more features to class Uninstall" />
@@ -567,6 +575,7 @@
     <MESSAGE value="hot secks" />
     <MESSAGE value="alrighty working" />
     <MESSAGE value="WORKING!" />
-    <option name="LAST_COMMIT_MESSAGE" value="WORKING!" />
+    <MESSAGE value="My sanity is gone" />
+    <option name="LAST_COMMIT_MESSAGE" value="My sanity is gone" />
   </component>
 </project>
