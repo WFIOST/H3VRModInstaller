@@ -24,8 +24,6 @@ namespace H3VRModInstaller
 	    /// <param name="args">dunno why these are here</param>
 	    public static void Main(string[] args)
         {
-            Console.ReadKey();
-
             JsonCommon.OverrideModInstallerVariables();
             //exe check
             Console.WriteLine("Detecting if " + ModInstallerCommon.Files.execdir + " exists...");

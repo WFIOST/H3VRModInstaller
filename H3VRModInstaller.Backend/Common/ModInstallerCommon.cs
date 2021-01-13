@@ -75,6 +75,7 @@ namespace H3VRModInstaller.Common
         /// <param name="error">Error to write</param>
         public static void throwexept(string error)
         {
+            Console.Title = "ERROR! ";
             Console.WriteLine(error);
             Console.ReadKey();
         }
