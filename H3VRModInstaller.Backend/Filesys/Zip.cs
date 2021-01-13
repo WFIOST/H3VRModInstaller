@@ -1,7 +1,10 @@
 using System;
 using System.IO;
 using System.IO.Compression;
-using SharpCompress;
+using System.Linq;
+using SharpCompress.Archives;
+using SharpCompress.Archives.Rar;
+using SharpCompress.Common;
 
 namespace H3VRModInstaller.Filesys
 {
@@ -19,7 +22,7 @@ namespace H3VRModInstaller.Filesys
         /// <returns>Boolean, true</returns>
         public static bool Unzip(string fileToUnzip, string unzipLocation, bool deleteArchiveAfterUnzip)
         {
-            if (fileToUnzip.EndsWith(".RAR") || fileToUnzip.EndsWith(".rar")) UnRar(fileToUnzip);
+            if (fileToUnzip.EndsWith(".RAR") || fileToUnzip.EndsWith(".rar")) UnRar(fileToUnzip, unzipLocation);
 
             Console.WriteLine("Unzipping " + fileToUnzip);
             ZipFile.ExtractToDirectory(fileToUnzip, unzipLocation, true);
@@ -29,18 +32,25 @@ namespace H3VRModInstaller.Filesys
             return true;
         }
 
+        
+        
         /// <summary>
         /// WIP unrar function
         /// </summary>
         /// <param name="fileToUnzip"></param>
         /// <returns>Boolean, if did unzip</returns>
-        public static bool UnRar(string fileToUnzip)
+        public static bool UnRar(string fileToUnzip, string LocationToUnzipTo)
         {
-            using (var fileStream = File.Open(fileToUnzip, FileMode.Open))
-            using (var reader = new StreamReader(fileStream))
+            using var archive = RarArchive.Open(fileToUnzip);
+            foreach (var entry in archive.Entries.Where(entry => !entry.IsDirectory))
             {
-
+                entry.WriteToDirectory(LocationToUnzipTo, new ExtractionOptions()
+                {
+                    ExtractFullPath = true,
+                    Overwrite = true
+                });
             }
+
             return true;
         }
     }
