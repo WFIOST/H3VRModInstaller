@@ -66,9 +66,9 @@ namespace H3VRModInstaller.JSON.Common
             var depinput =
                 JsonConvert.DeserializeObject<CommonVariables>(
                     File.ReadAllText(Directory.GetCurrentDirectory() + @"\" + "MICoverride.json"));
-            if (CommonVariables.EnableDebugging != null)
+            if (CommonVariables.EnableDebugging)
                 CommonVariables.EnableDebugging = CommonVariables.EnableDebugging;
-            if (CommonVariables.BypassExec != null) CommonVariables.BypassExec = CommonVariables.BypassExec;
+            if (CommonVariables.BypassExec) CommonVariables.BypassExec = CommonVariables.BypassExec;
             if (CommonVariables.Execname != null)
                 ModInstallerCommon.Files.execdir = ModInstallerCommon.Files.MainFiledir + CommonVariables.Execname;
             if (CommonVariables.Pingsite != null) CommonVariables.Pingsite = CommonVariables.Pingsite;

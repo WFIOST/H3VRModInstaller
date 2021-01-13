@@ -9,6 +9,7 @@ using H3VRModInstaller.JSON;
 using H3VRModInstaller.JSON.Common;
 using H3VRModInstaller.Net;
 
+
 namespace H3VRModInstaller
 {
 	/// <summary>
@@ -140,11 +141,11 @@ namespace H3VRModInstaller
         }
 
 
-        //returns list of modlists, aka modlists
+        
+        ///returns list of modlists, aka modlists
         public static void listmodlists()
         {
-            var jsonfiles = Glob
-                .FilesAndDirectories(Directory.GetCurrentDirectory() + @"/ModInstallerLists/", "**.json").ToArray();
+            var jsonfiles = Glob.FilesAndDirectories(Directory.GetCurrentDirectory() + @"/ModInstallerLists/", "**.json").ToArray();
             for (var i = 0; i < jsonfiles.Length; i++)
             {
                 jsonfiles[i] = jsonfiles[i].Remove(jsonfiles[i].Length - 5, 5);
@@ -152,7 +153,7 @@ namespace H3VRModInstaller
             }
         }
 
-        //returns list of mods in a modlist
+        ///returns list of mods in a modlist
         public static void list(string input)
         {
             var jsonname = input + ".json";
