@@ -11,6 +11,11 @@ namespace H3VRModInstaller.Sandbox
         {
             Console.WriteLine("Hello World!");
             var modfiles = OnlineDatabase.GetMods();
+            for (int i = 0; i < modfiles.Length; i++)
+            {
+                Console.WriteLine("Raw Names: {0}", modfiles[i].RawName);
+            }
+            
             Console.ReadLine();
         }
     }

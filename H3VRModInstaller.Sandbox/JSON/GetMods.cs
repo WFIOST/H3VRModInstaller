@@ -12,23 +12,20 @@ namespace H3VRModInstaller.Sandbox.JSON
     public class OnlineDatabase
     {
         /// <summary>
-        ///     Gets the mods
+        /// Gets all mods, from github, no downloading required
         /// </summary>
-        public static ModFile[] GetMods(ModFile[] ModFilesToGet = null)
+        /// <returns>ModFile Array</returns>
+        public static ModFile[] GetMods()
         {
+            ModListFormat mods = new ModListFormat();
             foreach (var URL in JsonCommon.OnlineDatabaseTEST)
             {
                 var client = new WebClient();
                 var serialised = client.DownloadString(URL);
-                //Console.WriteLine(serialised);
-                var deserialised = JsonConvert.DeserializeObject<ModListFormat>(serialised);
-                for (int i = 0; i < deserialised.Modlist.Length; i++)
-                {
-                    Console.WriteLine("Name: {0}", deserialised.Modlist[i].Name);
-                }
+                mods = JsonConvert.DeserializeObject<ModListFormat>(serialised);
             }
-
-            return null;
+            Console.WriteLine("Got Mods!");
+            return mods.Modlist;
         }
         
     }
