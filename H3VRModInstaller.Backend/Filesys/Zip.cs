@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using System.IO.Compression;
+using SharpCompress;
 
 namespace H3VRModInstaller.Filesys
 {
@@ -35,6 +36,11 @@ namespace H3VRModInstaller.Filesys
         /// <returns>Boolean, if did unzip</returns>
         public static bool UnRar(string fileToUnzip)
         {
+            using (var fileStream = File.Open(fileToUnzip, FileMode.Open))
+            using (var reader = new StreamReader(fileStream))
+            {
+
+            }
             return true;
         }
     }
