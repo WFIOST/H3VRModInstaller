@@ -12,7 +12,7 @@ namespace H3VRModInstaller.Sandbox
         {
             Console.WriteLine("Hello World!");
             Console.WriteLine("Current Dir: {0}", Directory.GetCurrentDirectory());
-            Decompression.UnRar(Directory.GetCurrentDirectory() + "/test.rar");
+            Decompression.UnRar(Directory.GetCurrentDirectory() + "/test.rar", Directory.GetCurrentDirectory());
         }
     }
 }
