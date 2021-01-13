@@ -9,4 +9,8 @@
       <ProjectReference Include="..\H3VRModInstaller.Backend\H3VRModInstaller.Backend.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <PackageReference Include="SharpZipLib" Version="1.3.1" />
+    </ItemGroup>
+
 </Project>
