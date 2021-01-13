@@ -12,11 +12,12 @@ namespace H3VRModInstaller.Sandbox.Archives
         {
             if (String.IsNullOrEmpty(LocationToDecompressTo))
                 LocationToDecompressTo = FileToDecompress;
+
             var loc = LocationToDecompressTo.Split(".rar");
-            
+
             Console.WriteLine(loc[0]);
             Console.ReadKey();
-            
+
             using (var archive = RarArchive.Open(FileToDecompress))
             {
                 foreach (var entry in archive.Entries.Where(entry => !entry.IsDirectory))

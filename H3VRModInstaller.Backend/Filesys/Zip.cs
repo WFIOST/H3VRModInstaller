@@ -35,11 +35,10 @@ namespace H3VRModInstaller.Filesys
         
         
         /// <summary>
-        /// WIP unrar function
+        /// [WIP] unrar function
         /// </summary>
-        /// <param name="fileToUnzip"></param>
-        /// <returns>Boolean, if did unzip</returns>
-        public static bool UnRar(string fileToUnzip, string LocationToUnzipTo)
+        /// <param name="fileToUnzip">RAR file to unzip</param> <param name="LocationToUnzipTo">Location to unzip to</param>
+        public static void UnRar(string fileToUnzip, string LocationToUnzipTo)
         {
             using var archive = RarArchive.Open(fileToUnzip);
             foreach (var entry in archive.Entries.Where(entry => !entry.IsDirectory))
@@ -50,8 +49,6 @@ namespace H3VRModInstaller.Filesys
                     Overwrite = true
                 });
             }
-
-            return true;
         }
     }
 }
