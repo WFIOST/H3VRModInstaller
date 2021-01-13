@@ -1,5 +1,3 @@
-using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using SharpCompress.Common;
@@ -47,19 +45,20 @@ namespace H3VRModInstaller.Filesys
             switch (TypeOfArchive)
             {
                 case ArchiveType.Zip:
-                    UnZip(fileToUnzip, unzipLocation);
+                    UnZip(fileToUnzip, unzipLocation, deleteArchiveAfterUnzip);
                     break;
 
                 case ArchiveType.RAR:
-                    UnRar(fileToUnzip, unzipLocation);
+                    UnRar(fileToUnzip, unzipLocation, deleteArchiveAfterUnzip);
                     break;
 
                 case ArchiveType.SevenZip:
-                    UnSevenZip(fileToUnzip, unzipLocation);
+                    UnSevenZip(fileToUnzip, unzipLocation, deleteArchiveAfterUnzip);
                     break;
                 
                 default:
-                break;
+                    UnZip(fileToUnzip, unzipLocation, deleteArchiveAfterUnzip);
+                    break;
             }
         }
 
@@ -70,7 +69,8 @@ namespace H3VRModInstaller.Filesys
         /// </summary>
         /// <param name="FileToDecompress">Archive that is to be opened</param>
         /// <param name="LocationToDecompressTo">Directory that the archive would be extracted to</param>
-        public static void UnZip(string FileToDecompress, string LocationToDecompressTo)
+        /// <param name="deleteArchiveAfterUnzip">Delete Archive after unzip?</param>
+        public static void UnZip(string FileToDecompress, string LocationToDecompressTo, bool deleteArchiveAfterUnzip)
         {
             using (var archive = ZipArchive.Open(FileToDecompress))
             {
@@ -83,6 +83,9 @@ namespace H3VRModInstaller.Filesys
                     });
                 } 
             }
+
+            if(deleteArchiveAfterUnzip)
+                File.Delete(FileToDecompress);
         }
 
         /// <summary>
@@ -90,7 +93,8 @@ namespace H3VRModInstaller.Filesys
         /// </summary>
         /// <param name="FileToDecompress">Archive that is to be opened</param>
         /// <param name="LocationToDecompressTo">Directory that the archive would be extracted to</param>
-        public static void UnSevenZip(string FileToDecompress, string LocationToDecompressTo)
+        /// <param name="deleteArchiveAfterUnzip">Delete Archive after unzip?</param>
+        public static void UnSevenZip(string FileToDecompress, string LocationToDecompressTo, bool deleteArchiveAfterUnzip)
         {
             using (var archive = SevenZipArchive.Open(FileToDecompress))
             {
@@ -103,6 +107,8 @@ namespace H3VRModInstaller.Filesys
                     });
                 } 
             }
+            if(deleteArchiveAfterUnzip)
+                File.Delete(FileToDecompress);
         }
 
         /// <summary>
@@ -110,7 +116,8 @@ namespace H3VRModInstaller.Filesys
         /// </summary>
         /// <param name="FileToDecompress">Archive that is to be opened</param>
         /// <param name="LocationToDecompressTo">Directory that the archive would be extracted to</param>
-        public static void UnRar(string FileToDecompress, string LocationToDecompressTo)
+        /// <param name="deleteArchiveAfterUnzip">Delete Archive after unzip?</param>
+        public static void UnRar(string FileToDecompress, string LocationToDecompressTo, bool deleteArchiveAfterUnzip)
         {
             using (var archive = RarArchive.Open(FileToDecompress))
             {
@@ -123,6 +130,8 @@ namespace H3VRModInstaller.Filesys
                     });
                 }
             }
+            if(deleteArchiveAfterUnzip)
+                File.Delete(FileToDecompress);
         }
     }
 }
