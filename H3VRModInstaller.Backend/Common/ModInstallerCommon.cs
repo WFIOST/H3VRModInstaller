@@ -70,12 +70,13 @@ namespace H3VRModInstaller.Common
         }
 
         /// <summary>
-        /// i'm not even sure why i made this, i was just too lazy to write two lines.
+        /// "better" errors
         /// </summary>
         /// <param name="error">Error to write</param>
         public static void throwexept(string error)
         {
-            Console.Title = "ERROR! ";
+            Console.Title = "ERROR! - " + error;
+            Console.ForegroundColor = System.ConsoleColor.Red;
             Console.WriteLine(error);
             Console.ReadKey();
         }
