@@ -52,6 +52,9 @@
       </e>
       <e p="H3VRModInstaller.Sandbox" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
+        <e p="Filesys" t="Include">
+          <e p="UniversalZip.cs" t="Include" />
+        </e>
         <e p="H3VRModInstaller.Sandbox.csproj" t="IncludeRecursive" />
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">

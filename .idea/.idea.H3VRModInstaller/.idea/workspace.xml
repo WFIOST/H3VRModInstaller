@@ -15,8 +15,8 @@
     <list default="true" id="11646549-311b-4445-a706-8ab87333e815" name="Default Changelist" comment="My sanity is gone">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.H3VRModInstaller/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.H3VRModInstaller/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.H3VRModInstaller/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.H3VRModInstaller/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.Backend/H3VRModInstaller.Backend.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/H3VRModInstaller.Backend/H3VRModInstaller.Backend.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.Sandbox/H3VRModInstaller.Sandbox.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/H3VRModInstaller.Sandbox/H3VRModInstaller.Sandbox.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.Sandbox/Filesys/UniversalZip.cs" beforeDir="false" afterPath="$PROJECT_DIR$/H3VRModInstaller.Sandbox/Filesys/UniversalZip.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.Sandbox/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/H3VRModInstaller.Sandbox/Program.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,7 +62,6 @@
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-      <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch_1.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Net/JSON/GetMods.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.JSON/JSON/GetMods.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.JSON/Mods/Schema.json" />
@@ -113,6 +112,7 @@
       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/MainClass.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Zip.cs" />
       <option value="$PROJECT_DIR$/H3VRModInstaller.Sandbox/Program.cs" />
+      <option value="$PROJECT_DIR$/H3VRModInstaller.Sandbox/Filesys/UniversalZip.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1lah3QXp00T3AT7tcB4yg7113kU" />
@@ -140,7 +140,7 @@
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
-  <component name="RunManager" selected=".NET Project.H3VRModInstaller.Backend">
+  <component name="RunManager" selected=".NET Project.H3VRModInstaller.Sandbox">
     <configuration name="ModInstaller" type="DotNetFolderPublish" factoryName="Publish to folder" temporary="true">
       <riderPublish runtime="osx-x64" target_folder="$PROJECT_DIR$/test" target_framework="net5.0" uuid_high="4896244729092656622" uuid_low="-6212243280892053142" />
       <method v="2" />
@@ -241,6 +241,8 @@
       <workItem from="1610480924343" duration="3300000" />
       <workItem from="1610514568559" duration="909000" />
       <workItem from="1610518319835" duration="49000" />
+      <workItem from="1610518450184" duration="74000" />
+      <workItem from="1610518950259" duration="1800000" />
     </task>
     <task id="LOCAL-00001" summary="Split func.cs">
       <created>1607847473285</created>
@@ -564,7 +566,14 @@
       <option name="project" value="LOCAL" />
       <updated>1610518361982</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="NOOOOOOGHHHHHEEEEETTTTTTTTEEEEE">
+      <created>1610518515364</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1610518515364</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -586,7 +595,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Added more features to class Uninstall" />
     <MESSAGE value="Fixes" />
     <MESSAGE value="Merge json and backend" />
     <MESSAGE value="fixx" />
@@ -611,6 +619,7 @@
     <MESSAGE value="My sanity is gone" />
     <MESSAGE value="Added sandbox" />
     <MESSAGE value="FUCKING NUGET" />
-    <option name="LAST_COMMIT_MESSAGE" value="FUCKING NUGET" />
+    <MESSAGE value="NOOOOOOGHHHHHEEEEETTTTTTTTEEEEE" />
+    <option name="LAST_COMMIT_MESSAGE" value="NOOOOOOGHHHHHEEEEETTTTTTTTEEEEE" />
   </component>
 </project>

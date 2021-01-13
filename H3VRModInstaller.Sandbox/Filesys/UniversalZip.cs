@@ -1,30 +1,33 @@
 using System;
+using System.Linq;
 using SharpCompress.Archives;
 using SharpCompress.Archives.Rar;
 using SharpCompress.Common;
 
 namespace H3VRModInstaller.Sandbox.Archives
 {
-    public class Archives
+    public class Decompression
     {
-        public static bool UnRar(string FileToUnzip, string LocationToUnzipTo)
+        public static void UnRar(string FileToDecompress, string LocationToDecompressTo = "")
         {
-            using (Stream stream = File.OpenRead(FileToUnzip))
-            using (var reader = ReaderFactory.Open(stream))
+            if (String.IsNullOrEmpty(LocationToDecompressTo))
+                LocationToDecompressTo = FileToDecompress;
+            var loc = LocationToDecompressTo.Split(".rar");
+            
+            Console.WriteLine(loc[0]);
+            Console.ReadKey();
+            
+            using (var archive = RarArchive.Open(FileToDecompress))
             {
-                    while (reader.MoveToNextEntry())
+                foreach (var entry in archive.Entries.Where(entry => !entry.IsDirectory))
+                {
+                    entry.WriteToDirectory(loc[0], new ExtractionOptions()
                     {
-                        if (!reader.Entry.IsDirectory)
-                            {
-                                Console.WriteLine(reader.Entry.Key);
-                                reader.WriteEntryToDirectory(LocationToUnzipTo, new ExtractionOptions()
-                                {
-                                ExtractFullPath = true,
-                                Overwrite = true
-                                });
-                            }
-                    }
+                        ExtractFullPath = true,
+                        Overwrite = true
+                    });
+                }
             }
-        } 
+        }
     }
 }
