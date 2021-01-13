@@ -15,6 +15,8 @@
     <list default="true" id="11646549-311b-4445-a706-8ab87333e815" name="Default Changelist" comment="My sanity is gone">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.H3VRModInstaller/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.H3VRModInstaller/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.H3VRModInstaller/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.H3VRModInstaller/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.Backend/H3VRModInstaller.Backend.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/H3VRModInstaller.Backend/H3VRModInstaller.Backend.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/H3VRModInstaller.Sandbox/H3VRModInstaller.Sandbox.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/H3VRModInstaller.Sandbox/H3VRModInstaller.Sandbox.csproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,7 +49,6 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Installer.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///Users/frityet/Documents/H3VRModInstaller/H3VRModInstaller.Backend/Filesys/Zip.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/H3VRModInstaller.Forms/Form1.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/H3VRModInstaller.Forms/Form1.Designer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/H3VRModInstaller.Backend/Filesys/Zip.cs" root0="FORCE_HIGHLIGHTING" />
@@ -201,8 +202,8 @@
     <list>
       <item itemvalue=".NET Project.Forms" />
       <item itemvalue=".NET Project.H3VRModInstaller.Backend" />
-      <item itemvalue="Publish to folder.ModInstaller" />
       <item itemvalue=".NET Project.H3VRModInstaller.Sandbox" />
+      <item itemvalue="Publish to folder.ModInstaller" />
     </list>
     <recent_temporary>
       <list>
@@ -239,6 +240,7 @@
       <workItem from="1610400663289" duration="5734000" />
       <workItem from="1610480924343" duration="3300000" />
       <workItem from="1610514568559" duration="909000" />
+      <workItem from="1610518319835" duration="49000" />
     </task>
     <task id="LOCAL-00001" summary="Split func.cs">
       <created>1607847473285</created>
@@ -555,7 +557,14 @@
       <option name="project" value="LOCAL" />
       <updated>1610517201547</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="FUCKING NUGET">
+      <created>1610518361982</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1610518361982</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -577,7 +586,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Added deletion" />
     <MESSAGE value="Added more features to class Uninstall" />
     <MESSAGE value="Fixes" />
     <MESSAGE value="Merge json and backend" />
@@ -602,6 +610,7 @@
     <MESSAGE value="WORKING!" />
     <MESSAGE value="My sanity is gone" />
     <MESSAGE value="Added sandbox" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added sandbox" />
+    <MESSAGE value="FUCKING NUGET" />
+    <option name="LAST_COMMIT_MESSAGE" value="FUCKING NUGET" />
   </component>
 </project>
