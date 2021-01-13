@@ -88,8 +88,7 @@ namespace H3VRModInstaller.Common
 	        /// <summary>
 	        ///     Website where the database is located.
 	        /// </summary>
-	        public static string[] Modlistloc =
-                {"https://github.com/Frityet/H3VRModInstaller/releases/download/database/ModList.zip", "ModList.zip"};
+	        public static string[] Modlistloc = {"https://github.com/Frityet/H3VRModInstaller/releases/download/database/ModList.zip", "ModList.zip"};
         }
     }
 }
