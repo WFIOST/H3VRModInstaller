@@ -18,12 +18,21 @@ namespace H3VRModInstaller.Net
         public static bool isOnline(string url)
         {
             var ping = new Ping();
-            var reply = ping.Send(url, 1000);
+            
+            try
+            {
+                var reply = ping.Send(url, 1000);
+                if (reply.Status == IPStatus.Success) return true;
+            }
+            catch (System.Exception )
+            {
+                
+                return false;
+            }
+            
+            return true;
 
-            if (reply.Status == IPStatus.Success) return true;
-
-
-            return false;
+            
         }
     }
 }
