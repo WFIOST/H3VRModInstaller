@@ -6,6 +6,7 @@ using System.Net;
 using GlobExpressions;
 using H3VRModInstaller.Common;
 using Newtonsoft.Json;
+using H3VRModInstaller.JSON.Common;
 
 namespace H3VRModInstaller.JSON
 {
@@ -101,7 +102,7 @@ namespace H3VRModInstaller.JSON
 		/// </summary>
         public static ModListFormat[] ModList;
 
-        /// <summary>
+/*        /// <summary>
         ///     Downloads mods from ModInstallerCommon.Modlistloc
         /// </summary>
         public static void DlModList()
@@ -114,7 +115,7 @@ namespace H3VRModInstaller.JSON
             ZipFile.ExtractToDirectory(ModInstallerCommon.Files.Modlistloc[1], ModInstallerCommon.Files.Modinstallerdir,
                 true);
             File.Delete(ModInstallerCommon.Files.Modlistloc[1]);
-        }
+        }*/
 
         /// <summary>
         ///     Gets the modlists and deseralises them, returning a ModList
@@ -127,17 +128,20 @@ namespace H3VRModInstaller.JSON
             if (ModList == null || reload)
             {
                 Console.WriteLine("Modlist null!");
+				bool flag = false;
                 if (jsonfiles == null)
                 {
                     Console.WriteLine("jsonfiles null!");
-                    jsonfiles = Glob.FilesAndDirectories(ModInstallerCommon.Files.Modinstallerdir, "**.json").ToArray();
+					jsonfiles = GetDatabaseURLs();
                     ModInstallerCommon.DebugLog("Found " + jsonfiles.Length + " json files to read from!");
+					flag = true;
                 }
 
-                ModList = new ModListFormat[jsonfiles.Length];
-                for (var i = 0; i < jsonfiles.Length; i++) ModList[i] = DeserializeModListFormat(jsonfiles[i]);
-            }
-
+				ModListFormat[] _mlf = new ModListFormat[jsonfiles.Length];
+				for (var i = 0; i < jsonfiles.Length; i++) _mlf[i] = GetDeserializedModListFormatOnline(jsonfiles[i]);
+				if (flag) ModList = _mlf;
+				return _mlf;
+			}
             return ModList;
         }
 
@@ -154,5 +158,77 @@ namespace H3VRModInstaller.JSON
                 File.ReadAllText(ModInstallerCommon.Files.Modinstallerdir + jsontoload));
             return modList;
         }
-    }
+
+
+
+
+
+		private static string[] DatabaseURLs = null;
+
+		/// <summary>
+		///     Returns full database URLs for seeing jsonlists
+		/// </summary>
+		public static string[] GetDatabaseURLs()
+		{
+			string[] databaseinfo = GetDeserializedModListFormatOnline(JsonCommon.DatabaseInfo).Modlist[0].Dependencies;
+
+
+			if (DatabaseURLs != null) { return DatabaseURLs; }
+
+			string[] _return = new string[0];
+			string prefix = "";
+			for (int i = 0; i < databaseinfo.Length; i++)
+			{
+				if (databaseinfo[i].Contains("https")) //string is prefix
+				{ 
+					prefix = databaseinfo[i];
+				}
+				else //string is postfix
+				{
+					Array.Resize<string>(ref _return, _return.Length + 1); //adds item to array
+					_return[i] = prefix + databaseinfo[i]; //assembles full loc
+					Console.WriteLine(_return[i]);
+				}
+			}
+			DatabaseURLs = _return;
+			return DatabaseURLs;
+		}
+
+/*		/// <summary>
+		///     Gets the mods
+		/// </summary>
+		public static ModFile[] GetMods()
+		{
+			List<ModFile> mods = new();
+			for (int i = 0; i < JsonCommon.GetDatabaseURLs().Length; i++)
+			{
+				ModListFormat modList = GetDeserializedModListFormatOnline();
+				for (int x = 0; x < modList.Modlist.Length; x++)
+				{
+					mods.Add(modList.Modlist[x]);
+				}
+			}
+			Console.WriteLine("Got Mods!");
+			return mods.ToArray();
+		}*/
+
+		public static WebClient client = new WebClient();
+
+		/// <summary>
+		///		Returns ModListFormat, given a full URI or postfix
+		/// </summary>
+		public static ModListFormat GetDeserializedModListFormatOnline(string loc)
+		{
+			if (!loc.Contains("https")) 
+			{
+				loc = GetDatabaseURLs().Where(i => i == loc).ToArray()[0]; //get first instance of url with link
+			}
+			var client = new WebClient();
+			var serialised = client.DownloadString(new Uri(loc));
+			var modList = JsonConvert.DeserializeObject<ModListFormat>(serialised);
+			return modList;
+		}
+
+		
+	}
 }

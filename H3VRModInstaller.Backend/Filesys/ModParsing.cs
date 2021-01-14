@@ -36,8 +36,7 @@ namespace H3VRModInstaller.Filesys
             {
                 Array.Resize(ref result, result.Length + 1);
                 result[result.Length - 1] = GetSpecificMod(mod.Dependencies[i]); //add the modfile to the modfile array
-                result = result.Concat(GetDependencies(result[result.Length - 1]))
-                    .ToArray(); //then add their dependencies
+                result = result.Concat(GetDependencies(result[result.Length - 1])).ToArray(); //then add their dependencies
             }
 
             return result;
@@ -46,7 +45,7 @@ namespace H3VRModInstaller.Filesys
 	    /// <summary>
 	    ///     Gets the mod info of a deserialized <c>ModFile</c> class
 	    /// </summary>
-	    /// <param name="modid">Modid of mod and dependencies you want</param>
+	    /// <param name="modid">Modid of mod you want</param>
 	    /// <returns></returns>
 	    public static ModFile GetSpecificMod(string modid)
         {
