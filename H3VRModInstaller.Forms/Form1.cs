@@ -46,12 +46,12 @@ namespace H3VRModInstaller.GUI
 		public void _nu_updatebar(float[] info)
 		{
 			
-			updatebar(info);
+//			updatebar(info);
 		}
 
 		public void updatebar(float[] info)
 		{
-			ProgressBar.Value = (int)info[0];
+//			ProgressBar.Value = (int)info[0];
 		}
 
 		public void trycatchtext(Label label, string text)
@@ -219,8 +219,6 @@ namespace H3VRModInstaller.GUI
 		{
 			DownloadableModsList.Items.Clear();
 			InstalledModsList.Items.Clear();
-
-			JsonModList.DlModList();
 
 			ModFile[] input = JsonCommon.GetAllMods();
 
