@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Collections.Generic;
 using H3VRModInstaller.Common;
 
-namespace H3VRModInstaller.Filesys.Config
+namespace H3VRModInstaller.Sandbox.Filesys.Config
 {
     /// <summary>
     ///     This class edits the config file of a .cfg file!
@@ -31,7 +31,9 @@ namespace H3VRModInstaller.Filesys.Config
         {
             var Fields = new List<string>();
 
-            var ConfigFiles = Directory.GetFiles(ModInstallerCommon.Files.BepInExDir + "configs/");
+            if(!Directory.Exists(Directory.GetCurrentDirectory() + "configs/")) Directory.CreateDirectory(Directory.GetCurrentDirectory() + "config/");
+
+            var ConfigFiles = Directory.GetFiles(Directory.GetCurrentDirectory() + "configs/");
 
             var lines = new string[0];
 
@@ -46,21 +48,3 @@ namespace H3VRModInstaller.Filesys.Config
         }
     }
 }
-
-
-/*
-            /// <summary>
-            ///     BepInEx, possible inputs: None, Info, IL, Warn, Error, Debug, All
-            /// </summary>
-            LogChannel,
-
-            /// <summary>
-            ///     BepInEx, possible inputs: Auto, ConsoleOut, StandardOut
-            /// </summary>
-            ConsoleOutRedirectType,
-
-            /// <summary>
-            ///     BepInEx, possible inputs: None, Fatal, Error, Warning, Message, Info, Debug, All
-            /// </summary>
-            LogLevel
-*/

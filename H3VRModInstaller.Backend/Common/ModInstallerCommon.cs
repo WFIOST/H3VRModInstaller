@@ -100,6 +100,11 @@ namespace H3VRModInstaller.Common
 	        ///     loc of the MI lists.
 	        /// </summary>
 	        public static string Modinstallerdir = Directory.GetCurrentDirectory() + @"/ModInstallerLists/";
+
+            /// <summary>
+            /// BepInEx directory
+            /// </summary>
+            public static string BepInExDir = MainFiledir + "/BepInEx/";
         }
     }
 }
