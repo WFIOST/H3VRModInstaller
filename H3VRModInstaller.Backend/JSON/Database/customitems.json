@@ -244,6 +244,24 @@
       "Dependencies": [
         "lsiic"
       ]
+    },
+    {
+      "modID": "meatsasp",
+      "Name": "Meat's ASP",
+      "RawName": "MeatsASP.zip",
+      "Author": [
+        "Meat Banono",
+        "Tactical Loon"
+      ],
+      "Version": "1.0.1",
+      "Description": "This unique, sneaky cold-war era subcompact 9mm pistol has infiltrated H3VR! The ASP 9mm pistol features guttersnipe sights, transparent lexan side panels, and a 7 round single stack magazine that requires H3Utils to work.\nThe ASP can be found under automatic pistols.\nA separate, larger picatinny guttersnipe sight can be found under the iron sights category.\nI DO NOT recommend this pistol for any engagements beyond 15m without extensive practice or a high resolution VR headset. Please use the second image as reference for aiming with the ASP's sight, straight from the manual.\nMassive thanks to Tactical Loon for the model and Drummerdude2003 for the texturing.",
+      "Path": "https://bonetome.com/download.php?file=NDdjYTVlZTE2ZTVhNDE0ZCs0NDErMTA1Nw==",
+      "Website": "https://bonetome.com/h3vr/weapons/218/",
+      "Arguments": "unzipToDir?VirtualObjects/",
+      "Dependencies": [
+        "lsiic",
+        "h3vrutils"
+      ]
     }
   ]
 }
