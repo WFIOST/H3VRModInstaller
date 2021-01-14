@@ -215,6 +215,10 @@ namespace H3VRModInstaller.JSON
 			return mods.ToArray();
 		}*/
 
+		/// <summary>
+		/// Client
+		/// </summary>
+		/// <returns>Client</returns>
 		public static WebClient client = new WebClient();
 
 		/// <summary>
