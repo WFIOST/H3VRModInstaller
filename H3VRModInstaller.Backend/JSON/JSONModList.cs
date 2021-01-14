@@ -177,6 +177,7 @@ namespace H3VRModInstaller.JSON
 
 			string[] _return = new string[0];
 			string prefix = "";
+			int x = 0;
 			for (int i = 0; i < databaseinfo.Length; i++)
 			{
 				if (databaseinfo[i].Contains("https")) //string is prefix
@@ -186,11 +187,13 @@ namespace H3VRModInstaller.JSON
 				else //string is postfix
 				{
 					Array.Resize<string>(ref _return, _return.Length + 1); //adds item to array
-					_return[i] = prefix + databaseinfo[i]; //assembles full loc
-					Console.WriteLine(_return[i]);
+					_return[x] = prefix + databaseinfo[i]; //assembles full loc
+					Console.WriteLine(_return[x]);
+					x++;
 				}
 			}
 			DatabaseURLs = _return;
+			Console.WriteLine(DatabaseURLs.Length);
 			return DatabaseURLs;
 		}
 
