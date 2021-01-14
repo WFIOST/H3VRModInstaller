@@ -9,30 +9,15 @@ namespace H3VRModInstaller.Common
     public struct CommonVariables
     {
         /// <summary>
-        /// Enable debugging
-        /// </summary>
-        /// <value>Boolean</value>
-        public static bool EnableDebugging { get; set; }
-        /// <summary>
-        /// Bypass EXE check?
-        /// </summary>
-        /// <value>Boolean</value>
-        public static bool BypassExec { get; set; }
-        /// <summary>
-        /// Name for the H3VR .exe, kinda useless
+        /// Name for the executable targeted
         /// </summary>
         /// <value>String</value>
         public static string Execname { get; set; }
         /// <summary>
-        /// Site of what needs to be pinged. Literally could be anything
-        /// </summary>
-        /// <value>String</value>
-        public static string Pingsite { get; set; }
-        /// <summary>
-        /// Location of the <c>ModLists</c> .json files
+        /// Location of the modinstallerinfo.h3vrmi
         /// </summary>
         /// <value></value>
-        public static string[] Modlistloc { get; set; }
+        public static string DatabaseInfo { get; set; }
     }
 
     /// <summary>
@@ -104,7 +89,7 @@ namespace H3VRModInstaller.Common
 	        /// <summary>
 	        ///     Location of H3VR.EXE, auto stops if not detected
 	        /// </summary>
-	        public static string execdir = MainFiledir + @"\H3VR.exe";
+	        public static string execdir = MainFiledir + "/H3VR.exe";
 
 	        /// <summary>
 	        ///     Loc of the main file with the exe inside
@@ -115,11 +100,6 @@ namespace H3VRModInstaller.Common
 	        ///     loc of the MI lists.
 	        /// </summary>
 	        public static string Modinstallerdir = Directory.GetCurrentDirectory() + @"/ModInstallerLists/";
-
-	        /// <summary>
-	        ///     Website where the database is located.
-	        /// </summary>
-	        public static string[] Modlistloc = {"https://github.com/Frityet/H3VRModInstaller/releases/download/database/ModList.zip", "ModList.zip"};
         }
     }
 }

@@ -48,6 +48,7 @@ namespace H3VRModInstaller.GUI
 			this.launch = new System.Windows.Forms.Button();
 			this.ModsEnabled = new System.Windows.Forms.CheckBox();
 			this.ControlPanel = new System.Windows.Forms.Panel();
+			this.CheckButton = new System.Windows.Forms.Button();
 			this.ModVer = new System.Windows.Forms.Label();
 			this.InfoPanel = new System.Windows.Forms.Panel();
 			this.ModInfo = new System.Windows.Forms.Label();
@@ -60,7 +61,6 @@ namespace H3VRModInstaller.GUI
 			this.ProgressBar = new System.Windows.Forms.ProgressBar();
 			this.PersentageText = new System.Windows.Forms.Label();
 			this.Terminator = new System.ComponentModel.BackgroundWorker();
-			this.CheckButton = new System.Windows.Forms.Button();
 			this.ModList.SuspendLayout();
 			this.ControlPanel.SuspendLayout();
 			this.InfoPanel.SuspendLayout();
@@ -242,6 +242,19 @@ namespace H3VRModInstaller.GUI
 			this.ControlPanel.Size = new System.Drawing.Size(478, 317);
 			this.ControlPanel.TabIndex = 3;
 			// 
+			// CheckButton
+			// 
+			this.CheckButton.BackColor = System.Drawing.Color.White;
+			this.CheckButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+			this.CheckButton.Location = new System.Drawing.Point(248, 75);
+			this.CheckButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+			this.CheckButton.Name = "CheckButton";
+			this.CheckButton.Size = new System.Drawing.Size(225, 30);
+			this.CheckButton.TabIndex = 6;
+			this.CheckButton.Text = "Check Website\r\n";
+			this.CheckButton.UseVisualStyleBackColor = false;
+			this.CheckButton.Click += new System.EventHandler(this.CheckButton_Click);
+			// 
 			// ModVer
 			// 
 			this.ModVer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -370,18 +383,6 @@ namespace H3VRModInstaller.GUI
 			this.Terminator.DoWork += new System.ComponentModel.DoWorkEventHandler(this.Terminator_DoWork);
 			this.Terminator.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.Terminator_ProgressChanged);
 			this.Terminator.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.Terminator_RunWorkerCompleted);
-			// 
-			// CheckButton
-			// 
-			this.CheckButton.BackColor = System.Drawing.Color.White;
-			this.CheckButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-			this.CheckButton.Location = new System.Drawing.Point(248, 75);
-			this.CheckButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-			this.CheckButton.Name = "CheckButton";
-			this.CheckButton.Size = new System.Drawing.Size(225, 30);
-			this.CheckButton.TabIndex = 6;
-			this.CheckButton.Text = "Check Website\r\n";
-			this.CheckButton.UseVisualStyleBackColor = false;
 			// 
 			// mainwindow
 			// 

@@ -111,6 +111,7 @@ namespace H3VRModInstaller.GUI
 			UpdateButton.Hide();
 			ModVer.Hide();
 			Delete.Hide();
+			CheckButton.Hide();
 
 			ModsEnabled.Checked = true;
 			UpdateModList();
@@ -119,9 +120,11 @@ namespace H3VRModInstaller.GUI
 		private void DownloadableModsList_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			InstallButton.Show();
+			CheckButton.Show();
 			UpdateButton.Hide();
 			ModVer.Hide();
 			Delete.Hide();
+			
 
 
 			try
@@ -148,6 +151,7 @@ namespace H3VRModInstaller.GUI
 
 			UpdateButton.Show();
 			Delete.Show();
+			CheckButton.Show();
 
 			ModVer.Show();
 			try
@@ -175,15 +179,7 @@ namespace H3VRModInstaller.GUI
 
 		private void Terminator_DoWork(object sender, DoWorkEventArgs e)
 		{
-			string mod = "";
-			try
-			{
-				mod = impModID;
-			}
-			catch
-			{
-				Console.WriteLine("Not a string!");
-			}
+			string mod = impModID;
 			try
 			{
 				MainClass.doCommand(command);
@@ -191,7 +187,7 @@ namespace H3VRModInstaller.GUI
 			catch (Exception exception)
 			{
 				Terminator.CancelAsync();
-				MessageBox.Show($"Failed to install mod {DownloadableModsList.SelectedItems[0].SubItems[4].Text} \n \n {exception.Message}!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MessageBox.Show($"Failed to " + command[0] + " on mod {DownloadableModsList.SelectedItems[0].SubItems[4].Text} \n \n {exception.Message}!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 		}
 
@@ -207,7 +203,7 @@ namespace H3VRModInstaller.GUI
 				downloadedMod = InstalledModsList.SelectedItems[0].SubItems[4].Text;
 			} //probably the stupidest bodge i've ever done lel --potatoes
 			UpdateModList();
-			MessageBox.Show($"Sucessfully downloaded mod {downloadedMod}", "Sucess!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+			MessageBox.Show($"Sucessfully " + command[0] + "ed mod {downloadedMod}", "Sucess!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 		}
 
 		private void Terminator_ProgressChanged(object sender, ProgressChangedEventArgs e)
@@ -264,6 +260,11 @@ namespace H3VRModInstaller.GUI
 		private void Delete_Click(object sender, EventArgs e)
 		{
 			StartTerminator("rm " + impModID);
+		}
+
+		private void CheckButton_Click(object sender, EventArgs e)
+		{
+			StartTerminator("check " + impModID);
 		}
 	}
 }

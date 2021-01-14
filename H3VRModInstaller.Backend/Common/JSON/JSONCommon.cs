@@ -12,31 +12,6 @@ namespace H3VRModInstaller.JSON.Common
 	/// </summary>
 	public static class JsonCommon
 	{
-		/// <summary>
-		///     All JSON files in the database!
-		/// </summary>
-		public static string[] JsonFiles =
-			Glob.FilesAndDirectories(ModInstallerCommon.Files.Modinstallerdir, "**.json").ToArray();
-
-		//public static ModListFormat[] Jsonfiles = JsonModList.GetModLists();
-
-		/// <summary>
-		///     Stores where the JSON files are in the Github repo
-		/// </summary>
-		/*
-        public static readonly Dictionary<string, Uri> OnlineDatabase = new()
-        {
-            {"CharacterMods", new Uri("https://raw.githubusercontent.com/Frityet/H3VRModInstaller/master/H3VRModInstaller.Backend/JSON/Database/charactermods.json")},
-            {"CodeMods", new Uri("https://raw.githubusercontent.com/Frityet/H3VRModInstaller/master/H3VRModInstaller.Backend/JSON/Database/codemods.json")},
-            {"CustomItems", new Uri("https://raw.githubusercontent.com/Frityet/H3VRModInstaller/master/H3VRModInstaller.Backend/JSON/Database/customitems.json")},
-            {"Dependencies", new Uri("https://raw.githubusercontent.com/Frityet/H3VRModInstaller/master/H3VRModInstaller.Backend/JSON/Database/dependencies.json")},
-            {"MapMods", new Uri("https://raw.githubusercontent.com/Frityet/H3VRModInstaller/master/H3VRModInstaller.Backend/JSON/Database/mapmods.json")}
-        };
-        */
-		/// <summary>
-		///     Returns the Database URLs.
-		/// </summary>
-
 		public static String DatabaseInfo = "https://raw.githubusercontent.com/Frityet/H3VRModInstaller/master/H3VRModInstaller.Backend/JSON/Database/modinstallerinfo.h3vrmi";
 
 		/// <summary>
@@ -51,21 +26,14 @@ namespace H3VRModInstaller.JSON.Common
 			return result;
 		}
 
-		///
 		public static void OverrideModInstallerVariables()
 		{
-			if (!File.Exists(Directory.GetCurrentDirectory() + @"\" + "MICoverride.json")) return;
+			if (!File.Exists(Directory.GetCurrentDirectory() + "/" + "MICoverride.json")) return;
 			Console.WriteLine("MICOverride.json detected!");
-			var depinput =
-				JsonConvert.DeserializeObject<CommonVariables>(
-					File.ReadAllText(Directory.GetCurrentDirectory() + @"\" + "MICoverride.json"));
-			if (CommonVariables.EnableDebugging)
-				CommonVariables.EnableDebugging = CommonVariables.EnableDebugging;
-			if (CommonVariables.BypassExec) CommonVariables.BypassExec = CommonVariables.BypassExec;
+			var depinput = JsonConvert.DeserializeObject<CommonVariables>(File.ReadAllText(Directory.GetCurrentDirectory() + "/" + "MICoverride.json"));
 			if (CommonVariables.Execname != null)
-				ModInstallerCommon.Files.execdir = ModInstallerCommon.Files.MainFiledir + CommonVariables.Execname;
-			if (CommonVariables.Pingsite != null) CommonVariables.Pingsite = CommonVariables.Pingsite;
-			if (CommonVariables.Modlistloc != null) ModInstallerCommon.Files.Modlistloc = CommonVariables.Modlistloc;
+				ModInstallerCommon.Files.execdir = ModInstallerCommon.Files.MainFiledir + "/" + CommonVariables.Execname;
+			if (CommonVariables.DatabaseInfo != null) DatabaseInfo = CommonVariables.DatabaseInfo;
 		}
 	}
 }
