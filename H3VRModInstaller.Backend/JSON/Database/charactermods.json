@@ -139,7 +139,7 @@
       "Path": "https://bonetome.com/download.php?file=ZDA4ZjhlOWU3NjczYjE5Mis0NDErODYw",
       "Website": "https://bonetome.com/h3vr/characters/161/",
       "Arguments": "unzipToDir??moveToFolder?All Rounder Randy/Mods/?/?Mods/?moveToFolder?All Rounder Randy/TNH_Tweaker/?/?TNH_Tweaker/",
-      "DelInfo": "",
+      "DelInfo": "Mods/AllRounderRandy",
       "Dependencies": [
         "tnhtweaker"
       ]
