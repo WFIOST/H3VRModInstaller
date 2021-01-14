@@ -12,7 +12,10 @@ namespace H3VRModInstaller.JSON.Common
 	/// </summary>
 	public static class JsonCommon
 	{
-		public static String DatabaseInfo = "https://raw.githubusercontent.com/Frityet/H3VRModInstaller/master/H3VRModInstaller.Backend/JSON/Database/modinstallerinfo.h3vrmi";
+		/// <summary>
+		/// Where the database for modinstaller is kept
+		/// </summary>
+		public static string DatabaseInfo = "https://raw.githubusercontent.com/Frityet/H3VRModInstaller/master/H3VRModInstaller.Backend/JSON/Database/modinstallerinfo.h3vrmi";
 
 		/// <summary>
 		///     Gets all mods, from the JSON files
@@ -26,6 +29,9 @@ namespace H3VRModInstaller.JSON.Common
 			return result;
 		}
 
+		/// <summary>
+		/// Function that gets the overrides for debugging
+		/// </summary>
 		public static void OverrideModInstallerVariables()
 		{
 			if (!File.Exists(Directory.GetCurrentDirectory() + "/" + "MICoverride.json")) return;
