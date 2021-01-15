@@ -2,6 +2,7 @@
 
 using System;
 using System.IO;
+using H3VRModInstaller.Sandbox.Filesys.Config;
 
 namespace H3VRModInstaller.Sandbox
 {
@@ -11,7 +12,8 @@ namespace H3VRModInstaller.Sandbox
         {
             Console.WriteLine("Hello World!");
             Setup();
-            
+
+            Configs.EditConfigFile();
         }
 
 

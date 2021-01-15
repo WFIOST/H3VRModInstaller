@@ -18,33 +18,29 @@ namespace H3VRModInstaller.Sandbox.Filesys.Config
         /// <param name="fileToEdit">The file to be edited</param>
         /// <param name="fieldToEdit">Which field in the file is going to be edited (REGEX)</param>
         /// <param name="textToAdd">What to add to the file</param>
-        public static void EditConfigFile(string fileToEdit, string fieldToEdit, string textToAdd)
+        public static void EditConfigFile(string fileToEdit = "", string fieldToEdit = "", string textToAdd = "")
         {
+            var fields = GetConfigfields();
             return;
         }
 
 
         /// <summary>
-        /// Get Config Fields
+        /// Get Config fields
         /// </summary>
-        private static string[] GetConfigFields()
+        private static string[] GetConfigfields()
         {
-            var Fields = new List<string>();
+            var fields = new string[0];
+            if(!Directory.Exists(Directory.GetCurrentDirectory() + "/configs/")) Directory.CreateDirectory(Directory.GetCurrentDirectory() + "/configs/");
+            var ConfigsDir = Directory.GetCurrentDirectory() + "/configs/";
+            var TestConfigFile = ConfigsDir + "test.h3vrMI";
+            fields = File.ReadAllLines(TestConfigFile);
 
-            if(!Directory.Exists(Directory.GetCurrentDirectory() + "configs/")) Directory.CreateDirectory(Directory.GetCurrentDirectory() + "config/");
+            var listOfFields = new List<string>(fields);
+            
+            
 
-            var ConfigFiles = Directory.GetFiles(Directory.GetCurrentDirectory() + "configs/");
-
-            var lines = new string[0];
-
-            foreach (var file in ConfigFiles)
-            {
-                lines = File.ReadAllLines(file);
-            }
-
-            File.WriteAllLines("", lines);
-
-            return Fields.ToArray();
+            return listOfFields.ToArray();
         }
     }
 }
