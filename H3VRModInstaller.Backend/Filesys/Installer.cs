@@ -5,20 +5,20 @@ using H3VRModInstaller.JSON;
 
 namespace H3VRModInstaller.Filesys
 {
-	/// <summary>
-	///     This class manages the installation of mods!
-	/// </summary>
-	public class Installer
+    /// <summary>
+    ///     This class manages the installation of mods!
+    /// </summary>
+    public class Installer
     {
-	    /// <summary>
-	    ///     This function installs a mod based off the parameters provided. The first parameter is the an 5-length array which
-	    ///     represents the file info. The second parameter is a bool which determines if the archive will be deleted after
-	    ///     installation.
-	    /// </summary>
-	    /// <param name="fileinfo">ModFile class, gets the <c>rawname</c> from it</param>
-	    /// <param name="delArchive">Defines if the archive should be deleted after installation</param>
-	    /// <returns>Boolean</returns>
-	    public static bool InstallMod(ModFile fileinfo, bool delArchive = false)
+        /// <summary>
+        ///     This function installs a mod based off the parameters provided. The first parameter is the an 5-length array which
+        ///     represents the file info. The second parameter is a bool which determines if the archive will be deleted after
+        ///     installation.
+        /// </summary>
+        /// <param name="fileinfo">ModFile class, gets the <c>rawname</c> from it</param>
+        /// <param name="delArchive">Defines if the archive should be deleted after installation</param>
+        /// <returns>Boolean</returns>
+        public static bool InstallMod(ModFile fileinfo, bool delArchive = false)
         {
             fileinfo.Arguments.Replace("BACKSLASH", @"\");
 
@@ -37,13 +37,14 @@ namespace H3VRModInstaller.Filesys
 
                     var ArchiveType = Archives.ArchiveType.Zip;
 
-                    if(fileinfo.RawName.EndsWith(".rar") || fileinfo.RawName.EndsWith(".RAR"))
+                    if (fileinfo.RawName.EndsWith(".rar") || fileinfo.RawName.EndsWith(".RAR"))
                         ArchiveType = Archives.ArchiveType.RAR;
 
-                    if(fileinfo.RawName.EndsWith(".7z") || fileinfo.RawName.EndsWith(".7Z"))
+                    if (fileinfo.RawName.EndsWith(".7z") || fileinfo.RawName.EndsWith(".7Z"))
                         ArchiveType = Archives.ArchiveType.SevenZip;
 
-                    Archives.UnArchive(fileinfo.RawName, ModInstallerCommon.Files.MainFiledir + "/" + args[i + 1], delArchive, ArchiveType);
+                    Archives.UnArchive(fileinfo.RawName, ModInstallerCommon.Files.MainFiledir + "/" + args[i + 1],
+                        delArchive, ArchiveType);
                 }
 
                 if (args[i] == "addFolder")
@@ -59,18 +60,18 @@ namespace H3VRModInstaller.Filesys
             return true;
         }
 
-	    /// <summary>
-	    ///     This function moves the mod (first parameter) to the second parameter location, and renames it to the third
-	    ///     parameter
-	    /// </summary>
-	    /// <param name="mod">The mod to be moved</param>
-	    /// <param name="dir">The Directory to be moved to</param>
-	    /// <param name="renameTo">What the file should be renamed to after</param>
-	    /// <returns>Boolean, true</returns>
-	    /// <remarks>
-	    ///     Honestly, this function needs a lot of work, its disgusting //TODO: fix this shit
-	    /// </remarks>
-	    public static bool MoveToFolder(string mod, string dir, string renameTo = "")
+        /// <summary>
+        ///     This function moves the mod (first parameter) to the second parameter location, and renames it to the third
+        ///     parameter
+        /// </summary>
+        /// <param name="mod">The mod to be moved</param>
+        /// <param name="dir">The Directory to be moved to</param>
+        /// <param name="renameTo">What the file should be renamed to after</param>
+        /// <returns>Boolean, true</returns>
+        /// <remarks>
+        ///     Honestly, this function needs a lot of work, its disgusting //TODO: fix this shit
+        /// </remarks>
+        public static bool MoveToFolder(string mod, string dir, string renameTo = "")
         {
             if (renameTo == "") renameTo = mod;
             dir = ModInstallerCommon.Files.MainFiledir + @"\" + dir;

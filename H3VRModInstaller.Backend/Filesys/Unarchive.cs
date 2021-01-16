@@ -1,11 +1,10 @@
 using System.IO;
 using System.Linq;
-using SharpCompress.Common;
 using SharpCompress.Archives;
 using SharpCompress.Archives.Rar;
-using SharpCompress.Archives.Zip;
 using SharpCompress.Archives.SevenZip;
-
+using SharpCompress.Archives.Zip;
+using SharpCompress.Common;
 
 namespace H3VRModInstaller.Filesys
 {
@@ -15,20 +14,22 @@ namespace H3VRModInstaller.Filesys
     public class Archives
     {
         /// <summary>
-        /// What type of archive the file is
+        ///     What type of archive the file is
         /// </summary>
         public enum ArchiveType
         {
             /// <summary>
-            /// Regular old zip Archive
+            ///     Regular old zip Archive
             /// </summary>
             Zip,
+
             /// <summary>
-            /// .RAR Archive
+            ///     .RAR Archive
             /// </summary>
             RAR,
+
             /// <summary>
-            /// .7z Archive
+            ///     .7z Archive
             /// </summary>
             SevenZip
         }
@@ -40,7 +41,8 @@ namespace H3VRModInstaller.Filesys
         /// <param name="unzipLocation">Unzip location</param>
         /// <param name="deleteArchiveAfterUnzip">Delete archive after unzip?</param>
         /// <param name="TypeOfArchive">What type of archive the file is, acceptable values are "Zip", "SevenZip", "RAR"</param>
-        public static void UnArchive(string fileToUnzip, string unzipLocation, bool deleteArchiveAfterUnzip, ArchiveType TypeOfArchive)
+        public static void UnArchive(string fileToUnzip, string unzipLocation, bool deleteArchiveAfterUnzip,
+            ArchiveType TypeOfArchive)
         {
             switch (TypeOfArchive)
             {
@@ -55,7 +57,7 @@ namespace H3VRModInstaller.Filesys
                 case ArchiveType.SevenZip:
                     UnSevenZip(fileToUnzip, unzipLocation, deleteArchiveAfterUnzip);
                     break;
-                
+
                 default:
                     UnZip(fileToUnzip, unzipLocation, deleteArchiveAfterUnzip);
                     break;
@@ -63,9 +65,8 @@ namespace H3VRModInstaller.Filesys
         }
 
 
-
         /// <summary>
-        /// Function for unarchiving .zip files
+        ///     Function for unarchiving .zip files
         /// </summary>
         /// <param name="FileToDecompress">Archive that is to be opened</param>
         /// <param name="LocationToDecompressTo">Directory that the archive would be extracted to</param>
@@ -75,44 +76,42 @@ namespace H3VRModInstaller.Filesys
             using (var archive = ZipArchive.Open(FileToDecompress))
             {
                 foreach (var entry in archive.Entries.Where(entry => !entry.IsDirectory))
-                {
-                    entry.WriteToDirectory(LocationToDecompressTo, new ExtractionOptions()
+                    entry.WriteToDirectory(LocationToDecompressTo, new ExtractionOptions
                     {
                         ExtractFullPath = true,
                         Overwrite = true
                     });
-                } 
             }
 
-            if(deleteArchiveAfterUnzip)
+            if (deleteArchiveAfterUnzip)
                 File.Delete(FileToDecompress);
         }
 
         /// <summary>
-        /// Function for unarchiving .7z files
+        ///     Function for unarchiving .7z files
         /// </summary>
         /// <param name="FileToDecompress">Archive that is to be opened</param>
         /// <param name="LocationToDecompressTo">Directory that the archive would be extracted to</param>
         /// <param name="deleteArchiveAfterUnzip">Delete Archive after unzip?</param>
-        public static void UnSevenZip(string FileToDecompress, string LocationToDecompressTo, bool deleteArchiveAfterUnzip)
+        public static void UnSevenZip(string FileToDecompress, string LocationToDecompressTo,
+            bool deleteArchiveAfterUnzip)
         {
             using (var archive = SevenZipArchive.Open(FileToDecompress))
             {
                 foreach (var entry in archive.Entries.Where(entry => !entry.IsDirectory))
-                {
-                    entry.WriteToDirectory(LocationToDecompressTo, new ExtractionOptions()
+                    entry.WriteToDirectory(LocationToDecompressTo, new ExtractionOptions
                     {
                         ExtractFullPath = true,
                         Overwrite = true
                     });
-                } 
             }
-            if(deleteArchiveAfterUnzip)
+
+            if (deleteArchiveAfterUnzip)
                 File.Delete(FileToDecompress);
         }
 
         /// <summary>
-        /// Function for unarchiving .rar files
+        ///     Function for unarchiving .rar files
         /// </summary>
         /// <param name="FileToDecompress">Archive that is to be opened</param>
         /// <param name="LocationToDecompressTo">Directory that the archive would be extracted to</param>
@@ -122,15 +121,14 @@ namespace H3VRModInstaller.Filesys
             using (var archive = RarArchive.Open(FileToDecompress))
             {
                 foreach (var entry in archive.Entries.Where(entry => !entry.IsDirectory))
-                {
-                    entry.WriteToDirectory(LocationToDecompressTo, new ExtractionOptions()
+                    entry.WriteToDirectory(LocationToDecompressTo, new ExtractionOptions
                     {
                         ExtractFullPath = true,
                         Overwrite = true
                     });
-                }
             }
-            if(deleteArchiveAfterUnzip)
+
+            if (deleteArchiveAfterUnzip)
                 File.Delete(FileToDecompress);
         }
     }

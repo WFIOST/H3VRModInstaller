@@ -1,6 +1,5 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using System.IO;
-using System.Collections.Generic;
 using H3VRModInstaller.Common;
 
 namespace H3VRModInstaller.Filesys.Config
@@ -10,7 +9,6 @@ namespace H3VRModInstaller.Filesys.Config
     /// </summary>
     public class Configs
     {
-
         /// <summary>
         ///     Gets all the info in a <c>config</c> file, then gets all the editable fields, and edits them to have the correct
         ///     info
@@ -20,12 +18,11 @@ namespace H3VRModInstaller.Filesys.Config
         /// <param name="textToAdd">What to add to the file</param>
         public static void EditConfigFile(string fileToEdit, string fieldToEdit, string textToAdd)
         {
-            return;
         }
 
 
         /// <summary>
-        /// Get Config Fields
+        ///     Get Config Fields
         /// </summary>
         private static string[] GetConfigFields()
         {
@@ -35,10 +32,7 @@ namespace H3VRModInstaller.Filesys.Config
 
             var lines = new string[0];
 
-            foreach (var file in ConfigFiles)
-            {
-                lines = File.ReadAllLines(file);
-            }
+            foreach (var file in ConfigFiles) lines = File.ReadAllLines(file);
 
             File.WriteAllLines("", lines);
 

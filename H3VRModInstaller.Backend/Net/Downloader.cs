@@ -9,27 +9,28 @@ using H3VRModInstaller.JSON;
 
 namespace H3VRModInstaller.Net
 {
-	/// <summary>
-	///     This class is for downloading mods
-	/// </summary>
-	public class Downloader
+    /// <summary>
+    ///     This class is for downloading mods
+    /// </summary>
+    public class Downloader
     {
         /// <summary>
-        /// Stuff for the progress bar
+        ///     Stuff for the progress bar
         /// </summary>
         /// <param name="info">Float Array</param>
         public delegate void NotifyUpdate(float[] info);
 
         private static readonly WebClient _Downloader = new();
         private static bool _finished;
+
         /// <summary>
-        /// Download progress, should be private
+        ///     Download progress, should be private
         /// </summary>
         /// <value>Float array</value>
         public static float[] dlprogress = {0f, 9999f};
 
         /// <summary>
-        /// (based dictionary) Dict for assigning a string to a modfile 
+        ///     (based dictionary) Dict for assigning a string to a modfile
         /// </summary>
         /// <returns>String, Modfile</returns>
         public Dictionary<string, ModFile> stringToModfile = new();
@@ -90,7 +91,7 @@ namespace H3VRModInstaller.Net
         }
 
         /// <summary>
-        /// Sender function for the GUI progress bar
+        ///     Sender function for the GUI progress bar
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -157,16 +158,17 @@ namespace H3VRModInstaller.Net
         }
 
         /// <summary>
-        /// Class for notifying forms to update the progress bar
-        /// </summary>   
+        ///     Class for notifying forms to update the progress bar
+        /// </summary>
         public static class NotifyForms
         {
             /// <summary>
-            /// Object for notifying forms to update the progress bar
+            ///     Object for notifying forms to update the progress bar
             /// </summary>
             public static event NotifyUpdate NotifyUpdateProgressBar;
+
             /// <summary>
-            /// Function for notifying forms to update the progress bar
+            ///     Function for notifying forms to update the progress bar
             /// </summary>
             public static void CallEvent()
             {
