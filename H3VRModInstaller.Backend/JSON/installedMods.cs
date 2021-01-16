@@ -6,38 +6,38 @@ using Newtonsoft.Json;
 
 namespace H3VRModInstaller.JSON
 {
-	/// <summary>
-	///     Another layer for multiple mods in one file
-	/// </summary>
-	public class InstalledModsFormat
+    /// <summary>
+    ///     Another layer for multiple mods in one file
+    /// </summary>
+    public class InstalledModsFormat
     {
-	    /// <summary>
-	    ///     <c>ModFile</c> iarray of installed mods
-	    /// </summary>
-	    public ModFile[] InstalledMods { get; set; }
+        /// <summary>
+        ///     <c>ModFile</c> iarray of installed mods
+        /// </summary>
+        public ModFile[] InstalledMods { get; set; }
     }
 
-	/// <summary>
-	///     Old installed mods format, dont use this
-	/// </summary>
-	public class DeprecatedInstalledModsFormat
+    /// <summary>
+    ///     Old installed mods format, dont use this
+    /// </summary>
+    public class DeprecatedInstalledModsFormat
     {
-	    /// <summary>
-	    ///     String array of installed mods (DEPRECIATED)
-	    /// </summary>
-	    public string[] InstalledMods { get; set; }
+        /// <summary>
+        ///     String array of installed mods (DEPRECIATED)
+        /// </summary>
+        public string[] InstalledMods { get; set; }
     }
 
-	/// <summary>
-	///     Actions for the installed mods. Serialised
-	/// </summary>
-	public class InstalledMods
+    /// <summary>
+    ///     Actions for the installed mods. Serialised
+    /// </summary>
+    public class InstalledMods
     {
-	    /// <summary>
-	    ///     Gets the currently installed mods from the JSON files
-	    /// </summary>
-	    /// <returns>String array with the installed mods</returns>
-	    public static ModFile[] GetInstalledMods()
+        /// <summary>
+        ///     Gets the currently installed mods from the JSON files
+        /// </summary>
+        /// <returns>String array with the installed mods</returns>
+        public static ModFile[] GetInstalledMods()
         {
             if (!File.Exists(Directory.GetCurrentDirectory() + @"\installedmods.json")) return new ModFile[0];
             Console.WriteLine("Reading from " + Directory.GetCurrentDirectory() + @"\installedmods.json");
@@ -70,11 +70,11 @@ namespace H3VRModInstaller.JSON
             return input.InstalledMods;
         }
 
-	    /// <summary>
-	    ///     Adds a <c>ModFile</c> to the InstalledMods JSON file
-	    /// </summary>
-	    /// <param name="addmod">Mod to add</param>
-	    public static void AddInstalledMod(string addmod)
+        /// <summary>
+        ///     Adds a <c>ModFile</c> to the InstalledMods JSON file
+        /// </summary>
+        /// <param name="addmod">Mod to add</param>
+        public static void AddInstalledMod(string addmod)
         {
             var file = GetInstalledMods(); //gets the installed mods file
             Array.Resize(ref file, file.Length + 1); //adds new room for new mod
@@ -82,11 +82,11 @@ namespace H3VRModInstaller.JSON
             writeInstalledModToJson(file);
         }
 
-	    /// <summary>
-	    ///     Removes a <c>ModFile</c> to the InstalledMods JSON file
-	    /// </summary>
-	    /// <param name="removemod">Mod to remove</param>
-	    public static void RemoveInstalledMod(string removemod)
+        /// <summary>
+        ///     Removes a <c>ModFile</c> to the InstalledMods JSON file
+        /// </summary>
+        /// <param name="removemod">Mod to remove</param>
+        public static void RemoveInstalledMod(string removemod)
         {
             var file = GetInstalledMods(); //gets the installed mods file
             var loc = -1;

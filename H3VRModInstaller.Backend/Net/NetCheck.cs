@@ -1,4 +1,5 @@
-﻿using System.Net.NetworkInformation;
+﻿using System;
+using System.Net.NetworkInformation;
 
 namespace H3VRModInstaller.Net
 {
@@ -18,21 +19,18 @@ namespace H3VRModInstaller.Net
         public static bool isOnline(string url)
         {
             var ping = new Ping();
-            
+
             try
             {
                 var reply = ping.Send(url, 1000);
                 if (reply.Status == IPStatus.Success) return true;
             }
-            catch (System.Exception )
+            catch (Exception)
             {
-                
                 return false;
             }
-            
-            return true;
 
-            
+            return true;
         }
     }
 }

@@ -6,9 +6,9 @@ using H3VRModInstaller.Sandbox.Filesys.Config;
 
 namespace H3VRModInstaller.Sandbox
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
             Setup();
@@ -17,120 +17,31 @@ namespace H3VRModInstaller.Sandbox
         }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        static void SetupConsole()
+        private static void SetupConsole()
         {
-            
-        Console.ForegroundColor=ConsoleColor.DarkGreen;
-        Console.Title = "H3VR Mod Installer Sandbox Environment";
-
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.Title = "H3VR Mod Installer Sandbox Environment";
         }
 
 
-        static void PrintInfo()
+        private static void PrintInfo()
         {
             var cwd = Directory.GetCurrentDirectory();
             Console.WriteLine($"Current Dir: {cwd}");
 
-            Console.WriteLine($"Files in CWD: ");
+            Console.WriteLine("Files in CWD: ");
 
-            foreach (var file in Directory.GetFiles(cwd))
-            {
-                Console.WriteLine(file);
-            }
-            foreach (var path in Directory.GetDirectories(cwd))
-            {
-                Console.WriteLine(path);
-            }
-
-            
+            foreach (var file in Directory.GetFiles(cwd)) Console.WriteLine(file);
+            foreach (var path in Directory.GetDirectories(cwd)) Console.WriteLine(path);
         }
 
-        static void cont()
+        private static void cont()
         {
             Console.Write("Press ENTER to Continue");
             Console.ReadLine();
         }
 
-        static void Setup()
+        private static void Setup()
         {
             SetupConsole();
             PrintInfo();

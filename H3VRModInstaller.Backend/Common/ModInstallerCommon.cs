@@ -4,17 +4,18 @@ using System.IO;
 namespace H3VRModInstaller.Common
 {
     /// <summary>
-    /// Some common variables used across the project
+    ///     Some common variables used across the project
     /// </summary>
     public struct CommonVariables
     {
         /// <summary>
-        /// Name for the executable targeted
+        ///     Name for the executable targeted
         /// </summary>
         /// <value>String</value>
         public static string Execname { get; set; }
+
         /// <summary>
-        /// Location of the modinstallerinfo.h3vrmi
+        ///     Location of the modinstallerinfo.h3vrmi
         /// </summary>
         /// <value></value>
         public static string DatabaseInfo { get; set; }
@@ -25,43 +26,43 @@ namespace H3VRModInstaller.Common
     /// </summary>
     public class ModInstallerCommon
     {
-	    /// <summary>
-	    ///     Enables Debugging
-	    /// </summary>
-	    public static bool enableDebugging = true;
+        /// <summary>
+        ///     Enables Debugging
+        /// </summary>
+        public static bool enableDebugging = true;
 
-	    /// <summary>
-	    ///     Bypasses the check for H3VR.EXE
-	    /// </summary>
-	    public static bool BypassExec = true;
+        /// <summary>
+        ///     Bypasses the check for H3VR.EXE
+        /// </summary>
+        public static bool BypassExec = true;
 
-	    /// <summary>
-	    ///     Website used to ping to ensure internet access
-	    /// </summary>
-	    public static string Pingsite = "www.github.com";
+        /// <summary>
+        ///     Website used to ping to ensure internet access
+        /// </summary>
+        public static string Pingsite = "www.github.com";
 
-	    /// <summary>
-	    ///     Current version.
-	    /// </summary>
-	    public static Version ModInstallerVersion = new(1, 0, 0);
+        /// <summary>
+        ///     Current version.
+        /// </summary>
+        public static Version ModInstallerVersion = new(1, 0, 0);
 
 
-	    /// <summary>
-	    ///     Writes line if enabledebugging is true.
-	    /// </summary>
-	    public static void DebugLog(string input)
+        /// <summary>
+        ///     Writes line if enabledebugging is true.
+        /// </summary>
+        public static void DebugLog(string input)
         {
             if (enableDebugging) Console.WriteLine(input);
         }
 
         /// <summary>
-        /// "better" errors
+        ///     "better" errors
         /// </summary>
         /// <param name="error">Error to write</param>
         public static void throwexept(string error)
         {
             Console.Title = "ERROR! - " + error;
-            Console.ForegroundColor = System.ConsoleColor.Red;
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine(error);
             Console.ReadKey();
         }
@@ -82,27 +83,27 @@ namespace H3VRModInstaller.Common
         }
 
         /// <summary>
-        /// Useful fields for filesystem work
+        ///     Useful fields for filesystem work
         /// </summary>
         public struct Files
         {
-	        /// <summary>
-	        ///     Location of H3VR.EXE, auto stops if not detected
-	        /// </summary>
-	        public static string execdir = MainFiledir + "/H3VR.exe";
-
-	        /// <summary>
-	        ///     Loc of the main file with the exe inside
-	        /// </summary>
-	        public static string MainFiledir = Directory.GetParent(Directory.GetCurrentDirectory()).FullName;
-
-	        /// <summary>
-	        ///     loc of the MI lists.
-	        /// </summary>
-	        public static string Modinstallerdir = Directory.GetCurrentDirectory() + @"/ModInstallerLists/";
+            /// <summary>
+            ///     Location of H3VR.EXE, auto stops if not detected
+            /// </summary>
+            public static string execdir = MainFiledir + "/H3VR.exe";
 
             /// <summary>
-            /// BepInEx directory
+            ///     Loc of the main file with the exe inside
+            /// </summary>
+            public static string MainFiledir = Directory.GetParent(Directory.GetCurrentDirectory()).FullName;
+
+            /// <summary>
+            ///     loc of the MI lists.
+            /// </summary>
+            public static string Modinstallerdir = Directory.GetCurrentDirectory() + @"/ModInstallerLists/";
+
+            /// <summary>
+            ///     BepInEx directory
             /// </summary>
             public static string BepInExDir = MainFiledir + "/BepInEx/";
         }

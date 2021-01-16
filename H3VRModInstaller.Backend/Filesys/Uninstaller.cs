@@ -6,12 +6,12 @@ using H3VRModInstaller.JSON;
 namespace H3VRModInstaller.Filesys
 {
     /// <summary>
-    /// Uninstaller for mods
+    ///     Uninstaller for mods
     /// </summary>
     public class Uninstaller
     {
         /// <summary>
-        /// Function for deleting mods
+        ///     Function for deleting mods
         /// </summary>
         /// <param name="modid">ModID to delte</param>
         public static void DeleteMod(string modid)
