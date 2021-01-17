@@ -3,13 +3,13 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using GlobExpressions;
-using H3VRModInstaller.Common;
-using H3VRModInstaller.Filesys;
-using H3VRModInstaller.JSON;
-using H3VRModInstaller.JSON.Common;
-using H3VRModInstaller.Net;
+using H3VRModInstaller.Backend.Common;
+using H3VRModInstaller.Backend.Filesys;
+using H3VRModInstaller.Backend.JSON;
+using H3VRModInstaller.Backend.JSON.Common;
+using H3VRModInstaller.Backend.Net;
 
-namespace H3VRModInstaller
+namespace H3VRModInstaller.Backend
 {
     /// <summary>
     ///     MainClass, dunno what you expected
@@ -20,7 +20,7 @@ namespace H3VRModInstaller
         ///     Main function, the args arent used though
         /// </summary>
         /// <param name="args">dunno why these are here</param>
-        public static void Main(string[] args)
+        public static void Main_DEPRECIATED(string[] args)
         {
             JsonCommon.OverrideModInstallerVariables();
             //exe check

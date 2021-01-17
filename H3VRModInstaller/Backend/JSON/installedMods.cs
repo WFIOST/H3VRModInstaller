@@ -1,10 +1,10 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
-using H3VRModInstaller.Filesys;
+using H3VRModInstaller.Backend.Filesys;
 using Newtonsoft.Json;
 
-namespace H3VRModInstaller.JSON
+namespace H3VRModInstaller.Backend.JSON
 {
     /// <summary>
     ///     Another layer for multiple mods in one file

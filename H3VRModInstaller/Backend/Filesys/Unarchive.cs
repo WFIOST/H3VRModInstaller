@@ -6,7 +6,7 @@ using SharpCompress.Archives.SevenZip;
 using SharpCompress.Archives.Zip;
 using SharpCompress.Common;
 
-namespace H3VRModInstaller.Filesys
+namespace H3VRModInstaller.Backend.Filesys
 {
     /// <summary>
     ///     Class which manages unzipping

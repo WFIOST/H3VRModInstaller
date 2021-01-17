@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace H3VRModInstaller.Common
+namespace H3VRModInstaller.Backend.Common
 {
     /// <summary>
     ///     Some common variables used across the project

@@ -1,10 +1,10 @@
 using System;
 using System.IO;
 using System.Linq;
-using H3VRModInstaller.Common;
+using H3VRModInstaller.Backend.Common;
 using Newtonsoft.Json;
 
-namespace H3VRModInstaller.JSON.Common
+namespace H3VRModInstaller.Backend.JSON.Common
 {
     /// <summary>
     ///     Common fields and functions for JSON!

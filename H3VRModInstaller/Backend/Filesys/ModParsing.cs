@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Linq;
-using H3VRModInstaller.JSON;
+using H3VRModInstaller.Backend.JSON;
 
-namespace H3VRModInstaller.Filesys
+namespace H3VRModInstaller.Backend.Filesys
 {
     /// <summary>
     ///     Parses together the deserialised JSON files
