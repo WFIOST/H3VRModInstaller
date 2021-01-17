@@ -32,6 +32,7 @@ namespace H3VRModInstaller.GUI
                 command = strngcommand.Split(' ');
                 Terminator.RunWorkerAsync();
             }
+			StatusReport.Text = "Working...";
         }
 
         public void _nu_updatebar(float[] info)
@@ -98,15 +99,18 @@ namespace H3VRModInstaller.GUI
 
         private void LoadGUI(object sender, EventArgs e)
         {
-            AllocConsole();
-            InstallButton.Hide();
-            UpdateButton.Hide();
-            ModVer.Hide();
-            Delete.Hide();
-            CheckButton.Hide();
+			AllocConsole();
+			InstallButton.Hide();
+			UpdateButton.Hide();
+			ModVer.Hide();
+			Delete.Hide();
+			CheckButton.Hide();
+			InstalledModsList.Hide();
+			DownloadableModsList.Hide();
 
-            ModsEnabled.Checked = true;
+			ModsEnabled.Checked = true;
             UpdateModList();
+			UpdateCatagories();
         }
 
         private void DownloadableModsList_SelectedIndexChanged(object sender, EventArgs e)
@@ -140,6 +144,7 @@ namespace H3VRModInstaller.GUI
             UpdateButton.Show();
             Delete.Show();
             CheckButton.Show();
+
 
             ModVer.Show();
             try
@@ -199,18 +204,21 @@ namespace H3VRModInstaller.GUI
             UpdateModList();
             MessageBox.Show("Sucessfully " + command[0] + "ed mod {downloadedMod}", "Sucess!", MessageBoxButtons.OK,
                 MessageBoxIcon.Information);
-        }
+			StatusReport.Text = "Idle";
+		}
 
         private void Terminator_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
         }
 
-        public void UpdateModList()
+        public void UpdateModList(string dispcat = "customitems")
         {
             DownloadableModsList.Items.Clear();
             InstalledModsList.Items.Clear();
 
-            var input = JsonCommon.GetAllMods();
+            var totalmods = JsonCommon.GetAllMods();
+
+			var dispmods = JsonModList.GetDeserializedModListFormatOnline(dispcat).Modlist;
 
             var installedMods = JSON.InstalledMods.GetInstalledMods();
 
@@ -218,19 +226,28 @@ namespace H3VRModInstaller.GUI
 
             var relevantint = 0;
 
-            //MessageBox.Show($"MODS LENGTH: {input.Length.ToString()}");
-            for (var i = 0; i < input.Length; i++)
+            for (var i = 0; i < totalmods.Length; i++)
             {
                 //this just checks if the mod we're working with is an installedmod, or a dl mod in isinstldmod
                 var isinstldmod = false;
                 var x = 0;
                 for (x = 0; x < installedMods.Length; x++)
-                    if (input[i].ModId == installedMods[x].ModId)
+                    if (totalmods[i].ModId == installedMods[x].ModId)
                     {
                         isinstldmod = true;
                         break;
                     }
 
+				var isdispmod = false;
+				for (int y = 0; y < dispmods.Length; y++)
+				{
+					if(totalmods[i].ModId == dispmods[y].ModId)
+					{
+						isdispmod = true;
+						break;
+					}
+				}
+				
                 //sets vars to installedmods or input
                 if (isinstldmod)
                 {
@@ -239,7 +256,7 @@ namespace H3VRModInstaller.GUI
                 }
                 else
                 {
-                    list = input;
+                    list = totalmods;
                     relevantint = i;
                 }
 
@@ -251,10 +268,23 @@ namespace H3VRModInstaller.GUI
                 mod.SubItems.Add(list[relevantint].ModId); //4
 
 
-                if (!isinstldmod) DownloadableModsList.Items.Add(mod);
-                else InstalledModsList.Items.Add(mod);
+				if (!isinstldmod && isdispmod) DownloadableModsList.Items.Add(mod);
+				if (isinstldmod) InstalledModsList.Items.Add(mod);
             }
         }
+
+		public void UpdateCatagories()
+		{
+			var catagories = JsonModList.GetModLists();
+
+			for(int i = 0; i < catagories.Length; i++)
+			{
+				
+				var mod = new ListViewItem(catagories[i].modlistname, 0); //0
+//				mod.SubItems.Add(catagories[i].modlistid); //1
+				CatagoriesComboBox.Items.Add(mod);
+			}
+		}
 
         private void UpdateButton_Click(object sender, EventArgs e)
         {
@@ -266,9 +296,33 @@ namespace H3VRModInstaller.GUI
             StartTerminator("rm " + impModID);
         }
 
-        private void CheckButton_Click(object sender, EventArgs e)
-        {
-            StartTerminator("check " + impModID);
-        }
-    }
+		private void CheckButton_Click(object sender, EventArgs e)
+		{
+			StartTerminator("check " + impModID);
+		}
+
+		private void ModList_Paint(object sender, PaintEventArgs e)
+		{
+			
+		}
+
+
+
+		private void InstalledMods_Click(object sender, EventArgs e)
+		{
+			InstalledModsList.Show();
+			DownloadableModsList.Hide();
+		}
+
+		private void DownloadableModsButton_Click(object sender, EventArgs e)
+		{
+			InstalledModsList.Hide();
+			DownloadableModsList.Show();
+		}
+
+		private void CatagoriesComboBox_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			try { UpdateModList(CatagoriesList.SelectedItems[0].SubItems[1].Text); } catch { }
+		}
+	}
 }

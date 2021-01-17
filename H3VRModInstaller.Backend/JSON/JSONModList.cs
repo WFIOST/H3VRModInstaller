@@ -87,6 +87,8 @@ namespace H3VRModInstaller.JSON
         ///     Allows for multiple mods in 1 file to be added
         /// </summary>
         public ModFile[] Modlist { get; set; }
+		public string modlistname { get; set; }
+		public string modlistid { get; set; }
     }
 
     /// <summary>
@@ -104,43 +106,11 @@ namespace H3VRModInstaller.JSON
 
         private static string[] DatabaseURLs;
 
-/*		/// <summary>
-		///     Gets the mods
-		/// </summary>
-		public static ModFile[] GetMods()
-		{
-			List<ModFile> mods = new();
-			for (int i = 0; i < JsonCommon.GetDatabaseURLs().Length; i++)
-			{
-				ModListFormat modList = GetDeserializedModListFormatOnline();
-				for (int x = 0; x < modList.Modlist.Length; x++)
-				{
-					mods.Add(modList.Modlist[x]);
-				}
-			}
-			Console.WriteLine("Got Mods!");
-			return mods.ToArray();
-		}*/
-
-/*        /// <summary>
-        ///     Downloads mods from ModInstallerCommon.Modlistloc
-        /// </summary>
-        public static void DlModList()
-        {
-            var fileloc = new Uri(ModInstallerCommon.Files.Modlistloc[0]);
-            Console.WriteLine("Downloading Mod Database...");
-            Client.DownloadFile(fileloc, ModInstallerCommon.Files.Modlistloc[1]);
-            Console.WriteLine("Successfully Downloaded Mod Database");
-            Directory.CreateDirectory(ModInstallerCommon.Files.Modinstallerdir);
-            ZipFile.ExtractToDirectory(ModInstallerCommon.Files.Modlistloc[1], ModInstallerCommon.Files.Modinstallerdir,
-                true);
-            File.Delete(ModInstallerCommon.Files.Modlistloc[1]);
-        }*/
 
         /// <summary>
-        ///     Gets the modlists and deseralises them, returning a ModList
+        ///     Returns all ModListFormats.
         /// </summary>
-        /// <param name="reload">Reload?</param>
+        /// <param name="reload">Forces reload of files rather than grabbing from cache</param>
         /// <param name="jsonfiles">Specify the json files you would like to use, this is a path</param>
         /// <returns>ModList</returns>
         public static ModListFormat[] GetModLists(bool reload = false, string[] jsonfiles = null)
@@ -216,8 +186,19 @@ namespace H3VRModInstaller.JSON
         /// </summary>
         public static ModListFormat GetDeserializedModListFormatOnline(string loc)
         {
-            if (!loc.Contains("https"))
-                loc = GetDatabaseURLs().First(i => i == loc); //get first instance of url with link
+			if (!loc.Contains("https"))
+			{
+				string[] v = new string[0];
+				v = GetDatabaseURLs();
+				for (int i = 0; i < v.Length; i++)
+				{
+					if (v[i].Contains(loc))
+					{
+						loc = v[i];
+						break;
+					}
+				}
+			}
             var client = new WebClient();
             var serialised = client.DownloadString(new Uri(loc));
             var modList = JsonConvert.DeserializeObject<ModListFormat>(serialised);
