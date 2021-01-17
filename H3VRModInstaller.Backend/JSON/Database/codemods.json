@@ -1,5 +1,6 @@
 {
 	"modlistname": "Code Mods",
+	"modlistid": "codemods",
 	"modlist": [
 		{
 			"modID": "curseddlls",

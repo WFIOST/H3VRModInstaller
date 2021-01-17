@@ -1,5 +1,6 @@
 {
-	"modlistname":  "Character Mods",
+	"modlistname": "Character Mods",
+	"modlistid": "charactermods",
 	"modlist": [
 		{
 			"modID": "comradekolbosa",

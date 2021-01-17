@@ -1,5 +1,6 @@
 {
 	"modlistname": "Dependency Mods",
+	"modlistid": "dependencies",
 	"modlist": [
 		{
 			"modID": "bepinex",

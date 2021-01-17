@@ -1,5 +1,6 @@
 {
 	"modlistname": "Custom Item Mods",
+	"modlistid": "customitems",
 	"modlist": [
 		{
 			"modID": "pccg",

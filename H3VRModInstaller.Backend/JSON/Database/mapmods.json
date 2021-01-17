@@ -1,5 +1,6 @@
 {
 	"modlistname": "Map Mods",
+	"modlistid": "mapmods",
 	"modlist": [
 		{
 			"modID": "shootyhouse",
