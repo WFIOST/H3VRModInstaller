@@ -23,7 +23,7 @@ namespace H3VRModInstaller.GUI
         public mainwindow()
         {
             InitializeComponent();
-            Downloader.NotifyForms.NotifyUpdateProgressBar += _nu_updatebar;
+//            Downloader.NotifyForms.NotifyUpdateProgressBar += _nu_updatebar;
         }
 
 
@@ -34,13 +34,9 @@ namespace H3VRModInstaller.GUI
                 command = strngcommand.Split(' ');
                 Terminator.RunWorkerAsync();
             }
-			StatusReport.Text = "Working...";
+			StatusReport.Text = "Working";
         }
 
-        public void _nu_updatebar(float[] info)
-        {
-//			updatebar(info);
-        }
 
         public void updatebar(float[] info)
         {
@@ -108,7 +104,6 @@ namespace H3VRModInstaller.GUI
 			Delete.Hide();
 			CheckButton.Hide();
 			InstalledModsList.Hide();
-			DownloadableModsList.Hide();
 
 			ModsEnabled.Checked = true;
             UpdateModList();
@@ -200,25 +195,37 @@ namespace H3VRModInstaller.GUI
             }
             catch //if it fails to, get the selected installedmodslist
             {
-                downloadedMod = InstalledModsList.SelectedItems[0].SubItems[4].Text;
+				try
+				{
+					downloadedMod = InstalledModsList.SelectedItems[0].SubItems[4].Text;
+				}
+				catch { }
             } //probably the stupidest bodge i've ever done lel --potatoes
 
             UpdateModList();
-            MessageBox.Show("Sucessfully " + command[0] + "ed mod {downloadedMod}", "Sucess!", MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
+//            MessageBox.Show("Sucessfully " + command[0] + "ed mod {downloadedMod}", "Sucess!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 			StatusReport.Text = "Idle";
 		}
 
         private void Terminator_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
+			Console.WriteLine("eat shit");
         }
 
-        public void UpdateModList(string dispcat = "customitems")
+		public static string publicdispcat = "n/a";
+
+        public void UpdateModList(string dispcat = "n/a")
         {
+			
             DownloadableModsList.Items.Clear();
             InstalledModsList.Items.Clear();
 
-            var totalmods = JsonCommon.GetAllMods();
+			if (dispcat == "n/a") dispcat = publicdispcat;
+			publicdispcat = dispcat;
+
+			if (publicdispcat == "n/a") return;
+
+			var totalmods = JsonCommon.GetAllMods();
 
 			var dispmods = JsonModList.GetDeserializedModListFormatOnline(dispcat).Modlist;
 
