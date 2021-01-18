@@ -15,7 +15,7 @@ namespace H3VRModInstaller.Backend.JSON.Common
         ///     Where the database for modinstaller is kept
         /// </summary>
         public static string DatabaseInfo =
-            "https://raw.githubusercontent.com/Frityet/H3VRModInstaller/master/H3VRModInstaller.Backend/JSON/Database/modinstallerinfo.h3vrmi";
+			"https://raw.githubusercontent.com/Frityet/H3VRModInstaller/master/src/Backend/JSON/Database/modinstallerinfo.h3vrmi";
 
         /// <summary>
         ///     Gets all mods, from the JSON files

@@ -282,9 +282,9 @@ namespace H3VRModInstaller.GUI
 			for(int i = 0; i < catagories.Length; i++)
 			{
 				
-				var mod = new ListViewItem(catagories[i].modlistname, 0); //0
+//				var mod = new ListViewItem(catagories[i].modlistname, 0); //0
 //				mod.SubItems.Add(catagories[i].modlistid); //1
-				CatagoriesComboBox.Items.Add(mod);
+				CatagoriesComboBox.Items.Add(catagories[i].modlistname);
 			}
 		}
 
@@ -324,7 +324,16 @@ namespace H3VRModInstaller.GUI
 
 		private void CatagoriesComboBox_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			try { UpdateModList(CatagoriesList.SelectedItems[0].SubItems[1].Text); } catch { }
+			string name = CatagoriesComboBox.SelectedItem.ToString();
+			var catagories = JsonModList.GetModLists();
+			for (int i = 0; i < catagories.Length; i++)
+			{
+				if (catagories[i].modlistname == name)
+				{
+					try { UpdateModList(catagories[i].modlistid); } catch (Exception exception) { Console.WriteLine(exception); }
+					break;
+				}
+			}
 		}
 	}
 }

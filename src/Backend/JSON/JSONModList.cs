@@ -181,6 +181,8 @@ namespace H3VRModInstaller.Backend.JSON
             return DatabaseURLs;
         }
 
+		private static WebClient client = new WebClient();
+
         /// <summary>
         ///     Returns ModListFormat, given a full URI or postfix
         /// </summary>
@@ -199,7 +201,7 @@ namespace H3VRModInstaller.Backend.JSON
 					}
 				}
 			}
-            var client = new WebClient();
+			Console.WriteLine("Reading {0}", loc);
             var serialised = client.DownloadString(new Uri(loc));
             var modList = JsonConvert.DeserializeObject<ModListFormat>(serialised);
             return modList;
