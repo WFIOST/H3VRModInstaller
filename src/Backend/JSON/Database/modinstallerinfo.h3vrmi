@@ -6,7 +6,7 @@
 			"Version": "0.4.0",
 			"Description": "Hey! This thingy here is just to know what is the newest version of H3VRMI.",
 			"Dependencies": [
-				"https://raw.githubusercontent.com/Frityet/H3VRModInstaller/master/H3VRModInstaller.Backend/JSON/Database/",
+				"https://raw.githubusercontent.com/Frityet/H3VRModInstaller/master/src/Backend/JSON/Database/",
 				"charactermods.json",
 				"codemods.json",
 				"dependencies.json",
