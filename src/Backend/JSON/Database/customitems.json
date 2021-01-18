@@ -168,7 +168,7 @@
 				"Meat_Banono"
 			],
 			"Version": "1.1.1",
-			"Description": "The long awaited and requested SIG MPX and MCX! With several possible attachments I just had to make it modular, so included in this mod are: \nFor the MCX: Caliber conversions for .300 Blackout and 5.56, 2 Handguard lengths, 3 Barrels, 4 stocks and a tube stock adapter.\nFor the MPX: 6 different Handguards, accepts all MCX stocks, and if you have KamikazeFox's ModulAR Barrels (which I will say are required for this mod: https://bonetome.com/h3vr/weapons/159/) you have 6 barrel lengths as well!\nThere are also two SIG muzzle brakes and suppressors.\nThe ModulMPX and ModulMCX are found under Lever Action Handguns in the Pistols category. The Muzzle Devices are located under Suppressors.
+			"Description": "The long awaited and requested SIG MPX and MCX! With several possible attachments I just had to make it modular, so included in this mod are: \nFor the MCX: Caliber conversions for .300 Blackout and 5.56, 2 Handguard lengths, 3 Barrels, 4 stocks and a tube stock adapter.\nFor the MPX: 6 different Handguards, accepts all MCX stocks, and if you have KamikazeFox's ModulAR Barrels (which I will say are required for this mod: https://bonetome.com/h3vr/weapons/159/) you have 6 barrel lengths as well!\nThere are also two SIG muzzle brakes and suppressors.\nThe ModulMPX and ModulMCX are found under Lever Action Handguns in the Pistols category. The Muzzle Devices are located under Suppressors.",
 			"Path": "https://bonetome.com/download.php?file=ZmZjNzFkZjA3NjM4NTI2NCszNjUrOTU1",
 			"Website": "https://bonetome.com/h3vr/weapons/187/",
 			"Arguments": "unzipToDir?VirtualObjects/",
