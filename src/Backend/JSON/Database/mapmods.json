@@ -1,93 +1,93 @@
 {
-	"modlistname": "Map Mods",
-	"modlistid": "mapmods",
-	"modlist": [
-		{
-			"modID": "shootyhouse",
-			"Name": "Shooty House",
-			"RawName": "ShootyHouse.zip",
-			"Author": [
-				"SirPotatoes",
-				"nrgill28"
-			],
-			"Version": "1.0.0",
-			"Description": "Shoot house! Clear the rooms as fast as possible and go for a high score!\nInstallation: Download the zip file and place in your mods/ folder. Do not extract\nDependencies: Deli v0.2.5 or greater and WurstMod v2.0.2.0 or greater\nCompare your scores against others' on this spreadsheet!\nhttps://docs.google.com/spreadsheets/d/1uJ5WMFAxVDIHDB3rCt0gvPeVDmo5yK6BZwkjE0WcQew/edit?usp=sharing\nNOTE: If the item spawner is missing, just reload the level from the wrist menu.",
-			"Path": "https://bonetome.com/download.php?file=MmI5NzlkOTRkZTI3MzUyYyszNjUrOTQw",
-			"Website": "https://bonetome.com/h3vr/map/181/",
-			"Arguments": "moveToFolder?ShootyHouse.zip?Mods/?ShootyHouse.zip",
-			"Delinfo": "Mods/ShootyHouse.zip",
-			"Dependencies": [
-				"wurstmod"
-			]
-		},
-		{
-			"modID": "promeatheus",
-			"Name": "Promeatheus",
-			"RawName": "Promeatheus_1.1.0.0.zip",
-			"Author": [
-				"NunSuperior"
-			],
-			"Version": "1.1.0",
-			"Description": "Promeatheus is a sci-fi themed Take and Hold map. It is an indoor map that features a mix of short and long hallways, small and medium sized holds/supply points, and shiny floors.\n\nPerformance:\nI recommend turning off HDR and Bloom. I tuned the lighting to look good with HDR off. Also the map still looks good even on the Low setting.\n\nStory(?):\nWhy is the Weinerland-Umami Corporation guarding this abandoned science vessel? Your mission is to investigate the Promeatheus and recover any valuable information you can.",
-			"Path": "https://bonetome.com/download.php?file=YmQ1ZWFmZjgzZWU3NzVmMiszNjUrOTk4",
-			"Website": "https://bonetome.com/h3vr/map/198/",
-			"Arguments": "moveToFolder?Promeatheus_1.1.0.0.zip?Mods/?Promeatheus_1.1.0.0.zip",
-			"Delinfo": "Mods/Promeatheus_1.1.0.0.zip\n",
-			"Dependencies": [
-				"wurstmod"
-			]
-		},
-		{
-			"modID": "wurstwar",
-			"Name": "Wurst War 2",
-			"RawName": "Wurst_War_II_1.2.1.zip",
-			"Author": [
-				"ThatonePanMan"
-			],
-			"Version": "1.2.1",
-			"Description": "THIS MAP IS ABANDONED. I'm sorry, but this map runs like shit and I cannot find an easy way to fix it. I'll probably end up recreating the map in a less performance intensive way.\nA World War II themed TNH map, best experienced with music OFF and played with Grumbly GI Grayson.\nAlso includes a generic version for exploration and sandbox stuff.\nMay or may not also contain a lemon.\nLow Poly assets made by Synty.",
-			"Path": "https://bonetome.com/download.php?file=MDg4OTYxMmY2M2FiMDY1MSszNjUrNTY0",
-			"Website": "https://bonetome.com/h3vr/map/87/",
-			"Arguments": "unzipToDir?moveToFolder?Wurst War II Generic?CustomLevels/Generic/?Wurst War II Generic?moveToFolder?Wurst War II TNH?CustomLevels/TakeAndHold/?Wurst War II TNH",
-			"Delinfo": "CustomLevels/Generic/Wurst War II Generic?CustomLevels/TakeAndHold/Wurst War II TNH",
-			"Dependencies": [
-				"wurstmod"
-			]
-		},
-		{
-			"modID": "sanctuary",
-			"Name": "Sanctuary",
-			"RawName": "SanctuaryPack.zip",
-			"Author": [
-				"Mücke",
-				"Synty Studios"
-			],
-			"Version": "1.3",
-			"Description": "A little town overrun with Outlaws.\n- pretty challenging, makes \"Cowboys\" into \"Cattlemen\"\n- you can move freely in Holds\n- has no barriers but natural cover\n- 8 Holds, 6 Supplypoints",
-			"Path": "https://bonetome.com/download.php?file=N2VjNTE4NGVjMGE0MzdiYis0NDErMTAyMw==",
-			"Website": "https://bonetome.com/h3vr/map/202/",
-			"Arguments": "unzipToDir?moveToFolder?TNH-Sanctuary 1.3?CustomLevels/Generic/?TNH-Sanctuary light?moveToFolder?TNH-Sanctuary light?CustomLevels/TakeAndHold/?TNH-Sanctuary light",
-			"Delinfo": "CustomLevels/Generic/TNH-Sanctuary 1.3?CustomLevels/TakeAndHold/TNH-Sanctuary light",
-			"Dependencies": [
-				"wurstmod"
-			]
-		},
-		{
-			"modID": "fortbratwurst",
-			"Name": "Fort Bratwurst",
-			"RawName": "Generic-FortBratwurst.zip",
-			"Author": [
-				"Andrew_FTW"
-			],
-			"Version": "2.0.0",
-			"Description": "For my first Unity project, Ive built Fort Bratwurst, inspired by the drawing from u/GaPSMAV, with a few fun additions by me.",
-			"Path": "https://bonetome.com/download.php?file=N2VjNTE4NGVjMGE0MzdiYis0NDErMTAyMw==",
-			"Website": "https://bonetome.com/h3vr/map/201/",
-			"Arguments": "unzipToDir?moveToFolder?Generic-FortBratwurst?CustomLevels/Generic/?Generic-FortBratwurst",
-			"Delinfo": "CustomLevels/Generic/Generic-FortBratwurst",
-			"Dependencies": [
-				"wurstmod"
-			]
-		}
-	]
+  "modlistname": "Map Mods",
+  "modlistid": "mapmods",
+  "modlist": [
+    {
+      "modID": "shootyhouse",
+      "Name": "Shooty House",
+      "RawName": "ShootyHouse.zip",
+      "Author": [
+        "SirPotatoes",
+        "nrgill28"
+      ],
+      "Version": "1.0.0",
+      "Description": "Shoot house! Clear the rooms as fast as possible and go for a high score!\nInstallation: Download the zip file and place in your mods/ folder. Do not extract\nDependencies: Deli v0.2.5 or greater and WurstMod v2.0.2.0 or greater\nCompare your scores against others' on this spreadsheet!\nhttps://docs.google.com/spreadsheets/d/1uJ5WMFAxVDIHDB3rCt0gvPeVDmo5yK6BZwkjE0WcQew/edit?usp=sharing\nNOTE: If the item spawner is missing, just reload the level from the wrist menu.",
+      "Path": "https://bonetome.com/download.php?file=MmI5NzlkOTRkZTI3MzUyYyszNjUrOTQw",
+      "Website": "https://bonetome.com/h3vr/map/181/",
+      "Arguments": "moveToFolder?ShootyHouse.zip?Mods/?ShootyHouse.zip",
+      "Delinfo": "Mods/ShootyHouse.zip",
+      "Dependencies": [
+        "wurstmod"
+      ]
+    },
+    {
+      "modID": "promeatheus",
+      "Name": "Promeatheus",
+      "RawName": "Promeatheus.zip",
+      "Author": [
+        "NunSuperior"
+      ],
+      "Version": "1.40",
+      "Description": "Promeatheus is a sci-fi themed Take and Hold map. It is an indoor map that features a mix of short and long hallways, small and medium sized holds/supply points, and shiny floors.\n\nPerformance:\nI recommend turning off HDR and Bloom. I tuned the lighting to look good with HDR off. Also the map still looks good even on the Low setting.\n\nStory(?):\nWhy is the Weinerland-Umami Corporation guarding this abandoned science vessel? Your mission is to investigate the Promeatheus and recover any valuable information you can.",
+      "Path": "https://bonetome.com/download.php?file=YmQ1ZWFmZjgzZWU3NzVmMisrOTk4",
+      "Website": "https://bonetome.com/h3vr/map/198/",
+      "Arguments": "moveToFolder?Promeatheus_1.1.0.0.zip?Mods/?Promeatheus.zip",
+      "Delinfo": "Mods/Promeatheus.zip\n",
+      "Dependencies": [
+        "wurstmod"
+      ]
+    },
+    {
+      "modID": "wurstwar",
+      "Name": "Wurst War 2",
+      "RawName": "Wurst_War_II_1.2.1.zip",
+      "Author": [
+        "ThatonePanMan"
+      ],
+      "Version": "1.2.1",
+      "Description": "THIS MAP IS ABANDONED. I'm sorry, but this map runs like shit and I cannot find an easy way to fix it. I'll probably end up recreating the map in a less performance intensive way.\nA World War II themed TNH map, best experienced with music OFF and played with Grumbly GI Grayson.\nAlso includes a generic version for exploration and sandbox stuff.\nMay or may not also contain a lemon.\nLow Poly assets made by Synty.",
+      "Path": "https://bonetome.com/download.php?file=MDg4OTYxMmY2M2FiMDY1MSszNjUrNTY0",
+      "Website": "https://bonetome.com/h3vr/map/87/",
+      "Arguments": "unzipToDir?moveToFolder?Wurst War II Generic?CustomLevels/Generic/?Wurst War II Generic?moveToFolder?Wurst War II TNH?CustomLevels/TakeAndHold/?Wurst War II TNH",
+      "Delinfo": "CustomLevels/Generic/Wurst War II Generic?CustomLevels/TakeAndHold/Wurst War II TNH",
+      "Dependencies": [
+        "wurstmod"
+      ]
+    },
+    {
+      "modID": "sanctuary",
+      "Name": "Sanctuary",
+      "RawName": "SanctuaryPack.zip",
+      "Author": [
+        "Mücke",
+        "Synty Studios"
+      ],
+      "Version": "1.3",
+      "Description": "A little town overrun with Outlaws.\n- pretty challenging, makes \"Cowboys\" into \"Cattlemen\"\n- you can move freely in Holds\n- has no barriers but natural cover\n- 8 Holds, 6 Supplypoints",
+      "Path": "https://bonetome.com/download.php?file=N2VjNTE4NGVjMGE0MzdiYis0NDErMTAyMw==",
+      "Website": "https://bonetome.com/h3vr/map/202/",
+      "Arguments": "unzipToDir?moveToFolder?TNH-Sanctuary 1.3?CustomLevels/Generic/?TNH-Sanctuary light?moveToFolder?TNH-Sanctuary light?CustomLevels/TakeAndHold/?TNH-Sanctuary light",
+      "Delinfo": "CustomLevels/Generic/TNH-Sanctuary 1.3?CustomLevels/TakeAndHold/TNH-Sanctuary light",
+      "Dependencies": [
+        "wurstmod"
+      ]
+    },
+    {
+      "modID": "fortbratwurst",
+      "Name": "Fort Bratwurst",
+      "RawName": "Generic-FortBratwurst.zip",
+      "Author": [
+        "Andrew_FTW"
+      ],
+      "Version": "2.0.0",
+      "Description": "For my first Unity project, Ive built Fort Bratwurst, inspired by the drawing from u/GaPSMAV, with a few fun additions by me.",
+      "Path": "https://bonetome.com/download.php?file=N2VjNTE4NGVjMGE0MzdiYis0NDErMTAyMw==",
+      "Website": "https://bonetome.com/h3vr/map/201/",
+      "Arguments": "unzipToDir?moveToFolder?Generic-FortBratwurst?CustomLevels/Generic/?Generic-FortBratwurst",
+      "Delinfo": "CustomLevels/Generic/Generic-FortBratwurst",
+      "Dependencies": [
+        "wurstmod"
+      ]
+    }
+  ]
 }
