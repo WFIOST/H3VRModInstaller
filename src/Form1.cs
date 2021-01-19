@@ -223,9 +223,9 @@ namespace H3VRModInstaller.GUI
 			if (dispcat == "n/a") dispcat = publicdispcat;
 			publicdispcat = dispcat;
 
-			if (publicdispcat == "n/a") return;
-
 			var totalmods = JsonCommon.GetAllMods();
+
+			if (dispcat == "n/a") dispcat = "dependencies";
 
 			var dispmods = JsonModList.GetDeserializedModListFormatOnline(dispcat).Modlist;
 
@@ -265,7 +265,8 @@ namespace H3VRModInstaller.GUI
                 }
                 else
                 {
-                    list = totalmods;
+					if (publicdispcat == "n/a") goto Finish;
+					list = totalmods;
                     relevantint = i;
                 }
 
@@ -279,7 +280,8 @@ namespace H3VRModInstaller.GUI
 
 				if (!isinstldmod && isdispmod) DownloadableModsList.Items.Add(mod);
 				if (isinstldmod) InstalledModsList.Items.Add(mod);
-            }
+				Finish:;
+			}
         }
 
 		public void UpdateCatagories()

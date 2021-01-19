@@ -45,6 +45,7 @@ namespace H3VRModInstaller.Backend.Filesys
 
                     Archives.UnArchive(fileinfo.RawName, ModInstallerCommon.Files.MainFiledir + "/" + args[i + 1],
                         delArchive, ArchiveType);
+					File.Delete(fileinfo.RawName);
                 }
 
                 if (args[i] == "addFolder")
