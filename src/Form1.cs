@@ -34,7 +34,7 @@ namespace H3VRModInstaller.GUI
                 command = strngcommand.Split(' ');
                 Terminator.RunWorkerAsync();
             }
-			StatusReport.Text = "Working";
+			StatusReport.Text = "Installing";
         }
 
 
@@ -203,7 +203,7 @@ namespace H3VRModInstaller.GUI
             } //probably the stupidest bodge i've ever done lel --potatoes
 
             UpdateModList();
-//            MessageBox.Show("Sucessfully " + command[0] + "ed mod {downloadedMod}", "Sucess!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Sucessfully " + command[0] + $"ed mod {downloadedMod}", "Sucess!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 			StatusReport.Text = "Idle";
 		}
 
