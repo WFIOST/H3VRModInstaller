@@ -3,8 +3,9 @@
 		{
 			"modID": "uniqueidmodinstaller",
 			"Name": "H3VRModInstaller",
-			"Version": "0.5.0",
+			"Version": "0.5.1",
 			"Description": "Hey! This thingy here is just to know what is the newest version of H3VRMI.",
+			"Website": "https://github.com/Frityet/H3VRModInstaller",
 			"Dependencies": [
 				"https://raw.githubusercontent.com/Frityet/H3VRModInstaller/master/src/Backend/JSON/Database/",
 				"charactermods.json",
