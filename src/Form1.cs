@@ -100,8 +100,13 @@ namespace H3VRModInstaller.GUI
 			var onlineversion = new Version(JsonModList.GetDeserializedModListFormatOnline(JsonCommon.DatabaseInfo).Modlist[0].Version);
 			if (ModInstallerCommon.ModInstallerVersion.CompareTo(onlineversion) < 0)
 			{
-				StartTerminator("check " + JsonModList.GetDeserializedModListFormatOnline(JsonCommon.DatabaseInfo).Modlist[0].Website);
 				MessageBox.Show("H3VRModInstaller is out of date! (" + ModInstallerCommon.ModInstallerVersion + " vs " + onlineversion + ")", "Sucess!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				var psi = new ProcessStartInfo
+				{
+					FileName = JsonModList.GetDeserializedModListFormatOnline(JsonCommon.DatabaseInfo).Modlist[0].Website,
+					UseShellExecute = true
+				};
+				Process.Start(psi);
 			}
 			
 
