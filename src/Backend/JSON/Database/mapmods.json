@@ -27,11 +27,11 @@
       "Author": [
         "NunSuperior"
       ],
-      "Version": "1.40",
+      "Version": "1.4.0",
       "Description": "Promeatheus is a sci-fi themed Take and Hold map. It is an indoor map that features a mix of short and long hallways, small and medium sized holds/supply points, and shiny floors.\n\nPerformance:\nI recommend turning off HDR and Bloom. I tuned the lighting to look good with HDR off. Also the map still looks good even on the Low setting.\n\nStory(?):\nWhy is the Weinerland-Umami Corporation guarding this abandoned science vessel? Your mission is to investigate the Promeatheus and recover any valuable information you can.",
       "Path": "https://bonetome.com/download.php?file=YmQ1ZWFmZjgzZWU3NzVmMisrOTk4",
       "Website": "https://bonetome.com/h3vr/map/198/",
-      "Arguments": "moveToFolder?Promeatheus_1.1.0.0.zip?Mods/?Promeatheus.zip",
+      "Arguments": "moveToFolder?Promeatheus.zip?Mods/?Promeatheus.zip",
       "Delinfo": "Mods/Promeatheus.zip\n",
       "Dependencies": [
         "wurstmod"
