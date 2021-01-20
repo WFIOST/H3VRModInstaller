@@ -265,6 +265,23 @@
 				"lsiic",
 				"h3vrutils"
 			]
+		},
+		{
+			"modID": "ACF",
+			"Name": "Andrews Foregrips",
+			"RawName": "AndrewsForegrips.zip",
+			"Author": [
+				"Andrew_FTW",
+				"Meat Banono"
+			],
+			"Version": "1.0",
+			"Description": "A nice collection of some new foregrips! And for those who have been modding for a while will notice, the CQR is back!\nIncludes the:\n-BCM (Black and Tan)\n-Cobra AFG\n-CQR\n-RK1\n-RK2\n-RK6\n-TD",
+			"Path": "https://bonetome.com/download.php?file=M2MyODRlMWU4NWI5ZjE3MCsxMzY3KzExMDk=",
+			"Website": "https://bonetome.com/h3vr/weapons/242/",
+			"Arguments": "unzipToDir?VirtualObjects/",
+			"Dependencies": [
+				"lsiic"
+			]
 		}
 	]
 }
