@@ -87,8 +87,8 @@ namespace H3VRModInstaller.Backend.JSON
         ///     Allows for multiple mods in 1 file to be added
         /// </summary>
         public ModFile[] Modlist { get; set; }
-		public string modlistname { get; set; }
-		public string modlistid { get; set; }
+		public string ModListName { get; set; }
+		public string ModListID { get; set; }
     }
 
     /// <summary>

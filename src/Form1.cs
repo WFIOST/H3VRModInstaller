@@ -307,7 +307,7 @@ namespace H3VRModInstaller.GUI
 				
 //				var mod = new ListViewItem(catagories[i].modlistname, 0); //0
 //				mod.SubItems.Add(catagories[i].modlistid); //1
-				CatagoriesComboBox.Items.Add(catagories[i].modlistname);
+				CatagoriesComboBox.Items.Add(catagories[i].ModListName);
 			}
 		}
 
@@ -351,9 +351,9 @@ namespace H3VRModInstaller.GUI
 			var catagories = JsonModList.GetModLists();
 			for (int i = 0; i < catagories.Length; i++)
 			{
-				if (catagories[i].modlistname == name)
+				if (catagories[i].ModListName == name)
 				{
-					try { UpdateModList(catagories[i].modlistid); } catch (Exception exception) { Console.WriteLine(exception); }
+					try { UpdateModList(catagories[i].ModListID); } catch (Exception exception) { Console.WriteLine(exception); }
 					break;
 				}
 			}
