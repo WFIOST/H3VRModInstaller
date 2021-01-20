@@ -12,7 +12,8 @@
 				"codemods.json",
 				"dependencies.json",
 				"customitems.json",
-				"mapmods.json"
+				"mapmods.json",
+				"skinmods.json"
 			]
 		}
 	]
