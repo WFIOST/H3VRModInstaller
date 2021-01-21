@@ -16,7 +16,8 @@ namespace H3VRModInstaller.Backend.Filesys
         /// <param name="modid">ModID to delte</param>
         public static void DeleteMod(string modid)
         {
-            var instmods = InstalledMods.GetInstalledMods();
+			Console.WriteLine("0");
+			var instmods = InstalledMods.GetInstalledMods();
             for (var i = 0; i < instmods.Length; i++)
                 if (instmods[i].ModId == modid)
                 {
@@ -29,7 +30,8 @@ namespace H3VRModInstaller.Backend.Filesys
 
         private static void parseDelArgs(ModFile mf)
         {
-            if (mf.DelInfo == null)
+			Console.WriteLine("1");
+			if (mf.DelInfo == null)
             {
                 mf = ModParsing.GetSpecificMod(mf.ModId);
                 if (mf.DelInfo == null || mf.DelInfo == "")
@@ -42,11 +44,20 @@ namespace H3VRModInstaller.Backend.Filesys
 
             var args = mf.DelInfo.Split('?');
 
-            for (var i = 0; i < args.Length; i++)
-                if (File.Exists(ModInstallerCommon.Files.MainFiledir + @"\" + args[i]))
-                    File.Delete(ModInstallerCommon.Files.MainFiledir + @"\" + args[i]);
-                else if (Directory.Exists(ModInstallerCommon.Files.MainFiledir + @"\" + args[i]))
-                    Directory.Delete(ModInstallerCommon.Files.MainFiledir + @"\" + args[i]);
-        }
+			for (var i = 0; i < args.Length; i++)
+			{
+				Console.WriteLine("Finding " + ModInstallerCommon.Files.MainFiledir + @"\" + args[i]);
+				if (File.Exists(ModInstallerCommon.Files.MainFiledir + @"\" + args[i]))
+				{
+					Console.WriteLine("Removing " + ModInstallerCommon.Files.MainFiledir + @"\" + args[i] + " as file");
+					File.Delete(ModInstallerCommon.Files.MainFiledir + @"\" + args[i]);
+				}
+				else if (Directory.Exists(ModInstallerCommon.Files.MainFiledir + @"\" + args[i]))
+				{
+					Console.WriteLine("Removing " + ModInstallerCommon.Files.MainFiledir + @"\" + args[i] + " as dir");
+					Directory.Delete(ModInstallerCommon.Files.MainFiledir + "/" + args[i], true);
+				}
+			}
+		}
     }
 }
