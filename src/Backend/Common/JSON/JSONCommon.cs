@@ -36,12 +36,9 @@ namespace H3VRModInstaller.Backend.JSON.Common
         {
             if (!File.Exists(Directory.GetCurrentDirectory() + "/" + "MICoverride.json")) return;
             Console.WriteLine("MICOverride.json detected!");
-            var depinput =
-                JsonConvert.DeserializeObject<CommonVariables>(
-                    File.ReadAllText(Directory.GetCurrentDirectory() + "/" + "MICoverride.json"));
+            var depinput = JsonConvert.DeserializeObject<CommonVariables>(File.ReadAllText(Directory.GetCurrentDirectory() + "/" + "MICoverride.json"));
             if (CommonVariables.Execname != null)
-                ModInstallerCommon.Files.execdir =
-                    ModInstallerCommon.Files.MainFiledir + "/" + CommonVariables.Execname;
+                ModInstallerCommon.Files.execdir = ModInstallerCommon.Files.MainFiledir + "/" + CommonVariables.Execname;
             if (CommonVariables.DatabaseInfo != null) DatabaseInfo = CommonVariables.DatabaseInfo;
         }
     }

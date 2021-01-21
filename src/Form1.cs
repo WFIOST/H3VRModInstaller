@@ -97,6 +97,8 @@ namespace H3VRModInstaller.GUI
 
         private void LoadGUI(object sender, EventArgs e)
         {
+			AllocConsole();
+			JsonCommon.OverrideModInstallerVariables();
 			var onlineversion = new Version(JsonModList.GetDeserializedModListFormatOnline(JsonCommon.DatabaseInfo).Modlist[0].Version);
 			if (ModInstallerCommon.ModInstallerVersion.CompareTo(onlineversion) < 0)
 			{
@@ -111,7 +113,7 @@ namespace H3VRModInstaller.GUI
 			
 
 
-			AllocConsole();
+			
 			InstallButton.Hide();
 			UpdateButton.Hide();
 			ModVer.Hide();
@@ -240,6 +242,8 @@ namespace H3VRModInstaller.GUI
 			var totalmods = JsonCommon.GetAllMods();
 
 			if (dispcat == "n/a") dispcat = "dependencies";
+
+			Console.WriteLine(dispcat);
 
 			var dispmods = JsonModList.GetDeserializedModListFormatOnline(dispcat).Modlist;
 
