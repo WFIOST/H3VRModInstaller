@@ -37,22 +37,27 @@ namespace H3VRModInstaller.GUI
 			StatusReport.Text = "Installing";
         }
 
+		private Timer timer1;
+		public void InitTimer()
+		{
+			timer1 = new Timer();
+			timer1.Tick += new EventHandler(timer1_Tick);
+			timer1.Interval = 0020; // in miliseconds
+			timer1.Start();
+		}
 
-        public void updatebar(float[] info)
-        {
-//			ProgressBar.Value = (int)info[0];
-        }
+		private void timer1_Tick(object sender, EventArgs e)
+		{
+			StatusReport.Text = Downloader.dlprogress;
+		}
 
-        public void trycatchtext(Label label, string text)
-        {
-            try
-            {
-                label.Text = text;
-            }
-            catch
-            {
-            }
-        }
+
+		public void dispProg()
+		{
+			
+		}
+
+        public void trycatchtext(Label label, string text) {try {label.Text = text;} catch{}}
 
 
         private void ModsEnabled_CheckedChanged(object sender, EventArgs e)
@@ -97,6 +102,7 @@ namespace H3VRModInstaller.GUI
 
         private void LoadGUI(object sender, EventArgs e)
         {
+			InitTimer();
 			AllocConsole();
 			JsonCommon.OverrideModInstallerVariables();
 			var onlineversion = new Version(JsonModList.GetDeserializedModListFormatOnline(JsonCommon.DatabaseInfo).Modlist[0].Version);
@@ -110,9 +116,6 @@ namespace H3VRModInstaller.GUI
 				};
 				Process.Start(psi);
 			}
-			
-
-
 			
 			InstallButton.Hide();
 			UpdateButton.Hide();
@@ -322,6 +325,7 @@ namespace H3VRModInstaller.GUI
 
         private void Delete_Click(object sender, EventArgs e)
         {
+			Console.WriteLine("delclick");
             StartTerminator("rm " + impModID);
         }
 
@@ -334,8 +338,6 @@ namespace H3VRModInstaller.GUI
 		{
 			
 		}
-
-
 
 		private void InstalledMods_Click(object sender, EventArgs e)
 		{

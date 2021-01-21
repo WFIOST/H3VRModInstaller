@@ -32,7 +32,7 @@
       "Path": "https://bonetome.com/download.php?file=YmQ1ZWFmZjgzZWU3NzVmMisrOTk4",
       "Website": "https://bonetome.com/h3vr/map/198/",
       "Arguments": "moveToFolder?Promeatheus.zip?Mods/?Promeatheus.zip",
-      "Delinfo": "Mods/Promeatheus.zip\n",
+      "Delinfo": "Mods/Promeatheus.zip/",
       "Dependencies": [
         "wurstmod"
       ]
