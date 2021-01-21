@@ -18,7 +18,7 @@ namespace H3VRModInstaller.Backend.Filesys
         /// <param name="fileinfo">ModFile class, gets the <c>rawname</c> from it</param>
         /// <param name="delArchive">Defines if the archive should be deleted after installation</param>
         /// <returns>Boolean</returns>
-        public static bool InstallMod(ModFile fileinfo, bool delArchive = false)
+        public static bool InstallMod(ModFile fileinfo, bool delArchive = true)
         {
             fileinfo.Arguments.Replace("BACKSLASH", @"\");
 
