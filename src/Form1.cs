@@ -102,13 +102,24 @@ namespace H3VRModInstaller.GUI
 
         private void LoadGUI(object sender, EventArgs e)
         {
-			InitTimer();
-			AllocConsole();
-			JsonCommon.OverrideModInstallerVariables();
+			InitTimer(); //progress timer
+			AllocConsole(); //enables console
+
+			//check if in vs
+			string dir = Directory.GetCurrentDirectory();
+			for (int i = 0; i < 3; i++) dir = Directory.GetParent(dir).ToString(); //move up 3 dirs
+			dir += @"\bin\"; //add bin
+			if (!File.Exists(ModInstallerCommon.Files.execdir) && !ModInstallerCommon.BypassExec && !Directory.Exists(dir))
+			{
+				MessageBox.Show("ModInstaller cannot find the executable! Make sure you put the modinstaller in a folder inside the main directory.", "Exectuable not found!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+				Application.Exit();
+			}
+
+			JsonCommon.OverrideModInstallerVariables(); //overrides vars if possible
 			var onlineversion = new Version(JsonModList.GetDeserializedModListFormatOnline(JsonCommon.DatabaseInfo).Modlist[0].Version);
 			if (ModInstallerCommon.ModInstallerVersion.CompareTo(onlineversion) < 0)
 			{
-				MessageBox.Show("H3VRModInstaller is out of date! (" + ModInstallerCommon.ModInstallerVersion + " vs " + onlineversion + ")", "Sucess!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				MessageBox.Show("H3VRModInstaller is out of date! (" + ModInstallerCommon.ModInstallerVersion + " vs " + onlineversion + ")", "Wrong version detected!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 				var psi = new ProcessStartInfo
 				{
 					FileName = JsonModList.GetDeserializedModListFormatOnline(JsonCommon.DatabaseInfo).Modlist[0].Website,

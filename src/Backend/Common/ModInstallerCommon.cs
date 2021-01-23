@@ -34,7 +34,7 @@ namespace H3VRModInstaller.Backend.Common
         /// <summary>
         ///     Bypasses the check for H3VR.EXE
         /// </summary>
-        public static bool BypassExec = true;
+        public static bool BypassExec = false;
 
         /// <summary>
         ///     Website used to ping to ensure internet access
