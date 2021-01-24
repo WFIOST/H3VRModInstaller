@@ -39,6 +39,24 @@
 				"bepinex",
 				"configurationmanager"
 			]
-		}
+		},
+    {
+      "modID": "betterhands",
+      "Name": "Better Hands",
+      "RawName": "BetterHands.deli",
+      "Author": [
+        "M’aiq the Dude"
+      ],
+      "Version": "1.0.0",
+      "Description": "Recolour controller geo, resize interaction spheres, and add mag palming.",
+      "Path": "https://github.com/Maiq-The-Dude/BetterHands/releases/download/1.0.0/",
+      "Website": "https://github.com/Maiq-The-Dude/BetterHands/",
+      "Arguments": "moveToFolder?BetterHands.deli?Mods/?BetterHands.deli",
+      "DelInfo": "Mods/BetterHands.deli",
+      "Dependencies": [
+        "bepinex",
+        "deli"
+      ]
+    }
 	]
 }
