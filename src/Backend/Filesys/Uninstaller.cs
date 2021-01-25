@@ -28,24 +28,28 @@ namespace H3VRModInstaller.Backend.Filesys
             InstalledMods.RemoveInstalledMod(modid);
         }
 
-        private static void parseDelArgs(ModFile mf)
-        {
+		private static void parseDelArgs(ModFile mf)
+		{
 			Console.WriteLine("1");
 			if (mf.DelInfo == null)
-            {
-                mf = ModParsing.GetSpecificMod(mf.ModId);
-                if (mf.DelInfo == null || mf.DelInfo == "")
-                {
-                    Console.WriteLine(
-                        "There's no info on how to delete this mod! Please ask the creators to add that in!");
-                    return;
-                }
-            }
+			{
+				mf = ModParsing.GetSpecificMod(mf.ModId);
+				if (mf.DelInfo == null || mf.DelInfo == "")
+				{
+					Console.WriteLine(
+						"There's no info on how to delete this mod! Please ask the creators to add that in!");
+					return;
+				}
+			}
 
-            var args = mf.DelInfo.Split('?');
+			var args = mf.DelInfo.Split('?');
 
 			for (var i = 0; i < args.Length; i++)
 			{
+				if (args[i] == "")
+				{
+					continue;
+				}
 				Console.WriteLine("Finding " + ModInstallerCommon.Files.MainFiledir + @"\" + args[i]);
 				if (File.Exists(ModInstallerCommon.Files.MainFiledir + @"\" + args[i]))
 				{
