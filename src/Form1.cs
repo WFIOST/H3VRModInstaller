@@ -51,12 +51,6 @@ namespace H3VRModInstaller.GUI
 			StatusReport.Text = Downloader.dlprogress;
 		}
 
-
-		public void dispProg()
-		{
-			
-		}
-
         public void trycatchtext(Label label, string text) {try {label.Text = text;} catch{}}
 
 
@@ -104,6 +98,7 @@ namespace H3VRModInstaller.GUI
         {
 			InitTimer(); //progress timer
 			AllocConsole(); //enables console
+			JsonCommon.OverrideModInstallerVariables(); //overrides vars if possible
 
 			//check if in vs
 			string dir = Directory.GetCurrentDirectory();
@@ -111,11 +106,10 @@ namespace H3VRModInstaller.GUI
 			dir += @"\bin\"; //add bin
 			if (!File.Exists(ModInstallerCommon.Files.execdir) && !ModInstallerCommon.BypassExec && !Directory.Exists(dir))
 			{
-				MessageBox.Show("ModInstaller cannot find the executable! Make sure you put the modinstaller in a folder inside the main directory.", "Exectuable not found!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+				MessageBox.Show("ModInstaller cannot find the executable! Make sure my location is in a folder inside the h3vr directory!", "Exectuable not found!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 				Application.Exit();
 			}
 
-			JsonCommon.OverrideModInstallerVariables(); //overrides vars if possible
 			var onlineversion = new Version(JsonModList.GetDeserializedModListFormatOnline(JsonCommon.DatabaseInfo).Modlist[0].Version);
 			if (ModInstallerCommon.ModInstallerVersion.CompareTo(onlineversion) < 0)
 			{
@@ -313,8 +307,18 @@ namespace H3VRModInstaller.GUI
 				if (!isinstldmod && isdispmod) DownloadableModsList.Items.Add(mod);
 				if (isinstldmod) InstalledModsList.Items.Add(mod);
 				Finish:;
+				
 			}
-        }
+			for (int i = 0; i < InstalledModsList.Items.Count; i++)
+			{
+				//if cached installed mod is a older version than the database
+				if (new Version(InstalledModsList.Items[i].SubItems[1].Text).CompareTo(new Version(ModParsing.GetSpecificMod(InstalledModsList.Items[i].SubItems[4].Text).Version)) < 0)
+				{
+					InstalledModsList.Items[i].BackColor = System.Drawing.Color.Red;
+				}
+			}
+
+		}
 
 		public void UpdateCatagories()
 		{

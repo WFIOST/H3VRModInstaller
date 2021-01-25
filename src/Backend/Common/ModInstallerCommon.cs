@@ -6,7 +6,7 @@ namespace H3VRModInstaller.Backend.Common
     /// <summary>
     ///     Some common variables used across the project
     /// </summary>
-    public struct CommonVariables
+/*    public struct CommonVariables
     {
         /// <summary>
         ///     Name for the executable targeted
@@ -19,7 +19,7 @@ namespace H3VRModInstaller.Backend.Common
         /// </summary>
         /// <value></value>
         public static string DatabaseInfo { get; set; }
-    }
+    }*/
 
     /// <summary>
     ///     Commonly used functions and fields

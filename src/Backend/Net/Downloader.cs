@@ -62,9 +62,12 @@ namespace H3VRModInstaller.Backend.Net
                 for (var i = 0; i < installedmods.Length; i++)
                     if (fileinfo.ModId == installedmods[i].ModId)
                     {
-                        if (modnum == 0) Uninstaller.DeleteMod(fileinfo.ModId);
-                        ModInstallerCommon.DebugLog(fileinfo.ModId + " is already installed!");
-                        return false;
+						if (modnum == 0) { Uninstaller.DeleteMod(fileinfo.ModId); }
+						else
+						{
+							ModInstallerCommon.DebugLog(fileinfo.ModId + " is already installed!");
+							return false;
+						}
                     }
 
             var fileloc = new Uri(locationOfFile + fileToDownload);
