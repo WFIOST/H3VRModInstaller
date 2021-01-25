@@ -4,6 +4,8 @@ This is a program which installs mods for H3VR for you. The system that is used 
 
 ## How do I install H3VR Mod Installer?
 
+[TL;DR video](https://youtu.be/LBcxS_mYLFE)
+
 First, install NET 5.0. You can [install it here.](https://dotnet.microsoft.com/download/dotnet/thank-you/runtime-desktop-5.0.1-windows-x64-installer)
 
 Simply extract the zip to your h3vr folder (found by right clicking it in steam, hit manage, browse local files) so there's a folder in there called "H3VRMI". Once you're done, it should look like the picture below. Simply open the folder and launch the EXE inside. 
