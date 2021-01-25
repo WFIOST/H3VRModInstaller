@@ -173,7 +173,7 @@
 				"ManlyMarco",
 				"Keelhauled"
 			],
-			"Version": "16.1.0",
+			"Version": "17.1.0",
 			"Description": "Allows pressing f1 to modify config ingame.",
 			"Path": "https://github.com/BepInEx/BepInEx.ConfigurationManager/releases/download/v16.1/",
 			"Website": "https://github.com/BepInEx/BepInEx.ConfigurationManager/",
