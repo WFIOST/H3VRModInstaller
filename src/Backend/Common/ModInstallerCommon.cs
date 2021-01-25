@@ -44,7 +44,7 @@ namespace H3VRModInstaller.Backend.Common
         /// <summary>
         ///     Current version.
         /// </summary>
-        public static Version ModInstallerVersion = new(0, 5, 1);
+        public static Version ModInstallerVersion = new(0, 5, 2);
 
 
         /// <summary>

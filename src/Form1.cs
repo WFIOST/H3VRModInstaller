@@ -233,7 +233,7 @@ namespace H3VRModInstaller.GUI
 
         private void Terminator_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-			Console.WriteLine("eat shit");
+			
         }
 
 		public static string publicdispcat = "n/a";
@@ -309,12 +309,13 @@ namespace H3VRModInstaller.GUI
 				Finish:;
 				
 			}
+
 			for (int i = 0; i < InstalledModsList.Items.Count; i++)
 			{
 				//if cached installed mod is a older version than the database
 				if (new Version(InstalledModsList.Items[i].SubItems[1].Text).CompareTo(new Version(ModParsing.GetSpecificMod(InstalledModsList.Items[i].SubItems[4].Text).Version)) < 0)
 				{
-					InstalledModsList.Items[i].BackColor = System.Drawing.Color.Red;
+					InstalledModsList.Items[i].BackColor = System.Drawing.Color.Yellow;
 				}
 			}
 

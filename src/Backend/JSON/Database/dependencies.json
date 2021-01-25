@@ -5,15 +5,15 @@
     {
       "modID": "bepinex",
       "Name": "BepInEx",
-      "RawName": "BepInEx_x64_5.4.4.0.zip",
+      "RawName": "BepInEx_x64_5.4.5.0.zip",
       "Author": [
         "bbepis",
         "denikson",
         "ManlyMarco"
       ],
-      "Version": "5.4.4.0",
+      "Version": "5.4.5",
       "Description": "Modloader for Unity games! Required for all H3VR mods",
-      "Path": "https://github.com/BepInEx/BepInEx/releases/download/v5.4.4/",
+      "Path": "https://github.com/BepInEx/BepInEx/releases/download/v5.4.5/",
       "Website": "https://github.com/BepInEx/BepInEx/",
       "Arguments": "",
       "DelInfo": "BepInEx/?winhttp.dll?doorstop_config.ini?changelog.txt",
