@@ -161,8 +161,60 @@
 			]
 		},
 		{
+			"modID": "45turn",
+			"Name": "45 Degree Barrel Extentions",
+			"RawName": "45_turn.zip",
+			"Author": [
+				"KamikazeF0X"
+			],
+			"Version": "1.0.0",
+			"Description": "Guns always shoots forwards, and this is boring!\nThanks to this barrel extension, you will be able to curve your bullets!\nDue to how the game works, there is four attachments for the four directions you can put them in, Up, Down, Left and... Right, Right!\n(For some other reasons, muzzle flash always points forwards, I haven't got to figure out why)",
+			"Path": "https://bonetome.com/download.php?file=NDU1MzQwZmVkOTA4YmYzYyszNjUrODQ3",
+			"Website": "https://bonetome.com/h3vr/weapons/124/",
+			"Arguments": "unzipToDir?VirtualObjects/",
+			"DelInfo": "VirtualObjects/45_turn?VirtualObjects/45_turn.manifest",
+			"Dependencies": [
+				"lsiic",
+				"modular"
+			]
+		},
+		{
+			"modID": "tavor21",
+			"Name": "Tavor 21",
+			"RawName": "tar21.rar",
+			"Author": [
+				"sgt.brooks"
+			],
+			"Version": "1.0.1",
+			"Description": "flip up sights work but one in rear clips because cant do angles ",
+			"Path": "https://bonetome.com/download.php?file=ZDE5YmQ3Y2UyMTYxY2Y2ZSszNjUrNzI3",
+			"Website": "https://bonetome.com/h3vr/weapons/135/",
+			"Arguments": "unzipToDir?VirtualObjects/",
+			"DelInfo": "VirtualObjects/tar21",
+			"Dependencies": [
+				"lsiic"
+			]
+		},
+		{
+			"modID": "f2000",
+			"Name": "LioZuto",
+			"RawName": "F2000T-1-01HF.zip",
+			"Author": [
+				"LioZuto"
+			],
+			"Version": "1.0.1",
+			"Description": "Yes, the Tactical version of the infamous F2000.\nTop Rail, Side Rail and Suppressor Mount available.\nModel from ; P3DM\nF2000 Tactical is a proprietary of Fabrique National Herstal (FN Herstal).",
+			"Path": "https://bonetome.com/download.php?file=OGE1ZWNjNGM0MzNlYjVhNCszNjUrNjk5",
+			"Website": "https://bonetome.com/h3vr/weapons/118/",
+			"Arguments": "unzipToDir?VirtualObjects/",
+			"DelInfo": "VirtualObjects/f2000t",
+			"Dependencies": [
+				"lsiic"
+			]
+		},
+		{
 			"modID": "meatsmodulmpx",
-			"Name": "Meat's ModulMPX and MPX",
+			"Name": "Meat's ModulMPX and MCX",
 			"RawName": "MeatsModulMPX.zip",
 			"Author": [
 				"Meat_Banono"
