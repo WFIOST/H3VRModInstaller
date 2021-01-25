@@ -104,6 +104,8 @@ namespace H3VRModInstaller.GUI
 			string dir = Directory.GetCurrentDirectory();
 			for (int i = 0; i < 3; i++) dir = Directory.GetParent(dir).ToString(); //move up 3 dirs
 			dir += @"\bin\"; //add bin
+			Console.WriteLine(ModInstallerCommon.Files.MainFiledir);
+			Console.WriteLine("Detecting for" + ModInstallerCommon.Files.execdir);
 			if (!File.Exists(ModInstallerCommon.Files.execdir) && !ModInstallerCommon.BypassExec && !Directory.Exists(dir))
 			{
 				MessageBox.Show("ModInstaller cannot find the executable! Make sure my location is in a folder inside the h3vr directory!", "Exectuable not found!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -341,7 +343,6 @@ namespace H3VRModInstaller.GUI
 
         private void Delete_Click(object sender, EventArgs e)
         {
-			Console.WriteLine("delclick");
             StartTerminator("rm " + impModID);
         }
 

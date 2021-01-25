@@ -90,7 +90,7 @@ namespace H3VRModInstaller.Backend.Common
             /// <summary>
             ///     Location of H3VR.EXE, auto stops if not detected
             /// </summary>
-            public static string execdir = MainFiledir + "/H3VR.exe";
+            public static string execdir = Directory.GetParent(Directory.GetCurrentDirectory()).FullName + @"\H3VR.exe";
 
             /// <summary>
             ///     Loc of the main file with the exe inside
