@@ -108,7 +108,13 @@ namespace H3VRModInstaller.GUI
 			Console.WriteLine("Detecting for" + ModInstallerCommon.Files.execdir);
 			if (!File.Exists(ModInstallerCommon.Files.execdir) && !ModInstallerCommon.BypassExec && !Directory.Exists(dir))
 			{
-				MessageBox.Show("ModInstaller cannot find the executable! Make sure my location is in a folder inside the h3vr directory!", "Exectuable not found!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+				MessageBox.Show("ModInstaller cannot find the executable! Make sure my location is in a folder inside the h3vr directory! Just in case, I'll pull up a tutorial for you.", "Exectuable not found!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+				var psi = new ProcessStartInfo
+				{
+					FileName = "https://youtu.be/LBcxS_mYLFE?t=21",
+					UseShellExecute = true
+				};
+				Process.Start(psi);
 				Application.Exit();
 			}
 
