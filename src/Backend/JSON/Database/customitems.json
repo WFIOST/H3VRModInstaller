@@ -334,6 +334,22 @@
 			"Dependencies": [
 				"lsiic"
 			]
+		},
+		{
+			"modID": "fnx",
+			"Name": "FN FNX-45 Tactical FDE",
+			"RawName": "FNX45.zip",
+			"Author": [
+				"Shampooh"
+			],
+			"Version": "1.0",
+			"Description": "Fully featured FNX-45 Tactical, with TLR-2 LAM and Osprey 45 suppressor",
+			"Path": "https://bonetome.com/download.php?file=YWQwOTIxYzhiNTExNGRkYSsxNTk5KzExNjM=",
+			"Website": "https://bonetome.com/h3vr/weapons/265/",
+			"Arguments": "unzipToDir?mods/",
+			"Dependencies": [
+				"sideloader"
+			]
 		}
 	]
 }
