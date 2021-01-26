@@ -146,22 +146,23 @@
         "tnhtweaker"
       ]
     },
-    {
-      "modID": "scavsigvoicelines",
-      "Name": "Scavsig Voicelines",
-      "RawName": "ScavsigVoices.rar",
-      "Author": [
-        "meat_banono"
-      ],
-      "Version": "1.0.0",
-      "Description": "",
-      "Path": "https://bonetome.com/download.php?file=MWE4YTBkMTQ5ZDNhYzk5NiszNjUrODk3",
-      "Website": "https://bonetome.com/h3vr/characters/172/",
-      "Arguments": "unzipToDir?Mods/",
-      "Dependencies": [
-        "sideloader"
-      ]
-    },
+		{
+			"modID": "scavsigvoicelines",
+			"Name": "Scavsig Voicelines",
+			"RawName": "ScavsigVoices.rar",
+			"Author": [
+				"meat_banono"
+			],
+			"Version": "1.0.0",
+			"Description": "For the new PMC Pete character in Take and Hold Tweaker I give you Scavsig voicelines! All 335 voicelines hand picked by yours truly for the most vulgar, realistic, and hardcore Russian experience.\nPlace the .hotmod inside your mods folder to install.",
+			"Path": "https://bonetome.com/download.php?file=MWE4YTBkMTQ5ZDNhYzk5NiszNjUrODk3",
+			"Website": "https://bonetome.com/h3vr/characters/172/",
+			"Arguments": "unzipToDir?Mods/",
+			"DelInfo": "Mods/ScavsigVoices.hotmod",
+			"Dependencies": [
+				"sideloader"
+			]
+		},
     {
       "modID": "doomboxsgermanuniforms",
       "Name": "Doombox's German Uniforms",
