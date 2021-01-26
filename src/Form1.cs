@@ -354,7 +354,20 @@ namespace H3VRModInstaller.GUI
 
 		private void CheckButton_Click(object sender, EventArgs e)
 		{
-			StartTerminator("check " + impModID);
+			var ml = JsonModList.GetModLists();
+
+			for (var i = 0; i < ml.Length; i++)
+				for (var x = 0; x < ml[i].Modlist.Length; x++)
+					if (ml[i].Modlist[x].ModId == impModID)
+					{
+						var link = ml[i].Modlist[x].Website;
+						var psi = new ProcessStartInfo
+						{
+							FileName = link,
+							UseShellExecute = true
+						};
+						Process.Start(psi);
+					}
 		}
 
 		private void ModList_Paint(object sender, PaintEventArgs e)
