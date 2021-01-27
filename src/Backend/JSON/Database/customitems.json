@@ -347,8 +347,43 @@
 			"Path": "https://bonetome.com/download.php?file=YWQwOTIxYzhiNTExNGRkYSsxNTk5KzExNjM=",
 			"Website": "https://bonetome.com/h3vr/weapons/265/",
 			"Arguments": "unzipToDir?mods/",
+			"DelInfo": "mods/FNX45.h3mod",
 			"Dependencies": [
 				"sideloader"
+			]
+		},
+		{
+			"modID": "hkg28",
+			"Name": "H&K G28 DMR",
+			"RawName": "g28.rar",
+			"Author": [
+				"sgt.brooks"
+			],
+			"Version": "1.0.2",
+			"Description": "This is heckler koch g28 based off the hk417 7.62x51\nWorking front and rear flip up sights.\nhas it own mags also works with p762 pmags ",
+			"Path": "https://bonetome.com/download.php?file=NmNlMWQ1MjE4MzRkNjRlYSszNjUrNjk4",
+			"Website": "https://bonetome.com/h3vr/weapons/117/",
+			"Arguments": "unzipToDir?VirtualObjects/",
+			"DelInfo": "VirtualObjects/g28",
+			"Dependencies": [
+				"lsiic"
+			]
+		},
+		{
+			"modID": "hk416pack",
+			"Name": "HK416 Pack",
+			"RawName": "hk416_pack.rar",
+			"Author": [
+				"sgt.brooks"
+			],
+			"Version": "1.0.1",
+			"Description": "HAS\n416C\n416A5\n416",
+			"Path": "https://bonetome.com/download.php?file=OWM4M2M2YWNlMzZhZDhlZCszNjUrNzU1",
+			"Website": "https://bonetome.com/h3vr/weapons/145/",
+			"Arguments": "unzipToDir?VirtualObjects/",
+			"DelInfo": "VirtualObjects/hk416_pack",
+			"Dependencies": [
+				"lsiic"
 			]
 		}
 	]
