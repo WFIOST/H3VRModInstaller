@@ -14,9 +14,9 @@
 			"Description": "This is a collection of plugins that port all the functionalities of the original Cursed DLLs into Harmony patches.\nThe main benefits of this collection are all patches are applied at runtime without permanently modifying the original game assemblies.\nThat means the patches survive game updates much better\nAll patches are separated into plugins, so it's possible to only choose the features that you want",
 			"Path": "https://github.com/drummerdude2003/CursedDlls.BepinEx/releases/download/v1.3/",
 			"Website": "https://github.com/drummerdude2003/CursedDlls.BepinEx",
-			"Arguments": "unzipToDir??",
+			"Arguments": "unzipToDir?",
 			"DelInfo": "BepInEx/plugins/CursedDlls",
-			"Dependencies": [
+			"Dependencies": [ 
 				"bepinex",
 				"monomod"
 			]
