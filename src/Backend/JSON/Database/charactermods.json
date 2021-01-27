@@ -202,10 +202,10 @@
 			"Name": "Completely Fucked Carl",
 			"RawName": "CompletelyFuckedCarl.rar",
 			"Author": [
-				"Sam Harper"
+				"ilgmesh"
 			],
 			"Version": "1.0.0",
-			"Description": "Its Pistols and Machine Pistols only! Attachments are discounted and sosigs are numerous.\nCharacter will appear in the standard/default category.\nInstallation requires Take n' Hold Tweaker. Place in your H3VR/Mods folder and it should do the rest!",
+			"Description": "GTA SA style gang wars, static encryption only\n- Ballas, Vagos, Triads and Police, each round introduces a new gang and they're all hostile towards each other\n- GTA SA pistols mostly drop from Ballas and Vagos, most of the other SA weapons will randomly drop from the Triads and Police\n- Lots of meat to shoot\nPROBABLY works best with spawnlock enabled, but there is a free riot shield at the beginning if you're a fan of always being out of ammo",
 			"Path": "https://bonetome.com/download.php?file=NjM1ZTNhYmQ3ZGM3OTgyYyszNjUrMTAwNQ==",
 			"Website": "https://bonetome.com/h3vr/characters/199/",
 			"Arguments": "unzipToDir?Mods/",
