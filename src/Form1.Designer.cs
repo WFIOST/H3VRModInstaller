@@ -410,7 +410,6 @@ namespace H3VRModInstaller.GUI
 
         private System.Windows.Forms.ColumnHeader InstalledModName;
         private System.Windows.Forms.ColumnHeader InstalledModVersion;
-        private System.Windows.Forms.ColumnHeader InstalledModSize;
         private System.Windows.Forms.ListView InstalledModsList;
 
 		private System.Windows.Forms.ComboBox CatagoryDropDown;

@@ -150,9 +150,9 @@ namespace H3VRModInstaller.GUI
                 trycatchtext(ModInfo, DownloadableModsList.SelectedItems[0].SubItems[3].Text);
                 impModID = DownloadableModsList.SelectedItems[0].SubItems[4].Text;
             }
-            catch (Exception exception)
+            catch
             {
-                //sike lmao
+                // ignored
             }
         }
 
@@ -175,9 +175,9 @@ namespace H3VRModInstaller.GUI
                 trycatchtext(ModInfo, DownloadableModsList.SelectedItems[0].SubItems[3].Text);
                 impModID = DownloadableModsList.SelectedItems[0].SubItems[4].Text;
             }
-            catch (Exception exception)
+            catch
             {
-                //sike lmao
+                // ignored
             }
 
             try
@@ -199,7 +199,7 @@ namespace H3VRModInstaller.GUI
             {
                 MainClass.doCommand(command);
             }
-            catch (Exception exception)
+            catch
             {
                 Terminator.CancelAsync();
                 MessageBox.Show("Failed to " + command[0] + " on mod {DownloadableModsList.SelectedItems[0].SubItems[4].Text} \n \n {exception.Message}!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);

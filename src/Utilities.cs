@@ -23,6 +23,8 @@ namespace H3VRModInstaller.GUI
                 if (scanned) return string.IsNullOrEmpty(_gameLocation) ? null : _gameLocation;
                 scanned = true;
 
+                if (!OperatingSystem.IsWindows()) return null;
+                
                 // Get the main steam installation location via registry.
                 var steamDir = Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Valve\Steam", "InstallPath", "") as string;
                 if (string.IsNullOrEmpty(steamDir)) steamDir = Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Valve\Steam", "InstallPath", "") as string;
