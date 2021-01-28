@@ -17,10 +17,12 @@ namespace H3VRModInstaller.GUI
 
         public static string GameLocation
         {
-            get { // If the game isn't found, return null
+            get
+            {
+                // If the game isn't found, return null
                 if (scanned) return string.IsNullOrEmpty(_gameLocation) ? null : _gameLocation;
                 scanned = true;
-            
+
                 // Get the main steam installation location via registry.
                 var steamDir = Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Valve\Steam", "InstallPath", "") as string;
                 if (string.IsNullOrEmpty(steamDir)) steamDir = Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Valve\Steam", "InstallPath", "") as string;
@@ -32,10 +34,7 @@ namespace H3VRModInstaller.GUI
                 else
                 {
                     // We didn't find it, look at other library folders by lazily parsing libraryfolders.
-                    foreach (var ii in File.ReadAllLines(steamDir + "/steamapps/libraryfolders.vdf")
-                        .Skip(4).Where(x => x.Length != 0 && x[0] != '}')
-                        .Select(x => x.Split('\t')[3].Trim('"').Replace(@"\\", @"\"))
-                        .Where(ii => File.Exists(ii + @"\steamapps\appmanifest_450540.acf")))
+                    foreach (var ii in File.ReadAllLines(steamDir + "/steamapps/libraryfolders.vdf").Skip(4).Where(x => x.Length != 0 && x[0] != '}').Select(x => x.Split('\t')[3].Trim('"').Replace(@"\\", @"\")).Where(ii => File.Exists(ii + @"\steamapps\appmanifest_450540.acf")))
                     {
                         result = ii + @"\steamapps\common\H3VR\";
                         break;
@@ -46,7 +45,6 @@ namespace H3VRModInstaller.GUI
                 if (!string.IsNullOrEmpty(_gameLocation)) return _gameLocation;
                 MessageBox.Show("Could not auto-detect H3VR installation directory. Is your game installed outside Steam or pirated?", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return null;
-
             }
         }
 
@@ -99,7 +97,7 @@ namespace H3VRModInstaller.GUI
             File.WriteAllText(path, sb.ToString());
             MessageBox.Show($"Written tree output to {path}.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-        
+
         /// <summary>
         /// Generic H3 isn't found error.
         /// </summary>
