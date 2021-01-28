@@ -18,11 +18,6 @@ namespace H3VRModInstaller.Backend.GUI
         public struct Files
         {
             /// <summary>
-            ///     H3VR EXE path, but for the GUI because for some reason using the one from Backend breaks it
-            /// </summary>
-            public static readonly string ExecutablePath = ModInstallerCommon.Files.MainFiledir + @"\h3vr.exe";
-
-            /// <summary>
             ///     Enabled name of the file which enables mods
             /// </summary>
             public const string EnabledName = @"/winhttp.dll";

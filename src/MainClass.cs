@@ -8,6 +8,7 @@ using H3VRModInstaller.Backend.Filesys;
 using H3VRModInstaller.Backend.JSON;
 using H3VRModInstaller.Backend.JSON.Common;
 using H3VRModInstaller.Backend.Net;
+using H3VRModInstaller.GUI;
 
 namespace H3VRModInstaller.Backend
 {
@@ -28,7 +29,7 @@ namespace H3VRModInstaller.Backend
                     JsonModList.GetModLists(true);
                     break;
                 case "wipe":
-                    File.Delete(Directory.GetCurrentDirectory() + @"\installedmods.json");
+                    File.Delete(Utilities.ModCache);
                     Console.WriteLine("Wiped!");
                     break;
                 case "modlists":

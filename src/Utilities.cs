@@ -15,7 +15,7 @@ namespace H3VRModInstaller.GUI
         private static bool scanned = false;
         private static string _gameLocation = "";
 
-        public static string GameLocation
+        public static string GameDirectory
         {
             get
             {
@@ -48,13 +48,16 @@ namespace H3VRModInstaller.GUI
             }
         }
 
+        public static string ExecutablePath => string.IsNullOrEmpty(GameDirectory) ? null : Path.Combine(GameDirectory, "h3vr.exe");
+        public static string ModCache => string.IsNullOrEmpty(GameDirectory) ? null : Path.Combine(GameDirectory, "installed_mods.json");
+
         /// <summary>
         /// Runs the tree command on the H3 directory for additional debugging
         /// </summary>
         public static void GenerateTree()
         {
             // If the H3 folder isn't found, just return and show the generic error box
-            if (string.IsNullOrEmpty(GameLocation))
+            if (string.IsNullOrEmpty(GameDirectory))
             {
                 ShowErrorH3NotFound();
                 return;
@@ -67,7 +70,7 @@ namespace H3VRModInstaller.GUI
             // Start the tree command and wait for it to exit
             var proc = new Process
             {
-                StartInfo = new ProcessStartInfo("cmd.exe", $"/C tree /F /A {GameLocation}")
+                StartInfo = new ProcessStartInfo("cmd.exe", $"/C tree /F /A {GameDirectory}")
                 {
                     UseShellExecute = false,
                     RedirectStandardOutput = true
@@ -93,7 +96,7 @@ namespace H3VRModInstaller.GUI
             }
 
             // Write the output
-            var path = Path.Join(GameLocation, "tree_output.txt");
+            var path = Path.Join(GameDirectory, "tree_output.txt");
             File.WriteAllText(path, sb.ToString());
             MessageBox.Show($"Written tree output to {path}.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
