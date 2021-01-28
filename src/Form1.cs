@@ -127,11 +127,12 @@ namespace H3VRModInstaller.GUI
             ModVer.Hide();
             Delete.Hide();
             CheckButton.Hide();
-            InstalledModsList.Hide();
 
             ModsEnabled.Checked = true;
             UpdateModList();
             UpdateCatagories();
+
+            CatagoriesComboBox.SelectedIndex = 0;
         }
 
         private void DownloadableModsList_SelectedIndexChanged(object sender, EventArgs e)
@@ -294,7 +295,7 @@ namespace H3VRModInstaller.GUI
 
                 var mod = new ListViewItem(list[relevantint].Name, 0); //0
                 mod.SubItems.Add(list[relevantint].Version); //1
-                mod.SubItems.Add(list[relevantint].Author[0]); //2
+                mod.SubItems.Add(string.Join(", ", list[relevantint].Author)); //2
                 mod.SubItems.Add(list[relevantint].Description); //3
                 mod.SubItems.Add(list[relevantint].ModId); //4
 
@@ -356,18 +357,6 @@ namespace H3VRModInstaller.GUI
 
         private void ModList_Paint(object sender, PaintEventArgs e)
         {
-        }
-
-        private void InstalledMods_Click(object sender, EventArgs e)
-        {
-            InstalledModsList.Show();
-            DownloadableModsList.Hide();
-        }
-
-        private void DownloadableModsButton_Click(object sender, EventArgs e)
-        {
-            InstalledModsList.Hide();
-            DownloadableModsList.Show();
         }
 
         private void CatagoriesComboBox_SelectedIndexChanged(object sender, EventArgs e)

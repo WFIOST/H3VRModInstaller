@@ -44,7 +44,8 @@
       "Name": "Deli",
       "RawName": "Deli-v0.2.5.zip",
       "Author": [
-        "nrgill28"
+        "nrgill28",
+        "AshHat"
       ],
       "Version": "0.2.5",
       "Description": "Mod loader for Wurstmod and TnHTweaker",
@@ -80,7 +81,7 @@
         "Nolenz",
         "nrgill28"
       ],
-      "Version": "5.4.4.0",
+      "Version": "2.0.2.0",
       "Description": "Loads map mods for h3vr.",
       "Path": "https://github.com/Nolenz/WurstMod/releases/download/v2.0.2.0/",
       "Website": "https://github.com/Nolenz/WurstMod/",
@@ -114,8 +115,7 @@
       "Name": "Sideloader",
       "RawName": "H3VR.Sideloader_v0.3.3.zip",
       "Author": [
-        "Nolenz",
-        "nrgill28"
+        "denikson"
       ],
       "Version": "0.3.3",
       "Description": "Loads skins and some scripts for h3vr.",
