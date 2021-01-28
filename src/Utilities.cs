@@ -52,17 +52,15 @@ namespace H3VRModInstaller.GUI
         public static string ModCache => string.IsNullOrEmpty(GameDirectory) ? null : Path.Combine(GameDirectory, "installed_mods.json");
 
         /// <summary>
+        ///     Use this if you absolutely 100% need the game directory. If it was not auto discovered it will throw an exception
+        /// </summary>
+        public static string GameDirectoryOrThrow => GameDirectory ?? throw new FileNotFoundException("Could not find game directory.");
+
+        /// <summary>
         /// Runs the tree command on the H3 directory for additional debugging
         /// </summary>
         public static void GenerateTree()
         {
-            // If the H3 folder isn't found, just return and show the generic error box
-            if (string.IsNullOrEmpty(GameDirectory))
-            {
-                ShowErrorH3NotFound();
-                return;
-            }
-
             // Create a string builder and output the current time
             var sb = new StringBuilder();
             sb.AppendLine($"Generated at {DateTime.Now}");
@@ -70,7 +68,7 @@ namespace H3VRModInstaller.GUI
             // Start the tree command and wait for it to exit
             var proc = new Process
             {
-                StartInfo = new ProcessStartInfo("cmd.exe", $"/C tree /F /A {GameDirectory}")
+                StartInfo = new ProcessStartInfo("cmd.exe", $"/C tree /F /A {GameDirectoryOrThrow}")
                 {
                     UseShellExecute = false,
                     RedirectStandardOutput = true
@@ -96,17 +94,9 @@ namespace H3VRModInstaller.GUI
             }
 
             // Write the output
-            var path = Path.Join(GameDirectory, "tree_output.txt");
+            var path = Path.Join(GameDirectoryOrThrow, "tree_output.txt");
             File.WriteAllText(path, sb.ToString());
             MessageBox.Show($"Written tree output to {path}.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
-        /// <summary>
-        /// Generic H3 isn't found error.
-        /// </summary>
-        private static void ShowErrorH3NotFound()
-        {
-            MessageBox.Show("Cannot perform this action because your H3 install location could not be found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 }

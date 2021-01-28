@@ -29,7 +29,7 @@ namespace H3VRModInstaller.Backend.Filesys.Config
         {
             var Fields = new List<string>();
 
-            var ConfigFiles = Directory.GetFiles(Path.Combine(Utilities.GameDirectory, "BepInEx", "config"));
+            var ConfigFiles = Directory.GetFiles(Path.Combine(Utilities.GameDirectoryOrThrow, "BepInEx", "config"));
 
             var lines = new string[0];
 

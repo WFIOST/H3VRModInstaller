@@ -84,8 +84,8 @@ namespace H3VRModInstaller.GUI
 
         private void launch_Click(object sender, EventArgs e)
         {
-            var winHttpEnabled = Path.Combine(Utilities.GameDirectory, GuiCommon.Files.EnabledName);
-            var winHttpDisabled = Path.Combine(Utilities.GameDirectory, GuiCommon.Files.DisabledName);
+            var winHttpEnabled = Path.Combine(Utilities.GameDirectoryOrThrow, GuiCommon.Files.EnabledName);
+            var winHttpDisabled = Path.Combine(Utilities.GameDirectoryOrThrow, GuiCommon.Files.DisabledName);
 
             if (ModsEnabled.Checked)
                 if (File.Exists(winHttpDisabled))

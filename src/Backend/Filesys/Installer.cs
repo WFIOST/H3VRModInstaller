@@ -44,13 +44,13 @@ namespace H3VRModInstaller.Backend.Filesys
                     if (fileinfo.RawName.EndsWith(".7z") || fileinfo.RawName.EndsWith(".7Z"))
                         ArchiveType = Archives.ArchiveType.SevenZip;
 
-                    Archives.UnArchive(fileinfo.RawName, Path.Combine(Utilities.GameDirectory, args[i + 1]), delArchive, ArchiveType);
+                    Archives.UnArchive(fileinfo.RawName, Path.Combine(Utilities.GameDirectoryOrThrow, args[i + 1]), delArchive, ArchiveType);
                 }
 
                 if (args[i] == "addFolder")
                 {
                     ModInstallerCommon.DebugLog("Creating Directory " + args[i + 1]);
-                    Directory.CreateDirectory(Path.Combine(Utilities.GameDirectory, args[i + 1]));
+                    Directory.CreateDirectory(Path.Combine(Utilities.GameDirectoryOrThrow, args[i + 1]));
                 }
 
                 if (args[i] == "break") break;
@@ -74,10 +74,10 @@ namespace H3VRModInstaller.Backend.Filesys
         public static bool MoveToFolder(string mod, string dir, string renameTo = "")
         {
             if (renameTo == "") renameTo = mod;
-            dir = Path.Combine(Utilities.GameDirectory, dir);
+            dir = Path.Combine(Utilities.GameDirectoryOrThrow, dir);
             if (!Directory.Exists(dir)) Directory.CreateDirectory(dir);
             ModInstallerCommon.DebugLog("Moving " + Directory.GetCurrentDirectory() + @"\" + mod + " to dir " + dir + " as " + renameTo);
-            var path = Path.Combine(Utilities.GameDirectory, mod);
+            var path = Path.Combine(Utilities.GameDirectoryOrThrow, mod);
             
             if (File.Exists(path))
             {
