@@ -26,4 +26,10 @@
     <PackageReference Include="SharpCompress" Version="0.27.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Update="NewWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+
 </Project>

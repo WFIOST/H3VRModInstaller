@@ -11,10 +11,11 @@ namespace H3VRModInstaller.GUI
         [STAThread]
         private static void Main()
         {
+            Console.WriteLine(Utilities.GameLocation);
 			Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new mainwindow());
+            Application.Run(new NewWindow());
         }
     }
 }
