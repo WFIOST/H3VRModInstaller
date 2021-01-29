@@ -2,6 +2,7 @@
 using System.IO;
 using H3VRModInstaller.Backend.Common;
 using H3VRModInstaller.Backend.JSON;
+using H3VRModInstaller.GUI;
 
 namespace H3VRModInstaller.Backend.Filesys
 {
@@ -34,7 +35,7 @@ namespace H3VRModInstaller.Backend.Filesys
 			if (mf.DelInfo == null)
 			{
 				mf = ModParsing.GetSpecificMod(mf.ModId);
-				if (mf.DelInfo == null || mf.DelInfo == "")
+				if (string.IsNullOrEmpty(mf.DelInfo))
 				{
 					Console.WriteLine(
 						"There's no info on how to delete this mod! Please ask the creators to add that in!");
@@ -44,23 +45,14 @@ namespace H3VRModInstaller.Backend.Filesys
 
 			var args = mf.DelInfo.Split('?');
 
-			for (var i = 0; i < args.Length; i++)
+			foreach (var target in args)
 			{
-				if (args[i] == "")
-				{
-					continue;
-				}
-				Console.WriteLine("Finding " + ModInstallerCommon.Files.MainFiledir + @"\" + args[i]);
-				if (File.Exists(ModInstallerCommon.Files.MainFiledir + @"\" + args[i]))
-				{
-					Console.WriteLine("Removing " + ModInstallerCommon.Files.MainFiledir + @"\" + args[i] + " as file");
-					File.Delete(ModInstallerCommon.Files.MainFiledir + @"\" + args[i]);
-				}
-				else if (Directory.Exists(ModInstallerCommon.Files.MainFiledir + @"\" + args[i]))
-				{
-					Console.WriteLine("Removing " + ModInstallerCommon.Files.MainFiledir + @"\" + args[i] + " as dir");
-					Directory.Delete(ModInstallerCommon.Files.MainFiledir + "/" + args[i], true);
-				}
+				// If something is broken, skip this target since continuing would delete the h3 directory.
+				if (string.IsNullOrEmpty(target)) continue;
+
+				var path = Path.Combine(Utilities.GameDirectoryOrThrow, target);
+				if (File.Exists(path)) File.Delete(path);
+				else if (Directory.Exists(path)) Directory.Delete(path, true);
 			}
 		}
     }

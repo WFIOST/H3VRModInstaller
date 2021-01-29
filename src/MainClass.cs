@@ -8,6 +8,7 @@ using H3VRModInstaller.Backend.Filesys;
 using H3VRModInstaller.Backend.JSON;
 using H3VRModInstaller.Backend.JSON.Common;
 using H3VRModInstaller.Backend.Net;
+using H3VRModInstaller.GUI;
 
 namespace H3VRModInstaller.Backend
 {
@@ -16,48 +17,6 @@ namespace H3VRModInstaller.Backend
     /// </summary>
     public class MainClass
     {
-        /// <summary>
-        ///     Main function, the args arent used though
-        /// </summary>
-        /// <param name="args">dunno why these are here</param>
-        public static void Main_DEPRECIATED(string[] args)
-        {
-            JsonCommon.OverrideModInstallerVariables();
-            //exe check
-            Console.WriteLine("Detecting if " + ModInstallerCommon.Files.execdir + " exists...");
-            if (!File.Exists(ModInstallerCommon.Files.execdir) && !ModInstallerCommon.BypassExec)
-            {
-                ModInstallerCommon.throwexept("H3VR not found!");
-                return;
-            }
-
-            Console.WriteLine("H3VR found!");
-            //online check
-            if (!NetCheck.isOnline(ModInstallerCommon.Pingsite))
-            {
-                ModInstallerCommon.throwexept("Cannot connect to github!");
-                return;
-            }
-
-            Console.WriteLine("Welcome to the H3VR Mod installer!");
-            Console.WriteLine("Please select the mod you would like to install using 'dl [modnamehere]' ");
-            Console.WriteLine("ex: 'dl wurstmod'");
-            Console.WriteLine("To see a list of downloadable mods, type 'modlists'");
-            Console.WriteLine("To see a list of commands, type 'help' \n");
-            Start:
-            var input = Console.ReadLine();
-
-            var inputargs = input.Split(' ');
-
-            Array.Resize(ref inputargs, 10); //ensures no "OUT OF INDEX TIME TO SHIT MYSELF REEEE"
-
-
-            doCommand(inputargs);
-
-            Console.WriteLine("");
-            goto Start;
-        }
-
         /// <summary>
         ///     Backend input
         /// </summary>
@@ -70,7 +29,7 @@ namespace H3VRModInstaller.Backend
                     JsonModList.GetModLists(true);
                     break;
                 case "wipe":
-                    File.Delete(Directory.GetCurrentDirectory() + @"\installedmods.json");
+                    File.Delete(Utilities.ModCache);
                     Console.WriteLine("Wiped!");
                     break;
                 case "modlists":
@@ -142,8 +101,7 @@ namespace H3VRModInstaller.Backend
         ///returns list of modlists, aka modlists
         public static void listmodlists()
         {
-            var jsonfiles = Glob
-                .FilesAndDirectories(Directory.GetCurrentDirectory() + @"/ModInstallerLists/", "**.json").ToArray();
+            var jsonfiles = Glob.FilesAndDirectories(Directory.GetCurrentDirectory() + @"/ModInstallerLists/", "**.json").ToArray();
             for (var i = 0; i < jsonfiles.Length; i++)
             {
                 jsonfiles[i] = jsonfiles[i].Remove(jsonfiles[i].Length - 5, 5);

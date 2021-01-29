@@ -33,18 +33,18 @@ namespace H3VRModInstaller.GUI
         private void InitializeComponent()
         {
 	        this.ModList = new System.Windows.Forms.Panel();
-	        this.CatagoriesComboBox = new System.Windows.Forms.ComboBox();
+	        this.tabControl1 = new System.Windows.Forms.TabControl();
+	        this.TabPageInstalled = new System.Windows.Forms.TabPage();
 	        this.InstalledModsList = new System.Windows.Forms.ListView();
 	        this.InstalledModName = new System.Windows.Forms.ColumnHeader();
 	        this.InstalledModVersion = new System.Windows.Forms.ColumnHeader();
 	        this.InstalledModAuthor = new System.Windows.Forms.ColumnHeader();
-	        this.DownloadableModsButton = new System.Windows.Forms.Button();
-	        this.InstalledMods = new System.Windows.Forms.Button();
+	        this.TabPageAvailable = new System.Windows.Forms.TabPage();
 	        this.DownloadableModsList = new System.Windows.Forms.ListView();
 	        this.ModName = new System.Windows.Forms.ColumnHeader();
 	        this.ModVersion = new System.Windows.Forms.ColumnHeader();
 	        this.ModAuthor = new System.Windows.Forms.ColumnHeader();
-	        this.Divider = new System.Windows.Forms.Label();
+	        this.CatagoriesComboBox = new System.Windows.Forms.ComboBox();
 	        this.modlisttext = new System.Windows.Forms.Label();
 	        this.launch = new System.Windows.Forms.Button();
 	        this.ModsEnabled = new System.Windows.Forms.CheckBox();
@@ -63,6 +63,9 @@ namespace H3VRModInstaller.GUI
 	        this.Terminator = new System.ComponentModel.BackgroundWorker();
 	        this.CatagoryDropDown = new System.Windows.Forms.ComboBox();
 	        this.ModList.SuspendLayout();
+	        this.tabControl1.SuspendLayout();
+	        this.TabPageInstalled.SuspendLayout();
+	        this.TabPageAvailable.SuspendLayout();
 	        this.ControlPanel.SuspendLayout();
 	        this.InfoPanel.SuspendLayout();
 	        this.ProgressPanel.SuspendLayout();
@@ -71,37 +74,46 @@ namespace H3VRModInstaller.GUI
 	        // ModList
 	        // 
 	        this.ModList.BackColor = System.Drawing.Color.FromArgb(((int) (((byte) (224)))), ((int) (((byte) (224)))), ((int) (((byte) (224)))));
-	        this.ModList.Controls.Add(this.CatagoriesComboBox);
-	        this.ModList.Controls.Add(this.InstalledModsList);
-	        this.ModList.Controls.Add(this.DownloadableModsButton);
-	        this.ModList.Controls.Add(this.InstalledMods);
-	        this.ModList.Controls.Add(this.DownloadableModsList);
-	        this.ModList.Controls.Add(this.Divider);
+	        this.ModList.Controls.Add(this.tabControl1);
 	        this.ModList.Controls.Add(this.modlisttext);
-	        this.ModList.Location = new System.Drawing.Point(11, 10);
+	        this.ModList.Location = new System.Drawing.Point(12, 10);
 	        this.ModList.Name = "ModList";
-	        this.ModList.Size = new System.Drawing.Size(363, 481);
+	        this.ModList.Size = new System.Drawing.Size(391, 480);
 	        this.ModList.TabIndex = 0;
 	        this.ModList.Paint += new System.Windows.Forms.PaintEventHandler(this.ModList_Paint);
 	        // 
-	        // CatagoriesComboBox
+	        // tabControl1
 	        // 
-	        this.CatagoriesComboBox.FormattingEnabled = true;
-	        this.CatagoriesComboBox.Location = new System.Drawing.Point(15, 64);
-	        this.CatagoriesComboBox.Name = "CatagoriesComboBox";
-	        this.CatagoriesComboBox.Size = new System.Drawing.Size(334, 21);
-	        this.CatagoriesComboBox.TabIndex = 10;
-	        this.CatagoriesComboBox.SelectedIndexChanged += new System.EventHandler(this.CatagoriesComboBox_SelectedIndexChanged);
+	        this.tabControl1.Controls.Add(this.TabPageInstalled);
+	        this.tabControl1.Controls.Add(this.TabPageAvailable);
+	        this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+	        this.tabControl1.Location = new System.Drawing.Point(0, 65);
+	        this.tabControl1.Name = "tabControl1";
+	        this.tabControl1.SelectedIndex = 0;
+	        this.tabControl1.Size = new System.Drawing.Size(391, 415);
+	        this.tabControl1.TabIndex = 11;
+	        // 
+	        // TabPageInstalled
+	        // 
+	        this.TabPageInstalled.Controls.Add(this.InstalledModsList);
+	        this.TabPageInstalled.Location = new System.Drawing.Point(4, 22);
+	        this.TabPageInstalled.Name = "TabPageInstalled";
+	        this.TabPageInstalled.Padding = new System.Windows.Forms.Padding(3);
+	        this.TabPageInstalled.Size = new System.Drawing.Size(383, 389);
+	        this.TabPageInstalled.TabIndex = 0;
+	        this.TabPageInstalled.Text = "Installed Mods";
+	        this.TabPageInstalled.UseVisualStyleBackColor = true;
 	        // 
 	        // InstalledModsList
 	        // 
 	        this.InstalledModsList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {this.InstalledModName, this.InstalledModVersion, this.InstalledModAuthor});
+	        this.InstalledModsList.Dock = System.Windows.Forms.DockStyle.Fill;
 	        this.InstalledModsList.FullRowSelect = true;
 	        this.InstalledModsList.GridLines = true;
 	        this.InstalledModsList.HideSelection = false;
-	        this.InstalledModsList.Location = new System.Drawing.Point(15, 110);
+	        this.InstalledModsList.Location = new System.Drawing.Point(3, 3);
 	        this.InstalledModsList.Name = "InstalledModsList";
-	        this.InstalledModsList.Size = new System.Drawing.Size(335, 361);
+	        this.InstalledModsList.Size = new System.Drawing.Size(377, 383);
 	        this.InstalledModsList.Sorting = System.Windows.Forms.SortOrder.Ascending;
 	        this.InstalledModsList.TabIndex = 7;
 	        this.InstalledModsList.UseCompatibleStateImageBehavior = false;
@@ -126,39 +138,28 @@ namespace H3VRModInstaller.GUI
 	        this.InstalledModAuthor.Text = "Author";
 	        this.InstalledModAuthor.Width = 100;
 	        // 
-	        // DownloadableModsButton
+	        // TabPageAvailable
 	        // 
-	        this.DownloadableModsButton.BackColor = System.Drawing.Color.White;
-	        this.DownloadableModsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-	        this.DownloadableModsButton.Location = new System.Drawing.Point(15, 89);
-	        this.DownloadableModsButton.Name = "DownloadableModsButton";
-	        this.DownloadableModsButton.Size = new System.Drawing.Size(165, 23);
-	        this.DownloadableModsButton.TabIndex = 6;
-	        this.DownloadableModsButton.Text = "Downloadable Mods";
-	        this.DownloadableModsButton.UseVisualStyleBackColor = false;
-	        this.DownloadableModsButton.Click += new System.EventHandler(this.DownloadableModsButton_Click);
-	        // 
-	        // InstalledMods
-	        // 
-	        this.InstalledMods.BackColor = System.Drawing.Color.White;
-	        this.InstalledMods.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-	        this.InstalledMods.Location = new System.Drawing.Point(178, 89);
-	        this.InstalledMods.Name = "InstalledMods";
-	        this.InstalledMods.Size = new System.Drawing.Size(171, 23);
-	        this.InstalledMods.TabIndex = 5;
-	        this.InstalledMods.Text = "Installed Mods";
-	        this.InstalledMods.UseVisualStyleBackColor = false;
-	        this.InstalledMods.Click += new System.EventHandler(this.InstalledMods_Click);
+	        this.TabPageAvailable.Controls.Add(this.DownloadableModsList);
+	        this.TabPageAvailable.Controls.Add(this.CatagoriesComboBox);
+	        this.TabPageAvailable.Location = new System.Drawing.Point(4, 22);
+	        this.TabPageAvailable.Name = "TabPageAvailable";
+	        this.TabPageAvailable.Padding = new System.Windows.Forms.Padding(3);
+	        this.TabPageAvailable.Size = new System.Drawing.Size(395, 410);
+	        this.TabPageAvailable.TabIndex = 1;
+	        this.TabPageAvailable.Text = "Downloadable Mods";
+	        this.TabPageAvailable.UseVisualStyleBackColor = true;
 	        // 
 	        // DownloadableModsList
 	        // 
 	        this.DownloadableModsList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {this.ModName, this.ModVersion, this.ModAuthor});
+	        this.DownloadableModsList.Dock = System.Windows.Forms.DockStyle.Fill;
 	        this.DownloadableModsList.FullRowSelect = true;
 	        this.DownloadableModsList.GridLines = true;
 	        this.DownloadableModsList.HideSelection = false;
-	        this.DownloadableModsList.Location = new System.Drawing.Point(15, 110);
+	        this.DownloadableModsList.Location = new System.Drawing.Point(3, 24);
 	        this.DownloadableModsList.Name = "DownloadableModsList";
-	        this.DownloadableModsList.Size = new System.Drawing.Size(335, 361);
+	        this.DownloadableModsList.Size = new System.Drawing.Size(389, 383);
 	        this.DownloadableModsList.TabIndex = 6;
 	        this.DownloadableModsList.UseCompatibleStateImageBehavior = false;
 	        this.DownloadableModsList.View = System.Windows.Forms.View.Details;
@@ -182,25 +183,27 @@ namespace H3VRModInstaller.GUI
 	        this.ModAuthor.Text = "Author";
 	        this.ModAuthor.Width = 100;
 	        // 
-	        // Divider
+	        // CatagoriesComboBox
 	        // 
-	        this.Divider.BackColor = System.Drawing.Color.FromArgb(((int) (((byte) (0)))), ((int) (((byte) (0)))), ((int) (((byte) (0)))), ((int) (((byte) (0)))));
-	        this.Divider.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-	        this.Divider.Cursor = System.Windows.Forms.Cursors.Default;
-	        this.Divider.Location = new System.Drawing.Point(0, 57);
-	        this.Divider.Name = "Divider";
-	        this.Divider.Size = new System.Drawing.Size(429, 2);
-	        this.Divider.TabIndex = 2;
+	        this.CatagoriesComboBox.Dock = System.Windows.Forms.DockStyle.Top;
+	        this.CatagoriesComboBox.FormattingEnabled = true;
+	        this.CatagoriesComboBox.Location = new System.Drawing.Point(3, 3);
+	        this.CatagoriesComboBox.Name = "CatagoriesComboBox";
+	        this.CatagoriesComboBox.Size = new System.Drawing.Size(389, 21);
+	        this.CatagoriesComboBox.TabIndex = 10;
+	        this.CatagoriesComboBox.SelectedIndexChanged += new System.EventHandler(this.CatagoriesComboBox_SelectedIndexChanged);
 	        // 
 	        // modlisttext
 	        // 
 	        this.modlisttext.AutoSize = true;
+	        this.modlisttext.Dock = System.Windows.Forms.DockStyle.Top;
 	        this.modlisttext.Font = new System.Drawing.Font("Segoe UI", 36F);
-	        this.modlisttext.Location = new System.Drawing.Point(114, 3);
+	        this.modlisttext.Location = new System.Drawing.Point(0, 0);
 	        this.modlisttext.Name = "modlisttext";
 	        this.modlisttext.Size = new System.Drawing.Size(147, 65);
 	        this.modlisttext.TabIndex = 0;
 	        this.modlisttext.Text = "Mods";
+	        this.modlisttext.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 	        this.modlisttext.Click += new System.EventHandler(this.label1_Click);
 	        // 
 	        // launch
@@ -389,6 +392,9 @@ namespace H3VRModInstaller.GUI
 	        this.Load += new System.EventHandler(this.LoadGUI);
 	        this.ModList.ResumeLayout(false);
 	        this.ModList.PerformLayout();
+	        this.tabControl1.ResumeLayout(false);
+	        this.TabPageInstalled.ResumeLayout(false);
+	        this.TabPageAvailable.ResumeLayout(false);
 	        this.ControlPanel.ResumeLayout(false);
 	        this.InfoPanel.ResumeLayout(false);
 	        this.ProgressPanel.ResumeLayout(false);
@@ -396,11 +402,14 @@ namespace H3VRModInstaller.GUI
 	        this.PerformLayout();
         }
 
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage TabPageAvailable;
+        private System.Windows.Forms.TabPage TabPageInstalled;
+
         private System.Windows.Forms.ColumnHeader InstalledModAuthor;
 
         private System.Windows.Forms.ColumnHeader InstalledModName;
         private System.Windows.Forms.ColumnHeader InstalledModVersion;
-        private System.Windows.Forms.ColumnHeader InstalledModSize;
         private System.Windows.Forms.ListView InstalledModsList;
 
 		private System.Windows.Forms.ComboBox CatagoryDropDown;
@@ -423,7 +432,7 @@ namespace H3VRModInstaller.GUI
         private System.Windows.Forms.Panel ControlPanel;
         private System.Windows.Forms.Label modlisttext;
         private System.Windows.Forms.Panel ProgressPanel;
-        private System.Windows.Forms.Label Divider;
+
         //private System.Windows.Forms.ListBox InstallableModsList;
         private System.Windows.Forms.Label SelectedModText;
         private ListView DownloadableModsList;
@@ -433,8 +442,6 @@ namespace H3VRModInstaller.GUI
         private System.ComponentModel.BackgroundWorker Terminator;
 		private Label ModVer;
 		private Button CheckButton;
-		private Button DownloadableModsButton;
-		private Button InstalledMods;
 		private Label StatusReport;
 		private ComboBox CatagoriesComboBox;
 	}

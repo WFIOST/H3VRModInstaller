@@ -87,25 +87,11 @@ namespace H3VRModInstaller.Backend.Common
         /// </summary>
         public struct Files
         {
-            /// <summary>
-            ///     Location of H3VR.EXE, auto stops if not detected
-            /// </summary>
-            public static string execdir = Directory.GetParent(Directory.GetCurrentDirectory()).FullName + @"\H3VR.exe";
-
-            /// <summary>
-            ///     Loc of the main file with the exe inside
-            /// </summary>
-            public static string MainFiledir = Directory.GetParent(Directory.GetCurrentDirectory()).FullName;
 
             /// <summary>
             ///     loc of the MI lists.
             /// </summary>
             public static string Modinstallerdir = Directory.GetCurrentDirectory() + @"/ModInstallerLists/";
-
-            /// <summary>
-            ///     BepInEx directory
-            /// </summary>
-            public static string BepInExDir = MainFiledir + "/BepInEx/";
         }
     }
 }
