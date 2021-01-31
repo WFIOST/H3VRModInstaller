@@ -93,24 +93,6 @@
 			]
 		},
 		{
-			"modID": "munchies",
-			"Name": "Munchies",
-			"RawName": "Munchies.deli",
-			"Author": [
-				"nrgill28"
-			],
-			"Version": "1.0.1",
-			"Description": "Munchies is a framework that allows adding custom food items into the game! Food items can heal for custom amounts and can be eaten it multiple bites!",
-			"Path": "https://github.com/nrgill28/Munchies/releases/download/v1.0.1/Munchies.deli",
-			"Website": "https://github.com/nrgill28/Munchies",
-			"Arguments": "moveToFolder?Munchies.deli?Mods/?Munchies.deli",
-			"DelInfo": "Mods/Munchies.deli",
-			"Dependencies": [
-				"bepinex",
-				"deli"
-			]
-		},
-		{
 			"modID": "tnhtweaker",
 			"Name": "TnH Tweaker",
 			"RawName": "TakeAndHoldTweaker.Unzip.Me.zip",
