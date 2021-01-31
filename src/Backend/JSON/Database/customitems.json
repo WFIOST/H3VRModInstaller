@@ -160,24 +160,24 @@
         "modular"
       ]
     },
-    {
-      "modID": "45turn",
-      "Name": "45 Degree Barrel Extentions",
-      "RawName": "45_turn.zip",
-      "Author": [
-        "KamikazeF0X"
-      ],
-      "Version": "1.0.0",
-      "Description": "Guns always shoots forwards, and this is boring!\nThanks to this barrel extension, you will be able to curve your bullets!\nDue to how the game works, there is four attachments for the four directions you can put them in, Up, Down, Left and... Right, Right!\n(For some other reasons, muzzle flash always points forwards, I haven't got to figure out why)",
-      "Path": "https://bonetome.com/download.php?file=NDU1MzQwZmVkOTA4YmYzYyszNjUrODQ3",
-      "Website": "https://bonetome.com/h3vr/weapons/124/",
-      "Arguments": "unzipToDir?VirtualObjects/",
-      "DelInfo": "VirtualObjects/45_turn?VirtualObjects/45_turn.manifest",
-      "Dependencies": [
-        "lsiic",
-        "modular"
-      ]
-    },
+		{
+			"modID": "45turn",
+			"Name": "45 Degree Barrel Extentions",
+			"RawName": "45_turn.zip",
+			"Author": [
+				"KamikazeF0X"
+			],
+			"Version": "1.0.1",
+			"Description": "Guns always shoots forwards, and this is boring!\nThanks to this barrel extension, you will be able to curve your bullets!\nDue to how the game works, there is four attachments for the four directions you can put them in, Up, Down, Left and... Right, Right!\n(For some other reasons, muzzle flash always points forwards, I haven't got to figure out why)",
+			"Path": "https://bonetome.com/download.php?file=ZTQxZjg1NDAxZDY0NDhjNiszNjUrNzA3",
+			"Website": "https://bonetome.com/h3vr/weapons/124/",
+			"Arguments": "unzipToDir?VirtualObjects/",
+			"DelInfo": "VirtualObjects/45_turn?VirtualObjects/45_turn.manifest",
+			"Dependencies": [
+				"lsiic",
+				"modular"
+			]
+		},
     {
       "modID": "tavor21",
       "Name": "Tavor 21",
