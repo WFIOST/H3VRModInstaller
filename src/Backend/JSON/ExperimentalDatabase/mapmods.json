@@ -72,22 +72,22 @@
         "wurstmod"
       ]
     },
-		{
-			"modID": "fortbratwurst",
-			"Name": "Fort Bratwurst",
-			"RawName": "Generic-FortBratwurst.zip",
-			"Author": [
-				"Andrew_FTW"
-			],
-			"Version": "2.0.0",
-			"Description": "For my first Unity project, Ive built Fort Bratwurst, inspired by the drawing from u/GaPSMAV, with a few fun additions by me.",
-			"Path": "https://bonetome.com/download.php?file=MzgwZGJiMmUwNDc3OGI5ZiszNjUrMTAxNQ==",
-			"Website": "https://bonetome.com/h3vr/map/201/",
-			"Arguments": "unzipToDir??moveToFolder?Generic-FortBratwurst?CustomLevels/Generic/?Generic-FortBratwurst",
-			"Delinfo": "CustomLevels/Generic/Generic-FortBratwurst",
-			"Dependencies": [
-				"wurstmod"
-			]
-		}
+    {
+      "modID": "fortbratwurst",
+      "Name": "Fort Bratwurst",
+      "RawName": "Generic-FortBratwurst.zip",
+      "Author": [
+        "Andrew_FTW"
+      ],
+      "Version": "2.0.0",
+      "Description": "For my first Unity project, Ive built Fort Bratwurst, inspired by the drawing from u/GaPSMAV, with a few fun additions by me.",
+      "Path": "https://bonetome.com/download.php?file=N2VjNTE4NGVjMGE0MzdiYis0NDErMTAyMw==",
+      "Website": "https://bonetome.com/h3vr/map/201/",
+      "Arguments": "unzipToDir??moveToFolder?Generic-FortBratwurst?CustomLevels/Generic/?Generic-FortBratwurst",
+      "Delinfo": "CustomLevels/Generic/Generic-FortBratwurst",
+      "Dependencies": [
+        "wurstmod"
+      ]
+    }
   ]
 }

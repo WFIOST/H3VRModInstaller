@@ -2,6 +2,7 @@
 using System.IO;
 using System.Linq;
 using H3VRModInstaller.Backend.Filesys;
+using H3VRModInstaller.GUI;
 using Newtonsoft.Json;
 
 namespace H3VRModInstaller.Backend.JSON
@@ -39,35 +40,32 @@ namespace H3VRModInstaller.Backend.JSON
         /// <returns>String array with the installed mods</returns>
         public static ModFile[] GetInstalledMods()
         {
-            if (!File.Exists(Directory.GetCurrentDirectory() + @"\installedmods.json")) return new ModFile[0];
-            Console.WriteLine("Reading from " + Directory.GetCurrentDirectory() + @"\installedmods.json");
+            if (!File.Exists(Utilities.ModCache)) return Array.Empty<ModFile>();
+            Console.WriteLine("Reading from " + Utilities.ModCache);
             InstalledModsFormat input = null;
-            DeprecatedInstalledModsFormat depinput = null;
             try
             {
-                input = JsonConvert.DeserializeObject<InstalledModsFormat>(
-                    File.ReadAllText(Directory.GetCurrentDirectory() + "/installedmods.json"));
+                input = JsonConvert.DeserializeObject<InstalledModsFormat>(File.ReadAllText(Utilities.ModCache));
             }
             catch
             {
                 //this here tries to convert the json file into a new file. If it doesn't work, it just deletes and starts over.
                 try
                 {
-                    depinput = JsonConvert.DeserializeObject<DeprecatedInstalledModsFormat>(
-                        File.ReadAllText(Directory.GetCurrentDirectory() + "/installedmods.json"));
-                    File.Delete(Directory.GetCurrentDirectory() + @"\installedmods.json");
-                    Console.WriteLine("installedmods.json is in a deprecated format, converting!");
-                    for (var i = 0; i < depinput.InstalledMods.Length; i++) AddInstalledMod(depinput.InstalledMods[i]);
+                    var depInput = JsonConvert.DeserializeObject<DeprecatedInstalledModsFormat>(File.ReadAllText(Directory.GetCurrentDirectory() + "/installedmods.json"));
+                    File.Delete(Utilities.ModCache);
+                    Console.WriteLine("Mods cache is in a deprecated format, converting!");
+                    foreach (var t in depInput.InstalledMods)
+                        AddInstalledMod(t);
                 }
                 catch
                 {
-                    Console.WriteLine("installedmods.json isn't formatted correctly, deleting!");
-                    File.Delete(Directory.GetCurrentDirectory() + @"\installedmods.json");
+                    Console.WriteLine("Mods cache isn't formatted correctly, deleting!");
+                    File.Delete(Utilities.ModCache);
                 }
             }
 
-            if (input == null) return new ModFile[0];
-            return input.InstalledMods;
+            return input == null ? Array.Empty<ModFile>() : input.InstalledMods;
         }
 
         /// <summary>
@@ -103,8 +101,7 @@ namespace H3VRModInstaller.Backend.JSON
                 return;
             }
 
-            file = file.Where(val => val != file[loc])
-                .ToArray(); //removes instance of modfiles exact to file[loc] and shifts it all over so there's no gap in the array
+            file = file.Where(val => val != file[loc]).ToArray(); //removes instance of modfiles exact to file[loc] and shifts it all over so there's no gap in the array
             writeInstalledModToJson(file);
         }
 
@@ -112,8 +109,7 @@ namespace H3VRModInstaller.Backend.JSON
         {
             var modexport = new InstalledModsFormat();
             modexport.InstalledMods = files; //drops file into installedmodsformat
-            File.WriteAllText(Directory.GetCurrentDirectory() + @"\installedmods.json",
-                JsonConvert.SerializeObject(modexport)); //serialize and write to file
+            File.WriteAllText(Utilities.ModCache, JsonConvert.SerializeObject(modexport, Formatting.Indented)); //serialize and write to file
         }
     }
 }

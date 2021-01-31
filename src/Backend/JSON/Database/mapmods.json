@@ -27,12 +27,12 @@
       "Author": [
         "NunSuperior"
       ],
-      "Version": "1.4.0",
+      "Version": "1.4.3",
       "Description": "Promeatheus is a sci-fi themed Take and Hold map. It is an indoor map that features a mix of short and long hallways, small and medium sized holds/supply points, and shiny floors.\n\nPerformance:\nI recommend turning off HDR and Bloom. I tuned the lighting to look good with HDR off. Also the map still looks good even on the Low setting.\n\nStory(?):\nWhy is the Weinerland-Umami Corporation guarding this abandoned science vessel? Your mission is to investigate the Promeatheus and recover any valuable information you can.",
       "Path": "https://bonetome.com/download.php?file=YmQ1ZWFmZjgzZWU3NzVmMisrOTk4",
       "Website": "https://bonetome.com/h3vr/map/198/",
-      "Arguments": "moveToFolder?Promeatheus.zip?Mods/?Promeatheus.zip",
-      "Delinfo": "Mods/Promeatheus.zip\n",
+      "Arguments": "unzipToDir??moveToFolder?Promeatheus.deli?Mods/?Promeatheus.deli",
+      "Delinfo": "Mods/Promeatheus.zip/",
       "Dependencies": [
         "wurstmod"
       ]
@@ -85,6 +85,74 @@
 			"Website": "https://bonetome.com/h3vr/map/201/",
 			"Arguments": "unzipToDir??moveToFolder?Generic-FortBratwurst?CustomLevels/Generic/?Generic-FortBratwurst",
 			"Delinfo": "CustomLevels/Generic/Generic-FortBratwurst",
+			"Dependencies": [
+				"wurstmod"
+			]
+		},
+		{
+			"modID": "marcelsupermarketday",
+			"Name": "TnH Supermarket - Day",
+			"RawName": "Supermarket_day.zip",
+			"Author": [
+				"optomarcel"
+			],
+			"Version": "1.0.0",
+			"Description": "My very first map, set in a supermarket in broad daylight.\n\nComes in 2 versions, funky and normal. Funky contains some royalty free music by Kevin MacLeod https://www.youtube.com/user/kmmusic\n\nFeatures 10 supply and 6 hold points.\n\nLet me know if you have any issues/ideas.\n\nThanks and have fun playing",
+			"Path": "https://bonetome.com/download.php?file=NDFiZDYxY2U3NGI5ZjRiMiszNjUrMTIzOQ==",
+			"Website": "https://bonetome.com/h3vr/map/276/",
+			"Arguments": "unzipToDir?Mods/",
+			"Delinfo": "Mods/TNH_supermarket_day.deli?Mods/TNH_supermarket_day_funky.deli",
+			"Dependencies": [
+				"wurstmod"
+			]
+		},
+		{
+			"modID": "marcelsupermarketnight",
+			"Name": "TnH Supermarket - Night",
+			"RawName": "Supermarket_night.zip",
+			"Author": [
+				"optomarcel"
+			],
+			"Version": "1.1.0",
+			"Description": "My very first map, set in a supermarket in broad daylight.\n\nComes in 2 versions, funky and normal. Funky contains some royalty free music by Kevin MacLeod https://www.youtube.com/user/kmmusic\n\nFeatures 10 supply and 6 hold points.\n\nLet me know if you have any issues/ideas.\n\nThanks and have fun playing",
+			"Path": "https://bonetome.com/download.php?file=N2MzNmVhMjFhMzA0NzI4NSszNjUrMTIzOA==",
+			"Website": "https://bonetome.com/h3vr/map/275/",
+			"Arguments": "unzipToDir?Mods/",
+			"Delinfo": "Mods/TNH_supermarket_night.deli?Mods/TNH_supermarket_night_funky.deli",
+			"Dependencies": [
+				"wurstmod"
+			]
+		},
+		{
+			"modID": "greenscreen",
+			"Name": "Greenscreen Map",
+			"RawName": "Generic-ItemPosing.7z",
+			"Author": [
+				"TylerS76"
+			],
+			"Version": "1.0.1",
+			"Description": "Greenscreen map for item posing and thumbnails.\nRequires WurstMod.\nMessage me on discord for questions and concerns: TylerS76#2974.",
+			"Path": "https://bonetome.com/download.php?file=YjVmNzY4MTUyMGE0NmYzOSszNjUrNjQw",
+			"Website": "https://bonetome.com/h3vr/map/103/",
+			"Arguments": "unzipToDir?CustomLevels/Generic/",
+			"Delinfo": "CustomLevels/Generic/Generic-Item Posing/",
+			"Dependencies": [
+				"wurstmod"
+			]
+		},
+		{
+			"modID": "customs",
+			"Name": "Customs",
+			"RawName": "Customs_0.3.8_extract_me.zip",
+			"Author": [
+				"NickMillion"
+			],
+			"Version": "0.3.8",
+			"Description": "0.3.8 is basically untested, let me know what's broken by pinging me on the H3VR modding discord.\nI was recommended to also upload the map here, so here it is!\nA slice of Customs from New Gas to Boilers coming out to roughly 300 square meters in size with 16 holds and 16 supply points!\nThe Random Order version of the map may have a bit of running, so I'd recommend using a character that has either increased patrols or increased supply points.",
+			"Path": "https://bonetome.com/download.php?file=NmYzOTNiOTkyOGM3NTBmNSszNjUrMTE2MQ==",
+			"Website": "https://bonetome.com/h3vr/map/263/",
+			"Arguments": "unzipToDir?Mods/",
+			"Delinfo": "Mods/Customs_0.3.8",
 			"Dependencies": [
 				"wurstmod"
 			]

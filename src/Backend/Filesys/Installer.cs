@@ -2,6 +2,7 @@
 using System.IO;
 using H3VRModInstaller.Backend.Common;
 using H3VRModInstaller.Backend.JSON;
+using H3VRModInstaller.GUI;
 
 namespace H3VRModInstaller.Backend.Filesys
 {
@@ -43,14 +44,13 @@ namespace H3VRModInstaller.Backend.Filesys
                     if (fileinfo.RawName.EndsWith(".7z") || fileinfo.RawName.EndsWith(".7Z"))
                         ArchiveType = Archives.ArchiveType.SevenZip;
 
-                    Archives.UnArchive(fileinfo.RawName, ModInstallerCommon.Files.MainFiledir + "/" + args[i + 1],
-                        delArchive, ArchiveType);
+                    Archives.UnArchive(fileinfo.RawName, Path.Combine(Utilities.GameDirectoryOrThrow, args[i + 1]), delArchive, ArchiveType);
                 }
 
                 if (args[i] == "addFolder")
                 {
                     ModInstallerCommon.DebugLog("Creating Directory " + args[i + 1]);
-                    Directory.CreateDirectory(ModInstallerCommon.Files.MainFiledir + args[i + 1]);
+                    Directory.CreateDirectory(Path.Combine(Utilities.GameDirectoryOrThrow, args[i + 1]));
                 }
 
                 if (args[i] == "break") break;
@@ -74,14 +74,15 @@ namespace H3VRModInstaller.Backend.Filesys
         public static bool MoveToFolder(string mod, string dir, string renameTo = "")
         {
             if (renameTo == "") renameTo = mod;
-            dir = ModInstallerCommon.Files.MainFiledir + @"\" + dir;
+            dir = Path.Combine(Utilities.GameDirectoryOrThrow, dir);
             if (!Directory.Exists(dir)) Directory.CreateDirectory(dir);
-            ModInstallerCommon.DebugLog("Moving " + Directory.GetCurrentDirectory() + @"\" + mod + " to dir " + dir +
-                                        " as " + renameTo);
-            if (File.Exists(ModInstallerCommon.Files.MainFiledir + @"\" + mod))
+            ModInstallerCommon.DebugLog("Moving " + Directory.GetCurrentDirectory() + @"\" + mod + " to dir " + dir + " as " + renameTo);
+            var path = Path.Combine(Utilities.GameDirectoryOrThrow, mod);
+            
+            if (File.Exists(path))
             {
                 ModInstallerCommon.DebugLog("Moving as file!");
-                File.Move(ModInstallerCommon.Files.MainFiledir + @"\" + mod, dir + renameTo, true);
+                File.Move(path, dir + renameTo, true);
             }
 
             if (File.Exists(Directory.GetCurrentDirectory() + @"\" + mod))
@@ -89,10 +90,10 @@ namespace H3VRModInstaller.Backend.Filesys
                 ModInstallerCommon.DebugLog("Moving as file!");
                 File.Move(Directory.GetCurrentDirectory() + @"\" + mod, dir + renameTo, true);
             }
-            else if (Directory.Exists(ModInstallerCommon.Files.MainFiledir + @"\" + mod))
+            else if (Directory.Exists(path))
             {
                 ModInstallerCommon.DebugLog("Moving as directory!");
-                Directory.Move(ModInstallerCommon.Files.MainFiledir + @"\" + mod, dir + renameTo);
+                Directory.Move(path, dir + renameTo);
             }
 
             if (Directory.Exists(Directory.GetCurrentDirectory() + @"\" + mod))

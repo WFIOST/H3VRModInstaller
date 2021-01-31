@@ -45,7 +45,7 @@
 				"Potatoes",
 				"Frityet"
 			],
-			"Version": "0.3.2",
+			"Version": "0.5.2",
 			"Description": "Jams, jams, oh my!\nIf you hated Receiver 2, you'll absolutely hate Meatyceiver 2 even more.\nMeatyceiver 2 simulates an array of several firearm failures on all weapons of H3VR.\nTo change settings while in game, make sure Configuration Manager is installed for BepInEx and press F1.\nBy default, the average firearm will have a failure 0.75% of the time. You can adjust this with the general multiplier.\n\nCurrent failures:\nAmmunition Failures\nLight Primer Strike\n\nFirearm Failures\nFailure to Feed\nFailure to Extract\n\nBroken Firearm Failures\nHammer follow\nSlam fire\nFailure To Lock Slide",
 			"Path": "https://bonetome.com/download.php?file=ZDMxZjYzMTgxYTg5OTdlYiszNjUrODk0",
 			"Website": "https://bonetome.com/h3vr/weapons/171/",

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using H3VRModInstaller.Backend.Common;
+using H3VRModInstaller.GUI;
 
 namespace H3VRModInstaller.Backend.Filesys.Config
 {
@@ -28,7 +29,7 @@ namespace H3VRModInstaller.Backend.Filesys.Config
         {
             var Fields = new List<string>();
 
-            var ConfigFiles = Directory.GetFiles(ModInstallerCommon.Files.BepInExDir + "configs/");
+            var ConfigFiles = Directory.GetFiles(Path.Combine(Utilities.GameDirectoryOrThrow, "BepInEx", "config"));
 
             var lines = new string[0];
 

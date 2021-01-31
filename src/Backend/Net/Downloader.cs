@@ -27,7 +27,7 @@ namespace H3VRModInstaller.Backend.Net
         ///     Download progress, should be private
         /// </summary>
         /// <value>Float array</value>
-        public static float[] dlprogress = {0f, 9999f};
+        public static string dlprogress;
 
         /// <summary>
         ///     (based dictionary) Dict for assigning a string to a modfile
@@ -62,9 +62,12 @@ namespace H3VRModInstaller.Backend.Net
                 for (var i = 0; i < installedmods.Length; i++)
                     if (fileinfo.ModId == installedmods[i].ModId)
                     {
-                        if (modnum == 0) Uninstaller.DeleteMod(fileinfo.ModId);
-                        ModInstallerCommon.DebugLog(fileinfo.ModId + " is already installed!");
-                        return false;
+						if (modnum == 0) { Uninstaller.DeleteMod(fileinfo.ModId); }
+						else
+						{
+							ModInstallerCommon.DebugLog(fileinfo.ModId + " is already installed!");
+							return false;
+						}
                     }
 
             var fileloc = new Uri(locationOfFile + fileToDownload);
@@ -97,9 +100,8 @@ namespace H3VRModInstaller.Backend.Net
         /// <param name="e"></param>
         public static void Dlcomplete(object sender, AsyncCompletedEventArgs e)
         {
-            _finished = true;
-            dlprogress[0] = 0f;
-            dlprogress[0] = 9999f;
+			dlprogress = "";
+			_finished = true;
         }
 
 
@@ -115,18 +117,16 @@ namespace H3VRModInstaller.Backend.Net
                 var mbs = e.BytesReceived / 1000000f;
                 var mbstext = string.Format("{0:00.00}", mbs);
                 Console.Write("\r" + mbstext + "MBs downloaded!");
-                dlprogress[0] = mbs;
+                dlprogress = mbstext + "MBs";
             }
             else
             {
                 var percentage = e.BytesReceived / (float) e.TotalBytesToReceive * 100;
                 var percentagetext = string.Format("{0:00.00}", percentage);
                 Console.Write("\r" + percentagetext + "% downloaded!");
-                dlprogress[0] = percentage;
+                dlprogress = percentagetext + "%";
             }
-
-            dlprogress[1] = e.TotalBytesToReceive;
-            NotifyForms.CallEvent();
+//            NotifyForms.CallEvent();
         }
 
 
@@ -157,7 +157,7 @@ namespace H3VRModInstaller.Backend.Net
             return true;
         }
 
-        /// <summary>
+/*        /// <summary>
         ///     Class for notifying forms to update the progress bar
         /// </summary>
         public static class NotifyForms
@@ -174,6 +174,6 @@ namespace H3VRModInstaller.Backend.Net
             {
                 NotifyUpdateProgressBar?.Invoke(dlprogress);
             }
-        }
+        }*/
     }
 }

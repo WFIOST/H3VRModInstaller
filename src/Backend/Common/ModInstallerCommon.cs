@@ -6,7 +6,7 @@ namespace H3VRModInstaller.Backend.Common
     /// <summary>
     ///     Some common variables used across the project
     /// </summary>
-    public struct CommonVariables
+/*    public struct CommonVariables
     {
         /// <summary>
         ///     Name for the executable targeted
@@ -19,7 +19,7 @@ namespace H3VRModInstaller.Backend.Common
         /// </summary>
         /// <value></value>
         public static string DatabaseInfo { get; set; }
-    }
+    }*/
 
     /// <summary>
     ///     Commonly used functions and fields
@@ -34,7 +34,7 @@ namespace H3VRModInstaller.Backend.Common
         /// <summary>
         ///     Bypasses the check for H3VR.EXE
         /// </summary>
-        public static bool BypassExec = true;
+        public static bool BypassExec = false;
 
         /// <summary>
         ///     Website used to ping to ensure internet access
@@ -44,7 +44,7 @@ namespace H3VRModInstaller.Backend.Common
         /// <summary>
         ///     Current version.
         /// </summary>
-        public static Version ModInstallerVersion = new(0, 5, 1);
+        public static Version ModInstallerVersion = new(0, 5, 2);
 
 
         /// <summary>
@@ -87,25 +87,11 @@ namespace H3VRModInstaller.Backend.Common
         /// </summary>
         public struct Files
         {
-            /// <summary>
-            ///     Location of H3VR.EXE, auto stops if not detected
-            /// </summary>
-            public static string execdir = MainFiledir + "/H3VR.exe";
-
-            /// <summary>
-            ///     Loc of the main file with the exe inside
-            /// </summary>
-            public static string MainFiledir = Directory.GetParent(Directory.GetCurrentDirectory()).FullName;
 
             /// <summary>
             ///     loc of the MI lists.
             /// </summary>
             public static string Modinstallerdir = Directory.GetCurrentDirectory() + @"/ModInstallerLists/";
-
-            /// <summary>
-            ///     BepInEx directory
-            /// </summary>
-            public static string BepInExDir = MainFiledir + "/BepInEx/";
         }
     }
 }

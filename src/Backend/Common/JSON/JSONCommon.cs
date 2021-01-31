@@ -28,6 +28,12 @@ namespace H3VRModInstaller.Backend.JSON.Common
             return result;
         }
 
+		public class MICoverrideVars
+		{
+			public string Execname { get; set; }
+			public string DatabaseInfo { get; set; }
+		}
+
         /// <summary>
         ///     Function that gets the overrides for debugging
         /// </summary>
@@ -35,10 +41,12 @@ namespace H3VRModInstaller.Backend.JSON.Common
         {
             if (!File.Exists(Directory.GetCurrentDirectory() + "/" + "MICoverride.json")) return;
             Console.WriteLine("MICOverride.json detected!");
-            var depinput = JsonConvert.DeserializeObject<CommonVariables>(File.ReadAllText(Directory.GetCurrentDirectory() + "/" + "MICoverride.json"));
-            if (CommonVariables.Execname != null)
-                ModInstallerCommon.Files.execdir = ModInstallerCommon.Files.MainFiledir + "/" + CommonVariables.Execname;
-            if (CommonVariables.DatabaseInfo != null) DatabaseInfo = CommonVariables.DatabaseInfo;
+            var depinput = JsonConvert.DeserializeObject<MICoverrideVars>(File.ReadAllText(Directory.GetCurrentDirectory() + "/" + "MICoverride.json"));
+            if (depinput.DatabaseInfo != null) 
+			{
+				Console.WriteLine("Overriding DatabaseInfo with " + depinput.DatabaseInfo);
+				DatabaseInfo = depinput.DatabaseInfo;
+			}
         }
     }
 }
