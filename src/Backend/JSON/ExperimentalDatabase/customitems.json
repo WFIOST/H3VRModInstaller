@@ -279,6 +279,7 @@
 			"Path": "https://bonetome.com/download.php?file=M2MyODRlMWU4NWI5ZjE3MCsxMzY3KzExMDk=",
 			"Website": "https://bonetome.com/h3vr/weapons/242/",
 			"Arguments": "unzipToDir?VirtualObjects/",
+			"DelInfo": "VirtualObjects/Andrews Foregrips",
 			"Dependencies": [
 				"lsiic"
 			]

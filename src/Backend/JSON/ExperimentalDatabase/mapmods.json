@@ -48,7 +48,7 @@
       "Description": "THIS MAP IS ABANDONED. I'm sorry, but this map runs like shit and I cannot find an easy way to fix it. I'll probably end up recreating the map in a less performance intensive way.\nA World War II themed TNH map, best experienced with music OFF and played with Grumbly GI Grayson.\nAlso includes a generic version for exploration and sandbox stuff.\nMay or may not also contain a lemon.\nLow Poly assets made by Synty.",
       "Path": "https://bonetome.com/download.php?file=MDg4OTYxMmY2M2FiMDY1MSszNjUrNTY0",
       "Website": "https://bonetome.com/h3vr/map/87/",
-      "Arguments": "unzipToDir?moveToFolder?Wurst War II Generic?CustomLevels/Generic/?Wurst War II Generic?moveToFolder?Wurst War II TNH?CustomLevels/TakeAndHold/?Wurst War II TNH",
+      "Arguments": "unzipToDir??moveToFolder?Wurst War II Generic?CustomLevels/Generic/?Wurst War II Generic?moveToFolder?Wurst War II TNH?CustomLevels/TakeAndHold/?Wurst War II TNH",
       "Delinfo": "CustomLevels/Generic/Wurst War II Generic?CustomLevels/TakeAndHold/Wurst War II TNH",
       "Dependencies": [
         "wurstmod"
@@ -66,28 +66,28 @@
       "Description": "A little town overrun with Outlaws.\n- pretty challenging, makes \"Cowboys\" into \"Cattlemen\"\n- you can move freely in Holds\n- has no barriers but natural cover\n- 8 Holds, 6 Supplypoints",
       "Path": "https://bonetome.com/download.php?file=N2VjNTE4NGVjMGE0MzdiYis0NDErMTAyMw==",
       "Website": "https://bonetome.com/h3vr/map/202/",
-      "Arguments": "unzipToDir?moveToFolder?TNH-Sanctuary 1.3?CustomLevels/Generic/?TNH-Sanctuary light?moveToFolder?TNH-Sanctuary light?CustomLevels/TakeAndHold/?TNH-Sanctuary light",
+      "Arguments": "unzipToDir??moveToFolder?TNH-Sanctuary 1.3?CustomLevels/Generic/?TNH-Sanctuary light?moveToFolder?TNH-Sanctuary light?CustomLevels/TakeAndHold/?TNH-Sanctuary light",
       "Delinfo": "CustomLevels/Generic/TNH-Sanctuary 1.3?CustomLevels/TakeAndHold/TNH-Sanctuary light",
       "Dependencies": [
         "wurstmod"
       ]
     },
-    {
-      "modID": "fortbratwurst",
-      "Name": "Fort Bratwurst",
-      "RawName": "Generic-FortBratwurst.zip",
-      "Author": [
-        "Andrew_FTW"
-      ],
-      "Version": "2.0.0",
-      "Description": "For my first Unity project, Ive built Fort Bratwurst, inspired by the drawing from u/GaPSMAV, with a few fun additions by me.",
-      "Path": "https://bonetome.com/download.php?file=N2VjNTE4NGVjMGE0MzdiYis0NDErMTAyMw==",
-      "Website": "https://bonetome.com/h3vr/map/201/",
-      "Arguments": "unzipToDir?moveToFolder?Generic-FortBratwurst?CustomLevels/Generic/?Generic-FortBratwurst",
-      "Delinfo": "CustomLevels/Generic/Generic-FortBratwurst",
-      "Dependencies": [
-        "wurstmod"
-      ]
-    }
+		{
+			"modID": "fortbratwurst",
+			"Name": "Fort Bratwurst",
+			"RawName": "Generic-FortBratwurst.zip",
+			"Author": [
+				"Andrew_FTW"
+			],
+			"Version": "2.0.0",
+			"Description": "For my first Unity project, Ive built Fort Bratwurst, inspired by the drawing from u/GaPSMAV, with a few fun additions by me.",
+			"Path": "https://bonetome.com/download.php?file=MzgwZGJiMmUwNDc3OGI5ZiszNjUrMTAxNQ==",
+			"Website": "https://bonetome.com/h3vr/map/201/",
+			"Arguments": "unzipToDir??moveToFolder?Generic-FortBratwurst?CustomLevels/Generic/?Generic-FortBratwurst",
+			"Delinfo": "CustomLevels/Generic/Generic-FortBratwurst",
+			"Dependencies": [
+				"wurstmod"
+			]
+		}
   ]
 }

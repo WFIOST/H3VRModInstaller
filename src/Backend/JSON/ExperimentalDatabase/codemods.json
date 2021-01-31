@@ -3,6 +3,22 @@
 	"modlistid": "codemods",
 	"modlist": [
 		{
+			"modID": "proof",
+			"Name": "Proof you are in the experemental database",
+			"RawName": "",
+			"Author": [
+				"Potatoes"
+			],
+			"Version": "1.0.0",
+			"Description": "Nice cock, taters",
+			"Path": "",
+			"Website": "https://www.pornhub.com",
+			"Arguments": "",
+			"DelInfo": "",
+			"Dependencies": [
+			]
+		},
+		{
 			"modID": "curseddlls",
 			"Name": "CursedDlls",
 			"RawName": "CursedDlls.BepInEx_v1.3.zip",
