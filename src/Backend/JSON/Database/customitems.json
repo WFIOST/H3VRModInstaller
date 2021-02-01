@@ -438,6 +438,23 @@
 			"Dependencies": [
 				"lsiic"
 			]
+		},
+		{
+			"modID": "ftwarmsvpo215",
+			"Name": "FTW Arms VPO-215",
+			"RawName": "VPO215.zip",
+			"Author": [
+				"Andrew_FTW"
+			],
+			"Version": "1.0.0",
+			"Description": "Here is the VPO-215! A tarkov favorite for many.",
+			"Path": "https://bonetome.com/download.php?file=MWQ2ZmRlZWU1Yjk0ZTNmMCszNjUrMTI0OQ==",
+			"Website": "https://bonetome.com/h3vr/weapons/279/",
+			"Arguments": "unzipToDir?VirtualObjects/",
+			"DelInfo": "VirtualObjects/VPO215/",
+			"Dependencies": [
+				"lsiic"
+			]
 		}
   ]
 }
