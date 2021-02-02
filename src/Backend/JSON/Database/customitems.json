@@ -455,6 +455,23 @@
 			"Dependencies": [
 				"lsiic"
 			]
+		},
+		{
+			"modID": "carkiddaps",
+			"Name": "'Stechkin' APS",
+			"RawName": "StechkinAPS.zip",
+			"Author": [
+				"Carkidd"
+			],
+			"Version": "1.0.0",
+			"Description": "'I just want to be less of a burden...'\nIntended for vehicle crews and artillerymen, this Russian machinepistol is surprisingly practical in game- using both hands, it can be fired on full auto with good accuracy, and the wire stock and suppressor turn it into quite a handy little PDW. Comes with a 20 round magazine. The only thing holding it back is the lack of AP ammo in 9x18 in game. \nDue to code limitations on the game's handgun script, I am unable to get the proper three position selector/decocker and SA/DA operation (somehow broken on full auto pistols)- therefore, the weapon only has semi and full selector positions and is single action. Doesn't change much gameplay wise, just an inaccuracy. ",
+			"Path": "https://bonetome.com/download.php?file=MGE3YmZiZTJlZjNhZTJhYiszNjUrMTI2MQ==",
+			"Website": "https://bonetome.com/h3vr/weapons/281/",
+			"Arguments": "unzipToDir?Mods/",
+			"DelInfo": "Mods/StechkinAPS.hotmod",
+			"Dependencies": [
+				"sideloader"
+			]
 		}
   ]
 }
