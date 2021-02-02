@@ -203,8 +203,9 @@ namespace H3VRModInstaller.GUI
             {
                 MainClass.doCommand(command);
             }
-            catch
+            catch (Exception exception)
             {
+				Console.WriteLine(exception);
                 Terminator.CancelAsync();
                 MessageBox.Show("Failed to " + command[0] + " on mod {DownloadableModsList.SelectedItems[0].SubItems[4].Text} \n \n {exception.Message}!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }

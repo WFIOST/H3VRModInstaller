@@ -350,23 +350,23 @@
         "lsiic"
       ]
     },
-    {
-      "modID": "fnx",
-      "Name": "FN FNX-45 Tactical FDE",
-      "RawName": "FNX45.zip",
-      "Author": [
-        "Shampooh"
-      ],
-      "Version": "1.1.0",
-      "Description": "Fully featured FNX-45 Tactical, with TLR-2 LAM and Osprey 45 suppressor",
-      "Path": "https://bonetome.com/download.php?file=YWQwOTIxYzhiNTExNGRkYSsxNTk5KzExNjM=",
-      "Website": "https://bonetome.com/h3vr/weapons/265/",
-      "Arguments": "unzipToDir?mods/",
-      "DelInfo": "mods/FNX45.h3mod",
-      "Dependencies": [
-        "sideloader"
-      ]
-    },
+		{
+			"modID": "fnx",
+			"Name": "FN FNX-45 Tactical FDE",
+			"RawName": "FNX45.zip",
+			"Author": [
+				"Shampooh"
+			],
+			"Version": "1.2.0",
+			"Description": "The FNX-45 Tactical in FDE and now black, now for your VR shootin. Features of a full set of custom handling and firing sounds, as well as a LAM, suppressor, and working slide cap. Just bring any attachment near the slide cap to hide it and attach an optic or whatever else you'd like.",
+			"Path": "https://bonetome.com/download.php?file=YWQwOTIxYzhiNTExNGRkYSsxNTk5KzExNjM=",
+			"Website": "https://bonetome.com/h3vr/weapons/265/",
+			"Arguments": "unzipToDir?mods/",
+			"DelInfo": "mods/FNX45.h3mod",
+			"Dependencies": [
+				"sideloader"
+			]
+		},
     {
       "modID": "hkg28",
       "Name": "H&K G28 DMR",
