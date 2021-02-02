@@ -106,6 +106,10 @@ namespace H3VRModInstaller.GUI
 
         private void LoadGUI(object sender, EventArgs e)
         {
+			if (!File.Exists(Utilities.ModCache))
+			{
+				MessageBox.Show("Thank you for downloading H3VRModInstaller!\nBe warned, ModInstaller is still in beta, and absolutely has issues.\nIf there are any issues, or if you want a mod added, please hit us up on the Homebrew discord (@Frityet and @Potatoes)", "Thank you!", MessageBoxButtons.OK, MessageBoxIcon.None);
+			}
             InitTimer(); //progress timer
             AllocConsole(); //enables console
             JsonCommon.OverrideModInstallerVariables(); //overrides vars if possible
