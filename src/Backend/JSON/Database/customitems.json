@@ -463,7 +463,7 @@
 			"Author": [
 				"Carkidd"
 			],
-			"Version": "1.0.0",
+			"Version": "1.0.1",
 			"Description": "'I just want to be less of a burden...'\nIntended for vehicle crews and artillerymen, this Russian machinepistol is surprisingly practical in game- using both hands, it can be fired on full auto with good accuracy, and the wire stock and suppressor turn it into quite a handy little PDW. Comes with a 20 round magazine. The only thing holding it back is the lack of AP ammo in 9x18 in game. \nDue to code limitations on the game's handgun script, I am unable to get the proper three position selector/decocker and SA/DA operation (somehow broken on full auto pistols)- therefore, the weapon only has semi and full selector positions and is single action. Doesn't change much gameplay wise, just an inaccuracy. ",
 			"Path": "https://bonetome.com/download.php?file=MGE3YmZiZTJlZjNhZTJhYiszNjUrMTI2MQ==",
 			"Website": "https://bonetome.com/h3vr/weapons/281/",
@@ -471,6 +471,23 @@
 			"DelInfo": "Mods/StechkinAPS.hotmod",
 			"Dependencies": [
 				"sideloader"
+			]
+		},
+		{
+			"modID": "ftwarmssupershotgun",
+			"Name": "Super Shotgun",
+			"RawName": "StechkinAPS.zip",
+			"Author": [
+				"Andrew_FTW"
+			],
+			"Version": "1.0.1",
+			"Description": "In the first age, in the first battle, when the shadows first lengthened, one stood. Charred by the embers of the Barbecue, his meat cooked by the fires of Hell and burned beyond consumption, he chose the path of perpetual torment. In his ravenous hatred he found no peace; and with broiling mustard he scoured the Meatmas Plains seeking vengeance against the Dark Meats who had wronged him. He wore the crown of the Bratwurst Sosigs, and those that tasted the bite of his fork named him... the Beef Slayer.\nThanks to Chargin for the beefy shotgun sounds",
+			"Path": "https://bonetome.com/download.php?file=MTBmNGQ1ZmZkYmVjODI0NCszNjUrMTI2Mw==",
+			"Website": "https://bonetome.com/h3vr/weapons/282/",
+			"Arguments": "unzipToDir?VirtualObjects/",
+			"DelInfo": "VirtualObjects/SuperShotgun",
+			"Dependencies": [
+				"lsiic"
 			]
 		}
   ]
