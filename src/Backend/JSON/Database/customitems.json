@@ -423,14 +423,14 @@
     },
 		{
 			"modID": "notwolfiesmuzzles",
-			"Name": "Notwolfie's Muzzles",
-			"RawName": "NotWolfieMuzzle0.7.zip",
+			"Name": "FOXArms Muzzles",
+			"RawName": "FOXArmsMuzzles0.7.2.zip",
 			"Author": [
 				"NotWolfie",
 				"Meat_Banono"
 			],
-			"Version": "0.7",
-			"Description": "Surprise! I've returned with a new lovely mod, thanks to Potatoes , AndrewFT, @Warlord Soulbro of the Melon and Meatbanono , I present..\n\nNotwolfie's Muzzles and Supressors\nVersion 0.5\n\nMore muzzles and supressors are coming! Don't think I'm done yet!\n\nCurrently added\n- Gemtech One (Scales)\n- Rotor 43 (Scales)\n- Titan Muzzle Combo (Muzzle and Supressor, Non-scale)\n- Daniel Defence Combo (Muzzle and Supressor, Non-scale)\n- Colt AR15 Flash-hider (Non-scale)\n- GK-02 Shotgun Muzzle (Non-Scale)",
+			"Version": "0.7.2",
+			"Description": "Thanks to Potatoes , AndrewFT, @Warlord Soulbro of the Melon and Meatbanono , I present..\n\nFOXARMS Attachments (Muzzles and Supressors)\nVersion 0.7.2\n\nMore muzzles and supressors are coming! Don't think I'm done yet!\n\nCurrently added\n- Gemtech One (Scales)\n- Rotor 43 (Scales)\n- Titan Muzzle Combo (Muzzle and Supressor, Non-scale)\n- Daniel Defence Combo (Muzzle and Supressor, Non-scale)\n- Colt AR15 Flash-hider (Non-scale)\n- GK-02 Shotgun Muzzle (Non-Scale)\n- Fischer Glock Supressor (Has an attachment point)\n- Alpha Dog (Has an attachment point)\n- Vendetta Muzzle Brake\n- CQB Muzzle Brake\n- Titanium Compensator\n- SRD Supressor ",
 			"Path": "https://bonetome.com/download.php?file=YTU3YTU4NjcyODc3MjYwNSszNjUrMTIzNQ==",
 			"Website": "https://bonetome.com/h3vr/weapons/273/",
 			"Arguments": "unzipToDir?VirtualObjects/",
