@@ -124,23 +124,6 @@
 			]
 		},
 		{
-			"modID": "greenscreen",
-			"Name": "Greenscreen Map",
-			"RawName": "Generic-ItemPosing.7z",
-			"Author": [
-				"TylerS76"
-			],
-			"Version": "1.0.1",
-			"Description": "Greenscreen map for item posing and thumbnails.\nRequires WurstMod.\nMessage me on discord for questions and concerns: TylerS76#2974.",
-			"Path": "https://bonetome.com/download.php?file=YjVmNzY4MTUyMGE0NmYzOSszNjUrNjQw",
-			"Website": "https://bonetome.com/h3vr/map/103/",
-			"Arguments": "unzipToDir?CustomLevels/Generic/",
-			"Delinfo": "CustomLevels/Generic/Generic-Item Posing/",
-			"Dependencies": [
-				"wurstmod"
-			]
-		},
-		{
 			"modID": "customs",
 			"Name": "Customs",
 			"RawName": "Customs_0.3.8_extract_me.zip",

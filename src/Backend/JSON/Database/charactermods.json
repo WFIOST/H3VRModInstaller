@@ -98,23 +98,7 @@
 				"tnhtweaker"
 			]
 		},
-		{
-			"modID": "bratwurstbernie",
-			"Name": "Bratwurst Bernie",
-			"RawName": "BratwurstBernieV1.1.rar",
-			"Author": [
-				"LqdVR"
-			],
-			"Version": "1.1.0",
-			"Description": "This character features all guns from Germany, Austria and Switzerland from turn of the century, WWI, WWII, crazy cold war space guns all the way up to modern classics.\nLoot progression is loosely based on default type characters, with weakest guns at the start, the further you get, the more firepower you will gain.\nOh and I threw in some swanky MP5 foregrips and germanic(probably) medieval weapons for good measure.\nThe level difficulty is also mostly based on the standard enemy and encryption progression with some tweaks for slighty better playability.\nTested on Update 96.\nStandard and limited ammo has been tested pretty thoroughly, endless not so much.\nAnyway let me know if you run into some problems or feel like there could be tweaks or improvements.",
-			"Path": "https://bonetome.com/download.php?file=MDEyYzgxYzQ1YTUyOTJlYSszNjUrODY2",
-			"Website": "https://bonetome.com/h3vr/characters/164/",
-			"Arguments": "unzipToDir?Mods/",
-			"DelInfo": "Mods/BratwurstBernie.deli",
-			"Dependencies": [
-				"tnhtweaker"
-			]
-		},
+
 		{
 			"modID": "greatwargunther",
 			"Name": "Great War Gunther",
@@ -199,40 +183,6 @@
 			"DelInfo": "Mods/PistolPercy.zip",
 			"Dependencies": [
 				"tnhtweaker"
-			]
-		},
-		{
-			"modID": "completelyfuckedcarl",
-			"Name": "Completely Fucked Carl",
-			"RawName": "CompletelyFuckedCarl.rar",
-			"Author": [
-				"ilgmesh"
-			],
-			"Version": "1.0.0",
-			"Description": "GTA SA style gang wars, static encryption only\n- Ballas, Vagos, Triads and Police, each round introduces a new gang and they're all hostile towards each other\n- GTA SA pistols mostly drop from Ballas and Vagos, most of the other SA weapons will randomly drop from the Triads and Police\n- Lots of meat to shoot\nPROBABLY works best with spawnlock enabled, but there is a free riot shield at the beginning if you're a fan of always being out of ammo",
-			"Path": "https://bonetome.com/download.php?file=NjM1ZTNhYmQ3ZGM3OTgyYyszNjUrMTAwNQ==",
-			"Website": "https://bonetome.com/h3vr/characters/199/",
-			"Arguments": "unzipToDir?Mods/",
-			"DelInfo": "Mods/CompletelyFuckedCarl",
-			"Dependencies": [
-				"tnhtweaker"
-			]
-		},
-		{
-			"modID": "scavsigvoicelines",
-			"Name": "Scavsig Voicelines",
-			"RawName": "ScavsigVoices.rar",
-			"Author": [
-				"meat_banono"
-			],
-			"Version": "1.0.0",
-			"Description": "For the new PMC Pete character in Take and Hold Tweaker I give you Scavsig voicelines! All 335 voicelines hand picked by yours truly for the most vulgar, realistic, and hardcore Russian experience.\nPlace the .hotmod inside your mods folder to install.",
-			"Path": "https://bonetome.com/download.php?file=MWE4YTBkMTQ5ZDNhYzk5NiszNjUrODk3",
-			"Website": "https://bonetome.com/h3vr/characters/172/",
-			"Arguments": "unzipToDir?Mods/",
-			"DelInfo": "Mods/ScavsigVoices.hotmod",
-			"Dependencies": [
-				"sideloader"
 			]
 		},
 		{
