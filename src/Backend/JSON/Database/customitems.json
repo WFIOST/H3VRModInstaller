@@ -303,13 +303,13 @@
     },
     {
       "modID": "ACF",
-      "Name": "Andrews Foregrips",
+      "Name": "FTW Arms Foregrips",
       "RawName": "AndrewsForegrips.zip",
       "Author": [
         "Andrew_FTW",
         "Meat Banono"
       ],
-      "Version": "1.0",
+      "Version": "1.1",
       "Description": "A nice collection of some new foregrips! And for those who have been modding for a while will notice, the CQR is back!\nIncludes the:\n-BCM (Black and Tan)\n-Cobra AFG\n-CQR\n-RK1\n-RK2\n-RK6\n-TD",
       "Path": "https://bonetome.com/download.php?file=M2MyODRlMWU4NWI5ZjE3MCsxMzY3KzExMDk=",
       "Website": "https://bonetome.com/h3vr/weapons/242/",
@@ -382,7 +382,7 @@
 			"Author": [
 				"Andrew_FTW"
 			],
-			"Version": "1.1.0",
+			"Version": "1.2",
 			"Description": "Here is the VPO-215! A tarkov favorite for many.",
 			"Path": "https://bonetome.com/download.php?file=MWQ2ZmRlZWU1Yjk0ZTNmMCszNjUrMTI0OQ==",
 			"Website": "https://bonetome.com/h3vr/weapons/279/",
@@ -412,11 +412,11 @@
 		{
 			"modID": "ftwarmssupershotgun",
 			"Name": "Super Shotgun",
-			"RawName": "StechkinAPS.zip",
+			"RawName": "SuperShotgun.zip",
 			"Author": [
 				"Andrew_FTW"
 			],
-			"Version": "1.0.1",
+			"Version": "1.0.2",
 			"Description": "In the first age, in the first battle, when the shadows first lengthened, one stood. Charred by the embers of the Barbecue, his meat cooked by the fires of Hell and burned beyond consumption, he chose the path of perpetual torment. In his ravenous hatred he found no peace; and with broiling mustard he scoured the Meatmas Plains seeking vengeance against the Dark Meats who had wronged him. He wore the crown of the Bratwurst Sosigs, and those that tasted the bite of his fork named him... the Beef Slayer.\nThanks to Chargin for the beefy shotgun sounds",
 			"Path": "https://bonetome.com/download.php?file=MTBmNGQ1ZmZkYmVjODI0NCszNjUrMTI2Mw==",
 			"Website": "https://bonetome.com/h3vr/weapons/282/",
