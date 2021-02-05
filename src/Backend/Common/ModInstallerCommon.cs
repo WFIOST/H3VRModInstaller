@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Diagnostics.Eventing.Reader;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -90,12 +91,16 @@ public class ModInstallerCommon
         /// <summary>
         ///     Useful fields for filesystem work
         /// </summary>
-        public struct Files
+        public class Files
         {
             /// <summary>
             ///     loc of the MI lists.
             /// </summary>
             public static string Modinstallerdir = Directory.GetCurrentDirectory() + @"/ModInstallerLists/";
+
+            public static string DataDir = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "/H3VR Mod Installer/";
+
+            public static string ConfigFile = DataDir + "config.H3VRMI";
         }
     }
 
@@ -205,5 +210,14 @@ public class ModInstallerCommon
             MessageBox.Show($"Written tree output to {path}.", "Success", MessageBoxButtons.OK,
                 MessageBoxIcon.Information);
         }
+    }
+
+    public class ConfigFile
+    {
+        public bool RemoveConfigsOnDeletion { get; set; }
+        public bool DeleteArchiveOnFinish { get; set; }
+        public string H3VRPath { get; set; }
+        public string OverridePath { get; set; }
+        public bool DebugMode { get; set; }
     }
 }

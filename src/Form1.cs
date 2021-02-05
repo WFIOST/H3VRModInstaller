@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
+using System.Net.NetworkInformation;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using H3VRModInstaller.Common;
@@ -10,6 +11,7 @@ using H3VRModInstaller.Filesys;
 using H3VRModInstaller.JSON;
 using H3VRModInstaller.JSON.Common;
 using H3VRModInstaller.Net;
+
 
 namespace H3VRModInstaller
 {
@@ -26,6 +28,9 @@ namespace H3VRModInstaller
         {
             InitializeComponent();
 //            Downloader.NotifyForms.NotifyUpdateProgressBar += _nu_updatebar;
+
+
+            
         }
 
 
@@ -389,6 +394,18 @@ namespace H3VRModInstaller
             var settings = new Settings();
             settings.Show();
             MessageBox.Show("MADE NEW SETTINGS");
+        }
+
+        private void InitialiseAppData()
+        {
+            if (!Directory.Exists(ModInstallerCommon.Files.DataDir)) Directory.CreateDirectory(ModInstallerCommon.Files.DataDir);
+            if (!File.Exists(ModInstallerCommon.Files.ConfigFile)) File.Create(ModInstallerCommon.Files.ConfigFile);
+            
+        }
+
+        private void WriteDefaultConfig()
+        {
+            
         }
     }
 }

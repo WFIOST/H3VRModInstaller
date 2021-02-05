@@ -72,6 +72,7 @@ namespace H3VRModInstaller
             this.delConfig.Text = "Remove configs on deletion";
             this.delConfig.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.delConfig.UseVisualStyleBackColor = true;
+            this.delConfig.CheckedChanged += new System.EventHandler(this.delConfig_CheckedChanged);
             // 
             // delArchives
             // 
