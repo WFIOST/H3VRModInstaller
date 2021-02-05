@@ -1,6 +1,5 @@
 using System;
 using System.IO;
-using System.Linq;
 using System.Net;
 using H3VRModInstaller.Common;
 using H3VRModInstaller.JSON.Common;
@@ -87,8 +86,9 @@ namespace H3VRModInstaller.JSON
         ///     Allows for multiple mods in 1 file to be added
         /// </summary>
         public ModFile[] Modlist { get; set; }
-		public string ModListName { get; set; }
-		public string ModListID { get; set; }
+
+        public string ModListName { get; set; }
+        public string ModListID { get; set; }
     }
 
     /// <summary>
@@ -105,6 +105,8 @@ namespace H3VRModInstaller.JSON
 
 
         private static string[] DatabaseURLs;
+
+        private static readonly WebClient client = new();
 
 
         /// <summary>
@@ -181,27 +183,24 @@ namespace H3VRModInstaller.JSON
             return DatabaseURLs;
         }
 
-		private static WebClient client = new WebClient();
-
         /// <summary>
         ///     Returns ModListFormat, given a full URI or postfix
         /// </summary>
         public static ModListFormat GetDeserializedModListFormatOnline(string loc)
         {
-			if (!loc.Contains("https"))
-			{
-				string[] v = new string[0];
-				v = GetDatabaseURLs();
-				for (int i = 0; i < v.Length; i++)
-				{
-					if (v[i].Contains(loc))
-					{
-						loc = v[i];
-						break;
-					}
-				}
-			}
-			Console.WriteLine("Reading {0}", loc);
+            if (!loc.Contains("https"))
+            {
+                var v = new string[0];
+                v = GetDatabaseURLs();
+                for (var i = 0; i < v.Length; i++)
+                    if (v[i].Contains(loc))
+                    {
+                        loc = v[i];
+                        break;
+                    }
+            }
+
+            Console.WriteLine("Reading {0}", loc);
             var serialised = client.DownloadString(new Uri(loc));
             var modList = JsonConvert.DeserializeObject<ModListFormat>(serialised);
             return modList;

@@ -5,21 +5,22 @@ using System.Text;
 
 namespace H3VRModInstaller.Filesys.Config
 {
-    public class MIConfig   
+    public class MIConfig
     {
-        string Path;
-        string EXE = Assembly.GetExecutingAssembly().GetName().Name;
-
-        [DllImport("kernel32", CharSet = CharSet.Unicode)]
-        static extern long WritePrivateProfileString(string Section, string Key, string Value, string FilePath);
-
-        [DllImport("kernel32", CharSet = CharSet.Unicode)]
-        static extern int GetPrivateProfileString(string Section, string Key, string Default, StringBuilder RetVal, int Size, string FilePath);
+        private readonly string EXE = Assembly.GetExecutingAssembly().GetName().Name;
+        private readonly string Path;
 
         public MIConfig(string IniPath = null)
         {
             Path = new FileInfo(IniPath ?? EXE + ".ini").FullName;
         }
+
+        [DllImport("kernel32", CharSet = CharSet.Unicode)]
+        private static extern long WritePrivateProfileString(string Section, string Key, string Value, string FilePath);
+
+        [DllImport("kernel32", CharSet = CharSet.Unicode)]
+        private static extern int GetPrivateProfileString(string Section, string Key, string Default,
+            StringBuilder RetVal, int Size, string FilePath);
 
         public string Read(string Key, string Section = null)
         {

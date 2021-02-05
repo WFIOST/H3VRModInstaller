@@ -1,8 +1,6 @@
 using System;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using GlobExpressions;
 using H3VRModInstaller.Common;
 using H3VRModInstaller.Filesys;
 using H3VRModInstaller.JSON;
@@ -43,6 +41,7 @@ namespace H3VRModInstaller
                             };
                             Process.Start(psi);
                         }
+
                     break;
                 case "dl":
                     Downloader.DownloadModDirector(inputargs[1]);

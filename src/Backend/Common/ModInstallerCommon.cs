@@ -26,10 +26,10 @@ namespace H3VRModInstaller.Common
         public static string DatabaseInfo { get; set; }
     }*/
 
-    /// <summary>
-    ///     Commonly used functions and fields
-    /// </summary>
-    public class ModInstallerCommon
+/// <summary>
+///     Commonly used functions and fields
+/// </summary>
+public class ModInstallerCommon
     {
         /// <summary>
         ///     Enables Debugging
@@ -92,16 +92,16 @@ namespace H3VRModInstaller.Common
         /// </summary>
         public struct Files
         {
-
             /// <summary>
             ///     loc of the MI lists.
             /// </summary>
             public static string Modinstallerdir = Directory.GetCurrentDirectory() + @"/ModInstallerLists/";
         }
     }
+
     public static class Utilities
     {
-        private static bool scanned = false;
+        private static bool scanned;
         private static string _gameLocation = "";
 
         public static string GameDirectory
@@ -113,42 +113,54 @@ namespace H3VRModInstaller.Common
                 scanned = true;
 
                 if (!OperatingSystem.IsWindows()) return null;
-                
+
                 // Get the main steam installation location via registry.
-                var steamDir = Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Valve\Steam", "InstallPath", "") as string;
-                if (string.IsNullOrEmpty(steamDir)) steamDir = Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Valve\Steam", "InstallPath", "") as string;
+                var steamDir =
+                    Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Valve\Steam", "InstallPath", "") as string;
+                if (string.IsNullOrEmpty(steamDir))
+                    steamDir = Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Valve\Steam", "InstallPath",
+                        "") as string;
                 if (string.IsNullOrEmpty(steamDir)) return null;
 
                 // Check main steamapps library folder for h3 manifest.
                 var result = "";
-                if (File.Exists(steamDir + @"\steamapps\appmanifest_450540.acf")) result = steamDir + @"\steamapps\common\H3VR\";
+                if (File.Exists(steamDir + @"\steamapps\appmanifest_450540.acf"))
+                    result = steamDir + @"\steamapps\common\H3VR\";
                 else
-                {
                     // We didn't find it, look at other library folders by lazily parsing libraryfolders.
-                    foreach (var ii in File.ReadAllLines(steamDir + "/steamapps/libraryfolders.vdf").Skip(4).Where(x => x.Length != 0 && x[0] != '}').Select(x => x.Split('\t')[3].Trim('"').Replace(@"\\", @"\")).Where(ii => File.Exists(ii + @"\steamapps\appmanifest_450540.acf")))
+                    foreach (var ii in File.ReadAllLines(steamDir + "/steamapps/libraryfolders.vdf").Skip(4)
+                        .Where(x => x.Length != 0 && x[0] != '}')
+                        .Select(x => x.Split('\t')[3].Trim('"').Replace(@"\\", @"\"))
+                        .Where(ii => File.Exists(ii + @"\steamapps\appmanifest_450540.acf")))
                     {
                         result = ii + @"\steamapps\common\H3VR\";
                         break;
                     }
-                }
 
                 _gameLocation = result;
                 if (!string.IsNullOrEmpty(_gameLocation)) return _gameLocation;
-                MessageBox.Show("Could not auto-detect H3VR installation directory. Is your game installed outside Steam or pirated?", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(
+                    "Could not auto-detect H3VR installation directory. Is your game installed outside Steam or pirated?",
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return null;
             }
         }
 
-        public static string ExecutablePath => string.IsNullOrEmpty(GameDirectory) ? null : Path.Combine(GameDirectory, "h3vr.exe");
-        public static string ModCache => string.IsNullOrEmpty(GameDirectory) ? null : Path.Combine(GameDirectory, "installed_mods.json");
+        public static string ExecutablePath =>
+            string.IsNullOrEmpty(GameDirectory) ? null : Path.Combine(GameDirectory, "h3vr.exe");
+
+        public static string ModCache => string.IsNullOrEmpty(GameDirectory)
+            ? null
+            : Path.Combine(GameDirectory, "installed_mods.json");
 
         /// <summary>
         ///     Use this if you absolutely 100% need the game directory. If it was not auto discovered it will throw an exception
         /// </summary>
-        public static string GameDirectoryOrThrow => GameDirectory ?? throw new FileNotFoundException("Could not find game directory.");
+        public static string GameDirectoryOrThrow =>
+            GameDirectory ?? throw new FileNotFoundException("Could not find game directory.");
 
         /// <summary>
-        /// Runs the tree command on the H3 directory for additional debugging
+        ///     Runs the tree command on the H3 directory for additional debugging
         /// </summary>
         public static void GenerateTree()
         {
@@ -179,7 +191,10 @@ namespace H3VRModInstaller.Common
                     skip = true;
                     sb.AppendLine(line + " (TRUNCATED)");
                 }
-                else if (skip && line.StartsWith("\\---")) skip = false;
+                else if (skip && line.StartsWith("\\---"))
+                {
+                    skip = false;
+                }
 
                 if (!skip) sb.AppendLine(line);
             }
@@ -187,7 +202,8 @@ namespace H3VRModInstaller.Common
             // Write the output
             var path = Path.Join(GameDirectoryOrThrow, "tree_output.txt");
             File.WriteAllText(path, sb.ToString());
-            MessageBox.Show($"Written tree output to {path}.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show($"Written tree output to {path}.", "Success", MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
         }
     }
 }

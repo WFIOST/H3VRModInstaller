@@ -1,8 +1,8 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
-using H3VRModInstaller.Filesys;
 using H3VRModInstaller.Common;
+using H3VRModInstaller.Filesys;
 using Newtonsoft.Json;
 
 namespace H3VRModInstaller.JSON
@@ -52,7 +52,9 @@ namespace H3VRModInstaller.JSON
                 //this here tries to convert the json file into a new file. If it doesn't work, it just deletes and starts over.
                 try
                 {
-                    var depInput = JsonConvert.DeserializeObject<DeprecatedInstalledModsFormat>(File.ReadAllText(Directory.GetCurrentDirectory() + "/installedmods.json"));
+                    var depInput =
+                        JsonConvert.DeserializeObject<DeprecatedInstalledModsFormat>(
+                            File.ReadAllText(Directory.GetCurrentDirectory() + "/installedmods.json"));
                     File.Delete(Utilities.ModCache);
                     Console.WriteLine("Mods cache is in a deprecated format, converting!");
                     foreach (var t in depInput.InstalledMods)
@@ -101,7 +103,8 @@ namespace H3VRModInstaller.JSON
                 return;
             }
 
-            file = file.Where(val => val != file[loc]).ToArray(); //removes instance of modfiles exact to file[loc] and shifts it all over so there's no gap in the array
+            file = file.Where(val => val != file[loc])
+                .ToArray(); //removes instance of modfiles exact to file[loc] and shifts it all over so there's no gap in the array
             writeInstalledModToJson(file);
         }
 
@@ -109,7 +112,8 @@ namespace H3VRModInstaller.JSON
         {
             var modexport = new InstalledModsFormat();
             modexport.InstalledMods = files; //drops file into installedmodsformat
-            File.WriteAllText(Utilities.ModCache, JsonConvert.SerializeObject(modexport, Formatting.Indented)); //serialize and write to file
+            File.WriteAllText(Utilities.ModCache,
+                JsonConvert.SerializeObject(modexport, Formatting.Indented)); //serialize and write to file
         }
     }
 }

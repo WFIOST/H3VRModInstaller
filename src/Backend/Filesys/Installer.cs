@@ -2,7 +2,6 @@
 using System.IO;
 using H3VRModInstaller.Common;
 using H3VRModInstaller.JSON;
-using H3VRModInstaller;
 
 namespace H3VRModInstaller.Filesys
 {
@@ -32,6 +31,7 @@ namespace H3VRModInstaller.Filesys
             for (var i = 0; i < args.Length; i++)
             {
                 if (args[i] == "moveToFolder") MoveToFolder(args[i + 1], args[i + 2], args[i + 3]);
+
                 if (args[i] == "unzipToDir")
                 {
                     ModInstallerCommon.DebugLog("Unzipping to " + args[i + 1]);
@@ -44,7 +44,8 @@ namespace H3VRModInstaller.Filesys
                     if (fileinfo.RawName.EndsWith(".7z") || fileinfo.RawName.EndsWith(".7Z"))
                         ArchiveType = Archives.ArchiveType.SevenZip;
 
-                    Archives.UnArchive(fileinfo.RawName, Path.Combine(Utilities.GameDirectoryOrThrow, args[i + 1]), delArchive, ArchiveType);
+                    Archives.UnArchive(fileinfo.RawName, Path.Combine(Utilities.GameDirectoryOrThrow, args[i + 1]),
+                        delArchive, ArchiveType);
                 }
 
                 if (args[i] == "addFolder")
@@ -76,9 +77,10 @@ namespace H3VRModInstaller.Filesys
             if (renameTo == "") renameTo = mod;
             dir = Path.Combine(Utilities.GameDirectoryOrThrow, dir);
             if (!Directory.Exists(dir)) Directory.CreateDirectory(dir);
-            ModInstallerCommon.DebugLog("Moving " + Directory.GetCurrentDirectory() + @"\" + mod + " to dir " + dir + " as " + renameTo);
+            ModInstallerCommon.DebugLog("Moving " + Directory.GetCurrentDirectory() + @"\" + mod + " to dir " + dir +
+                                        " as " + renameTo);
             var path = Path.Combine(Utilities.GameDirectoryOrThrow, mod);
-            
+
             if (File.Exists(path))
             {
                 ModInstallerCommon.DebugLog("Moving as file!");
