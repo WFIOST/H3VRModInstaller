@@ -4,15 +4,13 @@ using System.Diagnostics;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
-using H3VRModInstaller.Backend;
-using H3VRModInstaller.Backend.Common;
-using H3VRModInstaller.Backend.Filesys;
-using H3VRModInstaller.Backend.JSON;
-using H3VRModInstaller.Backend.JSON.Common;
-using H3VRModInstaller.Backend.Net;
-using H3VRModInstaller.Backend.GUI;
+using H3VRModInstaller.Common;
+using H3VRModInstaller.Filesys;
+using H3VRModInstaller.JSON;
+using H3VRModInstaller.JSON.Common;
+using H3VRModInstaller.Net;
 
-namespace H3VRModInstaller.GUI
+namespace H3VRModInstaller
 {
     public partial class mainwindow : Form
     {
@@ -256,7 +254,7 @@ namespace H3VRModInstaller.GUI
 
             var dispmods = JsonModList.GetDeserializedModListFormatOnline(dispcat).Modlist;
 
-            var installedMods = H3VRModInstaller.Backend.JSON.InstalledMods.GetInstalledMods(); //fuck you
+            var installedMods = H3VRModInstaller.JSON.InstalledMods.GetInstalledMods(); //fuck you
 
             ModFile[] list = null;
 

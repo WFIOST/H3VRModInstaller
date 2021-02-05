@@ -1,10 +1,10 @@
 ﻿using System;
 using System.IO;
-using H3VRModInstaller.Backend.Common;
-using H3VRModInstaller.Backend.JSON;
-using H3VRModInstaller.GUI;
+using H3VRModInstaller.Common;
+using H3VRModInstaller.JSON;
+using H3VRModInstaller;
 
-namespace H3VRModInstaller.Backend.Filesys
+namespace H3VRModInstaller.Filesys
 {
     /// <summary>
     ///     This class manages the installation of mods!

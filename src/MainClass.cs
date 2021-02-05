@@ -3,14 +3,12 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using GlobExpressions;
-using H3VRModInstaller.Backend.Common;
-using H3VRModInstaller.Backend.Filesys;
-using H3VRModInstaller.Backend.JSON;
-using H3VRModInstaller.Backend.JSON.Common;
-using H3VRModInstaller.Backend.Net;
-using H3VRModInstaller.GUI;
+using H3VRModInstaller.Common;
+using H3VRModInstaller.Filesys;
+using H3VRModInstaller.JSON;
+using H3VRModInstaller.Net;
 
-namespace H3VRModInstaller.Backend
+namespace H3VRModInstaller
 {
     /// <summary>
     ///     MainClass, dunno what you expected

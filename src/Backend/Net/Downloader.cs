@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Net;
 using System.Threading;
-using H3VRModInstaller.Backend.Common;
-using H3VRModInstaller.Backend.Filesys;
-using H3VRModInstaller.Backend.JSON;
+using H3VRModInstaller.Common;
+using H3VRModInstaller.Filesys;
+using H3VRModInstaller.JSON;
 
-namespace H3VRModInstaller.Backend.Net
+namespace H3VRModInstaller.Net
 {
     /// <summary>
     ///     This class is for downloading mods

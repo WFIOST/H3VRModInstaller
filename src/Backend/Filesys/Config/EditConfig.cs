@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.IO;
-using H3VRModInstaller.Backend.Common;
-using H3VRModInstaller.GUI;
+using H3VRModInstaller.Common;
+using H3VRModInstaller;
 
-namespace H3VRModInstaller.Backend.Filesys.Config
+namespace H3VRModInstaller.Filesys.Config
 {
     /// <summary>
     ///     This class edits the config file of a .cfg file!

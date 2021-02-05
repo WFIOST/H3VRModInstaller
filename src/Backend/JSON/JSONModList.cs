@@ -2,11 +2,11 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Net;
-using H3VRModInstaller.Backend.Common;
-using H3VRModInstaller.Backend.JSON.Common;
+using H3VRModInstaller.Common;
+using H3VRModInstaller.JSON.Common;
 using Newtonsoft.Json;
 
-namespace H3VRModInstaller.Backend.JSON
+namespace H3VRModInstaller.JSON
 {
     /// <summary>
     ///     Standard JSON file info for a mod

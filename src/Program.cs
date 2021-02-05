@@ -1,7 +1,7 @@
 using System;
 using System.Windows.Forms;
 
-namespace H3VRModInstaller.GUI
+namespace H3VRModInstaller
 {
     internal static class Program
     {

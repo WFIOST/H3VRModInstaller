@@ -1,6 +1,5 @@
-﻿using H3VRModInstaller.Backend.Common;
-
-namespace H3VRModInstaller.Backend.GUI
+﻿
+namespace H3VRModInstaller.Common
 {
     /// <summary>
     ///     Common fields for the GUI
