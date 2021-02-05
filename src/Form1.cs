@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Runtime.InteropServices;
+using System.Security.Permissions;
 using System.Windows.Forms;
 using H3VRModInstaller.Common;
 using H3VRModInstaller.Filesys;
@@ -45,7 +46,6 @@ namespace H3VRModInstaller
             timer1.Interval = 0020; // in miliseconds
             timer1.Start();
         }
-
         private void timer1_Tick(object sender, EventArgs e)
         {
             StatusReport.Text = Downloader.dlprogress;
@@ -82,6 +82,7 @@ namespace H3VRModInstaller
 
         private void launch_Click(object sender, EventArgs e)
         {
+            
             var winHttpEnabled = Path.Combine(Utilities.GameDirectoryOrThrow, GuiCommon.Files.EnabledName);
             var winHttpDisabled = Path.Combine(Utilities.GameDirectoryOrThrow, GuiCommon.Files.DisabledName);
 
@@ -382,6 +383,13 @@ namespace H3VRModInstaller
                     break;
                 }
             }
+        }
+
+        private void StatusReport_Click(object sender, EventArgs e)
+        {
+            var settings = new Settings();
+            settings.Show();
+            MessageBox.Show("MADE NEW SETTINGS");
         }
     }
 }
