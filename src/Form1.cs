@@ -24,8 +24,6 @@ namespace H3VRModInstaller
 
         public string impModID;
 
-        private Timer timer1;
-
         public mainwindow()
         {
             InitializeComponent();
