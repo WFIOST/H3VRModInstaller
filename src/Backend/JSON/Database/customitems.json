@@ -411,7 +411,7 @@
 		},
 		{
 			"modID": "ftwarmssupershotgun",
-			"Name": "Super Shotgun",
+			"Name": "FTW Arms Super Shotgun",
 			"RawName": "SuperShotgun.zip",
 			"Author": [
 				"Andrew_FTW"
@@ -422,6 +422,23 @@
 			"Website": "https://bonetome.com/h3vr/weapons/282/",
 			"Arguments": "unzipToDir?VirtualObjects/",
 			"DelInfo": "VirtualObjects/SuperShotgun",
+			"Dependencies": [
+				"lsiic"
+			]
+		},
+		{
+			"modID": "ftwarmsammoboxes",
+			"Name": "FTW Arms Ammo Boxes",
+			"RawName": "FTWArmsammoboxes.zip",
+			"Author": [
+				"Andrew_FTW"
+			],
+			"Version": "1.0.0",
+			"Description": "Tired of carrying piles of loose shells in your backpack? Wish you could hold more bullets in those large quickbelt slots? Do I have the mod for you! FTW Arms brand Ammo boxes comes with 5 brand new boxes of ammunition, including 9x19, 12 gauge, 5.45x39, 23x75mm, and 5.56x45, with more on the way in future updated! \n\nNOTE: \nTHE BOXES ARE FOUND UNDER MUZZLE LOADER RIFLES",
+			"Path": "https://bonetome.com/download.php?file=NzkxNDc3YjkwMzkwZTUyNCszNjUrMTMwNQ==",
+			"Website": "https://bonetome.com/h3vr/weapons/301/",
+			"Arguments": "unzipToDir?VirtualObjects/",
+			"DelInfo": "VirtualObjects/FTW Arms ammo boxes",
 			"Dependencies": [
 				"lsiic"
 			]

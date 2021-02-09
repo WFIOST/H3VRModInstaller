@@ -15,10 +15,16 @@ namespace H3VRModInstaller
     /// </summary>
     public class MainClass
     {
+		public static void doCommand(string inputstring)
+		{
+			doCommand(inputstring.Split(' '));
+		}
+
         /// <summary>
         ///     Backend input
         /// </summary>
         /// <param name="inputargs">Input</param>
+		/// 
         public static void doCommand(string[] inputargs)
         {
             switch (inputargs[0])

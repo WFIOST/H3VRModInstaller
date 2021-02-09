@@ -9,6 +9,8 @@ using H3VRModInstaller.Filesys;
 using H3VRModInstaller.JSON;
 using H3VRModInstaller.JSON.Common;
 using H3VRModInstaller.Net;
+using System.Threading;
+using H3VRModInstaller.GUI;
 
 namespace H3VRModInstaller
 {
@@ -36,11 +38,11 @@ namespace H3VRModInstaller
             StatusReport.Text = "Installing";
         }
 
-        private Timer timer1;
+        private System.Windows.Forms.Timer timer1;
 
         public void InitTimer()
         {
-            timer1 = new Timer();
+            timer1 = new System.Windows.Forms.Timer();
             timer1.Tick += new EventHandler(timer1_Tick);
             timer1.Interval = 0020; // in miliseconds
             timer1.Start();
@@ -98,12 +100,32 @@ namespace H3VRModInstaller
             Process.Start(Utilities.ExecutablePath);
         }
 
-        [DllImport("kernel32.dll", SetLastError = true)]
+		void Form_KeyDown(object sender, KeyEventArgs e)
+		{
+			if (e.Control && e.KeyCode == Keys.R)
+			{
+				Thread t = new Thread(new ThreadStart(startdebugconsole));
+				t.Start();
+			}
+		}
+
+		void startdebugconsole()
+		{
+			debugconsole dbc = new debugconsole();
+			dbc.mainform = this;
+			Application.Run(dbc);
+		}
+
+
+		[DllImport("kernel32.dll", SetLastError = true)]
         [return: MarshalAs(UnmanagedType.Bool)]
         private static extern bool AllocConsole();
 
         private void LoadGUI(object sender, EventArgs e)
         {
+
+			this.KeyDown += new KeyEventHandler(Form_KeyDown);
+
 			if (!File.Exists(Utilities.ModCache))
 			{
 				MessageBox.Show("Thank you for downloading H3VRModInstaller!\nBe warned, ModInstaller is still in beta, and absolutely has issues.\nIf there are any issues, or if you want a mod added, please hit us up on the Homebrew discord (@Frityet and @Potatoes)", "Thank you!", MessageBoxButtons.OK, MessageBoxIcon.None);
