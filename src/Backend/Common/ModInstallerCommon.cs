@@ -154,15 +154,32 @@ public class ModInstallerCommon
         public static string ExecutablePath =>
             string.IsNullOrEmpty(GameDirectory) ? null : Path.Combine(GameDirectory, "h3vr.exe");
 
-        public static string ModCache => string.IsNullOrEmpty(GameDirectory)
-            ? null
-            : Path.Combine(GameDirectory, "installed_mods.json");
+		private static string _modcache;
 
-        /// <summary>
-        ///     Use this if you absolutely 100% need the game directory. If it was not auto discovered it will throw an exception
-        /// </summary>
-        public static string GameDirectoryOrThrow =>
-            GameDirectory ?? throw new FileNotFoundException("Could not find game directory.");
+		public static string ModCache
+		{
+			get
+			{
+				if (string.IsNullOrEmpty(_modcache))
+				{
+					_modcache = Path.Combine(GameDirectory, "installed_mods.json");
+				}
+				return _modcache;
+			}
+			set
+			{
+				_modcache = value;
+			}
+		}
+
+		/*        public static string ModCache => string.IsNullOrEmpty(GameDirectory)
+					? null
+					: Path.Combine(GameDirectory, "installed_mods.json");*/
+
+		/// <summary>
+		///     Use this if you absolutely 100% need the game directory. If it was not auto discovered it will throw an exception
+		/// </summary>
+		public static string GameDirectoryOrThrow => GameDirectory ?? throw new FileNotFoundException("Could not find game directory.");
 
         /// <summary>
         ///     Runs the tree command on the H3 directory for additional debugging
