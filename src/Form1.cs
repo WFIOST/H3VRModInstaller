@@ -1,7 +1,9 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Drawing;
 using System.IO;
+using System.Net.NetworkInformation;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using H3VRModInstaller.Common;
@@ -12,18 +14,25 @@ using H3VRModInstaller.Net;
 using System.Threading;
 using H3VRModInstaller.GUI;
 
+
 namespace H3VRModInstaller
 {
     public partial class mainwindow : Form
     {
+        public static string publicdispcat = "n/a";
         public string[] command;
 
         public string impModID;
+
+        private Timer timer1;
 
         public mainwindow()
         {
             InitializeComponent();
 //            Downloader.NotifyForms.NotifyUpdateProgressBar += _nu_updatebar;
+
+
+            
         }
 
 
@@ -134,13 +143,17 @@ namespace H3VRModInstaller
             AllocConsole(); //enables console
             JsonCommon.OverrideModInstallerVariables(); //overrides vars if possible
 
-            var onlineversion = new Version(JsonModList.GetDeserializedModListFormatOnline(JsonCommon.DatabaseInfo).Modlist[0].Version);
+            var onlineversion = new Version(JsonModList.GetDeserializedModListFormatOnline(JsonCommon.DatabaseInfo)
+                .Modlist[0].Version);
             if (ModInstallerCommon.ModInstallerVersion.CompareTo(onlineversion) < 0)
             {
-                MessageBox.Show("H3VRModInstaller is out of date! (" + ModInstallerCommon.ModInstallerVersion + " vs " + onlineversion + ")", "Wrong version detected!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show(
+                    "H3VRModInstaller is out of date! (" + ModInstallerCommon.ModInstallerVersion + " vs " +
+                    onlineversion + ")", "Wrong version detected!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 var psi = new ProcessStartInfo
                 {
-                    FileName = JsonModList.GetDeserializedModListFormatOnline(JsonCommon.DatabaseInfo).Modlist[0].Website,
+                    FileName = JsonModList.GetDeserializedModListFormatOnline(JsonCommon.DatabaseInfo).Modlist[0]
+                        .Website,
                     UseShellExecute = true
                 };
                 Process.Start(psi);
@@ -209,7 +222,9 @@ namespace H3VRModInstaller
                 impModID = InstalledModsList.SelectedItems[0].SubItems[4].Text;
                 SelectedModText.Text = "Selected Mod: " + InstalledModsList.SelectedItems[0].Text;
                 ModInfo.Text = InstalledModsList.SelectedItems[0].SubItems[3].Text;
-                ModVer.Text = "Current Ver: " + InstalledModsList.SelectedItems[0].SubItems[1].Text + ", Online Version: " + ModParsing.GetSpecificMod(InstalledModsList.SelectedItems[0].SubItems[4].Text).Version;
+                ModVer.Text = "Current Ver: " + InstalledModsList.SelectedItems[0].SubItems[1].Text +
+                              ", Online Version: " + ModParsing
+                                  .GetSpecificMod(InstalledModsList.SelectedItems[0].SubItems[4].Text).Version;
             }
             catch
             {
@@ -225,9 +240,12 @@ namespace H3VRModInstaller
             }
             catch (Exception exception)
             {
-				Console.WriteLine(exception);
+                Console.WriteLine(exception);
                 Terminator.CancelAsync();
-                MessageBox.Show("Failed to " + command[0] + " on mod {DownloadableModsList.SelectedItems[0].SubItems[4].Text} \n \n {exception.Message}!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(
+                    "Failed to " + command[0] +
+                    " on mod {DownloadableModsList.SelectedItems[0].SubItems[4].Text} \n \n {exception.Message}!",
+                    "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -258,8 +276,6 @@ namespace H3VRModInstaller
         {
         }
 
-        public static string publicdispcat = "n/a";
-
         public void UpdateModList(string dispcat = "n/a")
         {
             DownloadableModsList.Items.Clear();
@@ -276,7 +292,7 @@ namespace H3VRModInstaller
 
             var dispmods = JsonModList.GetDeserializedModListFormatOnline(dispcat).Modlist;
 
-            var installedMods = H3VRModInstaller.JSON.InstalledMods.GetInstalledMods(); //fuck you
+            var installedMods = InstalledMods.GetInstalledMods(); //fuck you
 
             ModFile[] list = null;
 
@@ -295,14 +311,12 @@ namespace H3VRModInstaller
                     }
 
                 var isdispmod = false;
-                for (int y = 0; y < dispmods.Length; y++)
-                {
+                for (var y = 0; y < dispmods.Length; y++)
                     if (totalmods[i].ModId == dispmods[y].ModId)
                     {
                         isdispmod = true;
                         break;
                     }
-                }
 
                 //sets vars to installedmods or input
                 if (isinstldmod)
@@ -330,26 +344,21 @@ namespace H3VRModInstaller
                 Finish: ;
             }
 
-            for (int i = 0; i < InstalledModsList.Items.Count; i++)
-            {
+            for (var i = 0; i < InstalledModsList.Items.Count; i++)
                 //if cached installed mod is a older version than the database
-                if (new Version(InstalledModsList.Items[i].SubItems[1].Text).CompareTo(new Version(ModParsing.GetSpecificMod(InstalledModsList.Items[i].SubItems[4].Text).Version)) < 0)
-                {
-                    InstalledModsList.Items[i].BackColor = System.Drawing.Color.Yellow;
-                }
-            }
+                if (new Version(InstalledModsList.Items[i].SubItems[1].Text).CompareTo(
+                    new Version(ModParsing.GetSpecificMod(InstalledModsList.Items[i].SubItems[4].Text).Version)) < 0)
+                    InstalledModsList.Items[i].BackColor = Color.Yellow;
         }
 
         public void UpdateCatagories()
         {
             var catagories = JsonModList.GetModLists();
 
-            for (int i = 0; i < catagories.Length; i++)
-            {
-//				var mod = new ListViewItem(catagories[i].modlistname, 0); //0
+            for (var i = 0; i < catagories.Length; i++)
+                //				var mod = new ListViewItem(catagories[i].modlistname, 0); //0
 //				mod.SubItems.Add(catagories[i].modlistid); //1
                 CatagoriesComboBox.Items.Add(catagories[i].ModListName);
-            }
         }
 
         private void UpdateButton_Click(object sender, EventArgs e)
@@ -386,10 +395,9 @@ namespace H3VRModInstaller
 
         private void CatagoriesComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string name = CatagoriesComboBox.SelectedItem.ToString();
+            var name = CatagoriesComboBox.SelectedItem.ToString();
             var catagories = JsonModList.GetModLists();
-            for (int i = 0; i < catagories.Length; i++)
-            {
+            for (var i = 0; i < catagories.Length; i++)
                 if (catagories[i].ModListName == name)
                 {
                     try
@@ -403,7 +411,25 @@ namespace H3VRModInstaller
 
                     break;
                 }
-            }
+        }
+
+        private void StatusReport_Click(object sender, EventArgs e)
+        {
+            var settings = new Settings();
+            settings.Show();
+            MessageBox.Show("MADE NEW SETTINGS");
+        }
+
+        private void InitialiseAppData()
+        {
+            if (!Directory.Exists(ModInstallerCommon.Files.DataDir)) Directory.CreateDirectory(ModInstallerCommon.Files.DataDir);
+            if (!File.Exists(ModInstallerCommon.Files.ConfigFile)) File.Create(ModInstallerCommon.Files.ConfigFile);
+            
+        }
+
+        private void WriteDefaultConfig()
+        {
+            
         }
     }
 }

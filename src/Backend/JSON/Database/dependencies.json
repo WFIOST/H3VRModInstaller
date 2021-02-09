@@ -57,7 +57,7 @@
 				"bepinex"
 			]
 		},
-		{
+		{ 
 			"modID": "monomod",
 			"Name": "Monomod",
 			"RawName": "BepInEx.MonoMod.Loader_1.0.0.0.zip",
@@ -125,7 +125,9 @@
 			"DelInfo": "BepInEx/plugins/H3VR.Sideloader.dll",
 			"Dependencies": [
 				"bepinex",
-				"deli"
+				"monomod",
+				"resourceredirector"
+				
 			]
 		},
 		{

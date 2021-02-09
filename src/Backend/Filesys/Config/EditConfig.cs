@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using H3VRModInstaller.Common;
-using H3VRModInstaller;
 
 namespace H3VRModInstaller.Filesys.Config
 {

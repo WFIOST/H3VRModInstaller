@@ -62,12 +62,15 @@ namespace H3VRModInstaller.Net
                 for (var i = 0; i < installedmods.Length; i++)
                     if (fileinfo.ModId == installedmods[i].ModId)
                     {
-						if (modnum == 0) { Uninstaller.DeleteMod(fileinfo.ModId); }
-						else
-						{
-							ModInstallerCommon.DebugLog(fileinfo.ModId + " is already installed!");
-							return false;
-						}
+                        if (modnum == 0)
+                        {
+                            Uninstaller.DeleteMod(fileinfo.ModId);
+                        }
+                        else
+                        {
+                            ModInstallerCommon.DebugLog(fileinfo.ModId + " is already installed!");
+                            return false;
+                        }
                     }
 
             var fileloc = new Uri(locationOfFile + fileToDownload);
@@ -100,8 +103,8 @@ namespace H3VRModInstaller.Net
         /// <param name="e"></param>
         public static void Dlcomplete(object sender, AsyncCompletedEventArgs e)
         {
-			dlprogress = "";
-			_finished = true;
+            dlprogress = "";
+            _finished = true;
         }
 
 
@@ -126,6 +129,7 @@ namespace H3VRModInstaller.Net
                 Console.Write("\r" + percentagetext + "% downloaded!");
                 dlprogress = percentagetext + "%";
             }
+
 //            NotifyForms.CallEvent();
         }
 

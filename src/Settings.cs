@@ -1,4 +1,7 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.IO;
+using System.Windows.Forms;
+using H3VRModInstaller.Filesys.Config;
 
 namespace H3VRModInstaller
 {
@@ -7,6 +10,11 @@ namespace H3VRModInstaller
         public Settings()
         {
             InitializeComponent();
+        }
+
+        private void delConfig_CheckedChanged(object sender, EventArgs e)
+        {
+            
         }
     }
 }
