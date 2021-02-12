@@ -54,24 +54,24 @@
         "wurstmod"
       ]
     },
-    {
-      "modID": "sanctuary",
-      "Name": "Sanctuary",
-      "RawName": "SanctuaryPack.zip",
-      "Author": [
-        "Mücke",
-        "Synty Studios"
-      ],
-      "Version": "1.3",
-      "Description": "A little town overrun with Outlaws.\n- pretty challenging, makes \"Cowboys\" into \"Cattlemen\"\n- you can move freely in Holds\n- has no barriers but natural cover\n- 8 Holds, 6 Supplypoints",
-      "Path": "https://bonetome.com/download.php?file=N2VjNTE4NGVjMGE0MzdiYis0NDErMTAyMw==",
-      "Website": "https://bonetome.com/h3vr/map/202/",
-      "Arguments": "unzipToDir??moveToFolder?TNH-Sanctuary 1.3?CustomLevels/Generic/?TNH-Sanctuary light?moveToFolder?TNH-Sanctuary light?CustomLevels/TakeAndHold/?TNH-Sanctuary light",
-      "Delinfo": "CustomLevels/Generic/TNH-Sanctuary 1.3?CustomLevels/TakeAndHold/TNH-Sanctuary light",
-      "Dependencies": [
-        "wurstmod"
-      ]
-    },
+		{
+			"modID": "sanctuary",
+			"Name": "Sanctuary",
+			"RawName": "SanctuaryPack.zip",
+			"Author": [
+				"Mücke",
+				"Synty Studios"
+			],
+			"Version": "1.3.1",
+			"Description": "A little town overrun with Outlaws.\n- pretty challenging, makes \"Cowboys\" into \"Cattlemen\"\n- you can move freely in Holds\n- has no barriers but natural cover\n- 8 Holds, 6 Supplypoints",
+			"Path": "https://bonetome.com/download.php?file=N2VjNTE4NGVjMGE0MzdiYis0NDErMTAyMw==",
+			"Website": "https://bonetome.com/h3vr/map/202/",
+			"Arguments": "moveToDir?Mods?",
+			"Delinfo": "Mods/SanctuaryPack.zip",
+			"Dependencies": [
+				"wurstmod"
+			]
+		},
 		{
 			"modID": "fortbratwurst",
 			"Name": "Fort Bratwurst",
