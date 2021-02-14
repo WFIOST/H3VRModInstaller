@@ -99,9 +99,9 @@
 			"Author": [
 				"devyndamonster"
 			],
-			"Version": "1.4.1",
+			"Version": "1.4.2",
 			"Description": "An H3VR plugin for modifying Take & Hold! Has support for custom characters, as well as global tweaks to spice things up.",
-			"Path": "https://github.com/devyndamonster/TakeAndHoldTweaker/releases/download/v1.4.1/",
+			"Path": "https://github.com/devyndamonster/TakeAndHoldTweaker/releases/download/v1.4.2/",
 			"Website": "https://github.com/devyndamonster/TakeAndHoldTweaker/",
 			"Arguments": "",
 			"DelInfo": "TNH_Tweaker/?Mods/TakeAndHoldTweaker.zip",
@@ -156,7 +156,7 @@
 				"Potatoes",
 				"Frityet"
 			],
-			"Version": "4.0.0",
+			"Version": "5.0.0",
 			"Description": "A bunch of scripts for others to use.",
 			"Path": "https://bonetome.com/download.php?file=MTRmZjdkYWM4M2YzNDdmNCszNjUrODUx",
 			"Website": "https://bonetome.com/h3vr/mods/160/",
