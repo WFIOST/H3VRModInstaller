@@ -22,16 +22,16 @@
 		{
 			"modID": "pmcpete",
 			"Name": "PMC Pete",
-			"RawName": "PMCPete.zip",
+			"RawName": "PMCPete(UNZIPME).zip",
 			"Author": [
 				"devyndamonster"
 			],
-			"Version": "1.4.3",
+			"Version": "1.4.4",
 			"Description": "Welcome To Tarkov!\n This character is themed around the game Escape From Tarkov. Start out as a hatchet runner, and take on increasingly difficult enemies. Enemies can drop items and equipment. Additionally, each round has a chance for a scav boss to spawn as a patrol. These bosses are very difficult, but will always drop some kind of item. - Meats ASh-12 - https://bonetome.com/h3vr/weapons/267/\n- Meats ModulMCX and ModulMPX - https://bonetome.com/h3vr/weapons/187/\n- Meats Rigs - https://bonetome.com/h3vr/weapons/176/\n- Meats Magazines - https://bonetome.com/h3vr/weapons/170/\n- Carkidds Mk14 EBR - https://bonetome.com/h3vr/weapons/169/\n- Meats ModulSR - https://bonetome.com/h3vr/weapons/167/\n- Meats ModulPP19 - https://bonetome.com/h3vr/weapons/165/\n- Meats ModulAK - https://bonetome.com/h3vr/weapons/162/\n- KamikazeFOXs ModulAR - https://bonetome.com/h3vr/weapons/159/\n- Meats ModulAR Parts - https://bonetome.com/h3vr/weapons/157/\n- Potatoes Gun Mod - https://bonetome.com/h3vr/weapons/142/ \n (The actual verison is v1.1.2, it's been set to 1.4.2 to recognize 1.4.0 as outdated.)",
 			"Path": "https://bonetome.com/download.php?file=ZWM1MThmZTdiMzNmMDZkYiszNjUrMTIxNg==",
 			"Website": "https://bonetome.com/h3vr/characters/269/",
-			"Arguments": "moveToFolder?PMCPete.zip?Mods/?PMCPete.zip",
-			"DelInfo": "Mods/PMCPete.zip",
+			"Arguments": "unzipToFolder?Mods/",
+			"DelInfo": "Mods/PMCPete.deli",
 			"Dependencies": [
 				"tnhtweaker",
 				"meatsash12",
