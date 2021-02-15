@@ -13,6 +13,7 @@ using H3VRModInstaller.JSON;
 using H3VRModInstaller.JSON.Common;
 using H3VRModInstaller.Net;
 using System.Threading;
+using H3VRModInstaller.Filesys.Deli;
 using H3VRModInstaller.GUI;
 
 
@@ -130,7 +131,12 @@ namespace H3VRModInstaller
 
         private void LoadGUI(object sender, EventArgs e)
         {
-
+            if (CheckDelicounter.Check())
+            {
+                MessageBox.Show("Installed Mods file is INVALID", "Installed mods file (installed_mods.json) is INVALID.\nThis is most likely caused by Deli Counter (Deli counter and H3VR Mod installer are not compatible!)", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
+            
 			KeyDown += Form_KeyDown;
 
 			if (!File.Exists(Utilities.ModCache))
@@ -138,7 +144,7 @@ namespace H3VRModInstaller
 				MessageBox.Show("Thank you for downloading H3VRModInstaller!\nIf there are any issues, or if you want a mod added, please hit us up on the Homebrew discord (@Frityet and @Potatoes)", "Thank you!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 			}
             InitTimer(); //progress timer
-            AllocConsole(); //enables console
+            //AllocConsole(); //enables console
             JsonCommon.OverrideModInstallerVariables(); //overrides vars if possible
 
             var onlineversion = new Version(JsonModList.GetDeserializedModListFormatOnline(JsonCommon.DatabaseInfo)

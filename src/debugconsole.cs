@@ -43,6 +43,8 @@ namespace H3VRModInstaller.GUI
 		{
 			try
 			{
+				
+				
 				MainClass.doCommand(command);
 			}
 			catch (Exception exception)

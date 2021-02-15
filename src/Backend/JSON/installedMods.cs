@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
+using System.Windows.Forms;
 using H3VRModInstaller.Common;
 using H3VRModInstaller.Filesys;
 using Newtonsoft.Json;
@@ -62,8 +63,12 @@ namespace H3VRModInstaller.JSON
                 }
                 catch
                 {
-                    Console.WriteLine("Mods cache isn't formatted correctly, deleting!");
-                    File.Delete(Utilities.ModCache);
+                    var err = MessageBox.Show("Mod cache (installed_mods.json) IS INVALID!\nThis is most likely because Deli Counter was used for installing mods, before Mod Installer!\n(if you had any installed mods with Deli Counter from before, it could cause serious issues!)\n\nThese programs are not compatible, delete?", "Mod Cache INVALID!", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+
+                    if (err == DialogResult.Yes)
+                    {
+                        File.Delete(Utilities.ModCache);
+                    }
                 }
             }
 
