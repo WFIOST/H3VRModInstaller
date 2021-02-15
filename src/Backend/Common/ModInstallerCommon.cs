@@ -12,25 +12,8 @@ namespace H3VRModInstaller.Common
     /// <summary>
     ///     Some common variables used across the project
     /// </summary>
-/*    public struct CommonVariables
-    {
-        /// <summary>
-        ///     Name for the executable targeted
-        /// </summary>
-        /// <value>String</value>
-        public static string Execname { get; set; }
 
-        /// <summary>
-        ///     Location of the modinstallerinfo.h3vrmi
-        /// </summary>
-        /// <value></value>
-        public static string DatabaseInfo { get; set; }
-    }*/
-
-/// <summary>
-///     Commonly used functions and fields
-/// </summary>
-public class ModInstallerCommon
+    public class ModInstallerCommon
     {
         /// <summary>
         ///     Enables Debugging
@@ -50,7 +33,7 @@ public class ModInstallerCommon
         /// <summary>
         ///     Current version.
         /// </summary>
-        public static Version ModInstallerVersion = new(0, 5, 2);
+        public static Version ModInstallerVersion = new(01, 5, 2);
 
 
         /// <summary>
@@ -101,9 +84,13 @@ public class ModInstallerCommon
             public static string DataDir = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "/H3VR Mod Installer/";
 
             public static string ConfigFile = DataDir + "config.H3VRMI";
+
+            public static string H3VRSteamLoc = "steam://rungameid/450540";
         }
     }
 
+    
+    
     public static class Utilities
     {
         private static bool scanned;
@@ -117,6 +104,7 @@ public class ModInstallerCommon
                 if (scanned) return string.IsNullOrEmpty(_gameLocation) ? null : _gameLocation;
                 scanned = true;
 
+                //lmao
                 if (!OperatingSystem.IsWindows()) return null;
 
                 // Get the main steam installation location via registry.
@@ -151,8 +139,7 @@ public class ModInstallerCommon
             }
         }
 
-        public static string ExecutablePath =>
-            string.IsNullOrEmpty(GameDirectory) ? null : Path.Combine(GameDirectory, "h3vr.exe");
+        public static string ExecutablePath => string.IsNullOrEmpty(GameDirectory) ? null : Path.Combine(GameDirectory, "h3vr.exe");
 
 		private static string _modcache;
 

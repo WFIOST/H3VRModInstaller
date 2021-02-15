@@ -100,11 +100,11 @@ namespace H3VRModInstaller
                 else
                     File.Move(winHttpEnabled, winHttpDisabled);
 
-#if DEBUG
-            MessageBox.Show("Launching H3VR at: \n" + Utilities.ExecutablePath);
-#endif
-
-            Process.Start(Utilities.ExecutablePath);
+            var proc = new ProcessStartInfo("cmd", "/C start " + ModInstallerCommon.Files.H3VRSteamLoc)
+            {
+                CreateNoWindow = true
+            };
+            Process.Start(proc);
         }
 
 		void Form_KeyDown(object sender, KeyEventArgs e)
@@ -413,9 +413,9 @@ namespace H3VRModInstaller
 
         private void StatusReport_Click(object sender, EventArgs e)
         {
-            var settings = new Settings();
-            settings.Show();
-            MessageBox.Show("MADE NEW SETTINGS");
+            //var settings = new Settings();
+            //settings.Show();
+            //MessageBox.Show("MADE NEW SETTINGS");
         }
 
         private void InitialiseAppData()

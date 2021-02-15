@@ -18,12 +18,12 @@
             /// <summary>
             ///     Enabled name of the file which enables mods
             /// </summary>
-            public const string EnabledName = @"/winhttp.dll";
+            public const string EnabledName = @"winhttp.dll";
 
             /// <summary>
             ///     Disabled name of the file which enables mods
             /// </summary>
-            public const string DisabledName = @"/WinHTTP.dll.DISABLED";
+            public const string DisabledName = @"WinHTTP.dll.DISABLED";
         }
     }
 }
