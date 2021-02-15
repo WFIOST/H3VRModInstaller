@@ -39,10 +39,14 @@ namespace H3VRModInstaller.Filesys
                     var ArchiveType = Archives.ArchiveType.Zip;
 
                     if (fileinfo.RawName.EndsWith(".rar") || fileinfo.RawName.EndsWith(".RAR"))
+                    {
                         ArchiveType = Archives.ArchiveType.RAR;
+                    }
 
                     if (fileinfo.RawName.EndsWith(".7z") || fileinfo.RawName.EndsWith(".7Z"))
+                    {
                         ArchiveType = Archives.ArchiveType.SevenZip;
+                    }
 
                     Archives.UnArchive(fileinfo.RawName, Path.Combine(Utilities.GameDirectoryOrThrow, args[i + 1]),
                         delArchive, ArchiveType);
