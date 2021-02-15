@@ -80,10 +80,10 @@ namespace H3VRModInstaller.Common
             ///     loc of the MI lists.
             /// </summary>
             public static string Modinstallerdir = Directory.GetCurrentDirectory() + @"/ModInstallerLists/";
+            
+            public static string DataDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\H3VR Mod Installer\\");
 
-            public static string DataDir = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "/H3VR Mod Installer/";
-
-            public static string ConfigFile = DataDir + "config.H3VRMI";
+            public static string ConfigFile = Path.Combine(DataDir + "config.H3VRMI");
 
             public static string H3VRSteamLoc = "steam://rungameid/450540";
         }

@@ -32,7 +32,8 @@ namespace H3VRModInstaller
 //            Downloader.NotifyForms.NotifyUpdateProgressBar += _nu_updatebar;
 
 
-            
+            InitialiseAppData();
+            Console.WriteLine($"CREATED CONFIG AT\n {ModInstallerCommon.Files.ConfigFile}");
         }
 
 
@@ -111,7 +112,8 @@ namespace H3VRModInstaller
 		void Form_KeyDown(object sender, KeyEventArgs e)
 		{
 			if (e.Control && e.KeyCode == Keys.R)
-			{
+            {
+                AllocConsole();
 				Thread t = new Thread(startdebugconsole);
 				t.Start();
 			}
