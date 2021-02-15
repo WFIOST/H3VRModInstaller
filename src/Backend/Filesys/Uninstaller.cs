@@ -16,12 +16,11 @@ namespace H3VRModInstaller.Filesys
 	    /// <param name="modid">ModID to delte</param>
 	    public static void DeleteMod(string modid)
         {
-            Console.WriteLine("0");
             var instmods = InstalledMods.GetInstalledMods();
             for (var i = 0; i < instmods.Length; i++)
                 if (instmods[i].ModId == modid)
                 {
-                    parseDelArgs(instmods[i]);
+					parseDelArgs(instmods[i]);
                     break;
                 }
 
@@ -30,7 +29,6 @@ namespace H3VRModInstaller.Filesys
 
         private static void parseDelArgs(ModFile mf)
         {
-            Console.WriteLine("1");
             if (mf.DelInfo == null)
             {
                 mf = ModParsing.GetSpecificMod(mf.ModId);

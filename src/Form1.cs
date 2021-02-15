@@ -148,6 +148,7 @@ namespace H3VRModInstaller
 			{
 				MessageBox.Show("Thank you for downloading H3VRModInstaller!\nIf there are any issues, or if you want a mod added, please hit us up on the Homebrew discord (@Frityet and @Potatoes)", "Thank you!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 			}
+
             InitTimer(); //progress timer
             //AllocConsole(); //enables console
             JsonCommon.OverrideModInstallerVariables(); //overrides vars if possible
@@ -376,7 +377,7 @@ namespace H3VRModInstaller
 
         private void Delete_Click(object sender, EventArgs e)
         {
-            var conf = MessageBox.Show($"Are you sure you want to delete mod {impModID}", "Deletion Confirmation", MessageBoxButtons.YesNo);
+            var conf = MessageBox.Show($"Are you sure you want to delete mod {impModID}? A total of " + JsonCommon.GetDependants(impModID).Length + " downloaded mods rely on this.", "Deletion Confirmation", MessageBoxButtons.YesNo);
 
             if (conf == DialogResult.Yes)
             {

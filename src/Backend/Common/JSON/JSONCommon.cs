@@ -25,8 +25,30 @@ namespace H3VRModInstaller.JSON.Common
             var result = new ModFile[0];
             var jsonfiles = JsonModList.GetModLists();
             for (var i = 0; i < jsonfiles.Length; i++) result = result.Concat(jsonfiles[i].Modlist).ToArray();
-            return result;
+			return result;
         }
+
+		public static ModFile[] GetDependants(ModFile mod, bool GetNonInstalledToo = false) { return GetDependants(mod.ModId, GetNonInstalledToo); }
+
+		public static ModFile[] GetDependants(string modid, bool GetNonInstalledToo = false)
+		{
+			ModFile[] mods = null;
+			if (!GetNonInstalledToo) mods = GetAllMods();
+			else mods = InstalledMods.GetInstalledMods();
+			ModFile[] dependants = new ModFile[0];
+			for(int i = 0; i < mods.Length; i++)
+			{
+				for (int x = 0; x < mods[i].Dependencies.Length; x++)
+				{
+					if (mods[i].Dependencies[x] == modid)
+					{
+						Array.Resize<ModFile>(ref dependants, dependants.Length + 1);
+						dependants[dependants.Length - 1] = mods[i];
+					}
+				}
+			}
+			return dependants;
+		}
 
 	    /// <summary>
 	    ///     Function that gets the overrides for debugging

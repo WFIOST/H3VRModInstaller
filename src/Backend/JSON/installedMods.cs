@@ -35,11 +35,11 @@ namespace H3VRModInstaller.JSON
     /// </summary>
     public class InstalledMods
     {
-        /// <summary>
-        ///     Gets the currently installed mods from the JSON files
-        /// </summary>
-        /// <returns>String array with the installed mods</returns>
-        public static ModFile[] GetInstalledMods()
+		/// <summary>
+		///     Gets the currently installed mods from the JSON files
+		/// </summary>
+		/// <returns>String array with the installed mods</returns>
+		public static ModFile[] GetInstalledMods()
         {
             if (!File.Exists(Utilities.ModCache)) return Array.Empty<ModFile>();
             Console.WriteLine("Reading from " + Utilities.ModCache);
@@ -71,6 +71,7 @@ namespace H3VRModInstaller.JSON
                     }
                 }
             }
+			
 
             return input == null ? Array.Empty<ModFile>() : input.InstalledMods;
         }

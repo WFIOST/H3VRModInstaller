@@ -96,7 +96,10 @@ namespace H3VRModInstaller.Common
         private static bool scanned;
         private static string _gameLocation = "";
 
-        public static string GameDirectory
+		/// <summary>
+		///     Returns GameDirectory. Terminates with a \, so DONT add it.
+		/// </summary>
+		public static string GameDirectory
         {
             get
             {

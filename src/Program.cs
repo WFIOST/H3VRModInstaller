@@ -3,6 +3,8 @@ using System.Windows.Forms;
 using System.Threading;
 using System.IO;
 using H3VRModInstaller.Common;
+using H3VRModInstaller.JSON.Common;
+using H3VRModInstaller.JSON;
 
 namespace H3VRModInstaller
 {
@@ -14,27 +16,11 @@ namespace H3VRModInstaller
 		[STAThread]
 		private static void Main()
 		{
-			string loc;
-			//SETUP
-			if (!File.Exists(Utilities.ModCache))
-			{
-				loc = Utilities.GameDirectory + "/H3VRMI/installedmods.json";
-				if (File.Exists(loc))
-				{
-					goto setcache;
-				}
-				loc = Utilities.GameDirectory + "/H3VR Mod Installer/installedmods.json";
-				if (File.Exists(loc))
-				{
-					goto setcache;
-				}
-				goto skip;
-				setcache:
-				Utilities.ModCache = loc;
-				Console.WriteLine("Mod cache location overwritten to {0}!", loc);
-				skip:; //FUCK YOU, I USE GOTO IF I WANT TO USE GOTO AND YOU CAN'T STOP ME -potatoes
-			}
-			//END SETUP
+			CheckCache();
+			CheckForManualInstalledMods();
+
+
+
 			Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
@@ -42,6 +28,59 @@ namespace H3VRModInstaller
 			mainform.KeyPreview = true;
             Application.Run(mainform);
 
+		}
+
+		private static void CheckCache()
+		{
+			string loc;
+			if (!File.Exists(Utilities.ModCache))
+			{
+				loc = Path.Combine(Utilities.GameDirectory, "H3VRMI/installedmods.json");
+				if (File.Exists(loc))
+				{
+					goto setcache;
+				}
+				loc = Path.Combine(Utilities.GameDirectory, "H3VR Mod Installer/installedmods.json");
+				if (File.Exists(loc))
+				{
+					goto setcache;
+				}
+				goto skip;
+			setcache:
+				/*Utilities.ModCache = loc;
+				Console.WriteLine("Mod cache location overwritten to {0}!", loc);*/
+				Console.WriteLine("Old mod cache location found, moving to {0}!", Utilities.GameDirectory + "/installed_mods.json");
+				File.Move(loc, Utilities.GameDirectory + "/installed_mods.json");
+			skip:; //FUCK YOU, I USE GOTO IF I WANT TO USE GOTO AND YOU CAN'T STOP ME -potatoes
+			}
+		}
+
+		private static void CheckForManualInstalledMods()
+		{
+			ModFile[] mods = JsonCommon.GetAllMods();
+			ModFile[] instmods = InstalledMods.GetInstalledMods();
+			for (int i = 0; i < mods.Length; i++)
+			{
+				if (!string.IsNullOrEmpty(mods[i].DelInfo))
+				{
+					if (File.Exists(Path.Combine(Utilities.GameDirectory, mods[i].DelInfo)))
+					{
+						bool IsInstalled = false;
+						for (int x = 0; x < instmods.Length; x++)
+						{
+							if (mods[i].ModId == instmods[x].ModId)
+							{
+								IsInstalled = true;
+								break;
+							}
+						}
+						if (!IsInstalled)
+						{
+							InstalledMods.AddInstalledMod(mods[i].ModId);
+						}
+					}
+				}
+			}
 		}
     }
 }
