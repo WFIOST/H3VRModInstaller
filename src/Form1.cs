@@ -59,7 +59,7 @@ namespace H3VRModInstaller
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            StatusReport.Text = Downloader.dlprogress;
+            StatusReport.Text = Downloader.dlprogress ?? "Ready!";
         }
 
         public void trycatchtext(Label label, string text)
@@ -123,6 +123,7 @@ namespace H3VRModInstaller
                 AllocConsole();
 				Thread t = new Thread(startdebugconsole);
 				t.Start();
+                ModInstallerCommon.DebugLog("STARTED DEBUG CONSOLE");
 			}
 		}
 
@@ -278,7 +279,7 @@ namespace H3VRModInstaller
 
             UpdateModList();
 //            MessageBox.Show("Sucessfully " + command[0] + $"ed mod {downloadedMod}", "Sucess!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            StatusReport.Text = "Idle";
+            StatusReport.Text = "Ready!";
         }
 
         private void Terminator_ProgressChanged(object sender, ProgressChangedEventArgs e)
