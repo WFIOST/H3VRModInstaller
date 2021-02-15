@@ -6,8 +6,8 @@
     <UseWindowsForms>true</UseWindowsForms>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
 
-    <RootNamespace>H3VRModInstaller.GUI</RootNamespace>
-    <AssemblyName>H3VRModInstaller.GUI</AssemblyName>
+    <RootNamespace>H3VRModInstaller</RootNamespace>
+    <AssemblyName>H3VRModInstaller</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
