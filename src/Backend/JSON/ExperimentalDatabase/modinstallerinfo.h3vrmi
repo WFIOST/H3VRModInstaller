@@ -7,13 +7,12 @@
 			"Description": "Hey! This thingy here is just to know what is the newest version of H3VRMI.",
 			"Website": "https://github.com/Frityet/H3VRModInstaller",
 			"Dependencies": [
-				"https://raw.githubusercontent.com/Frityet/H3VRModInstaller/master/src/Backend/JSON/ExperimentalDatabase/",
+				"https://raw.githubusercontent.com/WFIOST/H3VR-Mod-Installer-Database/main/Database/",
 				"charactermods.json",
 				"codemods.json",
 				"dependencies.json",
 				"customitems.json",
 				"mapmods.json",
-				"modpacks.json"
 			]
 		}
 	]
