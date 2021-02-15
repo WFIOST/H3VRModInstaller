@@ -131,13 +131,9 @@ namespace H3VRModInstaller
 
         private void LoadGUI(object sender, EventArgs e)
         {
-            if (CheckDelicounter.Check())
-            {
-                MessageBox.Show("Installed Mods file is INVALID", "Installed mods file (installed_mods.json) is INVALID.\nThis is most likely caused by Deli Counter (Deli counter and H3VR Mod installer are not compatible!)", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            
-            
-			KeyDown += Form_KeyDown;
+
+
+            KeyDown += Form_KeyDown;
 
 			if (!File.Exists(Utilities.ModCache))
 			{
@@ -151,12 +147,11 @@ namespace H3VRModInstaller
                 .Modlist[0].Version);
             if (ModInstallerCommon.ModInstallerVersion.CompareTo(onlineversion) < 0)
             {
-                MessageBox.Show(
-                    "H3VRModInstaller is out of date! (" + ModInstallerCommon.ModInstallerVersion + " vs " +
-                    onlineversion + ")", "Wrong version detected!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("H3VRModInstaller is out of date! (" + ModInstallerCommon.ModInstallerVersion + " vs " + onlineversion + ")", "Out of date version detected!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 var psi = new ProcessStartInfo
                 {
-                    FileName = JsonModList.GetDeserializedModListFormatOnline(JsonCommon.DatabaseInfo).Modlist[0]
+                    FileName = JsonModList.GetDeserializedModListFormatOnline(JsonCommon.DatabaseInfo)
+                        .Modlist[0]
                         .Website,
                     UseShellExecute = true
                 };
@@ -372,7 +367,16 @@ namespace H3VRModInstaller
 
         private void Delete_Click(object sender, EventArgs e)
         {
-            StartTerminator("rm " + impModID);
+            var conf = MessageBox.Show($"Are you sure you want to delete mod {impModID}", "Deletion Confirmation", MessageBoxButtons.YesNo);
+
+            if (conf == DialogResult.Yes)
+            {
+                StartTerminator("rm " + impModID);
+            }
+            else
+            {
+                return;
+            }
         }
 
         private void CheckButton_Click(object sender, EventArgs e)
