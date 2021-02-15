@@ -31,8 +31,8 @@ namespace H3VRModInstaller
 //            Downloader.NotifyForms.NotifyUpdateProgressBar += _nu_updatebar;
 
 
-            InitialiseAppData();
-            Console.WriteLine($"CREATED CONFIG AT\n {ModInstallerCommon.Files.ConfigFile}");
+            //InitialiseAppData();
+            //Console.WriteLine($"CREATED CONFIG AT\n {ModInstallerCommon.Files.ConfigFile}");
         }
 
 
@@ -103,9 +103,17 @@ namespace H3VRModInstaller
                     File.Move(winHttpEnabled, winHttpDisabled);
 
             MessageBox.Show("Starting H3VR!","Game starting", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            var proc = new ProcessStartInfo("cmd", "/C start " + ModInstallerCommon.Files.H3VRSteamLoc)
-            { CreateNoWindow = true };
-            Process.Start(proc);
+            try
+            {
+                var proc = new ProcessStartInfo("cmd", "/C start " + ModInstallerCommon.Files.H3VRSteamLoc)
+                    { CreateNoWindow = true };
+                Process.Start(proc);
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show("Error launching H3VR!\nSteam possibly not detected!");
+                throw;
+            }
         }
 
 		void Form_KeyDown(object sender, KeyEventArgs e)
@@ -433,11 +441,6 @@ namespace H3VRModInstaller
         {
             if (!Directory.Exists(ModInstallerCommon.Files.DataDir)) Directory.CreateDirectory(ModInstallerCommon.Files.DataDir);
             if (!File.Exists(ModInstallerCommon.Files.ConfigFile)) File.Create(ModInstallerCommon.Files.ConfigFile);
-            
-        }
-
-        private void WriteDefaultConfig()
-        {
             
         }
     }
