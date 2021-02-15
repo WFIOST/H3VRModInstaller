@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Net.NetworkInformation;
+using System.Net.Sockets;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using H3VRModInstaller.Common;
@@ -100,10 +101,9 @@ namespace H3VRModInstaller
                 else
                     File.Move(winHttpEnabled, winHttpDisabled);
 
+            MessageBox.Show("Starting H3VR!","Game starting", MessageBoxButtons.OK, MessageBoxIcon.Information);
             var proc = new ProcessStartInfo("cmd", "/C start " + ModInstallerCommon.Files.H3VRSteamLoc)
-            {
-                CreateNoWindow = true
-            };
+            { CreateNoWindow = true };
             Process.Start(proc);
         }
 
@@ -111,7 +111,7 @@ namespace H3VRModInstaller
 		{
 			if (e.Control && e.KeyCode == Keys.R)
 			{
-				Thread t = new Thread(new ThreadStart(startdebugconsole));
+				Thread t = new Thread(startdebugconsole);
 				t.Start();
 			}
 		}
@@ -131,11 +131,11 @@ namespace H3VRModInstaller
         private void LoadGUI(object sender, EventArgs e)
         {
 
-			this.KeyDown += new KeyEventHandler(Form_KeyDown);
+			KeyDown += Form_KeyDown;
 
 			if (!File.Exists(Utilities.ModCache))
 			{
-				MessageBox.Show("Thank you for downloading H3VRModInstaller!\nBe warned, ModInstaller is still in beta, and absolutely has issues.\nIf there are any issues, or if you want a mod added, please hit us up on the Homebrew discord (@Frityet and @Potatoes)", "Thank you!", MessageBoxButtons.OK, MessageBoxIcon.None);
+				MessageBox.Show("Thank you for downloading H3VRModInstaller!\nIf there are any issues, or if you want a mod added, please hit us up on the Homebrew discord (@Frityet and @Potatoes)", "Thank you!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 			}
             InitTimer(); //progress timer
             AllocConsole(); //enables console
