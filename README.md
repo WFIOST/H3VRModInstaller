@@ -20,4 +20,8 @@ Open up the zip you have downloaded and move the folder inside into your H3VR ro
 
 ## I want a mod added! / A mod needs updating!
 
+[Add it yourself by forking and editing this repo!](https://github.com/WFIOST/H3VR-Mod-Installer-Database)
+
+OR
+
 Contact us! We're available on the [Homebrew discord.](https://discord.gg/83yTrfr) Simply ping one of us, @Frityet or @Potatoes.
