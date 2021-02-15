@@ -91,32 +91,7 @@ namespace H3VRModInstaller
         {
         }
 
-        private void launch_Click(object sender, EventArgs e)
-        {
-            var winHttpEnabled = Path.Combine(Utilities.GameDirectoryOrThrow, GuiCommon.Files.EnabledName);
-            var winHttpDisabled = Path.Combine(Utilities.GameDirectoryOrThrow, GuiCommon.Files.DisabledName);
-
-            if (ModsEnabled.Checked)
-                if (File.Exists(winHttpDisabled))
-                    File.Move(winHttpDisabled, winHttpEnabled);
-                else
-                    File.Move(winHttpEnabled, winHttpDisabled);
-
-            MessageBox.Show("Starting H3VR!","Game starting", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            try
-            {
-                var proc = new ProcessStartInfo("cmd", "/C start " + ModInstallerCommon.Files.H3VRSteamLoc)
-                    { CreateNoWindow = true };
-                Process.Start(proc);
-            }
-            catch (Exception exception)
-            {
-                MessageBox.Show("Error launching H3VR!\nSteam possibly not detected!");
-                throw;
-            }
-        }
-
-		void Form_KeyDown(object sender, KeyEventArgs e)
+        void Form_KeyDown(object sender, KeyEventArgs e)
 		{
 			if (e.Control && e.KeyCode == Keys.R)
             {
@@ -174,8 +149,6 @@ namespace H3VRModInstaller
             ModVer.Hide();
             Delete.Hide();
             CheckButton.Hide();
-
-            ModsEnabled.Checked = true;
             UpdateModList();
             UpdateCatagories();
 

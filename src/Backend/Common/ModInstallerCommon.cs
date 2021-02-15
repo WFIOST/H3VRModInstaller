@@ -33,7 +33,7 @@ namespace H3VRModInstaller.Common
         /// <summary>
         ///     Current version.
         /// </summary>
-        public static Version ModInstallerVersion = new(1, 0, 1);
+        public static Version ModInstallerVersion = new(1, 0, 2);
 
 
         /// <summary>
