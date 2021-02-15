@@ -13,7 +13,6 @@ using H3VRModInstaller.JSON;
 using H3VRModInstaller.JSON.Common;
 using H3VRModInstaller.Net;
 using System.Threading;
-using H3VRModInstaller.Filesys.Deli;
 using H3VRModInstaller.GUI;
 
 
