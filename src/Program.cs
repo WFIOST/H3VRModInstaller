@@ -59,6 +59,7 @@ namespace H3VRModInstaller
 		{
 			ModFile[] mods = JsonCommon.GetAllMods();
 			ModFile[] instmods = InstalledMods.GetInstalledMods();
+			string addedmods = "";
 			for (int i = 0; i < mods.Length; i++)
 			{
 				if (!string.IsNullOrEmpty(mods[i].DelInfo))
@@ -76,10 +77,15 @@ namespace H3VRModInstaller
 						}
 						if (!IsInstalled)
 						{
+							addedmods += mods[i].ModId + ", ";
 							InstalledMods.AddInstalledMod(mods[i].ModId);
 						}
 					}
 				}
+			}
+			if (!String.IsNullOrEmpty(addedmods))
+			{
+				var conf = MessageBox.Show($"Some manually installed mods have been detected, adding it to database. Detected mods: {addedmods.Split(',').Length} \n" + addedmods, "Installed mods detected!", MessageBoxButtons.OK);
 			}
 		}
     }
