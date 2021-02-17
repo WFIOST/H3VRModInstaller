@@ -16,6 +16,7 @@ namespace H3VRModInstaller
 		[STAThread]
 		private static void Main()
 		{
+			JsonCommon.OverrideModInstallerVariables();
 			CheckCache();
 			CheckForManualInstalledMods();
 

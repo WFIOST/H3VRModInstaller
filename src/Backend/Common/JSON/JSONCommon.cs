@@ -57,20 +57,29 @@ namespace H3VRModInstaller.JSON.Common
         {
             if (!File.Exists(Directory.GetCurrentDirectory() + "/" + "MICoverride.json")) return;
             Console.WriteLine("MICOverride.json detected!");
-            var depinput =
-                JsonConvert.DeserializeObject<MICoverrideVars>(
-                    File.ReadAllText(Directory.GetCurrentDirectory() + "/" + "MICoverride.json"));
+            var depinput = JsonConvert.DeserializeObject<MICoverrideVars>(File.ReadAllText(Directory.GetCurrentDirectory() + "/" + "MICoverride.json"));
             if (depinput.DatabaseInfo != null)
             {
                 Console.WriteLine("Overriding DatabaseInfo with " + depinput.DatabaseInfo);
                 DatabaseInfo = depinput.DatabaseInfo;
-            }
+			}
+			if (depinput.RootFolderName != null)
+			{
+				Console.WriteLine("Overriding Game Name with " + depinput.RootFolderName);
+				H3VRModInstaller.Common.Utilities.gamename = depinput.RootFolderName;
+			}
+			if (depinput.ACFname != null)
+			{
+				Console.WriteLine("Overriding ACFname with " + depinput.ACFname);
+				H3VRModInstaller.Common.Utilities.acfpath = depinput.ACFname;
+			}
         }
 
         public class MICoverrideVars
         {
-            public string Execname { get; set; }
+            public string RootFolderName { get; set; }
             public string DatabaseInfo { get; set; }
+			public string ACFname { get; set; }
         }
     }
 }

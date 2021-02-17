@@ -95,6 +95,8 @@ namespace H3VRModInstaller.Common
     {
         private static bool scanned;
         private static string _gameLocation = "";
+		public static string gamename = "H3VR";
+		public static string acfpath = "appmanifest_450540.acf";
 
 		/// <summary>
 		///     Returns GameDirectory. Terminates with a \, so DONT add it.
@@ -120,16 +122,16 @@ namespace H3VRModInstaller.Common
 
                 // Check main steamapps library folder for h3 manifest.
                 var result = "";
-                if (File.Exists(steamDir + @"\steamapps\appmanifest_450540.acf"))
-                    result = steamDir + @"\steamapps\common\H3VR\";
+                if (File.Exists(steamDir + @"\steamapps\" + acfpath))
+                    result = steamDir + @"\steamapps\common\" + gamename + @"\";
                 else
                     // We didn't find it, look at other library folders by lazily parsing libraryfolders.
                     foreach (var ii in File.ReadAllLines(steamDir + "/steamapps/libraryfolders.vdf").Skip(4)
                         .Where(x => x.Length != 0 && x[0] != '}')
                         .Select(x => x.Split('\t')[3].Trim('"').Replace(@"\\", @"\"))
-                        .Where(ii => File.Exists(ii + @"\steamapps\appmanifest_450540.acf")))
+                        .Where(ii => File.Exists(ii + @"\steamapps\" + acfpath)))
                     {
-                        result = ii + @"\steamapps\common\H3VR\";
+                        result = ii + @"\steamapps\common\" + gamename + @"\";
                         break;
                     }
 

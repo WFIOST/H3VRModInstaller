@@ -127,7 +127,6 @@ namespace H3VRModInstaller
 
             InitTimer(); //progress timer
             //AllocConsole(); //enables console
-            JsonCommon.OverrideModInstallerVariables(); //overrides vars if possible
 
             var onlineversion = new Version(JsonModList.GetDeserializedModListFormatOnline(JsonCommon.DatabaseInfo)
                 .Modlist[0].Version);
