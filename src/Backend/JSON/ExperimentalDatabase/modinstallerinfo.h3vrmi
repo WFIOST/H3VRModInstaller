@@ -3,7 +3,7 @@
 		{
 			"modID": "uniqueidmodinstaller",
 			"Name": "H3VRModInstaller",
-			"Version": "0.6.0",
+			"Version": "1.0.2",
 			"Description": "Hey! This thingy here is just to know what is the newest version of H3VRMI.",
 			"Website": "https://github.com/Frityet/H3VRModInstaller",
 			"Dependencies": [
@@ -13,6 +13,7 @@
 				"dependencies.json",
 				"customitems.json",
 				"mapmods.json",
+				"experimental.json"
 			]
 		}
 	]
