@@ -258,7 +258,8 @@ namespace H3VRModInstaller
         {
         }
 
-        public void UpdateModList(string dispcat = "n/a")
+        
+        public void UpdateModList(string dispcat = "n/a", string filter = "")
         {
             DownloadableModsList.Items.Clear();
             InstalledModsList.Items.Clear();
@@ -320,9 +321,31 @@ namespace H3VRModInstaller
                 mod.SubItems.Add(list[relevantint].Description); //3
                 mod.SubItems.Add(list[relevantint].ModId); //4
 
-
-                if (!isinstldmod && isdispmod) DownloadableModsList.Items.Add(mod);
-                if (isinstldmod) InstalledModsList.Items.Add(mod);
+                if (String.IsNullOrEmpty(filter))
+                {
+                    if (!isinstldmod && isdispmod) DownloadableModsList.Items.Add(mod);
+                    if (isinstldmod) InstalledModsList.Items.Add(mod);
+                }
+                else
+                {
+                    string modname = list[relevantint].Name.ToLower();
+                    string authorString = string.Join("", list[relevantint].Author).ToLower();
+                    if (modname.Contains(filter) || authorString.Contains(filter))
+                    {
+                        if (list[relevantint].ModId == "bepinex")
+                        {
+                            Console.WriteLine("{0} contained {1}", filter, list[relevantint].Name);
+                        }
+                        Console.WriteLine("");
+                        if (!isinstldmod && isdispmod) DownloadableModsList.Items.Add(mod);
+                        if (isinstldmod) InstalledModsList.Items.Add(mod);
+                    } else
+                    if (list[relevantint].ModId == "bepinex")
+                    {
+                        Console.WriteLine("{0} did not contained {1}", filter, list[relevantint].Name);
+                    }
+                }
+                
                 Finish: ;
             }
 
@@ -416,6 +439,11 @@ namespace H3VRModInstaller
             if (!Directory.Exists(ModInstallerCommon.Files.DataDir)) Directory.CreateDirectory(ModInstallerCommon.Files.DataDir);
             if (!File.Exists(ModInstallerCommon.Files.ConfigFile)) File.Create(ModInstallerCommon.Files.ConfigFile);
             
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            UpdateModList("n/a", textBox1.Text );
         }
     }
 }
