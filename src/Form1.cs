@@ -328,21 +328,15 @@ namespace H3VRModInstaller
                 }
                 else
                 {
+                    //search bar functionality
+                    filter = filter.ToLower();
                     string modname = list[relevantint].Name.ToLower();
                     string authorString = string.Join("", list[relevantint].Author).ToLower();
                     if (modname.Contains(filter) || authorString.Contains(filter))
                     {
-                        if (list[relevantint].ModId == "bepinex")
-                        {
-                            Console.WriteLine("{0} contained {1}", filter, list[relevantint].Name);
-                        }
                         Console.WriteLine("");
                         if (!isinstldmod && isdispmod) DownloadableModsList.Items.Add(mod);
                         if (isinstldmod) InstalledModsList.Items.Add(mod);
-                    } else
-                    if (list[relevantint].ModId == "bepinex")
-                    {
-                        Console.WriteLine("{0} did not contained {1}", filter, list[relevantint].Name);
                     }
                 }
                 
