@@ -78,38 +78,35 @@ namespace H3VRModInstaller.Filesys
         /// </remarks>
         public static bool MoveToFolder(string mod, string dir, string renameTo = "")
         {
-            if (renameTo == "") renameTo = mod;
+            if (renameTo == "") renameTo = new DirectoryInfo(mod).Name;;
             dir = Path.Combine(Utilities.GameDirectoryOrThrow, dir);
             if (!Directory.Exists(dir)) Directory.CreateDirectory(dir);
-            ModInstallerCommon.DebugLog("Moving " + Directory.GetCurrentDirectory() + @"\" + mod + " to dir " + dir +
-                                        " as " + renameTo);
+            
             var path = Path.Combine(Utilities.GameDirectoryOrThrow, mod);
 
             if (File.Exists(path))
             {
-                ModInstallerCommon.DebugLog("Moving as file!");
+                Console.WriteLine("Moving as file, {0} to {1} as {2}", path, dir, renameTo);
                 File.Move(path, dir + renameTo, true);
-            }
-
+            } else
             if (File.Exists(Directory.GetCurrentDirectory() + @"\" + mod))
             {
-                ModInstallerCommon.DebugLog("Moving as file!");
+                Console.WriteLine("Moving as file, {0} to {1} as {2}", Directory.GetCurrentDirectory() + @"\" + mod, dir, renameTo);
                 File.Move(Directory.GetCurrentDirectory() + @"\" + mod, dir + renameTo, true);
             }
             else if (Directory.Exists(path))
             {
-                ModInstallerCommon.DebugLog("Moving as directory!");
+                Console.WriteLine("Moving as directory, {0} to {1} as {2}", path, dir, renameTo);
                 Directory.Move(path, dir + renameTo);
             }
-
-            if (Directory.Exists(Directory.GetCurrentDirectory() + @"\" + mod))
+            else if (Directory.Exists(Directory.GetCurrentDirectory() + @"\" + mod))
             {
-                ModInstallerCommon.DebugLog("Moving as directory!");
+                Console.WriteLine("Moving as directory, {0} to {1} as {2}", Directory.GetCurrentDirectory() + @"\" + mod, dir, renameTo);
                 Directory.Move(Directory.GetCurrentDirectory() + @"\" + mod, dir + renameTo);
             }
             else
             {
-                Console.WriteLine("Cannot find file to move!");
+                Console.WriteLine("Cannot find file {0} to move!", mod);
             }
 
             return true;

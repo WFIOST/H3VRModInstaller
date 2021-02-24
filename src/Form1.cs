@@ -18,7 +18,7 @@ using H3VRModInstaller.GUI;
 
 namespace H3VRModInstaller
 {
-    public partial class mainwindow : Form
+    public partial class mainwindow : Form //AAA I FUCKING HATE THIS FILE IT GODDAMN HAUNTS MY DREAMS --potatoes
     {
         public static string publicdispcat = "n/a";
         public string[] command;
@@ -344,10 +344,29 @@ namespace H3VRModInstaller
             }
 
             for (var i = 0; i < InstalledModsList.Items.Count; i++)
+            {
                 //if cached installed mod is a older version than the database
                 if (new Version(InstalledModsList.Items[i].SubItems[1].Text).CompareTo(
                     new Version(ModParsing.GetSpecificMod(InstalledModsList.Items[i].SubItems[4].Text).Version)) < 0)
                     InstalledModsList.Items[i].BackColor = Color.Yellow;
+
+                string delinfo = ModParsing.GetSpecificMod(InstalledModsList.Items[i].SubItems[4].Text).DelInfo; //if cached mod is disabled
+                if (String.IsNullOrEmpty(delinfo)) goto avoidcombinenull;
+                string path = Path.Combine(Utilities.GameDirectory, delinfo.Split('?')[0]); //split to get the first delinfo arg
+                if (!File.Exists(path) && !Directory.Exists(path))//if it is not disabled
+                {
+                    InstalledModsList.Items[i].BackColor = Color.Gray;
+                    DisEnaButton.Text = "Enable";
+                }
+                else
+                {
+                    DisEnaButton.Text = "Disable";
+                }
+                
+                Program.CheckForManuallyUninstalledMods();
+
+                avoidcombinenull: ;
+            }
         }
 
         public void UpdateCatagories()
@@ -438,6 +457,12 @@ namespace H3VRModInstaller
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             UpdateModList("n/a", textBox1.Text );
+        }
+
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            StartTerminator("disable " + impModID);
         }
     }
 }

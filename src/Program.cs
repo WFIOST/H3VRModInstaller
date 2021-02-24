@@ -19,7 +19,7 @@ namespace H3VRModInstaller
 			JsonCommon.OverrideModInstallerVariables();
 			CheckCache();
 			CheckForManualInstalledMods();
-
+			CheckForManuallyUninstalledMods();
 
 
 			Application.SetHighDpiMode(HighDpiMode.SystemAware);
@@ -56,7 +56,7 @@ namespace H3VRModInstaller
 			}
 		}
 
-		private static void CheckForManualInstalledMods()
+		public static void CheckForManualInstalledMods()
 		{
 			ModFile[] mods = JsonCommon.GetAllMods();
 			ModFile[] instmods = InstalledMods.GetInstalledMods();
@@ -87,6 +87,37 @@ namespace H3VRModInstaller
 			if (!String.IsNullOrEmpty(addedmods))
 			{
 				var conf = MessageBox.Show($"Some manually installed mods have been detected, adding it to database. Detected mods: {addedmods.Split(',').Length} \n" + addedmods, "Installed mods detected!", MessageBoxButtons.OK);
+			}
+		}
+
+		public static void CheckForManuallyUninstalledMods()
+		{
+			ModFile[] instmods = InstalledMods.GetInstalledMods();
+			string addedmods = "";
+			for (int i = 0; i < instmods.Length; i++)
+			{
+				if (!string.IsNullOrEmpty(instmods[i].DelInfo) && instmods[i].Version != "0.0.0" ) 
+				{
+					string delinfo = instmods[i].DelInfo.Split('?')[0];
+					string delinfo1 = Path.Combine(Utilities.GameDirectory, delinfo);
+					string delinfo2 = Path.Combine(Utilities.DisableCache, new DirectoryInfo(delinfo).Name);
+					if (File.Exists(delinfo1) || Directory.Exists(delinfo1) || File.Exists(delinfo2) || Directory.Exists(delinfo2)) //if not exist in files or discache
+					{
+
+					}
+					else
+					{
+						Console.WriteLine("Mod {0} not detected at {1}, or {2}!", instmods[i].ModId, delinfo1, delinfo2);
+						addedmods += instmods[i].Name + ", ";
+						InstalledMods.RemoveInstalledMod(instmods[i].ModId);
+						instmods[i].Version = "0.0.0";
+						InstalledMods.AddInstalledMod(instmods[i]);
+					}
+				}
+			}
+			if (!String.IsNullOrEmpty(addedmods))
+			{
+				var conf = MessageBox.Show($"We cannot find some mods that you've downloaded! Did you delete them?\n Either way, we've highlighted them in yellow if you want to reinstall them or delete them. (Their version reads 0.0.0.)\n Detected mods: {addedmods.Split(',').Length} \n" + addedmods, "Installed mods detected!", MessageBoxButtons.OK);
 			}
 		}
     }

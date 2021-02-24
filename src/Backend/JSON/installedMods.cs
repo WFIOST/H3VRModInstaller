@@ -87,6 +87,13 @@ namespace H3VRModInstaller.JSON
             file[file.Length - 1] = ModParsing.GetSpecificMod(addmod); //sets new room in array to modinfo of addmod
             writeInstalledModToJson(file);
         }
+        public static void AddInstalledMod(ModFile addmod)
+        {
+            var file = GetInstalledMods(); //gets the installed mods file
+            Array.Resize(ref file, file.Length + 1); //adds new room for new mod
+            file[file.Length - 1] = addmod; //adds modfile to installedmods
+            writeInstalledModToJson(file);
+        }
 
         /// <summary>
         ///     Removes a <c>ModFile</c> to the InstalledMods JSON file

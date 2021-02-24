@@ -61,6 +61,9 @@ namespace H3VRModInstaller
                     Console.WriteLine($"Deleting {inputargs[1]}");
                     Uninstaller.DeleteMod(inputargs[1]);
                     break;
+                case "disable":
+                    Disabler.EnableDisableMod(inputargs[1]);
+                    break;
                 default:
                     Console.WriteLine("Invalid command!");
                     break;

@@ -164,6 +164,14 @@ namespace H3VRModInstaller.Common
 			}
 		}
 
+        public static string DisableCache
+        {
+            get
+            {
+                return Path.Combine(GameDirectory, "ModInstallerCache/DisabledMods/");
+            }
+        }
+
 		/*        public static string ModCache => string.IsNullOrEmpty(GameDirectory)
 					? null
 					: Path.Combine(GameDirectory, "installed_mods.json");*/
