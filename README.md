@@ -24,7 +24,7 @@ While H3VRMI was specifically designed for H3VR, it was also designed with the i
 
 Q: Can you show the percentage downloaded for the mods?
 
-A: We can't, because we don't know. BoneTome (the primary supplier of mods in H3VRMI's database) uses a download protocal that does not tell us the size of the file.
+A: We can't, because we don't know. BoneTome (the primary supplier of mods in H3VRMI's database) uses a download protoc0l that does not tell us the size of the file.
 
 
 Q: My H3VRMI won't start!
