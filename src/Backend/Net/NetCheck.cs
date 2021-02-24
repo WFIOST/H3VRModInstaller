@@ -23,7 +23,7 @@ namespace H3VRModInstaller.Net
             try
             {
                 var reply = ping.Send(url, 1000);
-                if (reply.Status == IPStatus.Success) return true;
+                if (reply.Status == IPStatus.Success) {return true;}
             }
             catch (Exception)
             {

@@ -22,15 +22,15 @@ namespace H3VRModInstaller.Filesys
         {
             fileinfo.Arguments.Replace("BACKSLASH", @"\");
 
-            if (fileinfo.Arguments == "") fileinfo.Arguments = "unzipToDir?";
+            if (fileinfo.Arguments == "") {fileinfo.Arguments = "unzipToDir?";}
             var args = fileinfo.Arguments.Split('?');
 
             ModInstallerCommon.DebugLog("");
-            for (var i = 0; i < args.Length; i++) ModInstallerCommon.DebugLog(args[i] + ", ");
+            for (var i = 0; i < args.Length; i++) {ModInstallerCommon.DebugLog(args[i] + ", ");}
 
             for (var i = 0; i < args.Length; i++)
             {
-                if (args[i] == "moveToFolder") MoveToFolder(args[i + 1], args[i + 2], args[i + 3]);
+                if (args[i] == "moveToFolder") {MoveToFolder(args[i + 1], args[i + 2], args[i + 3]);}
 
                 if (args[i] == "unzipToDir")
                 {
@@ -38,14 +38,16 @@ namespace H3VRModInstaller.Filesys
 
                     var ArchiveType = Archives.ArchiveType.Zip;
 
-                    if (fileinfo.RawName.EndsWith(".rar") || fileinfo.RawName.EndsWith(".RAR"))
+                    if (fileinfo.RawName.ToLower().EndsWith(".rar"))
                     {
                         ArchiveType = Archives.ArchiveType.RAR;
+                        Console.WriteLine("Archive is rar!");
                     }
 
-                    if (fileinfo.RawName.EndsWith(".7z") || fileinfo.RawName.EndsWith(".7Z"))
+                    if (fileinfo.RawName.ToLower().EndsWith(".7z"))
                     {
                         ArchiveType = Archives.ArchiveType.SevenZip;
+                        Console.WriteLine("Archive is 7z!");
                     }
 
                     Archives.UnArchive(fileinfo.RawName, Path.Combine(Utilities.GameDirectoryOrThrow, args[i + 1]),
@@ -58,7 +60,7 @@ namespace H3VRModInstaller.Filesys
                     Directory.CreateDirectory(Path.Combine(Utilities.GameDirectoryOrThrow, args[i + 1]));
                 }
 
-                if (args[i] == "break") break;
+                if (args[i] == "break") {break;}
             }
 
             Console.WriteLine("Installed " + fileinfo.Name);
@@ -78,9 +80,9 @@ namespace H3VRModInstaller.Filesys
         /// </remarks>
         public static bool MoveToFolder(string mod, string dir, string renameTo = "")
         {
-            if (renameTo == "") renameTo = new DirectoryInfo(mod).Name;;
+            if (renameTo == "") {renameTo = new DirectoryInfo(mod).Name;};
             dir = Path.Combine(Utilities.GameDirectoryOrThrow, dir);
-            if (!Directory.Exists(dir)) Directory.CreateDirectory(dir);
+            if (!Directory.Exists(dir)) {Directory.CreateDirectory(dir);}
             
             var path = Path.Combine(Utilities.GameDirectoryOrThrow, mod);
 

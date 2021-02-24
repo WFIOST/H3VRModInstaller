@@ -51,7 +51,7 @@ namespace H3VRModInstaller.Filesys
 
                 var path = Path.Combine(Utilities.GameDirectoryOrThrow, target);
                 if (File.Exists(path)) { File.Delete(path); }
-                else if (Directory.Exists(path)) Directory.Delete(path, true);
+                else if (Directory.Exists(path)) {Directory.Delete(path, true);}
             }
         }
     }

@@ -13,9 +13,8 @@ namespace H3VRModInstaller.Filesys
             ModFile mf = ModParsing.GetSpecificMod(modid);
             string path = Path.Combine(Utilities.GameDirectory, mf.DelInfo.Split('?')[0]);
             Console.WriteLine("Detecting if {0} exists...", path);
-            if (File.Exists(path) || Directory.Exists(path)) //if it is not disabled
-                DisableMod(modid); //disable
-            else EnableMod(modid); //else enable
+            if (File.Exists(path) || Directory.Exists(path)) { DisableMod(modid); }
+            else { EnableMod(modid); }
         }
         
         public static void DisableMod(string modid)

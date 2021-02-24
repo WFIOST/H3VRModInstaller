@@ -157,8 +157,11 @@ namespace H3VRModInstaller.Common
                 // Check main steamapps library folder for h3 manifest.
                 var result = "";
                 if (File.Exists(steamDir + @"\steamapps\" + acfpath))
+                {
                     result = steamDir + @"\steamapps\common\" + gamename + @"\";
+                }
                 else
+                {
                     // We didn't find it, look at other library folders by lazily parsing libraryfolders.
                     foreach (var ii in File.ReadAllLines(steamDir + "/steamapps/libraryfolders.vdf").Skip(4)
                         .Where(x => x.Length != 0 && x[0] != '}')
@@ -168,6 +171,7 @@ namespace H3VRModInstaller.Common
                         result = ii + @"\steamapps\common\" + gamename + @"\";
                         break;
                     }
+                }
 
                 _gameLocation = result;
                 if (!string.IsNullOrEmpty(_gameLocation)) return _gameLocation;
@@ -262,7 +266,7 @@ namespace H3VRModInstaller.Common
                     skip = false;
                 }
 
-                if (!skip) sb.AppendLine(line);
+                if (!skip) {sb.AppendLine(line);}
             }
 
             // Write the output

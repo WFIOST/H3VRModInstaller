@@ -32,7 +32,7 @@ namespace H3VRModInstaller.Filesys.Config
 
             var lines = new string[0];
 
-            foreach (var file in ConfigFiles) lines = File.ReadAllLines(file);
+            foreach (var file in ConfigFiles) {lines = File.ReadAllLines(file);}
 
             File.WriteAllLines("", lines);
 

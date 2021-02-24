@@ -160,6 +160,7 @@ namespace H3VRModInstaller
             UpdateButton.Hide();
             ModVer.Hide();
             Delete.Hide();
+            DisEnaButton.Hide();
 
 
             try
@@ -184,6 +185,27 @@ namespace H3VRModInstaller
             UpdateButton.Show();
             Delete.Show();
             CheckButton.Show();
+            DisEnaButton.Show();
+            try
+            {
+                string delinfo = ModParsing.GetSpecificMod(InstalledModsList.SelectedItems[0].SubItems[4].Text)
+                    .DelInfo; //if cached mod is disabled
+                if (!String.IsNullOrEmpty(delinfo))
+                {
+
+                    string path =
+                        Path.Combine(Utilities.GameDirectory,
+                            delinfo.Split('?')[0]); //split to get the first delinfo arg
+                    if (!File.Exists(path) && !Directory.Exists(path)) //if it is not disabled
+                    {
+                        DisEnaButton.Text = "Enable";
+                    }
+                    else
+                    {
+                        DisEnaButton.Text = "Disable";
+                    }
+                }
+            } catch{}
 
 
             ModVer.Show();
@@ -351,15 +373,15 @@ namespace H3VRModInstaller
 
                 string delinfo = ModParsing.GetSpecificMod(InstalledModsList.Items[i].SubItems[4].Text).DelInfo; //if cached mod is disabled
                 if (String.IsNullOrEmpty(delinfo)) goto avoidcombinenull;
+                
                 string path = Path.Combine(Utilities.GameDirectory, delinfo.Split('?')[0]); //split to get the first delinfo arg
                 if (!File.Exists(path) && !Directory.Exists(path))//if it is not disabled
                 {
                     InstalledModsList.Items[i].BackColor = Color.Gray;
-                    DisEnaButton.Text = "Enable";
                 }
                 else
                 {
-                    DisEnaButton.Text = "Disable";
+                    
                 }
                 
                 Program.CheckForManuallyUninstalledMods();

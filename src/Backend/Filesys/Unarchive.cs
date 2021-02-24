@@ -76,15 +76,16 @@ namespace H3VRModInstaller.Filesys
             using (var archive = ZipArchive.Open(FileToDecompress))
             {
                 foreach (var entry in archive.Entries.Where(entry => !entry.IsDirectory))
+                {
                     entry.WriteToDirectory(LocationToDecompressTo, new ExtractionOptions
                     {
                         ExtractFullPath = true,
                         Overwrite = true
                     });
+                }
             }
 
-            if (deleteArchiveAfterUnzip)
-                File.Delete(FileToDecompress);
+            if (deleteArchiveAfterUnzip) { File.Delete(FileToDecompress); }
         }
 
         /// <summary>

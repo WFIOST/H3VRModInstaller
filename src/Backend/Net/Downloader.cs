@@ -53,6 +53,7 @@ namespace H3VRModInstaller.Net
 
 			if (!autoredownload)
 				for (var i = 0; i < installedmods.Length; i++)
+				{
 					if (fileinfo.ModId == installedmods[i].ModId)
 					{
 						if (modnum == 0)
@@ -65,8 +66,9 @@ namespace H3VRModInstaller.Net
 							return false;
 						}
 					}
+				}
 
-			
+
 
 			_Downloader.DownloadFileCompleted += Dlcomplete;
 			_Downloader.DownloadProgressChanged += Dlprogress;
