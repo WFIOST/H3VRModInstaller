@@ -36,14 +36,29 @@ namespace H3VRModInstaller.JSON
     /// </summary>
     public class InstalledMods
     {
-        public static bool changeToInstalledMods = true;
-        public static InstalledModsFormat InstalledModsCache = null;
+        public static bool ChangeToInstalledMods
+        {
+            get => changeToInstalledMods;
+            set => changeToInstalledMods = value;
+        }
+        private static bool changeToInstalledMods = true;
+        private static InstalledModsFormat InstalledModsCache;
+
 
         /// <summary>
         ///     Gets the currently installed mods from the JSON files
         /// </summary>
         /// <returns>String array with the installed mods</returns>
-        public static ModFile[] GetInstalledMods(bool SkipCache = false)
+        public static ModFile[] GetInstalledMods()
+        {
+            return GetInstalledMods(false);
+            
+        }
+        /// <summary>
+        ///     Gets the currently installed mods from the JSON files
+        /// </summary>
+        /// <returns>String array with the installed mods</returns>
+        public static ModFile[] GetInstalledMods(bool SkipCache)
         {
             InstalledModsFormat input = null;
             if (!File.Exists(Utilities.ModCache)) return Array.Empty<ModFile>();
@@ -87,7 +102,7 @@ namespace H3VRModInstaller.JSON
                 TimeSpan timewasted = time2 - time;
                 Console.WriteLine("Reading from {0}, took {1}", Utilities.ModCache, timewasted);
             }
-            else input = InstalledModsCache;
+            else {input = InstalledModsCache;}
 
             return input == null ? Array.Empty<ModFile>() : input.InstalledMods;
         }
@@ -143,6 +158,7 @@ namespace H3VRModInstaller.JSON
             modexport.InstalledMods = files; //drops file into installedmodsformat
             File.WriteAllText(Utilities.ModCache,
                 JsonConvert.SerializeObject(modexport, Formatting.Indented)); //serialize and write to file
+            changeToInstalledMods = true;
         }
     }
 }

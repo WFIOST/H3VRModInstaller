@@ -94,8 +94,7 @@ namespace H3VRModInstaller.Common
         /// </summary>
         public static void OverrideModInstallerVariables()
         {
-            if (!File.Exists(Directory.GetCurrentDirectory() + "/" + "MICoverride.json")) return;
-            Console.WriteLine("MICOverride.json detected!");
+            if (!File.Exists(Directory.GetCurrentDirectory() + "/" + "MICoverride.json")) {return;}
             var depinput = JsonConvert.DeserializeObject<MICoverrideVars>(File.ReadAllText(Directory.GetCurrentDirectory() + "/" + "MICoverride.json"));
             if (depinput.DatabaseInfo != null)
             {

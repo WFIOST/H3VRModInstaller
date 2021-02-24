@@ -129,7 +129,7 @@ namespace H3VRModInstaller.JSON
 
                 var _mlf = new ModListFormat[jsonfiles.Length];
                 for (var i = 0; i < jsonfiles.Length; i++) _mlf[i] = GetDeserializedModListFormatOnline(jsonfiles[i]);
-                if (flag) ModListCache = _mlf;
+                if (flag) {ModListCache = _mlf;}
                 return _mlf;
             }
 

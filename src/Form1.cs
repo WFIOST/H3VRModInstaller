@@ -385,7 +385,7 @@ namespace H3VRModInstaller
 
         private void Delete_Click(object sender, EventArgs e)
         {
-            var conf = MessageBox.Show($"Are you sure you want to delete mod {impModID}? A total of " + ModParsing.GetDependants(ModParsing.GetSpecificMod(impModID)).Length + " downloaded mods rely on this.", "Deletion Confirmation", MessageBoxButtons.YesNo);
+            var conf = MessageBox.Show($"Are you sure you want to delete mod {impModID}? A total of " + ModParsing.GetDependents(ModParsing.GetSpecificMod(impModID)).Length + " downloaded mods rely on this.", "Deletion Confirmation", MessageBoxButtons.YesNo);
 
             if (conf == DialogResult.Yes)
             {

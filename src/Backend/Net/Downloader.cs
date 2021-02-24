@@ -29,12 +29,6 @@ namespace H3VRModInstaller.Net
 		/// <value>Float array</value>
 		public static string dlprogress;
 
-/*		/// <summary>
-		///     (based dictionary) Dict for assigning a string to a modfile
-		/// </summary>
-		/// <returns>String, Modfile</returns>
-		public Dictionary<string, ModFile> stringToModfile = new();*/ //not really sure why this part existed? wasn't even used.
-
 		/// <summary>
 		///     Downloads the mod specified
 		/// </summary>

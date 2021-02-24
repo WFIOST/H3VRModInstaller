@@ -75,16 +75,23 @@ namespace H3VRModInstaller.Filesys
         {
             var result = new ModFile[0];
             var jsonfiles = JsonModList.GetModLists();
-            for (var i = 0; i < jsonfiles.Length; i++) result = result.Concat(jsonfiles[i].Modlist).ToArray();
+            for (var i = 0; i < jsonfiles.Length; i++) {result = result.Concat(jsonfiles[i].Modlist).ToArray();}
             return result;
         }
-        
 
         /// <summary>
         ///     Given modid, returns all dependents
         /// </summary>
         /// <returns><c>ModFile</c> Array</returns>
-        public static ModFile[] GetDependants(ModFile mf, bool GetNonInstalledToo = false)
+        public static ModFile[] GetDependents(ModFile mf)
+        {
+            return GetDependents(mf, false);
+        }
+        /// <summary>
+        ///     Given modid, returns all dependents
+        /// </summary>
+        /// <returns><c>ModFile</c> Array</returns>
+        public static ModFile[] GetDependents(ModFile mf, bool GetNonInstalledToo)
         {
             ModFile[] mods = null;
             if (!GetNonInstalledToo) { mods = GetAllMods(); } //if get dependants of non-installed too
