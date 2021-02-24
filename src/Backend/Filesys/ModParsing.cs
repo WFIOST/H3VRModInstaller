@@ -31,16 +31,18 @@ namespace H3VRModInstaller.Filesys
         /// <returns></returns>
         public static ModFile[] GetDependencies(ModFile mod)
         {
-            var result = new ModFile[0];
-            for (var i = 0; i < mod.Dependencies.Length; i++) //for every dependency,
-            {
-                Array.Resize(ref result, result.Length + 1);
-                result[result.Length - 1] = GetSpecificMod(mod.Dependencies[i]); //add the modfile to the modfile array
-                result = result.Concat(GetDependencies(result[result.Length - 1]))
-                    .ToArray(); //then add their dependencies
-            }
 
-            return result;
+                var result = new ModFile[0];
+                for (var i = 0; i < mod.Dependencies.Length; i++) //for every dependency,
+                {
+                    Array.Resize(ref result, result.Length + 1);
+                    result[result.Length - 1] =
+                        GetSpecificMod(mod.Dependencies[i]); //add the modfile to the modfile array
+                    result = result.Concat(GetDependencies(result[result.Length - 1]))
+                        .ToArray(); //then add their dependencies
+                }
+
+                return result;
         }
 
         /// <summary>

@@ -25,47 +25,37 @@ namespace H3VRModInstaller
 		/// 
         public static void doCommand(string[] inputargs)
         {
+            for (int repeat = 1; repeat < inputargs.Length; repeat++)
+            {
+                Console.WriteLine("doing {0} {1}", inputargs[0], inputargs[repeat]);
+                switch (inputargs[0])
+                {
+                    case "dl":
+                        Downloader.DownloadModDirector(inputargs[repeat]);
+                        break;
+                    //deletion
+                    case "rm":
+                        Console.WriteLine($"Deleting {inputargs[repeat]}");
+                        Uninstaller.DeleteMod(inputargs[repeat]);
+                        break;
+                    case "disable":
+                        Disabler.EnableDisableMod(inputargs[repeat]);
+                        break;
+                    default:
+                        Console.WriteLine("Invalid command!");
+                        break;
+                }
+            }
+
             switch (inputargs[0])
             {
-                case "wipe":
-                    File.Delete(Utilities.ModCache);
-                    Console.WriteLine("Wiped!");
-                    break;
-                case "check":
-
-                    var ml = JsonModList.GetModLists();
-
-                    for (var i = 0; i < ml.Length; i++)
-                    for (var x = 0; x < ml[i].Modlist.Length; x++)
-                        if (ml[i].Modlist[x].ModId == inputargs[1])
-                        {
-                            var link = ml[i].Modlist[x].Website;
-                            var psi = new ProcessStartInfo
-                            {
-                                FileName = link,
-                                UseShellExecute = true
-                            };
-                            Process.Start(psi);
-                        }
-
-                    break;
-                case "dl":
-                    Downloader.DownloadModDirector(inputargs[1]);
-                    break;
                 case "toggledebugging":
                     ModInstallerCommon.enableDebugging = !ModInstallerCommon.enableDebugging;
                     Console.WriteLine("Debugging is now " + ModInstallerCommon.enableDebugging);
                     break;
-                //deletion
-                case "rm":
-                    Console.WriteLine($"Deleting {inputargs[1]}");
-                    Uninstaller.DeleteMod(inputargs[1]);
-                    break;
-                case "disable":
-                    Disabler.EnableDisableMod(inputargs[1]);
-                    break;
-                default:
-                    Console.WriteLine("Invalid command!");
+                case "wipe":
+                    File.Delete(Utilities.ModCache);
+                    Console.WriteLine("Wiped!");
                     break;
             }
         }
