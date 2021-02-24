@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Microsoft.Win32;
+using Newtonsoft.Json;
 
 namespace H3VRModInstaller.Common
 {
@@ -87,7 +88,41 @@ namespace H3VRModInstaller.Common
 
             public static string H3VRSteamLoc = "steam://rungameid/450540";
         }
+        
+        /// <summary>
+        ///     Function that gets the overrides for debugging
+        /// </summary>
+        public static void OverrideModInstallerVariables()
+        {
+            if (!File.Exists(Directory.GetCurrentDirectory() + "/" + "MICoverride.json")) return;
+            Console.WriteLine("MICOverride.json detected!");
+            var depinput = JsonConvert.DeserializeObject<MICoverrideVars>(File.ReadAllText(Directory.GetCurrentDirectory() + "/" + "MICoverride.json"));
+            if (depinput.DatabaseInfo != null)
+            {
+                Console.WriteLine("Overriding DatabaseInfo with " + depinput.DatabaseInfo);
+                Utilities.DatabaseInfo = depinput.DatabaseInfo;
+            }
+            if (depinput.RootFolderName != null)
+            {
+                Console.WriteLine("Overriding Game Name with " + depinput.RootFolderName);
+                Utilities.gamename = depinput.RootFolderName;
+            }
+            if (depinput.ACFname != null)
+            {
+                Console.WriteLine("Overriding ACFname with " + depinput.ACFname);
+                Utilities.acfpath = depinput.ACFname;
+            }
+        }
+
+        public class MICoverrideVars
+        {
+            public string RootFolderName { get; set; }
+            public string DatabaseInfo { get; set; }
+            public string ACFname { get; set; }
+        }
     }
+    
+    
 
     
     
@@ -171,6 +206,16 @@ namespace H3VRModInstaller.Common
                 return Path.Combine(GameDirectory, "ModInstallerCache/DisabledMods/");
             }
         }
+        
+        /// <summary>
+        ///     Where the database for modinstaller is kept
+        /// </summary>
+        public static string DatabaseInfo
+        {
+            get { return databaseInfo; }
+            set { databaseInfo = value; }
+        }
+        private static string databaseInfo = "https://raw.githubusercontent.com/Frityet/H3VRModInstaller/master/src/Backend/JSON/Database/modinstallerinfo.h3vrmi";
 
 		/*        public static string ModCache => string.IsNullOrEmpty(GameDirectory)
 					? null

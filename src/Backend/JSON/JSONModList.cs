@@ -2,7 +2,6 @@ using System;
 using System.IO;
 using System.Net;
 using H3VRModInstaller.Common;
-using H3VRModInstaller.JSON.Common;
 using Newtonsoft.Json;
 
 namespace H3VRModInstaller.JSON
@@ -76,7 +75,6 @@ namespace H3VRModInstaller.JSON
         public string DelInfo { get; set; }
     }
 
-
     /// <summary>
     ///     Contains an array of ModFiles.
     /// </summary>
@@ -101,7 +99,7 @@ namespace H3VRModInstaller.JSON
         /// <summary>
         ///     Mod list array to repersent all mods
         /// </summary>
-        public static ModListFormat[] ModList;
+        private static ModListFormat[] ModListCache;
 
 
         private static string[] DatabaseURLs;
@@ -117,7 +115,7 @@ namespace H3VRModInstaller.JSON
         /// <returns>ModList</returns>
         public static ModListFormat[] GetModLists(bool reload = false, string[] jsonfiles = null)
         {
-            if (ModList == null || reload)
+            if (ModListCache == null || reload)
             {
                 Console.WriteLine("Modlist null!");
                 var flag = false;
@@ -131,11 +129,11 @@ namespace H3VRModInstaller.JSON
 
                 var _mlf = new ModListFormat[jsonfiles.Length];
                 for (var i = 0; i < jsonfiles.Length; i++) _mlf[i] = GetDeserializedModListFormatOnline(jsonfiles[i]);
-                if (flag) ModList = _mlf;
+                if (flag) ModListCache = _mlf;
                 return _mlf;
             }
 
-            return ModList;
+            return ModListCache;
         }
 
         /// <summary>
@@ -157,7 +155,7 @@ namespace H3VRModInstaller.JSON
         /// </summary>
         public static string[] GetDatabaseURLs()
         {
-            var databaseinfo = GetDeserializedModListFormatOnline(JsonCommon.DatabaseInfo).Modlist[0].Dependencies;
+            var databaseinfo = GetDeserializedModListFormatOnline(Utilities.DatabaseInfo).Modlist[0].Dependencies;
 
 
             if (DatabaseURLs != null) return DatabaseURLs;
@@ -179,7 +177,6 @@ namespace H3VRModInstaller.JSON
                 }
 
             DatabaseURLs = _return;
-            Console.WriteLine(DatabaseURLs.Length);
             return DatabaseURLs;
         }
 
@@ -193,11 +190,13 @@ namespace H3VRModInstaller.JSON
                 var v = new string[0];
                 v = GetDatabaseURLs();
                 for (var i = 0; i < v.Length; i++)
+                {
                     if (v[i].Contains(loc))
                     {
                         loc = v[i];
                         break;
                     }
+                }
             }
 
             Console.WriteLine("Reading {0}", loc);

@@ -8,6 +8,7 @@ using Newtonsoft.Json;
 
 namespace H3VRModInstaller.JSON
 {
+    
     /// <summary>
     ///     Another layer for multiple mods in one file
     /// </summary>
@@ -35,43 +36,58 @@ namespace H3VRModInstaller.JSON
     /// </summary>
     public class InstalledMods
     {
-		/// <summary>
-		///     Gets the currently installed mods from the JSON files
-		/// </summary>
-		/// <returns>String array with the installed mods</returns>
-		public static ModFile[] GetInstalledMods()
+        public static bool changeToInstalledMods = true;
+        public static InstalledModsFormat InstalledModsCache = null;
+
+        /// <summary>
+        ///     Gets the currently installed mods from the JSON files
+        /// </summary>
+        /// <returns>String array with the installed mods</returns>
+        public static ModFile[] GetInstalledMods(bool SkipCache = false)
         {
-            if (!File.Exists(Utilities.ModCache)) return Array.Empty<ModFile>();
-            Console.WriteLine("Reading from " + Utilities.ModCache);
             InstalledModsFormat input = null;
-            try
+            if (!File.Exists(Utilities.ModCache)) return Array.Empty<ModFile>();
+            if (InstalledModsCache == null || changeToInstalledMods || SkipCache) //if there is no cache or there's a change or if theres an override
             {
-                input = JsonConvert.DeserializeObject<InstalledModsFormat>(File.ReadAllText(Utilities.ModCache));
-            }
-            catch
-            {
-                //this here tries to convert the json file into a new file. If it doesn't work, it just deletes and starts over.
+                DateTime time = DateTime.Now;
+
                 try
                 {
-                    var depInput =
-                        JsonConvert.DeserializeObject<DeprecatedInstalledModsFormat>(
-                            File.ReadAllText(Directory.GetCurrentDirectory() + "/installedmods.json"));
-                    File.Delete(Utilities.ModCache);
-                    Console.WriteLine("Mods cache is in a deprecated format, converting!");
-                    foreach (var t in depInput.InstalledMods)
-                        AddInstalledMod(t);
+                    input = JsonConvert.DeserializeObject<InstalledModsFormat>(File.ReadAllText(Utilities.ModCache));
                 }
                 catch
                 {
-                    var err = MessageBox.Show("Mod cache (installed_mods.json) IS INVALID!\nThis is most likely because Deli Counter was used for installing mods, before Mod Installer!\n(if you had any installed mods with Deli Counter from before, it could cause serious issues!)\n\nThese programs are not compatible, delete?", "Mod Cache INVALID!", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
-
-                    if (err == DialogResult.Yes)
+                    //this here tries to convert the json file into a new file. If it doesn't work, it just deletes and starts over.
+                    try
                     {
+                        var depInput =
+                            JsonConvert.DeserializeObject<DeprecatedInstalledModsFormat>(
+                                File.ReadAllText(Directory.GetCurrentDirectory() + "/installedmods.json"));
                         File.Delete(Utilities.ModCache);
+                        Console.WriteLine("Mods cache is in a deprecated format, converting!");
+                        foreach (var t in depInput.InstalledMods)
+                            AddInstalledMod(t);
+                    }
+                    catch
+                    {
+                        var err = MessageBox.Show(
+                            "Mod cache (installed_mods.json) IS INVALID!\nThis is most likely because Deli Counter was used for installing mods, before Mod Installer!\n(if you had any installed mods with Deli Counter from before, it could cause serious issues!)\n\nThese programs are not compatible, delete?",
+                            "Mod Cache INVALID!", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+
+                        if (err == DialogResult.Yes)
+                        {
+                            File.Delete(Utilities.ModCache);
+                        }
                     }
                 }
+
+                InstalledModsCache = input; //save to cache
+                changeToInstalledMods = false;
+                DateTime time2 = DateTime.Now;
+                TimeSpan timewasted = time2 - time;
+                Console.WriteLine("Reading from {0}, took {1}", Utilities.ModCache, timewasted);
             }
-			
+            else input = InstalledModsCache;
 
             return input == null ? Array.Empty<ModFile>() : input.InstalledMods;
         }

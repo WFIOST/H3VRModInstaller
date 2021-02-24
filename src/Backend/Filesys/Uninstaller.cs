@@ -18,11 +18,13 @@ namespace H3VRModInstaller.Filesys
         {
             var instmods = InstalledMods.GetInstalledMods();
             for (var i = 0; i < instmods.Length; i++)
+            {
                 if (instmods[i].ModId == modid)
                 {
-					parseDelArgs(instmods[i]);
+                    parseDelArgs(instmods[i]);
                     break;
                 }
+            }
 
             InstalledMods.RemoveInstalledMod(modid);
         }
@@ -45,10 +47,10 @@ namespace H3VRModInstaller.Filesys
             foreach (var target in args)
             {
                 // If something is broken, skip this target since continuing would delete the h3 directory.
-                if (string.IsNullOrEmpty(target)) continue;
+                if (string.IsNullOrEmpty(target)){ continue;}
 
                 var path = Path.Combine(Utilities.GameDirectoryOrThrow, target);
-                if (File.Exists(path)) File.Delete(path);
+                if (File.Exists(path)) { File.Delete(path); }
                 else if (Directory.Exists(path)) Directory.Delete(path, true);
             }
         }

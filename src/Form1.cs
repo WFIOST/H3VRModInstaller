@@ -10,7 +10,6 @@ using System.Windows.Forms;
 using H3VRModInstaller.Common;
 using H3VRModInstaller.Filesys;
 using H3VRModInstaller.JSON;
-using H3VRModInstaller.JSON.Common;
 using H3VRModInstaller.Net;
 using System.Threading;
 using H3VRModInstaller.GUI;
@@ -128,14 +127,14 @@ namespace H3VRModInstaller
             InitTimer(); //progress timer
             //AllocConsole(); //enables console
 
-            var onlineversion = new Version(JsonModList.GetDeserializedModListFormatOnline(JsonCommon.DatabaseInfo)
+            var onlineversion = new Version(JsonModList.GetDeserializedModListFormatOnline(Utilities.DatabaseInfo)
                 .Modlist[0].Version);
             if (ModInstallerCommon.ModInstallerVersion.CompareTo(onlineversion) < 0)
             {
                 MessageBox.Show("H3VRModInstaller is out of date! (" + ModInstallerCommon.ModInstallerVersion + " vs " + onlineversion + ")", "Out of date version detected!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 var psi = new ProcessStartInfo
                 {
-                    FileName = JsonModList.GetDeserializedModListFormatOnline(JsonCommon.DatabaseInfo)
+                    FileName = JsonModList.GetDeserializedModListFormatOnline(Utilities.DatabaseInfo)
                         .Modlist[0]
                         .Website,
                     UseShellExecute = true
@@ -267,7 +266,7 @@ namespace H3VRModInstaller
             if (dispcat == "n/a") dispcat = publicdispcat;
             publicdispcat = dispcat;
 
-            var totalmods = JsonCommon.GetAllMods();
+            var totalmods = ModParsing.GetAllMods();
 
             if (dispcat == "n/a") dispcat = "dependencies";
 
@@ -386,7 +385,7 @@ namespace H3VRModInstaller
 
         private void Delete_Click(object sender, EventArgs e)
         {
-            var conf = MessageBox.Show($"Are you sure you want to delete mod {impModID}? A total of " + JsonCommon.GetDependants(impModID).Length + " downloaded mods rely on this.", "Deletion Confirmation", MessageBoxButtons.YesNo);
+            var conf = MessageBox.Show($"Are you sure you want to delete mod {impModID}? A total of " + ModParsing.GetDependants(ModParsing.GetSpecificMod(impModID)).Length + " downloaded mods rely on this.", "Deletion Confirmation", MessageBoxButtons.YesNo);
 
             if (conf == DialogResult.Yes)
             {

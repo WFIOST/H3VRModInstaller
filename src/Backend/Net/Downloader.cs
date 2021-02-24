@@ -29,11 +29,11 @@ namespace H3VRModInstaller.Net
 		/// <value>Float array</value>
 		public static string dlprogress;
 
-		/// <summary>
+/*		/// <summary>
 		///     (based dictionary) Dict for assigning a string to a modfile
 		/// </summary>
 		/// <returns>String, Modfile</returns>
-		public Dictionary<string, ModFile> stringToModfile = new();
+		public Dictionary<string, ModFile> stringToModfile = new();*/ //not really sure why this part existed? wasn't even used.
 
 		/// <summary>
 		///     Downloads the mod specified
@@ -53,10 +53,9 @@ namespace H3VRModInstaller.Net
 
 			var installedmods = InstalledMods.GetInstalledMods();
 			_finished = false;
-			if (string.IsNullOrEmpty(fileinfo.RawName)) return false;
+			if (string.IsNullOrEmpty(fileinfo.RawName)) {return false;}
 
-			var fileToDownload = fileinfo.RawName;
-			var locationOfFile = fileinfo.Path;
+			var fileToDownload = fileinfo.RawName; var locationOfFile = fileinfo.Path;
 
 			if (!autoredownload)
 				for (var i = 0; i < installedmods.Length; i++)
@@ -73,14 +72,13 @@ namespace H3VRModInstaller.Net
 						}
 					}
 
-
-			Console.WriteLine("");
+			
 
 			_Downloader.DownloadFileCompleted += Dlcomplete;
 			_Downloader.DownloadProgressChanged += Dlprogress;
 
 
-			if (ModInstallerCommon.enableDebugging) Console.WriteLine("Downloading {0} from {1}{0}", fileToDownload, locationOfFile);
+			if (ModInstallerCommon.enableDebugging) {Console.WriteLine("Downloading {0} from {1}{0}", fileToDownload, locationOfFile);}
 			if (locationOfFile.Contains('%'))
 			{
 				locationOfFile = locationOfFile.Trim('%');

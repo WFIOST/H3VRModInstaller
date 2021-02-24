@@ -3,7 +3,7 @@ using System.Windows.Forms;
 using System.Threading;
 using System.IO;
 using H3VRModInstaller.Common;
-using H3VRModInstaller.JSON.Common;
+using H3VRModInstaller.Filesys;
 using H3VRModInstaller.JSON;
 
 namespace H3VRModInstaller
@@ -16,7 +16,7 @@ namespace H3VRModInstaller
 		[STAThread]
 		private static void Main()
 		{
-			JsonCommon.OverrideModInstallerVariables();
+			ModInstallerCommon.OverrideModInstallerVariables();
 			CheckCache();
 			CheckForManualInstalledMods();
 			CheckForManuallyUninstalledMods();
@@ -58,7 +58,7 @@ namespace H3VRModInstaller
 
 		public static void CheckForManualInstalledMods()
 		{
-			ModFile[] mods = JsonCommon.GetAllMods();
+			ModFile[] mods = ModParsing.GetAllMods();
 			ModFile[] instmods = InstalledMods.GetInstalledMods();
 			string addedmods = "";
 			for (int i = 0; i < mods.Length; i++)
