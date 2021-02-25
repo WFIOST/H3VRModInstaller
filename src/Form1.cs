@@ -179,6 +179,7 @@ namespace H3VRModInstaller
             CheckButton.Hide();
             UpdateModList();
             UpdateCatagories();
+            DisEnaButton.Hide();
 
             CatagoriesComboBox.SelectedIndex = 0;
         }
