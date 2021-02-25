@@ -8,6 +8,7 @@
 
     <RootNamespace>H3VRModInstaller</RootNamespace>
     <AssemblyName>H3VRModInstaller</AssemblyName>
+    <ApplicationIcon>cls.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
