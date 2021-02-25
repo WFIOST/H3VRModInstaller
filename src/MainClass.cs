@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.IO;
 using H3VRModInstaller.Common;
 using H3VRModInstaller.Filesys;
-using H3VRModInstaller.JSON;
+using H3VRModInstaller.Filesys.Logging;
 using H3VRModInstaller.Net;
 
 namespace H3VRModInstaller
@@ -13,6 +13,8 @@ namespace H3VRModInstaller
     /// </summary>
     public class MainClass
     {
+        
+        
 		public static void doCommand(string inputstring)
 		{
 			doCommand(inputstring.Split(' '));

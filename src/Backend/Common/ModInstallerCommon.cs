@@ -87,6 +87,8 @@ namespace H3VRModInstaller.Common
             public static string ConfigFile = Path.Combine(DataDir + "config.H3VRMI");
 
             public static string H3VRSteamLoc = "steam://rungameid/450540";
+            
+            public static string LogPath = Utilities.GameDirectory + "ModInstaller.log";
         }
         
         /// <summary>

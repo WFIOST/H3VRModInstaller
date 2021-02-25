@@ -1,6 +1,6 @@
 using System;
 using System.Windows.Forms;
-using System.Threading;
+using H3VRModInstaller.Filesys.Logging;
 using System.IO;
 using H3VRModInstaller.Common;
 using H3VRModInstaller.Filesys;
@@ -16,22 +16,7 @@ namespace H3VRModInstaller
 		[STAThread]
 		private static void Main()
 		{
-			//log starter
-			var sw = new StringWriter();
-			#if !DEBUG //if this is enabled during debugging, it stops rider's console from working, epic!!!! -potatoes
-			Console.SetOut(sw); //redirect all console info to sw
-			Console.SetError(sw);
-			#endif
-			//end log starter
-			
-			//start pre-start checker
-			ModInstallerCommon.OverrideModInstallerVariables();
-			CheckCache();
-			CheckForManualInstalledMods();
-			CheckForManuallyUninstalledMods();
-			//end pre-start checker
-			
-
+			Logger.InitialiseLog();
 			//start initialization
 			Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
@@ -40,12 +25,6 @@ namespace H3VRModInstaller
 			mainform.KeyPreview = true;
             Application.Run(mainform);
             //end initialization
-            
-            //start end procedure
-            var path = Utilities.GameDirectory + "modinstalleroutput.log";
-            File.WriteAllText(path, sw.ToString());
-            Console.WriteLine("Bye world! uwu, exporting to {0}", path);
-            //end end procedure (heh)
 		}
 
 		private static void CheckCache()
