@@ -8,6 +8,10 @@ namespace H3VRModInstaller.Filesys
 {
     public class Disabler //written up by taters
     {
+        /// <summary>
+        ///     Takes modid, enables if disabled and disables if enabled
+        /// </summary>
+        /// <param name="modid">modid to disable/enable</param>
         public static void EnableDisableMod(string modid)
         {
             ModFile mf = ModParsing.GetSpecificMod(modid);
