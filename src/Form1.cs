@@ -22,7 +22,7 @@ namespace H3VRModInstaller
 {
 
     public partial class mainwindow : Form //AAA I FUCKING HATE THIS FILE IT GODDAMN HAUNTS MY DREAMS --potatoes
-    { //just a note; this file has reached its peak. after v1.2 im going to rewrite the fuck out of this shit, i've had it. i no longer understand what the fuck is going on here. --potatoes
+    { //just a note; this file has reached its peak. after v1.1 im going to rewrite the fuck out of this shit, i've had it. i no longer understand what the fuck is going on here. --potatoes
         private static string publicdispcat = "n/a";
         public string[] command;
 
