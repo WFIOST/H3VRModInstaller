@@ -6,6 +6,7 @@ using System.Globalization;
 using System.IO;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using H3VRModInstaller.Common;
@@ -18,8 +19,9 @@ using H3VRModInstaller.GUI;
 
 namespace H3VRModInstaller
 {
+
     public partial class mainwindow : Form //AAA I FUCKING HATE THIS FILE IT GODDAMN HAUNTS MY DREAMS --potatoes
-    {
+    { //just a note; this file has reached its peak. after v1.2 im going to rewrite the fuck out of this shit, i've had it. i no longer understand what the fuck is going on here. --potatoes
         private static string publicdispcat = "n/a";
         public string[] command;
 
@@ -28,11 +30,6 @@ namespace H3VRModInstaller
         public mainwindow()
         {
             InitializeComponent();
-//            Downloader.NotifyForms.NotifyUpdateProgressBar += _nu_updatebar;
-
-
-            //InitialiseAppData();
-            //Console.WriteLine($"CREATED CONFIG AT\n {ModInstallerCommon.Files.ConfigFile}");
         }
 
 
@@ -78,7 +75,7 @@ namespace H3VRModInstaller
                     
                 }
 
-                if (curnum < prevnum)
+                if (curnum < prevnum) //this doesnt even work properly
                 {
                     UpdateModList();
                 }
@@ -234,10 +231,12 @@ namespace H3VRModInstaller
                     if (!File.Exists(path) && !Directory.Exists(path)) //if it is not disabled
                     {
                         DisEnaButton.Text = "Enable";
+                        UpdateButton.Hide();
                     }
                     else
                     {
                         DisEnaButton.Text = "Disable";
+                        UpdateButton.Show();
                     }
                 }
             } catch{}
@@ -253,8 +252,6 @@ namespace H3VRModInstaller
                 {
                     impModID[i] = DownloadableModsList.SelectedItems[i].SubItems[4].Text;
                 }
-                
-//                impModID = DownloadableModsList.SelectedItems[0].SubItems[4].Text;
             }
             catch
             {
@@ -328,6 +325,7 @@ namespace H3VRModInstaller
         
         public void UpdateModList(string dispcat = "n/a", string filter = "")
         {
+            Program.CheckForManuallyUninstalledMods();
             DownloadableModsList.Items.Clear();
             InstalledModsList.Items.Clear();
 
@@ -436,13 +434,14 @@ namespace H3VRModInstaller
                         (File.Exists(path2) || Directory.Exists(path2))) //if it is not disabled
                     {
                         InstalledModsList.Items[i].BackColor = Color.Gray;
+                        UpdateButton.Hide();
                     }
                     else
                     {
-
+                        UpdateButton.Show();
                     }
 
-                    Program.CheckForManuallyUninstalledMods();
+                    
                 }
             }
         }
