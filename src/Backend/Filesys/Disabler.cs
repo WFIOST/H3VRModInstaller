@@ -38,8 +38,8 @@ namespace H3VRModInstaller.Filesys
             for (int i = 0; i < delinfos.Length; i++)
             {
                 string delinfopath = Path.Combine(Utilities.GameDirectoryOrThrow + delinfos[i]);
-                string delinfotrimmed =
-                    new DirectoryInfo(delinfos[i]).Name; //get last part of file name (e.g VirtualObjects/asdf to asdf)
+                //get last part of file name (e.g VirtualObjects/asdf to asdf)
+                string delinfotrimmed = new DirectoryInfo(delinfos[i]).Name; 
                 string path =
                     Path.Combine(Utilities.DisableCache + delinfotrimmed); //get path to disabledmods cache file
                 Installer.MoveToFolder(path, Directory.GetParent(delinfopath).ToString() + "/"); //move back to loc

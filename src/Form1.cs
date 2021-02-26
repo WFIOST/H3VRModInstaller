@@ -421,7 +421,8 @@ namespace H3VRModInstaller
                 if (String.IsNullOrEmpty(delinfo)) goto avoidcombinenull;
                 
                 string path = Path.Combine(Utilities.GameDirectory, delinfo.Split('?')[0]); //split to get the first delinfo arg
-                if (!File.Exists(path) && !Directory.Exists(path))//if it is not disabled
+                string path2 = Path.Combine(Utilities.DisableCache, new DirectoryInfo(delinfo.Split('?')[0]).Name); //basically loc of the cache area
+                if ((!File.Exists(path) && !Directory.Exists(path)) && (File.Exists(path2) || Directory.Exists(path2)))//if it is not disabled
                 {
                     InstalledModsList.Items[i].BackColor = Color.Gray;
                 }
