@@ -35,17 +35,6 @@ namespace H3VRModInstaller.Common
         /// </summary>
         public const string Pingsite = "www.github.com";
 
-        /// <summary>
-        ///     Current version.
-        /// </summary>
-        public static Version ModInstallerVersion
-        {
-            get
-            {
-                return new Version(1, 1, 0);
-            }
-        }
-
 
         /// <summary>
         ///     Writes line if enabledebugging is true.

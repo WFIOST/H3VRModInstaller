@@ -15,6 +15,7 @@ using H3VRModInstaller.JSON;
 using H3VRModInstaller.Net;
 using System.Threading;
 using H3VRModInstaller.GUI;
+using AutoUpdaterDotNET;
 
 
 namespace H3VRModInstaller
@@ -142,8 +143,10 @@ namespace H3VRModInstaller
 
         private void LoadGUI(object sender, EventArgs e)
         {
-
-
+            AutoUpdater.Start("https://raw.githubusercontent.com/WFIOST/H3VR-Mod-Installer-Database/main/Database/updateinfo.xml");
+            //displays screen if out of date, updates automatically. no downside other than it uses fucking xml -- potaotes
+            //also note it gets the current ver from the assembly file ver, so make sure to update that!
+            
             KeyDown += Form_KeyDown;
 
 			if (!File.Exists(Utilities.ModCache))
@@ -153,21 +156,6 @@ namespace H3VRModInstaller
 
             InitTimer(); //progress timer
             //AllocConsole(); //enables console
-
-            var onlineversion = new Version(JsonModList.GetDeserializedModListFormatOnline(Utilities.DatabaseInfo)
-                .Modlist[0].Version);
-            if (ModInstallerCommon.ModInstallerVersion.CompareTo(onlineversion) < 0)
-            {
-                MessageBox.Show("H3VRModInstaller is out of date! (" + ModInstallerCommon.ModInstallerVersion + " vs " + onlineversion + ")", "Out of date version detected!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                var psi = new ProcessStartInfo
-                {
-                    FileName = JsonModList.GetDeserializedModListFormatOnline(Utilities.DatabaseInfo)
-                        .Modlist[0]
-                        .Website,
-                    UseShellExecute = true
-                };
-                Process.Start(psi);
-            }
 
             InstallButton.Hide();
             UpdateButton.Hide();
@@ -220,18 +208,22 @@ namespace H3VRModInstaller
             DisEnaButton.Show();
             try
             {
-                string delinfo = ModParsing.GetSpecificMod(InstalledModsList.SelectedItems[0].SubItems[4].Text)
-                    .DelInfo; //if cached mod is disabled
-                if (!String.IsNullOrEmpty(delinfo))
+                ModFile modinfo = ModParsing.GetSpecificMod(InstalledModsList.SelectedItems[0].SubItems[4].Text);
+                
+                //if cached mod is disabled
+                if (!String.IsNullOrEmpty(modinfo.DelInfo))
                 {
 
                     string path =
                         Path.Combine(Utilities.GameDirectory,
-                            delinfo.Split('?')[0]); //split to get the first delinfo arg
+                            modinfo.DelInfo.Split('?')[0]); //split to get the first delinfo arg
                     if (!File.Exists(path) && !Directory.Exists(path)) //if it is not disabled
                     {
                         DisEnaButton.Text = "Enable";
-                        UpdateButton.Hide();
+                        if (modinfo.Version == "0.0.0")
+                        {
+                            UpdateButton.Hide();
+                        }
                     }
                     else
                     {
