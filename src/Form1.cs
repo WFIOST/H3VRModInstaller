@@ -20,7 +20,7 @@ namespace H3VRModInstaller
 {
     public partial class mainwindow : Form //AAA I FUCKING HATE THIS FILE IT GODDAMN HAUNTS MY DREAMS --potatoes
     {
-        public static string publicdispcat = "n/a";
+        private static string publicdispcat = "n/a";
         public string[] command;
 
         public string[] impModID = new string[0];
@@ -67,7 +67,7 @@ namespace H3VRModInstaller
         {
             try //this part tries to see if the DL amount reset, and if it did, it means it moved on to another mod so pls update modlist
             {
-                float curnum = float.Parse(Downloader.dlprogress, NumberStyles.Any);
+                float curnum = float.Parse(Downloader.DLprogress, NumberStyles.Any);
                 float prevnum = -999;
                 try
                 {
@@ -88,7 +88,7 @@ namespace H3VRModInstaller
                 
             }
 
-            StatusReport.Text = Downloader.dlprogress ?? "Ready!";
+            StatusReport.Text = Downloader.DLprogress ?? "Ready!";
         }
 
         public void trycatchtext(Label label, string text)
@@ -331,12 +331,12 @@ namespace H3VRModInstaller
             DownloadableModsList.Items.Clear();
             InstalledModsList.Items.Clear();
 
-            if (dispcat == "n/a") dispcat = publicdispcat;
+            if (dispcat == "n/a") {dispcat = publicdispcat;}
             publicdispcat = dispcat;
 
             var totalmods = ModParsing.GetAllMods();
 
-            if (dispcat == "n/a") dispcat = "dependencies";
+            if (dispcat == "n/a") {dispcat = "dependencies";}
 
             Console.WriteLine(dispcat);
 
@@ -354,19 +354,23 @@ namespace H3VRModInstaller
                 var isinstldmod = false;
                 var x = 0;
                 for (x = 0; x < installedMods.Length; x++)
+                {
                     if (totalmods[i].ModId == installedMods[x].ModId)
                     {
                         isinstldmod = true;
                         break;
                     }
+                }
 
                 var isdispmod = false;
                 for (var y = 0; y < dispmods.Length; y++)
+                {
                     if (totalmods[i].ModId == dispmods[y].ModId)
                     {
                         isdispmod = true;
                         break;
                     }
+                }
 
                 //sets vars to installedmods or input
                 if (isinstldmod)
@@ -376,7 +380,7 @@ namespace H3VRModInstaller
                 }
                 else
                 {
-                    if (publicdispcat == "n/a") goto Finish;
+                    if (publicdispcat == "n/a") {goto Finish;}
                     list = totalmods;
                     relevantint = i;
                 }
@@ -390,8 +394,8 @@ namespace H3VRModInstaller
 
                 if (String.IsNullOrEmpty(filter))
                 {
-                    if (!isinstldmod && isdispmod) DownloadableModsList.Items.Add(mod);
-                    if (isinstldmod) InstalledModsList.Items.Add(mod);
+                    if (!isinstldmod && isdispmod) {DownloadableModsList.Items.Add(mod);}
+                    if (isinstldmod) {InstalledModsList.Items.Add(mod);}
                 }
                 else
                 {
@@ -415,25 +419,31 @@ namespace H3VRModInstaller
                 //if cached installed mod is a older version than the database
                 if (new Version(InstalledModsList.Items[i].SubItems[1].Text).CompareTo(
                     new Version(ModParsing.GetSpecificMod(InstalledModsList.Items[i].SubItems[4].Text).Version)) < 0)
+                {
                     InstalledModsList.Items[i].BackColor = Color.Yellow;
+                }
 
                 string delinfo = ModParsing.GetSpecificMod(InstalledModsList.Items[i].SubItems[4].Text).DelInfo; //if cached mod is disabled
-                if (String.IsNullOrEmpty(delinfo)) goto avoidcombinenull;
-                
-                string path = Path.Combine(Utilities.GameDirectory, delinfo.Split('?')[0]); //split to get the first delinfo arg
-                string path2 = Path.Combine(Utilities.DisableCache, new DirectoryInfo(delinfo.Split('?')[0]).Name); //basically loc of the cache area
-                if ((!File.Exists(path) && !Directory.Exists(path)) && (File.Exists(path2) || Directory.Exists(path2)))//if it is not disabled
-                {
-                    InstalledModsList.Items[i].BackColor = Color.Gray;
-                }
-                else
-                {
-                    
-                }
-                
-                Program.CheckForManuallyUninstalledMods();
 
-                avoidcombinenull: ;
+                if (!String.IsNullOrEmpty(delinfo))
+                {
+                    string path =
+                        Path.Combine(Utilities.GameDirectory,
+                            delinfo.Split('?')[0]); //split to get the first delinfo arg
+                    string path2 = Path.Combine(Utilities.DisableCache,
+                        new DirectoryInfo(delinfo.Split('?')[0]).Name); //basically loc of the cache area
+                    if ((!File.Exists(path) && !Directory.Exists(path)) &&
+                        (File.Exists(path2) || Directory.Exists(path2))) //if it is not disabled
+                    {
+                        InstalledModsList.Items[i].BackColor = Color.Gray;
+                    }
+                    else
+                    {
+
+                    }
+
+                    Program.CheckForManuallyUninstalledMods();
+                }
             }
         }
 
@@ -442,9 +452,9 @@ namespace H3VRModInstaller
             var catagories = JsonModList.GetModLists();
 
             for (var i = 0; i < catagories.Length; i++)
-                //				var mod = new ListViewItem(catagories[i].modlistname, 0); //0
-//				mod.SubItems.Add(catagories[i].modlistid); //1
+            {
                 CatagoriesComboBox.Items.Add(catagories[i].ModListName);
+            }
         }
 
         private void UpdateButton_Click(object sender, EventArgs e)
@@ -526,8 +536,8 @@ namespace H3VRModInstaller
 
         private void InitialiseAppData()
         {
-            if (!Directory.Exists(ModInstallerCommon.Files.DataDir)) Directory.CreateDirectory(ModInstallerCommon.Files.DataDir);
-            if (!File.Exists(ModInstallerCommon.Files.ConfigFile)) File.Create(ModInstallerCommon.Files.ConfigFile);
+            if (!Directory.Exists(Utilities.DataDir)) {Directory.CreateDirectory(Utilities.DataDir);}
+            if (!File.Exists(Utilities.ConfigFile)) {File.Create(Utilities.ConfigFile);}
             
         }
 

@@ -34,7 +34,7 @@ namespace H3VRModInstaller.JSON
     /// <summary>
     ///     Actions for the installed mods. Serialised
     /// </summary>
-    public class InstalledMods
+    public static class InstalledMods
     {
         public static bool ChangeToInstalledMods
         {
@@ -134,12 +134,15 @@ namespace H3VRModInstaller.JSON
         {
             var file = GetInstalledMods(); //gets the installed mods file
             var loc = -1;
-            for (var i = 0; i < file.Length; i++) //finds modfile of mod given modid
+            for (var i = 0; i < file.Length; i++)//finds modfile of mod given modid
+            {
+                
                 if (file[i].ModId == removemod)
                 {
                     loc = i;
                     break;
                 }
+            }
 
             if (loc == -1)
             {

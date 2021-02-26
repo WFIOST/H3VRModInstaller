@@ -8,7 +8,7 @@ namespace H3VRModInstaller.Filesys
 	/// <summary>
 	///     Uninstaller for mods
 	/// </summary>
-	public class Uninstaller
+	public static class Uninstaller
     {
 	    /// <summary>
 	    ///     Function for deleting mods

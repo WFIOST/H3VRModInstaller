@@ -23,11 +23,13 @@ namespace H3VRModInstaller.Net
 		private static readonly WebClient _Downloader = new();
 		private static bool _finished;
 
-		/// <summary>
-		///     Download progress, should be private
-		/// </summary>
-		/// <value>Float array</value>
-		public static string dlprogress;
+		public static string DLprogress
+		{
+			get => dlprogress;
+			set => dlprogress = value;
+		}
+
+		private static string dlprogress;
 
 		/// <summary>
 		///     Downloads the mod specified
@@ -52,6 +54,7 @@ namespace H3VRModInstaller.Net
 			var fileToDownload = fileinfo.RawName; var locationOfFile = fileinfo.Path;
 
 			if (!autoredownload)
+			{
 				for (var i = 0; i < installedmods.Length; i++)
 				{
 					if (fileinfo.ModId == installedmods[i].ModId)
@@ -67,6 +70,7 @@ namespace H3VRModInstaller.Net
 						}
 					}
 				}
+			}
 
 
 
@@ -85,11 +89,11 @@ namespace H3VRModInstaller.Net
 				_Downloader.DownloadFileAsync(new Uri(locationOfFile + fileToDownload), fileToDownload);
 			}
 
-			while (!_finished) Thread.Sleep(50);
+			while (!_finished) {Thread.Sleep(50);}
 			_finished = false;
 
 			Console.WriteLine("Successfully Downloaded {0}", fileToDownload, locationOfFile);
-			if (ModInstallerCommon.enableDebugging) Console.Write("from {1}{0}", fileToDownload, locationOfFile);
+			if (ModInstallerCommon.enableDebugging) {Console.Write("from {1}{0}", fileToDownload, locationOfFile);}
 
 			Installer.InstallMod(fileinfo);
 
@@ -150,9 +154,12 @@ namespace H3VRModInstaller.Net
 			}
 
 			var result = ModParsing.GetModInfoAndDependencies(mod);
-			if (result == null) return false;
+			if (result == null) {return false;}
 			for (var i = 0; i < result.Length; i++)
+			{
 				DownloadMod(result[i], i, false, skipdl);
+			}
+
 			return true;
 		}
 	}

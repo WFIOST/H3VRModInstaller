@@ -92,7 +92,7 @@ namespace H3VRModInstaller.JSON
     /// <summary>
     ///     This class manages the modlists, including downloading and loading
     /// </summary>
-    public class JsonModList
+    public static class JsonModList
     {
         private static readonly WebClient Client = new();
 
@@ -128,7 +128,7 @@ namespace H3VRModInstaller.JSON
                 }
 
                 var _mlf = new ModListFormat[jsonfiles.Length];
-                for (var i = 0; i < jsonfiles.Length; i++) _mlf[i] = GetDeserializedModListFormatOnline(jsonfiles[i]);
+                for (var i = 0; i < jsonfiles.Length; i++) {_mlf[i] = GetDeserializedModListFormatOnline(jsonfiles[i]);}
                 if (flag) {ModListCache = _mlf;}
                 return _mlf;
             }
@@ -146,7 +146,7 @@ namespace H3VRModInstaller.JSON
             var modList = new ModListFormat();
             ModInstallerCommon.DebugLog("Loading " + jsontoload);
             modList = JsonConvert.DeserializeObject<ModListFormat>(
-                File.ReadAllText(ModInstallerCommon.Files.Modinstallerdir + jsontoload));
+                File.ReadAllText(Utilities.Modinstallerdir + jsontoload));
             return modList;
         }
 
@@ -158,12 +158,13 @@ namespace H3VRModInstaller.JSON
             var databaseinfo = GetDeserializedModListFormatOnline(Utilities.DatabaseInfo).Modlist[0].Dependencies;
 
 
-            if (DatabaseURLs != null) return DatabaseURLs;
+            if (DatabaseURLs != null) {return DatabaseURLs;}
 
             var _return = new string[0];
             var prefix = "";
             var x = 0;
             for (var i = 0; i < databaseinfo.Length; i++)
+            {
                 if (databaseinfo[i].Contains("https")) //string is prefix
                 {
                     prefix = databaseinfo[i];
@@ -175,6 +176,7 @@ namespace H3VRModInstaller.JSON
                     Console.WriteLine(_return[x]);
                     x++;
                 }
+            }
 
             DatabaseURLs = _return;
             return DatabaseURLs;

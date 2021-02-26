@@ -11,7 +11,7 @@ namespace H3VRModInstaller
     /// <summary>
     ///     MainClass, dunno what you expected
     /// </summary>
-    public class MainClass
+    public static class MainClass
     {
         
         
@@ -51,10 +51,6 @@ namespace H3VRModInstaller
 
             switch (inputargs[0])
             {
-                case "toggledebugging":
-                    ModInstallerCommon.enableDebugging = !ModInstallerCommon.enableDebugging;
-                    Console.WriteLine("Debugging is now " + ModInstallerCommon.enableDebugging);
-                    break;
                 case "wipe":
                     File.Delete(Utilities.ModCache);
                     Console.WriteLine("Wiped!");

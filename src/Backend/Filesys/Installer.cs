@@ -8,7 +8,7 @@ namespace H3VRModInstaller.Filesys
     /// <summary>
     ///     This class manages the installation of mods!
     /// </summary>
-    public class Installer
+    public static class Installer
     {
         /// <summary>
         ///     This function installs a mod based off the parameters provided. The first parameter is the an 5-length array which

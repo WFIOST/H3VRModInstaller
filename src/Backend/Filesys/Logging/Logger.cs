@@ -14,8 +14,8 @@ namespace H3VRModInstaller.Filesys.Logging
 			Console.SetError(sw);
             #endif
             
-            File.WriteAllText(ModInstallerCommon.Files.LogPath, writer.ToString());
-            Console.WriteLine($"Log Initialised, exporting to {ModInstallerCommon.Files.LogPath}");
+            File.WriteAllText(Utilities.LogPath, writer.ToString());
+            Console.WriteLine($"Log Initialised, exporting to {Utilities.LogPath}");
         }
     }
 }

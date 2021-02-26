@@ -7,7 +7,7 @@ namespace H3VRModInstaller.Filesys
     /// <summary>
     ///     Handles getting specific data from modfiles
     /// </summary>
-    public class ModParsing
+    public static class ModParsing
     {
         /// <summary>
         ///     Gets the mod info and dependencies of a deserialized <c>ModFile</c> class

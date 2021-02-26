@@ -6,7 +6,7 @@ using H3VRModInstaller.JSON;
 
 namespace H3VRModInstaller.Filesys 
 {
-    public class Disabler //written up by taters
+    public static class Disabler //written up by taters
     {
         /// <summary>
         ///     Takes modid, enables if disabled and disables if enabled

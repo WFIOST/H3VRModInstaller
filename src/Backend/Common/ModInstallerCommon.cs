@@ -19,22 +19,32 @@ namespace H3VRModInstaller.Common
         /// <summary>
         ///     Enables Debugging
         /// </summary>
-        public static bool enableDebugging = true;
-
-        /// <summary>
-        ///     Bypasses the check for H3VR.EXE
-        /// </summary>
-        public static bool BypassExec = false;
+        public static bool enableDebugging
+        {
+            get
+            {
+                #if DEBUG
+                return true;
+                #endif
+                return false;
+            }
+        }
 
         /// <summary>
         ///     Website used to ping to ensure internet access
         /// </summary>
-        public static string Pingsite = "www.github.com";
+        public const string Pingsite = "www.github.com";
 
         /// <summary>
         ///     Current version.
         /// </summary>
-        public static Version ModInstallerVersion = new(1, 0, 2);
+        public static Version ModInstallerVersion
+        {
+            get
+            {
+                return new Version(1, 1, 0);
+            }
+        }
 
 
         /// <summary>
@@ -42,7 +52,7 @@ namespace H3VRModInstaller.Common
         /// </summary>
         public static void DebugLog(string input)
         {
-            if (enableDebugging) Console.WriteLine(input);
+            if (enableDebugging) {Console.WriteLine(input);}
         }
 
         /// <summary>
@@ -72,25 +82,6 @@ namespace H3VRModInstaller.Common
             return strng;
         }
 
-        /// <summary>
-        ///     Useful fields for filesystem work
-        /// </summary>
-        public class Files
-        {
-            /// <summary>
-            ///     loc of the MI lists.
-            /// </summary>
-            public static string Modinstallerdir = Directory.GetCurrentDirectory() + @"/ModInstallerLists/";
-            
-            public static string DataDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\H3VR Mod Installer\\");
-
-            public static string ConfigFile = Path.Combine(DataDir + "config.H3VRMI");
-
-            public static string H3VRSteamLoc = "steam://rungameid/450540";
-            
-            public static string LogPath = Utilities.GameDirectory + "ModInstaller.log";
-        }
-        
         /// <summary>
         ///     Function that gets the overrides for debugging
         /// </summary>
@@ -142,11 +133,11 @@ namespace H3VRModInstaller.Common
             get
             {
                 // If the game isn't found, return null
-                if (scanned) return string.IsNullOrEmpty(_gameLocation) ? null : _gameLocation;
+                if (scanned) {return string.IsNullOrEmpty(_gameLocation) ? null : _gameLocation;}
                 scanned = true;
 
                 //lmao
-                if (!OperatingSystem.IsWindows()) return null;
+                if (!OperatingSystem.IsWindows()) {return null;}
 
                 // Get the main steam installation location via registry.
                 var steamDir =
@@ -154,7 +145,7 @@ namespace H3VRModInstaller.Common
                 if (string.IsNullOrEmpty(steamDir))
                     steamDir = Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Valve\Steam", "InstallPath",
                         "") as string;
-                if (string.IsNullOrEmpty(steamDir)) return null;
+                if (string.IsNullOrEmpty(steamDir)) {return null;}
 
                 // Check main steamapps library folder for h3 manifest.
                 var result = "";
@@ -176,7 +167,7 @@ namespace H3VRModInstaller.Common
                 }
 
                 _gameLocation = result;
-                if (!string.IsNullOrEmpty(_gameLocation)) return _gameLocation;
+                if (!string.IsNullOrEmpty(_gameLocation)) {return _gameLocation;}
                 MessageBox.Show(
                     "Could not auto-detect H3VR installation directory. Is your game installed outside Steam or pirated?",
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -231,6 +222,23 @@ namespace H3VRModInstaller.Common
 		/// </summary>
 		public static string GameDirectoryOrThrow => GameDirectory ?? throw new FileNotFoundException("Could not find game directory.");
 
+        public static string Modinstallerdir
+        {
+            get { return Directory.GetCurrentDirectory() + @"/ModInstallerLists/"; }
+        }
+
+        public static string DataDir
+        {
+            get {return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\H3VR Mod Installer\\");}
+        }
+
+        public static string ConfigFile{ get {return Path.Combine(DataDir + "config.H3VRMI");}}
+
+        private static string h3vrSteamLoc = "steam://rungameid/450540";
+        public static string H3VRSteamLoc {get {return h3vrSteamLoc;} set { h3vrSteamLoc = value; }} 
+            
+        public static string LogPath {get{return Utilities.GameDirectory + "ModInstaller.log";}} 
+        
         /// <summary>
         ///     Runs the tree command on the H3 directory for additional debugging
         /// </summary>

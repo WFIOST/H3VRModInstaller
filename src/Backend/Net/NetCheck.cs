@@ -6,7 +6,7 @@ namespace H3VRModInstaller.Net
     /// <summary>
     ///     Checks if you are online
     /// </summary>
-    internal class NetCheck
+    internal static class NetCheck
     {
         /// <summary>
         ///     Pings a URL (first param) with a timeout of 1000
