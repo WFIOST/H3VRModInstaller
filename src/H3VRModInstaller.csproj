@@ -26,6 +26,18 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Remove="Backend\Common\**" />
+    <Compile Remove="Backend\Filesys\**" />
+    <Compile Remove="Backend\Net\**" />
+    <Compile Remove="Frontend\**" />
+    <Compile Remove="Backend\JSON\installedMods.cs" />
+    <Compile Remove="Backend\JSON\JSONModList.cs" />
+    <Compile Remove="Form1.cs" />
+    <Compile Remove="Form1.Designer.cs" />
+    <Compile Remove="Program.cs" />
+    <Compile Remove="MainClass.cs" />
+    <Compile Remove="debugconsole.cs" />
+    <Compile Remove="debugconsole.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -33,12 +45,25 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <None Remove="Backend\Common\**" />
+    <None Remove="Backend\Filesys\**" />
+    <None Remove="Backend\Net\**" />
+    <None Remove="Frontend\**" />
   </ItemGroup>
 
   <ItemGroup>
     <Reference Include="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
       <HintPath>..\..\..\..\..\Windows\Microsoft.NET\assembly\GAC_MSIL\System.Windows.Forms\v4.0_4.0.0.0__b77a5c561934e089\System.Windows.Forms.dll</HintPath>
     </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="Backend\Common\**" />
+    <EmbeddedResource Remove="Backend\Filesys\**" />
+    <EmbeddedResource Remove="Backend\Net\**" />
+    <EmbeddedResource Remove="Frontend\**" />
+    <EmbeddedResource Remove="Form1.resx" />
+    <EmbeddedResource Remove="debugconsole.resx" />
   </ItemGroup>
 
 </Project>

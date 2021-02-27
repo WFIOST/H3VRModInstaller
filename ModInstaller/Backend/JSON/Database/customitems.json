@@ -1,0 +1,468 @@
+{
+  "modlistname": "Custom Item Mods",
+  "modlistid": "customitems",
+  "modlist": [
+    {
+      "modID": "pccg",
+      "Name": "Potatoes' Custom Guns",
+      "RawName": "PotatoesCustomGuns.zip",
+      "Author": [
+        "Potatoes"
+      ],
+      "Version": "7.0",
+      "Description": "Potatoes' Compiled Custom Guns, AKA PCCG, is a massive mod comprising of several dozen firearms made by me, Potatoes. The current list stands at (including variants):\n28 pistols,\n10 shotguns,\n11 SMGs,\n27 rifles,\n8 MGs,\nand two explosive devices.",
+      "Path": "https://bonetome.com/download.php?file=NGFmYTMxOWRjNmEwMTdhMSszNjUrNzUw",
+      "Website": "https://bonetome.com/h3vr/weapons/142/",
+      "Arguments": "unzipToDir?VirtualObjects/",
+      "DelInfo": "VirtualObjects/Potatoes' Custom Guns",
+      "Dependencies": [
+        "lsiic",
+        "h3vrutils"
+      ]
+    },
+    {
+      "modID": "modular",
+      "Name": "ModulAR",
+      "RawName": "modular.zip",
+      "Author": [
+        "KamikazeF0X"
+      ],
+      "Version": "1.0.0",
+      "Description": "Build your own AR how you want it!\nYou will find all the parts in Pistol > Lever Action",
+      "Path": "https://bonetome.com/download.php?file=MjgxMDkxOThkYTE0Mjg4MCszNjUrODUw",
+      "Website": "https://bonetome.com/h3vr/weapons/159/",
+      "Arguments": "unzipToDir?VirtualObjects/",
+      "DelInfo": "VirtualObjects/modular",
+      "Dependencies": [
+        "lsiic"
+      ]
+    },
+    {
+      "modID": "meatssidecharger",
+      "Name": "Turt's Side ChARger",
+      "RawName": "TurtsSidechARger.zip",
+      "Author": [
+        "Meat_Banono"
+      ],
+      "Version": "1.1.0",
+      "Description": "Its a ModulAR receiver but you grab it by the bolt.\nShoot it. Reload it. ch-CHUNK.\nFound in Pistols - Lever Action Handguns\nUse with my ARParts mod to make it usable\nMany thanks Turtle for the model and idea!",
+      "Path": "https://bonetome.com/download.php?file=OTI3NTY5Y2ZlYThiMzZkNCszNjUrOTQ2",
+      "Website": "https://bonetome.com/h3vr/weapons/184/",
+      "Arguments": "unzipToDir?VirtualObjects/",
+      "DelInfo": "VirtualObjects/SidechARger",
+      "Dependencies": [
+        "meatsmodularparts",
+        "lsiic"
+      ]
+    },
+    {
+      "modID": "meatsrigs",
+      "Name": "Meat's Rigs",
+      "RawName": "MeatsRigs.zip",
+      "Author": [
+        "Meat_Banono"
+      ],
+      "Version": "1.0.0",
+      "Description": "Meats Rigs is here! With 19 different flavors of tactical loot-hauling capability, these provide a fresh new take on the classic H3 floating quickbelt system. These range in slot capacity from a meager 4 to a back-breaking 20!\nThese are all found under Misc. -> Backpacks, as these all go into your backpack slot. They will conflict with most other quickbelt layouts, so I officially recommend using 'Concealed Carry' if you want extra weapons or 'Small Pockets' if you want a more extreme inventory juggling experience.\nLearn them all and their various quirks (like pistol holsters on the MK3, Blackrock, and TV109) and practice those reload drills!",
+      "Path": "https://bonetome.com/download.php?file=OGViNjM0MGVlOTUwMGYzNyszNjUrOTMw",
+      "Website": "https://bonetome.com/h3vr/weapons/176/",
+      "Arguments": "unzipToDir?VirtualObjects/",
+      "Dependencies": [
+        "lsiic"
+      ]
+    },
+    {
+      "modID": "meatsmags",
+      "Name": "Meat's Mags",
+      "RawName": "MeatsMagazines.zip",
+      "Author": [
+        "Meat_Banono"
+      ],
+      "Version": "1.3.8",
+      "Description": "Updated and improved with a new account! \nIt is my pleasure to bring you Meat's Magazines! I have knocked out dozens of magazines I wanted to see most in H3, and conveniently found all the assets...elsewhere online...\nThis update to Meat's Magazines adds literally another dozen or more magazines, I lost count honestly. That means more menus, more rounds, more fun!Now extended magazines have their own menu alongside miscellaneous magazines which I will continue to dump mags into as I make them.",
+      "Path": "https://bonetome.com/download.php?file=MzZmNmEzNDZmNzJhNDdiMiszNjUrODkw",
+      "Website": "https://bonetome.com/h3vr/weapons/170/",
+      "Arguments": "unzipToDir?VirtualObjects/",
+      "DelInfo": "VirtualObjects/Magazines",
+      "Dependencies": [
+        "lsiic"
+      ]
+    },
+    {
+      "modID": "meatsmodulsr",
+      "Name": "Meat's ModulSR",
+      "RawName": "MeatsModulSR1.1.zip",
+      "Author": [
+        "Meat_Banono"
+      ],
+      "Version": "1.1.0",
+      "Description": "It's big toy time. If 7.62x51mm can be considered a toy. Anyways, the SR-25 is here and it's ModulAR compatible! This rifle is full power and lets you know it, but recovers quickly from its higher recoil once kitted out so pace your shots. \nIn this pack are:\nSR25\n10 and 20 round magazines (compatible with P762 magazines)\n457mm and 558mm barrels\n3 handguards\n2 insane muzzlebrakes\nPure recoil (you'll see what I mean when you install this)",
+      "Path": "https://bonetome.com/download.php?file=YjQzZTQ1MTM2MDQ0ODg3MSszNjUrODgz",
+      "Website": "https://bonetome.com/h3vr/weapons/167/",
+      "Arguments": "unzipToDir?VirtualObjects/",
+      "DelInfo": "VirtualObjects/ModulSR",
+      "Dependencies": [
+        "lsiic",
+        "meatsmodularparts"
+      ]
+    },
+    {
+      "modID": "meatsmodulpp",
+      "Name": "Meat's ModulPP",
+      "RawName": "MeatsModulPP.zip",
+      "Author": [
+        "Meat_Banono"
+      ],
+      "Version": "1.0.0",
+      "Description": "The cold Russian winter brings another modular receiver forth. The PP-19 01 Vityaz Submachinegun!Chambered in 9x19mm with a high cyclic rate, this is a very comfortable and peppy AK-style SMG. \nThis is completely compatible with my ModulAK pack, and is needed for the pistolgrips. To install, drag and drop the folder into your VirtualObjects folder.\nIncluded in this little pack (all found under lever action pistols) are:\nPP-19 SMG\nSaiga 9 Carbine\nPP-19 30 rnd Magazine\n30 rnd Banana Magazine\nSaiga 9 10 rnd Magazine\nTwo dustcovers and PP-19 Muzzlebrake\nHappy plinking and gunsmithing!",
+      "Path": "https://bonetome.com/download.php?file=ODQ4YThkNDZjMGZhYzNmYSszNjUrODc3",
+      "Website": "https://bonetome.com/h3vr/weapons/165/",
+      "Arguments": "unzipToDir?VirtualObjects/",
+      "DelInfo": "VirtualObjects/ModulPP",
+      "Dependencies": [
+        "lsiic",
+        "meatsmodulak"
+      ]
+    },
+    {
+      "modID": "meatsmodulak",
+      "Name": "Meat's ModulAK",
+      "RawName": "MeatsModulAK1.1.zip",
+      "Author": [
+        "Meat_Banono"
+      ],
+      "Version": "1.1.0",
+      "Description": "It's here, and it's better than ever before. Meat's ModulAK, featuring advanced features like compressing springs and attachable folding stocks!\nIncluded in this mod are several things I said I wouldn't make, namely:\nAK74N in 5.45x39mm\nAK105 in 5.45x39mm\nAK103 in 7.62x39mm\nAK104 in 7.62x39mm\nAK101 in 5.56x45mm\nAK102 in 5.56x45mm\nAll ModulAK's can be found in lever action pistol category, alongside grips and dustcovers.\nModulAK Handguards are found under Attachments - Grips.\nModulAK Stocks are found under Attachments - Stocks.\nPlease use Meat's Magazines for extra compatible AK series magazines for your favorite builds!\nKnown issues - SFS adapter for AK74N will not fold, so it is just a static tube adapter for AR stocks.",
+      "Path": "https://bonetome.com/download.php?file=NzFhNzc3MWJiZjQ2OWJhOCszNjUrODYx",
+      "Website": "https://bonetome.com/h3vr/weapons/162/",
+      "Arguments": "unzipToDir?VirtualObjects/",
+      "DelInfo": "VirtualObjects/AKParts",
+      "Dependencies": [
+        "lsiic",
+        "h3vrutils"
+      ]
+    },
+    {
+      "modID": "meatsmodularparts",
+      "Name": "Meat's ModulAR Parts",
+      "RawName": "MeatsARParts.zip",
+      "Author": [
+        "Meat_Banono"
+      ],
+      "Version": "1.1.1",
+      "Description": "Welcome to Meat's Massive ModulAR Pack! This meaty pack expands on Kamikaze Fox's ModulAR platform with countless additional items; Receivers, Handguards, Stocks, Pistolgrips, this has it all. Please install Kamikaze's ModulAR for the base content like barrels.\nReceivers and Pistolgrips can be found under Pistol - Lever Action Handgun\nHandguards and grips are found under Attachments - Foregrips\nStocks are found under Attachments - Stocks\nTo install: follow all requirements for LSIIC and Sideloader, then drag the zip into your virtualobjects folder. If you don't have one, create one.\nHandy tips: Pistol grips are best detached by grabbing slightly in front of the bottom of the grip when attached.\nHandguards are best attached after barrels, and are easiest to attach in a quickbelt slot like your shoulder.",
+      "Path": "https://bonetome.com/download.php?file=NDU1MzQwZmVkOTA4YmYzYyszNjUrODQ3",
+      "Website": "https://bonetome.com/h3vr/weapons/157/",
+      "Arguments": "unzipToDir?VirtualObjects/",
+      "DelInfo": "VirtualObjects/ARParts",
+      "Dependencies": [
+        "lsiic",
+        "modular"
+      ]
+    },
+		{
+			"modID": "45turn",
+			"Name": "45 Degree Barrel Extentions",
+			"RawName": "45_turn.zip",
+			"Author": [
+				"KamikazeF0X"
+			],
+			"Version": "1.0.1",
+			"Description": "Guns always shoots forwards, and this is boring!\nThanks to this barrel extension, you will be able to curve your bullets!\nDue to how the game works, there is four attachments for the four directions you can put them in, Up, Down, Left and... Right, Right!\n(For some other reasons, muzzle flash always points forwards, I haven't got to figure out why)",
+			"Path": "https://bonetome.com/download.php?file=ZTQxZjg1NDAxZDY0NDhjNiszNjUrNzA3",
+			"Website": "https://bonetome.com/h3vr/weapons/124/",
+			"Arguments": "unzipToDir?VirtualObjects/",
+			"DelInfo": "VirtualObjects/45_turn?VirtualObjects/45_turn.manifest",
+			"Dependencies": [
+				"lsiic",
+				"modular"
+			]
+		},
+
+    {
+      "modID": "f2000",
+      "Name": "F2000 Tactical",
+      "RawName": "F2000T-1-01HF.zip",
+      "Author": [
+        "LioZuto"
+      ],
+      "Version": "1.0.1",
+      "Description": "Yes, the Tactical version of the infamous F2000.\nTop Rail, Side Rail and Suppressor Mount available.\nModel from ; P3DM\nF2000 Tactical is a proprietary of Fabrique National Herstal (FN Herstal).",
+      "Path": "https://bonetome.com/download.php?file=OGE1ZWNjNGM0MzNlYjVhNCszNjUrNjk5",
+      "Website": "https://bonetome.com/h3vr/weapons/118/",
+      "Arguments": "unzipToDir?VirtualObjects/",
+      "DelInfo": "VirtualObjects/f2000t",
+      "Dependencies": [
+        "lsiic"
+      ]
+    },
+    {
+      "modID": "meatsmodulmpx",
+      "Name": "Meat's ModulMPX and MCX",
+      "RawName": "MeatsModulMPX.zip",
+      "Author": [
+        "Meat_Banono"
+      ],
+      "Version": "1.1.1",
+      "Description": "The long awaited and requested SIG MPX and MCX! With several possible attachments I just had to make it modular, so included in this mod are: \nFor the MCX: Caliber conversions for .300 Blackout and 5.56, 2 Handguard lengths, 3 Barrels, 4 stocks and a tube stock adapter.\nFor the MPX: 6 different Handguards, accepts all MCX stocks, and if you have KamikazeFox's ModulAR Barrels (which I will say are required for this mod: https://bonetome.com/h3vr/weapons/159/) you have 6 barrel lengths as well!\nThere are also two SIG muzzle brakes and suppressors.\nThe ModulMPX and ModulMCX are found under Lever Action Handguns in the Pistols category. The Muzzle Devices are located under Suppressors.",
+      "Path": "https://bonetome.com/download.php?file=ZmZjNzFkZjA3NjM4NTI2NCszNjUrOTU1",
+      "Website": "https://bonetome.com/h3vr/weapons/187/",
+      "Arguments": "unzipToDir?VirtualObjects/",
+      "DelInfo": "VirtualObjects/ModulMPX",
+      "Dependencies": [
+        "lsiic"
+      ]
+    },
+    {
+      "modID": "meatsash12",
+      "Name": "Meat's ASh12",
+      "RawName": "Meat_sASh12.zip",
+      "Author": [
+        "Meat_Banono"
+      ],
+      "Version": "1.0.1",
+      "Description": "This 'High Caliber Assault Submachine Gun', which sounds like a child's nonsensical description is actually the Russian description of this prototype CQB firearm. Actually chambered in 12.7x55mm, this version is chambered for 45. 70 Govt as a substitute until custom ammo becomes doable. Similar in Kinetic Energy, this gun will slap around some sosigs.\nFound in the Assault Rifle Category, with 10, 20 round mags and an oversized muzzlebrake. I recommend the UZI suppressor as it is ludicrous in length.",
+      "Path": "https://bonetome.com/download.php?file=MGQ1OTVmZjQ5MGVjOWRiMSszNjUrMTE2OQ==",
+      "Website": "https://bonetome.com/h3vr/weapons/267/",
+      "Arguments": "unzipToDir?VirtualObjects/",
+      "DelInfo": "VirtualObjects/Meat'sASh12",
+      "Dependencies": [
+        "lsiic"
+      ]
+    },
+    {
+      "modID": "ebr",
+      "Name": "M14 EBR",
+      "RawName": "mk14+dcsb.zip",
+      "Author": [
+        "Carkidd"
+      ],
+      "Version": "1.0.0",
+      "Description": "If you say someone can't have something, it just makes them want it more.\nI present the Mk14 Enhanced Battle Rifle, specifically the Rock Island Arsenal version ordered for the US Army from 2008-2011.\nTo install, drop the files in the zip into the VirtualObjects folder. The EBR can be found under Battle Rifles and the DCSB under Rail Extenders.\nAlso includes the Sage Detachable Cantilever Sight Base, a rail extension designed to fit over the ejection port. I've made it attachable to any rail, so feel free to use it in whatever freaky creation you desire. \n\nFeatures \n\n-fully functional rails, including that weird one above the pistol grip\n-barrel/suppressor mount - note that this removes both the muzzle brake and front irons, as they're integral to each other. No simple way around it other than some fuckery with a new front sight post, so use pic rail irons if you want. \n-glowing front sight that makes the irons actually usable\n-collapsible buttstock \n-AR-15 like button bolt release, unlike the base M14",
+      "Path": "https://bonetome.com/download.php?file=YzM2MTcyN2ZlYTRjNWRhNiszNjUrODg4",
+      "Website": "https://bonetome.com/h3vr/weapons/169/",
+      "Arguments": "unzipToDir?VirtualObjects/",
+      "DelInfo": "VirtualObjects/mk14 ebr",
+      "Dependencies": [
+        "lsiic"
+      ]
+    },
+    {
+      "modID": "meatsmodulm4",
+      "Name": "Meats ModulM4",
+      "RawName": "MeatsModulM4.zip",
+      "Author": [
+        "MeatBanono",
+        "NotWolfie"
+      ],
+      "Version": "1.0.0",
+      "Description": "This is the next level of modularity, the ModulM4!! Complete control over what lower receiver, charging handle, and upper receiver you want in your M4. As always, Kamikaze's ModulAR is required for barrels and my ARParts mod for more AR parts.\nIncluded in this mod are:\nM4 and ADAR (semi auto only) lower receivers\n4 Upper Heceivers\n5 Charging Handles\n\nWhen it comes to building your dream M4, I recommend attaching to your lower in this order: Bolt -> Charging handle -> Upper receiver. This will be the smoothest process. Place them more or less where you think they should go, and they should snap into place.\nSome minor issues: Due to how attachments work in H3, Fores and Barrels technically attach to the lower receiver, not the upper. Other minor issues: Visual stuff that works on vanilla AR's like dustcover interaction and charging handle latch rotation does not work for now.",
+      "Path": "https://bonetome.com/download.php?file=MGI3M2Y4ZGUwMjM5OWI2NyszNjUrOTYw",
+      "Website": "https://bonetome.com/h3vr/weapons/188/",
+      "Arguments": "unzipToDir?VirtualObjects/",
+      "DelInfo": "VirtualObjects/ModulAR2.0",
+      "Dependencies": [
+        "lsiic",
+        "meatsmodularparts"
+      ]
+    },
+    {
+      "modID": "meatsmemes",
+      "Name": "Meats Memes",
+      "RawName": "Meatsmemes.zip",
+      "Author": [
+        "MeatBanono"
+      ],
+      "Version": "1.0.0",
+      "Description": "memes",
+      "Path": "https://bonetome.com/download.php?file=Mzg2Y2U2ZDE5ZWNlYjIxMSszNjUrOTcy",
+      "Website": "https://bonetome.com/h3vr/weapons/191/",
+      "Arguments": "unzipToDir?VirtualObjects/",
+      "DelInfo": "VirtualObjects/memes",
+      "Dependencies": [
+        "lsiic"
+      ]
+    },
+    {
+      "modID": "meatsasp",
+      "Name": "Meat's ASP",
+      "RawName": "MeatsASP.zip",
+      "Author": [
+        "Meat Banono",
+        "Tactical Loon"
+      ],
+      "Version": "1.0.1",
+      "Description": "This unique, sneaky cold-war era subcompact 9mm pistol has infiltrated H3VR! The ASP 9mm pistol features guttersnipe sights, transparent lexan side panels, and a 7 round single stack magazine that requires H3Utils to work.\nThe ASP can be found under automatic pistols.\nA separate, larger picatinny guttersnipe sight can be found under the iron sights category.\nI DO NOT recommend this pistol for any engagements beyond 15m without extensive practice or a high resolution VR headset. Please use the second image as reference for aiming with the ASP's sight, straight from the manual.\nMassive thanks to Tactical Loon for the model and Drummerdude2003 for the texturing.",
+      "Path": "https://bonetome.com/download.php?file=NDdjYTVlZTE2ZTVhNDE0ZCs0NDErMTA1Nw==",
+      "Website": "https://bonetome.com/h3vr/weapons/218/",
+      "Arguments": "unzipToDir?VirtualObjects/",
+      "Dependencies": [
+        "lsiic",
+        "h3vrutils"
+      ]
+    },
+    {
+      "modID": "ACF",
+      "Name": "FTW Arms Foregrips",
+      "RawName": "AndrewsForegrips.zip",
+      "Author": [
+        "Andrew_FTW",
+        "Meat Banono"
+      ],
+      "Version": "1.1",
+      "Description": "A nice collection of some new foregrips! And for those who have been modding for a while will notice, the CQR is back!\nIncludes the:\n-BCM (Black and Tan)\n-Cobra AFG\n-CQR\n-RK1\n-RK2\n-RK6\n-TD",
+      "Path": "https://bonetome.com/download.php?file=M2MyODRlMWU4NWI5ZjE3MCsxMzY3KzExMDk=",
+      "Website": "https://bonetome.com/h3vr/weapons/242/",
+      "Arguments": "unzipToDir?VirtualObjects/",
+      "Dependencies": [
+        "lsiic"
+      ]
+    },
+		{
+			"modID": "fnx",
+			"Name": "FN FNX-45 Tactical FDE",
+			"RawName": "FNX45.zip",
+			"Author": [
+				"Shampooh"
+			],
+			"Version": "1.2.0",
+			"Description": "The FNX-45 Tactical in FDE and now black, now for your VR shootin. Features of a full set of custom handling and firing sounds, as well as a LAM, suppressor, and working slide cap. Just bring any attachment near the slide cap to hide it and attach an optic or whatever else you'd like.",
+			"Path": "https://bonetome.com/download.php?file=YWQwOTIxYzhiNTExNGRkYSsxNTk5KzExNjM=",
+			"Website": "https://bonetome.com/h3vr/weapons/265/",
+			"Arguments": "unzipToDir?mods/",
+			"DelInfo": "mods/FNX45.h3mod",
+			"Dependencies": [
+				"sideloader"
+			]
+		},
+
+
+    {
+      "modID": "meatsshotguns",
+      "Name": "Meat's ModulShotguns",
+      "RawName": "MeatsModul870.zip",
+      "Author": [
+        "Meat_Banono",
+        "Tacticalloon",
+        "PretendTurtle"
+      ],
+      "Version": "1.0.2",
+      "Description": "BLAM CH-CHUNK BLAM CH-CHUNK BLAM\nIt's ModulShotgun time! 4 receivers, dozens of parts, and whole lot of shells! This shotgun show stars:\nModul870, the Remington Classic!\nModulMP133, Baikal pump action from Russia!\nModulMP153, the MP133's semi auto comrade!\nModulIthaca, hot 20ga. slam fire action!\nAll of these can be found in the tube-fed shotguns category, and are complemented by a suite of chokes in the muzzle attachments category as well. There is also a Chainsaw grip for the memes in the foregrip category as well.\nTo detach these parts:\nPumps: Grab just behind the pumps to detach.\nStocks: Grab just above where the stock meets the receiver\nBarrels: Grab right at the base of the barrel.\nMag tubes: Grab right where they attach.\nBlast away!",
+      "Path": "https://bonetome.com/download.php?file=OGZjMjdjNjkzNWM3NDkyZSs0NDErMTIzMA==",
+      "Website": "https://bonetome.com/h3vr/weapons/271/",
+      "Arguments": "unzipToDir?VirtualObjects/",
+      "DelInfo": "VirtualObjects/MeatsModul870",
+      "Dependencies": [
+        "lsiic",
+        "h3vrutils"
+      ]
+    },
+		{
+			"modID": "notwolfiesmuzzles",
+			"Name": "FOXArms Muzzles",
+			"RawName": "FOXArmsMuzzles0.7.2.zip",
+			"Author": [
+				"NotWolfie",
+				"Meat_Banono"
+			],
+			"Version": "0.7.2",
+			"Description": "Thanks to Potatoes , AndrewFT, @Warlord Soulbro of the Melon and Meatbanono , I present..\n\nFOXARMS Attachments (Muzzles and Supressors)\nVersion 0.7.2\n\nMore muzzles and supressors are coming! Don't think I'm done yet!\n\nCurrently added\n- Gemtech One (Scales)\n- Rotor 43 (Scales)\n- Titan Muzzle Combo (Muzzle and Supressor, Non-scale)\n- Daniel Defence Combo (Muzzle and Supressor, Non-scale)\n- Colt AR15 Flash-hider (Non-scale)\n- GK-02 Shotgun Muzzle (Non-Scale)\n- Fischer Glock Supressor (Has an attachment point)\n- Alpha Dog (Has an attachment point)\n- Vendetta Muzzle Brake\n- CQB Muzzle Brake\n- Titanium Compensator\n- SRD Supressor ",
+			"Path": "https://bonetome.com/download.php?file=YTU3YTU4NjcyODc3MjYwNSszNjUrMTIzNQ==",
+			"Website": "https://bonetome.com/h3vr/weapons/273/",
+			"Arguments": "unzipToDir?VirtualObjects/",
+			"DelInfo": "VirtualObjects/muzzles",
+			"Dependencies": [
+				"lsiic"
+			]
+		},
+		{
+			"modID": "ftwarmsvpo215",
+			"Name": "FTW Arms VPO-215",
+			"RawName": "VPO-215.zip",
+			"Author": [
+				"Andrew_FTW"
+			],
+			"Version": "1.2",
+			"Description": "Here is the VPO-215! A tarkov favorite for many.",
+			"Path": "https://bonetome.com/download.php?file=MWQ2ZmRlZWU1Yjk0ZTNmMCszNjUrMTI0OQ==",
+			"Website": "https://bonetome.com/h3vr/weapons/279/",
+			"Arguments": "unzipToDir?VirtualObjects/",
+			"DelInfo": "VirtualObjects/VPO215/",
+			"Dependencies": [
+				"lsiic"
+			]
+		},
+		{
+			"modID": "carkiddaps",
+			"Name": "'Stechkin' APS",
+			"RawName": "StechkinAPS.zip",
+			"Author": [
+				"Carkidd"
+			],
+			"Version": "1.0.1",
+			"Description": "'I just want to be less of a burden...'\nIntended for vehicle crews and artillerymen, this Russian machinepistol is surprisingly practical in game- using both hands, it can be fired on full auto with good accuracy, and the wire stock and suppressor turn it into quite a handy little PDW. Comes with a 20 round magazine. The only thing holding it back is the lack of AP ammo in 9x18 in game. \nDue to code limitations on the game's handgun script, I am unable to get the proper three position selector/decocker and SA/DA operation (somehow broken on full auto pistols)- therefore, the weapon only has semi and full selector positions and is single action. Doesn't change much gameplay wise, just an inaccuracy. ",
+			"Path": "https://bonetome.com/download.php?file=MGE3YmZiZTJlZjNhZTJhYiszNjUrMTI2MQ==",
+			"Website": "https://bonetome.com/h3vr/weapons/281/",
+			"Arguments": "unzipToDir?Mods/",
+			"DelInfo": "Mods/StechkinAPS.hotmod",
+			"Dependencies": [
+				"sideloader"
+			]
+		},
+		{
+			"modID": "ftwarmssupershotgun",
+			"Name": "FTW Arms Super Shotgun",
+			"RawName": "SuperShotgun.zip",
+			"Author": [
+				"Andrew_FTW"
+			],
+			"Version": "1.1.0",
+			"Description": "In the first age, in the first battle, when the shadows first lengthened, one stood. Charred by the embers of the Barbecue, his meat cooked by the fires of Hell and burned beyond consumption, he chose the path of perpetual torment. In his ravenous hatred he found no peace; and with broiling mustard he scoured the Meatmas Plains seeking vengeance against the Dark Meats who had wronged him. He wore the crown of the Bratwurst Sosigs, and those that tasted the bite of his fork named him... the Beef Slayer.\nThanks to Chargin for the beefy shotgun sounds",
+			"Path": "https://bonetome.com/download.php?file=MTBmNGQ1ZmZkYmVjODI0NCszNjUrMTI2Mw==",
+			"Website": "https://bonetome.com/h3vr/weapons/282/",
+			"Arguments": "unzipToDir?VirtualObjects/",
+			"DelInfo": "VirtualObjects/SuperShotgun",
+			"Dependencies": [
+				"lsiic"
+			]
+		},
+		{
+			"modID": "ftwarmsammoboxes",
+			"Name": "FTW Arms Ammo Boxes",
+			"RawName": "FTWArmsammoboxes.zip",
+			"Author": [
+				"Andrew_FTW"
+			],
+			"Version": "1.1.0",
+			"Description": "Tired of carrying piles of loose shells in your backpack? Wish you could hold more bullets in those large quickbelt slots? Do I have the mod for you! FTW Arms brand Ammo boxes comes with 5 brand new boxes of ammunition, including 9x19, 12 gauge, 5.45x39, 23x75mm, and 5.56x45, with more on the way in future updated! \n\nNOTE: \nTHE BOXES ARE FOUND UNDER MUZZLE LOADER RIFLES",
+			"Path": "https://bonetome.com/download.php?file=NzkxNDc3YjkwMzkwZTUyNCszNjUrMTMwNQ==",
+			"Website": "https://bonetome.com/h3vr/weapons/301/",
+			"Arguments": "unzipToDir?VirtualObjects/",
+			"DelInfo": "VirtualObjects/FTW Arms ammo boxes",
+			"Dependencies": [
+				"lsiic"
+			]
+		},
+		{
+			"modID": "meatsmvp",
+			"Name": "Meat and Melon's MVP",
+			"RawName": "MelonVP.zip",
+			"Author": [
+				"Meat_Banono",
+				"Tacticalloon",
+				"Nikpo",
+				"Melon The Gunwarden"
+			],
+			"Version": "1.0.0",
+			"Description": "The biggest collab to date in H3!\nMelon's personal Mossberg MVP is in H3VR under the bolt action rifle category! Accepting 5.56 stanag mags in green polymer and ash wood, and 7.62 M14 mags in black polymer and beautifully oiled wood.\nThere is also a hidden bipod attach point towards the front that requires H3 Utils for a neat appear-on-attach feature!",
+			"Path": "https://bonetome.com/download.php?file=NWZkMDgzZGYyNGI0OWZhZSszNjUrMTMyMw==",
+			"Website": "https://bonetome.com/h3vr/weapons/304/",
+			"Arguments": "unzipToDir?VirtualObjects/",
+			"DelInfo": "VirtualObjects/MelonVP",
+			"Dependencies": [
+				"lsiic",
+				"h3vrutils"
+			]
+		}
+  ]
+}

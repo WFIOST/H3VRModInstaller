@@ -1,0 +1,135 @@
+{
+	"modID": "gunshields",
+	"Name": "Gunshields",
+	"RawName": "gunshields1.0.2.7z",
+	"Author": [
+		"Carkidd"
+	],
+	"Version": "1.0.0",
+	"Description": "First off, thanks a ton to notcolin17 for creating these wonderful models.\nFight back against the hotdog menace with these two gun shields. The newer one offers easy viewing through its glass panels, while the old one allows use of iron sights with its center cutout. They are attachable to any picatinny rail, and can be found at the end of the list under Attachments > Decorative\nThese will block most gunfire from the front- some shots may slip around, especially with the old style shield, but overall you'll be protected from the enemy, especially at range. Some sosig guns, mainly the snipers, will penetrate, so watch out! \nNOTICE: Will lag quite badly with more than one shield attached when in Direct simulation mode! Switch to floating mode in the options panel under Simulation/Game options to remedy- my testing on my pretty weak PC let me get to at least 8 shields without much lag when moving. Make sure to reload the scene to finish changing this setting!\nKnown issues:\nThe modern shield freaks out and flies off a bit when spawning- this is just due to its positioning when it spawns in and I'm not sure how to change that! ",
+	"Path": "https://bonetome.com/download.php?file=MGI3M2Y4ZGUwMjM5OWI2NyszNjUrOTYw",
+	"Website": "https://bonetome.com/h3vr/weapons/193/",
+	"Arguments": "unzipToDir?VirtualObjects/",
+	"Dependencies": [
+		"lsiic"
+	]
+},
+{
+"modID": "greenscreen",
+"Name": "Greenscreen Map",
+"RawName": "Generic-ItemPosing.7z",
+"Author": [
+"TylerS76"
+],
+"Version": "1.0.1",
+"Description": "Greenscreen map for item posing and thumbnails.\nRequires WurstMod.\nMessage me on discord for questions and concerns: TylerS76#2974.",
+"Path": "https://bonetome.com/download.php?file=YjVmNzY4MTUyMGE0NmYzOSszNjUrNjQw",
+"Website": "https://bonetome.com/h3vr/map/103/",
+"Arguments": "unzipToDir?CustomLevels/Generic/",
+"Delinfo": "CustomLevels/Generic/Generic-Item Posing/",
+"Dependencies": [
+"wurstmod"
+]
+},
+{
+"modID": "scavsigvoicelines",
+"Name": "Scavsig Voicelines",
+"RawName": "ScavsigVoices.rar",
+"Author": [
+"meat_banono"
+],
+"Version": "1.0.0",
+"Description": "For the new PMC Pete character in Take and Hold Tweaker I give you Scavsig voicelines! All 335 voicelines hand picked by yours truly for the most vulgar, realistic, and hardcore Russian experience.\nPlace the .hotmod inside your mods folder to install.",
+"Path": "https://bonetome.com/download.php?file=MWE4YTBkMTQ5ZDNhYzk5NiszNjUrODk3",
+"Website": "https://bonetome.com/h3vr/characters/172/",
+"Arguments": "unzipToDir?Mods/",
+"DelInfo": "Mods/ScavsigVoices.hotmod",
+"Dependencies": [
+"sideloader"
+]
+},
+{
+"modID": "tavor21",
+"Name": "Tavor 21",
+"RawName": "tar21.rar",
+"Author": [
+"sgt.brooks"
+],
+"Version": "1.0.1",
+"Description": "flip up sights work but one in rear clips because cant do angles ",
+"Path": "https://bonetome.com/download.php?file=ZDE5YmQ3Y2UyMTYxY2Y2ZSszNjUrNzI3",
+"Website": "https://bonetome.com/h3vr/weapons/135/",
+"Arguments": "unzipToDir?VirtualObjects/",
+"DelInfo": "VirtualObjects/tar21",
+"Dependencies": [
+"lsiic"
+]
+},
+{
+"modID": "hkg28",
+"Name": "H&K G28 DMR",
+"RawName": "g28.rar",
+"Author": [
+"sgt.brooks"
+],
+"Version": "1.0.2",
+"Description": "This is heckler koch g28 based off the hk417 7.62x51\nWorking front and rear flip up sights.\nhas it own mags also works with p762 pmags ",
+"Path": "https://bonetome.com/download.php?file=NmNlMWQ1MjE4MzRkNjRlYSszNjUrNjk4",
+"Website": "https://bonetome.com/h3vr/weapons/117/",
+"Arguments": "unzipToDir?VirtualObjects/",
+"DelInfo": "VirtualObjects/g28",
+"Dependencies": [
+"lsiic"
+]
+},
+{
+"modID": "hk416pack",
+"Name": "HK416 Pack",
+"RawName": "hk416_pack.rar",
+"Author": [
+"sgt.brooks"
+],
+"Version": "1.0.1",
+"Description": "HAS\n416C\n416A5\n416",
+"Path": "https://bonetome.com/download.php?file=OWM4M2M2YWNlMzZhZDhlZCszNjUrNzU1",
+"Website": "https://bonetome.com/h3vr/weapons/145/",
+"Arguments": "unzipToDir?VirtualObjects/",
+"DelInfo": "VirtualObjects/hk416_pack",
+"Dependencies": [
+"lsiic"
+]
+},
+{
+"modID": "bratwurstbernie",
+"Name": "Bratwurst Bernie",
+"RawName": "BratwurstBernieV1.1.rar",
+"Author": [
+"LqdVR"
+],
+"Version": "1.1.0",
+"Description": "This character features all guns from Germany, Austria and Switzerland from turn of the century, WWI, WWII, crazy cold war space guns all the way up to modern classics.\nLoot progression is loosely based on default type characters, with weakest guns at the start, the further you get, the more firepower you will gain.\nOh and I threw in some swanky MP5 foregrips and germanic(probably) medieval weapons for good measure.\nThe level difficulty is also mostly based on the standard enemy and encryption progression with some tweaks for slighty better playability.\nTested on Update 96.\nStandard and limited ammo has been tested pretty thoroughly, endless not so much.\nAnyway let me know if you run into some problems or feel like there could be tweaks or improvements.",
+"Path": "https://bonetome.com/download.php?file=MDEyYzgxYzQ1YTUyOTJlYSszNjUrODY2",
+"Website": "https://bonetome.com/h3vr/characters/164/",
+"Arguments": "unzipToDir?Mods/",
+"DelInfo": "Mods/BratwurstBernie.deli",
+"Dependencies": [
+"tnhtweaker"
+]
+},
+{
+"modID": "completelyfuckedcarl",
+"Name": "Completely Fucked Carl",
+"RawName": "CompletelyFuckedCarl.rar",
+"Author": [
+"ilgmesh"
+],
+"Version": "1.0.0",
+"Description": "GTA SA style gang wars, static encryption only\n- Ballas, Vagos, Triads and Police, each round introduces a new gang and they're all hostile towards each other\n- GTA SA pistols mostly drop from Ballas and Vagos, most of the other SA weapons will randomly drop from the Triads and Police\n- Lots of meat to shoot\nPROBABLY works best with spawnlock enabled, but there is a free riot shield at the beginning if you're a fan of always being out of ammo",
+"Path": "https://bonetome.com/download.php?file=NjM1ZTNhYmQ3ZGM3OTgyYyszNjUrMTAwNQ==",
+"Website": "https://bonetome.com/h3vr/characters/199/",
+"Arguments": "unzipToDir?Mods/",
+"DelInfo": "Mods/CompletelyFuckedCarl",
+"Dependencies": [
+"tnhtweaker"
+]
+},

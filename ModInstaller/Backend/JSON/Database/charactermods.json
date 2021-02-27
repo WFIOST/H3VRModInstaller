@@ -1,0 +1,207 @@
+{
+  "modlistname": "Character Mods",
+  "modlistid": "charactermods",
+	"modlist": [
+		{
+			"modID": "comradekolbosa",
+			"Name": "Comrade Kolbosa",
+			"RawName": "ComradeKolbasa.zip",
+			"Author": [
+				"devyndamonster"
+			],
+			"Version": "1.4.0",
+			"Description": "A character which can only use russian and czech weaponry",
+			"Path": "https://github.com/devyndamonster/TakeAndHoldTweaker/releases/download/v1.4.0/",
+			"Website": "https://github.com/devyndamonster/TakeAndHoldTweaker/releases/tag/v1.4.0",
+			"Arguments": "moveToFolder?ComradeKolbasa.zip?Mods/?ComradeKolbasa.zip",
+			"DelInfo": "Mods/ComradeKolbasa.zip",
+			"Dependencies": [
+				"tnhtweaker"
+			]
+		},
+		{
+			"modID": "pmcpete",
+			"Name": "PMC Pete",
+			"RawName": "PMCPete(UNZIPME).zip",
+			"Author": [
+				"devyndamonster"
+			],
+			"Version": "1.4.4",
+			"Description": "Welcome To Tarkov!\n This character is themed around the game Escape From Tarkov. Start out as a hatchet runner, and take on increasingly difficult enemies. Enemies can drop items and equipment. Additionally, each round has a chance for a scav boss to spawn as a patrol. These bosses are very difficult, but will always drop some kind of item. - Meats ASh-12 - https://bonetome.com/h3vr/weapons/267/\n- Meats ModulMCX and ModulMPX - https://bonetome.com/h3vr/weapons/187/\n- Meats Rigs - https://bonetome.com/h3vr/weapons/176/\n- Meats Magazines - https://bonetome.com/h3vr/weapons/170/\n- Carkidds Mk14 EBR - https://bonetome.com/h3vr/weapons/169/\n- Meats ModulSR - https://bonetome.com/h3vr/weapons/167/\n- Meats ModulPP19 - https://bonetome.com/h3vr/weapons/165/\n- Meats ModulAK - https://bonetome.com/h3vr/weapons/162/\n- KamikazeFOXs ModulAR - https://bonetome.com/h3vr/weapons/159/\n- Meats ModulAR Parts - https://bonetome.com/h3vr/weapons/157/\n- Potatoes Gun Mod - https://bonetome.com/h3vr/weapons/142/ \n (The actual verison is v1.1.2, it's been set to 1.4.2 to recognize 1.4.0 as outdated.)",
+			"Path": "https://bonetome.com/download.php?file=ZWM1MThmZTdiMzNmMDZkYiszNjUrMTIxNg==",
+			"Website": "https://bonetome.com/h3vr/characters/269/",
+			"Arguments": "unzipToFolder?Mods/",
+			"DelInfo": "Mods/PMCPete.deli",
+			"Dependencies": [
+				"tnhtweaker",
+				"meatsash12",
+				"meatsmodulmpx",
+				"meatsrigs",
+				"meatsmags",
+				"ebr",
+				"meatsmodulsr",
+				"meatsmodulpp",
+				"meatsmodulak",
+				"modular",
+				"meatsmodularparts",
+				"pccg"
+			]
+		},
+		{
+			"modID": "timetraveltimmy",
+			"Name": "Time Travel Timmy",
+			"RawName": "TimeTravelTimmy.zip",
+			"Author": [
+				"devyndamonster"
+			],
+			"Version": "1.4.0",
+			"Description": "Progress through each age of weaponry, from wild west to modern",
+			"Path": "https://github.com/devyndamonster/TakeAndHoldTweaker/releases/download/v1.4.0/",
+			"Website": "https://github.com/devyndamonster/TakeAndHoldTweaker/releases/tag/v1.4.0",
+			"Arguments": "moveToFolder?TimeTravelTimmy.zip?Mods/?TimeTravelTimmy.zip",
+			"DelInfo": "Mods/TimeTravelTimmy.zip",
+			"Dependencies": [
+				"tnhtweaker"
+			]
+		},
+		{
+			"modID": "scifisofia",
+			"Name": "Sci-Fi Sofia",
+			"RawName": "SciFiSofia.zip",
+			"Author": [
+				"SirPotatos"
+			],
+			"Version": "1.0.1",
+			"Description": "Sci-Fi Sofia wields futuristic weapons! All sci-fi guns (vanilla and custom) appear in her weapon pools. The weapon pools also have many real guns that have been used in science fiction works or that look futuristic. Enemy progression is currently same as Operator Ori, but will be tweaked later on.\nIf you have a cool sci-fi vault creation and want it included, send me the vault file on the H3 Homebrew Discord (preferably the json vault file that TNHTweaker generates, and with no magazine in the gun). \nThe custom weapons listed below are highly recommended. They are NOT required to play Sofia, but will add more variety to the weapon pools:\nModulAR:  https://bonetome.com/h3vr/weapons/159/ \nMeat’s ModulAR Parts:  https://bonetome.com/h3vr/weapons/157/ \nModulM4:  https://bonetome.com/h3vr/weapons/188/ \nModulSR:  https://bonetome.com/h3vr/weapons/167/\nOutbreak Perfected:  https://bonetome.com/h3vr/weapons/111/ \nHalo: Basic Infantry Weapons:  https://bonetome.com/h3vr/weapons/153/ \nMk14 EBR:  https://bonetome.com/h3vr/weapons/169/ \nTavor 21:  https://bonetome.com/h3vr/weapons/135/\nDesert \nTech MDR:  https://bonetome.com/h3vr/weapons/144/ \nAr-57:  https://bonetome.com/h3vr/weapons/143/ \nF2000 Tactical:  https://bonetome.com/h3vr/weapons/118/",
+			"Path": "https://bonetome.com/download.php?file=ZjNmZDcwNTRhZDVjYjI5YSszNjUrOTk3",
+			"Website": "https://bonetome.com/h3vr/characters/197/",
+			"Arguments": "moveToFolder?SciFiSofia.zip?Mods/?SciFiSofia.zip",
+			"DelInfo": "Mods/SciFiSofia.zip",
+			"Dependencies": [
+				"tnhtweaker"
+			]
+		},
+		{
+			"modID": "johnwurst",
+			"Name": "John Wurst",
+			"RawName": "JohnWurst.zip",
+			"Author": [
+				"SirPotatos"
+			],
+			"Version": "1.0.1",
+			"Description": "You ever wanted to be just like John Wick? Well, you can't. No one is THAT good. BUT, you can totally LARP as John Wick with this new TNH character: John Wurst!!! \nJohn Wurst's weapon pools ONLY include guns that John Wick has used in the movies. When you buy a gun from the supply room, it will come kitted out exactly like it was in the movie when John used it.\nAdditionally, custom sosigs have been created to mirror the kinds of enemies that John faces in the three movies. Early sosigs, for example, will be unarmored and have pistols only. But beware the final holds when the High Table enforcers kick in the door.\nREQUIRES TNHTWEAKER 1.4 OR HIGHER!\nSeveral modded guns are required for this character:\n- ModulAR https://bonetome.com/h3vr/weapons/159/\n- Meat's ModulARParts https://bonetome.com/h3vr/weapons/157/\n- Meat's ModulMPX https://bonetome.com/h3vr/weapons/187/ (Add “Evo3” to your magazine blacklist in your TNHTweaker folder if you want the MPX to spawn with MPX mags instead of Evo3 mags.)\n- Potato’s Compiled Custom Guns https://bonetome.com/h3vr/weapons/142/",
+			"Path": "https://bonetome.com/download.php?file=OTI3NDIwMzcyMjJmNmRhNSszNjUrOTgw",
+			"Website": "https://bonetome.com/h3vr/characters/195/",
+			"Arguments": "moveToFolder?JohnWurst.zip?Mods/?JohnWurst.zip",
+			"DelInfo": "Mods/JohnWurst.zip",
+			"Dependencies": [
+				"tnhtweaker"
+			]
+		},
+
+		{
+			"modID": "greatwargunther",
+			"Name": "Great War Gunther",
+			"RawName": "GreatWarGunther.zip",
+			"Author": [
+				"VolkswagenBeatle"
+			],
+			"Version": "1.0.7",
+			"Description": "Hello everyone! This is Great War Gunther, my first character. It's a WWI themed character with progression based off of GI Grayson. Please make sure you are using the latest version of TnHTweaker and that you are on the alpha branch. Remember to report any bugs or other issues to me, as well as give feedback! One last thing, Limited ammo is very hard and endless hasn't been tested fully, so report any issues there.",
+			"Path": "https://bonetome.com/download.php?file=OTE5NDUyYWJhMTRiMGRmYSszNjUrODYy",
+			"Website": "https://bonetome.com/h3vr/characters/163/",
+			"Arguments": "moveToFolder?GreatWarGunther.zip?Mods/?GreatWarGunther.zip",
+			"DelInfo": "Mods/GreatWarGunther.zip",
+			"Dependencies": [
+				"tnhtweaker",
+				"doomboxsgermanuniforms"
+			]
+		},
+		{
+			"modID": "allrounderrandy",
+			"Name": "All Rounder Randy",
+			"RawName": "AllRounderRandyv2.5.0.zip",
+			"Author": [
+				"Jessica"
+			],
+			"Version": "2.5.0",
+			"Description": "\nThe first custom character ever made (aside from Devyn's, of course...) is now the first on Bonetome! Unless someone else has snuck their way in before me.\nAll Rounder Randy is arguably the custom character which comes closest to vanilla gameplay, specifically Classic Loadout Louis, but features custom Sosigs and an altered progression, there is a lot less getting screwed over because your luck was bad, and you'll find things you never would've got in most other vanilla characters",
+			"Path": "https://bonetome.com/download.php?file=ZDA4ZjhlOWU3NjczYjE5Mis0NDErODYw",
+			"Website": "https://bonetome.com/h3vr/characters/161/",
+			"Arguments": "unzipToDir??moveToFolder?All Rounder Randy/Mods/?/?Mods/?moveToFolder?All Rounder Randy/TNH_Tweaker/?/?TNH_Tweaker/",
+			"DelInfo": "Mods/AllRounderRandy",
+			"Dependencies": [
+				"tnhtweaker"
+			]
+		},
+		{
+			"modID": "bjblazkomeat",
+			"Name": "B.J Blazkomeat",
+			"RawName": "BJBlazkomeat.zip",
+			"Author": [
+				"Sam Harper"
+			],
+			"Version": "1.0.0",
+			"Description": "A Wolfenstein 3D inspired custom character for TnH, use a limited arsenal based on the 1992 Dos Game as you dodge patrolling castle guards.\nIf balancing is bad or there are bugs let me know, I plan to make some changes in the future when I have free time.",
+			"Path": "https://bonetome.com/download.php?file=MzFjYzJlZGVjMDllNzExNCszNjUrMTAyOA==",
+			"Website": "https://bonetome.com/h3vr/characters/203/",
+			"Arguments": "moveToFolder?BJBlazkomeat.zip?Mods/?BJBlazkomeat.zip",
+			"DelInfo": "Mods/BJBlazkomeat.zip",
+			"Dependencies": [
+				"tnhtweaker"
+			]
+		},
+		{
+			"modID": "meattfortressfredd",
+			"Name": "Meatt Fortress Fredd",
+			"RawName": "MeattFortressFredd.zip",
+			"Author": [
+				"Trittyburd"
+			],
+			"Version": "1.0.0",
+			"Description": "Fight the Meatt Co. personnel with Meatt Co. weaponry! ",
+			"Path": "https://bonetome.com/download.php?file=YWVlOWNhODNiNzc2ODg2YSszNjUrMTAxMw==",
+			"Website": "https://bonetome.com/h3vr/characters/200/",
+			"Arguments": "moveToFolder?MeattFortressFredd.zip?Mods/?MeattFortressFredd.zip",
+			"DelInfo": "Mods/MeattFortressFredd.zip",
+			"Dependencies": [
+				"tnhtweaker"
+			]
+		},
+		{
+			"modID": "pistolpercy",
+			"Name": "Pistol Percy",
+			"RawName": "PistolPercy.zip",
+			"Author": [
+				"stark"
+			],
+			"Version": "0.0.4.0",
+			"Description": "Its Pistols and Machine Pistols only! Attachments are discounted and sosigs are numerous.\nCharacter will appear in the standard/default category.\nInstallation requires Take n' Hold Tweaker. Place in your H3VR/Mods folder and it should do the rest!",
+			"Path": "https://bonetome.com/download.php?file=YmZlZDkzYWM4ZDZhMDE0MSszNjUrMTExMA==",
+			"Website": "https://bonetome.com/h3vr/characters/243/",
+			"Arguments": "moveToFolder?PistolPercy.zip?Mods/?PistolPercy.zip",
+			"DelInfo": "Mods/PistolPercy.zip",
+			"Dependencies": [
+				"tnhtweaker"
+			]
+		},
+		{
+			"modID": "doomboxsgermanuniforms",
+			"Name": "Doombox's German Uniforms",
+			"RawName": "germanuniforms.zip",
+			"Author": [
+				"Doombox3"
+			],
+			"Version": "1.0.0",
+			"Description": "",
+			"Path": "https://bonetome.com/download.php?file=ZTkyNjc1MzFjMDRjNmM5YyszNjUrOTc0",
+			"Website": "https://bonetome.com/h3vr/characters/192/",
+			"Arguments": "unzipToDir?VirtualObjects/",
+			"DelInfo": "VirtualObjects/german uniforms",
+			"Dependencies": [
+				"tnhtweaker",
+				"lsiic"
+			]
+		}
+	]
+}

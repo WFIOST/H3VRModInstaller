@@ -16,15 +16,20 @@ namespace H3VRModInstaller
 		[STAThread]
 		private static void Main()
 		{
-			Logger.InitialiseLog();
 			//start initialization
+			Logger.InitialiseLog();
+			CheckCache();
+			CheckForManualInstalledMods();
+			CheckForManuallyUninstalledMods();
+			//end initialization
+			//start mainform init
 			Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 			mainwindow mainform = new mainwindow();
 			mainform.KeyPreview = true;
             Application.Run(mainform);
-            //end initialization
+            //end mainform init
 		}
 
 		private static void CheckCache()
