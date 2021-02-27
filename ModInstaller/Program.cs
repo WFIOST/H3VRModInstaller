@@ -3,7 +3,7 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
 
-namespace ModInstallerUI
+namespace ModInstaller
 {
     class Program
     {
