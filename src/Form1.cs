@@ -391,13 +391,23 @@ namespace H3VRModInstaller
                 {
                     //search bar functionality
                     filter = filter.ToLower();
-                    string modname = list[relevantint].Name.ToLower();
-                    string authorString = string.Join("", list[relevantint].Author).ToLower();
+                    var modname = list[relevantint].Name.ToLower();
+                    var authorString = string.Join("", list[relevantint].Author).ToLower();
                     if (modname.Contains(filter) || authorString.Contains(filter))
                     {
+                        Application.ThreadException += new ThreadExceptionEventHandler(Application_ThreadException);
+                        AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(CurrentDomain_UnhandledException);
+                        
                         Console.WriteLine("");
-                        if (!isinstldmod && isdispmod) DownloadableModsList.Items.Add(mod);
-                        if (isinstldmod) InstalledModsList.Items.Add(mod);
+                        switch (isinstldmod)
+                        {
+                            case false when isdispmod:
+                                DownloadableModsList.Items.Add(mod);
+                                break;
+                            case true:
+                                InstalledModsList.Items.Add(mod);
+                                break;
+                        }
                     }
                 }
                 
@@ -436,6 +446,18 @@ namespace H3VRModInstaller
                     
                 }
             }
+        }
+        
+        static void Application_ThreadException(object sender, ThreadExceptionEventArgs e)
+        {
+            // Log the exception, display it, etc
+            Debug.WriteLine(e.Exception.Message);
+        }
+        
+        static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
+        {
+            // Log the exception, display it, etc
+            Debug.WriteLine((e.ExceptionObject as Exception).Message);
         }
 
         public void UpdateCatagories()
