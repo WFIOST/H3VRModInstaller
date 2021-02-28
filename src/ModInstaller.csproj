@@ -14,4 +14,13 @@
         <PackageReference Include="Newtonsoft.Json" Version="13.0.1-beta1" />
         <PackageReference Include="SharpCompress" Version="0.28.1" />
     </ItemGroup>
+    <ItemGroup>
+      <Folder Include="Views" />
+    </ItemGroup>
+    <ItemGroup>
+      <Compile Update="MainWindow - Copy.axaml.cs">
+        <DependentUpon>MainWindow - Copy.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+    </ItemGroup>
 </Project>

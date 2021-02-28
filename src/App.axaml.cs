@@ -1,6 +1,7 @@
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
+using ModInstaller.Frontend.Avalonia;
 
 namespace ModInstaller
 {
@@ -19,6 +20,7 @@ namespace ModInstaller
             }
 
             base.OnFrameworkInitializationCompleted();
+            
         }
     }
 }
