@@ -36,6 +36,8 @@ namespace H3VRModInstaller.JSON
         /// </summary>
         public string Version { get; set; }
 
+        public string DispVersion { get; set; }
+
         /// <summary>
         ///     Description of the mod
         /// </summary>
