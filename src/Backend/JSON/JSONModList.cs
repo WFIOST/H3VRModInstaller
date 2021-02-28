@@ -67,12 +67,22 @@ namespace H3VRModInstaller.JSON
         /// </summary>
         public string[] Dependencies { get; set; }
 
-
         /// <summary>
         ///     The deletion info for a mod
         /// </summary>
         /// <value>String</value>
         public string DelInfo { get; set; }
+        
+        public string ImgLoc { get; set; }
+        
+        public string[] IncompatableMods { get; set; }
+
+        public SingularMods SingularModData { get; set; }
+    }
+
+    public class SingularMods
+    {
+        public string[] Occupys { get; set; }
     }
 
     /// <summary>

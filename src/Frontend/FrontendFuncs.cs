@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Globalization;
 using System.IO;
+using System.Linq;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
 using System.Runtime.CompilerServices;
@@ -92,6 +93,43 @@ namespace H3VRModInstaller.Frontend
                 }
             } else { Console.WriteLine("Delinfo of {0} is empty!", mf.ModId);}
             return false;
+        }
+
+        public static bool CheckIfIncompatable(ModFile mf, ModFile[] mfs)
+        {
+            if (mf.IncompatableMods == null) { return false; }
+            List<ModFile> incompatableMods = new List<ModFile>();
+            for (int i = 0; i < mfs.Length; i++) {
+                for (int incmods = 0; incmods < mf.IncompatableMods.Length; incmods++)
+                {
+                    if (mfs[i].ModId == mf.IncompatableMods[incmods]) { return true; }
+                }
+            }
+            return false;
+        }
+
+        public static string[] GetAllSingularModCatagories()
+        {
+            List<ModFile> mf = ModParsing.GetAllMods().ToList();
+            List<string> SMC = new List<string>();
+            for (int i = 0; i < mf.Count; i++) //remove all mods that aren't relevant
+            {
+                if (mf[i].SingularModData == null)
+                {
+                    mf.RemoveAt(i);
+                }
+            }
+            for (int i = 0; i < mf.Count; i++) //for every relevant modfile
+            {
+                for (int x = 0; x < mf[i].SingularModData.Occupys.Length; x++) //for every place it occupies
+                {
+                    if (!SMC.Contains(mf[i].SingularModData.Occupys[x])) //if it already isnt in the SMC data
+                    {
+                        SMC.Add(mf[i].SingularModData.Occupys[x]); //add
+                    }
+                }
+            }
+            return SMC.ToArray();
         }
         
         public static void GetModInstallerVersion()
