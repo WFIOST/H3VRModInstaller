@@ -4,6 +4,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="ModInstaller.MainWindow"
-        Title="ModInstaller">
-    Welcome to Avalonia!
+        Background="Snow"
+        Title="H3VR Mod Installer">
+    
+    
+        <Window.Styles>
+            <Style Selector="TextBlock.header">
+                <Setter Property="FontSize" Value="32"/>
+                <Setter Property="FontWeight" Value="Bold"/>
+                <Setter Property="FontFamily" Value="Segoe UI"/>
+            </Style>
+        </Window.Styles>
+    
+        <StackPanel Name="LeftContainer" HorizontalAlignment="Left" VerticalAlignment="Top" Background="LightGray" Margin="10">
+              <TextBlock Classes = "header" Text="Mods" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+              <Panel Name="ModList" HorizontalAlignment="Center" VerticalAlignment="Stretch" Background="Grey" Margin="5">
+              </Panel>
+        </StackPanel>
+
 </Window>

@@ -17,7 +17,7 @@ using AutoUpdaterDotNET;
 
 namespace H3VRModInstaller.Frontend
 {
-    public static class FrontendFuncs
+    public static class Actions
     {
         private static string relevantCategory = "";
         public static Tuple<ModFile[], ModFile[]> GetRelevantMods()
