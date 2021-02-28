@@ -8,7 +8,6 @@ using System.Net.NetworkInformation;
 using System.Net.Sockets;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-using System.Windows.Forms;
 using H3VRModInstaller.Common;
 using H3VRModInstaller.Filesys;
 using H3VRModInstaller.JSON;

@@ -7,7 +7,6 @@
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
 
     <RootNamespace>H3VRModInstaller</RootNamespace>
-    <AssemblyName>H3VRModInstaller</AssemblyName>
     <ApplicationIcon>cls.ico</ApplicationIcon>
     <AssemblyVersion></AssemblyVersion>
     <FileVersion></FileVersion>

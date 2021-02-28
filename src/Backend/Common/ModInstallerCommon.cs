@@ -4,7 +4,6 @@ using System.Diagnostics.Eventing.Reader;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Windows.Forms;
 using Microsoft.Win32;
 using Newtonsoft.Json;
 
@@ -187,10 +186,10 @@ namespace H3VRModInstaller.Common
                 }
 
                 _gameLocation = result;
-                if (!string.IsNullOrEmpty(_gameLocation)) {return _gameLocation;}
+/*                if (!string.IsNullOrEmpty(_gameLocation)) {return _gameLocation;}
                 MessageBox.Show(
                     "Could not auto-detect H3VR installation directory. Is your game installed outside Steam or pirated?",
-                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);*/
                 return null;
             }
         }
@@ -302,8 +301,8 @@ namespace H3VRModInstaller.Common
             // Write the output
             var path = Path.Join(GameDirectoryOrThrow, "tree_output.txt");
             File.WriteAllText(path, sb.ToString());
-            MessageBox.Show($"Written tree output to {path}.", "Success", MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
+/*            MessageBox.Show($"Written tree output to {path}.", "Success", MessageBoxButtons.OK,
+                MessageBoxIcon.Information);*/
         }
     }
 

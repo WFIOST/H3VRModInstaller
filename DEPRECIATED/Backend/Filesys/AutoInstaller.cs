@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using H3VRModInstaller.Common;
 using H3VRModInstaller.Filesys;
+using H3VRModInstaller.GUI;
 
 namespace H3VRModInstaller.Filesys
 {
