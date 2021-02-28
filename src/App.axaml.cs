@@ -1,9 +1,11 @@
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
-using ModInstaller.Frontend.Avalonia;
+using H3VRModInstaller.Avalonia;
+using Todo.Services;
+using Todo.ViewModels;
 
-namespace ModInstaller
+namespace H3VRModInstaller.Avalonia
 {
     public class App : Application
     {
@@ -14,13 +16,17 @@ namespace ModInstaller
 
         public override void OnFrameworkInitializationCompleted()
         {
+            base.OnFrameworkInitializationCompleted();
+
             if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
             {
-                desktop.MainWindow = new MainWindow();
-            }
+                var db = new Database();
 
-            base.OnFrameworkInitializationCompleted();
-            
+                desktop.MainWindow = new MainWindow
+                {
+                    DataContext = new MainWindowViewModel(db)
+                };
+            }
         }
     }
 }

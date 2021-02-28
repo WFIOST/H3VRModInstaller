@@ -3,7 +3,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-        x:Class="ModInstaller.MainWindow"
+        x:Class="H3VRModInstaller.Avalonia.MainWindow"
         Background="White"
         Title="H3VR Mod Installer">
     
@@ -16,10 +16,12 @@
             </Style>
         </Window.Styles>
     
-            <StackPanel Name="LeftContainer" HorizontalAlignment="Left" VerticalAlignment="Top" Background="LightGray" Margin="10">
+            <StackPanel Name="LeftContainer" HorizontalAlignment="Left" VerticalAlignment="Top" Background="LightGray" Margin="15">
             <TextBlock Classes = "header" Text="Mods" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Top"/>
             <Panel Name="ModList" HorizontalAlignment="Center" VerticalAlignment="Stretch" Background="Gray" Margin="5">
+                
             </Panel>
+            <TextBlock Text = "{Binding str}"/>
         </StackPanel>
 
 </Window>

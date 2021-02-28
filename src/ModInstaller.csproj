@@ -9,18 +9,10 @@
         <PackageReference Include="Avalonia" Version="0.10.0" />
         <PackageReference Include="Avalonia.Desktop" Version="0.10.0" />
         <PackageReference Include="Avalonia.Diagnostics" Version="0.10.0" />
+        <PackageReference Include="Avalonia.ReactiveUI" Version="0.10.0" />
         <PackageReference Include="Glob" Version="1.2.0-alpha0032" />
         <PackageReference Include="Microsoft.Win32.Registry" Version="6.0.0-preview.1.21102.12" />
         <PackageReference Include="Newtonsoft.Json" Version="13.0.1-beta1" />
         <PackageReference Include="SharpCompress" Version="0.28.1" />
-    </ItemGroup>
-    <ItemGroup>
-      <Folder Include="Views" />
-    </ItemGroup>
-    <ItemGroup>
-      <Compile Update="MainWindow - Copy.axaml.cs">
-        <DependentUpon>MainWindow - Copy.axaml</DependentUpon>
-        <SubType>Code</SubType>
-      </Compile>
     </ItemGroup>
 </Project>

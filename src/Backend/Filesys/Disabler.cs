@@ -27,7 +27,7 @@ namespace H3VRModInstaller.Filesys
             string[] delinfos = mf.DelInfo.Split('?');
             for (int i = 0; i < delinfos.Length; i++)
             {
-                Installer.MoveToFolder(Path.Combine(delinfos[i]), Utilities.DisableCache); //move to cache
+                Installer.MoveToFolder(Path.Combine(delinfos[i]), Path.Combine(Utilities.DisableCache, mf.ModId)); //move to cache
             }
         }
         
@@ -40,8 +40,8 @@ namespace H3VRModInstaller.Filesys
                 string delinfopath = Path.Combine(Utilities.GameDirectoryOrThrow + delinfos[i]);
                 //get last part of file name (e.g VirtualObjects/asdf to asdf)
                 string delinfotrimmed = new DirectoryInfo(delinfos[i]).Name; 
-                string path =
-                    Path.Combine(Utilities.DisableCache + delinfotrimmed); //get path to disabledmods cache file
+                //get path to disabledmods cache file
+                string path = Path.Combine(Utilities.DisableCache, mf.ModId, delinfotrimmed); 
                 Installer.MoveToFolder(path, Directory.GetParent(delinfopath).ToString() + "/"); //move back to loc
             }
         }

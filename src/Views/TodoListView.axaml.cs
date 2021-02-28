@@ -1,17 +1,14 @@
-using Avalonia;
+﻿using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 
-namespace ModInstaller
+namespace H3VRModInstaller.Avalonia
 {
-    public class MainWindow2 : Window
+    public class TodoListView : UserControl
     {
-        public MainWindow2()
+        public TodoListView()
         {
             InitializeComponent();
-#if DEBUG
-            this.AttachDevTools();
-#endif
         }
 
         private void InitializeComponent()

@@ -2,8 +2,9 @@
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
+using ModInstaller;
 
-namespace ModInstaller
+namespace H3VRModInstaller.Avalonia
 {
     class Program
     {

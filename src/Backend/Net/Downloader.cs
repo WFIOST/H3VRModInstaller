@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Net;
+using System.Text.RegularExpressions;
 using System.Threading;
 using H3VRModInstaller.Common;
 using H3VRModInstaller.Filesys;
@@ -31,69 +32,36 @@ namespace H3VRModInstaller.Net
 
 		private static string dlprogress;
 
-		/// <summary>
-		///     Downloads the mod specified
-		/// </summary>
-		/// <param name="fileinfo">ModFile, specify here which mod to use</param>
-		/// <param name="modnum">Checks if mod already installed</param>
-		/// <param name="autoredownload">Auto redownload?</param>
-		/// <param name="skipdl">Skips the download process, mostly used for debugging</param>
-		/// <returns>Boolean, true</returns>
-		public static bool DownloadMod(ModFile fileinfo, int modnum, bool autoredownload = false, bool skipdl = false)
+		public static void dlm(ModFile mf)
 		{
+			ModFile[] installedmods = InstalledMods.GetInstalledMods();
+			ModFile[] mfs = ModParsing.GetModInfoAndDependencies(mf);
 
-			var installedmods = InstalledMods.GetInstalledMods();
-			_finished = false;
-			if (string.IsNullOrEmpty(fileinfo.RawName)) {return false;}
-
-			var fileToDownload = fileinfo.RawName; var locationOfFile = fileinfo.Path;
-
-			if (!autoredownload)
+			for (int i = 0; i < mfs.Length; i++)
 			{
-				for (var i = 0; i < installedmods.Length; i++)
+				if(ModParsing.IsInInstalledMods(mfs[i]) && i != 0) { continue; }
+				
+				_Downloader.DownloadFileCompleted += Dlcomplete;
+				_Downloader.DownloadProgressChanged += Dlprogress;
+
+
+				Console.WriteLine("Downloading {0} from {1}{0}", mfs[i].RawName, mfs[i].Path);
+				if (mfs[i].Path.Contains('%'))
 				{
-					if (fileinfo.ModId == installedmods[i].ModId)
-					{
-						if (modnum == 0)
-						{
-							Uninstaller.DeleteMod(fileinfo.ModId);
-						}
-						else
-						{
-							ModInstallerCommon.DebugLog(fileinfo.ModId + " is already installed!");
-							return false;
-						}
-					}
+					mfs[i].Path = String.Join("", mfs[i].Path.Split('%'));
+					_Downloader.DownloadFileAsync(new Uri(mfs[i].Path), mfs[i].RawName);
 				}
+				else
+				{
+					_Downloader.DownloadFileAsync(new Uri(mfs[i].Path + mfs[i].RawName), mfs[i].RawName);
+				}
+
+				while (!_finished) {Thread.Sleep(100);}
+				_finished = false;
+				Console.WriteLine("Successfully Downloaded file");
+				Installer.InstallMod(mfs[i]);
+				InstalledMods.AddInstalledMod(mfs[i].ModId);
 			}
-
-
-
-			_Downloader.DownloadFileCompleted += Dlcomplete;
-			_Downloader.DownloadProgressChanged += Dlprogress;
-
-
-			if (ModInstallerCommon.enableDebugging) {Console.WriteLine("Downloading {0} from {1}{0}", fileToDownload, locationOfFile);}
-			if (locationOfFile.Contains('%'))
-			{
-				locationOfFile = locationOfFile.Trim('%');
-				_Downloader.DownloadFileAsync(new Uri(locationOfFile), fileToDownload);
-			}
-			else
-			{
-				_Downloader.DownloadFileAsync(new Uri(locationOfFile + fileToDownload), fileToDownload);
-			}
-
-			while (!_finished) {Thread.Sleep(50);}
-			_finished = false;
-
-			Console.WriteLine("Successfully Downloaded {0}", fileToDownload, locationOfFile);
-			if (ModInstallerCommon.enableDebugging) {Console.Write("from {1}{0}", fileToDownload, locationOfFile);}
-
-			Installer.InstallMod(fileinfo);
-
-			InstalledMods.AddInstalledMod(fileinfo.ModId);
-			return true;
 		}
 
 		/// <summary>
@@ -140,22 +108,17 @@ namespace H3VRModInstaller.Net
 		/// <param name="mod">Mod to direct</param>
 		/// <param name="skipdl">Skips the download process</param>
 		/// <returns>Boolean, true</returns>
-		public static bool DownloadModDirector(string mod, bool skipdl = false)
+		public static bool DownloadModDirector(string mod)
 		{
 			if (!NetCheck.isOnline(ModInstallerCommon.Pingsite))
 			{
 				Console.WriteLine("Not connected to internet, or " + ModInstallerCommon.Pingsite + " is down!");
 				return false;
 			}
+			
+				dlm(ModParsing.GetSpecificMod(mod));
 
-			var result = ModParsing.GetModInfoAndDependencies(mod);
-			if (result == null) {return false;}
-			for (var i = 0; i < result.Length; i++)
-			{
-				DownloadMod(result[i], i, false, skipdl);
-			}
-
-			return true;
+				return true;
 		}
 	}
 }

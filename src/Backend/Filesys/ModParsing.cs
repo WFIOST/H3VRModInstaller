@@ -14,10 +14,9 @@ namespace H3VRModInstaller.Filesys
         /// </summary>
         /// <param name="modid">Modid of mod and dependencies you want</param>
         /// <returns></returns>
-        public static ModFile[] GetModInfoAndDependencies(string modid)
+        public static ModFile[] GetModInfoAndDependencies(ModFile mf)
         {
             var result = new ModFile[1];
-            var mf = GetSpecificMod(modid); //get modfile of main mod
             result[result.Length - 1] = mf;
             result = result.Concat(GetDependencies(mf)).ToArray(); //get dependencies and add them to result
 
@@ -111,6 +110,17 @@ namespace H3VRModInstaller.Filesys
                 }
             }
             return dependents;
+        }
+
+        public static bool IsInInstalledMods(ModFile mf)
+        {
+            ModFile[] ILmods = InstalledMods.GetInstalledMods();
+            for (int i = 0; i < ILmods.Length; i++)
+            {
+                if(mf.ModId == ILmods[i].ModId) {return true;}
+            }
+
+            return false;
         }
     }
 }
