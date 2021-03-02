@@ -12,11 +12,19 @@ namespace H3VRModInstaller.Avalonia
 #if DEBUG
             this.AttachDevTools();
 #endif
+
+            CanResize = false;
+
+            ClientSize = new Size(968, 579);
+            
+            
         }
 
         private void InitializeComponent()
         {
             AvaloniaXamlLoader.Load(this);
+
+           
         }
     }
 }

@@ -2,26 +2,89 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        mc:Ignorable="d" d:DesignWidth="968" d:DesignHeight="579"
         x:Class="H3VRModInstaller.Avalonia.MainWindow"
         Background="White"
         Title="H3VR Mod Installer">
     
     
         <Window.Styles>
-            <Style Selector="TextBlock.header">
-                <Setter Property="FontSize" Value="32"/>
+            <Style Selector="TextBlock.SelectedModText">
+                <Setter Property="FontSize" Value="24"/>
+                <Setter Property="FontFamily" Value="Microsoft Sans Serif"/>
+            </Style>
+            
+            <Style Selector="TextBlock.ModVersionText">
+                <Setter Property="FontSize" Value="16"/>
+                <Setter Property="FontFamily" Value="Microsoft Sans Serif"/>
                 <Setter Property="FontWeight" Value="Bold"/>
-                <Setter Property="FontFamily" Value="Segoe UI"/>
+            </Style>
+            
+            <Style Selector="TextBlock.DescriptionText">
+                <Setter Property="FontSize" Value="16"/>
+                <Setter Property="FontFamily" Value="Microsoft Sans Serif"/>
+            </Style>
+            
+            <Style Selector="Button.Text">
+                <Setter Property="FontSize" Value="16"/>
+                <Setter Property="FontFamily" Value="Microsoft Sans Serif"/>
+                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
+            </Style>
+            
+            <Style Selector="TabItem.Text">
+                <Setter Property="FontSize" Value="16"/>
+                <Setter Property="FontFamily" Value="Microsoft Sans Serif"/>
+                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
             </Style>
         </Window.Styles>
-    
-            <StackPanel Name="LeftContainer" HorizontalAlignment="Left" VerticalAlignment="Top" Background="LightGray" Margin="15">
-            <TextBlock Classes = "header" Text="Mods" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-            <Panel Name="ModList" HorizontalAlignment="Center" VerticalAlignment="Stretch" Background="Gray" Margin="5">
+            
+            <Panel>
+                <Panel Name="LeftContainer" HorizontalAlignment="Left" VerticalAlignment="Center" Background="LightGray" Margin="15" Width="455" Height="550">
+                    <TextBox Name="SearchBar" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10" Width="430" Background="White" Text="Search mod here..."/>
+                    
+                    <TabControl Margin="2,20" VerticalAlignment="Top" HorizontalAlignment="Left">
+                        <TabItem Header="Installed Mods" Padding="10, 5" Classes="Text">
+                            Installed Mods:
+                        </TabItem>
+                        <TabItem Header="Downloadable Mods" Padding="10, 5" Classes="Text">
+                            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top">
+                                <ComboBox SelectedIndex="0" Width="425">
+                                    <ComboBoxItem>Select Category</ComboBoxItem>
+                                    <ComboBoxItem>Code Mods</ComboBoxItem>
+                                    <ComboBoxItem>Map Mods</ComboBoxItem>
+                                    <ComboBoxItem>Character Mods</ComboBoxItem>
+                                    <ComboBoxItem>Item Mods</ComboBoxItem>
+                                    <ComboBoxItem>Dependency Mods</ComboBoxItem>
+                                </ComboBox>
+                                
+                                <Panel Name="ModList" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0, 10,5,0" Width="440" Height="425" Background="White">
+                                    
+                                </Panel>
+                            </StackPanel>
+                            
+                            
+                        </TabItem>
+                    </TabControl>
+                </Panel>
                 
+                
+                <Panel Name="RightContainer" HorizontalAlignment="Right" VerticalAlignment="Center" Background="LightGray" Margin="15" Width="460" Height="550">
+                    <TextBlock Name="SelectedModText" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="10" Text= "Selected Mod: {SELECTED MOD}" Classes="SelectedModText"/>
+                    <TextBlock Name="VersionText" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="5, 45" Text= "Mod Version: {MOD VERSION}" Classes="ModVersionText"/>
+
+                    <Button Name="InstallButton" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="5, 75" Width="450" Height="30" Classes="Text">Install</Button>
+                    
+                    <Button Name="WebsiteButton" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="5, 110" Width="225" Height="30" Classes="Text">Website</Button>
+                    
+                    <Button Name="Update" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="5, 110" Width="225" Height="30" Classes="Text">Update</Button>
+                    
+                    <Panel Name="Description" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="5, 15" Width="440" Height="385" Background="White">
+                        <TextBlock Name="DescriptionText" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5" Text="Mod Description Here"/>
+                    </Panel>
+                </Panel>
             </Panel>
-            <TextBlock Text = "{Binding str}"/>
-        </StackPanel>
+    
 
 </Window>
