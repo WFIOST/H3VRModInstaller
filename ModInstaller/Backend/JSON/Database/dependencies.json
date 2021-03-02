@@ -1,0 +1,189 @@
+{
+  "modlistid": "dependencies",
+  "modlistname": "Dependency Mods",
+	"modlist": [
+		{
+			"modID": "bepinex",
+			"Name": "BepInEx",
+			"RawName": "BepInEx_x64_5.4.5.0.zip",
+			"Author": [
+				"bbepis",
+				"denikson",
+				"ManlyMarco"
+			],
+			"Version": "5.4.5",
+			"Description": "Modloader for Unity games! Required for all H3VR mods",
+			"Path": "https://github.com/BepInEx/BepInEx/releases/download/v5.4.5/",
+			"Website": "https://github.com/BepInEx/BepInEx/",
+			"Arguments": "",
+			"DelInfo": "BepInEx/?winhttp.dll?doorstop_config.ini?changelog.txt",
+			"Dependencies": []
+		},
+		{
+			"modID": "resourceredirector",
+			"Name": "Resource Redirector",
+			"RawName": "XUnity.ResourceRedirector-BepIn-5x-1.1.3.zip",
+			"Author": [
+				"bbepis",
+				"Vimek",
+				"Jiwon-Park",
+				"hype5"
+			],
+			"Version": "1.1.3",
+			"Description": "Resource Redirector",
+			"Path": "https://github.com/bbepis/XUnity.AutoTranslator/releases/download/v4.13.0/",
+			"Website": "https://github.com/bbepis/XUnity.AutoTranslator/",
+			"Arguments": "",
+			"DelInfo": "BepInEx/plugins/XUnity.ResourceRedirector",
+			"Dependencies": [
+				"bepinex"
+			]
+		},
+		{
+			"modID": "deli",
+			"Name": "Deli",
+			"RawName": "Deli-v0.2.5.zip",
+			"Author": [
+				"nrgill28",
+				"AshHat"
+			],
+			"Version": "0.2.5",
+			"Description": "Mod loader for Wurstmod and TnHTweaker",
+			"Path": "https://github.com/Deli-Counter/Deli/releases/download/v0.2.5/",
+			"Website": "https://github.com/Deli-Counter/Deli/",
+			"Arguments": "",
+			"DelInfo": "Mods/Deli.Core.deli?Mods/Deli.Monomod.deli?BepInEx/patchers/Deli/?BepInEx/plugins/Deli",
+			"Dependencies": [
+				"bepinex"
+			]
+		},
+		{ 
+			"modID": "monomod",
+			"Name": "Monomod",
+			"RawName": "BepInEx.MonoMod.Loader_1.0.0.0.zip",
+			"Author": [
+				"bbepis",
+				"denikson"
+			],
+			"Version": "1.0.0.0",
+			"Description": "Requirement for Sideloader.",
+			"Path": "https://github.com/BepInEx/BepInEx.MonoMod.Loader/releases/download/v1.0.0.0/",
+			"Website": "https://github.com/BepInEx/BepInEx.MonoMod.Loader/",
+			"Arguments": "",
+			"DelInfo": "BepInEx/core/MonoMod.dll?BepInEx/patchers/BepInEx.MonoMod.Loader.dll",
+			"Dependencies": []
+		},
+		{
+			"modID": "wurstmod",
+			"Name": "Wurst Mod",
+			"RawName": "WurstMod.deli",
+			"Author": [
+				"Nolenz",
+				"nrgill28"
+			],
+			"Version": "2.0.2.0",
+			"Description": "Loads map mods for h3vr.",
+			"Path": "https://github.com/Nolenz/WurstMod/releases/download/v2.0.2.0/",
+			"Website": "https://github.com/Nolenz/WurstMod/",
+			"Arguments": "moveToFolder?WurstMod.deli?Mods/?WurstMod.deli",
+			"DelInfo": "Mods/WurstMod.deli",
+			"Dependencies": [
+				"bepinex",
+				"deli"
+			]
+		},
+		{
+			"modID": "tnhtweaker",
+			"Name": "TnH Tweaker",
+			"RawName": "TakeAndHoldTweaker.Unzip.Me.zip",
+			"Author": [
+				"devyndamonster"
+			],
+			"Version": "1.4.2",
+			"Description": "An H3VR plugin for modifying Take & Hold! Has support for custom characters, as well as global tweaks to spice things up.",
+			"Path": "https://github.com/devyndamonster/TakeAndHoldTweaker/releases/download/v1.4.2/",
+			"Website": "https://github.com/devyndamonster/TakeAndHoldTweaker/",
+			"Arguments": "",
+			"DelInfo": "TNH_Tweaker/?Mods/TakeAndHoldTweaker.zip",
+			"Dependencies": [
+				"bepinex",
+				"deli"
+			]
+		},
+		{
+			"modID": "sideloader",
+			"Name": "Sideloader",
+			"RawName": "H3VR.Sideloader_v0.3.3.zip",
+			"Author": [
+				"denikson"
+			],
+			"Version": "0.3.3",
+			"Description": "Loads skins and some scripts for h3vr.",
+			"Path": "https://github.com/denikson/H3VR.Sideloader/releases/download/v0.3.3/",
+			"Website": "https://github.com/denikson/H3VR.Sideloader/",
+			"Arguments": "",
+			"DelInfo": "BepInEx/plugins/H3VR.Sideloader.dll",
+			"Dependencies": [
+				"bepinex",
+				"monomod",
+				"resourceredirector"
+				
+			]
+		},
+		{
+			"modID": "lsiic",
+			"Name": "LSIIC",
+			"RawName": "LSIIC-v1.3.zip",
+			"Author": [
+				"BlockBuilder57"
+			],
+			"Version": "1.3.0",
+			"Description": "loads custom guns",
+			"Path": "https://github.com/BlockBuilder57/LSIIC/releases/download/v1.3/",
+			"Website": "https://github.com/BlockBuilder57/LSIIC/",
+			"Arguments": "addFolder?VirtualObjects/?unzipToDir?",
+			"DelInfo": "BepInEx/monomod/LSIIC/?Mods/LSIIC.h3mod",
+			"Dependencies": [
+				"bepinex",
+				"deli"
+			]
+		},
+		{
+			"modID": "h3vrutils",
+			"Name": "H3VR Utilities",
+			"RawName": "H3VRUtilities.zip",
+			"Author": [
+				"Potatoes",
+				"Frityet"
+			],
+			"Version": "5.0.0",
+			"Description": "A bunch of scripts for others to use.",
+			"Path": "https://bonetome.com/download.php?file=MTRmZjdkYWM4M2YzNDdmNCszNjUrODUx",
+			"Website": "https://bonetome.com/h3vr/mods/160/",
+			"Arguments": "unzipToDir?Mods/",
+			"DelInfo": "Mods/H3VRUtils.hotmod",
+			"Dependencies": [
+				"bepinex",
+				"sideloader"
+			]
+		},
+		{
+			"modID": "configurationmanager",
+			"Name": "Configuration Manager",
+			"RawName": "BepInEx.ConfigurationManager_v16.1.zip",
+			"Author": [
+				"ManlyMarco",
+				"Keelhauled"
+			],
+			"Version": "16.1.0",
+			"Description": "Allows pressing f1 to modify config ingame.",
+			"Path": "https://github.com/BepInEx/BepInEx.ConfigurationManager/releases/download/v16.1/",
+			"Website": "https://github.com/BepInEx/BepInEx.ConfigurationManager/",
+			"Arguments": "",
+			"DelInfo": "BepInEx/plugins/ConfigurationManager.dll?BepInEx/plugins/ConfigurationManager.xml",
+			"Dependencies": [
+				"bepinex"
+			]
+		}
+	]
+}

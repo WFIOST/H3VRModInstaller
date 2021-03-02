@@ -1,0 +1,144 @@
+{
+  "modlistname": "Map Mods",
+  "modlistid": "mapmods",
+  "modlist": [
+    {
+      "modID": "shootyhouse",
+      "Name": "Shooty House",
+      "RawName": "ShootyHouse.zip",
+      "Author": [
+        "SirPotatoes",
+        "nrgill28"
+      ],
+      "Version": "1.1.0",
+      "Description": "Shoot house! Clear the rooms as fast as possible and go for a high score!\nInstallation: Download the zip file and place in your mods/ folder. Do not extract\nDependencies: Deli v0.2.5 or greater and WurstMod v2.0.2.0 or greater\nCompare your scores against others' on this spreadsheet!\nhttps://docs.google.com/spreadsheets/d/1uJ5WMFAxVDIHDB3rCt0gvPeVDmo5yK6BZwkjE0WcQew/edit?usp=sharing\nNOTE: If the item spawner is missing, just reload the level from the wrist menu.",
+      "Path": "https://bonetome.com/download.php?file=MmI5NzlkOTRkZTI3MzUyYyszNjUrOTQw",
+      "Website": "https://bonetome.com/h3vr/map/181/",
+      "Arguments": "moveToFolder?ShootyHouse.zip?Mods/?ShootyHouse.zip",
+      "Delinfo": "Mods/ShootyHouse.zip",
+      "Dependencies": [
+        "wurstmod"
+      ]
+    },
+    {
+      "modID": "promeatheus",
+      "Name": "Promeatheus",
+      "RawName": "Promeatheus.zip",
+      "Author": [
+        "NunSuperior"
+      ],
+      "Version": "1.4.3",
+      "Description": "Promeatheus is a sci-fi themed Take and Hold map. It is an indoor map that features a mix of short and long hallways, small and medium sized holds/supply points, and shiny floors.\n\nPerformance:\nI recommend turning off HDR and Bloom. I tuned the lighting to look good with HDR off. Also the map still looks good even on the Low setting.\n\nStory(?):\nWhy is the Weinerland-Umami Corporation guarding this abandoned science vessel? Your mission is to investigate the Promeatheus and recover any valuable information you can.",
+      "Path": "https://bonetome.com/download.php?file=YmQ1ZWFmZjgzZWU3NzVmMisrOTk4",
+      "Website": "https://bonetome.com/h3vr/map/198/",
+      "Arguments": "unzipToDir??moveToFolder?Promeatheus.deli?Mods/?Promeatheus.deli",
+      "Delinfo": "Mods/Promeatheus.zip/",
+      "Dependencies": [
+        "wurstmod"
+      ]
+    },
+    {
+      "modID": "wurstwar",
+      "Name": "Wurst War 2",
+      "RawName": "Wurst_War_II_1.2.1.zip",
+      "Author": [
+        "ThatonePanMan"
+      ],
+      "Version": "1.2.1",
+      "Description": "THIS MAP IS ABANDONED. I'm sorry, but this map runs like shit and I cannot find an easy way to fix it. I'll probably end up recreating the map in a less performance intensive way.\nA World War II themed TNH map, best experienced with music OFF and played with Grumbly GI Grayson.\nAlso includes a generic version for exploration and sandbox stuff.\nMay or may not also contain a lemon.\nLow Poly assets made by Synty.",
+      "Path": "https://bonetome.com/download.php?file=MDg4OTYxMmY2M2FiMDY1MSszNjUrNTY0",
+      "Website": "https://bonetome.com/h3vr/map/87/",
+      "Arguments": "unzipToDir??moveToFolder?Wurst War II Generic?CustomLevels/Generic/?Wurst War II Generic?moveToFolder?Wurst War II TNH?CustomLevels/TakeAndHold/?Wurst War II TNH",
+      "Delinfo": "CustomLevels/Generic/Wurst War II Generic?CustomLevels/TakeAndHold/Wurst War II TNH",
+      "Dependencies": [
+        "wurstmod"
+      ]
+    },
+		{
+			"modID": "sanctuary",
+			"Name": "Sanctuary",
+			"RawName": "SanctuaryPack.zip",
+			"Author": [
+				"Mücke",
+				"Synty Studios"
+			],
+			"Version": "1.3.1",
+			"Description": "A little town overrun with Outlaws.\n- pretty challenging, makes \"Cowboys\" into \"Cattlemen\"\n- you can move freely in Holds\n- has no barriers but natural cover\n- 8 Holds, 6 Supplypoints",
+			"Path": "https://bonetome.com/download.php?file=N2VjNTE4NGVjMGE0MzdiYis0NDErMTAyMw==",
+			"Website": "https://bonetome.com/h3vr/map/202/",
+			"Arguments": "moveToDir?Mods?",
+			"Delinfo": "Mods/SanctuaryPack.zip",
+			"Dependencies": [
+				"wurstmod"
+			]
+		},
+		{
+			"modID": "fortbratwurst",
+			"Name": "Fort Bratwurst",
+			"RawName": "Generic-FortBratwurst.zip",
+			"Author": [
+				"Andrew_FTW"
+			],
+			"Version": "2.0.0",
+			"Description": "For my first Unity project, Ive built Fort Bratwurst, inspired by the drawing from u/GaPSMAV, with a few fun additions by me.",
+			"Path": "https://bonetome.com/download.php?file=MzgwZGJiMmUwNDc3OGI5ZiszNjUrMTAxNQ==",
+			"Website": "https://bonetome.com/h3vr/map/201/",
+			"Arguments": "unzipToDir??moveToFolder?Generic-FortBratwurst?CustomLevels/Generic/?Generic-FortBratwurst",
+			"Delinfo": "CustomLevels/Generic/Generic-FortBratwurst",
+			"Dependencies": [
+				"wurstmod"
+			]
+		},
+		{
+			"modID": "marcelsupermarketday",
+			"Name": "TnH Supermarket - Day",
+			"RawName": "Supermarket_day.zip",
+			"Author": [
+				"optomarcel"
+			],
+			"Version": "1.0.0",
+			"Description": "My very first map, set in a supermarket in broad daylight.\n\nComes in 2 versions, funky and normal. Funky contains some royalty free music by Kevin MacLeod https://www.youtube.com/user/kmmusic\n\nFeatures 10 supply and 6 hold points.\n\nLet me know if you have any issues/ideas.\n\nThanks and have fun playing",
+			"Path": "https://bonetome.com/download.php?file=NDFiZDYxY2U3NGI5ZjRiMiszNjUrMTIzOQ==",
+			"Website": "https://bonetome.com/h3vr/map/276/",
+			"Arguments": "unzipToDir?Mods/",
+			"Delinfo": "Mods/TNH_supermarket_day.deli?Mods/TNH_supermarket_day_funky.deli",
+			"Dependencies": [
+				"wurstmod"
+			]
+		},
+		{
+			"modID": "marcelsupermarketnight",
+			"Name": "TnH Supermarket - Night",
+			"RawName": "Supermarket_night.zip",
+			"Author": [
+				"optomarcel"
+			],
+			"Version": "1.1.0",
+			"Description": "My very first map, set in a supermarket in broad daylight.\n\nComes in 2 versions, funky and normal. Funky contains some royalty free music by Kevin MacLeod https://www.youtube.com/user/kmmusic\n\nFeatures 10 supply and 6 hold points.\n\nLet me know if you have any issues/ideas.\n\nThanks and have fun playing",
+			"Path": "https://bonetome.com/download.php?file=N2MzNmVhMjFhMzA0NzI4NSszNjUrMTIzOA==",
+			"Website": "https://bonetome.com/h3vr/map/275/",
+			"Arguments": "unzipToDir?Mods/",
+			"Delinfo": "Mods/TNH_supermarket_night.deli?Mods/TNH_supermarket_night_funky.deli",
+			"Dependencies": [
+				"wurstmod"
+			]
+		},
+		{
+			"modID": "customs",
+			"Name": "Customs",
+			"RawName": "Customs_0.3.8_extract_me.zip",
+			"Author": [
+				"NickMillion"
+			],
+			"Version": "0.3.8",
+			"Description": "0.3.8 is basically untested, let me know what's broken by pinging me on the H3VR modding discord.\nI was recommended to also upload the map here, so here it is!\nA slice of Customs from New Gas to Boilers coming out to roughly 300 square meters in size with 16 holds and 16 supply points!\nThe Random Order version of the map may have a bit of running, so I'd recommend using a character that has either increased patrols or increased supply points.",
+			"Path": "https://bonetome.com/download.php?file=NmYzOTNiOTkyOGM3NTBmNSszNjUrMTE2MQ==",
+			"Website": "https://bonetome.com/h3vr/map/263/",
+			"Arguments": "unzipToDir?Mods/",
+			"Delinfo": "Mods/Customs_0.3.8",
+			"Dependencies": [
+				"wurstmod"
+			]
+		}
+  ]
+}

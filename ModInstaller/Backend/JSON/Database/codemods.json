@@ -1,0 +1,62 @@
+{
+	"modlistname": "Code Mods",
+	"modlistid": "codemods",
+	"modlist": [
+		{
+			"modID": "curseddlls",
+			"Name": "CursedDlls",
+			"RawName": "CursedDlls.BepInEx_v1.3.zip",
+			"Author": [
+				"BlockBuilder57",
+				"drummerdude2003"
+			],
+			"Version": "1.3",
+			"Description": "This is a collection of plugins that port all the functionalities of the original Cursed DLLs into Harmony patches.\nThe main benefits of this collection are all patches are applied at runtime without permanently modifying the original game assemblies.\nThat means the patches survive game updates much better\nAll patches are separated into plugins, so it's possible to only choose the features that you want",
+			"Path": "https://github.com/drummerdude2003/CursedDlls.BepinEx/releases/download/v1.3/",
+			"Website": "https://github.com/drummerdude2003/CursedDlls.BepinEx",
+			"Arguments": "unzipToDir?",
+			"DelInfo": "BepInEx/plugins/CursedDlls",
+			"Dependencies": [ 
+				"bepinex",
+				"monomod"
+			]
+		},
+		{
+			"modID": "meatyceiver",
+			"Name": "Meatyceiver 2",
+			"RawName": "Meatyceiver032.zip",
+			"Author": [
+				"Potatoes",
+				"Frityet"
+			],
+			"Version": "0.3.2",
+			"Description": "Jams, jams, oh my!\nIf you hated Receiver 2, you'll absolutely hate Meatyceiver 2 even more.\nMeatyceiver 2 simulates an array of several firearm failures on all weapons of H3VR.\nTo change settings while in game, make sure Configuration Manager is installed for BepInEx and press F1.\nBy default, the average firearm will have a failure 0.75% of the time. You can adjust this with the general multiplier.\n\nCurrent failures:\nAmmunition Failures\nLight Primer Strike\n\nFirearm Failures\nFailure to Feed\nFailure to Extract\n\nBroken Firearm Failures\nHammer follow\nSlam fire\nFailure To Lock Slide",
+			"Path": "https://bonetome.com/download.php?file=ZDMxZjYzMTgxYTg5OTdlYiszNjUrODk0",
+			"Website": "https://bonetome.com/h3vr/weapons/171/",
+			"Arguments": "unzipToDir?BepInEx/plugins/",
+			"DelInfo": "BepInEx/plugins/Meatyceiver2.dll",
+			"Dependencies": [
+				"bepinex",
+				"configurationmanager"
+			]
+		},
+    {
+      "modID": "betterhands",
+      "Name": "Better Hands",
+      "RawName": "BetterHands.deli",
+      "Author": [
+        "M’aiq the Dude"
+      ],
+      "Version": "1.0.0",
+      "Description": "Mod for H3VR to recolor controller geo, resize interaction spheres, and add mag palming. All features are optional and configured via mods/configs/betterhands.cfg. Configs can be edited mid-game, but will require a scene reload to take effect.\nMag palming allows you to carry two small sized magazines in one hand. To do this click the trigger when holding a magazine in your hand.",
+      "Path": "https://github.com/Maiq-The-Dude/BetterHands/releases/download/1.0.0/",
+      "Website": "https://github.com/Maiq-The-Dude/BetterHands/",
+      "Arguments": "moveToFolder?BetterHands.deli?Mods/?BetterHands.deli",
+      "DelInfo": "Mods/BetterHands.deli",
+      "Dependencies": [
+        "bepinex",
+        "deli"
+      ]
+    }
+	]
+}
