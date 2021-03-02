@@ -73,6 +73,8 @@ namespace H3VRModInstaller.JSON
         /// </summary>
         /// <value>String</value>
         public string DelInfo { get; set; }
+        
+        public string[] IncompatableMods { get; set; }
     }
 
     /// <summary>

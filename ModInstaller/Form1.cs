@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
 using System.Globalization;
 using System.IO;
+using System.Linq;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
 using System.Runtime.CompilerServices;
@@ -144,7 +146,7 @@ namespace H3VRModInstaller
 
         private void LoadGUI(object sender, EventArgs e)
         {
-            AutoUpdater.InstalledVersion = new Version("1.0.3");
+            AutoUpdater.InstalledVersion = new Version("1.1.1");
             AutoUpdater.Start("https://raw.githubusercontent.com/WFIOST/H3VR-Mod-Installer-Database/main/Database/updateinfo.xml");
             //displays screen if out of date, updates automatically. no downside other than it uses fucking xml -- potaotes
             //also note it gets the current ver from the assembly file ver, so make sure to update that!
@@ -269,6 +271,16 @@ namespace H3VRModInstaller
             catch
             {
             }
+            try
+            {
+                var mf = ModParsing.GetSpecificMod(InstalledModsList.SelectedItems[0].SubItems[4].Text);
+                if (CheckIfIncompatable(mf, InstalledMods.GetInstalledMods()) != null)
+                {
+                    ModVer.Text = "Mod is incompatable with " +
+                                           CheckIfIncompatable(mf, InstalledMods.GetInstalledMods())[0].Name;
+                    InstalledModsList.SelectedItems[0].BackColor = Color.Red;
+                }
+            } catch {}
         }
 
         private void Terminator_DoWork(object sender, DoWorkEventArgs e)
@@ -318,7 +330,6 @@ namespace H3VRModInstaller
         
         public void UpdateModList(string dispcat = "n/a", string filter = "")
         {
-            Program.CheckForManuallyUninstalledMods();
             DownloadableModsList.Items.Clear();
             InstalledModsList.Items.Clear();
 
@@ -433,10 +444,68 @@ namespace H3VRModInstaller
                     {
                         UpdateButton.Show();
                     }
+                }
 
-                    
+                var mf = ModParsing.GetSpecificMod(InstalledModsList.Items[i].SubItems[4].Text);
+                var mfs = CheckIfIncompatable(mf, InstalledMods.GetInstalledMods());
+                if (mfs != null)
+                {
+                    if (mfs.Length >= 1)
+                    {
+                        ModVer.Text = "Mod is incompatable with " + mfs[0];
+                        InstalledModsList.Items[i].BackColor = Color.Red;
+                    }
                 }
             }
+        }
+        
+        public static ModFile[] CheckIfIncompatable(ModFile mf, ModFile[] mfs)
+        {
+            mf = ModParsing.GetSpecificMod(mf.ModId);
+            if (mf.IncompatableMods == null) { return null; }
+            List<ModFile> incompatableMods = new List<ModFile>();
+            
+            //make sure no mods have null incompatablemods
+            List<ModFile> mfslist = mfs.ToList();
+            for (int i = 0; i < mfslist.Count; i++)
+            {
+                if (mfslist[i].IncompatableMods == null)
+                {
+                    mfslist.RemoveAt(i);
+                }
+
+                try
+                {
+                    if (!String.IsNullOrEmpty(mfslist[i].DelInfo))
+                    {
+                        string path =
+                            Path.Combine(Utilities.GameDirectory,
+                                mfslist[i].DelInfo.Split('?')[0]); //split to get the first delinfo arg
+                        string path2 = Path.Combine(Utilities.DisableCache,
+                            new DirectoryInfo(mfslist[i].DelInfo.Split('?')[0]).Name); //basically loc of the cache area
+                        if ((!File.Exists(path) && !Directory.Exists(path)) &&
+                            (File.Exists(path2) || Directory.Exists(path2))) //if it is not disabled
+                        {
+                            mfslist.RemoveAt(i);
+                        }
+                    }
+                } catch{}
+            }
+            mfs = mfslist.ToArray();
+            
+            for (int i = 0; i < mfs.Length; i++) {
+                for (int incmods = 0; incmods < mf.IncompatableMods.Length; incmods++)
+                {
+                    if (mfs[i].ModId == mf.IncompatableMods[incmods])
+                    {
+                        {
+                            incompatableMods.Add(mfs[i]);
+                            Console.WriteLine("Adding {0} to inc mods!", mfs[i].Name);
+                        }
+                    }
+                }
+            }
+            return incompatableMods.ToArray();
         }
 
         public void UpdateCatagories()
@@ -461,7 +530,7 @@ namespace H3VRModInstaller
             {
                 mods += ModParsing.GetSpecificMod(impModID[i]).Name + ", ";
             }
-            var conf = MessageBox.Show($"Are you sure you want to delete mod(s) {mods}? A total of " + ModParsing.GetDependents(ModParsing.GetSpecificMod(impModID[0])).Length + " downloaded mods rely on this.", "Deletion Confirmation", MessageBoxButtons.YesNo);
+            var conf = MessageBox.Show($"Are you sure you want to delete mod(s) {mods}? A total of " + ModParsing.GetDependents(ModParsing.GetSpecificMod(impModID[0])).Length + " downloaded mods rely on this. Dependants aren't going to be deleted, but they probably won't work.", "Deletion Confirmation", MessageBoxButtons.YesNo);
 
             if (conf == DialogResult.Yes)
             {

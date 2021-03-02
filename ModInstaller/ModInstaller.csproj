@@ -3,6 +3,7 @@
     <PropertyGroup>
         <OutputType>WinExe</OutputType>
         <TargetFramework>net5.0-windows</TargetFramework>
+        <ApplicationIcon>h3vrmi.ico</ApplicationIcon>
         <UseWindowsForms>true</UseWindowsForms>
     </PropertyGroup>
 

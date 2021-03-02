@@ -18,6 +18,12 @@ namespace H3VRModInstaller
 		{
 			Logger.InitialiseLog();
 			//start initialization
+			
+			CheckCache();
+			CheckForManualInstalledMods();
+			CheckForManuallyUninstalledMods();
+			
+			
 			Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
@@ -73,7 +79,7 @@ namespace H3VRModInstaller
 						}
 						if (!IsInstalled)
 						{
-							addedmods += mods[i].ModId + ", ";
+							addedmods += mods[i].ModId += ", ";
 							InstalledMods.AddInstalledMod(mods[i].ModId);
 						}
 					}
@@ -81,7 +87,7 @@ namespace H3VRModInstaller
 			}
 			if (!String.IsNullOrEmpty(addedmods))
 			{
-				var conf = MessageBox.Show($"Some manually installed mods have been detected, adding it to database. Detected mods: {addedmods.Split(',').Length} \n" + addedmods, "Installed mods detected!", MessageBoxButtons.OK);
+				var conf = MessageBox.Show($"Some manually installed mods have been detected, adding it to database. Detected mods: {addedmods.Split(',').Length - 1} \n" + addedmods, "Installed mods detected!", MessageBoxButtons.OK);
 			}
 		}
 
@@ -112,7 +118,7 @@ namespace H3VRModInstaller
 			}
 			if (!String.IsNullOrEmpty(addedmods))
 			{
-				var conf = MessageBox.Show($"We cannot find some mods that you've downloaded! Did you delete them?\n Either way, we've highlighted them in yellow if you want to reinstall them or delete them. (Their version reads 0.0.0.)\n Detected mods: {addedmods.Split(',').Length} \n" + addedmods, "Installed mods detected!", MessageBoxButtons.OK);
+				var conf = MessageBox.Show($"We cannot find some mods that you've downloaded! Did you delete them?\n Either way, we've highlighted them in yellow if you want to reinstall them or delete them. (Their version reads 0.0.0.)\n Detected mods: {addedmods.Split(',').Length - 1} \n" + addedmods, "Installed mods detected!", MessageBoxButtons.OK);
 			}
 		}
     }
