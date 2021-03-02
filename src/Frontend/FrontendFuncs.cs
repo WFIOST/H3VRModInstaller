@@ -94,11 +94,23 @@ namespace H3VRModInstaller.Frontend
             } else { Console.WriteLine("Delinfo of {0} is empty!", mf.ModId);}
             return false;
         }
-
+        
         public static bool CheckIfIncompatable(ModFile mf, ModFile[] mfs)
         {
             if (mf.IncompatableMods == null) { return false; }
             List<ModFile> incompatableMods = new List<ModFile>();
+            
+            //make sure no mods have null incompatablemods
+            List<ModFile> mfslist = mfs.ToList();
+            for (int i = 0; i < mfslist.Count; i++)
+            {
+                if (mfslist[i].IncompatableMods == null)
+                {
+                    mfslist.RemoveAt(i);
+                }
+            }
+            mfs = mfslist.ToArray();
+            
             for (int i = 0; i < mfs.Length; i++) {
                 for (int incmods = 0; incmods < mf.IncompatableMods.Length; incmods++)
                 {
