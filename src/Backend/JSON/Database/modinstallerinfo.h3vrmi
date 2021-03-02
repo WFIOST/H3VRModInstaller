@@ -3,7 +3,7 @@
 		{
 			"modID": "uniqueidmodinstaller",
 			"Name": "H3VRModInstaller",
-			"Version": "1.0.2",
+			"Version": "1.1.1",
 			"Description": "Hey! This thingy here is just to know what is the newest version of H3VRMI.",
 			"Website": "https://github.com/Frityet/H3VRModInstaller",
 			"Dependencies": [
