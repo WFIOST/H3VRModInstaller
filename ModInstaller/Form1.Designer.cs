@@ -397,7 +397,7 @@ namespace H3VRModInstaller
 			this.Controls.Add(this.ControlPanel);
 			this.Controls.Add(this.ModList);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+//			this.Icon = ((System.Drawing.Icon)(resources.GetObject("h3vrmi.ico")));
 			this.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
 			this.MaximizeBox = false;
 			this.Name = "mainwindow";

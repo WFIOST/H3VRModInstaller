@@ -396,8 +396,11 @@ namespace H3VRModInstaller
 
                 if (String.IsNullOrEmpty(filter))
                 {
-                    if (!isinstldmod && isdispmod) {DownloadableModsList.Items.Add(mod);}
-                    if (isinstldmod) {InstalledModsList.Items.Add(mod);}
+                    try
+                    {
+                        if (!isinstldmod && isdispmod) { DownloadableModsList.Items.Add(mod); }
+                        if (isinstldmod) { InstalledModsList.Items.Add(mod); }
+                    } catch{}
                 }
                 else
                 {

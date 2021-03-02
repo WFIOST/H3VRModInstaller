@@ -79,7 +79,8 @@ namespace H3VRModInstaller
 						}
 						if (!IsInstalled)
 						{
-							addedmods += mods[i].ModId += ", ";
+							addedmods += mods[i].ModId + ", ";
+							Console.WriteLine("Adding mod {0} to installedmods!", mods[i].ModId);
 							InstalledMods.AddInstalledMod(mods[i].ModId);
 						}
 					}
