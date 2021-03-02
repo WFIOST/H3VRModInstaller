@@ -59,7 +59,7 @@
                                     <ComboBoxItem>Dependency Mods</ComboBoxItem>
                                 </ComboBox>
                                 
-                                <Panel Name="ModList" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0, 10,5,0" Width="440" Height="425" Background="White">
+                                <Panel Name="ModList" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0, 10,10,0" Width="440" Height="425" Background="White">
                                     
                                 </Panel>
                             </StackPanel>
