@@ -39,7 +39,7 @@ namespace H3VRModInstaller.Net
 		/// <param name="autoredownload">Auto redownload?</param>
 		/// <param name="skipdl">Skips the download process, mostly used for debugging</param>
 		/// <returns>Boolean, true</returns>
-		public static bool DownloadMod(ModFile fileinfo, int modnum, bool autoredownload = false, bool skipdl = false)
+		public bool DownloadMod(ModFile fileinfo, int modnum, bool autoredownload = false, bool skipdl = false)
 		{
 			if (skipdl) //lol this can never be reached since 5.0 -- potatoes
 			{
@@ -145,7 +145,7 @@ namespace H3VRModInstaller.Net
 		/// <param name="mod">Mod to direct</param>
 		/// <param name="skipdl">Skips the download process</param>
 		/// <returns>Boolean, true</returns>
-		public static bool DownloadModDirector(string mod, bool skipdl = false)
+		public bool DownloadModDirector(string mod, bool skipdl = false)
 		{
 			if (!NetCheck.isOnline(ModInstallerCommon.Pingsite))
 			{

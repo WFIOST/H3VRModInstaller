@@ -21,8 +21,7 @@ namespace H3VRModInstaller
 			Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-			mainwindow mainform = new mainwindow();
-			mainform.KeyPreview = true;
+            var mainform = new mainwindow {KeyPreview = true};
             Application.Run(mainform);
             //end initialization
 		}

@@ -27,13 +27,14 @@ namespace H3VRModInstaller
 		/// 
         public static void doCommand(string[] inputargs)
         {
-            for (int repeat = 1; repeat < inputargs.Length; repeat++)
+            for (var repeat = 1; repeat < inputargs.Length; repeat++)
             {
                 Console.WriteLine("doing {0} {1}", inputargs[0], inputargs[repeat]);
                 switch (inputargs[0])
                 {
                     case "dl":
-                        Downloader.DownloadModDirector(inputargs[repeat]);
+                        var dl = new Downloader();
+                        dl.DownloadModDirector(inputargs[repeat]);
                         break;
                     //deletion
                     case "rm":

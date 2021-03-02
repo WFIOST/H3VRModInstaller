@@ -24,6 +24,7 @@ namespace H3VRModInstaller
     public partial class mainwindow : Form //AAA I FUCKING HATE THIS FILE IT GODDAMN HAUNTS MY DREAMS --potatoes
     { //just a note; this file has reached its peak. after v1.1 im going to rewrite the fuck out of this shit, i've had it. i no longer understand what the fuck is going on here. --potatoes
         private static string publicdispcat = "n/a";
+        
         public string[] command;
 
         public string[] impModID = new string[0];
@@ -302,12 +303,11 @@ namespace H3VRModInstaller
                     downloadedMod = InstalledModsList.SelectedItems[0].SubItems[4].Text;
                 }
                 catch
-                {
-                }
+                { }
             } //probably the stupidest bodge i've ever done lel --potatoes
 
             UpdateModList();
-//            MessageBox.Show("Sucessfully " + command[0] + $"ed mod {downloadedMod}", "Sucess!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Sucessfully " + command[0] + $"ed mod {downloadedMod}", "Sucess!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             StatusReport.Text = "Ready!";
         }
 
