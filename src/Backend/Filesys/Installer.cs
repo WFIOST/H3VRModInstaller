@@ -20,6 +20,8 @@ namespace H3VRModInstaller.Filesys
         /// <returns>Boolean</returns>
         public static bool InstallMod(ModFile fileinfo, bool delArchive = true)
         {
+            fileinfo.Arguments.Replace("BACKSLASH", @"\");
+
             if (fileinfo.Arguments == "") {fileinfo.Arguments = "unzipToDir?";}
             var args = fileinfo.Arguments.Split('?');
 

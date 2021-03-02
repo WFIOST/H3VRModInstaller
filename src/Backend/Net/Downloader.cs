@@ -32,7 +32,7 @@ namespace H3VRModInstaller.Net
 
 		private static string dlprogress;
 
-		public static void DownloadMod(ModFile mf)
+		public static void dlm(ModFile mf)
 		{
 			ModFile[] installedmods = InstalledMods.GetInstalledMods();
 			ModFile[] mfs = ModParsing.GetModInfoAndDependencies(mf);
@@ -116,7 +116,7 @@ namespace H3VRModInstaller.Net
 				return false;
 			}
 			
-				DownloadMod(ModParsing.GetSpecificMod(mod));
+				dlm(ModParsing.GetSpecificMod(mod));
 
 				return true;
 		}
