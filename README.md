@@ -30,3 +30,7 @@ A: We can't, because we don't know. BoneTome (the primary supplier of mods in H3
 Q: My H3VRMI won't start!
 
 A: Make sure the location of H3VRModInstaller is **not** inside the root directory for H3. When this happens, it crashes because BepInEx tries to interfere with it.
+
+## Known Issues
+
+- Mods will firstly display as conflicting before displayed as disabled, meaning mods will still display red if they are disabled but would conflict with another mod. This is purely a UI issue.
