@@ -212,6 +212,7 @@ namespace H3VRModInstaller
 			this.textBox1.Size = new System.Drawing.Size(456, 23);
 			this.textBox1.TabIndex = 12;
 			this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+			this.textBox1.Click += new System.EventHandler(this.textBox1_Click);
 			// 
 			// ControlPanel
 			// 

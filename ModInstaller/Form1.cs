@@ -146,7 +146,7 @@ namespace H3VRModInstaller
 
         private void LoadGUI(object sender, EventArgs e)
         {
-            AutoUpdater.InstalledVersion = new Version("1.1.1");
+            AutoUpdater.InstalledVersion = new Version("1.1.2");
             AutoUpdater.Start("https://raw.githubusercontent.com/WFIOST/H3VR-Mod-Installer-Database/main/Database/updateinfo.xml");
             //displays screen if out of date, updates automatically. no downside other than it uses fucking xml -- potaotes
             //also note it gets the current ver from the assembly file ver, so make sure to update that!
@@ -170,6 +170,8 @@ namespace H3VRModInstaller
             UpdateCatagories();
             DisEnaButton.Hide();
 
+            textBox1.Text = "Search for mod name here...";
+                
             CatagoriesComboBox.SelectedIndex = 0;
         }
 
@@ -613,6 +615,13 @@ namespace H3VRModInstaller
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             UpdateModList("n/a", textBox1.Text );
+        }
+        private void textBox1_Click(object sender, EventArgs e)
+        {
+            if (textBox1.Text == "Search for mod name here...")
+            {
+                textBox1.Text = "";
+            }
         }
 
 
