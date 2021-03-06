@@ -75,6 +75,8 @@ namespace H3VRModInstaller.JSON
         public string DelInfo { get; set; }
         
         public string[] IncompatableMods { get; set; }
+
+        public bool HideMod { get; set; }
     }
 
     /// <summary>

@@ -278,7 +278,7 @@ namespace H3VRModInstaller
                 {
                     ModVer.Text = "Mod is incompatable with " +
                                            CheckIfIncompatable(mf, InstalledMods.GetInstalledMods())[0].Name;
-                    InstalledModsList.SelectedItems[0].BackColor = Color.Red;
+//                    InstalledModsList.SelectedItems[0].BackColor = Color.Red;
                 }
             } catch {}
         }
@@ -387,8 +387,13 @@ namespace H3VRModInstaller
                     relevantint = i;
                 }
 
-
-                var mod = new ListViewItem(list[relevantint].Name, 0); //0
+                ModFile dbmf = ModParsing.GetSpecificMod(list[relevantint].ModId);
+                if (dbmf == null)
+                {
+                    dbmf = list[relevantint];
+                }
+                
+                var mod = new ListViewItem(dbmf.Name, 0); //0
                 mod.SubItems.Add(list[relevantint].Version); //1
                 mod.SubItems.Add(string.Join(", ", list[relevantint].Author)); //2
                 mod.SubItems.Add(list[relevantint].Description); //3
@@ -398,7 +403,7 @@ namespace H3VRModInstaller
                 {
                     try
                     {
-                        if (!isinstldmod && isdispmod) { DownloadableModsList.Items.Add(mod); }
+                        if (!isinstldmod && isdispmod && !dbmf.HideMod) { DownloadableModsList.Items.Add(mod); }
                         if (isinstldmod) { InstalledModsList.Items.Add(mod); }
                     } catch{}
                 }
@@ -428,8 +433,19 @@ namespace H3VRModInstaller
                     InstalledModsList.Items[i].BackColor = Color.Yellow;
                 }
 
+                var mf = ModParsing.GetSpecificMod(InstalledModsList.Items[i].SubItems[4].Text);
+                var mfs = CheckIfIncompatable(mf, InstalledMods.GetInstalledMods());
+                if (mfs != null)
+                {
+                    if (mfs.Length >= 1)
+                    {
+                        ModVer.Text = "Mod is incompatable with " + mfs[0];
+                        InstalledModsList.Items[i].BackColor = Color.Red;
+                    }
+                }
+                
                 string delinfo = ModParsing.GetSpecificMod(InstalledModsList.Items[i].SubItems[4].Text).DelInfo; //if cached mod is disabled
-
+                
                 if (!String.IsNullOrEmpty(delinfo))
                 {
                     string path =
@@ -446,17 +462,6 @@ namespace H3VRModInstaller
                     else
                     {
                         UpdateButton.Show();
-                    }
-                }
-
-                var mf = ModParsing.GetSpecificMod(InstalledModsList.Items[i].SubItems[4].Text);
-                var mfs = CheckIfIncompatable(mf, InstalledMods.GetInstalledMods());
-                if (mfs != null)
-                {
-                    if (mfs.Length >= 1)
-                    {
-                        ModVer.Text = "Mod is incompatable with " + mfs[0];
-                        InstalledModsList.Items[i].BackColor = Color.Red;
                     }
                 }
             }
