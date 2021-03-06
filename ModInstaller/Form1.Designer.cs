@@ -402,7 +402,7 @@ namespace H3VRModInstaller
 			this.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
 			this.MaximizeBox = false;
 			this.Name = "mainwindow";
-			this.Text = "H3VR Mod Installer - v1.1.1";
+			this.Text = "H3VR Mod Installer - v1.1.2";
 			this.Load += new System.EventHandler(this.LoadGUI);
 			this.ModList.ResumeLayout(false);
 			this.tabControl1.ResumeLayout(false);
