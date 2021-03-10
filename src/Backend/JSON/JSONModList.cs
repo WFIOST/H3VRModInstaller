@@ -86,7 +86,8 @@ namespace H3VRModInstaller.JSON
 
     public class SingularMods
     {
-        public string[] Occupys { get; set; }
+        public string[] OccupiesID { get; set; }
+        public string[] OccupiesName { get; set; }
     }
 
     /// <summary>
