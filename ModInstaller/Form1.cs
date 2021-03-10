@@ -156,8 +156,6 @@ namespace H3VRModInstaller
             //displays screen if out of date, updates automatically. no downside other than it uses fucking xml -- potaotes
             //also note it gets the current ver from the assembly file ver, so make sure to update that!
 
-            ImgDisp.Image = Image.FromFile("F:/GitHub/H3VRModInstaller/ModInstaller/joebiden.jpg");
-            
             KeyDown += Form_KeyDown;
 
 			if (!File.Exists(Utilities.ModCache))
