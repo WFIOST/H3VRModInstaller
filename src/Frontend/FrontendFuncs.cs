@@ -106,6 +106,7 @@ namespace H3VRModInstaller.Frontend
                     for (int y = 0; y < mfs.Length; y++) //for every mod that is given
                     { 
                         if (CheckIfILmodDisabled(mfs[y]) && !includeDisabledMods) {continue;}
+                        if (mfs[y].ModId == mf.ModId) {continue;}
                         if (mf.IncompatableMods[x] == mfs[y].ModId) //if mfs[y] is in inc.mods
                         {
                              list.Add(mfs[y]); //add as incompatable with
@@ -121,6 +122,7 @@ namespace H3VRModInstaller.Frontend
                     for (int y = 0; y < mfs.Length; y++) //for every mod given
                     {
                         if (CheckIfILmodDisabled(mfs[y]) && !includeDisabledMods) {continue;}
+                        if (mfs[y].ModId == mf.ModId) {continue;}
                         if (mfs[y].SingularModData == null) { continue; } //if mfs[y] doesn't occupy anything, ignore
                         for (int z = 0; z < mfs[y].SingularModData.OccupiesID.Length; z++) //if one of mfs[y]'s occupies place is also in mf
                         {
@@ -134,30 +136,6 @@ namespace H3VRModInstaller.Frontend
             }
             
             return list.ToArray();
-        }
-
-        public static string[] GetAllSingularModCatagories()
-        {
-            List<ModFile> mf = ModParsing.GetAllMods().ToList();
-            List<string> SMC = new List<string>();
-            for (int i = 0; i < mf.Count; i++) //remove all mods that aren't relevant
-            {
-                if (mf[i].SingularModData == null)
-                {
-                    mf.RemoveAt(i);
-                }
-            }
-            for (int i = 0; i < mf.Count; i++) //for every relevant modfile
-            {
-                for (int x = 0; x < mf[i].SingularModData.Occupys.Length; x++) //for every place it occupies
-                {
-                    if (!SMC.Contains(mf[i].SingularModData.Occupys[x])) //if it already isnt in the SMC data
-                    {
-                        SMC.Add(mf[i].SingularModData.Occupys[x]); //add
-                    }
-                }
-            }
-            return SMC.ToArray();
         }
         
         public static void GetModInstallerVersion()
