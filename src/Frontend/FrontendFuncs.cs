@@ -95,29 +95,56 @@ namespace H3VRModInstaller.Frontend
             return false;
         }
         
-        public static bool CheckIfIncompatable(ModFile mf, ModFile[] mfs)
+        public static ModFile[] ReturnIncompatableMods(ModFile mf, ModFile[] mfs, bool includeDisabledMods)
         {
-            if (mf.IncompatableMods == null) { return false; }
-            List<ModFile> incompatableMods = new List<ModFile>();
+            List<ModFile> list = new List<ModFile>();
             
-            //make sure no mods have null incompatablemods
-            List<ModFile> mfslist = mfs.ToList();
-            for (int i = 0; i < mfslist.Count; i++)
+            //hacky removal of mfs that are disabled. this does not scale up lol
+            if (!includeDisabledMods)
             {
-                if (mfslist[i].IncompatableMods == null)
+                for (int i = 0; i < mfs.Length; i++)
                 {
-                    mfslist.RemoveAt(i);
+                    if (CheckIfILmodDisabled(mfs[i]))
+                    {
+                        mfs[i].IncompatableMods = null;
+                        mfs[i].SingularModData = null;
+                    }
                 }
             }
-            mfs = mfslist.ToArray();
+
+            //Get Direct Incompatable mods
+            if(mf.IncompatableMods != null){
+                for (int x = 0; x < mf.IncompatableMods.Length; x++) //for every mod this is incompatable with
+                {
+                     for (int y = 0; y < mfs.Length; y++) //for every mod that is given
+                     { 
+                         if (mf.IncompatableMods[x] == mfs[y].ModId) //if mfs[y] is in inc.mods
+                         {
+                             list.Add(mfs[y]); //add as incompatable with
+                         }
+                     } 
+                }
+            }
             
-            for (int i = 0; i < mfs.Length; i++) {
-                for (int incmods = 0; incmods < mf.IncompatableMods.Length; incmods++)
+            //Get Singular Incompatable Mods
+            if(mf.SingularModData != null){
+                for (int x = 0; x < mf.SingularModData.OccupiesID.Length; x++) //for every mod space this takes up
                 {
-                    if (mfs[i].ModId == mf.IncompatableMods[incmods]) { return true; }
+                    for (int y = 0; y < mfs.Length; y++) //for every mod given
+                    {
+                        if (mfs[y].SingularModData == null) { continue; } //if mfs[y] doesn't occupy anything, ignore
+                        for (int z = 0; z < mfs[y].SingularModData.OccupiesID.Length; z++) //if one of mfs[y]'s occupies place is also in mf
+                        {
+                            if (mf.SingularModData.OccupiesID[x] == mfs[y].SingularModData.OccupiesID[z])
+                            {
+                                list.Add(mfs[y]); //add as incompatable with
+                            }
+                        }
+                    } 
                 }
             }
-            return false;
+            
+            return list.ToArray();
         }
 
         public static string[] GetAllSingularModCatagories()
