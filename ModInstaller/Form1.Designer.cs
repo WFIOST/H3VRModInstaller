@@ -32,7 +32,6 @@ namespace H3VRModInstaller
         /// </summary>
         private void InitializeComponent()
         {
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mainwindow));
 			this.ModList = new System.Windows.Forms.Panel();
 			this.tabControl1 = new System.Windows.Forms.TabControl();
 			this.TabPageInstalled = new System.Windows.Forms.TabPage();
@@ -62,6 +61,8 @@ namespace H3VRModInstaller
 			this.StatusReport = new System.Windows.Forms.Label();
 			this.Terminator = new System.ComponentModel.BackgroundWorker();
 			this.CatagoryDropDown = new System.Windows.Forms.ComboBox();
+			this.ImgDisp = new System.Windows.Forms.PictureBox();
+			this.OccupiedSlots = new System.Windows.Forms.Label();
 			this.ModList.SuspendLayout();
 			this.tabControl1.SuspendLayout();
 			this.TabPageInstalled.SuspendLayout();
@@ -69,6 +70,7 @@ namespace H3VRModInstaller
 			this.ControlPanel.SuspendLayout();
 			this.InfoPanel.SuspendLayout();
 			this.ProgressPanel.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.ImgDisp)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// ModList
@@ -152,7 +154,7 @@ namespace H3VRModInstaller
 			this.TabPageAvailable.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
 			this.TabPageAvailable.Name = "TabPageAvailable";
 			this.TabPageAvailable.Padding = new System.Windows.Forms.Padding(5, 3, 5, 3);
-			this.TabPageAvailable.Size = new System.Drawing.Size(448, 526);
+			this.TabPageAvailable.Size = new System.Drawing.Size(448, 505);
 			this.TabPageAvailable.TabIndex = 1;
 			this.TabPageAvailable.Text = "Downloadable Mods";
 			this.TabPageAvailable.UseVisualStyleBackColor = true;
@@ -170,7 +172,7 @@ namespace H3VRModInstaller
 			this.DownloadableModsList.Location = new System.Drawing.Point(5, 26);
 			this.DownloadableModsList.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
 			this.DownloadableModsList.Name = "DownloadableModsList";
-			this.DownloadableModsList.Size = new System.Drawing.Size(438, 497);
+			this.DownloadableModsList.Size = new System.Drawing.Size(438, 476);
 			this.DownloadableModsList.TabIndex = 6;
 			this.DownloadableModsList.UseCompatibleStateImageBehavior = false;
 			this.DownloadableModsList.View = System.Windows.Forms.View.Details;
@@ -211,8 +213,8 @@ namespace H3VRModInstaller
 			this.textBox1.Name = "textBox1";
 			this.textBox1.Size = new System.Drawing.Size(456, 23);
 			this.textBox1.TabIndex = 12;
-			this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
 			this.textBox1.Click += new System.EventHandler(this.textBox1_Click);
+			this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
 			// 
 			// ControlPanel
 			// 
@@ -228,7 +230,7 @@ namespace H3VRModInstaller
 			this.ControlPanel.Location = new System.Drawing.Point(477, 12);
 			this.ControlPanel.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
 			this.ControlPanel.Name = "ControlPanel";
-			this.ControlPanel.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.ControlPanel.Padding = new System.Windows.Forms.Padding(2);
 			this.ControlPanel.Size = new System.Drawing.Size(478, 498);
 			this.ControlPanel.TabIndex = 3;
 			// 
@@ -272,6 +274,8 @@ namespace H3VRModInstaller
 			// InfoPanel
 			// 
 			this.InfoPanel.BackColor = System.Drawing.Color.White;
+			this.InfoPanel.Controls.Add(this.OccupiedSlots);
+			this.InfoPanel.Controls.Add(this.ImgDisp);
 			this.InfoPanel.Controls.Add(this.ModInfo);
 			this.InfoPanel.Controls.Add(this.ModInformationLabel);
 			this.InfoPanel.Location = new System.Drawing.Point(6, 147);
@@ -286,7 +290,7 @@ namespace H3VRModInstaller
 			this.ModInfo.Location = new System.Drawing.Point(0, 22);
 			this.ModInfo.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
 			this.ModInfo.Name = "ModInfo";
-			this.ModInfo.Size = new System.Drawing.Size(467, 315);
+			this.ModInfo.Size = new System.Drawing.Size(466, 321);
 			this.ModInfo.TabIndex = 1;
 			this.ModInfo.Text = "Mod Info Here!";
 			// 
@@ -388,6 +392,24 @@ namespace H3VRModInstaller
 			this.CatagoryDropDown.Size = new System.Drawing.Size(121, 23);
 			this.CatagoryDropDown.TabIndex = 0;
 			// 
+			// ImgDisp
+			// 
+			this.ImgDisp.Location = new System.Drawing.Point(0, 126);
+			this.ImgDisp.Name = "ImgDisp";
+			this.ImgDisp.Size = new System.Drawing.Size(466, 217);
+			this.ImgDisp.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+			this.ImgDisp.TabIndex = 2;
+			this.ImgDisp.TabStop = false;
+			// 
+			// OccupiedSlots
+			// 
+			this.OccupiedSlots.BackColor = System.Drawing.Color.Transparent;
+			this.OccupiedSlots.Location = new System.Drawing.Point(295, 11);
+			this.OccupiedSlots.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+			this.OccupiedSlots.Name = "OccupiedSlots";
+			this.OccupiedSlots.Size = new System.Drawing.Size(171, 112);
+			this.OccupiedSlots.TabIndex = 3;
+			// 
 			// mainwindow
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -398,7 +420,6 @@ namespace H3VRModInstaller
 			this.Controls.Add(this.ControlPanel);
 			this.Controls.Add(this.ModList);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-//			this.Icon = ((System.Drawing.Icon)(resources.GetObject("h3vrmi.ico")));
 			this.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
 			this.MaximizeBox = false;
 			this.Name = "mainwindow";
@@ -411,6 +432,7 @@ namespace H3VRModInstaller
 			this.ControlPanel.ResumeLayout(false);
 			this.InfoPanel.ResumeLayout(false);
 			this.ProgressPanel.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.ImgDisp)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -459,6 +481,8 @@ namespace H3VRModInstaller
         private ColumnHeader InstalledModAuthor;
         private HelpProvider helpProvider1;
         private TextBox SearchBox;
-    }
+		private PictureBox ImgDisp;
+		private Label OccupiedSlots;
+	}
 }
 

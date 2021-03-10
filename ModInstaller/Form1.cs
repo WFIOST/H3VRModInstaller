@@ -6,10 +6,12 @@ using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using System.Security.Policy;
 using System.Windows.Forms;
 using H3VRModInstaller.Common;
 using H3VRModInstaller.Filesys;
@@ -18,6 +20,7 @@ using H3VRModInstaller.Net;
 using System.Threading;
 using H3VRModInstaller.GUI;
 using AutoUpdaterDotNET;
+using Newtonsoft.Json;
 
 
 namespace H3VRModInstaller
@@ -30,6 +33,8 @@ namespace H3VRModInstaller
         public string[] command;
 
         public string[] impModID = new string[0];
+
+        public WebClient wc = new WebClient();
 
         public mainwindow()
         {
@@ -150,13 +155,16 @@ namespace H3VRModInstaller
             AutoUpdater.Start("https://raw.githubusercontent.com/WFIOST/H3VR-Mod-Installer-Database/main/Database/updateinfo.xml");
             //displays screen if out of date, updates automatically. no downside other than it uses fucking xml -- potaotes
             //also note it gets the current ver from the assembly file ver, so make sure to update that!
+
+            ImgDisp.Image = Image.FromFile("F:/GitHub/H3VRModInstaller/ModInstaller/joebiden.jpg");
             
             KeyDown += Form_KeyDown;
 
 			if (!File.Exists(Utilities.ModCache))
 			{
 				MessageBox.Show("Thank you for downloading H3VRModInstaller!\nIf there are any issues, or if you want a mod added, please hit us up on the Homebrew discord (@Frityet and @Potatoes)", "Thank you!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-			}
+                MessageBox.Show("1. Do NOT report bugs in a modded installation to the devs!\n2. Please read the mod's description before reporting an issue with it!", "One note beforehand!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
 
             InitTimer(); //progress timer
             //AllocConsole(); //enables console
@@ -169,6 +177,8 @@ namespace H3VRModInstaller
             UpdateModList();
             UpdateCatagories();
             DisEnaButton.Hide();
+            OccupiedSlots.Hide();
+            ImgDisp.Hide();
 
             textBox1.Text = "Search for mod name here...";
                 
@@ -183,10 +193,12 @@ namespace H3VRModInstaller
             ModVer.Hide();
             Delete.Hide();
             DisEnaButton.Hide();
-
+            
+            
 
             try
             {
+                DispExtraInfo(DownloadableModsList.SelectedItems[0].SubItems[4].Text);
                 trycatchtext(SelectedModText, "Selected Mod: " + DownloadableModsList.SelectedItems[0].Text);
                 trycatchtext(ModInfo, DownloadableModsList.SelectedItems[0].SubItems[3].Text);
                 impModID = new string[DownloadableModsList.SelectedItems.Count];
@@ -198,6 +210,41 @@ namespace H3VRModInstaller
             catch
             {
                 // ignored
+            }
+        }
+
+        private void DispExtraInfo(string modid)
+        {
+            Size newSize = new Size(466, 321);
+            
+            ModFile mf = ModParsing.GetSpecificMod(modid);
+            if (mf.SingularModData != null)
+            {
+                newSize.Width = 301;
+                OccupiedSlots.Show();
+                string txt = "Affected Items: \n" + string.Join("\n- ", mf.SingularModData.OccupiesName);
+                OccupiedSlots.Text = txt;
+            }
+            if (mf.ImgLoc != null)
+            {
+                newSize.Height = 101;
+                ImgDisp.Show();
+                Console.WriteLine("Getting image from " + mf.ImgLoc + "!");
+                ImgDisp.Image = GetImage(mf.ImgLoc);
+            }
+            
+            
+            ModInfo.Size = newSize;
+        }
+
+        private Image GetImage(string imgloc)
+        {
+            var request = WebRequest.Create(imgloc);
+
+            using (var response = request.GetResponse())
+            using (var stream = response.GetResponseStream())
+            {
+                return Bitmap.FromStream(stream);
             }
         }
 
@@ -214,6 +261,7 @@ namespace H3VRModInstaller
             DisEnaButton.Show();
             try
             {
+                DispExtraInfo(InstalledModsList.SelectedItems[0].SubItems[4].Text);
                 ModFile modinfo = ModParsing.GetSpecificMod(InstalledModsList.SelectedItems[0].SubItems[4].Text);
                 
                 //if cached mod is disabled

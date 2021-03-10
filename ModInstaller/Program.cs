@@ -16,8 +16,9 @@ namespace H3VRModInstaller
 		[STAThread]
 		private static void Main()
 		{
-			Logger.InitialiseLog();
 			//start initialization
+			Logger.InitialiseLog();
+			ModInstallerCommon.OverrideModInstallerVariables();
 			
 			CheckCache();
 			CheckForManualInstalledMods();

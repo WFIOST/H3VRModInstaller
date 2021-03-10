@@ -76,7 +76,17 @@ namespace H3VRModInstaller.JSON
         
         public string[] IncompatableMods { get; set; }
 
+        public string ImgLoc { get; set; }
+        
         public bool HideMod { get; set; }
+        
+        public SingularMods SingularModData { get; set; }
+    }
+    
+    public class SingularMods
+    {
+        public string[] OccupiesID { get; set; }
+        public string[] OccupiesName { get; set; }
     }
 
     /// <summary>
