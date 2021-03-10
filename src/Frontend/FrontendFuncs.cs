@@ -98,31 +98,19 @@ namespace H3VRModInstaller.Frontend
         public static ModFile[] ReturnIncompatableMods(ModFile mf, ModFile[] mfs, bool includeDisabledMods)
         {
             List<ModFile> list = new List<ModFile>();
-            
-            //hacky removal of mfs that are disabled. this does not scale up lol
-            if (!includeDisabledMods)
-            {
-                for (int i = 0; i < mfs.Length; i++)
-                {
-                    if (CheckIfILmodDisabled(mfs[i]))
-                    {
-                        mfs[i].IncompatableMods = null;
-                        mfs[i].SingularModData = null;
-                    }
-                }
-            }
 
             //Get Direct Incompatable mods
             if(mf.IncompatableMods != null){
                 for (int x = 0; x < mf.IncompatableMods.Length; x++) //for every mod this is incompatable with
                 {
-                     for (int y = 0; y < mfs.Length; y++) //for every mod that is given
-                     { 
-                         if (mf.IncompatableMods[x] == mfs[y].ModId) //if mfs[y] is in inc.mods
-                         {
+                    for (int y = 0; y < mfs.Length; y++) //for every mod that is given
+                    { 
+                        if (CheckIfILmodDisabled(mfs[y]) && !includeDisabledMods) {continue;}
+                        if (mf.IncompatableMods[x] == mfs[y].ModId) //if mfs[y] is in inc.mods
+                        {
                              list.Add(mfs[y]); //add as incompatable with
-                         }
-                     } 
+                        }
+                    } 
                 }
             }
             
@@ -132,6 +120,7 @@ namespace H3VRModInstaller.Frontend
                 {
                     for (int y = 0; y < mfs.Length; y++) //for every mod given
                     {
+                        if (CheckIfILmodDisabled(mfs[y]) && !includeDisabledMods) {continue;}
                         if (mfs[y].SingularModData == null) { continue; } //if mfs[y] doesn't occupy anything, ignore
                         for (int z = 0; z < mfs[y].SingularModData.OccupiesID.Length; z++) //if one of mfs[y]'s occupies place is also in mf
                         {
