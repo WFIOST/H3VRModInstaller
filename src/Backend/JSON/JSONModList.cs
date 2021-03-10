@@ -80,6 +80,8 @@ namespace H3VRModInstaller.JSON
         public string[] IncompatableMods { get; set; }
 
         public SingularMods SingularModData { get; set; }
+        
+        public bool HideMod { get; set; }
     }
 
     public class SingularMods
