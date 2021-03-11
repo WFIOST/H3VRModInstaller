@@ -35,6 +35,7 @@ namespace H3VRModInstaller
 			this.ModList = new System.Windows.Forms.Panel();
 			this.tabControl1 = new System.Windows.Forms.TabControl();
 			this.TabPageInstalled = new System.Windows.Forms.TabPage();
+			this.InstalledModsCatagoryBox = new System.Windows.Forms.ComboBox();
 			this.InstalledModsList = new System.Windows.Forms.ListView();
 			this.InstalledModName = new System.Windows.Forms.ColumnHeader();
 			this.InstalledModVersion = new System.Windows.Forms.ColumnHeader();
@@ -51,6 +52,8 @@ namespace H3VRModInstaller
 			this.CheckButton = new System.Windows.Forms.Button();
 			this.ModVer = new System.Windows.Forms.Label();
 			this.InfoPanel = new System.Windows.Forms.Panel();
+			this.OccupiedSlotsList = new System.Windows.Forms.TextBox();
+			this.ImgDisp = new System.Windows.Forms.PictureBox();
 			this.ModInfo = new System.Windows.Forms.Label();
 			this.ModInformationLabel = new System.Windows.Forms.Label();
 			this.Delete = new System.Windows.Forms.Button();
@@ -61,16 +64,14 @@ namespace H3VRModInstaller
 			this.StatusReport = new System.Windows.Forms.Label();
 			this.Terminator = new System.ComponentModel.BackgroundWorker();
 			this.CatagoryDropDown = new System.Windows.Forms.ComboBox();
-			this.ImgDisp = new System.Windows.Forms.PictureBox();
-			this.OccupiedSlots = new System.Windows.Forms.Label();
 			this.ModList.SuspendLayout();
 			this.tabControl1.SuspendLayout();
 			this.TabPageInstalled.SuspendLayout();
 			this.TabPageAvailable.SuspendLayout();
 			this.ControlPanel.SuspendLayout();
 			this.InfoPanel.SuspendLayout();
-			this.ProgressPanel.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.ImgDisp)).BeginInit();
+			this.ProgressPanel.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// ModList
@@ -95,9 +96,11 @@ namespace H3VRModInstaller
 			this.tabControl1.SelectedIndex = 0;
 			this.tabControl1.Size = new System.Drawing.Size(456, 533);
 			this.tabControl1.TabIndex = 11;
+			this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
 			// 
 			// TabPageInstalled
 			// 
+			this.TabPageInstalled.Controls.Add(this.InstalledModsCatagoryBox);
 			this.TabPageInstalled.Controls.Add(this.InstalledModsList);
 			this.TabPageInstalled.Location = new System.Drawing.Point(4, 24);
 			this.TabPageInstalled.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
@@ -108,20 +111,30 @@ namespace H3VRModInstaller
 			this.TabPageInstalled.Text = "Installed Mods";
 			this.TabPageInstalled.UseVisualStyleBackColor = true;
 			// 
+			// InstalledModsCatagoryBox
+			// 
+			this.InstalledModsCatagoryBox.Dock = System.Windows.Forms.DockStyle.Top;
+			this.InstalledModsCatagoryBox.FormattingEnabled = true;
+			this.InstalledModsCatagoryBox.Location = new System.Drawing.Point(5, 3);
+			this.InstalledModsCatagoryBox.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
+			this.InstalledModsCatagoryBox.Name = "InstalledModsCatagoryBox";
+			this.InstalledModsCatagoryBox.Size = new System.Drawing.Size(438, 23);
+			this.InstalledModsCatagoryBox.TabIndex = 11;
+			this.InstalledModsCatagoryBox.SelectedIndexChanged += new System.EventHandler(this.InstalledModsCatagoryBox_SelectedIndexChanged);
+			// 
 			// InstalledModsList
 			// 
 			this.InstalledModsList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.InstalledModName,
             this.InstalledModVersion,
             this.InstalledModAuthor});
-			this.InstalledModsList.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.InstalledModsList.FullRowSelect = true;
 			this.InstalledModsList.GridLines = true;
 			this.InstalledModsList.HideSelection = false;
-			this.InstalledModsList.Location = new System.Drawing.Point(5, 3);
+			this.InstalledModsList.Location = new System.Drawing.Point(5, 26);
 			this.InstalledModsList.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
 			this.InstalledModsList.Name = "InstalledModsList";
-			this.InstalledModsList.Size = new System.Drawing.Size(438, 499);
+			this.InstalledModsList.Size = new System.Drawing.Size(438, 476);
 			this.InstalledModsList.Sorting = System.Windows.Forms.SortOrder.Ascending;
 			this.InstalledModsList.TabIndex = 7;
 			this.InstalledModsList.UseCompatibleStateImageBehavior = false;
@@ -274,7 +287,7 @@ namespace H3VRModInstaller
 			// InfoPanel
 			// 
 			this.InfoPanel.BackColor = System.Drawing.Color.White;
-			this.InfoPanel.Controls.Add(this.OccupiedSlots);
+			this.InfoPanel.Controls.Add(this.OccupiedSlotsList);
 			this.InfoPanel.Controls.Add(this.ImgDisp);
 			this.InfoPanel.Controls.Add(this.ModInfo);
 			this.InfoPanel.Controls.Add(this.ModInformationLabel);
@@ -284,6 +297,28 @@ namespace H3VRModInstaller
 			this.InfoPanel.Size = new System.Drawing.Size(467, 343);
 			this.InfoPanel.TabIndex = 4;
 			this.InfoPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.InfoPanel_Paint);
+			// 
+			// OccupiedSlotsList
+			// 
+			this.OccupiedSlotsList.Location = new System.Drawing.Point(300, 11);
+			this.OccupiedSlotsList.Multiline = true;
+			this.OccupiedSlotsList.Name = "OccupiedSlotsList";
+			this.OccupiedSlotsList.ReadOnly = true;
+			this.OccupiedSlotsList.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+			this.OccupiedSlotsList.Size = new System.Drawing.Size(157, 156);
+			this.OccupiedSlotsList.TabIndex = 13;
+			this.OccupiedSlotsList.TextChanged += new System.EventHandler(this.OccupiedSlotsList_TextChanged);
+			// 
+			// ImgDisp
+			// 
+			this.ImgDisp.Anchor = System.Windows.Forms.AnchorStyles.Right;
+			this.ImgDisp.Location = new System.Drawing.Point(8, 173);
+			this.ImgDisp.Name = "ImgDisp";
+			this.ImgDisp.Size = new System.Drawing.Size(449, 170);
+			this.ImgDisp.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+			this.ImgDisp.TabIndex = 2;
+			this.ImgDisp.TabStop = false;
+			this.ImgDisp.Click += new System.EventHandler(this.ImgDisp_Click);
 			// 
 			// ModInfo
 			// 
@@ -392,24 +427,6 @@ namespace H3VRModInstaller
 			this.CatagoryDropDown.Size = new System.Drawing.Size(121, 23);
 			this.CatagoryDropDown.TabIndex = 0;
 			// 
-			// ImgDisp
-			// 
-			this.ImgDisp.Location = new System.Drawing.Point(0, 126);
-			this.ImgDisp.Name = "ImgDisp";
-			this.ImgDisp.Size = new System.Drawing.Size(466, 217);
-			this.ImgDisp.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-			this.ImgDisp.TabIndex = 2;
-			this.ImgDisp.TabStop = false;
-			// 
-			// OccupiedSlots
-			// 
-			this.OccupiedSlots.BackColor = System.Drawing.Color.Transparent;
-			this.OccupiedSlots.Location = new System.Drawing.Point(295, 11);
-			this.OccupiedSlots.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-			this.OccupiedSlots.Name = "OccupiedSlots";
-			this.OccupiedSlots.Size = new System.Drawing.Size(171, 112);
-			this.OccupiedSlots.TabIndex = 3;
-			// 
 			// mainwindow
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -423,7 +440,7 @@ namespace H3VRModInstaller
 			this.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
 			this.MaximizeBox = false;
 			this.Name = "mainwindow";
-			this.Text = "H3VR Mod Installer - v1.1.2";
+			this.Text = "H3VR Mod Installer - v1.2.0";
 			this.Load += new System.EventHandler(this.LoadGUI);
 			this.ModList.ResumeLayout(false);
 			this.tabControl1.ResumeLayout(false);
@@ -431,8 +448,9 @@ namespace H3VRModInstaller
 			this.TabPageAvailable.ResumeLayout(false);
 			this.ControlPanel.ResumeLayout(false);
 			this.InfoPanel.ResumeLayout(false);
-			this.ProgressPanel.ResumeLayout(false);
+			this.InfoPanel.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.ImgDisp)).EndInit();
+			this.ProgressPanel.ResumeLayout(false);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -482,7 +500,8 @@ namespace H3VRModInstaller
         private HelpProvider helpProvider1;
         private TextBox SearchBox;
 		private PictureBox ImgDisp;
-		private Label OccupiedSlots;
+		private TextBox OccupiedSlotsList;
+		private ComboBox InstalledModsCatagoryBox;
 	}
 }
 

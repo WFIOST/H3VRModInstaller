@@ -31,6 +31,8 @@ namespace H3VRModInstaller.Net
 
 		private static string dlprogress;
 
+		private static ModFile mf;
+
 		/// <summary>
 		///     Downloads the mod specified
 		/// </summary>
@@ -41,6 +43,7 @@ namespace H3VRModInstaller.Net
 		/// <returns>Boolean, true</returns>
 		public bool DownloadMod(ModFile fileinfo, int modnum, bool autoredownload = false, bool skipdl = false)
 		{
+			mf = fileinfo;
 			if (skipdl) //lol this can never be reached since 5.0 -- potatoes
 			{
 				Installer.InstallMod(fileinfo);
@@ -120,7 +123,15 @@ namespace H3VRModInstaller.Net
 		/// <param name="e">Event Arguments</param>
 		public static void Dlprogress(object sender, DownloadProgressChangedEventArgs e)
 		{
-			if ((float)e.TotalBytesToReceive <= 10)
+			var totalbytes = e.TotalBytesToReceive;
+			if (mf.FileSizeMB != null)
+			{
+				try
+				{
+					totalbytes = (long)float.Parse(mf.FileSizeMB) * 1000000; // mb * 1mil = byte
+				} catch {}
+			}
+			if (totalbytes <= 10)
 			{
 				var mbs = e.BytesReceived / 1000000f;
 				var mbstext = string.Format("{0:00.00}", mbs);
@@ -129,7 +140,7 @@ namespace H3VRModInstaller.Net
 			}
 			else
 			{
-				var percentage = e.BytesReceived / (float)e.TotalBytesToReceive * 100;
+				var percentage = e.BytesReceived / (float)totalbytes * 100;
 				var percentagetext = string.Format("{0:00.00}", percentage);
 				Console.Write("\r" + percentagetext + "% downloaded!");
 				dlprogress = percentagetext + "%";

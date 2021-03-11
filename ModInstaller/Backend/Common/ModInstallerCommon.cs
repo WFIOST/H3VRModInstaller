@@ -103,6 +103,14 @@ namespace H3VRModInstaller.Common
         }
     }
     
+    public static class funcUtils
+    {
+        public static bool FileOrDirExists(string path)
+        {
+            if (File.Exists(path) || Directory.Exists(path)){ return true; }
+            return false;
+        }
+    }
     
 
     

@@ -81,6 +81,8 @@ namespace H3VRModInstaller.JSON
         public bool HideMod { get; set; }
         
         public SingularMods SingularModData { get; set; }
+
+        public string FileSizeMB { get; set; }
     }
     
     public class SingularMods

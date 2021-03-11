@@ -93,8 +93,14 @@ namespace H3VRModInstaller
             {
                 
             }
-
+            
             StatusReport.Text = Downloader.DLprogress ?? "Ready!";
+
+            if (FinishedThread)
+            {
+                Console.WriteLine("Displaying Image!");
+                FinishGetImage();
+            }
         }
 
         public void trycatchtext(Label label, string text)
@@ -151,7 +157,7 @@ namespace H3VRModInstaller
 
         private void LoadGUI(object sender, EventArgs e)
         {
-            AutoUpdater.InstalledVersion = new Version("1.1.2");
+            AutoUpdater.InstalledVersion = new Version("1.2.0");
             AutoUpdater.Start("https://raw.githubusercontent.com/WFIOST/H3VR-Mod-Installer-Database/main/Database/updateinfo.xml");
             //displays screen if out of date, updates automatically. no downside other than it uses fucking xml -- potaotes
             //also note it gets the current ver from the assembly file ver, so make sure to update that!
@@ -175,12 +181,13 @@ namespace H3VRModInstaller
             UpdateModList();
             UpdateCatagories();
             DisEnaButton.Hide();
-            OccupiedSlots.Hide();
+            OccupiedSlotsList.Hide();
             ImgDisp.Hide();
 
             textBox1.Text = "Search for mod name here...";
                 
             CatagoriesComboBox.SelectedIndex = 0;
+			InstalledModsCatagoryBox.SelectedIndex = 0;
         }
 
         private void DownloadableModsList_SelectedIndexChanged(object sender, EventArgs e)
@@ -219,31 +226,56 @@ namespace H3VRModInstaller
             if (mf.SingularModData != null)
             {
                 newSize.Width = 301;
-                OccupiedSlots.Show();
-                string txt = "Affected Items: \n" + string.Join("\n- ", mf.SingularModData.OccupiesName);
-                OccupiedSlots.Text = txt;
-            }
+                OccupiedSlotsList.Show();
+                List<string> txt = new List<string>();
+                txt.Add("Affected Things:");
+                for (int i = 0; i < mf.SingularModData.OccupiesName.Length; i++)
+                {
+                    txt.Add("- " + mf.SingularModData.OccupiesName[i]);
+                }
+                OccupiedSlotsList.Lines = txt.ToArray();
+            } else { OccupiedSlotsList.Hide();}
             if (mf.ImgLoc != null)
             {
-                newSize.Height = 101;
+                newSize.Height = 148;
                 ImgDisp.Show();
                 Console.WriteLine("Getting image from " + mf.ImgLoc + "!");
-                ImgDisp.Image = GetImage(mf.ImgLoc);
-            }
+                imgloc = mf.ImgLoc;
+                ImgDisp.Image = null;
+                Thread getimagethread = new Thread(new ThreadStart(GetImage));
+                getimagethread.Start();
+            } else {ImgDisp.Hide();}
             
             
             ModInfo.Size = newSize;
         }
 
-        private Image GetImage(string imgloc)
+        private string imgloc;
+        private Image img;
+        private bool FinishedThread;
+        private void GetImage()
         {
             var request = WebRequest.Create(imgloc);
 
             using (var response = request.GetResponse())
             using (var stream = response.GetResponseStream())
             {
-                return Bitmap.FromStream(stream);
+                Console.WriteLine("shitpant");
+                img = Bitmap.FromStream(stream);
+                FinishedThread = true;
             }
+        }
+
+        private void FinishGetImage()
+        {
+            FinishedThread = false;
+            ImgDisp.Image = img;
+            //not stackoverflow code
+            var wfactor = (double)img.Width / 449;
+            var hfactor = (double)img.Height / 170;
+            var resizeFactor = Math.Max(wfactor, hfactor);
+            ImgDisp.Location = new Point((int)(8 + 449 - img.Width / resizeFactor), 170);
+            ImgDisp.Size = new Size((int)(img.Width / resizeFactor), (int)(img.Height / resizeFactor));
         }
 
         private void InstallButton_Click(object sender, EventArgs e)
@@ -322,10 +354,10 @@ namespace H3VRModInstaller
             try
             {
                 var mf = ModParsing.GetSpecificMod(InstalledModsList.SelectedItems[0].SubItems[4].Text);
-                if (CheckIfIncompatable(mf, InstalledMods.GetInstalledMods()) != null)
+                if (ReturnIncompatableMods(mf, InstalledMods.GetInstalledMods(), false) != null)
                 {
                     ModVer.Text = "Mod is incompatable with " +
-                                           CheckIfIncompatable(mf, InstalledMods.GetInstalledMods())[0].Name;
+                                  ReturnIncompatableMods(mf, InstalledMods.GetInstalledMods(), false)[0].Name;
 //                    InstalledModsList.SelectedItems[0].BackColor = Color.Red;
                 }
             } catch {}
@@ -451,8 +483,8 @@ namespace H3VRModInstaller
                 {
                     try
                     {
-                        if (!isinstldmod && isdispmod && !dbmf.HideMod) { DownloadableModsList.Items.Add(mod); }
-                        if (isinstldmod) { InstalledModsList.Items.Add(mod); }
+                        if (!isinstldmod && (isdispmod || dispcat == "all") && !dbmf.HideMod) { DownloadableModsList.Items.Add(mod); }
+                        if (isinstldmod && (isdispmod || dispcat == "all")) { InstalledModsList.Items.Add(mod); }
                     } catch{}
                 }
                 else
@@ -482,7 +514,7 @@ namespace H3VRModInstaller
                 }
 
                 var mf = ModParsing.GetSpecificMod(InstalledModsList.Items[i].SubItems[4].Text);
-                var mfs = CheckIfIncompatable(mf, InstalledMods.GetInstalledMods());
+                var mfs = ReturnIncompatableMods(mf, InstalledMods.GetInstalledMods(), false);
                 if (mfs != null)
                 {
                     if (mfs.Length >= 1)
@@ -514,64 +546,87 @@ namespace H3VRModInstaller
                 }
             }
         }
-        
-        public static ModFile[] CheckIfIncompatable(ModFile mf, ModFile[] mfs)
-        {
-            mf = ModParsing.GetSpecificMod(mf.ModId);
-            if (mf.IncompatableMods == null) { return null; }
-            List<ModFile> incompatableMods = new List<ModFile>();
-            
-            //make sure no mods have null incompatablemods
-            List<ModFile> mfslist = mfs.ToList();
-            for (int i = 0; i < mfslist.Count; i++)
-            {
-                if (mfslist[i].IncompatableMods == null)
-                {
-                    mfslist.RemoveAt(i);
-                }
 
-                try
+        public static ModFile[] ReturnIncompatableMods(ModFile mf, ModFile[] mfs, bool includeDisabledMods)
+        {
+            List<ModFile> list = new List<ModFile>();
+
+            //Get Direct Incompatable mods
+            if(mf.IncompatableMods != null){
+                for (int x = 0; x < mf.IncompatableMods.Length; x++) //for every mod this is incompatable with
                 {
-                    if (!String.IsNullOrEmpty(mfslist[i].DelInfo))
-                    {
-                        string path =
-                            Path.Combine(Utilities.GameDirectory,
-                                mfslist[i].DelInfo.Split('?')[0]); //split to get the first delinfo arg
-                        string path2 = Path.Combine(Utilities.DisableCache,
-                            new DirectoryInfo(mfslist[i].DelInfo.Split('?')[0]).Name); //basically loc of the cache area
-                        if ((!File.Exists(path) && !Directory.Exists(path)) &&
-                            (File.Exists(path2) || Directory.Exists(path2))) //if it is not disabled
+                    for (int y = 0; y < mfs.Length; y++) //for every mod that is given
+                    { 
+                        if (CheckIfILmodDisabled(mfs[y]) && !includeDisabledMods) {continue;}
+                        if (mfs[y].ModId == mf.ModId) {continue;}
+                        if (mf.IncompatableMods[x] == mfs[y].ModId) //if mfs[y] is in inc.mods
                         {
-                            mfslist.RemoveAt(i);
+                             list.Add(mfs[y]); //add as incompatable with
                         }
-                    }
-                } catch{}
-            }
-            mfs = mfslist.ToArray();
-            
-            for (int i = 0; i < mfs.Length; i++) {
-                for (int incmods = 0; incmods < mf.IncompatableMods.Length; incmods++)
-                {
-                    if (mfs[i].ModId == mf.IncompatableMods[incmods])
-                    {
-                        {
-                            incompatableMods.Add(mfs[i]);
-                            Console.WriteLine("Adding {0} to inc mods!", mfs[i].Name);
-                        }
-                    }
+                    } 
                 }
             }
-            return incompatableMods.ToArray();
+            
+            //Get Singular Incompatable Mods
+            if(mf.SingularModData != null){
+                for (int x = 0; x < mf.SingularModData.OccupiesID.Length; x++) //for every mod space this takes up
+                {
+                    for (int y = 0; y < mfs.Length; y++) //for every mod given
+                    {
+                        if (CheckIfILmodDisabled(mfs[y]) && !includeDisabledMods) {continue;}
+                        if (mfs[y].ModId == mf.ModId) {continue;}
+                        if (mfs[y].SingularModData == null) { continue; } //if mfs[y] doesn't occupy anything, ignore
+                        for (int z = 0; z < mfs[y].SingularModData.OccupiesID.Length; z++) //if one of mfs[y]'s occupies place is also in mf
+                        {
+                            if (mf.SingularModData.OccupiesID[x] == mfs[y].SingularModData.OccupiesID[z])
+                            {
+                                list.Add(mfs[y]); //add as incompatable with
+                            }
+                        }
+                    } 
+                }
+            }
+            
+            return list.ToArray();
+        }
+        
+        public static bool CheckIfILmodDisabled(ModFile mf)
+        {
+            
+            if (!String.IsNullOrEmpty(mf.DelInfo))
+            {
+                //Location of where the mod should be to load
+                string InstLoc = Path.Combine(Utilities.GameDirectory, mf.DelInfo.Split('?')[0]);
+                //last part of a dir, eg dir1/dir2.jpeg > dir2.jpeg
+                string DisLocPostFix = new DirectoryInfo(mf.DelInfo.Split('?')[0]).Name;
+                //Location of where the mod should be to be disabled
+                string DisLoc = Path.Combine(Utilities.DisableCache, DisLocPostFix);
+                //if it does not exist to run, but is disabled
+                if (!funcUtils.FileOrDirExists(InstLoc) && funcUtils.FileOrDirExists(DisLoc))
+                {
+                    return true;
+                }
+            } else { Console.WriteLine("Delinfo of {0} is empty!", mf.ModId);}
+            return false;
         }
 
         public void UpdateCatagories()
         {
-            var catagories = JsonModList.GetModLists();
+            ModListFormat[] catagories = JsonModList.GetModLists();
+
+            ModListFormat mlfall = new ModListFormat();
+            mlfall.ModListID = "all";
+            mlfall.ModListName = "All Mods";
+            mlfall.Modlist = new ModFile[0];
+            catagories[0] = mlfall;
+            Array.Resize(ref catagories, catagories.Length + 1);
+            catagories[^1] = mlfall;
 
             for (var i = 0; i < catagories.Length; i++)
             {
                 CatagoriesComboBox.Items.Add(catagories[i].ModListName);
-            }
+				InstalledModsCatagoryBox.Items.Add(catagories[i].ModListName);
+			}
         }
 
         private void UpdateButton_Click(object sender, EventArgs e)
@@ -675,6 +730,49 @@ namespace H3VRModInstaller
         {
             StartTerminator("disable");
         }
-        
+
+		private void OccupiedSlotsList_TextChanged(object sender, EventArgs e)
+		{
+
+		}
+
+		private void ImgDisp_Click(object sender, EventArgs e)
+        {
+            var mf = ModParsing.GetSpecificMod(impModID[0]);
+
+            var link = mf.ImgLoc;
+            var psi = new ProcessStartInfo
+            {
+                FileName = link,
+                UseShellExecute = true
+            };
+            Process.Start(psi);
+        }
+
+		private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+		{
+            if (tabControl1.SelectedIndex == 0)
+            {
+                InstalledModsCatagoryBox_SelectedIndexChanged(null, null);
+            }
+            if (tabControl1.SelectedIndex == 1)
+            { 
+                CatagoriesComboBox_SelectedIndexChanged(null, null);
+            }
+
+        }
+
+        private void InstalledModsCatagoryBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var name = InstalledModsCatagoryBox.SelectedItem.ToString();
+            var catagories = JsonModList.GetModLists();
+            for (var i = 0; i < catagories.Length; i++)
+            {
+                if (catagories[i].ModListName == name)
+                {
+                    UpdateModList(catagories[i].ModListID);
+                }
+            }
+        }
     }
 }
