@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using Todo.Models;
 using H3VRModInstaller.Avalonia;
+using ModInstaller.Avalonia;
 
 namespace Todo.ViewModels
 {

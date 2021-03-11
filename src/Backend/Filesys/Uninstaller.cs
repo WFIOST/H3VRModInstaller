@@ -1,9 +1,9 @@
 ﻿using System;
 using System.IO;
-using H3VRModInstaller.Common;
-using H3VRModInstaller.JSON;
+using ModInstaller.Common;
+using ModInstaller.JSON;
 
-namespace H3VRModInstaller.Filesys
+namespace ModInstaller.Filesys
 {
 	/// <summary>
 	///     Uninstaller for mods

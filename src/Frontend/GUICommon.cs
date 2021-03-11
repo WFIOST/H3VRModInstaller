@@ -1,4 +1,4 @@
-﻿namespace H3VRModInstaller.Common
+﻿namespace ModInstaller.Common
 {
     /// <summary>
     ///     Common fields for the GUI

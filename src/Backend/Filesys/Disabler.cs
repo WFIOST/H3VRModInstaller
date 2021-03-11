@@ -1,10 +1,10 @@
 ﻿using System;
 using System.IO;
-using H3VRModInstaller.Common;
-using H3VRModInstaller.JSON;
+using ModInstaller.Common;
+using ModInstaller.JSON;
 
 
-namespace H3VRModInstaller.Filesys 
+namespace ModInstaller.Filesys 
 {
     public static class Disabler //written up by taters
     {

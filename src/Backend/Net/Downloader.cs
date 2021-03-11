@@ -4,11 +4,11 @@ using System.ComponentModel;
 using System.Net;
 using System.Text.RegularExpressions;
 using System.Threading;
-using H3VRModInstaller.Common;
-using H3VRModInstaller.Filesys;
-using H3VRModInstaller.JSON;
+using ModInstaller.Common;
+using ModInstaller.Filesys;
+using ModInstaller.JSON;
 
-namespace H3VRModInstaller.Net
+namespace ModInstaller.Net
 {
 	/// <summary>
 	///     This class is for downloading mods

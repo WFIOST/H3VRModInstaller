@@ -1,10 +1,10 @@
 using System;
 using System.IO;
 using System.Net;
-using H3VRModInstaller.Common;
+using ModInstaller.Common;
 using Newtonsoft.Json;
 
-namespace H3VRModInstaller.JSON
+namespace ModInstaller.JSON
 {
     /// <summary>
     ///     Standard JSON file info for a mod

@@ -1,5 +1,6 @@
 ﻿using Todo.Services;
 using H3VRModInstaller.Avalonia;
+using ModInstaller.Avalonia;
 
 namespace Todo.ViewModels
 {

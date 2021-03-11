@@ -2,9 +2,9 @@
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
-using ModInstaller;
+using ModInstaller.Common;
 
-namespace H3VRModInstaller.Avalonia
+namespace ModInstaller.Avalonia
 {
     class Program
     {
@@ -14,6 +14,8 @@ namespace H3VRModInstaller.Avalonia
         public static void Main(string[] args) 
         { //Not using lambdas so we can fit code in the Main
             BuildAvaloniaApp().StartWithClassicDesktopLifetime(args);
+            
+            Console.WriteLine(ModInstallerCommon.Dictionaries.ModFileRegistry["pccg"].Name);
         }
 
         // Avalonia configuration, don't remove; also used by visual designer.

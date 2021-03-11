@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using ReactiveUI;
 
-namespace H3VRModInstaller.Avalonia
+namespace ModInstaller.Avalonia
 {
     public class ViewModelBase : ReactiveObject
     {

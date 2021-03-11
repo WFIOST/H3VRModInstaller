@@ -5,7 +5,7 @@ using H3VRModInstaller.Avalonia;
 using Todo.Services;
 using Todo.ViewModels;
 
-namespace H3VRModInstaller.Avalonia
+namespace ModInstaller.Avalonia
 {
     public class App : Application
     {
