@@ -3,8 +3,8 @@
 		{
 			"modID": "uniqueidmodinstaller",
 			"Name": "H3VRModInstaller",
-			"Version": "1.1.1.2",
-			"Description": "Hey! This thingy here is just to know what is the newest version of H3VRMI.",
+			"Version": "9.9.9",
+			"Description": "Hey! This thingy here is just to link the databases of H3VRMI.",
 			"Website": "https://github.com/Frityet/H3VRModInstaller",
 			"Dependencies": [
 				"https://raw.githubusercontent.com/WFIOST/H3VR-Mod-Installer-Database/main/Database/",
@@ -12,7 +12,8 @@
 				"codemods.json",
 				"dependencies.json",
 				"customitems.json",
-				"mapmods.json"
+				"mapmods.json",
+				"skinmods.json"
 			]
 		}
 	]
