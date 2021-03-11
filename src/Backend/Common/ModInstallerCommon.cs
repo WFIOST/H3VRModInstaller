@@ -5,11 +5,11 @@ using System.Diagnostics.Eventing.Reader;
 using System.IO;
 using System.Linq;
 using System.Text;
-using ModInstaller.JSON;
+using H3VRModInstaller.JSON;
 using Microsoft.Win32;
 using Newtonsoft.Json;
 
-namespace ModInstaller.Common
+namespace H3VRModInstaller.Common
 {
     /// <summary>
     ///     Some common variables used across the project

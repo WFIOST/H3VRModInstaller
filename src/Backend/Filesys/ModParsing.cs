@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Linq;
-using ModInstaller.JSON;
+using H3VRModInstaller.JSON;
 
-namespace ModInstaller.Filesys
+namespace H3VRModInstaller.Filesys
 {
     /// <summary>
     ///     Handles getting specific data from modfiles

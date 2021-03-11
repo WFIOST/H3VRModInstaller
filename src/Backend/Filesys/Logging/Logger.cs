@@ -1,8 +1,8 @@
 ﻿using System;
 using System.IO;
-using ModInstaller.Common;
+using H3VRModInstaller.Common;
 
-namespace ModInstaller.Filesys.Logging
+namespace H3VRModInstaller.Filesys.Logging
 {
     public static class Logger
     {

@@ -1,11 +1,11 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
-using ModInstaller.Common;
-using ModInstaller.Filesys;
+using H3VRModInstaller.Common;
+using H3VRModInstaller.Filesys;
 using Newtonsoft.Json;
 
-namespace ModInstaller.JSON
+namespace H3VRModInstaller.JSON
 {
     
     /// <summary>

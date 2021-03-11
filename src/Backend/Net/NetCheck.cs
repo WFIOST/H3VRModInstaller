@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Net.NetworkInformation;
 
-namespace ModInstaller.Net
+namespace H3VRModInstaller.Net
 {
     /// <summary>
     ///     Checks if you are online

@@ -2,7 +2,7 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 
-namespace ModInstaller.Avalonia
+namespace H3VRModInstaller.Avalonia
 {
     public class MainWindow : Window
     {
