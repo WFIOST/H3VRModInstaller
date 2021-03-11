@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Diagnostics.Eventing.Reader;
 using System.IO;
 using System.Linq;
 using System.Text;
+using H3VRModInstaller.JSON;
 using Microsoft.Win32;
 using Newtonsoft.Json;
 
@@ -60,14 +62,14 @@ namespace H3VRModInstaller.Common
         /// </summary>
         public static string ReturnArrayInString(string[] array)
         {
-            var strng = "";
+            var str = "";
             for (var i = 0; i < array.Length; i++)
             {
-                strng += array[i];
-                strng += ", ";
+                str += array[i];
+                str += ", ";
             }
 
-            return strng;
+            return str;
         }
 
         /// <summary>
@@ -75,22 +77,80 @@ namespace H3VRModInstaller.Common
         /// </summary>
         public static void OverrideModInstallerVariables()
         {
-            if (!File.Exists(Directory.GetCurrentDirectory() + "/" + "MICoverride.json")) {return;}
-            var depinput = JsonConvert.DeserializeObject<MICoverrideVars>(File.ReadAllText(Directory.GetCurrentDirectory() + "/" + "MICoverride.json"));
+            if (!File.Exists(Directory.GetCurrentDirectory() + "/" + "MICoverride.json"))
+            {
+                return;
+            }
+
+            var depinput =
+                JsonConvert.DeserializeObject<MICoverrideVars>(
+                    File.ReadAllText(Directory.GetCurrentDirectory() + "/" + "MICoverride.json"));
             if (depinput.DatabaseInfo != null)
             {
                 Console.WriteLine("Overriding DatabaseInfo with " + depinput.DatabaseInfo);
                 Utilities.DatabaseInfo = depinput.DatabaseInfo;
             }
+
             if (depinput.RootFolderName != null)
             {
                 Console.WriteLine("Overriding Game Name with " + depinput.RootFolderName);
                 Utilities.GameName = depinput.RootFolderName;
             }
+
             if (depinput.ACFname != null)
             {
                 Console.WriteLine("Overriding ACFname with " + depinput.ACFname);
                 Utilities.ACFpath = depinput.ACFname;
+            }
+
+        }
+
+        /// <summary>
+        /// Useful dictionaries
+        /// </summary>
+        public static class Dictionaries
+        {
+            public static Dictionary<string, ModFile> ModFileRegistry
+            {
+                get
+                {
+                    return JsonModList.GetModLists()
+                        .SelectMany(list => list.Modlist)
+                        .ToDictionary(mod => mod.ModId);
+                }
+            }
+
+            public static Dictionary<string, ModFile[]> ModListRegistry
+            {
+                get
+                {
+                    return JsonModList.GetModLists()
+                        .ToDictionary(list => list.ModListName,
+                            list => list.Modlist);
+                    
+                }
+            }
+
+            public static Dictionary<string[], SingularMods> SingularModNameRegistry
+            {
+                get
+                {
+                    return JsonModList.GetModLists()
+                        .SelectMany(list => list.Modlist
+                        ).ToDictionary(mod => mod.SingularModData.OccupiesName,
+                            mod => mod.SingularModData);
+                }
+            }
+            
+            public static Dictionary<string[], SingularMods> SingularModIDRegistry
+            { 
+                get 
+                { 
+                    return JsonModList.GetModLists()
+                        .SelectMany(list => list.Modlist)
+                        .ToDictionary(mod => mod.SingularModData.OccupiesID, 
+                            mod => mod.SingularModData);
+                }
             }
         }
 
