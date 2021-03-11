@@ -9,13 +9,13 @@ using System.Net.NetworkInformation;
 using System.Net.Sockets;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-using ModInstaller.Common;
-using ModInstaller.Filesys;
-using ModInstaller.JSON;
-using ModInstaller.Net;
+using H3VRModInstaller.Common;
+using H3VRModInstaller.Filesys;
+using H3VRModInstaller.JSON;
+using H3VRModInstaller.Net;
 using AutoUpdaterDotNET;
 
-namespace ModInstaller.Frontend
+namespace H3VRModInstaller.Frontend
 {
     public static class Actions
     {

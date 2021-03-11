@@ -1,12 +1,12 @@
 using System;
 using System.Diagnostics;
 using System.IO;
-using ModInstaller.Common;
-using ModInstaller.Filesys;
-using ModInstaller.Filesys.Logging;
-using ModInstaller.Net;
+using H3VRModInstaller.Common;
+using H3VRModInstaller.Filesys;
+using H3VRModInstaller.Filesys.Logging;
+using H3VRModInstaller.Net;
 
-namespace ModInstaller
+namespace H3VRModInstaller
 {
     /// <summary>
     ///     Interpreter between backend and frontend
