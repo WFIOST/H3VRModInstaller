@@ -260,7 +260,6 @@ namespace H3VRModInstaller
             using (var response = request.GetResponse())
             using (var stream = response.GetResponseStream())
             {
-                Console.WriteLine("shitpant");
                 img = Bitmap.FromStream(stream);
                 FinishedThread = true;
             }
@@ -610,18 +609,23 @@ namespace H3VRModInstaller
             return false;
         }
 
+        public ModListFormat[] catagories = new ModListFormat[0];
         public void UpdateCatagories()
         {
-            ModListFormat[] catagories = JsonModList.GetModLists();
-
+            catagories = JsonModList.GetModLists();
             ModListFormat mlfall = new ModListFormat();
             mlfall.ModListID = "all";
             mlfall.ModListName = "All Mods";
             mlfall.Modlist = new ModFile[0];
-            catagories[0] = mlfall;
+            
             Array.Resize(ref catagories, catagories.Length + 1);
-            catagories[^1] = mlfall;
+            for (int i = catagories.Length - 2; i >= 0; i--)
+            {
+                catagories[i + 1] = catagories[i];
+            }
 
+            catagories[0] = mlfall;
+                
             for (var i = 0; i < catagories.Length; i++)
             {
                 CatagoriesComboBox.Items.Add(catagories[i].ModListName);
@@ -682,7 +686,6 @@ namespace H3VRModInstaller
         private void CatagoriesComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             var name = CatagoriesComboBox.SelectedItem.ToString();
-            var catagories = JsonModList.GetModLists();
             for (var i = 0; i < catagories.Length; i++)
                 if (catagories[i].ModListName == name)
                 {
@@ -765,7 +768,7 @@ namespace H3VRModInstaller
         private void InstalledModsCatagoryBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             var name = InstalledModsCatagoryBox.SelectedItem.ToString();
-            var catagories = JsonModList.GetModLists();
+            Console.WriteLine(name);
             for (var i = 0; i < catagories.Length; i++)
             {
                 if (catagories[i].ModListName == name)

@@ -53,6 +53,24 @@ namespace H3VRModInstaller.Filesys
                     Archives.UnArchive(fileinfo.RawName, Path.Combine(Utilities.GameDirectoryOrThrow, args[i + 1]),
                         delArchive, ArchiveType);
                 }
+                
+                if (args[i] == "moveAllFromFolderOfType")
+                {
+                    DirectoryInfo d = new DirectoryInfo("");
+                    if(Directory.Exists(args[i + 1]))
+                    {
+                        d = new DirectoryInfo(args[i + 1]);
+                    }
+                    else
+                    {
+                        d = new DirectoryInfo(args[i + 1]);
+                    }
+                    Console.WriteLine("Moving all files from " + d + " to " + args[i + 3]);
+                    foreach (var file in d.GetFiles("*." + args[i + 2]))
+                    {
+                        Directory.Move(file.FullName, args[i + 3] + file.Name);
+                    }
+                }
 
                 if (args[i] == "addFolder")
                 {
