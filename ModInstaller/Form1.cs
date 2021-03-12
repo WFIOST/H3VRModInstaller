@@ -492,7 +492,12 @@ namespace H3VRModInstaller
                     filter = filter.ToLower();
                     string modname = list[relevantint].Name.ToLower();
                     string authorString = string.Join("", list[relevantint].Author).ToLower();
-                    if (modname.Contains(filter) || authorString.Contains(filter))
+                    string singularString = "";
+                    if (list[relevantint].SingularModData != null)
+                    {
+                        singularString = string.Join("", list[relevantint].SingularModData.OccupiesName).ToLower();
+                    }
+                    if (modname.Contains(filter) || authorString.Contains(filter) || singularString.Contains(filter))
                     {
                         Console.WriteLine("");
                         if (!isinstldmod && isdispmod) DownloadableModsList.Items.Add(mod);
