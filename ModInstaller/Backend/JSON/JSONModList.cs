@@ -83,6 +83,8 @@ namespace H3VRModInstaller.JSON
         public SingularMods SingularModData { get; set; }
 
         public string FileSizeMB { get; set; }
+
+        public string[] DelInfoArray { get; set; }
     }
     
     public class SingularMods
@@ -142,9 +144,19 @@ namespace H3VRModInstaller.JSON
                     ModInstallerCommon.DebugLog("Found " + jsonfiles.Length + " json files to read from!");
                     flag = true;
                 }
-
                 var _mlf = new ModListFormat[jsonfiles.Length];
                 for (var i = 0; i < jsonfiles.Length; i++) {_mlf[i] = GetDeserializedModListFormatOnline(jsonfiles[i]);}
+
+                for (int i = 0; i < _mlf.Length; i++)
+                {
+                    for (int x = 0; x < _mlf[i].Modlist.Length; x++)
+                    {
+                        if(_mlf[i].Modlist[x].DelInfoArray == null) {continue;}
+                        _mlf[i].Modlist[x].DelInfo = new string(string.Join('?', _mlf[i].Modlist[x].DelInfoArray));
+                        Console.WriteLine(_mlf[i].Modlist[x].DelInfo);
+                    }
+                }
+                
                 if (flag) {ModListCache = _mlf;}
                 return _mlf;
             }

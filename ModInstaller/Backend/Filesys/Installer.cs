@@ -56,19 +56,20 @@ namespace H3VRModInstaller.Filesys
                 
                 if (args[i] == "moveAllFromFolderOfType")
                 {
-                    DirectoryInfo d = new DirectoryInfo("");
+                    DirectoryInfo d;
                     if(Directory.Exists(args[i + 1]))
                     {
                         d = new DirectoryInfo(args[i + 1]);
                     }
                     else
                     {
-                        d = new DirectoryInfo(args[i + 1]);
+                        d = new DirectoryInfo(Utilities.GameDirectory + args[i + 1]);
                     }
-                    Console.WriteLine("Moving all files from " + d + " to " + args[i + 3]);
+                    Console.WriteLine("Moving all files of type {0} from " + d + " to " + args[i + 3], args[i + 2]);
                     foreach (var file in d.GetFiles("*." + args[i + 2]))
                     {
-                        Directory.Move(file.FullName, args[i + 3] + file.Name);
+                        Console.WriteLine("Moving file {0} to {1}", file.FullName, d + args[i + 3] + file.Name);
+                        Directory.Move(file.FullName, Utilities.GameDirectory + args[i + 3] + file.Name);
                     }
                 }
 
