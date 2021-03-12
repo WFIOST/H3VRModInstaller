@@ -153,7 +153,6 @@ namespace H3VRModInstaller.JSON
                     {
                         if(_mlf[i].Modlist[x].DelInfoArray == null) {continue;}
                         _mlf[i].Modlist[x].DelInfo = new string(string.Join('?', _mlf[i].Modlist[x].DelInfoArray));
-                        Console.WriteLine(_mlf[i].Modlist[x].DelInfo);
                     }
                 }
                 
