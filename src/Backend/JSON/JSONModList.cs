@@ -75,6 +75,8 @@ namespace H3VRModInstaller.JSON
         /// <value>String</value>
         public string DelInfo { get; set; }
         
+        public string DelInfoArray { get; set; }
+        
         public string ImgLoc { get; set; }
         
         public string[] IncompatableMods { get; set; }
@@ -144,6 +146,17 @@ namespace H3VRModInstaller.JSON
 
                 var _mlf = new ModListFormat[jsonfiles.Length];
                 for (var i = 0; i < jsonfiles.Length; i++) {_mlf[i] = GetDeserializedModListFormatOnline(jsonfiles[i]);}
+                
+                //get all delinfoarrays and convert to delinfo
+                for (int i = 0; i < _mlf.Length; i++)
+                {
+                    for (int x = 0; x < _mlf[i].Modlist.Length; x++)
+                    {
+                        if(_mlf[i].Modlist[x].DelInfoArray == null) {continue;}
+                        _mlf[i].Modlist[x].DelInfo = new string(string.Join('?', _mlf[i].Modlist[x].DelInfoArray));
+                        Console.WriteLine(_mlf[i].Modlist[x].DelInfo);
+                    }
+                }
                 if (flag) {ModListCache = _mlf;}
                 return _mlf;
             }
