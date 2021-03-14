@@ -133,7 +133,7 @@ namespace H3VRModInstaller.Net
 			}
 			if (totalbytes <= 10)
 			{
-				var mbs = e.BytesReceived / 1000000f;
+				var mbs = e.BytesReceived / 1048576f;
 				var mbstext = string.Format("{0:00.00}", mbs);
 				Console.Write("\r" + mbstext + "MBs downloaded!");
 				dlprogress = mbstext + "MBs";
@@ -144,10 +144,13 @@ namespace H3VRModInstaller.Net
 				var percentagetext = string.Format("{0:00.00}", percentage);
 				Console.Write("\r" + percentagetext + "% downloaded!");
 				
-				var mbs = e.BytesReceived / 1000000f;
+				var mbs = e.BytesReceived / 1048576f;
 				var mbstext = string.Format("{0:00.00}", mbs);
+
+				var totalmbs = totalbytes / 1048576f;
+				var totalmbsstring =string.Format("{0:00.00}", totalmbs);
 				
-				dlprogress = percentagetext + "% - " + mbstext + "MBs / " + (totalbytes / 1048576) + "MBs";
+				dlprogress = percentagetext + "% - " + mbstext + "MBs / " + totalmbsstring + "MBs";
 			}
 
 			//            NotifyForms.CallEvent();
