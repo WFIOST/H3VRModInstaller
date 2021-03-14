@@ -128,7 +128,7 @@ namespace H3VRModInstaller.Net
 			{
 				try
 				{
-					totalbytes = (long)float.Parse(mf.FileSizeMB) * 1000000; // mb * 1mil = byte
+					totalbytes = (long)(float.Parse(mf.FileSizeMB) * 1048576); // mb * 1mil = byte
 				} catch {}
 			}
 			if (totalbytes <= 10)
