@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using H3VRModInstaller.Common;
@@ -85,6 +86,8 @@ namespace H3VRModInstaller.JSON
         public string FileSizeMB { get; set; }
 
         public string[] DelInfoArray { get; set; }
+        
+        public string[] InstallArgumentsArray { get; set; }
     }
     
     public class SingularMods
@@ -146,13 +149,22 @@ namespace H3VRModInstaller.JSON
                 }
                 var _mlf = new ModListFormat[jsonfiles.Length];
                 for (var i = 0; i < jsonfiles.Length; i++) {_mlf[i] = GetDeserializedModListFormatOnline(jsonfiles[i]);}
-
-                for (int i = 0; i < _mlf.Length; i++)
+                
+                
+                //replace all delinfo with delinfoarray and arguments with installarguments
+                for (int i = 0; i < _mlf.Length; i++) //for every modlist
                 {
-                    for (int x = 0; x < _mlf[i].Modlist.Length; x++)
+                    for (int x = 0; x < _mlf[i].Modlist.Length; x++) //for every mod
                     {
-                        if(_mlf[i].Modlist[x].DelInfoArray == null) {continue;}
-                        _mlf[i].Modlist[x].DelInfo = new string(string.Join('?', _mlf[i].Modlist[x].DelInfoArray));
+                        if (_mlf[i].Modlist[x].DelInfoArray != null) //replace delinfo with delinfoarray
+                        {
+                            _mlf[i].Modlist[x].DelInfo = new string(string.Join('?', _mlf[i].Modlist[x].DelInfoArray));
+                        }
+
+                        if (_mlf[i].Modlist[x].InstallArgumentsArray != null) //replace args with installargsarray
+                        {
+                            _mlf[i].Modlist[x].Arguments = new string(string.Join('?', _mlf[i].Modlist[x].InstallArgumentsArray));
+                        }
                     }
                 }
                 
@@ -162,6 +174,7 @@ namespace H3VRModInstaller.JSON
 
             return ModListCache;
         }
+
 
         /// <summary>
         ///     Deserializes JSON file given JSON file name.

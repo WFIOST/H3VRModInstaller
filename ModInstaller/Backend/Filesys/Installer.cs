@@ -30,9 +30,9 @@ namespace H3VRModInstaller.Filesys
 
             for (var i = 0; i < args.Length; i++)
             {
-                if (args[i] == "moveToFolder") {MoveToFolder(args[i + 1], args[i + 2], args[i + 3]);}
+                if (args[i] == "moveToFolder" || args[i] == "moveto") {MoveToFolder(args[i + 1], args[i + 2], args[i + 3]);}
 
-                if (args[i] == "unzipToDir")
+                if (args[i] == "unzipToDir" || args[i] == "extractto")
                 {
                     ModInstallerCommon.DebugLog("Unzipping to " + args[i + 1]);
 
@@ -54,7 +54,7 @@ namespace H3VRModInstaller.Filesys
                         delArchive, ArchiveType);
                 }
                 
-                if (args[i] == "moveAllFromFolderOfType")
+                if (args[i] == "moveAllFromFolderOfType" || args[i] == "moveallfrom")
                 {
                     DirectoryInfo d;
                     if(Directory.Exists(args[i + 1]))
@@ -66,10 +66,12 @@ namespace H3VRModInstaller.Filesys
                         d = new DirectoryInfo(Utilities.GameDirectory + args[i + 1]);
                     }
                     Console.WriteLine("Moving all files of type {0} from " + d + " to " + args[i + 3], args[i + 2]);
-                    foreach (var file in d.GetFiles("*." + args[i + 2]))
+                    foreach (var file in d.GetFiles(args[i + 2]))
                     {
                         Console.WriteLine("Moving file {0} to {1}", file.FullName, d + args[i + 3] + file.Name);
-                        Directory.Move(file.FullName, Utilities.GameDirectory + args[i + 3] + file.Name);
+                        var dest = Utilities.GameDirectory + args[i + 3] + file.Name;
+                        if (File.Exists(dest)) {File.Delete(dest);} //overwrite if exist
+                        Directory.Move(file.FullName, dest);
                     }
                 }
 
