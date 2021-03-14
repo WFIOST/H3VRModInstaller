@@ -33,7 +33,8 @@ namespace H3VRModInstaller
                 switch (inputargs[0])
                 {
                     case "dl":
-                        Downloader.DownloadModDirector(inputargs[repeat]);
+                        var dl = new Downloader();
+                        dl.DownloadModDirector(inputargs[repeat]);
                         break;
                     //deletion
                     case "rm":

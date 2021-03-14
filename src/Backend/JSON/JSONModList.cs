@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using H3VRModInstaller.Common;
@@ -36,8 +37,6 @@ namespace H3VRModInstaller.JSON
         /// </summary>
         public string Version { get; set; }
 
-        public string DispVersion { get; set; }
-
         /// <summary>
         ///     Description of the mod
         /// </summary>
@@ -69,23 +68,28 @@ namespace H3VRModInstaller.JSON
         /// </summary>
         public string[] Dependencies { get; set; }
 
+
         /// <summary>
         ///     The deletion info for a mod
         /// </summary>
         /// <value>String</value>
         public string DelInfo { get; set; }
         
-        public string DelInfoArray { get; set; }
-        
-        public string ImgLoc { get; set; }
-        
         public string[] IncompatableMods { get; set; }
 
-        public SingularMods SingularModData { get; set; }
+        public string ImgLoc { get; set; }
         
         public bool HideMod { get; set; }
-    }
+        
+        public SingularMods SingularModData { get; set; }
 
+        public string FileSizeMB { get; set; }
+
+        public string[] DelInfoArray { get; set; }
+        
+        public string[] InstallArgumentsArray { get; set; }
+    }
+    
     public class SingularMods
     {
         public string[] OccupiesID { get; set; }
@@ -143,26 +147,34 @@ namespace H3VRModInstaller.JSON
                     ModInstallerCommon.DebugLog("Found " + jsonfiles.Length + " json files to read from!");
                     flag = true;
                 }
-
                 var _mlf = new ModListFormat[jsonfiles.Length];
                 for (var i = 0; i < jsonfiles.Length; i++) {_mlf[i] = GetDeserializedModListFormatOnline(jsonfiles[i]);}
                 
-                //get all delinfoarrays and convert to delinfo
-                for (int i = 0; i < _mlf.Length; i++)
+                
+                //replace all delinfo with delinfoarray and arguments with installarguments
+                for (int i = 0; i < _mlf.Length; i++) //for every modlist
                 {
-                    for (int x = 0; x < _mlf[i].Modlist.Length; x++)
+                    for (int x = 0; x < _mlf[i].Modlist.Length; x++) //for every mod
                     {
-                        if(_mlf[i].Modlist[x].DelInfoArray == null) {continue;}
-                        _mlf[i].Modlist[x].DelInfo = new string(string.Join('?', _mlf[i].Modlist[x].DelInfoArray));
-                        Console.WriteLine(_mlf[i].Modlist[x].DelInfo);
+                        if (_mlf[i].Modlist[x].DelInfoArray != null) //replace delinfo with delinfoarray
+                        {
+                            _mlf[i].Modlist[x].DelInfo = new string(string.Join('?', _mlf[i].Modlist[x].DelInfoArray));
+                        }
+
+                        if (_mlf[i].Modlist[x].InstallArgumentsArray != null) //replace args with installargsarray
+                        {
+                            _mlf[i].Modlist[x].Arguments = new string(string.Join('?', _mlf[i].Modlist[x].InstallArgumentsArray));
+                        }
                     }
                 }
+                
                 if (flag) {ModListCache = _mlf;}
                 return _mlf;
             }
 
             return ModListCache;
         }
+
 
         /// <summary>
         ///     Deserializes JSON file given JSON file name.
