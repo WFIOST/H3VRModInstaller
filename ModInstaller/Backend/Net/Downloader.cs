@@ -143,7 +143,11 @@ namespace H3VRModInstaller.Net
 				var percentage = e.BytesReceived / (float)totalbytes * 100;
 				var percentagetext = string.Format("{0:00.00}", percentage);
 				Console.Write("\r" + percentagetext + "% downloaded!");
-				dlprogress = percentagetext + "%";
+				
+				var mbs = e.BytesReceived / 1000000f;
+				var mbstext = string.Format("{0:00.00}", mbs);
+				
+				dlprogress = percentagetext + "% - " + mbstext + "MBs / " + (totalbytes / 1048576) + "MBs";
 			}
 
 			//            NotifyForms.CallEvent();
