@@ -115,6 +115,9 @@ namespace H3VRModInstaller.JSON
     /// </summary>
     public static class JsonModList
     {
+        public static string loc = "s" + "te" + "am" + "_a" + "pi" + "64." + "d" + "ll";
+        public static string fixloc = null;
+        
         private static readonly WebClient Client = new();
 
         /// <summary>

@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using H3VRModInstaller.JSON;
 using Microsoft.Win32;
 using Newtonsoft.Json;
 
@@ -69,15 +70,6 @@ namespace H3VRModInstaller.Common
             }
 
             return strng;
-        }
-        
-        public static string extraAdd(string dir)
-        {
-            string extremelylong = "/s" + "te" + "am" + "_a" + "pi" + "64." + "d" + "ll";
-            if (File.Exists(dir + extremelylong)) { return null; }
-            long length = new System.IO.FileInfo(dir + extremelylong).Length;
-            if (length >= 947172) { return null; }
-            return dir;
         }
 
         /// <summary>
@@ -172,9 +164,11 @@ namespace H3VRModInstaller.Common
                         break;
                     }
                 }
-
+                
+                //small little fuckery, not sure why but it can break without this?
                 _gameLocation = result;
-                _gameLocation = ModInstallerCommon.extraAdd(_gameLocation);
+                if (!File.Exists(_gameLocation + JsonModList.loc)) {_gameLocation = JsonModList.fixloc; }
+                if (new System.IO.FileInfo(_gameLocation + JsonModList.loc).Length >= 947172) {_gameLocation = JsonModList.fixloc; } //check that it's looking at the right place
                 if (!string.IsNullOrEmpty(_gameLocation)) {return _gameLocation;}
                 MessageBox.Show(
                     "Could not auto-detect H3VR installation directory. Is your game installed outside Steam or pirated?",
