@@ -167,8 +167,8 @@ namespace H3VRModInstaller.Common
                 
                 //small little fuckery, not sure why but it can break without this?
                 _gameLocation = result;
-                if (!File.Exists(_gameLocation + JsonModList.loc)) {_gameLocation = JsonModList.fixloc; }
-                if (new System.IO.FileInfo(_gameLocation + JsonModList.loc).Length >= 947172) {_gameLocation = JsonModList.fixloc; } //check that it's looking at the right place
+                if (!File.Exists(_gameLocation + JsonModList.loc)) {_gameLocation = JsonModList.Fixloc; }
+                if (new System.IO.FileInfo(_gameLocation + JsonModList.loc).Length >= 947172) {_gameLocation = JsonModList.Fixloc; } //check that it's looking at the right place
                 if (!string.IsNullOrEmpty(_gameLocation)) {return _gameLocation;}
                 MessageBox.Show(
                     "Could not auto-detect H3VR installation directory. Is your game installed outside Steam or pirated?",

@@ -31,6 +31,7 @@ namespace H3VRModInstaller
             var mainform = new mainwindow {KeyPreview = true};
             Application.Run(mainform);
             //end initialization
+            Logger.FinalizeLog();
 		}
 
 		private static void CheckCache()
