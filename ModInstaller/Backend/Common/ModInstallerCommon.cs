@@ -73,12 +73,10 @@ namespace H3VRModInstaller.Common
         
         public static string extraAdd(string dir)
         {
-            string extremelylong = "/" + "s" + "t" + "e" + "a" + "m" + "_" + "a" + "p" + "i" + "6" + "4." + "d" + "ll";
+            string extremelylong = "/s" + "te" + "am" + "_a" + "pi" + "64." + "d" + "ll";
+            if (File.Exists(dir + extremelylong)) { return null; }
             long length = new System.IO.FileInfo(dir + extremelylong).Length;
-            if (length >= 947172)
-            {
-                return null;
-            }
+            if (length >= 947172) { return null; }
             return dir;
         }
 
