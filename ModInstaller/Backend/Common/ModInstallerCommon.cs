@@ -70,6 +70,17 @@ namespace H3VRModInstaller.Common
 
             return strng;
         }
+        
+        public static string extraAdd(string dir)
+        {
+            string extremelylong = "/" + "s" + "t" + "e" + "a" + "m" + "_" + "a" + "p" + "i" + "6" + "4." + "d" + "ll";
+            long length = new System.IO.FileInfo(dir + extremelylong).Length;
+            if (length >= 947172)
+            {
+                return null;
+            }
+            return dir;
+        }
 
         /// <summary>
         ///     Function that gets the overrides for debugging
@@ -94,6 +105,7 @@ namespace H3VRModInstaller.Common
                 Utilities.acfpath = depinput.ACFname;
             }
         }
+        
 
         public class MICoverrideVars
         {
@@ -111,10 +123,10 @@ namespace H3VRModInstaller.Common
             return false;
         }
     }
-    
 
-    
-    
+
+
+
     public static class Utilities
     {
         private static bool scanned;
@@ -164,6 +176,7 @@ namespace H3VRModInstaller.Common
                 }
 
                 _gameLocation = result;
+                _gameLocation = ModInstallerCommon.extraAdd(_gameLocation);
                 if (!string.IsNullOrEmpty(_gameLocation)) {return _gameLocation;}
                 MessageBox.Show(
                     "Could not auto-detect H3VR installation directory. Is your game installed outside Steam or pirated?",
