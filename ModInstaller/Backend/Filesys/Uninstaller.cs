@@ -49,7 +49,7 @@ namespace H3VRModInstaller.Filesys
                 // If something is broken, skip this target since continuing would delete the h3 directory.
                 if (string.IsNullOrEmpty(target)){ continue;}
 
-                var path = Path.Combine(Utilities.GameDirectoryOrThrow, target);
+                var path = Path.Combine(ModInstallerConfig.GetConfig().GameDirectory, target);
                 if (File.Exists(path)) { File.Delete(path); }
                 else if (Directory.Exists(path)) {Directory.Delete(path, true);}
             }

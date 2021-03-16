@@ -12,6 +12,7 @@
       <PackageReference Include="Glob" Version="1.2.0-alpha0032" />
       <PackageReference Include="Newtonsoft.Json" Version="13.0.1-beta1" />
       <PackageReference Include="SharpCompress" Version="0.28.1" />
+      <PackageReference Include="Tomlyn" Version="0.1.2" />
     </ItemGroup>
 
 </Project>

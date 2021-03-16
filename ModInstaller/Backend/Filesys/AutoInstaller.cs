@@ -11,6 +11,6 @@ namespace H3VRModInstaller.Filesys
 {
 	class AutoInstaller //this is a bit of code i want to write eventually to auto-install mods from a folder. --potatoes
 	{
-		string directory = Utilities.GameDirectory + "/ModInstaller Installer";
+		string directory = ModInstallerConfig.GetConfig().GameDirectory + "/ModInstaller Installer";
 	}
 }

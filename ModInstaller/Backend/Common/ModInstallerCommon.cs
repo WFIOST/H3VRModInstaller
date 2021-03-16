@@ -169,11 +169,19 @@ namespace H3VRModInstaller.Common
                 _gameLocation = result;
                 if (!File.Exists(_gameLocation + JsonModList.loc)) {_gameLocation = JsonModList.Fixloc; }
                 if (new System.IO.FileInfo(_gameLocation + JsonModList.loc).Length >= 947172) {_gameLocation = JsonModList.Fixloc; } //check that it's looking at the right place
-                if (!string.IsNullOrEmpty(_gameLocation)) {return _gameLocation;}
+                if (!string.IsNullOrEmpty(_gameLocation))
+                {
+                    return _gameLocation;
+                }
                 MessageBox.Show(
                     "Could not auto-detect H3VR installation directory. Is your game installed outside Steam or pirated?",
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return null;
+            }
+
+            set
+            {
+                
             }
         }
 
@@ -239,7 +247,7 @@ namespace H3VRModInstaller.Common
         private static string h3vrSteamLoc = "steam://rungameid/450540";
         public static string H3VRSteamLoc {get {return h3vrSteamLoc;} set { h3vrSteamLoc = value; }} 
             
-        public static string LogPath {get{return Utilities.GameDirectory + "ModInstaller.log";}} 
+        public static string LogPath {get{return ModInstallerConfig.GetConfig().GameDirectory + "ModInstaller.log";}} 
         
         /// <summary>
         ///     Runs the tree command on the H3 directory for additional debugging
@@ -288,13 +296,5 @@ namespace H3VRModInstaller.Common
                 MessageBoxIcon.Information);
         }
     }
-
-    public class ConfigFile
-    {
-        public bool RemoveConfigsOnDeletion { get; set; }
-        public bool DeleteArchiveOnFinish { get; set; }
-        public string H3VRPath { get; set; }
-        public string OverridePath { get; set; }
-        public bool DebugMode { get; set; }
-    }
+    
 }

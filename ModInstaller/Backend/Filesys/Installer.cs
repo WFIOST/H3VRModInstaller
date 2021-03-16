@@ -50,7 +50,7 @@ namespace H3VRModInstaller.Filesys
                         Console.WriteLine("Archive is 7z!");
                     }
 
-                    Archives.UnArchive(fileinfo.RawName, Path.Combine(Utilities.GameDirectoryOrThrow, args[i + 1]),
+                    Archives.UnArchive(fileinfo.RawName, Path.Combine(ModInstallerConfig.GetConfig().GameDirectory, args[i + 1]),
                         delArchive, ArchiveType);
                 }
                 
@@ -78,7 +78,7 @@ namespace H3VRModInstaller.Filesys
                 if (args[i] == "addFolder")
                 {
                     ModInstallerCommon.DebugLog("Creating Directory " + args[i + 1]);
-                    Directory.CreateDirectory(Path.Combine(Utilities.GameDirectoryOrThrow, args[i + 1]));
+                    Directory.CreateDirectory(Path.Combine(ModInstallerConfig.GetConfig().GameDirectory, args[i + 1]));
                 }
 
                 if (args[i] == "break") {break;}
@@ -102,10 +102,10 @@ namespace H3VRModInstaller.Filesys
         public static bool MoveToFolder(string mod, string dir, string renameTo = "")
         {
             if (renameTo == "") {renameTo = new DirectoryInfo(mod).Name;};
-            dir = Path.Combine(Utilities.GameDirectoryOrThrow, dir);
+            dir = Path.Combine(ModInstallerConfig.GetConfig().GameDirectory, dir);
             if (!Directory.Exists(dir)) {Directory.CreateDirectory(dir);}
             
-            var path = Path.Combine(Utilities.GameDirectoryOrThrow, mod);
+            var path = Path.Combine(ModInstallerConfig.GetConfig().GameDirectory, mod);
 
             if (File.Exists(path))
             {

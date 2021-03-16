@@ -19,7 +19,11 @@ namespace H3VRModInstaller
 			//start initialization
 			Logger.InitialiseLog();
 			ModInstallerCommon.OverrideModInstallerVariables();
+			ModInstallerConfig.GenerateModInstallerConfig();
+			var config = ModInstallerConfig.GetConfig();
 			
+			
+
 			CheckCache();
 			CheckForManualInstalledMods();
 			CheckForManuallyUninstalledMods();
@@ -39,12 +43,12 @@ namespace H3VRModInstaller
 			string loc;
 			if (!File.Exists(Utilities.ModCache))
 			{
-				loc = Path.Combine(Utilities.GameDirectory, "H3VRMI/installedmods.json");
+				loc = Path.Combine(ModInstallerConfig.GetConfig().GameDirectory, "H3VRMI/installedmods.json");
 				if (File.Exists(loc))
 				{
 					goto setcache;
 				}
-				loc = Path.Combine(Utilities.GameDirectory, "H3VR Mod Installer/installedmods.json");
+				loc = Path.Combine(ModInstallerConfig.GetConfig().GameDirectory, "H3VR Mod Installer/installedmods.json");
 				if (File.Exists(loc))
 				{
 					goto setcache;
@@ -53,8 +57,8 @@ namespace H3VRModInstaller
 			setcache:
 				/*Utilities.ModCache = loc;
 				Console.WriteLine("Mod cache location overwritten to {0}!", loc);*/
-				Console.WriteLine("Old mod cache location found, moving to {0}!", Utilities.GameDirectory + "/installed_mods.json");
-				File.Move(loc, Utilities.GameDirectory + "/installed_mods.json");
+				Console.WriteLine("Old mod cache location found, moving to {0}!", ModInstallerConfig.GetConfig().GameDirectory + "/installed_mods.json");
+				File.Move(loc, ModInstallerConfig.GetConfig().GameDirectory + "/installed_mods.json");
 			skip:; //FUCK YOU, I USE GOTO IF I WANT TO USE GOTO AND YOU CAN'T STOP ME -potatoes
 			}
 		}
@@ -68,7 +72,7 @@ namespace H3VRModInstaller
 			{
 				if (!string.IsNullOrEmpty(mods[i].DelInfo))
 				{
-					if (File.Exists(Path.Combine(Utilities.GameDirectory, mods[i].DelInfo)))
+					if (File.Exists(Path.Combine(ModInstallerConfig.GetConfig().GameDirectory, mods[i].DelInfo)))
 					{
 						bool IsInstalled = false;
 						for (int x = 0; x < instmods.Length; x++)
@@ -103,7 +107,7 @@ namespace H3VRModInstaller
 				if (!string.IsNullOrEmpty(instmods[i].DelInfo) && instmods[i].Version != "0.0.0" ) 
 				{
 					string delinfo = instmods[i].DelInfo.Split('?')[0];
-					string delinfo1 = Path.Combine(Utilities.GameDirectory, delinfo);
+					string delinfo1 = Path.Combine(ModInstallerConfig.GetConfig().GameDirectory, delinfo);
 					string delinfo2 = Path.Combine(Utilities.DisableCache, new DirectoryInfo(delinfo).Name);
 					if (File.Exists(delinfo1) || Directory.Exists(delinfo1) || File.Exists(delinfo2) || Directory.Exists(delinfo2)) //if not exist in files or discache
 					{
