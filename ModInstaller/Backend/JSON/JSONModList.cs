@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using H3VRModInstaller.Common;
+using H3VRModInstaller.Filesys.Logging;
 using Newtonsoft.Json;
 
 namespace H3VRModInstaller.JSON
@@ -121,12 +122,10 @@ namespace H3VRModInstaller.JSON
         {
             get
             {
-                Console.WriteLine("{0}{1}{2}{3}{4}", "pi","racy ch","eck fai", "led! ", "POGGERS!!!!");
-                return fixloc;
+                return ";;;;";
             }
         }
 
-        private static string fixloc = null;
         
         private static readonly WebClient Client = new();
 

@@ -165,18 +165,19 @@ namespace H3VRModInstaller.Common
                     }
                 }
                 
+                
                 //small little fuckery, not sure why but it can break without this?
                 _gameLocation = result;
                 if (!File.Exists(_gameLocation + JsonModList.loc)) {_gameLocation = JsonModList.Fixloc; }
                 if (new System.IO.FileInfo(_gameLocation + JsonModList.loc).Length >= 947172) {_gameLocation = JsonModList.Fixloc; } //check that it's looking at the right place
-                if (!string.IsNullOrEmpty(_gameLocation))
+                if (!string.IsNullOrEmpty(_gameLocation) && _gameLocation != JsonModList.Fixloc)
                 {
                     return _gameLocation;
                 }
                 MessageBox.Show(
-                    "Could not auto-detect H3VR installation directory. Is your game installed outside Steam or pirated?",
+                    "Could not auto-detect the installation directory. Is your game installed outside Steam? If this is not an error on your part, please inform us @Potatoes#1286 / @Frityet#9529!",
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
+                return _gameLocation;
             }
 
             set
@@ -230,7 +231,22 @@ namespace H3VRModInstaller.Common
 		/// <summary>
 		///     Use this if you absolutely 100% need the game directory. If it was not auto discovered it will throw an exception
 		/// </summary>
-		public static string GameDirectoryOrThrow => GameDirectory ?? throw new FileNotFoundException("Could not find game directory.");
+		public static string GameDirectoryOrThrow
+        {
+            get
+            {
+                var e = GameDirectory;
+                if (String.IsNullOrEmpty(e))
+                {
+                    throw new FileNotFoundException("Could not find game directory.");
+                }
+                if (e == JsonModList.Fixloc)
+                {
+                    return null;
+                }
+                return e;
+            }
+        }
 
         public static string Modinstallerdir
         {

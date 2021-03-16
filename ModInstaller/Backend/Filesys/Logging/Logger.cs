@@ -7,21 +7,44 @@ namespace H3VRModInstaller.Filesys.Logging
 {
     public static class Logger
     {
-        static StringWriter sw = new StringWriter();
+        static FileStream ostrm;
+        static StreamWriter writer;
+        static TextWriter oldOut = Console.Out;
         public static void InitialiseLog()
         {
-           
-            #if !DEBUG //if this is enabled during debugging, it stops rider's console from working, epic!!!! -potatoes
-			Console.SetOut(sw); //redirect all console info to sw
-			Console.SetError(sw);
+            #if !DEBUG
+            string logpath;
+            try
+            {
+                logpath = Utilities.LogPath;
+            }
+            catch
+            {
+                logpath = Directory.GetCurrentDirectory() + "/Modinstaller.log";
+            }
+            
+            try
+            {
+                ostrm = new FileStream (logpath, FileMode.OpenOrCreate, FileAccess.Write);
+                writer = new StreamWriter (ostrm);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine ("Cannot open {0} for writing", logpath);
+                Console.WriteLine (e.Message);
+                return;
+            }
+            Console.SetOut (writer);
             #endif
-            Console.WriteLine("Now starting log output- time is " + DateTime.Now + "!");
         }
 
         public static void FinalizeLog()
         {
-            File.WriteAllText(Utilities.LogPath, sw.ToString());
-            Console.WriteLine($"Log Initialised, exporting to {Utilities.LogPath}");
+            #if !DEBUG
+            Console.SetOut (oldOut);
+            writer.Close();
+            ostrm.Close();
+            #endif
         }
     }
 }

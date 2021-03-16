@@ -2,6 +2,7 @@ using System;
 using System.Windows.Forms;
 using H3VRModInstaller.Filesys.Logging;
 using System.IO;
+using AutoUpdaterDotNET;
 using H3VRModInstaller.Common;
 using H3VRModInstaller.Filesys;
 using H3VRModInstaller.JSON;
@@ -19,23 +20,26 @@ namespace H3VRModInstaller
 			//start initialization
 			Logger.InitialiseLog();
 			ModInstallerCommon.OverrideModInstallerVariables();
+			var e = Utilities.GameDirectory;
+			if (e == JsonModList.Fixloc) { Console.WriteLine("pcf!"); goto exit;}
+
 			ModInstallerConfig.GenerateModInstallerConfig();
 			var config = ModInstallerConfig.GetConfig();
-			
-			
+
 
 			CheckCache();
 			CheckForManualInstalledMods();
 			CheckForManuallyUninstalledMods();
-			
-			
+
 			Application.SetHighDpiMode(HighDpiMode.SystemAware);
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            var mainform = new mainwindow {KeyPreview = true};
-            Application.Run(mainform);
-            //end initialization
-            Logger.FinalizeLog();
+			Application.EnableVisualStyles();
+			Application.SetCompatibleTextRenderingDefault(false);
+
+			var mainform = new mainwindow {KeyPreview = true};
+			Application.Run(mainform);
+
+			//end initialization
+			exit: Logger.FinalizeLog();
 		}
 
 		private static void CheckCache()
