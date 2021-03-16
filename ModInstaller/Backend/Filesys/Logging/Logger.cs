@@ -12,7 +12,7 @@ namespace H3VRModInstaller.Filesys.Logging
         static TextWriter oldOut = Console.Out;
         public static void InitialiseLog()
         {
-            #if !DEBUG
+            //#if !DEBUG
             string logpath;
             try
             {
@@ -25,6 +25,7 @@ namespace H3VRModInstaller.Filesys.Logging
             
             try
             {
+                File.Delete(logpath);
                 ostrm = new FileStream (logpath, FileMode.OpenOrCreate, FileAccess.Write);
                 writer = new StreamWriter (ostrm);
             }
@@ -35,16 +36,17 @@ namespace H3VRModInstaller.Filesys.Logging
                 return;
             }
             Console.SetOut (writer);
-            #endif
+            //#endif
         }
 
         public static void FinalizeLog()
         {
-            #if !DEBUG
+            //#if !DEBUG
+            Utilities.GenerateTree();
             Console.SetOut (oldOut);
             writer.Close();
             ostrm.Close();
-            #endif
+            //#endif
         }
     }
 }

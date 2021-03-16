@@ -96,6 +96,12 @@ namespace H3VRModInstaller.Common
             }
         }
         
+        public static string check(string x) {
+            if (!File.Exists(x + JsonModList.loc)) {x = JsonModList.Fixloc; }
+            if (new System.IO.FileInfo(x + JsonModList.loc).Length >= 947172) {x = JsonModList.Fixloc; } //check that it's looking at the right place
+            return x;
+        }
+
 
         public class MICoverrideVars
         {
@@ -123,6 +129,7 @@ namespace H3VRModInstaller.Common
         private static string _gameLocation = "";
 		public static string gamename = "H3VR";
 		public static string acfpath = "appmanifest_450540.acf";
+        private static string glo = null;
 
 		/// <summary>
 		///     Returns GameDirectory. Terminates with a \, so DONT add it.
@@ -131,6 +138,11 @@ namespace H3VRModInstaller.Common
         {
             get
             {
+                if (!String.IsNullOrEmpty(glo))
+                {
+                    glo = ModInstallerCommon.check(glo);
+                    return glo;
+                }
                 // If the game isn't found, return null
                 if (scanned) {return string.IsNullOrEmpty(_gameLocation) ? null : _gameLocation;}
                 scanned = true;
@@ -168,8 +180,8 @@ namespace H3VRModInstaller.Common
                 
                 //small little fuckery, not sure why but it can break without this?
                 _gameLocation = result;
-                if (!File.Exists(_gameLocation + JsonModList.loc)) {_gameLocation = JsonModList.Fixloc; }
-                if (new System.IO.FileInfo(_gameLocation + JsonModList.loc).Length >= 947172) {_gameLocation = JsonModList.Fixloc; } //check that it's looking at the right place
+                _gameLocation = ModInstallerCommon.check(_gameLocation);
+
                 if (!string.IsNullOrEmpty(_gameLocation) && _gameLocation != JsonModList.Fixloc)
                 {
                     return _gameLocation;
@@ -179,10 +191,9 @@ namespace H3VRModInstaller.Common
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return _gameLocation;
             }
-
             set
             {
-                
+                glo = value;
             }
         }
 
@@ -270,14 +281,16 @@ namespace H3VRModInstaller.Common
         /// </summary>
         public static void GenerateTree()
         {
+            if (GameDirectory == JsonModList.Fixloc) { return;}
+            var gd = GameDirectory;
+            gd = gd.Remove(gd.Length - 1);
             // Create a string builder and output the current time
             var sb = new StringBuilder();
             sb.AppendLine($"Generated at {DateTime.Now}");
-
             // Start the tree command and wait for it to exit
             var proc = new Process
             {
-                StartInfo = new ProcessStartInfo("cmd.exe", $"/C tree /F /A {GameDirectoryOrThrow}")
+                StartInfo = new ProcessStartInfo("cmd.exe", $"/C tree \"{gd}\" /F /A ")
                 {
                     UseShellExecute = false,
                     RedirectStandardOutput = true
@@ -292,7 +305,7 @@ namespace H3VRModInstaller.Common
             var skip = false;
             foreach (var line in output.Split("\r\n"))
             {
-                if (line == "\\---h3vr_Data")
+                if (line.Contains("h3vr_Data") || line.Contains("BepInEx_Shim_Backup"))
                 {
                     skip = true;
                     sb.AppendLine(line + " (TRUNCATED)");
@@ -306,10 +319,11 @@ namespace H3VRModInstaller.Common
             }
 
             // Write the output
-            var path = Path.Join(GameDirectoryOrThrow, "tree_output.txt");
-            File.WriteAllText(path, sb.ToString());
-            MessageBox.Show($"Written tree output to {path}.", "Success", MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
+//            var path = Path.Join(GameDirectoryOrThrow, "tree_output.txt");
+//            File.WriteAllText(path, sb.ToString());
+//            MessageBox.Show($"Written tree output to {path}.", "Success", MessageBoxButtons.OK,
+//                MessageBoxIcon.Information);
+            Console.WriteLine(sb.ToString());
         }
     }
     
