@@ -301,10 +301,10 @@ namespace H3VRModInstaller
                     string path =
                         Path.Combine(ModInstallerConfig.GetConfig().GameDirectory,
                             modinfo.DelInfo.Split('?')[0]); //split to get the first delinfo arg
-                    if (!File.Exists(path) && !Directory.Exists(path)) //if it is not disabled
+                    if (!File.Exists(path) && !Directory.Exists(path)) //if it is disabled
                     {
                         DisEnaButton.Text = "Enable";
-                        if (modinfo.Version == "0.0.0")
+                        if (InstalledModsList.SelectedItems[0].SubItems[1].Text != "0.0.0") //if ver is 0.0.0
                         {
                             UpdateButton.Hide();
                         }
@@ -524,8 +524,39 @@ namespace H3VRModInstaller
                 {
                     if (mfs.Length >= 1)
                     {
-                        ModVer.Text = "Mod is incompatable with " + mfs[0];
                         InstalledModsList.Items[i].BackColor = Color.Red;
+                        ModVer.Text = "Mod is incompatable with " + mfs[0].Name;
+
+                    }
+                }
+                
+                mfs = ModParsing.GetDependencies(mf);
+                var im = InstalledMods.GetInstalledMods();
+                List<ModFile> d = new List<ModFile>();
+                for (int x = 0; x < mfs.Length; x++)
+                {
+                    bool flag = false;
+                    for (int y = 0; y < im.Length; y++)
+                    {
+                        if (im[y].ModId == mfs[x].ModId)
+                        {
+                            flag = true;
+                            break;
+                        }
+                    }
+                    if (!flag)
+                    {
+                        d.Add(mfs[x]);
+                    }
+                }
+                
+                if (d.Count != 0)
+                {
+                    if (mfs.Length >= 1)
+                    {
+                        ModVer.Text = "Mod is missing dependency " + mfs[0].Name;
+                        InstalledModsList.Items[i].BackColor = Color.Red;
+                        Console.WriteLine("Mod {0} is missing dependency {1}!",mf.ModId ,mfs[0].Name);
                     }
                 }
                 
@@ -542,11 +573,6 @@ namespace H3VRModInstaller
                         (File.Exists(path2) || Directory.Exists(path2))) //if it is not disabled
                     {
                         InstalledModsList.Items[i].BackColor = Color.Gray;
-                        UpdateButton.Hide();
-                    }
-                    else
-                    {
-                        UpdateButton.Show();
                     }
                 }
             }

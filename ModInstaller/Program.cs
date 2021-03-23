@@ -17,28 +17,19 @@ namespace H3VRModInstaller
 		[STAThread]
 		private static void Main()
 		{
-			//start initialization
 			Logger.InitialiseLog();
 			ModInstallerCommon.OverrideModInstallerVariables();
-			var e = Utilities.GameDirectory;
-			if (e == JsonModList.Fixloc) { Console.WriteLine("pcf!"); goto exit;}
-
+			if (Utilities.GameDirectory == JsonModList.Fixloc) { Console.WriteLine("pcf!"); goto exit;}
 			ModInstallerConfig.GenerateModInstallerConfig();
 			var config = ModInstallerConfig.GetConfig();
-
-
 			CheckCache();
 			CheckForManualInstalledMods();
 			CheckForManuallyUninstalledMods();
-
 			Application.SetHighDpiMode(HighDpiMode.SystemAware);
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-
 			var mainform = new mainwindow {KeyPreview = true};
 			Application.Run(mainform);
-
-			//end initialization
 			exit: Logger.FinalizeLog();
 		}
 
