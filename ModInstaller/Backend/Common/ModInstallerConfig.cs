@@ -14,7 +14,7 @@ namespace H3VRModInstaller.Common
         public bool   DeleteArchiveOnFinish   { get; set; }
         
         [JsonIgnore]
-        public string ConfigPath => Path.Combine(Utilities.GameDirectoryOrThrow + "/ModInstallerCache/config.json");
+        public string ConfigPath => Path.Combine(Directory.GetCurrentDirectory() + "/config.json");
 
         public static string GenerateModInstallerConfig()
         {
