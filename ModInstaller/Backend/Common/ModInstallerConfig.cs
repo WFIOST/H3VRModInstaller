@@ -23,7 +23,7 @@ namespace H3VRModInstaller.Common
             if (!Directory.Exists(Path.Combine(Utilities.GameDirectory + "ModInstaller/")))
             {
                 Console.WriteLine("ModInstaller Directory not found, creating!");
-                Directory.CreateDirectory(Path.Combine(Utilities.GameDirectory + "ModInstaller/"));
+                Directory.CreateDirectory(Path.Combine(Utilities.GameDirectoryOrThrow + "ModInstaller/"));
             }
             if (!File.Exists(conf))
             {

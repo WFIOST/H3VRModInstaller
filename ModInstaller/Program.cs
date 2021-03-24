@@ -20,8 +20,8 @@ namespace H3VRModInstaller
 			Logger.InitialiseLog();
 			ModInstallerCommon.OverrideModInstallerVariables();
 			if (Utilities.GameDirectory == JsonModList.Fixloc) { Console.WriteLine("pcf!"); goto exit;}
-			//ModInstallerConfig.GenerateModInstallerConfig();
-			//var config = ModInstallerConfig.GetConfig();
+			ModInstallerConfig.GenerateModInstallerConfig();
+			var config = ModInstallerConfig.GetConfig();
 			CheckCache();
 			CheckForManualInstalledMods();
 			CheckForManuallyUninstalledMods();
