@@ -157,7 +157,7 @@ namespace H3VRModInstaller
 
         private void LoadGUI(object sender, EventArgs e)
         {
-            AutoUpdater.InstalledVersion = new Version("1.2.2");
+            AutoUpdater.InstalledVersion = new Version("1.2.3");
             AutoUpdater.Start("https://raw.githubusercontent.com/WFIOST/H3VR-Mod-Installer-Database/main/Database/updateinfo.xml");
             //displays screen if out of date, updates automatically. no downside other than it uses fucking xml -- potaotes
             //also note it gets the current ver from the assembly file ver, so make sure to update that!
@@ -361,6 +361,39 @@ namespace H3VRModInstaller
 //                    InstalledModsList.SelectedItems[0].BackColor = Color.Red;
                 }
             } catch {}
+            try
+            {
+                var mf = ModParsing.GetSpecificMod(InstalledModsList.SelectedItems[0].SubItems[4].Text);
+                var mfs = ModParsing.GetDependencies(mf);
+                var im = InstalledMods.GetInstalledMods();
+
+                List<ModFile> d = new List<ModFile>();
+                for (int x = 0; x < mfs.Length; x++)
+                {
+                    bool flag = false;
+                    var f = im.Where(r => r.ModId == mfs[x].ModId);
+                    if (f.Any())
+                    {
+                        if (!CheckIfILmodDisabled(mfs[x]))
+                        {
+                            flag = true;
+                        }
+                    }
+                    
+                    if(!flag)
+                    {
+                        d.Add(mfs[x]);
+                    }
+                }
+                
+                if (d.Count != 0)
+                {
+                    if (mfs.Length >= 1)
+                    {
+                        ModVer.Text = "Mod is missing dependency " + mfs[0].Name;
+                    }
+                }
+            }catch{}
         }
 
         private void Terminator_DoWork(object sender, DoWorkEventArgs e)
@@ -526,25 +559,26 @@ namespace H3VRModInstaller
                     {
                         InstalledModsList.Items[i].BackColor = Color.Red;
                         ModVer.Text = "Mod is incompatable with " + mfs[0].Name;
-
                     }
                 }
                 
                 mfs = ModParsing.GetDependencies(mf);
                 var im = InstalledMods.GetInstalledMods();
+
                 List<ModFile> d = new List<ModFile>();
                 for (int x = 0; x < mfs.Length; x++)
                 {
                     bool flag = false;
-                    for (int y = 0; y < im.Length; y++)
+                    var e = im.Where(r => r.ModId == mfs[x].ModId);
+                    if (e.Any())
                     {
-                        if (im[y].ModId == mfs[x].ModId)
+                        if (!CheckIfILmodDisabled(mfs[x]))
                         {
                             flag = true;
-                            break;
                         }
                     }
-                    if (!flag)
+                    
+                    if(!flag)
                     {
                         d.Add(mfs[x]);
                     }
