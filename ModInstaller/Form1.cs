@@ -158,17 +158,18 @@ namespace H3VRModInstaller
 
         private void LoadGUI(object sender, EventArgs e)
         {
-            AutoUpdater.InstalledVersion = new Version("1.2.3");
+            AutoUpdater.InstalledVersion = new Version(1, 3, 0);
             AutoUpdater.Start("https://raw.githubusercontent.com/WFIOST/H3VR-Mod-Installer-Database/main/Database/updateinfo.xml");
             //displays screen if out of date, updates automatically. no downside other than it uses fucking xml -- potaotes
             //also note it gets the current ver from the assembly file ver, so make sure to update that!
 
             KeyDown += Form_KeyDown;
 
-			if (!File.Exists(Utilities.ModCache))
+			if (!File.Exists(Utilities.ModCache) && ModInstallerConfig.Config.ShowStartupMessage)
 			{
 				MessageBox.Show("Thank you for downloading H3VRModInstaller!\nIf there are any issues, or if you want a mod added, please hit us up on the Homebrew discord (@Frityet and @Potatoes)", "Thank you!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 MessageBox.Show("1. Do NOT report bugs in a modded installation to the devs!\n2. Please read the mod's description before reporting an issue with it!", "One note beforehand!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                ModInstallerConfig.Config.ShowStartupMessage = false;
             }
 
             InitTimer(); //progress timer

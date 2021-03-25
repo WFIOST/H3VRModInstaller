@@ -8,7 +8,8 @@ namespace H3VRModInstaller.Common
     {
         public string DatabaseInfoLocation    { get; set; }
         public string GameDirectory           { get; set; }
-
+        public bool   ShowStartupMessage      { get; set; }
+        
         [JsonIgnore]
         public static string ConfigPath => Path.Combine(ModInstallerCommon.ModInstallerDir + "\\config.json");
         
@@ -30,7 +31,8 @@ namespace H3VRModInstaller.Common
                 var defaultConfig = new ModInstallerConfig()
                 {
                     DatabaseInfoLocation = "https://raw.githubusercontent.com/Frityet/H3VRModInstaller/master/src/Backend/JSON/Database/modinstallerinfo.h3vrmi",
-                    GameDirectory = Utilities.GameDirectory
+                    GameDirectory = Utilities.GameDirectory,
+                    ShowStartupMessage = true
                 };
                 
                 File.WriteAllText(ConfigPath, JsonConvert.SerializeObject(defaultConfig, Formatting.Indented));
