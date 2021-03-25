@@ -17,20 +17,21 @@ namespace H3VRModInstaller
 		[STAThread]
 		private static void Main()
 		{
-			Logger.InitialiseLog();
-			ModInstallerCommon.OverrideModInstallerVariables();
-			if (Utilities.GameDirectory == JsonModList.Fixloc) { Console.WriteLine("pcf!"); goto exit;}
 			ModInstallerConfig.GenerateModInstallerConfig();
-			var config = ModInstallerConfig.GetConfig();
-			CheckCache();
-			CheckForManualInstalledMods();
-			CheckForManuallyUninstalledMods();
+			Startup();
+			
 			Application.SetHighDpiMode(HighDpiMode.SystemAware);
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
 			var mainform = new mainwindow {KeyPreview = true};
 			Application.Run(mainform);
-			exit: Logger.FinalizeLog();
+			if (ModInstallerConfig.Config.GameDirectory == JsonModList.Fixloc)
+			{
+				Console.WriteLine("pcf!");
+				Logger.FinalizeLog();
+			}
+			
+			
 		}
 
 		private static void CheckCache()
@@ -38,12 +39,12 @@ namespace H3VRModInstaller
 			string loc;
 			if (!File.Exists(Utilities.ModCache))
 			{
-				loc = Path.Combine(ModInstallerConfig.GetConfig().GameDirectory, "H3VRMI/installedmods.json");
+				loc = Path.Combine(ModInstallerConfig.Config.GameDirectory, "H3VRMI/installedmods.json");
 				if (File.Exists(loc))
 				{
 					goto setcache;
 				}
-				loc = Path.Combine(ModInstallerConfig.GetConfig().GameDirectory, "H3VR Mod Installer/installedmods.json");
+				loc = Path.Combine(ModInstallerConfig.Config.GameDirectory, "H3VR Mod Installer/installedmods.json");
 				if (File.Exists(loc))
 				{
 					goto setcache;
@@ -52,8 +53,8 @@ namespace H3VRModInstaller
 			setcache:
 				/*Utilities.ModCache = loc;
 				Console.WriteLine("Mod cache location overwritten to {0}!", loc);*/
-				Console.WriteLine("Old mod cache location found, moving to {0}!", ModInstallerConfig.GetConfig().GameDirectory + "/installed_mods.json");
-				File.Move(loc, ModInstallerConfig.GetConfig().GameDirectory + "/installed_mods.json");
+				Console.WriteLine("Old mod cache location found, moving to {0}!", ModInstallerConfig.Config.GameDirectory + "/installed_mods.json");
+				File.Move(loc, ModInstallerConfig.Config.GameDirectory + "/installed_mods.json");
 			skip:; //FUCK YOU, I USE GOTO IF I WANT TO USE GOTO AND YOU CAN'T STOP ME -potatoes
 			}
 		}
@@ -67,7 +68,7 @@ namespace H3VRModInstaller
 			{
 				if (!string.IsNullOrEmpty(mods[i].DelInfo))
 				{
-					if (File.Exists(Path.Combine(ModInstallerConfig.GetConfig().GameDirectory, mods[i].DelInfo)))
+					if (File.Exists(Path.Combine(ModInstallerConfig.Config.GameDirectory, mods[i].DelInfo)))
 					{
 						bool IsInstalled = false;
 						for (int x = 0; x < instmods.Length; x++)
@@ -102,7 +103,7 @@ namespace H3VRModInstaller
 				if (!string.IsNullOrEmpty(instmods[i].DelInfo) && instmods[i].Version != "0.0.0" ) 
 				{
 					string delinfo = instmods[i].DelInfo.Split('?')[0];
-					string delinfo1 = Path.Combine(ModInstallerConfig.GetConfig().GameDirectory, delinfo);
+					string delinfo1 = Path.Combine(ModInstallerConfig.Config.GameDirectory, delinfo);
 					string delinfo2 = Path.Combine(Utilities.DisableCache, new DirectoryInfo(delinfo).Name);
 					if (File.Exists(delinfo1) || Directory.Exists(delinfo1) || File.Exists(delinfo2) || Directory.Exists(delinfo2)) //if not exist in files or discache
 					{
@@ -122,6 +123,17 @@ namespace H3VRModInstaller
 			{
 				var conf = MessageBox.Show($"We cannot find some mods that you've downloaded! Did you delete them?\n Either way, we've highlighted them in yellow if you want to reinstall them or delete them. (Their version reads 0.0.0.)\n Detected mods: {addedmods.Split(',').Length - 1} \n" + addedmods, "Installed mods detected!", MessageBoxButtons.OK);
 			}
+		}
+
+
+		public static void Startup()
+		{
+			Logger.InitialiseLog();
+			ModInstallerCommon.OverrideModInstallerVariables();
+			
+			CheckCache();
+			CheckForManualInstalledMods();
+			CheckForManuallyUninstalledMods();
 		}
     }
 }

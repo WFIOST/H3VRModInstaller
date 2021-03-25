@@ -102,6 +102,13 @@ namespace H3VRModInstaller.Common
             return x;
         }
 
+        public static string ModInstallerDir => 
+        Path.Combine
+        (
+            Environment.GetFolderPath
+                (Environment.SpecialFolder.Personal)
+            + "\\ModInstaller\\"
+        );
 
         public class MICoverrideVars
         {
@@ -138,7 +145,7 @@ namespace H3VRModInstaller.Common
         {
             get
             {
-                if (!String.IsNullOrEmpty(glo))
+                if (!string.IsNullOrEmpty(glo))
                 {
                     glo = ModInstallerCommon.check(glo);
                     return glo;
@@ -197,7 +204,7 @@ namespace H3VRModInstaller.Common
             }
         }
 
-        public static string ExecutablePath => string.IsNullOrEmpty(GameDirectory) ? null : Path.Combine(GameDirectory, "h3vr.exe");
+        public static string ExecutablePath => string.IsNullOrEmpty(ModInstallerConfig.Config.GameDirectory) ? null : Path.Combine(ModInstallerConfig.Config.GameDirectory, "h3vr.exe");
 
 		private static string _modcache;
 
@@ -207,7 +214,7 @@ namespace H3VRModInstaller.Common
 			{
 				if (string.IsNullOrEmpty(_modcache))
 				{
-					_modcache = Path.Combine(GameDirectory, "installed_mods.json");
+					_modcache = Path.Combine(ModInstallerConfig.Config.GameDirectory, "installed_mods.json");
 				}
 				return _modcache;
 			}
@@ -221,7 +228,7 @@ namespace H3VRModInstaller.Common
         {
             get
             {
-                return Path.Combine(GameDirectory, "ModInstallerCache/DisabledMods/");
+                return Path.Combine(ModInstallerConfig.Config.GameDirectory, "ModInstallerCache/DisabledMods/");
             }
         }
         
@@ -239,26 +246,6 @@ namespace H3VRModInstaller.Common
 					? null
 					: Path.Combine(GameDirectory, "installed_mods.json");*/
 
-		/// <summary>
-		///     Use this if you absolutely 100% need the game directory. If it was not auto discovered it will throw an exception
-		/// </summary>
-		public static string GameDirectoryOrThrow
-        {
-            get
-            {
-                var e = GameDirectory;
-                if (String.IsNullOrEmpty(e))
-                {
-                    throw new FileNotFoundException("Could not find game directory.");
-                }
-                if (e == JsonModList.Fixloc)
-                {
-                    return null;
-                }
-                return e;
-            }
-        }
-
         public static string Modinstallerdir
         {
             get { return Directory.GetCurrentDirectory() + @"/ModInstallerLists/"; }
@@ -274,15 +261,15 @@ namespace H3VRModInstaller.Common
         private static string h3vrSteamLoc = "steam://rungameid/450540";
         public static string H3VRSteamLoc {get {return h3vrSteamLoc;} set { h3vrSteamLoc = value; }} 
             
-        public static string LogPath {get{return ModInstallerConfig.GetConfig().GameDirectory + "ModInstaller.log";}} 
+        public static string LogPath {get{return ModInstallerConfig.Config.GameDirectory + "ModInstaller.log";}} 
         
         /// <summary>
         ///     Runs the tree command on the H3 directory for additional debugging
         /// </summary>
         public static void GenerateTree()
         {
-            if (GameDirectory == JsonModList.Fixloc) { return;}
-            var gd = GameDirectory;
+            if (ModInstallerConfig.Config.GameDirectory == JsonModList.Fixloc) { return;}
+            var gd = ModInstallerConfig.Config.GameDirectory;
             gd = gd.Remove(gd.Length - 1);
             // Create a string builder and output the current time
             var sb = new StringBuilder();

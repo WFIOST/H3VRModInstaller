@@ -20,6 +20,7 @@ using H3VRModInstaller.Net;
 using System.Threading;
 using H3VRModInstaller.GUI;
 using AutoUpdaterDotNET;
+using ModInstaller;
 using Newtonsoft.Json;
 
 
@@ -299,7 +300,7 @@ namespace H3VRModInstaller
                 {
 
                     string path =
-                        Path.Combine(ModInstallerConfig.GetConfig().GameDirectory,
+                        Path.Combine(ModInstallerConfig.Config.GameDirectory,
                             modinfo.DelInfo.Split('?')[0]); //split to get the first delinfo arg
                     if (!File.Exists(path) && !Directory.Exists(path)) //if it is disabled
                     {
@@ -599,7 +600,7 @@ namespace H3VRModInstaller
                 if (!String.IsNullOrEmpty(delinfo))
                 {
                     string path =
-                        Path.Combine(ModInstallerConfig.GetConfig().GameDirectory,
+                        Path.Combine(ModInstallerConfig.Config.GameDirectory,
                             delinfo.Split('?')[0]); //split to get the first delinfo arg
                     string path2 = Path.Combine(Utilities.DisableCache,
                         new DirectoryInfo(delinfo.Split('?')[0]).Name); //basically loc of the cache area
@@ -661,7 +662,7 @@ namespace H3VRModInstaller
             if (!String.IsNullOrEmpty(mf.DelInfo))
             {
                 //Location of where the mod should be to load
-                string InstLoc = Path.Combine(ModInstallerConfig.GetConfig().GameDirectory, mf.DelInfo.Split('?')[0]);
+                string InstLoc = Path.Combine(ModInstallerConfig.Config.GameDirectory, mf.DelInfo.Split('?')[0]);
                 //last part of a dir, eg dir1/dir2.jpeg > dir2.jpeg
                 string DisLocPostFix = new DirectoryInfo(mf.DelInfo.Split('?')[0]).Name;
                 //Location of where the mod should be to be disabled
@@ -842,6 +843,13 @@ namespace H3VRModInstaller
                     UpdateModList(catagories[i].ModListID);
                 }
             }
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            var settings = new Settings();
+
+            settings.Show();
         }
     }
 }

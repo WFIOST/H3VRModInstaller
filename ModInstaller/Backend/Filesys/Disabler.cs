@@ -15,7 +15,7 @@ namespace H3VRModInstaller.Filesys
         public static void EnableDisableMod(string modid)
         {
             ModFile mf = ModParsing.GetSpecificMod(modid);
-            string path = Path.Combine(ModInstallerConfig.GetConfig().GameDirectory, mf.DelInfo.Split('?')[0]);
+            string path = Path.Combine(ModInstallerConfig.Config.GameDirectory, mf.DelInfo.Split('?')[0]);
             Console.WriteLine("Detecting if {0} exists...", path);
             if (File.Exists(path) || Directory.Exists(path)) { DisableMod(modid); }
             else { EnableMod(modid); }
@@ -37,7 +37,7 @@ namespace H3VRModInstaller.Filesys
             string[] delinfos = mf.DelInfo.Split('?');
             for (int i = 0; i < delinfos.Length; i++)
             {
-                string delinfopath = Path.Combine(ModInstallerConfig.GetConfig().GameDirectory + delinfos[i]);
+                string delinfopath = Path.Combine(ModInstallerConfig.Config.GameDirectory + delinfos[i]);
                 //get last part of file name (e.g VirtualObjects/asdf to asdf)
                 string delinfotrimmed = new DirectoryInfo(delinfos[i]).Name; 
                 string path =

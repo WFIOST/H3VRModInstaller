@@ -50,7 +50,7 @@ namespace H3VRModInstaller.Filesys
                         Console.WriteLine("Archive is 7z!");
                     }
 
-                    Archives.UnArchive(fileinfo.RawName, Path.Combine(ModInstallerConfig.GetConfig().GameDirectory, args[i + 1]),
+                    Archives.UnArchive(fileinfo.RawName, Path.Combine(ModInstallerConfig.Config.GameDirectory, args[i + 1]),
                         delArchive, ArchiveType);
                 }
                 
@@ -63,13 +63,13 @@ namespace H3VRModInstaller.Filesys
                     }
                     else
                     {
-                        d = new DirectoryInfo(Utilities.GameDirectory + args[i + 1]);
+                        d = new DirectoryInfo(ModInstallerConfig.Config.GameDirectory + args[i + 1]);
                     }
                     Console.WriteLine("Moving all files of type {0} from " + d + " to " + args[i + 3], args[i + 2]);
                     foreach (var file in d.GetFiles(args[i + 2]))
                     {
                         Console.WriteLine("Moving file {0} to {1}", file.FullName, d + args[i + 3] + file.Name);
-                        var dest = Utilities.GameDirectory + args[i + 3] + file.Name;
+                        var dest = ModInstallerConfig.Config.GameDirectory + args[i + 3] + file.Name;
                         if (File.Exists(dest)) {File.Delete(dest);} //overwrite if exist
                         Directory.Move(file.FullName, dest);
                     }
@@ -78,7 +78,7 @@ namespace H3VRModInstaller.Filesys
                 if (args[i] == "addFolder")
                 {
                     ModInstallerCommon.DebugLog("Creating Directory " + args[i + 1]);
-                    Directory.CreateDirectory(Path.Combine(ModInstallerConfig.GetConfig().GameDirectory, args[i + 1]));
+                    Directory.CreateDirectory(Path.Combine(ModInstallerConfig.Config.GameDirectory, args[i + 1]));
                 }
 
                 if (args[i] == "break") {break;}
@@ -102,10 +102,10 @@ namespace H3VRModInstaller.Filesys
         public static bool MoveToFolder(string mod, string dir, string renameTo = "")
         {
             if (renameTo == "") {renameTo = new DirectoryInfo(mod).Name;};
-            dir = Path.Combine(ModInstallerConfig.GetConfig().GameDirectory, dir);
+            dir = Path.Combine(ModInstallerConfig.Config.GameDirectory, dir);
             if (!Directory.Exists(dir)) {Directory.CreateDirectory(dir);}
             
-            var path = Path.Combine(ModInstallerConfig.GetConfig().GameDirectory, mod);
+            var path = Path.Combine(ModInstallerConfig.Config.GameDirectory, mod);
 
             if (File.Exists(path))
             {
