@@ -2,13 +2,14 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:userctrl="clr-namespace:H3VRModInstaller.Views"
         mc:Ignorable="d" d:DesignWidth="968" d:DesignHeight="579"
         x:Class="H3VRModInstaller.Avalonia.MainWindow"
         Background="White"
         Title="H3VR Mod Installer">
     
     
-        <Window.Styles>
+    <Window.Styles>
             <Style Selector="TextBlock.SelectedModText">
                 <Setter Property="FontSize" Value="24"/>
                 <Setter Property="FontFamily" Value="Microsoft Sans Serif"/>
@@ -46,10 +47,13 @@
                     
                     <TabControl Margin="2,20" VerticalAlignment="Top" HorizontalAlignment="Left">
                         <TabItem Header="Installed Mods" Padding="10, 5" Classes="Text">
-                            Installed Mods:
+                            <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top">
+                                <userctrl:ModsListView DataContext="{Binding List}"></userctrl:ModsListView> 
+                            </StackPanel>
                         </TabItem>
+                        
                         <TabItem Header="Downloadable Mods" Padding="10, 5" Classes="Text">
-                            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top">
+                            <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top">
                                 <ComboBox SelectedIndex="0" Width="425">
                                     <ComboBoxItem>Select Category</ComboBoxItem>
                                     <ComboBoxItem>Code Mods</ComboBoxItem>
@@ -59,31 +63,16 @@
                                     <ComboBoxItem>Dependency Mods</ComboBoxItem>
                                 </ComboBox>
                                 
-                                <Panel Name="ModList" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0, 10,10,0" Width="440" Height="425" Background="White">
-                                    
-                                </Panel>
+                                <userctrl:ModsListView DataContext="{Binding List}"></userctrl:ModsListView> 
                             </StackPanel>
-                            
-                            
                         </TabItem>
                     </TabControl>
                 </Panel>
                 
                 
-                <Panel Name="RightContainer" HorizontalAlignment="Right" VerticalAlignment="Center" Background="LightGray" Margin="15" Width="460" Height="550">
-                    <TextBlock Name="SelectedModText" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="10" Text= "Selected Mod: {SELECTED MOD}" Classes="SelectedModText"/>
-                    <TextBlock Name="VersionText" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="5, 45" Text= "Mod Version: {MOD VERSION}" Classes="ModVersionText"/>
+                <userctrl:ModInfoView DataContext="{Binding ModInfo}" Name="RightContainer" HorizontalAlignment="Right" VerticalAlignment="Center" Background="LightGray" Margin="15" Width="460" Height="550">
 
-                    <Button Name="InstallButton" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="5, 75" Width="450" Height="30" Classes="Text">Install</Button>
-                    
-                    <Button Name="WebsiteButton" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="5, 110" Width="225" Height="30" Classes="Text">Website</Button>
-                    
-                    <Button Name="Update" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="5, 110" Width="225" Height="30" Classes="Text">Update</Button>
-                    
-                    <Panel Name="Description" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="5, 15" Width="440" Height="385" Background="White">
-                        <TextBlock Name="DescriptionText" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5" Text="Mod Description Here"/>
-                    </Panel>
-                </Panel>
+                </userctrl:ModInfoView>
             </Panel>
     
 

@@ -1,0 +1,22 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:models="clr-namespace:H3VRModInstaller.Models"
+             mc:Ignorable="d" d:DesignWidth="200" d:DesignHeight="300"
+             x:Class="H3VRModInstaller.Views.ModsListView">
+    <DockPanel>
+        <ListBox Items="{Binding Items}" SelectionChanged="SelectingItemsControl_OnSelectionChanged">
+            <ListBox.ItemTemplate>
+                <DataTemplate DataType="{x:Type models:ModItem}">
+                    <StackPanel Name="Panel"  HorizontalAlignment="Left" VerticalAlignment="Top" Orientation="Horizontal">
+                    <TextBlock Margin="4"
+                               Text="{Binding Name}"/>
+                    <TextBlock Margin="4"
+                               Text="{Binding Version}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </DockPanel>
+</UserControl>
