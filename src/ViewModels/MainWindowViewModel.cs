@@ -11,7 +11,7 @@ namespace H3VRModInstaller.ViewModels
         public MainWindowViewModel(Database db)
         {
             ModInfo = new ModInfoViewModel();
-            List = new ModsListViewModel(db.GetItems(), ModInfo.SelectChanged);
+            List = new ModsListViewModel(db.GetDownloadableItems(), ModInfo.SelectChanged);
         }
 
         public ModsListViewModel List { get; }

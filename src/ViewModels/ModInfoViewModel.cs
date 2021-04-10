@@ -16,7 +16,7 @@ namespace H3VRModInstaller.ViewModels
     {
         public ModInfoViewModel()
         {
-            SelectedMod = new ModItem(){ Name = "Test"};
+            SelectedMod = new ModItem { Name = "Test"};
             
             SendToWebsiteCommand = ReactiveCommand.Create(SendToWebsite);
             InstallCommand = ReactiveCommand.Create(Install);

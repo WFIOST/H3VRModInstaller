@@ -47,8 +47,8 @@
                     
                     <TabControl Margin="2,20" VerticalAlignment="Top" HorizontalAlignment="Left">
                         <TabItem Header="Installed Mods" Padding="10, 5" Classes="Text">
-                            <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top">
-                                <userctrl:ModsListView DataContext="{Binding List}"></userctrl:ModsListView> 
+                            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top">
+                                <userctrl:ModsListView DataContext="{Binding List}" Width="450" Height="450" Padding="10"></userctrl:ModsListView> 
                             </StackPanel>
                         </TabItem>
                         
@@ -56,14 +56,9 @@
                             <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top">
                                 <ComboBox SelectedIndex="0" Width="425">
                                     <ComboBoxItem>Select Category</ComboBoxItem>
-                                    <ComboBoxItem>Code Mods</ComboBoxItem>
-                                    <ComboBoxItem>Map Mods</ComboBoxItem>
-                                    <ComboBoxItem>Character Mods</ComboBoxItem>
-                                    <ComboBoxItem>Item Mods</ComboBoxItem>
-                                    <ComboBoxItem>Dependency Mods</ComboBoxItem>
                                 </ComboBox>
                                 
-                                <userctrl:ModsListView DataContext="{Binding List}"></userctrl:ModsListView> 
+                                <userctrl:ModsListView DataContext="{Binding List}" Width="450" Height="450" Padding="10"></userctrl:ModsListView> 
                             </StackPanel>
                         </TabItem>
                     </TabControl>

@@ -9,12 +9,16 @@
         <ListBox Items="{Binding Items}" SelectionChanged="SelectingItemsControl_OnSelectionChanged">
             <ListBox.ItemTemplate>
                 <DataTemplate DataType="{x:Type models:ModItem}">
-                    <StackPanel Name="Panel"  HorizontalAlignment="Left" VerticalAlignment="Top" Orientation="Horizontal">
-                    <TextBlock Margin="4"
-                               Text="{Binding Name}"/>
-                    <TextBlock Margin="4"
-                               Text="{Binding Version}"/>
-                    </StackPanel>
+                    <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Hidden">
+                    <Grid Name="Panel" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
+                          RowDefinitions="2*,1*,1*"
+                          ColumnDefinitions="2*,1*,1*">
+                        
+                        <TextBlock Margin="2" Text="{Binding Name}"    HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="0"/>
+                        <TextBlock Margin="2" Text="{Binding Version}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1"/>
+                        <TextBlock Margin="2" Text="{Binding Authors}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="2"/>
+                    </Grid>
+                    </ScrollViewer>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>

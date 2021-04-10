@@ -145,5 +145,8 @@ namespace H3VRModInstaller.Frontend
             //displays screen if out of date, updates automatically. no downside other than it uses fucking xml -- potaotes
             //also note it gets the current ver from the assembly file ver, so make sure to update that!
         }
+
+        public static string ArrayToString(IEnumerable<string> AuthorArray) => string.Join(", ", AuthorArray);
+        
     }
 }
