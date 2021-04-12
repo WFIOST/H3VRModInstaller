@@ -5,6 +5,7 @@ using DynamicData;
 using H3VRModInstaller.Frontend;
 using H3VRModInstaller.JSON;
 using H3VRModInstaller.Models;
+using JetBrains.Annotations;
 
 namespace H3VRModInstaller.Services
 {
@@ -30,23 +31,15 @@ namespace H3VRModInstaller.Services
             return listItems;
         }
         
-        /*
-        public IEnumerable<ModItem> GetItems() => new[]
-        {
-            new ModItem { Name = "KewlMod",       Description = test, Version = Version.Parse("0.0.1"), Authors = Actions.AuthorArrayToString(authorTest)},
-            new ModItem { Name = "JigglePhysics", Description = test, Version = Version.Parse("0.0.2"), Authors = Actions.AuthorArrayToString(authorTest)},
-            new ModItem { Name = "BestHands Mod", Description = test, Version = Version.Parse("0.0.3"), Authors = Actions.AuthorArrayToString(authorTest)},
-            new ModItem { Name = "KewlMod",       Description = test, Version = Version.Parse("0.0.1"), Authors = Actions.AuthorArrayToString(authorTest)},
-            new ModItem { Name = "JigglePhysics", Description = test, Version = Version.Parse("0.0.2"), Authors = Actions.AuthorArrayToString(authorTest)},
-            new ModItem { Name = "BestHands Mod", Description = test, Version = Version.Parse("0.0.3"), Authors = Actions.AuthorArrayToString(authorTest)},
-            new ModItem { Name = "KewlMod",       Description = test, Version = Version.Parse("0.0.1"), Authors = Actions.AuthorArrayToString(authorTest)},
-            new ModItem { Name = "JigglePhysics", Description = test, Version = Version.Parse("0.0.2"), Authors = Actions.AuthorArrayToString(authorTest)},
-            new ModItem { Name = "BestHands Mod", Description = test, Version = Version.Parse("0.0.3"), Authors = Actions.AuthorArrayToString(authorTest)},
-            new ModItem { Name = "KewlMod",       Description = test, Version = Version.Parse("0.0.1"), Authors = Actions.AuthorArrayToString(authorTest)},
-            new ModItem { Name = "JigglePhysics", Description = test, Version = Version.Parse("0.0.2"), Authors = Actions.AuthorArrayToString(authorTest)},
-            new ModItem { Name = "BestHands Mod", Description = test, Version = Version.Parse("0.0.3"), Authors = Actions.AuthorArrayToString(authorTest)},
-            
-        };
-        */
+        public IEnumerable<ModItem> GetInstalledMods() => 
+        InstalledMods.GetInstalledMods().Select
+        (
+            mod => new ModItem
+            {
+                Name = mod.Name,
+                Description = mod.Description,
+                Authors = Actions.ArrayToString(mod.Author)
+            }
+        ).ToList();
     }
 }

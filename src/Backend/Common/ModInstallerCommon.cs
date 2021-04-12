@@ -216,7 +216,7 @@ namespace H3VRModInstaller.Common
                 scanned = true;
 
                 //lmao
-                if (!OperatingSystem.IsWindows()) {return null;}
+                if (!OperatingSystem.IsWindows()) {return Directory.GetCurrentDirectory();}
 
                 // Get the main steam installation location via registry.
                 var steamDir =
@@ -224,7 +224,7 @@ namespace H3VRModInstaller.Common
                 if (string.IsNullOrEmpty(steamDir))
                     steamDir = Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Valve\Steam", "InstallPath",
                         "") as string;
-                if (string.IsNullOrEmpty(steamDir)) {return null;}
+                if (string.IsNullOrEmpty(steamDir)) {return Directory.GetCurrentDirectory();}
 
                 // Check main steamapps library folder for h3 manifest.
                 var result = "";
@@ -268,11 +268,7 @@ namespace H3VRModInstaller.Common
 				}
 				return _modcache;
 			}
-			set
-			{
-				_modcache = value;
-			}
-		}
+        }
 
         public static string DisableCache
         {

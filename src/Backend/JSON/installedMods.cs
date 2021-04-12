@@ -47,19 +47,17 @@ namespace H3VRModInstaller.JSON
         /// <summary>
         ///     Gets the currently installed mods from the JSON files
         /// </summary>
-        /// <returns>String array with the installed mods</returns>
-        public static ModFile[] GetInstalledMods()
-        {
-            return GetInstalledMods(false);
+        /// <returns>ModFile array with the installed mods</returns>
+        public static ModFile[] GetInstalledMods() => GetInstalledMods(false);
             
-        }
+        
         /// <summary>
         ///     Gets the currently installed mods from the JSON files
         /// </summary>
-        /// <returns>String array with the installed mods</returns>
-        public static ModFile[] GetInstalledMods(bool SkipCache)
+        /// <returns>ModFile array with the installed mods</returns>
+        private static ModFile[] GetInstalledMods(bool SkipCache)
         {
-            InstalledModsFormat input = null;
+            InstalledModsFormat? input = null;
             if (!File.Exists(Utilities.ModCache)) return Array.Empty<ModFile>();
             if (InstalledModsCache == null || changeToInstalledMods || SkipCache) //if there is no cache or there's a change or if theres an override
             {
@@ -84,6 +82,8 @@ namespace H3VRModInstaller.JSON
                     }
                     catch
                     {
+                        throw new Exception("Mod cache (installed_mods.json) IS INVALID!\nThis is most likely because Deli Counter was used for installing mods, before Mod Installer!\n(if you had any installed mods with Deli Counter from before, it could cause serious issues!)\n\nThese programs are not compatible, delete?");
+
 /*                        var err = MessageBox.Show(
                             "Mod cache (installed_mods.json) IS INVALID!\nThis is most likely because Deli Counter was used for installing mods, before Mod Installer!\n(if you had any installed mods with Deli Counter from before, it could cause serious issues!)\n\nThese programs are not compatible, delete?",
                             "Mod Cache INVALID!", MessageBoxButtons.YesNo, MessageBoxIcon.Error);

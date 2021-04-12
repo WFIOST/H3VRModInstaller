@@ -7,14 +7,15 @@ namespace H3VRModInstaller.ViewModels
 {
     class MainWindowViewModel : ViewModelBase
     {
-        private ModItem _selected;
+        public ModItem Selected { get; }
+        public ModsListViewModel DownloadableModList { get; }
+        public ModsListViewModel InstalledModList { get; }
+        public ModInfoViewModel ModInfo { get; set; }
         public MainWindowViewModel(Database db)
         {
             ModInfo = new ModInfoViewModel();
-            List = new ModsListViewModel(db.GetDownloadableItems(), ModInfo.SelectChanged);
+            DownloadableModList = new ModsListViewModel(db.GetDownloadableItems(), ModInfo.SelectChanged);
+            InstalledModList = new ModsListViewModel(db.GetInstalledMods(), ModInfo.SelectChanged);
         }
-
-        public ModsListViewModel List { get; }
-        public ModInfoViewModel ModInfo { get; set; }
     }
 }

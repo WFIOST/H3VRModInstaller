@@ -5,7 +5,7 @@
              mc:Ignorable="d" d:DesignWidth="200" d:DesignHeight="300"
              x:Class="H3VRModInstaller.Views.ModInfoView">
     
-    <Panel HorizontalAlignment="Right" VerticalAlignment="Center" Background="LightGray"
+    <Panel HorizontalAlignment="Center" VerticalAlignment="Center" Background="LightGray"
            Margin="15" Width="460" Height="550">
         <TextBlock Name="SelectedModText" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="10"
                    Text="{Binding SelectedMod.Name}" Classes="SelectedModText" />
@@ -14,7 +14,7 @@
 
         <Button Name="InstallButton" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="5, 75" Width="450"
                 Height="30" Classes="Text" 
-                Command="{Binding InstallCommand}" >
+                Command="{Binding InstallCommand}">
             Install
         </Button>
 

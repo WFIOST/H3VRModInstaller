@@ -46,11 +46,6 @@
                     <TextBox Name="SearchBar" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10" Width="430" Background="White" Text="Search mod here..."/>
                     
                     <TabControl Margin="2,20" VerticalAlignment="Top" HorizontalAlignment="Left">
-                        <TabItem Header="Installed Mods" Padding="10, 5" Classes="Text">
-                            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top">
-                                <userctrl:ModsListView DataContext="{Binding List}" Width="450" Height="450" Padding="10"></userctrl:ModsListView> 
-                            </StackPanel>
-                        </TabItem>
                         
                         <TabItem Header="Downloadable Mods" Padding="10, 5" Classes="Text">
                             <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top">
@@ -58,9 +53,18 @@
                                     <ComboBoxItem>Select Category</ComboBoxItem>
                                 </ComboBox>
                                 
-                                <userctrl:ModsListView DataContext="{Binding List}" Width="450" Height="450" Padding="10"></userctrl:ModsListView> 
+                                <userctrl:ModsListView DataContext="{Binding DownloadableModList}" Width="450" Height="450" Padding="10"></userctrl:ModsListView> 
                             </StackPanel>
                         </TabItem>
+                        
+                        
+                        <TabItem Header="Installed Mods" Padding="10, 2.5, 10, 5" Classes="Text">
+                            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top">
+                                <userctrl:ModsListView DataContext="{Binding InstalledModList}" Width="450" Height="450" Padding="10"></userctrl:ModsListView> 
+                            </StackPanel>
+                        </TabItem>
+                        
+ 
                     </TabControl>
                 </Panel>
                 
