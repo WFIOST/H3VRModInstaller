@@ -12,4 +12,4 @@ BUILD_PROPERTIES = /p:RepositoryBranch="$(GIT_BRANCH)" /p:RepositoryCommit="$(GI
 .PHONY: build
 
 build:
-	dotnet build --configuration $(CONFIG) --framework $(FRAMEWORK) $(BUILD_PROPERTIES)
+	dotnet publish -r win-x64 -p:PublishSingleFile=true --self-contained false
