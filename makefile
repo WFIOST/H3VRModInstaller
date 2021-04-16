@@ -13,3 +13,4 @@ BUILD_PROPERTIES = /p:RepositoryBranch="$(GIT_BRANCH)" /p:RepositoryCommit="$(GI
 
 build:
 	dotnet publish -r win-x64 -p:PublishSingleFile=true --self-contained false
+	ls
