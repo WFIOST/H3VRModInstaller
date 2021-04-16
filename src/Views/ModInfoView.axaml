@@ -1,0 +1,39 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="200" d:DesignHeight="300"
+             x:Class="H3VRModInstaller.Views.ModInfoView">
+    
+    <Panel HorizontalAlignment="Center" VerticalAlignment="Center" Background="LightGray"
+           Margin="15" Width="460" Height="550">
+        <TextBlock Name="SelectedModText" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="10"
+                   Text="{Binding SelectedMod.Name}" Classes="SelectedModText" />
+        <TextBlock Name="VersionText" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="5, 45"
+                   Text="{Binding SelectedMod.Version}" Classes="ModVersionText" />
+
+        <Button Name="InstallButton" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="5, 75" Width="450"
+                Height="30" Classes="Text" 
+                Command="{Binding InstallCommand}">
+            Install
+        </Button>
+
+        <Button Name="WebsiteButton" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="5, 110" Width="225"
+                Height="30" Classes="Text"
+                Command="{Binding SendToWebsiteCommand}" >
+            Website
+        </Button>
+
+        <Button Name="Update" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="5, 110" Width="225"
+                Height="30" Classes="Text"
+                Command="{Binding UpdateCommand}" >
+            Update
+        </Button>
+
+        <Panel Name="Description" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="5, 15" Width="440"
+               Height="385" Background="White">
+            <TextBlock Name="DescriptionText" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5"
+                       Text="{Binding SelectedMod.Description}" TextWrapping="WrapWithOverflow" />
+        </Panel>
+    </Panel>
+</UserControl>

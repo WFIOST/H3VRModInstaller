@@ -15,4 +15,10 @@
         <PackageReference Include="Newtonsoft.Json" Version="13.0.1-beta1" />
         <PackageReference Include="SharpCompress" Version="0.28.1" />
     </ItemGroup>
+    <ItemGroup>
+      <Compile Update="Views\ModInfoView.axaml.cs">
+        <DependentUpon>ModInfoPanel.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+    </ItemGroup>
 </Project>

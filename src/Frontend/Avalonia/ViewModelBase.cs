@@ -6,6 +6,5 @@ using ReactiveUI;
 namespace H3VRModInstaller.Avalonia
 {
     public class ViewModelBase : ReactiveObject
-    {
-    }
+    {}
 }
