@@ -1,5 +1,12 @@
 # H3VRModInstaller 
 
+# BEFORE DOWNLOADING
+I had to unarchive this repo just to add this to the readme.
+MODINSTALLER DOES NOT WORK ANYMORE. It relied on BoneTome, and BoneTome has shut down months ago.
+On top of that, our notice below is also outdated. Mods for H3VR are now hosted on [Thunderstore](https://h3vr.thunderstore.io/) and downloaded using [R2ModMan.](https://github.com/ebkr/r2modmanPlus/releases)
+Thank you, and have a wonderful time modding H3VR!
+
+
 ## Notice:
 So, unfortunately, we (@Potatoes1286 and @Frityet) have decided to stop working and maintaining Mod Installer.
 what this means for you, is basically mods on Mod Installer will stop updating, and new mods will not be added.
